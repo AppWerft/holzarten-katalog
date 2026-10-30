@@ -1,0 +1,2954 @@
+[
+  {
+    "Kurzzeichen":"AAXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Andira",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Andira"
+  },
+  {
+    "Kurzzeichen":"ABAL",
+    "Laub \/ Nadel":"Nadel",
+    "Gattung \/ Art":"Abies alba",
+    "Deutscher Gattungs- \/ Artname":"Weiß-Tanne",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Tanne"
+  },
+  {
+    "Kurzzeichen":"ABAM",
+    "Laub \/ Nadel":"Nadel",
+    "Gattung \/ Art":"Abies amabilis",
+    "Deutscher Gattungs- \/ Artname":"Purpur-Tanne",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Purpurtanne"
+  },
+  {
+    "Kurzzeichen":"ABBL",
+    "Laub \/ Nadel":"Nadel",
+    "Gattung \/ Art":"Abies balsamea",
+    "Deutscher Gattungs- \/ Artname":"Balsam-Tanne",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Balsamtanne"
+  },
+  {
+    "Kurzzeichen":"ABGR",
+    "Laub \/ Nadel":"Nadel",
+    "Gattung \/ Art":"Abies grandis",
+    "Deutscher Gattungs- \/ Artname":"Küsten-Tanne",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Riesentanne"
+  },
+  {
+    "Kurzzeichen":"ABLS",
+    "Laub \/ Nadel":"Nadel",
+    "Gattung \/ Art":"Abies lasiocarpa",
+    "Deutscher Gattungs- \/ Artname":"Felsengebirgs-Tanne",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"White fir"
+  },
+  {
+    "Kurzzeichen":"ABPR",
+    "Laub \/ Nadel":"Nadel",
+    "Gattung \/ Art":"Abies procera",
+    "Deutscher Gattungs- \/ Artname":"Edel-Tanne",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Edeltanne"
+  },
+  {
+    "Kurzzeichen":"ACCM",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Acer campestre",
+    "Deutscher Gattungs- \/ Artname":"Feld-Ahorn",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Feldahorn"
+  },
+  {
+    "Kurzzeichen":"ACPL",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Acer platanoides",
+    "Deutscher Gattungs- \/ Artname":"Spitzahorn",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Spitzahorn"
+  },
+  {
+    "Kurzzeichen":"ACPS",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Acer pseudoplatanus",
+    "Deutscher Gattungs- \/ Artname":"Berg-Ahorn",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Bergahorn"
+  },
+  {
+    "Kurzzeichen":"ACSC",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Acer saccharum",
+    "Deutscher Gattungs- \/ Artname":"Zucker-Ahorn",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Zuckerahorn"
+  },
+  {
+    "Kurzzeichen":"ADCR",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Adina cordifolia (Syn.: Haldina cordifolia)",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Haldu"
+  },
+  {
+    "Kurzzeichen":"AEHP",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Aesculus hippocastanum",
+    "Deutscher Gattungs- \/ Artname":"Gewöhnliche Rosskastanie",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Rosskastania"
+  },
+  {
+    "Kurzzeichen":"AFXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Afzelia",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Afzelia"
+  },
+  {
+    "Kurzzeichen":"AGAS",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Agathis australis",
+    "Deutscher Gattungs- \/ Artname":"Neuseeländischer Kauri-Baum",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Kauri"
+  },
+  {
+    "Kurzzeichen":"AGDM",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Agathis dammara",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Agathis"
+  },
+  {
+    "Kurzzeichen":"AIAL",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Ailanthus altissima",
+    "Deutscher Gattungs- \/ Artname":"Götterbaum",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Götterbaum"
+  },
+  {
+    "Kurzzeichen":"ALGL",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Alnus glutinosa",
+    "Deutscher Gattungs- \/ Artname":"Schwarz-Erle",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Schwarzerle"
+  },
+  {
+    "Kurzzeichen":"ALIN",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Alnus incana",
+    "Deutscher Gattungs- \/ Artname":"Grau-Erle",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Grauerle"
+  },
+  {
+    "Kurzzeichen":"AMCR",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Amburana cearensis",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Cerejeira"
+  },
+  {
+    "Kurzzeichen":"ANXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Anisoptera",
+    "Deutscher Gattungs- \/ Artname":"Mersawa",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Mersawa"
+  },
+  {
+    "Kurzzeichen":"AOCO",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Alstonia congensis",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Emien"
+  },
+  {
+    "Kurzzeichen":"AOXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Alstonia",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Pulaï"
+  },
+  {
+    "Kurzzeichen":"APPT",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Amphimas pterocarpoides",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Lati"
+  },
+  {
+    "Kurzzeichen":"AQXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Aningeria",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Aningré"
+  },
+  {
+    "Kurzzeichen":"ARAN",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Araucaria angustifolia",
+    "Deutscher Gattungs- \/ Artname":"Brasilianische Araukarie",
+    "Herkunft":null,
+    "Schutzstatus":"ja",
+    "Deutscher Standard-Holzname":"Brasilkiefer"
+  },
+  {
+    "Kurzzeichen":"ARAR",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Araucaria araucana",
+    "Deutscher Gattungs- \/ Artname":"Chilenische Araukarie",
+    "Herkunft":null,
+    "Schutzstatus":"ja",
+    "Deutscher Standard-Holzname":"Chiletanne"
+  },
+  {
+    "Kurzzeichen":"ASXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Aspidosperma polyneuron (auch für Aspidosperma quebracho-blanco)",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Peroba rosa"
+  },
+  {
+    "Kurzzeichen":"ATTX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Antiaris toxicaria",
+    "Deutscher Gattungs- \/ Artname":"Upasbaum",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Ako"
+  },
+  {
+    "Kurzzeichen":"AUKL",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Aucoumea klaineana",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Okoumé"
+  },
+  {
+    "Kurzzeichen":"AVXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Astronium",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Gonçalo alvez"
+  },
+  {
+    "Kurzzeichen":"AWCO",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Autranella congolensis",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Mukulungu"
+  },
+  {
+    "Kurzzeichen":"AZXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Albizia",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Iatandza"
+  },
+  {
+    "Kurzzeichen":"BEXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Berlinia bracteosa, Berlinia confusa, Berlinia grandiflora",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Ebiara"
+  },
+  {
+    "Kurzzeichen":"BFRD",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Balfourodendron riedelianum",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Guatambu"
+  },
+  {
+    "Kurzzeichen":"BGGN",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Bagassa guianensis",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Bagassa"
+  },
+  {
+    "Kurzzeichen":"BIXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Beilschmiedia",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Kanda"
+  },
+  {
+    "Kurzzeichen":"BLTX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Baillonella toxisperma",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Moabi"
+  },
+  {
+    "Kurzzeichen":"BMBN",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Bombax buonopozense",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Kapokier"
+  },
+  {
+    "Kurzzeichen":"BOXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Bowdichia, Diplotropis",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Sucupira"
+  },
+  {
+    "Kurzzeichen":"BRXB",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Brachystegia laurentii, Brachystegia milbraedii",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Bomanga"
+  },
+  {
+    "Kurzzeichen":"BRXN",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Brachystegia cynometrides, Brachystegia eurocyma, Brachystegia leonensis, Brachystegia nigerica",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Naga"
+  },
+  {
+    "Kurzzeichen":"BSGN",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Brosimum guianense",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Schlangenholz"
+  },
+  {
+    "Kurzzeichen":"BSRB",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Brosimum rubescens",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Satiné"
+  },
+  {
+    "Kurzzeichen":"BTAL",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Betula alleghaniensis",
+    "Deutscher Gattungs- \/ Artname":"Gelb-Birke",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Yellow birch"
+  },
+  {
+    "Kurzzeichen":"BTPP",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Betula papyrifera",
+    "Deutscher Gattungs- \/ Artname":"Papier-Birke",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Papierbirke"
+  },
+  {
+    "Kurzzeichen":"BTXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Betula pendula, Betula pubescens",
+    "Deutscher Gattungs- \/ Artname":"Hänge-Birke, Moorbirke",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Gemeine Birke"
+  },
+  {
+    "Kurzzeichen":"BXSM",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Buxus sempervirens",
+    "Deutscher Gattungs- \/ Artname":"Gewöhnlicher Buchsbaum",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Buchsbaum"
+  },
+  {
+    "Kurzzeichen":"BYHT",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Brachylaena huillensis",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Muhuhu"
+  },
+  {
+    "Kurzzeichen":"CAPR",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Casearia praecox",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Zapatero"
+  },
+  {
+    "Kurzzeichen":"CAXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Carya",
+    "Deutscher Gattungs- \/ Artname":"Hickory",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Hickory"
+  },
+  {
+    "Kurzzeichen":"CBPN",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Ceiba pentandra",
+    "Deutscher Gattungs- \/ Artname":"Kapokbaum",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Ceiba"
+  },
+  {
+    "Kurzzeichen":"CCDC",
+    "Laub \/ Nadel":"Nadel",
+    "Gattung \/ Art":"Calocedrus decurrens",
+    "Deutscher Gattungs- \/ Artname":"Weihrauchzeder",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Kalifornische Bleistiftzeder"
+  },
+  {
+    "Kurzzeichen":"CDXX",
+    "Laub \/ Nadel":"Nadel",
+    "Gattung \/ Art":"Cedrus atlantica, Cedrus deodara, Cedrus libani",
+    "Deutscher Gattungs- \/ Artname":"Atlas-Zeder, Himalaya-Zeder, Libanon-Zeder",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Echte Zeder"
+  },
+  {
+    "Kurzzeichen":"CEXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Cedrela, pr. Cedrela odorata, Cedrela fissilis",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Cedro"
+  },
+  {
+    "Kurzzeichen":"CFSL",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Copaifera salikounda",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Etimoé"
+  },
+  {
+    "Kurzzeichen":"CFXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Copaifera, pr. Copaifera multijuga",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Copaiba"
+  },
+  {
+    "Kurzzeichen":"CGCT",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Cedrelinga cateniformis",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Tornillo"
+  },
+  {
+    "Kurzzeichen":"CHLW",
+    "Laub \/ Nadel":"Nadel",
+    "Gattung \/ Art":"Chamaecyparis lawsoniana",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Port Orford cedar"
+  },
+  {
+    "Kurzzeichen":"CHNT",
+    "Laub \/ Nadel":"Nadel",
+    "Gattung \/ Art":"Chamaecyparis nootkatensis (Syn.: Xanthocyparis nootkatensis)",
+    "Deutscher Gattungs- \/ Artname":"Nootka-Scheinzypresse",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Yellow cedar"
+  },
+  {
+    "Kurzzeichen":"CHRD",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Chlorocardium rodiei",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Greenheart"
+  },
+  {
+    "Kurzzeichen":"CHTH",
+    "Laub \/ Nadel":"Nadel",
+    "Gattung \/ Art":"Chamaecyparis thyoides",
+    "Deutscher Gattungs- \/ Artname":"Weiße Scheinzypresse",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Southern white cedar"
+  },
+  {
+    "Kurzzeichen":"CIXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Couratari",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Tauarí"
+  },
+  {
+    "Kurzzeichen":"CJAT",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Celtis adolfi-friderici, Celtis tessmannii",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Diania"
+  },
+  {
+    "Kurzzeichen":"CJXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Celtis",
+    "Deutscher Gattungs- \/ Artname":"Zürgelbäume",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Ohia"
+  },
+  {
+    "Kurzzeichen":"CKGB",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Cylicodiscus gabunensis",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Okan"
+  },
+  {
+    "Kurzzeichen":"CLBR",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Calophyllum brasiliense",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Jacareúba"
+  },
+  {
+    "Kurzzeichen":"CLXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Calophyllum",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Bintangor"
+  },
+  {
+    "Kurzzeichen":"CMXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Centrolobium",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Araribá"
+  },
+  {
+    "Kurzzeichen":"CNSC",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Canarium schweinfurthii",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Aielé"
+  },
+  {
+    "Kurzzeichen":"CNXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Canarium",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Kedondong"
+  },
+  {
+    "Kurzzeichen":"COGL",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Cordia goeldiana",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Freijó"
+  },
+  {
+    "Kurzzeichen":"COXA",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Cordia aliodora, Cordia trichotoma",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Pardillo"
+  },
+  {
+    "Kurzzeichen":"COXB",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Cordia",
+    "Deutscher Gattungs- \/ Artname":"Kordien",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Afrikanische Cordia"
+  },
+  {
+    "Kurzzeichen":"CPBT",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Carpinus betulus",
+    "Deutscher Gattungs- \/ Artname":"Hainbuche",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Weißbuche"
+  },
+  {
+    "Kurzzeichen":"CQXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Caryocar, pr. Caryocar villosum",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Piquiá"
+  },
+  {
+    "Kurzzeichen":"CRGN",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Carapa guianensis",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Andiroba"
+  },
+  {
+    "Kurzzeichen":"CSEC",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Paubrasilia echinata (Syn.: Caesalpinia echinata)",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":"ja",
+    "Deutscher Standard-Holzname":"Pernambuk"
+  },
+  {
+    "Kurzzeichen":"CSGR",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Caesalpinia granadillo (Syn.: Caesalpinia punctata, Libidibia punctata)",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Partridge"
+  },
+  {
+    "Kurzzeichen":"CTST",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Castanea sativa",
+    "Deutscher Gattungs- \/ Artname":"Edelkastanie",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Edelkastanie"
+  },
+  {
+    "Kurzzeichen":"CUXX",
+    "Laub \/ Nadel":"Nadel",
+    "Gattung \/ Art":"Cupressus",
+    "Deutscher Gattungs- \/ Artname":"Zypressen",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Zypresse"
+  },
+  {
+    "Kurzzeichen":"CVPR",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Coelocaryon preussii",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Ekoune"
+  },
+  {
+    "Kurzzeichen":"CWXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Cratoxylum",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Geronggang"
+  },
+  {
+    "Kurzzeichen":"CXRC",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Clarisia racemosa",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Guariuba"
+  },
+  {
+    "Kurzzeichen":"CYJP",
+    "Laub \/ Nadel":"Nadel",
+    "Gattung \/ Art":"Cryptomeria japonica",
+    "Deutscher Gattungs- \/ Artname":"Sicheltanne",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Sugi"
+  },
+  {
+    "Kurzzeichen":"CZXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Cariniana, pr. Cariniana legalis",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Jequitibá"
+  },
+  {
+    "Kurzzeichen":"DABT",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Dacryodes buttneri",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Ozigo"
+  },
+  {
+    "Kurzzeichen":"DAHT",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Dacryodes heterotricha",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Safukala"
+  },
+  {
+    "Kurzzeichen":"DCST",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Dactylocladus stenostachys",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Jongkong"
+  },
+  {
+    "Kurzzeichen":"DDBR",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Didelotia brevipaniculata",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Tabouaté"
+  },
+  {
+    "Kurzzeichen":"DDXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Didelotia idae, Didelotia ietoutzeyi, Didelotia africana",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Gombé"
+  },
+  {
+    "Kurzzeichen":"DEEX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Dinizia excelsa",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Angelim vermelho"
+  },
+  {
+    "Kurzzeichen":"DIXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Dicorynia, meistens Dicorynia guianensis",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Angélique, Basralocus"
+  },
+  {
+    "Kurzzeichen":"DLCR",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Dalbergia cearensis",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":"ja",
+    "Deutscher Standard-Holzname":"Königsholz"
+  },
+  {
+    "Kurzzeichen":"DLLT",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Dalbergia latifolia",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":"ja",
+    "Deutscher Standard-Holzname":"Ostindischer Palisander"
+  },
+  {
+    "Kurzzeichen":"DLML",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Dalbergia melanoxylon",
+    "Deutscher Gattungs- \/ Artname":"Grenadill",
+    "Herkunft":null,
+    "Schutzstatus":"ja",
+    "Deutscher Standard-Holzname":"Grenadill"
+  },
+  {
+    "Kurzzeichen":"DLNG",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Dalbergia nigra",
+    "Deutscher Gattungs- \/ Artname":"Rio-Palisander",
+    "Herkunft":null,
+    "Schutzstatus":"ja",
+    "Deutscher Standard-Holzname":"Rio-Palisander"
+  },
+  {
+    "Kurzzeichen":"DLRT",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Dalbergia retusa",
+    "Deutscher Gattungs- \/ Artname":"Cocobolo",
+    "Herkunft":null,
+    "Schutzstatus":"ja",
+    "Deutscher Standard-Holzname":"Cocobolo"
+  },
+  {
+    "Kurzzeichen":"DLST",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Dalbergia stevensonii",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":"ja",
+    "Deutscher Standard-Holzname":"Honduras Palisander"
+  },
+  {
+    "Kurzzeichen":"DLTC",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Dalbergia tucurensis",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":"ja",
+    "Deutscher Standard-Holzname":"Guatemala Palisander"
+  },
+  {
+    "Kurzzeichen":"DLXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Dalbergia decipularis, Dalbergia frutescens",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":"ja",
+    "Deutscher Standard-Holzname":"Bahia-Rosenholz"
+  },
+  {
+    "Kurzzeichen":"DMDA",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Dracontomelon dao",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Paldao"
+  },
+  {
+    "Kurzzeichen":"DNXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Daniellia klainei, Daniellia ogea, Daniellia thurifera",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Faro"
+  },
+  {
+    "Kurzzeichen":"DPXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Dipterocarpus",
+    "Deutscher Gattungs- \/ Artname":"Zweiflügelfruchtbäume",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Keruing"
+  },
+  {
+    "Kurzzeichen":"DRXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Dryobalanops",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Kapur"
+  },
+  {
+    "Kurzzeichen":"DSCL",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Diospyros celebica",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":"ja",
+    "Deutscher Standard-Holzname":"Makassar-Ebenholz"
+  },
+  {
+    "Kurzzeichen":"DSEB",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Diospyros ebenum",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Ceylon Ebenholz"
+  },
+  {
+    "Kurzzeichen":"DSVG",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Diospyros virginiana",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Persimmon"
+  },
+  {
+    "Kurzzeichen":"DSXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Diospyros, pr. Diospyros crassiflora",
+    "Deutscher Gattungs- \/ Artname":"Ebenholzbäume",
+    "Herkunft":null,
+    "Schutzstatus":"Alle aus Madagaskar",
+    "Deutscher Standard-Holzname":"Afrikanisches Ebenholz"
+  },
+  {
+    "Kurzzeichen":"DTBN",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Distemonanthus benthamianus",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Movingui"
+  },
+  {
+    "Kurzzeichen":"DUXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Durio, Coelostegia, Neesia",
+    "Deutscher Gattungs- \/ Artname":"Durianbäume, Coelostegia, Neesia",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Durian"
+  },
+  {
+    "Kurzzeichen":"DXOD",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Dipteryx odorata",
+    "Deutscher Gattungs- \/ Artname":"Tonkabaum",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Cumaru"
+  },
+  {
+    "Kurzzeichen":"DYCS",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Dyera costulata",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Jelutong"
+  },
+  {
+    "Kurzzeichen":"DZXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Otoba (Syn.: Dialyanthera)",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Virola"
+  },
+  {
+    "Kurzzeichen":"EDXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Endospermum",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Sesendok"
+  },
+  {
+    "Kurzzeichen":"EIUN",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Erisma uncinatum",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Cambará, Jabuti"
+  },
+  {
+    "Kurzzeichen":"ENAN",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Entandrophragma angolense",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Tiama"
+  },
+  {
+    "Kurzzeichen":"ENCN",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Entandrophragma candollei",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Kosipo"
+  },
+  {
+    "Kurzzeichen":"ENCY",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Entandrophragma cylindricum",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Sapelli"
+  },
+  {
+    "Kurzzeichen":"ENUT",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Entandrophragma utile",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Sipo"
+  },
+  {
+    "Kurzzeichen":"EPXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Eperua",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Walaba"
+  },
+  {
+    "Kurzzeichen":"EROB",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Sterculia oblonga (Syn.: Eribroma oblonga)",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Eyong"
+  },
+  {
+    "Kurzzeichen":"EUCM",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Eucalyptus camaldulensis",
+    "Deutscher Gattungs- \/ Artname":"Roter Eukalyptus",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Red River gum"
+  },
+  {
+    "Kurzzeichen":"EUDG",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Eucalyptus deglupta",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Kamarere"
+  },
+  {
+    "Kurzzeichen":"EUDV",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Eucalyptus diversicolor",
+    "Deutscher Gattungs- \/ Artname":"Karribaum",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Karri"
+  },
+  {
+    "Kurzzeichen":"EUGL",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Eucalyptus globulus",
+    "Deutscher Gattungs- \/ Artname":"Blauer Eukalyptus",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Blue gum"
+  },
+  {
+    "Kurzzeichen":"EUMR",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Eucalyptus marginata",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Jarrah"
+  },
+  {
+    "Kurzzeichen":"EUSL",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Eucalyptus saligna, Eucalyptus grandis",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Sidney blue gum"
+  },
+  {
+    "Kurzzeichen":"EUXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Eucalyptus delegatensis, Eucalyptus obliqua, Eucalyptus regnans",
+    "Deutscher Gattungs- \/ Artname":"Eucalyptus delegatensis, Eucalyptus obliqua, Riesen-Eukalyptus",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Tasmanian oak"
+  },
+  {
+    "Kurzzeichen":"EXPA",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Euxylophora paraensis",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Pau amarelo"
+  },
+  {
+    "Kurzzeichen":"EYXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Erythrophleum ivorense, Erythrophleum suaveolens",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Tali"
+  },
+  {
+    "Kurzzeichen":"FAGR",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Fagus grandifolia",
+    "Deutscher Gattungs- \/ Artname":"Amerikanische Buche",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Amerikanische Buche"
+  },
+  {
+    "Kurzzeichen":"FAOR",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Fagus orientalis",
+    "Deutscher Gattungs- \/ Artname":"Orient-Buche",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Orient-Buche"
+  },
+  {
+    "Kurzzeichen":"FASY",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Fagus sylvatica",
+    "Deutscher Gattungs- \/ Artname":"Rotbuche",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Buche"
+  },
+  {
+    "Kurzzeichen":"FICP",
+    "Laub \/ Nadel":"Nadel",
+    "Gattung \/ Art":"Fitzroya cupressoides",
+    "Deutscher Gattungs- \/ Artname":"Patagonische Zypresse",
+    "Herkunft":null,
+    "Schutzstatus":"ja",
+    "Deutscher Standard-Holzname":"Alerce"
+  },
+  {
+    "Kurzzeichen":"FXEX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Fraxinus excelsior",
+    "Deutscher Gattungs- \/ Artname":"Gemeine Esche",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Esche"
+  },
+  {
+    "Kurzzeichen":"FXXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Fraxinus americana, Fraxinus nigra, Fraxinus pennsylvanica",
+    "Deutscher Gattungs- \/ Artname":"Weiß-Esche, Schwarz-Esche, Rot-Esche",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Amerikanische Esche"
+  },
+  {
+    "Kurzzeichen":"GAXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Chrysophyllum africanum (Syn.: Gambeya africana)",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Longhi"
+  },
+  {
+    "Kurzzeichen":"GBDW",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Gilbertiodendron dewevrei",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Limbali"
+  },
+  {
+    "Kurzzeichen":"GCXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Guaiacum coulteri, Guaiacum officinale, Guaiacum sanctum",
+    "Deutscher Gattungs- \/ Artname":"Guajak",
+    "Herkunft":null,
+    "Schutzstatus":"ja",
+    "Deutscher Standard-Holzname":"Pockholz"
+  },
+  {
+    "Kurzzeichen":"GMAR",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Gmelina arborea",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Yemane"
+  },
+  {
+    "Kurzzeichen":"GOXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Gossweilerodendron balsamiferum, Gossweilerodendron joveri",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Tola"
+  },
+  {
+    "Kurzzeichen":"GPGL",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Goupia glabra",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Gupiuba"
+  },
+  {
+    "Kurzzeichen":"GRTH",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Guarea thompsonii",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Diambi"
+  },
+  {
+    "Kurzzeichen":"GRXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Leplaea cedrata (Syn.: Guarea cedrata), Leplaea laurentii (Syn.: Guarea laurentii)",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Bossé"
+  },
+  {
+    "Kurzzeichen":"GUAR",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Guibourtia arnoldiana",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Mutényé"
+  },
+  {
+    "Kurzzeichen":"GUCL",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Guibourtia coleosperma",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Mussibi"
+  },
+  {
+    "Kurzzeichen":"GUEH",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Guibourtia ehie",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Ovéngkoi"
+  },
+  {
+    "Kurzzeichen":"GUXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Guibourtia demeusei, Guibourtia pellegriniana, Guibourtia tessmannii",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":"ja",
+    "Deutscher Standard-Holzname":"Bubinga"
+  },
+  {
+    "Kurzzeichen":"GYBN",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Gonystylus bancanus",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":"ja",
+    "Deutscher Standard-Holzname":"Ramin"
+  },
+  {
+    "Kurzzeichen":"HAMO",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Haplormosia monophylla",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Idewa"
+  },
+  {
+    "Kurzzeichen":"HEXM",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Heritiera",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Mengkulang"
+  },
+  {
+    "Kurzzeichen":"HEXN",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Heritiera utilis, Heritiera densiflora",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Niangon"
+  },
+  {
+    "Kurzzeichen":"HLCL",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Mitragyna ledermannii (Syn.: Hallea ciliata, Hallea ledermannii)",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Abura"
+  },
+  {
+    "Kurzzeichen":"HMXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Hymenolobium",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Angelim pedra"
+  },
+  {
+    "Kurzzeichen":"HPXG",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Hopea (schwere Arten)",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Giam"
+  },
+  {
+    "Kurzzeichen":"HPXM",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Hopea",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Merawan"
+  },
+  {
+    "Kurzzeichen":"HVBR",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Hevea brasiliensis",
+    "Deutscher Gattungs- \/ Artname":"Kautschukbaum",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Hevea"
+  },
+  {
+    "Kurzzeichen":"HYCB",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Hymenaea courbaril",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Courbaril, Jatobá"
+  },
+  {
+    "Kurzzeichen":"ILAQ",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Ilex aquifolium",
+    "Deutscher Gattungs- \/ Artname":"Europäische Stechpalme",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Stechpalme"
+  },
+  {
+    "Kurzzeichen":"INXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Intsia bijuga, Intsia palembanica",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Merbau"
+  },
+  {
+    "Kurzzeichen":"JGNG",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Juglans nigra",
+    "Deutscher Gattungs- \/ Artname":"Schwarznuss",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Amerikanischer Nussbaum"
+  },
+  {
+    "Kurzzeichen":"JGRG",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Juglans regia",
+    "Deutscher Gattungs- \/ Artname":"Echte Walnuss",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Nussbaum"
+  },
+  {
+    "Kurzzeichen":"JUPR",
+    "Laub \/ Nadel":"Nadel",
+    "Gattung \/ Art":"Juniperus procera",
+    "Deutscher Gattungs- \/ Artname":"Ostafrikanischer Wacholder",
+    "Herkunft":null,
+    "Schutzstatus":"ja",
+    "Deutscher Standard-Holzname":"Afrikanische Bleistiftzeder"
+  },
+  {
+    "Kurzzeichen":"JUVR",
+    "Laub \/ Nadel":"Nadel",
+    "Gattung \/ Art":"Juniperus virginiana",
+    "Deutscher Gattungs- \/ Artname":"Virginischer Wacholder",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Virginische Bleistiftzeder"
+  },
+  {
+    "Kurzzeichen":"KHXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Khaya",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Khaya Mahagoni"
+  },
+  {
+    "Kurzzeichen":"KOML",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Koompassia mallaccensis",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Kempas"
+  },
+  {
+    "Kurzzeichen":"LADC",
+    "Laub \/ Nadel":"Nadel",
+    "Gattung \/ Art":"Larix decidua",
+    "Deutscher Gattungs- \/ Artname":"Europäische Lärche",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Lärche"
+  },
+  {
+    "Kurzzeichen":"LAER",
+    "Laub \/ Nadel":"Nadel",
+    "Gattung \/ Art":"Larix × eurolepis",
+    "Deutscher Gattungs- \/ Artname":"Hybrid-Lärche",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Dunkeld-Lärche"
+  },
+  {
+    "Kurzzeichen":"LAGM",
+    "Laub \/ Nadel":"Nadel",
+    "Gattung \/ Art":"Larix gmelinii",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Sibirische Lärche"
+  },
+  {
+    "Kurzzeichen":"LAKM",
+    "Laub \/ Nadel":"Nadel",
+    "Gattung \/ Art":"Larix kaempferi",
+    "Deutscher Gattungs- \/ Artname":"Japanische Lärche",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Japanische Lärche"
+  },
+  {
+    "Kurzzeichen":"LAOC",
+    "Laub \/ Nadel":"Nadel",
+    "Gattung \/ Art":"Larix occidentalis",
+    "Deutscher Gattungs- \/ Artname":"Westamerikanische Lärche",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Amerikanische Lärche"
+  },
+  {
+    "Kurzzeichen":"LBAN",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Laburnum anagyroides",
+    "Deutscher Gattungs- \/ Artname":"Gemeiner Goldregen",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Goldregen"
+  },
+  {
+    "Kurzzeichen":"LEDU",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Letestua durissima",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Congotali"
+  },
+  {
+    "Kurzzeichen":"LITL",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Liriodendron tulipifera",
+    "Deutscher Gattungs- \/ Artname":"Tulpenbaum",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"American whitewood"
+  },
+  {
+    "Kurzzeichen":"LOAL",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Lophira alata",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Azobé (Bongossi)"
+  },
+  {
+    "Kurzzeichen":"LQST",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Liquidambar styraciflua",
+    "Deutscher Gattungs- \/ Artname":"Amerikanischer Amberbaum",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Sweetgum"
+  },
+  {
+    "Kurzzeichen":"LVTR",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Lovoa trichilioides",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Dibetou"
+  },
+  {
+    "Kurzzeichen":"MAAL",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Mansonia altissima",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Mansonia"
+  },
+  {
+    "Kurzzeichen":"MBXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Microberlinia",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Zebrano (Zingana)"
+  },
+  {
+    "Kurzzeichen":"MCTT",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Maclura tinctoria",
+    "Deutscher Gattungs- \/ Artname":"Färbermaulbeerbaum",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Fustic"
+  },
+  {
+    "Kurzzeichen":"MDXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Madhuca",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Bitis"
+  },
+  {
+    "Kurzzeichen":"MHSC",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Machaerium scleroxylon",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Santos Palisander"
+  },
+  {
+    "Kurzzeichen":"MIXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Milicia excelsa, Milicia regia",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Iroko"
+  },
+  {
+    "Kurzzeichen":"MLSY",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Malus sylvestris",
+    "Deutscher Gattungs- \/ Artname":"Holzapfel",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Apfelbaum"
+  },
+  {
+    "Kurzzeichen":"MNXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Manilkara bidentata, Manilkara huberi",
+    "Deutscher Gattungs- \/ Artname":"Balatabaum",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Massaranduba"
+  },
+  {
+    "Kurzzeichen":"MOXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Monopetalanthus",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Andoung"
+  },
+  {
+    "Kurzzeichen":"MPXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Micropholis",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Curupixá"
+  },
+  {
+    "Kurzzeichen":"MTLR",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Millettia laurentii",
+    "Deutscher Gattungs- \/ Artname":"Wenge",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Wengé"
+  },
+  {
+    "Kurzzeichen":"MTST",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Millettia stuhlmannii",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Panga panga"
+  },
+  {
+    "Kurzzeichen":"MYXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Myroxylon",
+    "Deutscher Gattungs- \/ Artname":"Balsambäume",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Bálsamo"
+  },
+  {
+    "Kurzzeichen":"MZXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Mezilaurus",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Itaúba"
+  },
+  {
+    "Kurzzeichen":"NADD",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Nauclea diderrichii",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Bilinga"
+  },
+  {
+    "Kurzzeichen":"NEPP",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Nesogordonia papaverifera, Nesogordonia kabingaensis",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Kotibé, Danta"
+  },
+  {
+    "Kurzzeichen":"NOMN",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Nothofagus menziesii",
+    "Deutscher Gattungs- \/ Artname":"Silberne Scheinbuche",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Silver Beech"
+  },
+  {
+    "Kurzzeichen":"NOPM",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Nothofagus pumilio",
+    "Deutscher Gattungs- \/ Artname":"Lenga-Südbuche",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Lenga"
+  },
+  {
+    "Kurzzeichen":"NOPR",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Nothofagus alpina (Syn.: Nothofagus procera)",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Rauli"
+  },
+  {
+    "Kurzzeichen":"NYAQ",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Nyssa aquatica",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Tupelo"
+  },
+  {
+    "Kurzzeichen":"OCPR",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Ocotea porosa",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Imbuia"
+  },
+  {
+    "Kurzzeichen":"OCRB",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Sextonia rubra (Syn.: Ocotea rubra)",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Louro vermelho"
+  },
+  {
+    "Kurzzeichen":"OHLG",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Ochroma lagopus",
+    "Deutscher Gattungs- \/ Artname":"Balsabaum",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Balsa"
+  },
+  {
+    "Kurzzeichen":"OLER",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Olea europaea",
+    "Deutscher Gattungs- \/ Artname":"Olivenbaum",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Olive"
+  },
+  {
+    "Kurzzeichen":"OMSC",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Maquira sclerophylla (Syn.: Olmedioperebea sclerophylla)",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Muiratinga"
+  },
+  {
+    "Kurzzeichen":"OTSU",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Octomeles sumatrana",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Binuang"
+  },
+  {
+    "Kurzzeichen":"OXOX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Prioria oxyphylla (Syn.: Oxystigma oxyphyllum)",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Tchitola"
+  },
+  {
+    "Kurzzeichen":"PAPR",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Paratecoma peroba",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Peroba de campos"
+  },
+  {
+    "Kurzzeichen":"PBBI",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Julbernardia pellegriniana (Syn.: Paraberlinia bifoliolata)",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Beli"
+  },
+  {
+    "Kurzzeichen":"PCAB",
+    "Laub \/ Nadel":"Nadel",
+    "Gattung \/ Art":"Picea abies",
+    "Deutscher Gattungs- \/ Artname":"Gemeine Fichte",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Fichte"
+  },
+  {
+    "Kurzzeichen":"PCEN",
+    "Laub \/ Nadel":"Nadel",
+    "Gattung \/ Art":"Picea engelmannii",
+    "Deutscher Gattungs- \/ Artname":"Engelmann-Fichte",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Engelmann-Fichte"
+  },
+  {
+    "Kurzzeichen":"PCGL",
+    "Laub \/ Nadel":"Nadel",
+    "Gattung \/ Art":"Picea glauca",
+    "Deutscher Gattungs- \/ Artname":"Weiß-Fichte",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"White spruce"
+  },
+  {
+    "Kurzzeichen":"PCST",
+    "Laub \/ Nadel":"Nadel",
+    "Gattung \/ Art":"Picea sitchensis",
+    "Deutscher Gattungs- \/ Artname":"Sitka-Fichte",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Sitka-Fichte"
+  },
+  {
+    "Kurzzeichen":"PDXX",
+    "Laub \/ Nadel":"Nadel",
+    "Gattung \/ Art":"Dacrycarpus imbricatus (Syn.: Podocarpus imbricatus), Podocarpus neriifolius",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Podo"
+  },
+  {
+    "Kurzzeichen":"PEPL",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Pseudosindora palustris",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Sepetir"
+  },
+  {
+    "Kurzzeichen":"PGXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Peltogyne",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Amarant"
+  },
+  {
+    "Kurzzeichen":"PHMG",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Parashorea densiflora, Parashorea lucida, Parashorea stellata",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Gerutu"
+  },
+  {
+    "Kurzzeichen":"PHWS",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Parashorea malaanonan, Parashorea tomentella",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"White seraya"
+  },
+  {
+    "Kurzzeichen":"PIAF",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Piptadeniastrum africanum",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Dabema"
+  },
+  {
+    "Kurzzeichen":"PJXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Protium",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Brëu"
+  },
+  {
+    "Kurzzeichen":"PKEL",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Pericopsis elata",
+    "Deutscher Gattungs- \/ Artname":"Afrormosia",
+    "Herkunft":null,
+    "Schutzstatus":"ja",
+    "Deutscher Standard-Holzname":"Afrormosia"
+  },
+  {
+    "Kurzzeichen":"PLXH",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Platanus × hispanica",
+    "Deutscher Gattungs- \/ Artname":"Ahornblättrige Platane",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Platane"
+  },
+  {
+    "Kurzzeichen":"PMPN",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Pometia pinnata",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Kasai"
+  },
+  {
+    "Kurzzeichen":"PNBN",
+    "Laub \/ Nadel":"Nadel",
+    "Gattung \/ Art":"Pinus banksiana",
+    "Deutscher Gattungs- \/ Artname":"Banks-Kiefer",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Banks-Kiefer"
+  },
+  {
+    "Kurzzeichen":"PNCM",
+    "Laub \/ Nadel":"Nadel",
+    "Gattung \/ Art":"Pinus cembra",
+    "Deutscher Gattungs- \/ Artname":"Zirbelkiefer",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Zirbelkiefer"
+  },
+  {
+    "Kurzzeichen":"PNCN",
+    "Laub \/ Nadel":"Nadel",
+    "Gattung \/ Art":"Pinus contorta",
+    "Deutscher Gattungs- \/ Artname":"Küsten-Kiefer",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Logdepole pine"
+  },
+  {
+    "Kurzzeichen":"PNCR",
+    "Laub \/ Nadel":"Nadel",
+    "Gattung \/ Art":"Pinus caribaea",
+    "Deutscher Gattungs- \/ Artname":"Karibische Kiefer",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Pitch pine"
+  },
+  {
+    "Kurzzeichen":"PNEC",
+    "Laub \/ Nadel":"Nadel",
+    "Gattung \/ Art":"Pinus echinata",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Shortleaf pine"
+  },
+  {
+    "Kurzzeichen":"PNEL",
+    "Laub \/ Nadel":"Nadel",
+    "Gattung \/ Art":"Pinus elliottii",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Slash pine"
+  },
+  {
+    "Kurzzeichen":"PNLM",
+    "Laub \/ Nadel":"Nadel",
+    "Gattung \/ Art":"Pinus lambertiana",
+    "Deutscher Gattungs- \/ Artname":"Zucker-Kiefer",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Sugar pine"
+  },
+  {
+    "Kurzzeichen":"PNMN",
+    "Laub \/ Nadel":"Nadel",
+    "Gattung \/ Art":"Pinus monticola",
+    "Deutscher Gattungs- \/ Artname":"Westliche Weymouth-Kiefer",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Western white pine"
+  },
+  {
+    "Kurzzeichen":"PNNL",
+    "Laub \/ Nadel":"Nadel",
+    "Gattung \/ Art":"Pinus nigra subsp. laricio",
+    "Deutscher Gattungs- \/ Artname":"Korsische Schwarzkiefer",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Korsische Kiefer"
+  },
+  {
+    "Kurzzeichen":"PNNN",
+    "Laub \/ Nadel":"Nadel",
+    "Gattung \/ Art":"Pinus nigra subsp. nigra",
+    "Deutscher Gattungs- \/ Artname":"Schwarzkiefer",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Schwarzkiefer"
+  },
+  {
+    "Kurzzeichen":"PNOO",
+    "Laub \/ Nadel":"Nadel",
+    "Gattung \/ Art":"Pinus oocarpa",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Pitch pine"
+  },
+  {
+    "Kurzzeichen":"PNPI",
+    "Laub \/ Nadel":"Nadel",
+    "Gattung \/ Art":"Pinus pinea",
+    "Deutscher Gattungs- \/ Artname":"Pinie",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Pinie"
+  },
+  {
+    "Kurzzeichen":"PNPL",
+    "Laub \/ Nadel":"Nadel",
+    "Gattung \/ Art":"Pinus palustris",
+    "Deutscher Gattungs- \/ Artname":"Sumpf-Kiefer",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Pitch pine"
+  },
+  {
+    "Kurzzeichen":"PNPN",
+    "Laub \/ Nadel":"Nadel",
+    "Gattung \/ Art":"Pinus pinaster",
+    "Deutscher Gattungs- \/ Artname":"See-Kiefer",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Seekiefer"
+  },
+  {
+    "Kurzzeichen":"PNPO",
+    "Laub \/ Nadel":"Nadel",
+    "Gattung \/ Art":"Pinus ponderosa",
+    "Deutscher Gattungs- \/ Artname":"Gelb-Kiefer",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Ponderosa pine"
+  },
+  {
+    "Kurzzeichen":"PNRD",
+    "Laub \/ Nadel":"Nadel",
+    "Gattung \/ Art":"Pinus radiata",
+    "Deutscher Gattungs- \/ Artname":"Monterey-Kiefer",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Radiata pine"
+  },
+  {
+    "Kurzzeichen":"PNRS",
+    "Laub \/ Nadel":"Nadel",
+    "Gattung \/ Art":"Pinus resinosa",
+    "Deutscher Gattungs- \/ Artname":"Amerikanische Rot-Kiefer",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Red pine"
+  },
+  {
+    "Kurzzeichen":"PNSB",
+    "Laub \/ Nadel":"Nadel",
+    "Gattung \/ Art":"Pinus sibirica",
+    "Deutscher Gattungs- \/ Artname":"Sibirische Zirbelkiefer",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Sibirische Kiefer"
+  },
+  {
+    "Kurzzeichen":"PNST",
+    "Laub \/ Nadel":"Nadel",
+    "Gattung \/ Art":"Pinus strobus",
+    "Deutscher Gattungs- \/ Artname":"Weymouth-Kiefer",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Weymouth-Kiefer"
+  },
+  {
+    "Kurzzeichen":"PNSY",
+    "Laub \/ Nadel":"Nadel",
+    "Gattung \/ Art":"Pinus sylvestris",
+    "Deutscher Gattungs- \/ Artname":"Waldkiefer",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Kiefer"
+  },
+  {
+    "Kurzzeichen":"PNTD",
+    "Laub \/ Nadel":"Nadel",
+    "Gattung \/ Art":"Pinus taeda",
+    "Deutscher Gattungs- \/ Artname":"Weihrauch-Kiefer",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Loblolly pine"
+  },
+  {
+    "Kurzzeichen":"POAL",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Populus alba",
+    "Deutscher Gattungs- \/ Artname":"Silber-Pappel",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Weißpappel"
+  },
+  {
+    "Kurzzeichen":"POBL",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Populus balsamifera",
+    "Deutscher Gattungs- \/ Artname":"Balsam-Pappel",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Balsampappel"
+  },
+  {
+    "Kurzzeichen":"POCN",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Populus × canescens",
+    "Deutscher Gattungs- \/ Artname":"Grau-Pappel",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Graupappel"
+  },
+  {
+    "Kurzzeichen":"PODL",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Populus deltoides",
+    "Deutscher Gattungs- \/ Artname":"Kanadische Schwarz-Pappel",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Kanadische Schwarzpappel"
+  },
+  {
+    "Kurzzeichen":"POER",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Populus × euramericana",
+    "Deutscher Gattungs- \/ Artname":"Bastard-Schwarz-Pappel",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Euramerikanische Pappel"
+  },
+  {
+    "Kurzzeichen":"POGR",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Populus grandidentata",
+    "Deutscher Gattungs- \/ Artname":"Großzähnige Pappel",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Großgezahnte Aspe"
+  },
+  {
+    "Kurzzeichen":"PONG",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Populus nigra",
+    "Deutscher Gattungs- \/ Artname":"Schwarz-Pappel",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Schwarzpappel"
+  },
+  {
+    "Kurzzeichen":"POTD",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Populus tremuloides",
+    "Deutscher Gattungs- \/ Artname":"Amerikanische Zitterpappel",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Amerikanische Aspe"
+  },
+  {
+    "Kurzzeichen":"POTL",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Populus tremula",
+    "Deutscher Gattungs- \/ Artname":"Espe",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Aspe"
+  },
+  {
+    "Kurzzeichen":"POTR",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Populus trichocarpa",
+    "Deutscher Gattungs- \/ Artname":"Westliche Balsam-Pappel",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Westliche Balsampappel"
+  },
+  {
+    "Kurzzeichen":"PPXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Palaquium",
+    "Deutscher Gattungs- \/ Artname":"Guttaperchabäume",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Nyatoh"
+  },
+  {
+    "Kurzzeichen":"PQXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Pterygota bequaertii, Pterygota macrocarpa",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Koto"
+  },
+  {
+    "Kurzzeichen":"PRAV",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Prunus avium",
+    "Deutscher Gattungs- \/ Artname":"Vogel-Kirsche",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Kirschbaum"
+  },
+  {
+    "Kurzzeichen":"PRSR",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Prunus serotina",
+    "Deutscher Gattungs- \/ Artname":"Spätblühende Traubenkirsche",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Amerikanischer Kirschbaum"
+  },
+  {
+    "Kurzzeichen":"PSMN",
+    "Laub \/ Nadel":"Nadel",
+    "Gattung \/ Art":"Pseudotsuga menziesii",
+    "Deutscher Gattungs- \/ Artname":"Gewöhnliche Douglasie",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Douglasie"
+  },
+  {
+    "Kurzzeichen":"PTAN",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Pterocarpus angolensis",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Muninga"
+  },
+  {
+    "Kurzzeichen":"PTXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Pterocarpus soyauxii, Pterocarpus osun",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Afrikanisches Padouk"
+  },
+  {
+    "Kurzzeichen":"PUMC",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Petersianthus macrocarpus",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Essia"
+  },
+  {
+    "Kurzzeichen":"PXAN",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Pycnanthus angolensis",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Ilomba"
+  },
+  {
+    "Kurzzeichen":"PYCM",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Pyrus communis",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Birnbaum"
+  },
+  {
+    "Kurzzeichen":"PZXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Platymiscium",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Macacaúba"
+  },
+  {
+    "Kurzzeichen":"QCCR",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Quercus cerris",
+    "Deutscher Gattungs- \/ Artname":"Zerreiche",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Zerreiche"
+  },
+  {
+    "Kurzzeichen":"QCIL",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Quercus ilex",
+    "Deutscher Gattungs- \/ Artname":"Steineiche",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Steineiche"
+  },
+  {
+    "Kurzzeichen":"QCXA",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Quercus alba",
+    "Deutscher Gattungs- \/ Artname":"Amerikanische Weiß-Eiche",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Amerikanische Weißeiche"
+  },
+  {
+    "Kurzzeichen":"QCXE",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Quercus petraea, Quercus robur",
+    "Deutscher Gattungs- \/ Artname":"Traubeneiche, Stieleiche",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Eiche"
+  },
+  {
+    "Kurzzeichen":"QCXJ",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Quercus mongolica var. grosseserrata",
+    "Deutscher Gattungs- \/ Artname":"Mongolische Eiche",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Japanische Eiche"
+  },
+  {
+    "Kurzzeichen":"QCXR",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Quercus rubra",
+    "Deutscher Gattungs- \/ Artname":"Roteiche",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Roteiche"
+  },
+  {
+    "Kurzzeichen":"QUXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Qualea",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Gronfolo"
+  },
+  {
+    "Kurzzeichen":"RHXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Rhodognaphalon brevicuspe",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Kondroti"
+  },
+  {
+    "Kurzzeichen":"RIXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Ricinodendron heudelotii",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Erimado"
+  },
+  {
+    "Kurzzeichen":"ROPS",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Robinia pseudoacacia",
+    "Deutscher Gattungs- \/ Artname":"Gewöhnliche Robinie",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Robinie"
+  },
+  {
+    "Kurzzeichen":"SAXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Salix",
+    "Deutscher Gattungs- \/ Artname":"Weiden",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Weide"
+  },
+  {
+    "Kurzzeichen":"SCMC",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Scleronema micranthum",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Cardeiro"
+  },
+  {
+    "Kurzzeichen":"SDXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Sindora",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Sepetir"
+  },
+  {
+    "Kurzzeichen":"SESM",
+    "Laub \/ Nadel":"Nadel",
+    "Gattung \/ Art":"Sequoia sempervirens",
+    "Deutscher Gattungs- \/ Artname":"Küstenmammutbaum",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Redwood"
+  },
+  {
+    "Kurzzeichen":"SHAL",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Shorea albida",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Alan batu"
+  },
+  {
+    "Kurzzeichen":"SHBL",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Shorea",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Balau"
+  },
+  {
+    "Kurzzeichen":"SHDR",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Shorea",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Dark red meranti"
+  },
+  {
+    "Kurzzeichen":"SHLR",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Shorea",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Light red meranti"
+  },
+  {
+    "Kurzzeichen":"SHRB",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Shorea",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Red balau"
+  },
+  {
+    "Kurzzeichen":"SHWM",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Shorea, Anthoshorea",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"White meranti"
+  },
+  {
+    "Kurzzeichen":"SHYM",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Shorea",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Yellow meranti"
+  },
+  {
+    "Kurzzeichen":"SLCO, SLXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Scottellia, pr. Scottellia klaineana",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Akossika"
+  },
+  {
+    "Kurzzeichen":"SMAM",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Simarouba amara",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Marupá"
+  },
+  {
+    "Kurzzeichen":"SNAL",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Santalum album",
+    "Deutscher Gattungs- \/ Artname":"Sandelholzbaum",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Sandelholz"
+  },
+  {
+    "Kurzzeichen":"SOAR",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Sorbus aria",
+    "Deutscher Gattungs- \/ Artname":"Echte Mehlbeere",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Mehlbeere"
+  },
+  {
+    "Kurzzeichen":"SOAU",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Sorbus aucuparia",
+    "Deutscher Gattungs- \/ Artname":"Vogelbeere",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Eberesche"
+  },
+  {
+    "Kurzzeichen":"SOTR",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Sorbus torminalis",
+    "Deutscher Gattungs- \/ Artname":"Elsbeere",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Elsbeere"
+  },
+  {
+    "Kurzzeichen":"SPLT",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Sindoropsis letestui",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Ghéombi"
+  },
+  {
+    "Kurzzeichen":"SQGG",
+    "Laub \/ Nadel":"Nadel",
+    "Gattung \/ Art":"Sequoiadendron giganteum",
+    "Deutscher Gattungs- \/ Artname":"Riesenmammutbaum",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Mammutbaum"
+  },
+  {
+    "Kurzzeichen":"SSST",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Staudtia stipitata (Syn.: Staudtia kamerunensis var. gabonensis)",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Niové"
+  },
+  {
+    "Kurzzeichen":"STRH",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Sterculia rhinopetala",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Lotofa"
+  },
+  {
+    "Kurzzeichen":"SWMC",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Swietenia macrophylla",
+    "Deutscher Gattungs- \/ Artname":"Amerikanisches Mahagoni",
+    "Herkunft":null,
+    "Schutzstatus":"ja",
+    "Deutscher Standard-Holzname":"Amerikanisches Mahagoni"
+  },
+  {
+    "Kurzzeichen":"SZXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Bobgunnia fistuloides (Syn.: Swartzia fistuloides), Bobgunnia madagascariensis (Syn.: Swartzia madagascariensis)",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Pau rosa"
+  },
+  {
+    "Kurzzeichen":"TADS",
+    "Laub \/ Nadel":"Nadel",
+    "Gattung \/ Art":"Taxodium distichum",
+    "Deutscher Gattungs- \/ Artname":"Echte Sumpfzypresse",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Sumpfzypresse"
+  },
+  {
+    "Kurzzeichen":"TBXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Handroanthus (Syn.: Tabebuia), Handroanthus serratifolius, Handroanthus impetiginosus",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Ipé (Lapacho)"
+  },
+  {
+    "Kurzzeichen":"TEGR",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Tectona grandis",
+    "Deutscher Gattungs- \/ Artname":"Teakbaum",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Teak"
+  },
+  {
+    "Kurzzeichen":"TGAF",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Tieghemella africana",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Douka"
+  },
+  {
+    "Kurzzeichen":"TGHC",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Tieghemella heckelii",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Makoré"
+  },
+  {
+    "Kurzzeichen":"THOC",
+    "Laub \/ Nadel":"Nadel",
+    "Gattung \/ Art":"Thuja occidentalis",
+    "Deutscher Gattungs- \/ Artname":"Abendländischer Lebensbaum",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Eastern white cedar"
+  },
+  {
+    "Kurzzeichen":"THPL",
+    "Laub \/ Nadel":"Nadel",
+    "Gattung \/ Art":"Thuja plicata",
+    "Deutscher Gattungs- \/ Artname":"Riesen-Lebensbaum",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Western red cedar"
+  },
+  {
+    "Kurzzeichen":"TIAM",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Tilia americana",
+    "Deutscher Gattungs- \/ Artname":"Amerikanische Linde",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Amerikanische Linde"
+  },
+  {
+    "Kurzzeichen":"TIXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Tilia cordata, Tilia platyphyllos, Tilia × europaea",
+    "Deutscher Gattungs- \/ Artname":"Winterlinde, Sommerlinde, Holländische Linde",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Linde"
+  },
+  {
+    "Kurzzeichen":"TLOV",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Magnolia ovata (Syn.: Talauma ovata)",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Baguaçú"
+  },
+  {
+    "Kurzzeichen":"TMIV",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Terminalia ivorensis",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Framiré"
+  },
+  {
+    "Kurzzeichen":"TMSP",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Terminalia superba",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Limba"
+  },
+  {
+    "Kurzzeichen":"TMXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Terminalia alata, Terminalia coriacea, Terminalia crenulata",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Indian laurel"
+  },
+  {
+    "Kurzzeichen":"TRSC",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Triplochiton scleroxylon",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Abachi"
+  },
+  {
+    "Kurzzeichen":"TSCN",
+    "Laub \/ Nadel":"Nadel",
+    "Gattung \/ Art":"Tsuga canadensis",
+    "Deutscher Gattungs- \/ Artname":"Kanadische Hemlocktanne",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Eastern hemlock"
+  },
+  {
+    "Kurzzeichen":"TSHT",
+    "Laub \/ Nadel":"Nadel",
+    "Gattung \/ Art":"Tsuga heterophylla",
+    "Deutscher Gattungs- \/ Artname":"Westamerikanische Hemlocktanne",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Western hemlock"
+  },
+  {
+    "Kurzzeichen":"TTXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Tetraberlinia bifoliolata, Tetraberlinia tubmaniana",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Ekaba"
+  },
+  {
+    "Kurzzeichen":"TUAF",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Turraeanthus africana",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Avodiré"
+  },
+  {
+    "Kurzzeichen":"TXBC",
+    "Laub \/ Nadel":"Nadel",
+    "Gattung \/ Art":"Taxus baccata",
+    "Deutscher Gattungs- \/ Artname":"Europäische Eibe",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Eibe"
+  },
+  {
+    "Kurzzeichen":"TZGB",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Testulea gabonensis",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Izombé"
+  },
+  {
+    "Kurzzeichen":"ULAM",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Ulmus americana",
+    "Deutscher Gattungs- \/ Artname":"Amerikanische Ulme",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Amerikanische Ulme"
+  },
+  {
+    "Kurzzeichen":"ULGL",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Ulmus glabra",
+    "Deutscher Gattungs- \/ Artname":"Bergulme",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Bergulme"
+  },
+  {
+    "Kurzzeichen":"ULMI",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Ulmus minor",
+    "Deutscher Gattungs- \/ Artname":"Feldulme",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Feldulme"
+  },
+  {
+    "Kurzzeichen":"ULPR",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Ulmus procera",
+    "Deutscher Gattungs- \/ Artname":"Englische Ulme",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Englische Ulme"
+  },
+  {
+    "Kurzzeichen":"ULRB",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Ulmus rubra",
+    "Deutscher Gattungs- \/ Artname":"Rot-Ulme",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Red elm"
+  },
+  {
+    "Kurzzeichen":"ULTM",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Ulmus thomasii",
+    "Deutscher Gattungs- \/ Artname":"Felsen-Ulme",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Kanadische Ulme"
+  },
+  {
+    "Kurzzeichen":"ULXH",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Ulmus × hollandica",
+    "Deutscher Gattungs- \/ Artname":"Holländische Ulme",
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Holländische Ulme"
+  },
+  {
+    "Kurzzeichen":"VAXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Vatica",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Resak"
+  },
+  {
+    "Kurzzeichen":"VIXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Virola surinamensis",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Virola"
+  },
+  {
+    "Kurzzeichen":"VOXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Vochysia",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Quaruba"
+  },
+  {
+    "Kurzzeichen":"XYXX",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Xylia xylocarpa (Syn.: Xylia dolabriformis), Xylia xylocarpa var. kerrii (Syn.: Xylia kerrii)",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Pyinkado"
+  },
+  {
+    "Kurzzeichen":"ZAHT",
+    "Laub \/ Nadel":"Laub",
+    "Gattung \/ Art":"Zanthoxylum heitzii",
+    "Deutscher Gattungs- \/ Artname":null,
+    "Herkunft":null,
+    "Schutzstatus":null,
+    "Deutscher Standard-Holzname":"Olon"
+  }
+]

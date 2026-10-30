@@ -1,0 +1,708 @@
+[
+  {
+    "code": "ABAL",
+    "name_de": "Tanne",
+    "name_latein": [
+      "Abies alba"
+    ],
+    "gruppe": "Nadelholz",
+    "holzfarbe": "",
+    "eigenschaften": "",
+    "haerte": "weich",
+    "dauerhaftigkeit": "4: wenig dauerhaft",
+    "verwendung": "Möbel, Bauholz",
+    "bild": "bilder/ABAL.jpg",
+    "bildquelle": "",
+    "bildquelle_url": "",
+    "bildautor": "",
+    "bildlizenz": "",
+    "bildlizenz_url": "",
+    "datenquelle": "https://de.wikipedia.org/wiki/Liste_der_Holzarten"
+  },
+  {
+    "code": "ACCM",
+    "name_de": "Ahorn",
+    "name_latein": [
+      "Acer campestre"
+    ],
+    "gruppe": "Laubholz",
+    "holzfarbe": "hellgelb-weiß, teilweise geriegelt",
+    "eigenschaften": "Bergahorn, Spitzahorn, seltener Feldahorn",
+    "haerte": "hart",
+    "dauerhaftigkeit": "5: nicht dauerhaft",
+    "verwendung": "Möbel, Tischplatten, Musikinstrumente",
+    "bild": "bilder/ACCM.jpg",
+    "bildquelle": "",
+    "bildquelle_url": "",
+    "bildautor": "",
+    "bildlizenz": "",
+    "bildlizenz_url": "",
+    "datenquelle": "https://de.wikipedia.org/wiki/Liste_der_Holzarten"
+  },
+  {
+    "code": "ACPL",
+    "name_de": "Ahorn",
+    "name_latein": [
+      "Acer platanoides"
+    ],
+    "gruppe": "Laubholz",
+    "holzfarbe": "hellgelb-weiß, teilweise geriegelt",
+    "eigenschaften": "Bergahorn, Spitzahorn, seltener Feldahorn",
+    "haerte": "hart",
+    "dauerhaftigkeit": "5: nicht dauerhaft",
+    "verwendung": "Möbel, Tischplatten, Musikinstrumente",
+    "bild": "bilder/ACPL.jpg",
+    "bildquelle": "",
+    "bildquelle_url": "",
+    "bildautor": "",
+    "bildlizenz": "",
+    "bildlizenz_url": "",
+    "datenquelle": "https://de.wikipedia.org/wiki/Liste_der_Holzarten"
+  },
+  {
+    "code": "ACPS",
+    "name_de": "Ahorn",
+    "name_latein": [
+      "Acer pseudoplatanus"
+    ],
+    "gruppe": "Laubholz",
+    "holzfarbe": "hellgelb-weiß, teilweise geriegelt",
+    "eigenschaften": "Bergahorn, Spitzahorn, seltener Feldahorn",
+    "haerte": "hart",
+    "dauerhaftigkeit": "5: nicht dauerhaft",
+    "verwendung": "Möbel, Tischplatten, Musikinstrumente",
+    "bild": "bilder/ACPS.jpg",
+    "bildquelle": "",
+    "bildquelle_url": "",
+    "bildautor": "",
+    "bildlizenz": "",
+    "bildlizenz_url": "",
+    "datenquelle": "https://de.wikipedia.org/wiki/Liste_der_Holzarten"
+  },
+  {
+    "code": "ALGL",
+    "name_de": "Erle",
+    "name_latein": [
+      "Alnus glutinosa"
+    ],
+    "gruppe": "Laubholz",
+    "holzfarbe": "braun-rötlich",
+    "eigenschaften": "",
+    "haerte": "weich",
+    "dauerhaftigkeit": "5: nicht dauerhaft",
+    "verwendung": "Möbel",
+    "bild": "bilder/ALGL.jpg",
+    "bildquelle": "",
+    "bildquelle_url": "",
+    "bildautor": "",
+    "bildlizenz": "",
+    "bildlizenz_url": "",
+    "datenquelle": "https://de.wikipedia.org/wiki/Liste_der_Holzarten"
+  },
+  {
+    "code": "BTXX",
+    "name_de": "Birke",
+    "name_latein": [
+      "Betula pendula",
+      "Betula pubescens"
+    ],
+    "gruppe": "Laubholz",
+    "holzfarbe": "",
+    "eigenschaften": "",
+    "haerte": "ziemlich hart",
+    "dauerhaftigkeit": "5: nicht dauerhaft",
+    "verwendung": "Möbel",
+    "bild": "bilder/BTXX.jpg",
+    "bildquelle": "",
+    "bildquelle_url": "",
+    "bildautor": "",
+    "bildlizenz": "",
+    "bildlizenz_url": "",
+    "datenquelle": "https://de.wikipedia.org/wiki/Liste_der_Holzarten"
+  },
+  {
+    "code": "CHNT",
+    "name_de": "Nootka-Scheinzypresse",
+    "name_latein": [
+      "Xanthocyparis nootkatensis"
+    ],
+    "gruppe": "Nadelholz",
+    "holzfarbe": "hellgelb",
+    "eigenschaften": "Yellow Cedar, Alaska-Zeder",
+    "haerte": "hart",
+    "dauerhaftigkeit": "2–3: dauerhaft bis mäßig dauerhaft",
+    "verwendung": "Bauholz, Möbel, Dachschindeln",
+    "bild": "bilder/CHNT.jpg",
+    "bildquelle": "",
+    "bildquelle_url": "",
+    "bildautor": "",
+    "bildlizenz": "",
+    "bildlizenz_url": "",
+    "datenquelle": "https://de.wikipedia.org/wiki/Liste_der_Holzarten"
+  },
+  {
+    "code": "CPBT",
+    "name_de": "Weißbuche",
+    "name_latein": [
+      "Carpinus betulus"
+    ],
+    "gruppe": "Laubholz",
+    "holzfarbe": "gelb-weiß",
+    "eigenschaften": "Hagebuche, Hainbuche, Hornbaum",
+    "haerte": "sehr hart, zäh",
+    "dauerhaftigkeit": "5: nicht dauerhaft",
+    "verwendung": "Hobelsohlen, Stellmacherei",
+    "bild": "bilder/CPBT.jpg",
+    "bildquelle": "",
+    "bildquelle_url": "",
+    "bildautor": "",
+    "bildlizenz": "",
+    "bildlizenz_url": "",
+    "datenquelle": "https://de.wikipedia.org/wiki/Liste_der_Holzarten"
+  },
+  {
+    "code": "DSXX",
+    "name_de": "Afrikanisches Ebenholz",
+    "name_latein": [
+      "Diospyros , pr. Diospyros crassiflora"
+    ],
+    "gruppe": "Laubholz",
+    "holzfarbe": "schwarz",
+    "eigenschaften": "",
+    "haerte": "extrem hart",
+    "dauerhaftigkeit": "1: sehr dauerhaft",
+    "verwendung": "Möbelbau, Furniere",
+    "bild": "bilder/DSXX.jpg",
+    "bildquelle": "",
+    "bildquelle_url": "",
+    "bildautor": "",
+    "bildlizenz": "",
+    "bildlizenz_url": "",
+    "datenquelle": "https://de.wikipedia.org/wiki/Liste_der_Holzarten"
+  },
+  {
+    "code": "FASY",
+    "name_de": "Buche",
+    "name_latein": [
+      "Fagus sylvatica"
+    ],
+    "gruppe": "Laubholz",
+    "holzfarbe": "gelblich, durch Dämpfen rötlich",
+    "eigenschaften": "schwer",
+    "haerte": "sehr hart",
+    "dauerhaftigkeit": "5: nicht dauerhaft; gut tränkbar",
+    "verwendung": "Möbel, Furnier, Eisenbahnschwellen",
+    "bild": "bilder/FASY.jpg",
+    "bildquelle": "",
+    "bildquelle_url": "",
+    "bildautor": "",
+    "bildlizenz": "",
+    "bildlizenz_url": "",
+    "datenquelle": "https://de.wikipedia.org/wiki/Liste_der_Holzarten"
+  },
+  {
+    "code": "FXEX",
+    "name_de": "Esche europäisch",
+    "name_latein": [
+      "Fraxinus excelsior"
+    ],
+    "gruppe": "Laubholz",
+    "holzfarbe": "",
+    "eigenschaften": "zäh, elastisch, widerstandsfähig",
+    "haerte": "hart",
+    "dauerhaftigkeit": "5: nicht dauerhaft",
+    "verwendung": "Möbel, Werkzeugstiele, Segelpinnen, Sportbogen, früher Stellmacherei",
+    "bild": "bilder/FXEX.jpg",
+    "bildquelle": "",
+    "bildquelle_url": "",
+    "bildautor": "",
+    "bildlizenz": "",
+    "bildlizenz_url": "",
+    "datenquelle": "https://de.wikipedia.org/wiki/Liste_der_Holzarten"
+  },
+  {
+    "code": "JGRG",
+    "name_de": "Walnuss",
+    "name_latein": [
+      "Juglans regia"
+    ],
+    "gruppe": "Laubholz",
+    "holzfarbe": "hellgolden-gelb bis dunkelbraun",
+    "eigenschaften": "",
+    "haerte": "ziemlich hart",
+    "dauerhaftigkeit": "3: mäßig dauerhaft",
+    "verwendung": "Innenausbau, Möbel, Furnier",
+    "bild": "bilder/JGRG.jpg",
+    "bildquelle": "",
+    "bildquelle_url": "",
+    "bildautor": "",
+    "bildlizenz": "",
+    "bildlizenz_url": "",
+    "datenquelle": "https://de.wikipedia.org/wiki/Liste_der_Holzarten"
+  },
+  {
+    "code": "KHXX",
+    "name_de": "Afrikanisches Mahagoni",
+    "name_latein": [
+      "Khaya ivorensis",
+      "Khaya anthotheca",
+      "Khaya senegalensis",
+      "Khaya grandifoliola"
+    ],
+    "gruppe": "Laubholz",
+    "holzfarbe": "dunkelbraun mit Rotschimmer",
+    "eigenschaften": "Khaya Mahagoni",
+    "haerte": "hart",
+    "dauerhaftigkeit": "3: mäßig dauerhaft",
+    "verwendung": "Möbel, Bauholz, Musikinstrumente",
+    "bild": "bilder/KHXX.jpg",
+    "bildquelle": "",
+    "bildquelle_url": "",
+    "bildautor": "",
+    "bildlizenz": "",
+    "bildlizenz_url": "",
+    "datenquelle": "https://de.wikipedia.org/wiki/Liste_der_Holzarten"
+  },
+  {
+    "code": "LADC",
+    "name_de": "Lärche europäisch",
+    "name_latein": [
+      "Larix decidua"
+    ],
+    "gruppe": "Nadelholz",
+    "holzfarbe": "rot",
+    "eigenschaften": "harzhaltig, wetterfest",
+    "haerte": "weich",
+    "dauerhaftigkeit": "3–4: mäßig dauerhaft bis wenig dauerhaft",
+    "verwendung": "Fenster, Türen, Fußboden, Bauholz, Möbel",
+    "bild": "bilder/LADC.jpg",
+    "bildquelle": "",
+    "bildquelle_url": "",
+    "bildautor": "",
+    "bildlizenz": "",
+    "bildlizenz_url": "",
+    "datenquelle": "https://de.wikipedia.org/wiki/Liste_der_Holzarten"
+  },
+  {
+    "code": "LITL",
+    "name_de": "Whitewood",
+    "name_latein": [
+      "Liriodendron tulipifera"
+    ],
+    "gruppe": "Laubholz",
+    "holzfarbe": "weißlich-gelb mit braunem oder grünem Kern",
+    "eigenschaften": "American Whitewood, Tulip tree, Tulpenbaum, gut zu bearbeiten",
+    "haerte": "weich",
+    "dauerhaftigkeit": "5: nicht dauerhaft",
+    "verwendung": "Möbelbau, Innenausbau",
+    "bild": "bilder/LITL.jpg",
+    "bildquelle": "",
+    "bildquelle_url": "",
+    "bildautor": "",
+    "bildlizenz": "",
+    "bildlizenz_url": "",
+    "datenquelle": "https://de.wikipedia.org/wiki/Liste_der_Holzarten"
+  },
+  {
+    "code": "LOAL",
+    "name_de": "Azobé (Bongossi)",
+    "name_latein": [
+      "Lophira alata"
+    ],
+    "gruppe": "Laubholz",
+    "holzfarbe": "Helles rötlich-braun",
+    "eigenschaften": "Bongossi, edle Optik, preiswert, breites Sortiment",
+    "haerte": "extrem hart",
+    "dauerhaftigkeit": "2: dauerhaft",
+    "verwendung": "Möbel, bewitterte Einsatzzwecke (Terrassenböden)",
+    "bild": "bilder/LOAL.jpg",
+    "bildquelle": "",
+    "bildquelle_url": "",
+    "bildautor": "",
+    "bildlizenz": "",
+    "bildlizenz_url": "",
+    "datenquelle": "https://de.wikipedia.org/wiki/Liste_der_Holzarten"
+  },
+  {
+    "code": "OHLG",
+    "name_de": "Balsa",
+    "name_latein": [
+      "Ochroma lagopus"
+    ],
+    "gruppe": "Laubholz",
+    "holzfarbe": "hellgelb",
+    "eigenschaften": "sehr leicht",
+    "haerte": "sehr weich",
+    "dauerhaftigkeit": "5: nicht dauerhaft",
+    "verwendung": "Leichtbau, Modellbau, Flugzeugbau",
+    "bild": "bilder/OHLG.jpg",
+    "bildquelle": "",
+    "bildquelle_url": "",
+    "bildautor": "",
+    "bildlizenz": "",
+    "bildlizenz_url": "",
+    "datenquelle": "https://de.wikipedia.org/wiki/Liste_der_Holzarten"
+  },
+  {
+    "code": "PCAB",
+    "name_de": "Fichte",
+    "name_latein": [
+      "Picea abies"
+    ],
+    "gruppe": "Nadelholz",
+    "holzfarbe": "hell, gelblich",
+    "eigenschaften": "Gemeine Fichte, Rotfichte, Rottanne",
+    "haerte": "weich",
+    "dauerhaftigkeit": "4: wenig dauerhaft; sehr schwer tränkbar",
+    "verwendung": "Möbel, Bauholz, Dachstühle, ggf. Klangholz bei Musikinstrumenten, Fenster",
+    "bild": "bilder/PCAB.jpg",
+    "bildquelle": "",
+    "bildquelle_url": "",
+    "bildautor": "",
+    "bildlizenz": "",
+    "bildlizenz_url": "",
+    "datenquelle": "https://de.wikipedia.org/wiki/Liste_der_Holzarten"
+  },
+  {
+    "code": "PLXH",
+    "name_de": "Platane",
+    "name_latein": [
+      "Platanus x hispanica"
+    ],
+    "gruppe": "Laubholz",
+    "holzfarbe": "",
+    "eigenschaften": "",
+    "haerte": "",
+    "dauerhaftigkeit": "5: nicht dauerhaft",
+    "verwendung": "Möbel",
+    "bild": "bilder/PLXH.jpg",
+    "bildquelle": "",
+    "bildquelle_url": "",
+    "bildautor": "",
+    "bildlizenz": "",
+    "bildlizenz_url": "",
+    "datenquelle": "https://de.wikipedia.org/wiki/Liste_der_Holzarten"
+  },
+  {
+    "code": "PNST",
+    "name_de": "Weymouth-Kiefer",
+    "name_latein": [
+      "Pinus strobus"
+    ],
+    "gruppe": "Nadelholz",
+    "holzfarbe": "weiß-gelblich bis rötlichbraun",
+    "eigenschaften": "Strobe, Weißkiefer",
+    "haerte": "weich",
+    "dauerhaftigkeit": "3–4: mäßig bis wenig dauerhaft",
+    "verwendung": "Kisten/Verpackungen, Möbel, Gebrauchsgegenstände",
+    "bild": "bilder/PNST.jpg",
+    "bildquelle": "",
+    "bildquelle_url": "",
+    "bildautor": "",
+    "bildlizenz": "",
+    "bildlizenz_url": "",
+    "datenquelle": "https://de.wikipedia.org/wiki/Liste_der_Holzarten"
+  },
+  {
+    "code": "PNSY",
+    "name_de": "Kiefer",
+    "name_latein": [
+      "Pinus sylvestris"
+    ],
+    "gruppe": "Nadelholz",
+    "holzfarbe": "hell, leicht gelblich",
+    "eigenschaften": "harzhaltig",
+    "haerte": "weich",
+    "dauerhaftigkeit": "3–4: mäßig bis wenig dauerhaft",
+    "verwendung": "Kisten/Verpackungen, Möbel, Fenster, Türen, Masten, Bauholz",
+    "bild": "bilder/PNSY.jpg",
+    "bildquelle": "",
+    "bildquelle_url": "",
+    "bildautor": "",
+    "bildlizenz": "",
+    "bildlizenz_url": "",
+    "datenquelle": "https://de.wikipedia.org/wiki/Liste_der_Holzarten"
+  },
+  {
+    "code": "POAL",
+    "name_de": "Pappel",
+    "name_latein": [
+      "Populus alba"
+    ],
+    "gruppe": "Laubholz",
+    "holzfarbe": "",
+    "eigenschaften": "europäische Pappel, Weißpappel",
+    "haerte": "weich",
+    "dauerhaftigkeit": "5: nicht dauerhaft",
+    "verwendung": "Verpackungen, Zündhölzer, Holzschuhe",
+    "bild": "bilder/POAL.jpg",
+    "bildquelle": "",
+    "bildquelle_url": "",
+    "bildautor": "",
+    "bildlizenz": "",
+    "bildlizenz_url": "",
+    "datenquelle": "https://de.wikipedia.org/wiki/Liste_der_Holzarten"
+  },
+  {
+    "code": "POTL",
+    "name_de": "Espe",
+    "name_latein": [
+      "Populus tremula"
+    ],
+    "gruppe": "Laubholz",
+    "holzfarbe": "",
+    "eigenschaften": "Aspe, Zitterpappel",
+    "haerte": "",
+    "dauerhaftigkeit": "5: nicht dauerhaft",
+    "verwendung": "",
+    "bild": "bilder/POTL.jpg",
+    "bildquelle": "",
+    "bildquelle_url": "",
+    "bildautor": "",
+    "bildlizenz": "",
+    "bildlizenz_url": "",
+    "datenquelle": "https://de.wikipedia.org/wiki/Liste_der_Holzarten"
+  },
+  {
+    "code": "PRAV",
+    "name_de": "Kirsche europäisch",
+    "name_latein": [
+      "Prunus avium"
+    ],
+    "gruppe": "Laubholz",
+    "holzfarbe": "rotbräunlich",
+    "eigenschaften": "",
+    "haerte": "hart",
+    "dauerhaftigkeit": "4: wenig dauerhaft",
+    "verwendung": "Möbelbau, Furniere",
+    "bild": "bilder/PRAV.jpg",
+    "bildquelle": "",
+    "bildquelle_url": "",
+    "bildautor": "",
+    "bildlizenz": "",
+    "bildlizenz_url": "",
+    "datenquelle": "https://de.wikipedia.org/wiki/Liste_der_Holzarten"
+  },
+  {
+    "code": "PSMN",
+    "name_de": "Douglasie",
+    "name_latein": [
+      "Pseudotsuga menziesii"
+    ],
+    "gruppe": "Nadelholz",
+    "holzfarbe": "hellbraun, rötlich",
+    "eigenschaften": "Pin de l'Oregon, Douglas; zäh, dauerhaft, gering harzhaltig",
+    "haerte": "weich",
+    "dauerhaftigkeit": "3–4: mäßig bis wenig dauerhaft",
+    "verwendung": "Bauholz (hoch beanspruchbar), Masten, Eisenbahnschwellen Innenausbau, Möbel, Holz im Garten",
+    "bild": "bilder/PSMN.jpg",
+    "bildquelle": "",
+    "bildquelle_url": "",
+    "bildautor": "",
+    "bildlizenz": "",
+    "bildlizenz_url": "",
+    "datenquelle": "https://de.wikipedia.org/wiki/Liste_der_Holzarten"
+  },
+  {
+    "code": "QCXE",
+    "name_de": "Europäische Eiche",
+    "name_latein": [
+      "Quercus petraea",
+      "Quercus robur"
+    ],
+    "gruppe": "Laubholz",
+    "holzfarbe": "gelbbraun-grünlich",
+    "eigenschaften": "Traubeneiche, Stieleiche",
+    "haerte": "sehr hart",
+    "dauerhaftigkeit": "2: dauerhaft",
+    "verwendung": "Möbel, Parkett, Bauholz im Wasserbau, Eisenbahnschwellen, Pfähle, Furnier",
+    "bild": "bilder/QCXE.jpg",
+    "bildquelle": "",
+    "bildquelle_url": "",
+    "bildautor": "",
+    "bildlizenz": "",
+    "bildlizenz_url": "",
+    "datenquelle": "https://de.wikipedia.org/wiki/Liste_der_Holzarten"
+  },
+  {
+    "code": "ROPS",
+    "name_de": "Robinie",
+    "name_latein": [
+      "Robinia pseudoacacia"
+    ],
+    "gruppe": "Laubholz",
+    "holzfarbe": "hellgelb bis grünlich",
+    "eigenschaften": "Robinie, falsche Akazie, Gemeiner Schotendorn",
+    "haerte": "hart",
+    "dauerhaftigkeit": "1–2: sehr dauerhaft, dauerhafteste der in Mitteleuropa vorkommenden Handelsholzarten",
+    "verwendung": "Holzpflasterungen, Spielplätze (keine Imprägnierung nötig)",
+    "bild": "bilder/ROPS.jpg",
+    "bildquelle": "",
+    "bildquelle_url": "",
+    "bildautor": "",
+    "bildlizenz": "",
+    "bildlizenz_url": "",
+    "datenquelle": "https://de.wikipedia.org/wiki/Liste_der_Holzarten"
+  },
+  {
+    "code": "SHBL",
+    "name_de": "Balau",
+    "name_latein": [
+      "Shorea spp.",
+      "Shorea laevis"
+    ],
+    "gruppe": "Laubholz",
+    "holzfarbe": "rötlich-gelb",
+    "eigenschaften": "Bankirai, Yellow Balau",
+    "haerte": "hart",
+    "dauerhaftigkeit": "2:dauerhaft",
+    "verwendung": "Terrassen, Gartenmöbel",
+    "bild": "bilder/SHBL.jpg",
+    "bildquelle": "",
+    "bildquelle_url": "",
+    "bildautor": "",
+    "bildlizenz": "",
+    "bildlizenz_url": "",
+    "datenquelle": "https://de.wikipedia.org/wiki/Liste_der_Holzarten"
+  },
+  {
+    "code": "SWMC",
+    "name_de": "Amerikanisches Mahagoni",
+    "name_latein": [
+      "Swietenia macrophylla"
+    ],
+    "gruppe": "Laubholz",
+    "holzfarbe": "dunkelbraun mit Rotschimmer",
+    "eigenschaften": "",
+    "haerte": "hart",
+    "dauerhaftigkeit": "2: dauerhaft",
+    "verwendung": "Bauholz, Bootsbau, Musikinstrumente",
+    "bild": "bilder/SWMC.jpg",
+    "bildquelle": "",
+    "bildquelle_url": "",
+    "bildautor": "",
+    "bildlizenz": "",
+    "bildlizenz_url": "",
+    "datenquelle": "https://de.wikipedia.org/wiki/Liste_der_Holzarten"
+  },
+  {
+    "code": "TEGR",
+    "name_de": "Teak",
+    "name_latein": [
+      "Tectona grandis"
+    ],
+    "gruppe": "Laubholz",
+    "holzfarbe": "rötlich braun",
+    "eigenschaften": "",
+    "haerte": "hart",
+    "dauerhaftigkeit": "1: sehr dauerhaft",
+    "verwendung": "Schiffsbau, Außenbereich, Möbel",
+    "bild": "bilder/TEGR.jpg",
+    "bildquelle": "",
+    "bildquelle_url": "",
+    "bildautor": "",
+    "bildlizenz": "",
+    "bildlizenz_url": "",
+    "datenquelle": "https://de.wikipedia.org/wiki/Liste_der_Holzarten"
+  },
+  {
+    "code": "THPL",
+    "name_de": "Riesen-Lebensbaum",
+    "name_latein": [
+      "Thuja plicata"
+    ],
+    "gruppe": "Nadelholz",
+    "holzfarbe": "rötlich-braun",
+    "eigenschaften": "sehr leicht; Western Red Cedar, Rotzeder, Thuja",
+    "haerte": "weich",
+    "dauerhaftigkeit": "2: dauerhaft",
+    "verwendung": "Möbel, Vertäfelungen, Furniere, Dachschindeln, Bleistifte",
+    "bild": "bilder/THPL.jpg",
+    "bildquelle": "",
+    "bildquelle_url": "",
+    "bildautor": "",
+    "bildlizenz": "",
+    "bildlizenz_url": "",
+    "datenquelle": "https://de.wikipedia.org/wiki/Liste_der_Holzarten"
+  },
+  {
+    "code": "TIXX",
+    "name_de": "Linde",
+    "name_latein": [
+      "Tilia spp."
+    ],
+    "gruppe": "Laubholz",
+    "holzfarbe": "",
+    "eigenschaften": "",
+    "haerte": "weich, sehr dimensionsstabil",
+    "dauerhaftigkeit": "5: nicht dauerhaft",
+    "verwendung": "Schnitzereien",
+    "bild": "bilder/TIXX.jpg",
+    "bildquelle": "",
+    "bildquelle_url": "",
+    "bildautor": "",
+    "bildlizenz": "",
+    "bildlizenz_url": "",
+    "datenquelle": "https://de.wikipedia.org/wiki/Liste_der_Holzarten"
+  },
+  {
+    "code": "TXBC",
+    "name_de": "Eibe",
+    "name_latein": [
+      "Taxus baccata"
+    ],
+    "gruppe": "Nadelholz",
+    "holzfarbe": "rötlichbraun",
+    "eigenschaften": "extrem elastisch, toxisch",
+    "haerte": "hart",
+    "dauerhaftigkeit": "2: dauerhaft",
+    "verwendung": "historisch für den Bau von Langbögen",
+    "bild": "bilder/TXBC.jpg",
+    "bildquelle": "",
+    "bildquelle_url": "",
+    "bildautor": "",
+    "bildlizenz": "",
+    "bildlizenz_url": "",
+    "datenquelle": "https://de.wikipedia.org/wiki/Liste_der_Holzarten"
+  },
+  {
+    "code": "ULGL",
+    "name_de": "Ulme (Rüster)",
+    "name_latein": [
+      "Ulmus glabra"
+    ],
+    "gruppe": "Laubholz",
+    "holzfarbe": "",
+    "eigenschaften": "Bergulme, Feldulme, das Holz der Ulme wird als Rüster bezeichnet",
+    "haerte": "ziemlich hart",
+    "dauerhaftigkeit": "4: wenig dauerhaft",
+    "verwendung": "Möbel, Furnier",
+    "bild": "bilder/ULGL.jpg",
+    "bildquelle": "",
+    "bildquelle_url": "",
+    "bildautor": "",
+    "bildlizenz": "",
+    "bildlizenz_url": "",
+    "datenquelle": "https://de.wikipedia.org/wiki/Liste_der_Holzarten"
+  },
+  {
+    "code": "ULMI",
+    "name_de": "Ulme (Rüster)",
+    "name_latein": [
+      "Ulmus minor"
+    ],
+    "gruppe": "Laubholz",
+    "holzfarbe": "",
+    "eigenschaften": "Bergulme, Feldulme, das Holz der Ulme wird als Rüster bezeichnet",
+    "haerte": "ziemlich hart",
+    "dauerhaftigkeit": "4: wenig dauerhaft",
+    "verwendung": "Möbel, Furnier",
+    "bild": "bilder/ULMI.jpg",
+    "bildquelle": "",
+    "bildquelle_url": "",
+    "bildautor": "",
+    "bildlizenz": "",
+    "bildlizenz_url": "",
+    "datenquelle": "https://de.wikipedia.org/wiki/Liste_der_Holzarten"
+  }
+]
