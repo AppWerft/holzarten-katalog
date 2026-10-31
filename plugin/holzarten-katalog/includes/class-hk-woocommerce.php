@@ -189,37 +189,40 @@ class HK_WooCommerce
     /**
      * Synchronisierung über Admin-Aktion starten.
      */
-    public function handle_sync()
-{
-    if (!current_user_can('manage_options')) {
-        wp_die('Keine Berechtigung.');
+    public function handle_sync() {
+
+        wp_die('handle_sync wurde aufgerufen');
+
+        
+        if (!current_user_can('manage_options')) {
+            wp_die('Keine Berechtigung.');
+        }
+
+        check_admin_referer(
+            'hk_sync_woocommerce',
+            'hk_sync_nonce'
+        );
+
+        $result = $this->sync_attributes();
+
+        if (is_wp_error($result)) {
+            wp_die($result->get_error_message());
+        }
+
+        $url = admin_url(
+            'admin.php?page=holzarten-katalog'
+        );
+
+        wp_safe_redirect(
+            add_query_arg([
+                'wc_synced'  => 1,
+                'wc_created' => $result['created'],
+                'wc_updated' => $result['updated'],
+            ], $url)
+        );
+
+        exit;
     }
-
-    check_admin_referer(
-        'hk_sync_woocommerce',
-        'hk_sync_nonce'
-    );
-
-    $result = $this->sync_attributes();
-
-    if (is_wp_error($result)) {
-        wp_die($result->get_error_message());
-    }
-
-    $url = admin_url(
-        'admin.php?page=holzarten-katalog'
-    );
-
-    wp_safe_redirect(
-        add_query_arg([
-            'wc_synced'  => 1,
-            'wc_created' => $result['created'],
-            'wc_updated' => $result['updated'],
-        ], $url)
-    );
-
-    exit;
-}
 
     /**
      * Bildinformationen an WooCommerce-Variationen übergeben.
