@@ -334,11 +334,17 @@ public function handle_import()
     {
         $is_edit = is_array($item);
 
-        $image_id = $item['image_id'] ?? 0;
+        $image_file = $item['image_file'] ?? '';
 
-        $image_url = $image_id
-            ? wp_get_attachment_image_url($image_id, 'thumbnail')
-            : '';
+        $image_url = '';
+
+        if ($image_file !== '') {
+            $upload = wp_upload_dir();
+
+            $image_url = trailingslashit($upload['baseurl'])
+                . 'holzarten-daten/images/'
+                . rawurlencode($image_file);
+        }
 
         ?>
 
@@ -348,7 +354,8 @@ public function handle_import()
                 : 'Neue Holzart anlegen'; ?>
         </h2>
 
-        <form method="post"
+        <form method="post" 
+              enctype="multipart/form-data">
               action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
 
             <input type="hidden" name="action" value="hk_save_item">
@@ -407,36 +414,40 @@ public function handle_import()
                     </td>
                 </tr>
 
+               
+               
+               
+               
                 <tr>
-                    <th>Bild</th>
-                    <td>
-                        <input type="hidden"
-                               id="image_id"
-                               name="image_id"
-                               value="<?php echo esc_attr($image_id); ?>">
+    <th><label for="image_file">Bilddatei</label></th>
+    <td>
+        <?php if ($image_url): ?>
+            <p>
+                <img src="<?php echo esc_url($image_url); ?>"
+                     alt=""
+                     style="max-width:180px;height:auto;">
+            </p>
+            <p class="description">
+                Aktuelles Bild: <?php echo esc_html($image_file); ?>
+            </p>
+        <?php else: ?>
+            <p class="description">Noch kein Bild zugeordnet.</p>
+        <?php endif; ?>
 
-                        <div id="hk-image-preview">
-                            <?php if ($image_url): ?>
-                                <img src="<?php echo esc_url($image_url); ?>"
-                                     style="max-width:180px;height:auto;">
-                            <?php endif; ?>
-                        </div>
+        <input type="file"
+               id="image_file"
+               name="image_file"
+               accept=".jpg,.jpeg,.png,.webp">
 
-                        <p>
-                            <button type="button"
-                                    class="button"
-                                    id="hk-select-image">
-                                Bild auswählen
-                            </button>
+        <p class="description">
+            Erlaubt: JPG, PNG und WebP.
+        </p>
+    </td>
+</tr>
 
-                            <button type="button"
-                                    class="button"
-                                    id="hk-remove-image">
-                                Bild entfernen
-                            </button>
-                        </p>
-                    </td>
-                </tr>
+
+
+
 
                 <tr>
                     <th>Status</th>

@@ -92,6 +92,14 @@ class HK_Catalog
             'description' => sanitize_textarea_field($data['description'] ?? ''),
             'active' => !empty($data['active']),
         ];
+        // Vorhandene Bildzuordnung erhalten, wenn kein neues Bild übergeben wird.
+        $existing = $overrides['items'][$id]['image_file'] ?? '';
+
+        if (!empty($data['image_file'])) {
+            $item['image_file'] = sanitize_file_name($data['image_file']);
+        } elseif ($existing !== '') {
+            $item['image_file'] = $existing;
+        }
 
         if ($item['name_de'] === '') {
             return new WP_Error(
