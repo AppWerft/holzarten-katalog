@@ -1,3 +1,4 @@
+
 <?php
 /**
  * Plugin Name: Holzarten-Katalog
@@ -15,7 +16,6 @@ define('HK_VERSION', '0.1.0');
 define('HK_PLUGIN_FILE', __FILE__);
 define('HK_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('HK_PLUGIN_URL', plugin_dir_url(__FILE__));
-
 
 require_once HK_PLUGIN_DIR . 'includes/class-hk-storage.php';
 require_once HK_PLUGIN_DIR . 'includes/class-hk-catalog.php';
