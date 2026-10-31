@@ -36,6 +36,10 @@ class HK_Plugin
             'admin_post_hk_delete_item',
             [$this, 'handle_delete']
         );
+        add_action(
+          'admin_post_hk_import_catalog',
+            [$this, 'handle_import']
+        );
     }
 
     /**
@@ -192,6 +196,135 @@ if (isset($_GET['import_error'])) {
     }
 
 
+
+/**
+ * JSON-Katalog importieren.
+ */
+public function handle_import()
+{
+    if (!current_user_can('manage_options')) {
+        wp_die('Keine Berechtigung.');
+    }
+
+    if (!check_admin_referer('hk_import_catalog', '_wpnonce', false)) {
+        wp_die('Import abgebrochen: Ungültige Sicherheitsprüfung.');
+    }
+
+    $url = admin_url('admin.php?page=holzarten-katalog');
+
+    if (
+        !isset($_FILES['catalog_json']) ||
+        $_FILES['catalog_json']['error'] !== UPLOAD_ERR_OK
+    ) {
+        wp_safe_redirect(add_query_arg('import_error', 'upload', $url));
+        exit;
+    }
+
+    $file = $_FILES['catalog_json'];
+
+    if (strtolower(pathinfo($file['name'], PATHINFO_EXTENSION)) !== 'json') {
+        wp_safe_redirect(add_query_arg('import_error', 'type', $url));
+        exit;
+    }
+
+    $json = file_get_contents($file['tmp_name']);
+
+    if ($json === false) {
+        wp_safe_redirect(add_query_arg('import_error', 'read', $url));
+        exit;
+    }
+
+    $data = json_decode($json, true);
+
+    if (
+        json_last_error() !== JSON_ERROR_NONE ||
+        !is_array($data) ||
+        empty($data)
+    ) {
+        wp_safe_redirect(add_query_arg('import_error', 'json', $url));
+        exit;
+    }
+
+    $items = [];
+    $ids = [];
+
+    foreach ($data as $record) {
+        if (
+            !is_array($record) ||
+            empty($record['id']) ||
+            !is_string($record['id'])
+        ) {
+            wp_safe_redirect(add_query_arg('import_error', 'structure', $url));
+            exit;
+        }
+
+        $id = sanitize_text_field($record['id']);
+
+        if ($id === '' || isset($ids[$id])) {
+            wp_safe_redirect(add_query_arg('import_error', 'duplicate', $url));
+            exit;
+        }
+
+        $ids[$id] = true;
+
+        $properties = $record['properties'] ?? [];
+
+        $record['name_de'] =
+            $record['german_names'][0]
+            ?? ($properties['name_de'] ?? '');
+
+        $record['name_latin'] =
+            $record['botanical_names'][0]
+            ?? ($record['botanical_raw'] ?? '');
+
+        $record['code'] =
+            $record['codes'][0]
+            ?? $id;
+
+        $record['active'] = true;
+
+        $items[] = $record;
+    }
+
+    $directory = HK_Storage::directory();
+
+    if (!wp_mkdir_p($directory)) {
+        wp_safe_redirect(add_query_arg('import_error', 'directory', $url));
+        exit;
+    }
+
+    $catalog_path = $directory . 'catalog.json';
+
+    // Vorhandenen Katalog sichern.
+    if (file_exists($catalog_path)) {
+        $backup_directory = $directory . 'backups/';
+        wp_mkdir_p($backup_directory);
+
+        $backup_file = $backup_directory
+            . 'catalog-' . date('Ymd-His') . '.json';
+
+        if (!copy($catalog_path, $backup_file)) {
+            wp_safe_redirect(add_query_arg('import_error', 'backup', $url));
+            exit;
+        }
+    }
+
+    // Neuen Katalog speichern.
+    $result = HK_Storage::write_json(
+        $catalog_path,
+        ['items' => $items]
+    );
+
+    if (!$result) {
+        wp_safe_redirect(add_query_arg('import_error', 'write', $url));
+        exit;
+    }
+
+    wp_safe_redirect(
+        add_query_arg('imported', count($items), $url)
+    );
+    exit;
+}
 
 
     /**
