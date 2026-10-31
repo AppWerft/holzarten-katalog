@@ -41,9 +41,11 @@ class HK_Plugin
             'admin_post_hk_import_catalog',
             [$this, 'handle_import']
         );
-        if (class_exists('WooCommerce')) {
-           HK_WooCommerce::instance();
-        }
+        add_action('plugins_loaded', function () {
+            if (class_exists('WooCommerce')) {
+                HK_WooCommerce::instance();
+            }
+        }, 20);
     }
 
     /**
