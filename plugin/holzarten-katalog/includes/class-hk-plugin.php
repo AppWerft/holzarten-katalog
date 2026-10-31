@@ -299,6 +299,52 @@ class HK_Plugin
     }
 
     /**
+ * JSON-Importformular darstellen.
+ */
+private function render_import_form()
+{
+    ?>
+
+    <hr>
+
+    <h2>Holzarten importieren</h2>
+
+    <form method="post"
+          action="<?php echo esc_url(admin_url('admin-post.php')); ?>"
+          enctype="multipart/form-data">
+
+        <input type="hidden"
+               name="action"
+               value="hk_import_catalog">
+
+        <?php wp_nonce_field('hk_import_catalog'); ?>
+
+        <input type="file"
+               name="catalog_json"
+               accept=".json,application/json"
+               required>
+
+        <?php
+        submit_button(
+            'Holzarten einlesen',
+            'secondary',
+            'submit',
+            false
+        );
+        ?>
+
+    </form>
+
+    <p class="description">
+        Importiert den vollständigen Holzartenbestand aus einer JSON-Datei.
+        Bestehende manuelle Änderungen und Bildzuordnungen bleiben erhalten.
+    </p>
+
+    <hr>
+
+    <?php
+}
+    /**
      * Tabelle mit allen Holzarten darstellen.
      */
     private function render_table($items, $search)
