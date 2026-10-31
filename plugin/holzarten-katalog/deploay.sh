@@ -2,7 +2,7 @@ cd ~/Projekte/holzarten-katalog
 
 # Änderungen versionieren
 git add plugin/
-git commit -m "Holzarten-Admin erweitert "
+git commit -m "Import addiert"
 git push
 
 # Plugin lokal deployen
