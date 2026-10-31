@@ -354,10 +354,9 @@ public function handle_import()
                 : 'Neue Holzart anlegen'; ?>
         </h2>
 
-        <form method="post" 
-              enctype="multipart/form-data">
-              action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
-
+       <form method="post"
+      action="<?php echo esc_url(admin_url('admin-post.php')); ?>"
+      enctype="multipart/form-data">
             <input type="hidden" name="action" value="hk_save_item">
 
             <input type="hidden"
