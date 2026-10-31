@@ -146,15 +146,53 @@ class HK_Plugin
 
             <?php
             if ($item || isset($_GET['new'])) {
-                $this->render_form($item);
+               $this->render_form($item);
             } else {
+                $this->render_import_form();
                 $this->render_table($items, $search);
             }
             ?>
 
         </div>
         <?php
+        if (isset($_GET['imported'])) {
+    $count = absint($_GET['imported']);
+
+    echo '<div class="notice notice-success is-dismissible">';
+    echo '<p>' . esc_html(
+        $count . ' Holzarten wurden erfolgreich importiert.'
+    ) . '</p>';
+    echo '</div>';
+}
+
+if (isset($_GET['import_error'])) {
+    echo '<div class="notice notice-error">';
+    echo '<p>Der Import ist fehlgeschlagen.';
+
+    $errors = [
+        'upload'     => 'Keine gültige Datei hochgeladen.',
+        'type'       => 'Es wurde keine JSON-Datei ausgewählt.',
+        'read'       => 'Die Datei konnte nicht gelesen werden.',
+        'json'       => 'Die JSON-Datei ist ungültig oder leer.',
+        'structure'  => 'Die Datenstruktur ist fehlerhaft.',
+        'duplicate'  => 'Eine Holzarten-ID kommt mehrfach vor.',
+        'directory'  => 'Das Datenverzeichnis konnte nicht angelegt werden.',
+        'backup'     => 'Der bisherige Katalog konnte nicht gesichert werden.',
+        'write'      => 'Der neue Katalog konnte nicht gespeichert werden.',
+    ];
+
+    $error = sanitize_key(wp_unslash($_GET['import_error']));
+
+    if (isset($errors[$error])) {
+        echo ' ' . esc_html($errors[$error]);
     }
+
+    echo '</p></div>';
+}
+    }
+
+
+
 
     /**
      * Eingabeformular darstellen.
