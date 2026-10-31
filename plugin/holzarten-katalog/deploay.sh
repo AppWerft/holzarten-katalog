@@ -2,7 +2,7 @@ cd ~/Projekte/holzarten-katalog
 
 # Änderungen versionieren
 git add plugin/
-git commit -m "Import addiert"
+git commit -m "Verknüpfung woocommerce addiert"
 git push
 
 # Plugin lokal deployen
