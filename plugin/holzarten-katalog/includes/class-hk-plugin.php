@@ -157,10 +157,34 @@ class HK_Plugin
 
         <div class="wrap">
 
+
+
+
+
             <h1 class="wp-heading-inline">
                 Holzarten-Katalog
             </h1>
 
+
+            <h2>WooCommerce</h2>
+
+            <p>
+                Überträgt die aktiven Holzarten in die globalen
+                WooCommerce-Attribute.
+            </p>
+
+            <form method="post"
+                action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
+
+                <input type="hidden"
+                    name="action"
+                    value="hk_sync_woocommerce">
+
+                <?php wp_nonce_field('hk_sync_woocommerce', 'hk_sync_nonce'); ?>
+
+                <?php submit_button('Holzarten mit WooCommerce synchronisieren'); ?>
+
+            </form>
             <a href="<?php echo esc_url(
                 admin_url('admin.php?page=holzarten-katalog&new=1')
             ); ?>" class="page-title-action">
