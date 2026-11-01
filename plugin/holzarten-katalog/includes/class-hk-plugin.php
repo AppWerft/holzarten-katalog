@@ -483,151 +483,161 @@ class HK_Plugin
         <?php
     }
 
-    /**
-     * Tabelle mit allen Holzarten darstellen.
-     */
-    private function render_table($items, $search)
-    {
-        ?>
+    
+/**
+ * Tabelle mit allen Holzarten darstellen.
+ */
+private function render_table($items, $search)
+{
+    ?>
 
-        <form method="get">
+    <form method="get">
 
-            <input type="hidden"
-                   name="page"
-                   value="holzarten-katalog">
+        <input type="hidden"
+               name="page"
+               value="holzarten-katalog">
 
-            <p class="search-box">
+        <p class="search-box">
 
-                <label class="screen-reader-text" for="hk-search">
-                    Holzarten suchen
-                </label>
+            <label class="screen-reader-text" for="hk-search">
+                Holzarten suchen
+            </label>
 
-                <input type="search"
-                       id="hk-search"
-                       name="s"
-                       value="<?php echo esc_attr($search); ?>">
+            <input type="search"
+                   id="hk-search"
+                   name="s"
+                   value="<?php echo esc_attr($search); ?>">
 
-                <input type="submit"
-                       class="button"
-                       value="Suchen">
+            <input type="submit"
+                   class="button"
+                   value="Suchen">
 
-            </p>
+        </p>
 
-        </form>
+    </form>
 
-        <table class="wp-list-table widefat fixed striped">
+    <table class="wp-list-table widefat fixed striped">
 
-            <thead>
+        <thead>
+            <tr>
+                <th style="width:70px;">Bild</th>
+                <th>Deutscher Name / Beschreibung</th>
+                <th>Botanischer Name</th>
+                <th>EN-Code</th>
+                <th>Status</th>
+                <th style="width:150px;">Aktionen</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+        <?php if (empty($items)): ?>
+
+            <tr>
+                <td colspan="6">
+                    Keine Holzarten gefunden.
+                </td>
+            </tr>
+
+        <?php else: ?>
+
+            <?php foreach ($items as $item): ?>
+
                 <tr>
-                    <th style="width:70px;">Bild</th>
-                    <th>Deutscher Name</th>
-                    <th>Botanischer Name</th>
-                    <th>EN-Code</th>
-                    <th>Status</th>
-                    <th style="width:150px;">Aktionen</th>
-                </tr>
-            </thead>
 
-            <tbody>
+                    <td>
+                        <?php
+                        $image_url = $this->get_image_url(
+                            $item['image_file'] ?? ''
+                        );
 
-            <?php if (empty($items)): ?>
-
-                <tr>
-                    <td colspan="6">
-                        Keine Holzarten gefunden.
+                        if ($image_url):
+                        ?>
+                            <img src="<?php echo esc_url($image_url); ?>"
+                                 alt="<?php echo esc_attr(
+                                     $item['name_de'] ?? ''
+                                 ); ?>"
+                                 style="width:50px;height:50px;object-fit:cover;">
+                        <?php endif; ?>
                     </td>
+
+                    <td>
+                        <strong>
+                            <?php echo esc_html(
+                                $item['name_de'] ?? ''
+                            ); ?>
+                        </strong>
+
+                        <?php if (!empty($item['description'])): ?>
+                            <p style="margin:4px 0 0;color:#646970;">
+                                <?php echo esc_html(
+                                    $item['description']
+                                ); ?>
+                            </p>
+                        <?php endif; ?>
+                    </td>
+
+                    <td>
+                        <em>
+                            <?php echo esc_html(
+                                $item['name_latin'] ?? ''
+                            ); ?>
+                        </em>
+                    </td>
+
+                    <td>
+                        <?php echo esc_html(
+                            $item['code'] ?? ''
+                        ); ?>
+                    </td>
+
+                    <td>
+                        <?php echo !empty($item['active'])
+                            ? 'Aktiv'
+                            : 'Inaktiv'; ?>
+                    </td>
+
+                    <td>
+
+                        <a href="<?php echo esc_url(
+                            admin_url(
+                                'admin.php?page=holzarten-katalog&edit='
+                                . rawurlencode($item['id'])
+                            )
+                        ); ?>">
+                            Bearbeiten
+                        </a>
+
+                        |
+
+                        <a href="<?php echo esc_url(
+                            wp_nonce_url(
+                                admin_url(
+                                    'admin-post.php?action=hk_delete_item&id='
+                                    . rawurlencode($item['id'])
+                                ),
+                                'hk_delete_item_' . $item['id']
+                            )
+                        ); ?>"
+                           onclick="return confirm('Diese Holzart wirklich löschen?');">
+                            Löschen
+                        </a>
+
+                    </td>
+
                 </tr>
 
-            <?php else: ?>
+            <?php endforeach; ?>
 
-                <?php foreach ($items as $item): ?>
+        <?php endif; ?>
 
-                    <tr>
+        </tbody>
 
-                        <td>
-                            <?php
-                            $image_url = $this->get_image_url(
-                                $item['image_file'] ?? ''
-                            );
+    </table>
 
-                            if ($image_url):
-                            ?>
-                                <img src="<?php echo esc_url($image_url); ?>"
-                                     alt="<?php echo esc_attr(
-                                         $item['name_de'] ?? ''
-                                     ); ?>"
-                                     style="width:50px;height:50px;object-fit:cover;">
-                            <?php endif; ?>
-                        </td>
+    <?php
+}
 
-                        <td>
-                            <strong>
-                                <?php echo esc_html(
-                                    $item['name_de'] ?? ''
-                                ); ?>
-                            </strong>
-                        </td>
-
-                        <td>
-                            <em>
-                                <?php echo esc_html(
-                                    $item['name_latin'] ?? ''
-                                ); ?>
-                            </em>
-                        </td>
-
-                        <td>
-                            <?php echo esc_html(
-                                $item['code'] ?? ''
-                            ); ?>
-                        </td>
-
-                        <td>
-                            <?php echo !empty($item['active'])
-                                ? 'Aktiv'
-                                : 'Inaktiv'; ?>
-                        </td>
-
-                        <td>
-
-                            <a href="<?php echo esc_url(
-                                admin_url(
-                                    'admin.php?page=holzarten-katalog&edit='
-                                    . rawurlencode($item['id'])
-                                )
-                            ); ?>">
-                                Bearbeiten
-                            </a>
-
-                            |
-
-                            <a href="<?php echo esc_url(
-                                wp_nonce_url(
-                                    admin_url(
-                                        'admin-post.php?action=hk_delete_item&id='
-                                        . rawurlencode($item['id'])
-                                    ),
-                                    'hk_delete_item_' . $item['id']
-                                )
-                            ); ?>"
-                               onclick="return confirm('Diese Holzart wirklich löschen?');">
-                                Löschen
-                            </a>
-
-                        </td>
-
-                    </tr>
-
-                <?php endforeach; ?>
-
-            <?php endif; ?>
-
-            </tbody>
-
-        </table>
-
-        <?php
-    }
 
     /**
      * Holzart speichern und Bilddatei verarbeiten.
