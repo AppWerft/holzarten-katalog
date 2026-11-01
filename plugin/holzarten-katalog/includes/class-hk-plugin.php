@@ -683,7 +683,7 @@ class HK_Plugin
                     <th>Botanischer Name</th>
                     <th>EN-Code</th>
                     <th>Status</th>
-                    <th style="width:150px;">Aktionen</th>
+                    <th style="width:100px;">Aktionen</th>
                 </tr>
             </thead>
 
@@ -726,7 +726,7 @@ class HK_Plugin
               <div class="hk-image-placeholder">
         <img src="<?php echo esc_url(
             plugin_dir_url(dirname(__FILE__)) . 'assets/images/holz.png'
-        ); ?>" alt="Kein Bild verfügbar" style="width:66px;height:66px">
+        ); ?>" alt="Kein Bild verfügbar" style="width:50px;">
     </div>
         </div>
 
@@ -741,7 +741,12 @@ class HK_Plugin
 
                             <?php if (!empty($item['description'])): ?>
                                 <div tabindex="0"  
-                                 style="max-height:6em; overflow-y:auto!important; width:120px; white-space:normal;">
+                                 style="
+                                  height:100px;
+             width:150px;
+             overflow:scroll;
+             overflow-wrap:anywhere;
+             background:#fff;">
                                         <?php echo esc_html(
                                             $item['description']
                                         ); ?>
