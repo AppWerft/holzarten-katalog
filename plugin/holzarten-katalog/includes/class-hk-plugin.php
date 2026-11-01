@@ -4,8 +4,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class HK_Plugin
-{
+class HK_Plugin {
     private static $instance = null;
 
     public static function instance()
@@ -62,6 +61,10 @@ class HK_Plugin
             },
             20
         );
+        add_action(
+            'wp_ajax_hk_toggle_status',
+            [$this, 'ajax_toggle_status']
+        );
     }
 
     /**
@@ -77,8 +80,23 @@ class HK_Plugin
             'hk-admin',
             plugin_dir_url(dirname(__FILE__)) . 'assets/css/admin.css',
             [],
-            '1.0.2'
+            '1.0.6'
         );
+        wp_enqueue_script(
+            'hk-admin',
+            plugin_dir_url(dirname(__FILE__)) . 'assets/js/admin.js',
+            ['jquery'],
+            '1.0.2'. time(),
+            true
+        );
+        wp_localize_script(
+            'hk-admin',
+            'hkAdmin',
+            [
+                'ajaxUrl' => admin_url('admin-ajax.php'),
+                'nonce'   => wp_create_nonce('hk_toggle_status'),
+            ]
+);
     }
 
     /**
@@ -658,7 +676,7 @@ class HK_Plugin
             <p class="search-box">
 
                 <label class="screen-reader-text" for="hk-search">
-                    Holzarten suchen
+                    Holzartenfilter
                 </label>
 
                 <input type="search"
@@ -708,29 +726,28 @@ class HK_Plugin
     );
     ?>
 
-    <?php if ($image_url && file_exists(
-        trailingslashit(HK_Storage::directory())
-        . 'images/'
-        . basename($item['image_file'])
-    )): ?>
+   
+   <?php if ($image_url && file_exists(
+    trailingslashit(HK_Storage::directory())
+    . 'images/'
+    . basename($item['image_file'])
+)): ?>
 
+    <span class="hk-image-zoom">
         <img src="<?php echo esc_url($image_url); ?>"
-             style="width:66px;height:66px" alt="<?php echo esc_attr(
-                 $item['name_de'] ?? ''
-             ); ?>"
+             alt="<?php echo esc_attr($item['name_de'] ?? ''); ?>"
              class="hk-wood-image">
+    </span>
 
-    <?php else: ?>
+<?php else: ?>
 
-        <div class="hk-image-placeholder">
-              <div class="hk-image-placeholder">
-        <img src="<?php echo esc_url(
+    <div>
+        <img class="hk-image-placeholder" src="<?php echo esc_url(
             plugin_dir_url(dirname(__FILE__)) . 'assets/images/holz.png'
-        ); ?>" alt="Kein Bild verfügbar" style="width:50px;">
+        ); ?>" alt="Kein Bild verfügbar">
     </div>
-        </div>
 
-    <?php endif; ?>
+<?php endif; ?>
 </td>
                         <td>
                             <strong>
@@ -769,11 +786,18 @@ class HK_Plugin
                             ); ?>
                         </td>
 
-                        <td>
-                            <?php echo !empty($item['active'])
-                                ? 'Aktiv'
-                                : 'Inaktiv'; ?>
-                        </td>
+                       <td>
+    <label>
+        <input type="checkbox"
+               class="hk-status-toggle"
+               data-id="<?php echo esc_attr($item['id']); ?>"
+               <?php checked(!empty($item['active'])); ?>>
+
+        <span class="hk-status-label">
+            <?php echo !empty($item['active']) ? 'Aktiv' : 'Inaktiv'; ?>
+        </span>
+    </label>
+</td>
 
                         <td>
 
@@ -818,6 +842,44 @@ class HK_Plugin
         <?php
     }
 
+    /**
+ * Aktiv-Status per AJAX ändern.
+ */
+public function ajax_toggle_status()
+{
+    if (!current_user_can('manage_options')) {
+        wp_send_json_error([
+            'message' => 'Keine Berechtigung.'
+        ], 403);
+    }
+
+    check_ajax_referer('hk_toggle_status', 'nonce');
+
+    $id = isset($_POST['id'])
+        ? sanitize_text_field(wp_unslash($_POST['id']))
+        : '';
+
+    $active = isset($_POST['active'])
+        && $_POST['active'] === '1';
+
+    if ($id === '') {
+        wp_send_json_error([
+            'message' => 'Ungültige Holzarten-ID.'
+        ]);
+    }
+
+    $result = HK_Catalog::set_active($id, $active);
+
+    if (is_wp_error($result)) {
+        wp_send_json_error([
+            'message' => $result->get_error_message()
+        ]);
+    }
+
+    wp_send_json_success([
+        'active' => $active
+    ]);
+}
     /**
      * Holzart speichern und Bilddatei verarbeiten.
      */
