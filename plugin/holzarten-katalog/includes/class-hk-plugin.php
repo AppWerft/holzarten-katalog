@@ -75,9 +75,9 @@ class HK_Plugin
 
         wp_enqueue_style(
             'hk-admin',
-            HK_PLUGIN_URL . 'assets/css/admin.css',
+            plugin_dir_url(dirname(__FILE__)) . 'assets/css/admin.css',
             [],
-            HK_VERSION
+            '1.0.2'
         );
     }
 
@@ -678,7 +678,7 @@ class HK_Plugin
 
             <thead>
                 <tr>
-                    <th style="width:70px;">Bild</th>
+                    <th style="width:70px;">Holzbild</th>
                     <th>Deutscher Name</th>
                     <th>Botanischer Name</th>
                     <th>EN-Code</th>
@@ -700,25 +700,38 @@ class HK_Plugin
             <?php else: ?>
 
                 <?php foreach ($items as $item): ?>
-
                     <tr>
+                      <td>
+    <?php
+    $image_url = $this->get_image_url(
+        $item['image_file'] ?? ''
+    );
+    ?>
 
-                        <td>
-                            <?php
-                            $image_url = $this->get_image_url(
-                                $item['image_file'] ?? ''
-                            );
+    <?php if ($image_url && file_exists(
+        trailingslashit(HK_Storage::directory())
+        . 'images/'
+        . basename($item['image_file'])
+    )): ?>
 
-                            if ($image_url):
-                            ?>
-                                <img src="<?php echo esc_url($image_url); ?>"
-                                     alt="<?php echo esc_attr(
-                                         $item['name_de'] ?? ''
-                                     ); ?>"
-                                     style="width:50px;height:50px;object-fit:cover;">
-                            <?php endif; ?>
-                        </td>
+        <img src="<?php echo esc_url($image_url); ?>"
+             style="width:66px;height:66px" alt="<?php echo esc_attr(
+                 $item['name_de'] ?? ''
+             ); ?>"
+             class="hk-wood-image">
 
+    <?php else: ?>
+
+        <div class="hk-image-placeholder">
+              <div class="hk-image-placeholder">
+        <img src="<?php echo esc_url(
+            plugin_dir_url(dirname(__FILE__)) . 'assets/images/holz.png'
+        ); ?>" alt="Kein Bild verfügbar" style="width:66px;height:66px">
+    </div>
+        </div>
+
+    <?php endif; ?>
+</td>
                         <td>
                             <strong>
                                 <?php echo esc_html(
@@ -727,14 +740,13 @@ class HK_Plugin
                             </strong>
 
                             <?php if (!empty($item['description'])): ?>
-                                <span class="hk-tooltip" tabindex="0">
-                                    Beschreibung ⓘ
-                                    <span class="hk-tooltip-text">
+                                <div tabindex="0"  
+                                 style="max-height:6em; overflow-y:auto!important; width:120px; white-space:normal;">
                                         <?php echo esc_html(
                                             $item['description']
                                         ); ?>
-                                    </span>
-                                </span>
+                                    
+                              </div>
                             <?php endif; ?>
                         </td>
 
@@ -766,11 +778,11 @@ class HK_Plugin
                                     . rawurlencode($item['id'])
                                 )
                             ); ?>">
-                                Bearbeiten
+                                <img style="width:18px;"  src="<?php echo esc_url(
+            plugin_dir_url(dirname(__FILE__)) . 'assets/images/edit.svg'
+        ); ?>" />
                             </a>
-
-                            |
-
+                            &nbsp;
                             <a href="<?php echo esc_url(
                                 wp_nonce_url(
                                     admin_url(
@@ -781,7 +793,9 @@ class HK_Plugin
                                 )
                             ); ?>"
                                onclick="return confirm('Diese Holzart wirklich löschen?');">
-                                Löschen
+                                <img style="width:16px;" src="<?php echo esc_url(
+                                plugin_dir_url(dirname(__FILE__)) . 'assets/images/delete.svg'
+        ); ?>" />
                             </a>
 
                         </td>
