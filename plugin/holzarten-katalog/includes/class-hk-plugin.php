@@ -170,7 +170,7 @@ class HK_Plugin
             <h1 class="wp-heading-inline">
                 Holzarten-Katalog
             </h1>
-<table><tr><td>
+
 <h2>Datensicherung und Klonen</h2>
 
 <form method="post"
@@ -190,7 +190,6 @@ class HK_Plugin
             ); ?>
 
 </form>
-</td><td>
             <h2>WooCommerce</h2>
 
             <p>
@@ -210,7 +209,6 @@ class HK_Plugin
                 <?php submit_button('Holzarten mit WooCommerce synchronisieren'); ?>
 
             </form>
-</td></tr></table>
             <a href="<?php echo esc_url(
                 admin_url('admin.php?page=holzarten-katalog&new=1')
             ); ?>" class="page-title-action">
