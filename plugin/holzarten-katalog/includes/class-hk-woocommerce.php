@@ -48,8 +48,48 @@ class HK_WooCommerce
             10,
             3
         );
+        add_action(
+            'admin_init',
+            [$this, 'maybe_sync_pending'],
+            20
+            );
+    }
+    /**
+     * Synchronisierung für den nächsten Admin-Aufruf vormerken.
+     */
+    public static function schedule_sync()
+    {
+        update_option('hk_wc_sync_pending', 1, false);
     }
 
+    /**
+     * Vorgemerkte Synchronisierung ausführen.
+     */
+    public function maybe_sync_pending()
+    {
+        if (!get_option('hk_wc_sync_pending')) {
+            return;
+        }
+
+        if (!class_exists('WooCommerce')) {
+            return;
+        }
+
+        // Sicherstellen, dass das globale Attribut existiert.
+        $this->register_attribute();
+
+        // WooCommerce muss die Taxonomie bereits registriert haben.
+        if (!taxonomy_exists('pa_holzart')) {
+            return;
+        }
+
+        $result = $this->sync_attributes();
+
+        // Auftrag nur bei erfolgreicher Synchronisierung löschen.
+        if (is_array($result)) {
+            delete_option('hk_wc_sync_pending');
+        }
+    }
     /**
      * Globales Produktattribut anlegen.
      */
@@ -190,8 +230,6 @@ class HK_WooCommerce
      * Synchronisierung über Admin-Aktion starten.
      */
     public function handle_sync() {
-
-        wp_die('handle_sync wurde aufgerufen');
 
         
         if (!current_user_can('manage_options')) {

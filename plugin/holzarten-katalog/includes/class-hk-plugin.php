@@ -190,25 +190,6 @@ class HK_Plugin
             ); ?>
 
 </form>
-            <h2>WooCommerce</h2>
-
-            <p>
-                Überträgt die aktiven Holzarten in die globalen
-                WooCommerce-Attribute.
-            </p>
-
-            <form method="post"
-                action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
-
-                <input type="hidden"
-                    name="action"
-                    value="hk_sync_woocommerce">
-
-                <?php wp_nonce_field('hk_sync_woocommerce', 'hk_sync_nonce'); ?>
-
-                <?php submit_button('Holzarten mit WooCommerce synchronisieren'); ?>
-
-            </form>
             <a href="<?php echo esc_url(
                 admin_url('admin.php?page=holzarten-katalog&new=1')
             ); ?>" class="page-title-action">
@@ -927,7 +908,7 @@ private function render_table($items, $search)
         ) {
             $this->delete_image_if_unused($old_image_file);
         }
-
+        HK_WooCommerce::schedule_sync();
         wp_safe_redirect(
             add_query_arg('saved', '1', $url)
         );
@@ -972,7 +953,7 @@ private function render_table($items, $search)
                 $item['image_file'] ?? ''
             );
         }
-
+HK_WooCommerce::schedule_sync();
         wp_safe_redirect(
             add_query_arg('deleted', '1', $url)
         );
@@ -1123,6 +1104,7 @@ private function render_table($items, $search)
             $record['id'] = $id;
 
             $items[] = $record;
+           
         }
 
         /*
@@ -1157,7 +1139,7 @@ private function render_table($items, $search)
 
             $backup_file = $backup_directory
                 . 'catalog-' . date('Ymd-His') . '.json';
-
+             HK_WooCommerce::schedule_sync();                
             if (!copy($catalog_path, $backup_file)) {
                 wp_safe_redirect(
                     add_query_arg('import_error', 'backup', $url)
