@@ -1,4 +1,3 @@
-
 <?php
 
 if (!defined('ABSPATH')) {
@@ -18,9 +17,15 @@ class HK_Plugin
         return self::$instance;
     }
 
+    /**
+     * Konstruktor.
+     */
     private function __construct()
     {
-        add_action('admin_menu', [$this, 'register_admin_menu']);
+        add_action(
+            'admin_menu',
+            [$this, 'register_admin_menu']
+        );
 
         add_action(
             'admin_enqueue_scripts',
@@ -41,14 +46,38 @@ class HK_Plugin
             'admin_post_hk_import_catalog',
             [$this, 'handle_import']
         );
-        add_action('plugins_loaded', function () {
-            if (class_exists('WooCommerce')) {
-                HK_WooCommerce::instance();
-            }
-        }, 20);
+
         add_action(
             'admin_post_hk_export_catalog',
             [$this, 'handle_export']
+        );
+
+        // WooCommerce initialisieren, sofern verfügbar.
+        add_action(
+            'plugins_loaded',
+            function () {
+                if (class_exists('WooCommerce')) {
+                    HK_WooCommerce::instance();
+                }
+            },
+            20
+        );
+    }
+
+    /**
+     * CSS nur auf unserer Plugin-Seite laden.
+     */
+    public function enqueue_admin_assets($hook)
+    {
+        if ($hook !== 'toplevel_page_holzarten-katalog') {
+            return;
+        }
+
+        wp_enqueue_style(
+            'hk-admin',
+            HK_PLUGIN_URL . 'assets/css/admin.css',
+            [],
+            HK_VERSION
         );
     }
 
@@ -66,18 +95,6 @@ class HK_Plugin
             'dashicons-palmtree',
             25
         );
-    }
-
-    /**
-     * CSS und JavaScript nur auf unserer Plugin-Seite laden.
-     *
-     * Kein Media-Picker mehr.
-     */
-    public function enqueue_admin_assets($hook)
-    {
-        if ($hook !== 'toplevel_page_holzarten-katalog') {
-            return;
-        }
     }
 
     /**
@@ -163,34 +180,39 @@ class HK_Plugin
 
         <div class="wrap">
 
-
-
-
-
             <h1 class="wp-heading-inline">
                 Holzarten-Katalog
             </h1>
 
-<h2>Datensicherung und Klonen</h2>
+            <h2>Datensicherung und Klonen</h2>
 
-<form method="post"
-      action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
+            <form method="post"
+                  action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
 
-    <input type="hidden"
-           name="action"
-           value="hk_export_catalog">
+                <input type="hidden"
+                       name="action"
+                       value="hk_export_catalog">
 
-            <?php wp_nonce_field('hk_export_catalog', 'hk_export_nonce'); ?>
+                <?php
+                wp_nonce_field(
+                    'hk_export_catalog',
+                    'hk_export_nonce'
+                );
+                ?>
 
-            <?php submit_button(
-                'Holzartenkatalog exportieren',
-                'secondary',
-                'submit',
-                false
-            ); ?>
+                <?php
+                submit_button(
+                    'Holzartenkatalog exportieren',
+                    'secondary',
+                    'submit',
+                    false
+                );
+                ?>
 
-</form>
-<h2>Neue Holzart anlegen</h2>
+            </form>
+
+            <h2>Neue Holzart anlegen</h2>
+
             <a href="<?php echo esc_url(
                 admin_url('admin.php?page=holzarten-katalog&new=1')
             ); ?>" class="page-title-action">
@@ -270,126 +292,134 @@ class HK_Plugin
         <?php
     }
 
-/**
- * Gesamten Holzartenkatalog als ZIP exportieren.
- */
-public function handle_export()
-{
-    if (!current_user_can('manage_options')) {
-        wp_die('Keine Berechtigung.');
-    }
-
-    check_admin_referer(
-        'hk_export_catalog',
-        'hk_export_nonce'
-    );
-
-    if (!class_exists('ZipArchive')) {
-        wp_die('Die PHP-Erweiterung ZipArchive ist nicht verfügbar.');
-    }
-
-    $base = HK_Storage::directory();
-    $temp_file = tempnam(sys_get_temp_dir(), 'hk-export-');
-
-    if ($temp_file === false) {
-        wp_die('Temporäre Exportdatei konnte nicht erstellt werden.');
-    }
-
-    $zip = new ZipArchive();
-
-    $opened = $zip->open(
-        $temp_file,
-        ZipArchive::CREATE | ZipArchive::OVERWRITE
-    );
-
-    if ($opened !== true) {
-        unlink($temp_file);
-        wp_die('ZIP-Archiv konnte nicht erstellt werden.');
-    }
-
-    // JSON-Dateien hinzufügen.
-    $json_files = [
-        'catalog.json',
-        'overrides.json',
-        'images.json',
-    ];
-
-    foreach ($json_files as $filename) {
-
-        $path = $base . $filename;
-
-        if (!file_exists($path) || !is_readable($path)) {
-            $zip->close();
-            unlink($temp_file);
-
-            wp_die('Datei fehlt oder ist nicht lesbar: ' . esc_html($filename));
+    /**
+     * Gesamten Holzartenkatalog als ZIP exportieren.
+     */
+    public function handle_export()
+    {
+        if (!current_user_can('manage_options')) {
+            wp_die('Keine Berechtigung.');
         }
 
-        if (!$zip->addFile($path, $filename)) {
-            $zip->close();
-            unlink($temp_file);
-
-            wp_die('Datei konnte nicht ins ZIP aufgenommen werden: ' . esc_html($filename));
-        }
-    }
-
-    // Sämtliche Bilder hinzufügen.
-    $image_dir = $base . 'images/';
-
-    if (is_dir($image_dir)) {
-
-        $iterator = new RecursiveIteratorIterator(
-            new RecursiveDirectoryIterator(
-                $image_dir,
-                FilesystemIterator::SKIP_DOTS
-            )
+        check_admin_referer(
+            'hk_export_catalog',
+            'hk_export_nonce'
         );
 
-        foreach ($iterator as $file) {
+        if (!class_exists('ZipArchive')) {
+            wp_die('Die PHP-Erweiterung ZipArchive ist nicht verfügbar.');
+        }
 
-            if (!$file->isFile() || $file->isLink()) {
-                continue;
-            }
+        $base = trailingslashit(HK_Storage::directory());
 
-            $path = $file->getPathname();
+        $temp_file = tempnam(sys_get_temp_dir(), 'hk-export-');
 
-            $relative_path = 'images/' . str_replace(
-                DIRECTORY_SEPARATOR,
-                '/',
-                substr($path, strlen($image_dir))
-            );
+        if ($temp_file === false) {
+            wp_die('Temporäre Exportdatei konnte nicht erstellt werden.');
+        }
 
-            if (!$zip->addFile($path, $relative_path)) {
+        $zip = new ZipArchive();
+
+        $opened = $zip->open(
+            $temp_file,
+            ZipArchive::CREATE | ZipArchive::OVERWRITE
+        );
+
+        if ($opened !== true) {
+            unlink($temp_file);
+            wp_die('ZIP-Archiv konnte nicht erstellt werden.');
+        }
+
+        // JSON-Dateien hinzufügen.
+        $json_files = [
+            'catalog.json',
+            'overrides.json',
+            'images.json',
+        ];
+
+        foreach ($json_files as $filename) {
+            $path = $base . $filename;
+
+            if (!file_exists($path) || !is_readable($path)) {
                 $zip->close();
                 unlink($temp_file);
 
-                wp_die('Bild konnte nicht ins ZIP aufgenommen werden.');
+                wp_die(
+                    'Datei fehlt oder ist nicht lesbar: '
+                    . esc_html($filename)
+                );
+            }
+
+            if (!$zip->addFile($path, $filename)) {
+                $zip->close();
+                unlink($temp_file);
+
+                wp_die(
+                    'Datei konnte nicht ins ZIP aufgenommen werden: '
+                    . esc_html($filename)
+                );
             }
         }
+
+        // Sämtliche Bilder hinzufügen.
+        $image_dir = $base . 'images/';
+
+        if (is_dir($image_dir)) {
+            $iterator = new RecursiveIteratorIterator(
+                new RecursiveDirectoryIterator(
+                    $image_dir,
+                    FilesystemIterator::SKIP_DOTS
+                )
+            );
+
+            foreach ($iterator as $file) {
+                if (!$file->isFile() || $file->isLink()) {
+                    continue;
+                }
+
+                $path = $file->getPathname();
+
+                $relative_path = 'images/' . str_replace(
+                    DIRECTORY_SEPARATOR,
+                    '/',
+                    substr($path, strlen($image_dir))
+                );
+
+                if (!$zip->addFile($path, $relative_path)) {
+                    $zip->close();
+                    unlink($temp_file);
+
+                    wp_die('Bild konnte nicht ins ZIP aufgenommen werden.');
+                }
+            }
+        }
+
+        $zip->close();
+
+        // Download ausliefern.
+        $download_name = 'holzarten-export-' . date('Y-m-d-His') . '.zip';
+
+        while (ob_get_level()) {
+            ob_end_clean();
+        }
+
+        nocache_headers();
+
+        header('Content-Type: application/zip');
+
+        header(
+            'Content-Disposition: attachment; filename="'
+            . $download_name
+            . '"'
+        );
+
+        header('Content-Length: ' . filesize($temp_file));
+
+        readfile($temp_file);
+
+        unlink($temp_file);
+        exit;
     }
-
-    $zip->close();
-
-    // Download ausliefern.
-    $download_name = 'holzarten-export-' . date('Y-m-d-His') . '.zip';
-
-    while (ob_get_level()) {
-        ob_end_clean();
-    }
-
-    nocache_headers();
-
-    header('Content-Type: application/zip');
-    header(
-        'Content-Disposition: attachment; filename="' . $download_name . '"'
-    );
-    header('Content-Length: ' . filesize($temp_file));
-
-    readfile($temp_file);
-
-    unlink($temp_file);
-    exit;
-}
 
     /**
      * Eingabeformular darstellen.
@@ -562,16 +592,19 @@ public function handle_export()
 
     /**
      * JSON-Importformular darstellen.
+     *
+     * Derzeit deaktiviert.
      */
     private function render_import_form()
     {
+        /*
         ?>
-<!--
+
         <hr>
 
         <h2>Holzarten importieren</h2>
 
-       <form method="post"
+        <form method="post"
               action="<?php echo esc_url(admin_url('admin-post.php')); ?>"
               enctype="multipart/form-data">
 
@@ -603,166 +636,168 @@ public function handle_export()
             Aktivierungsstatus bleiben bei übereinstimmender ID erhalten.
         </p>
 
-        <hr>-->
+        <hr>
+
+        <?php
+        */
+    }
+
+    /**
+     * Tabelle mit allen Holzarten darstellen.
+     */
+    private function render_table($items, $search)
+    {
+        ?>
+
+        <form method="get">
+
+            <input type="hidden"
+                   name="page"
+                   value="holzarten-katalog">
+
+            <p class="search-box">
+
+                <label class="screen-reader-text" for="hk-search">
+                    Holzarten suchen
+                </label>
+
+                <input type="search"
+                       id="hk-search"
+                       name="s"
+                       value="<?php echo esc_attr($search); ?>">
+
+                <input type="submit"
+                       class="button"
+                       value="Suchen">
+
+            </p>
+
+        </form>
+
+        <table class="wp-list-table widefat fixed striped">
+
+            <thead>
+                <tr>
+                    <th style="width:70px;">Bild</th>
+                    <th>Deutscher Name</th>
+                    <th>Botanischer Name</th>
+                    <th>EN-Code</th>
+                    <th>Status</th>
+                    <th style="width:150px;">Aktionen</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+            <?php if (empty($items)): ?>
+
+                <tr>
+                    <td colspan="6">
+                        Keine Holzarten gefunden.
+                    </td>
+                </tr>
+
+            <?php else: ?>
+
+                <?php foreach ($items as $item): ?>
+
+                    <tr>
+
+                        <td>
+                            <?php
+                            $image_url = $this->get_image_url(
+                                $item['image_file'] ?? ''
+                            );
+
+                            if ($image_url):
+                            ?>
+                                <img src="<?php echo esc_url($image_url); ?>"
+                                     alt="<?php echo esc_attr(
+                                         $item['name_de'] ?? ''
+                                     ); ?>"
+                                     style="width:50px;height:50px;object-fit:cover;">
+                            <?php endif; ?>
+                        </td>
+
+                        <td>
+                            <strong>
+                                <?php echo esc_html(
+                                    $item['name_de'] ?? ''
+                                ); ?>
+                            </strong>
+
+                            <?php if (!empty($item['description'])): ?>
+                                <span class="hk-tooltip" tabindex="0">
+                                    Beschreibung ⓘ
+                                    <span class="hk-tooltip-text">
+                                        <?php echo esc_html(
+                                            $item['description']
+                                        ); ?>
+                                    </span>
+                                </span>
+                            <?php endif; ?>
+                        </td>
+
+                        <td>
+                            <em>
+                                <?php echo esc_html(
+                                    $item['name_latin'] ?? ''
+                                ); ?>
+                            </em>
+                        </td>
+
+                        <td>
+                            <?php echo esc_html(
+                                $item['code'] ?? ''
+                            ); ?>
+                        </td>
+
+                        <td>
+                            <?php echo !empty($item['active'])
+                                ? 'Aktiv'
+                                : 'Inaktiv'; ?>
+                        </td>
+
+                        <td>
+
+                            <a href="<?php echo esc_url(
+                                admin_url(
+                                    'admin.php?page=holzarten-katalog&edit='
+                                    . rawurlencode($item['id'])
+                                )
+                            ); ?>">
+                                Bearbeiten
+                            </a>
+
+                            |
+
+                            <a href="<?php echo esc_url(
+                                wp_nonce_url(
+                                    admin_url(
+                                        'admin-post.php?action=hk_delete_item&id='
+                                        . rawurlencode($item['id'])
+                                    ),
+                                    'hk_delete_item_' . $item['id']
+                                )
+                            ); ?>"
+                               onclick="return confirm('Diese Holzart wirklich löschen?');">
+                                Löschen
+                            </a>
+
+                        </td>
+
+                    </tr>
+
+                <?php endforeach; ?>
+
+            <?php endif; ?>
+
+            </tbody>
+
+        </table>
 
         <?php
     }
-
-    
-/**
- * Tabelle mit allen Holzarten darstellen.
- */
-private function render_table($items, $search)
-{
-    ?>
-
-    <form method="get">
-
-        <input type="hidden"
-               name="page"
-               value="holzarten-katalog">
-
-        <p class="search-box">
-
-            <label class="screen-reader-text" for="hk-search">
-                Holzarten suchen
-            </label>
-
-            <input type="search"
-                   id="hk-search"
-                   name="s"
-                   value="<?php echo esc_attr($search); ?>">
-
-            <input type="submit"
-                   class="button"
-                   value="Suchen">
-
-        </p>
-
-    </form>
-
-    <table class="wp-list-table widefat fixed striped">
-
-        <thead>
-            <tr>
-                <th style="width:70px;">Bild</th>
-                <th>Deutscher Name / Beschreibung</th>
-                <th>Botanischer Name</th>
-                <th>EN-Code</th>
-                <th>Status</th>
-                <th style="width:150px;">Aktionen</th>
-            </tr>
-        </thead>
-
-        <tbody>
-
-        <?php if (empty($items)): ?>
-
-            <tr>
-                <td colspan="6">
-                    Keine Holzarten gefunden.
-                </td>
-            </tr>
-
-        <?php else: ?>
-
-            <?php foreach ($items as $item): ?>
-
-                <tr>
-
-                    <td>
-                        <?php
-                        $image_url = $this->get_image_url(
-                            $item['image_file'] ?? ''
-                        );
-
-                        if ($image_url):
-                        ?>
-                            <img src="<?php echo esc_url($image_url); ?>"
-                                 alt="<?php echo esc_attr(
-                                     $item['name_de'] ?? ''
-                                 ); ?>"
-                                 style="width:50px;height:50px;object-fit:cover;">
-                        <?php endif; ?>
-                    </td>
-
-                    <td>
-                        <strong>
-                            <?php echo esc_html(
-                                $item['name_de'] ?? ''
-                            ); ?>
-                        </strong>
-
-                        <?php if (!empty($item['description'])): ?>
-                            <p style="margin:4px 0 0;color:#646970;overflow-y:auto;max-height:3em">
-                                <?php echo esc_html(
-                                    $item['description']
-                                ); ?>
-                            </p>
-                        <?php endif; ?>
-                    </td>
-
-                    <td>
-                        <em>
-                            <?php echo esc_html(
-                                $item['name_latin'] ?? ''
-                            ); ?>
-                        </em>
-                    </td>
-
-                    <td>
-                        <?php echo esc_html(
-                            $item['code'] ?? ''
-                        ); ?>
-                    </td>
-
-                    <td>
-                        <?php echo !empty($item['active'])
-                            ? 'Aktiv'
-                            : 'Inaktiv'; ?>
-                    </td>
-
-                    <td>
-
-                        <a href="<?php echo esc_url(
-                            admin_url(
-                                'admin.php?page=holzarten-katalog&edit='
-                                . rawurlencode($item['id'])
-                            )
-                        ); ?>">
-                            Bearbeiten
-                        </a>
-
-                        |
-
-                        <a href="<?php echo esc_url(
-                            wp_nonce_url(
-                                admin_url(
-                                    'admin-post.php?action=hk_delete_item&id='
-                                    . rawurlencode($item['id'])
-                                ),
-                                'hk_delete_item_' . $item['id']
-                            )
-                        ); ?>"
-                           onclick="return confirm('Diese Holzart wirklich löschen?');">
-                            Löschen
-                        </a>
-
-                    </td>
-
-                </tr>
-
-            <?php endforeach; ?>
-
-        <?php endif; ?>
-
-        </tbody>
-
-    </table>
-
-    <?php
-}
-
 
     /**
      * Holzart speichern und Bilddatei verarbeiten.
@@ -791,9 +826,7 @@ private function render_table($items, $search)
         $image_file = $old_image_file;
         $new_image_path = '';
 
-        /*
-         * Bild-Upload.
-         */
+        // Bild-Upload.
         if (
             isset($_FILES['image_file']) &&
             $_FILES['image_file']['error'] !== UPLOAD_ERR_NO_FILE
@@ -801,7 +834,9 @@ private function render_table($items, $search)
             $file = $_FILES['image_file'];
 
             if ($file['error'] !== UPLOAD_ERR_OK) {
-                wp_die('Beim Hochladen der Bilddatei ist ein Fehler aufgetreten.');
+                wp_die(
+                    'Beim Hochladen der Bilddatei ist ein Fehler aufgetreten.'
+                );
             }
 
             $allowed_types = [
@@ -817,7 +852,9 @@ private function render_table($items, $search)
             );
 
             if (empty($checked['type'])) {
-                wp_die('Ungültiger Bildtyp. Erlaubt sind JPG, PNG und WebP.');
+                wp_die(
+                    'Ungültiger Bildtyp. Erlaubt sind JPG, PNG und WebP.'
+                );
             }
 
             $directory = trailingslashit(HK_Storage::directory())
@@ -854,9 +891,7 @@ private function render_table($items, $search)
             $image_file = $filename;
         }
 
-        /*
-         * Katalogdaten zusammenstellen.
-         */
+        // Katalogdaten zusammenstellen.
         $data = [
             'name_de' => sanitize_text_field(
                 wp_unslash($_POST['name_de'] ?? '')
@@ -909,7 +944,12 @@ private function render_table($items, $search)
         ) {
             $this->delete_image_if_unused($old_image_file);
         }
-        HK_WooCommerce::schedule_sync();
+
+        /*
+         * Die WooCommerce-Synchronisierung wird bereits zentral
+         * in HK_Catalog::save() vorgemerkt.
+         */
+
         wp_safe_redirect(
             add_query_arg('saved', '1', $url)
         );
@@ -954,7 +994,12 @@ private function render_table($items, $search)
                 $item['image_file'] ?? ''
             );
         }
-HK_WooCommerce::schedule_sync();
+
+        /*
+         * Die WooCommerce-Synchronisierung wird bereits zentral
+         * in HK_Catalog::delete() vorgemerkt.
+         */
+
         wp_safe_redirect(
             add_query_arg('deleted', '1', $url)
         );
@@ -1105,7 +1150,6 @@ HK_WooCommerce::schedule_sync();
             $record['id'] = $id;
 
             $items[] = $record;
-           
         }
 
         /*
@@ -1140,7 +1184,7 @@ HK_WooCommerce::schedule_sync();
 
             $backup_file = $backup_directory
                 . 'catalog-' . date('Ymd-His') . '.json';
-             HK_WooCommerce::schedule_sync();                
+
             if (!copy($catalog_path, $backup_file)) {
                 wp_safe_redirect(
                     add_query_arg('import_error', 'backup', $url)
@@ -1162,6 +1206,14 @@ HK_WooCommerce::schedule_sync();
                 add_query_arg('import_error', 'write', $url)
             );
             exit;
+        }
+
+        /*
+         * WooCommerce-Synchronisierung vormerken.
+         * Erst jetzt, nachdem catalog.json erfolgreich geschrieben wurde.
+         */
+        if (class_exists('HK_WooCommerce')) {
+            HK_WooCommerce::schedule_sync();
         }
 
         wp_safe_redirect(

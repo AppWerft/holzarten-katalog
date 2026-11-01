@@ -1,0 +1,33 @@
+.hk-tooltip {
+    position: relative;
+    display: inline-block;
+    margin-left: 6px;
+    cursor: help;
+    color: #2271b1;
+    font-size: 12px;
+}
+
+.hk-tooltip-text {
+    display: none;
+    position: absolute;
+    z-index: 1000;
+    left: 0;
+    top: 100%;
+    width: 320px;
+    max-height: 220px;
+    overflow-y: auto;
+    padding: 12px;
+    background: #fff;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    white-space: normal;
+    line-height: 1.5;
+    font-weight: normal;
+}
+
+.hk-tooltip:hover .hk-tooltip-text,
+.hk-tooltip:focus .hk-tooltip-text {
+    display: block;
+}
