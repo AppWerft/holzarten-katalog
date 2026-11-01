@@ -190,10 +190,11 @@ class HK_Plugin
             ); ?>
 
 </form>
+<h2>Neue Holzart anlegen</h2>
             <a href="<?php echo esc_url(
                 admin_url('admin.php?page=holzarten-katalog&new=1')
             ); ?>" class="page-title-action">
-                Neue Holzart
+                Neue Holzart anlegen
             </a>
 
             <hr class="wp-header-end">
@@ -693,7 +694,7 @@ private function render_table($items, $search)
                         </strong>
 
                         <?php if (!empty($item['description'])): ?>
-                            <p style="margin:4px 0 0;color:#646970;">
+                            <p style="margin:4px 0 0;color:#646970;overflow-y:auto;max-height:3em">
                                 <?php echo esc_html(
                                     $item['description']
                                 ); ?>
