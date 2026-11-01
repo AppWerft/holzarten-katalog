@@ -86,7 +86,7 @@ class HK_Plugin {
             'hk-admin',
             plugin_dir_url(dirname(__FILE__)) . 'assets/js/admin.js',
             ['jquery'],
-            '1.0.2'. time(),
+            '1.0.2' .  time(),
             true
         );
         wp_localize_script(
@@ -611,17 +611,22 @@ class HK_Plugin {
     /**
      * JSON-Importformular darstellen.
      *
-     * Derzeit deaktiviert.
+    
+     */
+   
+    /**
+     * ZIP-Importformular darstellen.
      */
     private function render_import_form()
     {
-        /*
         ?>
 
         <hr>
 
-        <h2>Holzarten importieren</h2>
-
+        <h2>Holzartenkatalog importieren</h2>
+<p class="description">
+            Importiert einen vollständigen Export mit Bäumen und ihren Holzbildern (*.zip).
+        </p>
         <form method="post"
               action="<?php echo esc_url(admin_url('admin-post.php')); ?>"
               enctype="multipart/form-data">
@@ -633,13 +638,13 @@ class HK_Plugin {
             <?php wp_nonce_field('hk_import_catalog'); ?>
 
             <input type="file"
-                   name="catalog_json"
-                   accept=".json,application/json"
+                   name="catalog_zip"
+                   accept=".zip,application/zip"
                    required>
 
             <?php
             submit_button(
-                'Holzarten einlesen',
+                'Holzartenkatalog importieren',
                 'secondary',
                 'submit',
                 false
@@ -648,17 +653,13 @@ class HK_Plugin {
 
         </form>
 
-        <p class="description">
-            Importiert den vollständigen Holzartenbestand aus einer JSON-Datei.
-            Bestehende manuelle Beschreibungen, Bildzuordnungen und
-            Aktivierungsstatus bleiben bei übereinstimmender ID erhalten.
-        </p>
+        
 
         <hr>
 
         <?php
-        */
     }
+
 
     /**
      * Tabelle mit allen Holzarten darstellen.
