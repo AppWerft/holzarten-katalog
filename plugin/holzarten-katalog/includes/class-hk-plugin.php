@@ -584,12 +584,12 @@ public function handle_export()
     private function render_import_form()
     {
         ?>
-
+<!--
         <hr>
 
         <h2>Holzarten importieren</h2>
 
-       <!-- <form method="post"
+       <form method="post"
               action="<?php echo esc_url(admin_url('admin-post.php')); ?>"
               enctype="multipart/form-data">
 
@@ -613,7 +613,7 @@ public function handle_export()
             );
             ?>
 
-        </form>-->
+        </form>
 
         <p class="description">
             Importiert den vollständigen Holzartenbestand aus einer JSON-Datei.
@@ -621,7 +621,7 @@ public function handle_export()
             Aktivierungsstatus bleiben bei übereinstimmender ID erhalten.
         </p>
 
-        <hr>
+        <hr>-->
 
         <?php
     }
