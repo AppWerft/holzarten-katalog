@@ -53,6 +53,7 @@ class HK_WooCommerce
             [$this, 'maybe_sync_pending'],
             20
             );
+       
     }
     /**
      * Synchronisierung für den nächsten Admin-Aufruf vormerken.
@@ -127,6 +128,10 @@ class HK_WooCommerce
     /**
      * Holzarten aus dem Katalog synchronisieren.
      */
+    
+/**
+ * Holzarten aus dem Katalog synchronisieren.
+ */
     public function sync_attributes()
     {
         if (!function_exists('wc_get_attribute_taxonomies')) {
@@ -185,11 +190,7 @@ class HK_WooCommerce
 
             $slug = sanitize_title($name);
 
-            $term = get_term_by(
-                'slug',
-                $slug,
-                $taxonomy
-            );
+            $term = get_term_by('slug', $slug, $taxonomy);
 
             if (!$term) {
 
@@ -203,13 +204,16 @@ class HK_WooCommerce
                     continue;
                 }
 
+                $term_id = $result['term_id'];
                 $created++;
 
             } else {
 
+                $term_id = $term->term_id;
+
                 if ($term->name !== $name) {
                     wp_update_term(
-                        $term->term_id,
+                        $term_id,
                         $taxonomy,
                         ['name' => $name]
                     );
@@ -218,6 +222,24 @@ class HK_WooCommerce
                 $updated++;
             }
 
+            // Term-Metadaten aktualisieren.
+            update_term_meta(
+                $term_id,
+                'hk_name_latein',
+                $item['name_latein'] ?? ''
+            );
+
+            update_term_meta(
+                $term_id,
+                'hk_code',
+                $item['code'] ?? ''
+            );
+
+            update_term_meta(
+                $term_id,
+                'hk_image_file',
+                $item['image_file'] ?? ''
+            );
         }
 
         return [
@@ -225,6 +247,7 @@ class HK_WooCommerce
             'updated' => $updated,
         ];
     }
+
 
     /**
      * Synchronisierung über Admin-Aktion starten.
