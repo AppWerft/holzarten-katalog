@@ -125,13 +125,112 @@ class HK_WooCommerce
         delete_transient('wc_attribute_taxonomies');
     }
 
+/**
+ * Holzarten-Bild in die Mediathek übernehmen
+ * und als WooCommerce-Term-Bild speichern.
+ */
+private function sync_term_image($term_id, $image_file)
+{
+    if (empty($image_file)) {
+        return;
+    }
+
+    $filename = basename($image_file);
+
+    // Quelldatei im Holzarten-Verzeichnis.
+    $source = trailingslashit(
+        HK_Storage::directory()
+    ) . 'images/' . $filename;
+
+    if (!file_exists($source)) {
+        error_log(
+            'HK WooCommerce: Bild nicht gefunden: ' . $source
+        );
+        return;
+    }
+
+    // Prüfen, ob dieses Bild bereits importiert wurde.
+    $attachments = get_posts([
+        'post_type'      => 'attachment',
+        'post_status'    => 'inherit',
+        'posts_per_page' => 1,
+        'fields'         => 'ids',
+        'meta_key'       => '_hk_source_image_file',
+        'meta_value'     => $filename,
+    ]);
+
+    if (!empty($attachments)) {
+
+        $attachment_id = (int) $attachments[0];
+
+    } else {
+
+        // Dateityp prüfen.
+        $filetype = wp_check_filetype($filename);
+
+        if (empty($filetype['type']) ||
+            strpos($filetype['type'], 'image/') !== 0) {
+            return;
+        }
+
+        // WordPress-Bildfunktionen laden.
+        require_once ABSPATH . 'wp-admin/includes/image.php';
+
+        // Mediathek-Eintrag erstellen.
+        $attachment_id = wp_insert_attachment(
+            [
+                'post_mime_type' => $filetype['type'],
+                'post_title'     => pathinfo(
+                    $filename,
+                    PATHINFO_FILENAME
+                ),
+                'post_status'    => 'inherit',
+            ],
+            $source
+        );
+
+        if (is_wp_error($attachment_id)) {
+            error_log(
+                'HK WooCommerce: ' .
+                $attachment_id->get_error_message()
+            );
+            return;
+        }
+
+        // Bild-Metadaten und Vorschaubilder erzeugen.
+        $metadata = wp_generate_attachment_metadata(
+            $attachment_id,
+            $source
+        );
+
+        if (is_array($metadata)) {
+            wp_update_attachment_metadata(
+                $attachment_id,
+                $metadata
+            );
+        }
+
+        // Ursprungsdatei merken, um Duplikate zu vermeiden.
+        update_post_meta(
+            $attachment_id,
+            '_hk_source_image_file',
+            $filename
+        );
+    }
+
+    // WooCommerce-Term-Bild zuweisen.
+    update_term_meta(
+        $term_id,
+        'thumbnail_id',
+        $attachment_id
+    );
+}
+
+
+
     /**
      * Holzarten aus dem Katalog synchronisieren.
      */
-    
-/**
- * Holzarten aus dem Katalog synchronisieren.
- */
     public function sync_attributes()
     {
         if (!function_exists('wc_get_attribute_taxonomies')) {
