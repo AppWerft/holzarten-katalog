@@ -28,6 +28,10 @@ class HK_WC_Origin
             'woocommerce_admin_process_product_object',
             [$this, 'save_fields']
         );
+        add_action(
+            'admin_enqueue_scripts',
+            [$this, 'enqueue_admin_assets']
+        );
     }
 
     /**
