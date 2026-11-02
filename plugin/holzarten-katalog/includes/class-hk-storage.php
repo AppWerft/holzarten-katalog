@@ -22,6 +22,7 @@ class HK_Storage
      * wenn noch kein Katalog vorhanden ist.
      */
     
+    
 public static function activate()
 {
     $base = self::directory();
@@ -29,8 +30,14 @@ public static function activate()
     wp_mkdir_p($base . 'images/');
     wp_mkdir_p($base . 'backups/');
 
-    // Nur bei einer Erstinstallation importieren.
-    if (!file_exists($base . 'catalog.json')) {
+    // Vorhandenen Katalog prüfen.
+    $catalog = self::read_json('catalog.json');
+
+    // Nur importieren, wenn noch kein gefüllter Katalog existiert.
+    if (
+        !is_array($catalog)
+        || empty($catalog['items'])
+    ) {
         $archive = HK_PLUGIN_DIR . 'data/holzarten-export.zip';
 
         $result = self::import_archive($archive, false);
@@ -43,7 +50,7 @@ public static function activate()
         }
     }
 
-    // Fehlende Zusatzdateien mit Standardwerten anlegen.
+    // Fehlende Zusatzdateien anlegen.
     $files = [
         'overrides.json' => ['items' => []],
         'images.json'    => ['items' => []],
@@ -57,6 +64,7 @@ public static function activate()
         }
     }
 }
+
 
 
     /**

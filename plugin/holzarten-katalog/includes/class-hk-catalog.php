@@ -6,7 +6,24 @@ if (!defined('ABSPATH')) {
 }
 
 class HK_Catalog
-{
+{   
+    /**
+     * Namensfelder aus dem JSON-Katalog für das Backend aufbereiten.
+     */
+    private static function format_names($value)
+    {
+        if (is_array($value)) {
+            return implode(', ', array_filter(
+                $value,
+                function ($name) {
+                    return is_string($name) && trim($name) !== '';
+                }
+            ));
+        }
+
+        return is_string($value) ? $value : '';
+    }
+
     /**
      * Gesamten Katalog laden und Overrides anwenden.
      */
@@ -32,11 +49,26 @@ class HK_Catalog
                 continue;
             }
 
-            if (isset($changes[$id])) {
-                $item = array_merge($item, $changes[$id]);
-            }
+                    
+        if (isset($changes[$id])) {
+            $item = array_merge($item, $changes[$id]);
+        }
 
-            $result[$id] = $item;
+        // ZIP-Datenmodell auf die Backend-Feldnamen abbilden.
+        $item['name_de'] = self::format_names(
+            $item['name_de'] ?? $item['german_names'] ?? []
+        );
+
+        $item['name_latin'] = self::format_names(
+            $item['name_latin'] ?? $item['botanical_names'] ?? []
+        );
+
+        $item['code'] = self::format_names(
+            $item['code'] ?? $item['codes'] ?? []
+        );
+
+        $result[$id] = $item;
+
         }
 
         // Manuell hinzugefügte Holzarten ergänzen.
