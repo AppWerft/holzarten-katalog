@@ -238,15 +238,22 @@ class HK_Plugin {
 
             if (isset($_GET['import_error'])) {
                 $errors = [
-                    'upload'     => 'Keine gültige Datei hochgeladen.',
-                    'type'       => 'Es wurde keine JSON-Datei ausgewählt.',
-                    'read'       => 'Die Datei konnte nicht gelesen werden.',
-                    'json'       => 'Die JSON-Datei ist ungültig oder leer.',
-                    'structure'  => 'Die Datenstruktur ist fehlerhaft.',
-                    'duplicate'  => 'Eine Holzarten-ID kommt mehrfach vor.',
-                    'directory'  => 'Das Datenverzeichnis konnte nicht angelegt werden.',
-                    'backup'     => 'Der bisherige Katalog konnte nicht gesichert werden.',
-                    'write'      => 'Der neue Katalog konnte nicht gespeichert werden.',
+                    'upload'           => 'Keine gültige ZIP-Datei hochgeladen.',
+                    'type'             => 'Es wurde keine ZIP-Datei ausgewählt.',
+                    'zip_missing'      => 'Die PHP-Erweiterung ZipArchive ist nicht verfügbar.',
+                    'archive_missing'  => 'Die ZIP-Datei wurde nicht gefunden oder ist nicht lesbar.',
+                    'zip_open'         => 'Das ZIP-Archiv konnte nicht geöffnet werden.',
+                    'catalog_missing'  => 'Im Archiv fehlt catalog.json.',
+                    'catalog_invalid'  => 'Die catalog.json ist ungültig.',
+                    'json_invalid'     => 'Eine JSON-Datei im Archiv ist ungültig.',
+                    'directory'        => 'Das Datenverzeichnis konnte nicht angelegt werden.',
+                    'backup_directory' => 'Das Backup-Verzeichnis konnte nicht angelegt werden.',
+                    'backup_file'      => 'Eine Katalogdatei konnte nicht gesichert werden.',
+                    'backup_images'    => 'Das Bilder-Backup-Verzeichnis konnte nicht angelegt werden.',
+                    'backup_scan'      => 'Das Bilderverzeichnis konnte nicht gelesen werden.',
+                    'backup_image'     => 'Ein vorhandenes Bild konnte nicht gesichert werden.',
+                    'write_json'       => 'Eine JSON-Datei konnte nicht gespeichert werden.',
+                    'image_write'      => 'Ein Bild konnte nicht gespeichert werden.',
                 ];
 
                 $error = sanitize_key(
@@ -1092,8 +1099,9 @@ public function ajax_toggle_status()
         exit;
     }
 
+    
     /**
-     * JSON-Katalog importieren.
+     * ZIP-Archiv mit dem Holzartenkatalog importieren.
      */
     public function handle_import()
     {
@@ -1101,15 +1109,22 @@ public function ajax_toggle_status()
             wp_die('Keine Berechtigung.');
         }
 
-        if (!check_admin_referer('hk_import_catalog', '_wpnonce', false)) {
+        if (
+            !check_admin_referer(
+                'hk_import_catalog',
+                '_wpnonce',
+                false
+            )
+        ) {
             wp_die('Import abgebrochen: Ungültige Sicherheitsprüfung.');
         }
 
         $url = admin_url('admin.php?page=holzarten-katalog');
 
+        // Upload prüfen.
         if (
-            !isset($_FILES['catalog_json']) ||
-            $_FILES['catalog_json']['error'] !== UPLOAD_ERR_OK
+            !isset($_FILES['catalog_zip'])
+            || $_FILES['catalog_zip']['error'] !== UPLOAD_ERR_OK
         ) {
             wp_safe_redirect(
                 add_query_arg('import_error', 'upload', $url)
@@ -1117,12 +1132,12 @@ public function ajax_toggle_status()
             exit;
         }
 
-        $file = $_FILES['catalog_json'];
+        $file = $_FILES['catalog_zip'];
 
+        // Dateiendung prüfen.
         if (
-            strtolower(
-                pathinfo($file['name'], PATHINFO_EXTENSION)
-            ) !== 'json'
+            strtolower(pathinfo($file['name'], PATHINFO_EXTENSION))
+            !== 'zip'
         ) {
             wp_safe_redirect(
                 add_query_arg('import_error', 'type', $url)
@@ -1130,181 +1145,42 @@ public function ajax_toggle_status()
             exit;
         }
 
-        $json = file_get_contents($file['tmp_name']);
-
-        if ($json === false) {
-            wp_safe_redirect(
-                add_query_arg('import_error', 'read', $url)
-            );
-            exit;
-        }
-
-        $data = json_decode($json, true);
-
-        if (
-            json_last_error() !== JSON_ERROR_NONE ||
-            !is_array($data) ||
-            empty($data)
-        ) {
-            wp_safe_redirect(
-                add_query_arg('import_error', 'json', $url)
-            );
-            exit;
-        }
-
-        /*
-         * Vorhandene Einträge nach ID indizieren.
-         * Damit können manuelle Änderungen übernommen werden.
-         */
-        $existing_items = HK_Catalog::get_all();
-        $existing_by_id = [];
-
-        foreach ($existing_items as $existing_item) {
-            if (!empty($existing_item['id'])) {
-                $existing_by_id[$existing_item['id']] = $existing_item;
-            }
-        }
-
-        $items = [];
-        $ids = [];
-
-        foreach ($data as $record) {
-
-            if (
-                !is_array($record) ||
-                empty($record['id']) ||
-                !is_string($record['id'])
-            ) {
-                wp_safe_redirect(
-                    add_query_arg('import_error', 'structure', $url)
-                );
-                exit;
-            }
-
-            $id = sanitize_text_field($record['id']);
-
-            if ($id === '' || isset($ids[$id])) {
-                wp_safe_redirect(
-                    add_query_arg('import_error', 'duplicate', $url)
-                );
-                exit;
-            }
-
-            $ids[$id] = true;
-
-            $properties = $record['properties'] ?? [];
-
-            if (!is_array($properties)) {
-                $properties = [];
-            }
-
-            $record['name_de'] =
-                $record['german_names'][0]
-                ?? ($properties['name_de'] ?? '');
-
-            $record['name_latin'] =
-                $record['botanical_names'][0]
-                ?? ($record['botanical_raw'] ?? '');
-
-            $record['code'] =
-                $record['codes'][0]
-                ?? $id;
-
-            /*
-             * Manuelle Daten aus dem bisherigen Katalog übernehmen.
-             */
-            if (isset($existing_by_id[$id])) {
-
-                $old = $existing_by_id[$id];
-
-                $record['image_file'] =
-                    $old['image_file'] ?? '';
-
-                $record['description'] =
-                    $old['description'] ?? '';
-
-                $record['active'] =
-                    $old['active'] ?? true;
-
-            } else {
-
-                $record['image_file'] = '';
-                $record['description'] = '';
-                $record['active'] = true;
-            }
-
-            $record['id'] = $id;
-
-            $items[] = $record;
-        }
-
-        /*
-         * Datenverzeichnis vorbereiten.
-         */
-        $directory = trailingslashit(
-            HK_Storage::directory()
+        // Gemeinsame Importfunktion der Speicherklasse aufrufen.
+        $result = HK_Storage::import_archive(
+            $file['tmp_name'],
+            true
         );
 
-        if (!wp_mkdir_p($directory)) {
+        if (is_wp_error($result)) {
+            error_log(
+                'Holzarten-Katalog: ZIP-Import fehlgeschlagen: '
+                . $result->get_error_message()
+            );
+
             wp_safe_redirect(
-                add_query_arg('import_error', 'directory', $url)
+                add_query_arg(
+                    'import_error',
+                    $result->get_error_code(),
+                    $url
+                )
             );
             exit;
         }
 
-        $catalog_path = $directory . 'catalog.json';
+        // Anzahl der importierten Holzarten ermitteln.
+        $catalog = HK_Storage::read_json('catalog.json');
 
-        /*
-         * Vorhandenen Katalog sichern.
-         */
-        if (file_exists($catalog_path)) {
+        $count = count($catalog['items'] ?? []);
 
-            $backup_directory = $directory . 'backups/';
-
-            if (!wp_mkdir_p($backup_directory)) {
-                wp_safe_redirect(
-                    add_query_arg('import_error', 'backup', $url)
-                );
-                exit;
-            }
-
-            $backup_file = $backup_directory
-                . 'catalog-' . date('Ymd-His') . '.json';
-
-            if (!copy($catalog_path, $backup_file)) {
-                wp_safe_redirect(
-                    add_query_arg('import_error', 'backup', $url)
-                );
-                exit;
-            }
-        }
-
-        /*
-         * Neuen Katalog speichern.
-         */
-        $result = HK_Storage::write_json(
-            $catalog_path,
-            ['items' => $items]
-        );
-
-        if (!$result) {
-            wp_safe_redirect(
-                add_query_arg('import_error', 'write', $url)
-            );
-            exit;
-        }
-
-        /*
-         * WooCommerce-Synchronisierung vormerken.
-         * Erst jetzt, nachdem catalog.json erfolgreich geschrieben wurde.
-         */
+        // WooCommerce-Synchronisierung vormerken.
         if (class_exists('HK_WooCommerce')) {
             HK_WooCommerce::schedule_sync();
         }
 
         wp_safe_redirect(
-            add_query_arg('imported', count($items), $url)
+            add_query_arg('imported', $count, $url)
         );
         exit;
     }
+
 }
