@@ -224,6 +224,8 @@ private function sync_term_image($term_id, $image_file)
         'thumbnail_id',
         $attachment_id
     );
+
+    
 }
 
 
@@ -339,6 +341,11 @@ private function sync_term_image($term_id, $image_file)
                 'hk_image_file',
                 $item['image_file'] ?? ''
             );
+            // Bild in die Mediathek übernehmen und zuweisen.
+            $this->sync_term_image(
+                $term_id,
+                $item['image_file'] ?? ''
+            );
         }
 
         return [
@@ -347,7 +354,48 @@ private function sync_term_image($term_id, $image_file)
         ];
     }
 
+    /**
+     * Holzarten-Bild eines Produkts ausgeben.
+     */
+    public static function get_product_holzart_image($product_id)
+    {
+        $product = wc_get_product($product_id);
 
+        if (!$product) {
+            return '';
+        }
+
+        $terms = get_the_terms(
+            $product_id,
+            'pa_holzart'
+        );
+
+        if (empty($terms) || is_wp_error($terms)) {
+            return '';
+        }
+
+        $term = reset($terms);
+
+        $image_id = get_term_meta(
+            $term->term_id,
+            'thumbnail_id',
+            true
+        );
+
+        if (!$image_id) {
+            return '';
+        }
+
+        return wp_get_attachment_image(
+            $image_id,
+            'medium',
+            false,
+            [
+                'class' => 'hk-holzart-image',
+                'alt'   => $term->name,
+            ]
+        );
+    }
     /**
      * Synchronisierung über Admin-Aktion starten.
      */
