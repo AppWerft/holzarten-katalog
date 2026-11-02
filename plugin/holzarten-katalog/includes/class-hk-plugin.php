@@ -202,41 +202,9 @@ class HK_Plugin {
                 Holzarten-Katalog
             </h1>
 
-            <h2>Datensicherung und Klonen</h2>
 
-            <form method="post"
-                  action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
 
-                <input type="hidden"
-                       name="action"
-                       value="hk_export_catalog">
-
-                <?php
-                wp_nonce_field(
-                    'hk_export_catalog',
-                    'hk_export_nonce'
-                );
-                ?>
-
-                <?php
-                submit_button(
-                    'Holzartenkatalog exportieren',
-                    'secondary',
-                    'submit',
-                    false
-                );
-                ?>
-
-            </form>
-
-            <h2>Neue Holzart anlegen</h2>
-
-            <a href="<?php echo esc_url(
-                admin_url('admin.php?page=holzarten-katalog&new=1')
-            ); ?>" class="page-title-action">
-                Neue Holzart anlegen
-            </a>
-
+            
             <hr class="wp-header-end">
 
             <?php
@@ -298,8 +266,40 @@ class HK_Plugin {
 
             <?php
             if ($item || isset($_GET['new'])) {
+
                 $this->render_form($item);
+
             } else {
+
+                ?>
+
+                <h2>Datensicherung und Klonen</h2>
+
+                <form method="post"
+                      action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
+
+                    <input type="hidden"
+                           name="action"
+                           value="hk_export_catalog">
+
+                    <?php
+                    wp_nonce_field(
+                        'hk_export_catalog',
+                        'hk_export_nonce'
+                    );
+
+                    submit_button(
+                        'Holzartenkatalog exportieren',
+                        'secondary',
+                        'submit',
+                        false
+                    );
+                    ?>
+
+                </form>
+
+                <?php
+
                 $this->render_import_form();
                 $this->render_table($items, $search);
             }
@@ -650,13 +650,8 @@ class HK_Plugin {
                 false
             );
             ?>
-
         </form>
-
-        
-
         <hr>
-
         <?php
     }
 
@@ -667,7 +662,15 @@ class HK_Plugin {
     private function render_table($items, $search)
     {
         ?>
+        <table width="100%"><tr><td>
 
+
+            <a href="<?php echo esc_url(
+                admin_url('admin.php?page=holzarten-katalog&new=1')
+            ); ?>" class="page-title-action">
+                Neue Holzart anlegen
+            </a>
+</td><td>
         <form method="get">
 
             <input type="hidden"
@@ -681,18 +684,19 @@ class HK_Plugin {
                 </label>
 
                 <input type="search"
+                            placeholder="Baumart"
                        id="hk-search"
                        name="s"
                        value="<?php echo esc_attr($search); ?>">
 
                 <input type="submit"
                        class="button"
-                       value="Suchen">
+                       value="Filtern">
 
             </p>
 
         </form>
-
+         <td></tr></table>                   
         <table class="wp-list-table widefat fixed striped">
 
             <thead>
