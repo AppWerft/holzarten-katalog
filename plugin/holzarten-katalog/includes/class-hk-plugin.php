@@ -542,46 +542,52 @@ class HK_Plugin {
                     </td>
                 </tr>
 
-                <!-- Bilderhochlade: -->
+<!-- Bilderhochlade: -->
 <tr>
     <th>
-        <label for="image_file">Bilddatei</label>
+        <label>Bilddatei</label>
     </th>
     <td>
+        <div style="display:flex; gap:20px; align-items:flex-start;">
 
-        <div id="hk-image-paste" tabindex="0">
+            <!-- Zwischenablage -->
+            <div style="flex:1;">
 
-            <?php if ($image_url): ?>
+                <div id="hk-image-paste" tabindex="0"
+                     style="min-height:100px; padding:12px; border:2px dashed #aaa;">
 
-                <img src="<?php echo esc_url($image_url); ?>"
-                     alt="<?php echo esc_attr(
-                         $item['name_de'] ?? ''
-                     ); ?>"
-                     style="max-width:180px;height:auto;">
+                    <?php if ($image_url): ?>
+                        <img src="<?php echo esc_url($image_url); ?>"
+                             alt="<?php echo esc_attr($item['name_de'] ?? ''); ?>"
+                             style="max-width:180px;height:auto;">
+
+                        <p class="description">
+                            Aktuelles Bild: <?php echo esc_html($image_file); ?>
+                        </p>
+                    <?php else: ?>
+                        Bild hier einfügen (⌘ V / Strg+V)
+                    <?php endif; ?>
+
+                    <div id="hk-image-preview"></div>
+                </div>
+
+            </div>
+
+            <!-- Datei-Upload -->
+            <div style="flex:1;">
+
+                <input type="file"
+                       id="image_file"
+                       name="image_file"
+                       accept=".jpg,.jpeg,.png,.webp">
 
                 <p class="description">
-                    Aktuelles Bild: <?php echo esc_html($image_file); ?>
+                    JPG, PNG oder WebP auswählen.
                 </p>
 
-            <?php else: ?>
-
-                Bild hier einfügen (⌘ V / Strg+V)
-
-            <?php endif; ?>
-
-            <div id="hk-image-preview"></div>
+            </div>
 
         </div>
-
-        <input type="file"
-               id="image_file"
-               name="image_file"
-               accept=".jpg,.jpeg,.png,.webp">
-
-        <p class="description">
-            Erlaubt: JPG, PNG und WebP.
-            Ein neues Bild ersetzt das bisherige.
-        </p>
 
         <input type="hidden"
                id="hk-delete-image"
