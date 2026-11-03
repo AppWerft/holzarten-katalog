@@ -28,53 +28,11 @@ class HK_WC_Origin
             'woocommerce_admin_process_product_object',
             [$this, 'save_fields']
         );
-        add_action(
-            'admin_enqueue_scripts',
-            [$this, 'enqueue_admin_assets']
-        );
+       
     }
-    /**
- * Leaflet und eigene Skripte im Produkteditor laden.
- */
-public function enqueue_admin_assets($hook)
-{
-    // Nur auf Produkt-Bearbeitungsseiten laden.
-    if (!in_array($hook, ['post.php', 'post-new.php'], true)) {
-        return;
-    }
+ 
+ 
 
-    $screen = get_current_screen();
-
-    if (!$screen || $screen->post_type !== 'product') {
-        return;
-    }
-
-    // Leaflet-CSS lokal laden.
-    wp_enqueue_style(
-        'hk-leaflet',
-        HK_PLUGIN_URL . 'assets/vendor/leaflet/leaflet.css',
-        [],
-        '1.9.4'
-    );
-
-    // Leaflet-JavaScript lokal laden.
-    wp_enqueue_script(
-        'hk-leaflet',
-        HK_PLUGIN_URL . 'assets/vendor/leaflet/leaflet.js',
-        [],
-        '1.9.4',
-        true
-    );
-
-    // Unsere Kartenbedienung laden.
-    wp_enqueue_script(
-        'hk-origin-picker',
-        HK_PLUGIN_URL . 'assets/js/hk-origin-picker.js',
-        ['hk-leaflet'],
-        HK_VERSION,
-        true
-    );
-}
     /**
      * Herkunftskoordinaten im Produkteditor anzeigen.
      */
