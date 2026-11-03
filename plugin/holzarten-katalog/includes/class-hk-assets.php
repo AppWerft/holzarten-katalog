@@ -6,7 +6,7 @@ if (!defined('ABSPATH')) {
 
 class HK_Assets {
     public static function init()
-    {
+    {   error_log('HK_ASSETS INIT ERREICHT');
         add_action(
             'admin_enqueue_scripts',
             [__CLASS__, 'enqueue_admin']
@@ -43,18 +43,27 @@ class HK_Assets {
      * Backend.
      */
     public static function enqueue_admin($hook)
-{
-    error_log('HK_Assets: enqueue_admin aufgerufen: ' . $hook);
+    {
+        $screen = get_current_screen();
 
-    $screen = get_current_screen();
+        if (
+            !$screen ||
+            $screen->post_type !== 'product' ||
+            !in_array($hook, ['post.php', 'post-new.php'], true)
+        ) {
+            return;
+        }
 
-    error_log(
-        'HK_Assets: Screen: '
-        . ($screen ? $screen->id : 'NULL')
-    );
+        self::enqueue_leaflet();
 
-    self::enqueue_leaflet();
-}
+        wp_enqueue_script(
+            'hk-origin-picker',
+            HK_PLUGIN_URL . 'assets/js/hk-origin-picker.js',
+            ['hk-leaflet'],
+            HK_VERSION,
+            true
+        );
+    }
 
     /**
      * Frontend.
