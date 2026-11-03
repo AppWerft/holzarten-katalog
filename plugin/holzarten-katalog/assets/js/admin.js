@@ -136,32 +136,25 @@ jQuery(document).ready(function ($) {
                 'image/png': 'png',
                 'image/webp': 'webp'
             };
-
             const extension = extensions[blob.type];
-
             if (!extension) {
                 continue;
             }
-
             const file = new File(
                 [blob],
                 'clipboard-image.' + extension,
                 { type: blob.type }
             );
-
             // File-Input wie bei einer normalen Dateiauswahl befüllen.
             const dataTransfer = new DataTransfer();
             dataTransfer.items.add(file);
             $fileInput[0].files = dataTransfer.files;
-
             // Vorschau anzeigen.
             showPreview(file);
 
             // Vorhandene change-Handler auslösen.
-            $fileInput.trigger('change');
-
+           // $fileInput.trigger('change');
             console.log('Bild übernommen:', file);
-
             break;
         }
     });
