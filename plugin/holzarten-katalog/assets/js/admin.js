@@ -46,14 +46,11 @@ jQuery(document).ready(function ($) {
     const $activeFilter = $('#hk-only-active');
     const $table = $('#hk-catalog-table');
 
-    if (!$activeFilter.length) {
-        console.log('kein Schalter')
+    if (!$activeFilter.length || !$table.length) {
+        console.log('table nicht da oder kein Schalter')
         return;
     }
-    if (!$table.length) {
-        console.log('table nicht da ')
-        return;
-    }
+
     function filterActiveRows() {
         console.log('filterActiveRows')
         const onlyActive = $activeFilter.is(':checked');
@@ -61,8 +58,9 @@ jQuery(document).ready(function ($) {
         $table.find('tbody tr').each(function () {
 
             const row = $(this);
+            console.log(row)
             const statusCheckbox = row.find('.hk-item-active').first();
-
+console.log(statusCheckbox)
             if (!statusCheckbox.length) {
                 return;
             }
