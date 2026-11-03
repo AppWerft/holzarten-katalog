@@ -565,7 +565,7 @@ class HK_Plugin {
 
             <?php else: ?>
 
-                Bild hier einfügen (Cmd+V / Strg+V)
+                Bild hier einfügen (⌘ V / Strg+V)
 
             <?php endif; ?>
 
