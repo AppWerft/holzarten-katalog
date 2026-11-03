@@ -197,19 +197,16 @@ private function sync_term_image($term_id, $image_file)
             return;
         }
 
-        // Bild-Metadaten und Vorschaubilder erzeugen.
-        $metadata = wp_generate_attachment_metadata(
-            $attachment_id,
-            $source
-        );
+        $size = getimagesize($source);
 
-        if (is_array($metadata)) {
-            wp_update_attachment_metadata(
-                $attachment_id,
-                $metadata
-            );
-        }
-
+wp_update_attachment_metadata(
+    $attachment_id,
+    [
+        'width'  => $size[0],
+        'height' => $size[1],
+        'file'   => _wp_relative_upload_path($source),
+    ]
+);
         // Ursprungsdatei merken, um Duplikate zu vermeiden.
         update_post_meta(
             $attachment_id,
