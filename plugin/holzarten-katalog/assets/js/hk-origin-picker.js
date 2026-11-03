@@ -37,6 +37,14 @@ document.addEventListener('DOMContentLoaded', function () {
                     attribution: '&copy; OpenStreetMap-Mitwirkende'
                 }
             ).addTo(map);
+            // Pinglayer bauen
+            const pingLayer = L.pingLayer({
+                duration: 1500,
+                fps: 32,
+                radiusRange: [5, 30],
+                opacityRange: [0.8, 0]
+             }).addTo(map);
+
             /*
             marker = L.circleMarker([lat, lng], {
                 radius: 9,
@@ -65,17 +73,9 @@ document.addEventListener('DOMContentLoaded', function () {
         pingLayer.ping([position.lng, position.lat], 'origin');
     }
 
-    // Pinglayer bauen
-    const pingLayer = L.pingLayer({
-                duration: 1500,
-                fps: 32,
-                radiusRange: [5, 30],
-                opacityRange: [0.8, 0]
-             }).addTo(map);
-
+    
     // Ortssuche mit Autovervollständigung.
     if (searchInput && searchResults) {
-
         searchInput.addEventListener('input', function () {
             clearTimeout(searchTimer);
             const searchTerm = searchInput.value.trim();
