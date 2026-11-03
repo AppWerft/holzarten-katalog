@@ -47,7 +47,6 @@ jQuery(document).ready(function ($) {
     const $table = $('#hk-catalog-table');
 
     if (!$activeFilter.length || !$table.length) {
-        console.log('table nicht da oder kein Schalter')
         return;
     }
 
@@ -56,11 +55,9 @@ jQuery(document).ready(function ($) {
         $table.find('tbody tr').each(function () {
             const row = $(this);
             const statusCheckbox = row.find('.hk-status-toggle').first();
-            console.log(statusCheckbox)
             if (!statusCheckbox.length) {
                 return;
             }
-
             row.toggle(
                 !onlyActive || statusCheckbox.is(':checked')
             );
@@ -72,5 +69,48 @@ jQuery(document).ready(function ($) {
 
     // Auch beim initialen Laden anwenden.
     filterActiveRows();
+
+});
+
+// Bild hochladen über Zwischenablage   
+jQuery(document).ready(function ($) {
+
+    const $pasteArea = $('#hk-image-paste');
+    const $preview = $('#hk-image-preview');
+
+    $pasteArea.on('paste', function (event) {
+        console.log(event)
+        const clipboard = event.originalEvent.clipboardData;
+
+        for (const item of clipboard.items) {
+
+            if (!item.type.startsWith('image/')) {
+                continue;
+            }
+
+            const blob = item.getAsFile();
+
+            if (!blob) {
+                continue;
+            }
+
+            const imageUrl = URL.createObjectURL(blob);
+
+            $preview.empty().append(
+                $('<img>', {
+                    src: imageUrl,
+                    css: {
+                        maxWidth: '200px',
+                        maxHeight: '200px'
+                    }
+                })
+            );
+
+            console.log('Bild übernommen:', blob);
+
+            // Hier folgt später der Upload zu WordPress.
+            break;
+        }
+    });
 
 });
