@@ -1002,12 +1002,57 @@ public function ajax_toggle_status()
 
             $new_image_path = $directory . $filename;
 
-            if (!move_uploaded_file(
-                $file['tmp_name'],
-                $new_image_path
-            )) {
-                wp_die('Die Bilddatei konnte nicht gespeichert werden.');
+        // WordPress-Bildeditor laden.
+        $editor = wp_get_image_editor($file['tmp_name']);
+
+        if (is_wp_error($editor)) {
+            wp_die(
+                'Das Bild konnte nicht verarbeitet werden: '
+                . $editor->get_error_message()
+            );
+        }
+
+        // Originalgröße ermitteln.
+        $size = $editor->get_size();
+
+        $width  = $size['width'];
+        $height = $size['height'];
+
+        // Kleinere Dimension auf maximal 512 Pixel begrenzen.
+        $min_dimension = min($width, $height);
+
+        if ($min_dimension > 512) {
+
+            $factor = 512 / $min_dimension;
+
+            $new_width = (int) round($width * $factor);
+            $new_height = (int) round($height * $factor);
+
+            $result = $editor->resize(
+                $new_width,
+                $new_height,
+                false
+            );
+
+            if (is_wp_error($result)) {
+                wp_die('Das Bild konnte nicht skaliert werden.');
             }
+        }
+
+        // Skaliertes Bild speichern.
+        $result = $editor->save(
+            $new_image_path,
+            $checked['type']
+        );
+
+        if (is_wp_error($result)) {
+            wp_die(
+                'Das Bild konnte nicht gespeichert werden: '
+                . $result->get_error_message()
+            );
+        }
+
+$image_file = $filename;
 
             $image_file = $filename;
         }

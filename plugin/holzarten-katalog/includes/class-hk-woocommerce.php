@@ -206,7 +206,7 @@ wp_update_attachment_metadata(
         'height' => $size[1],
         'file'   => _wp_relative_upload_path($source),
     ]
-);
+);  
         // Ursprungsdatei merken, um Duplikate zu vermeiden.
         update_post_meta(
             $attachment_id,
