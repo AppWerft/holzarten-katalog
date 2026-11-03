@@ -54,7 +54,7 @@ class HK_Assets {
         // PingLayer
         wp_enqueue_script(
             'hk-ping-layer',
-            HK_PLUGIN_URL . 'assets/vendor/leaflet-d3.js',
+            HK_PLUGIN_URL . 'assets/vendor/leaflet/leaflet-d3.js',
             ['hk-leaflet', 'hk-d3'],
             HK_VERSION,
             true
