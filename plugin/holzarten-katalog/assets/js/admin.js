@@ -55,7 +55,7 @@ jQuery(document).ready(function ($) {
         const onlyActive = $activeFilter.is(':checked');
         $table.find('tbody tr').each(function () {
             const row = $(this);
-            const statusCheckbox = row.find('.hk-item-active').first();
+            const statusCheckbox = row.find('.hk-status-toggle').first();
             console.log(statusCheckbox)
             if (!statusCheckbox.length) {
                 return;
