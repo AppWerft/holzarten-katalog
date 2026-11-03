@@ -76,7 +76,7 @@ jQuery(document).ready(function ($) {
 jQuery(document).ready(function ($) {
 
     const $pasteArea = $('#hk-image-paste');
-    const $preview = $('#hk-image-preview');
+    const $preview = $('#hk-image-paste');
     const $fileInput = $('#image_file');
 
     let previewUrl = null;
