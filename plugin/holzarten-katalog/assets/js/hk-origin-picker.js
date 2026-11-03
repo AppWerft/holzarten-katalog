@@ -45,7 +45,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 radiusRange: [5, 130],
                 opacityRange: [0.6, 0]
              }).addTo(map);
-             pingLayer.color("darkgreen");
             
             pingLayer.ping([lng, lat], 'origin');
             map.on('click', function (event) {
