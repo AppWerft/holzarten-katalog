@@ -18,7 +18,8 @@ document.addEventListener('DOMContentLoaded', function () {
     let marker = null;
     let searchTimer = null;
     let searchController = null;
-
+    let pingLayer = null;
+    
     button.addEventListener('click', function () {
 
         mapContainer.style.display = 'block';
@@ -38,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             ).addTo(map);
             // Pinglayer bauen
-            const pingLayer = L.pingLayer({
+            pingLayer = L.pingLayer({
                 duration: 1500,
                 fps: 32,
                 radiusRange: [5, 30],
