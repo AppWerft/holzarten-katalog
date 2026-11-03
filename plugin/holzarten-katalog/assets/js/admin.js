@@ -165,5 +165,29 @@ jQuery(document).ready(function ($) {
             break;
         }
     });
+    const $deleteButton = $('#hk-delete-image-button');
+const $deleteFlag = $('#hk-delete-image');
+
+// Bild löschen bzw. Auswahl verwerfen.
+$deleteButton.on('click', function () {
+
+    // File-Input leeren.
+    $fileInput.val('');
+
+    // Vorschau entfernen.
+    $preview.empty();
+
+    if (previewUrl) {
+        URL.revokeObjectURL(previewUrl);
+        previewUrl = null;
+    }
+
+    // Löschauftrag für ein bereits gespeichertes Bild setzen.
+    $deleteFlag.val('1');
+
+    // Aktuelle Bildanzeige ausblenden.
+    $('#hk-current-image').hide();
+});
 
 });
+
