@@ -52,15 +52,13 @@ jQuery(document).ready(function ($) {
     }
 
     function filterActiveRows() {
-        console.log('filterActiveRows')
         const onlyActive = $activeFilter.is(':checked');
-
         $table.find('tbody tr').each(function () {
 
             const row = $(this);
             console.log(row)
             const statusCheckbox = row.find('.hk-item-active').first();
-console.log(statusCheckbox)
+//console.log(statusCheckbox)
             if (!statusCheckbox.length) {
                 return;
             }
