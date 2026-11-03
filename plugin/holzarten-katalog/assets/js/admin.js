@@ -89,7 +89,10 @@ jQuery(document).ready(function ($) {
         }
 
         previewUrl = URL.createObjectURL(file);
-
+        $preview.css({
+            padding: 0,
+            overflow: 'hidden'
+        });
         $preview.empty().append(
             $('<img>', {
                 src: previewUrl,
