@@ -40,3 +40,39 @@ jQuery(document).ready(function ($) {
     });
 
 });
+
+jQuery(document).ready(function ($) {
+
+    const $activeFilter = $('#hk-only-active');
+    const $table = $('#hk-catalog-table');
+
+    if (!$activeFilter.length || !$table.length) {
+        return;
+    }
+
+    function filterActiveRows() {
+
+        const onlyActive = $activeFilter.is(':checked');
+
+        $table.find('tbody tr').each(function () {
+
+            const row = $(this);
+            const statusCheckbox = row.find('.hk-item-active').first();
+
+            if (!statusCheckbox.length) {
+                return;
+            }
+
+            row.toggle(
+                !onlyActive || statusCheckbox.is(':checked')
+            );
+        });
+    }
+
+    // Filter bei Änderung des Schalters anwenden.
+    $activeFilter.on('change', filterActiveRows);
+
+    // Auch beim initialen Laden anwenden.
+    filterActiveRows();
+
+});
