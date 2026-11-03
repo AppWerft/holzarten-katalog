@@ -53,17 +53,6 @@ class HK_WooCommerce
             20
             );
 
-        // Herkunftskoordinaten im Produkteditor anzeigen.
-        add_action(
-            'woocommerce_product_options_general_product_data',
-            [$this, 'render_origin_fields']
-        );
-
-        // Herkunftskoordinaten speichern.
-        add_action(
-            'woocommerce_admin_process_product_object',
-            [$this, 'save_origin_fields']
-        );
        
     }
     /**
@@ -407,58 +396,7 @@ private function sync_term_image($term_id, $image_file)
             ]
         );
     }
-    /**
-     * Herkunftskoordinaten im Produkteditor anzeigen.
-     */
-    public function render_origin_fields()
-    {
-        global $post;
-
-        $lat = get_post_meta(
-            $post->ID,
-            '_hk_origin_lat',
-            true
-        );
-
-        $lng = get_post_meta(
-            $post->ID,
-            '_hk_origin_lng',
-            true
-        );
-
-        echo '<div class="options_group">';
-
-        woocommerce_wp_text_input([
-            'id'                => '_hk_origin_lat',
-            'label'             => 'Breitengrad',
-            'value'             => $lat,
-            'type'              => 'number',
-            'custom_attributes' => [
-                'step' => 'any',
-            ],
-        ]);
-
-        woocommerce_wp_text_input([
-            'id'                => '_hk_origin_lng',
-            'label'             => 'Längengrad',
-            'value'             => $lng,
-            'type'              => 'number',
-            'custom_attributes' => [
-                'step' => 'any',
-            ],
-        ]);
-
-        echo '<p class="form-field">';
-        echo '<button type="button" class="button" id="hk-origin-picker">';
-        echo 'Herkunft auf Karte wählen';
-        echo '</button>';
-        echo '</p>';
-
-        echo '<div id="hk-origin-map" style="display:none; height:400px; margin:10px 12px;"></div>';
-
-        echo '</div>';
-    }
-
+    
 
     /**
      * Synchronisierung über Admin-Aktion starten.
