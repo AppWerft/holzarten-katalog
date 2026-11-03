@@ -60,3 +60,8 @@
 #hk-origin-search-results:empty {
     display: none;
 }
+.ping {
+    fill: #00ffcc !important;
+    stroke: #00b38f !important;
+    stroke-width: 2px;
+}
