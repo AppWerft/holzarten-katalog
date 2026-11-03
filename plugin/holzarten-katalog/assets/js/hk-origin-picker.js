@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     attribution: '&copy; OpenStreetMap-Mitwirkende'
                 }
             ).addTo(map);
-
+            /*
             marker = L.circleMarker([lat, lng], {
                 radius: 9,
                 color: '#ffffff',
@@ -47,37 +47,42 @@ document.addEventListener('DOMContentLoaded', function () {
             }).addTo(map);
 
             marker.bindPopup('Holzherkunft');
-
+            */
+            pingLayer.ping([lng, lat], 'origin');
             map.on('click', function (event) {
                 setPosition(event.latlng);
             });
-
-        }
+            
+            }
 
         map.invalidateSize();
     });
 
     function setPosition(position) {
-        marker.setLatLng(position);
-
         latField.value = position.lat.toFixed(6);
         lngField.value = position.lng.toFixed(6);
+
+        pingLayer.ping([position.lng, position.lat], 'origin');
     }
+
+    // Pinglayer bauen
+    const pingLayer = L.pingLayer({
+                duration: 1500,
+                fps: 32,
+                radiusRange: [5, 30],
+                opacityRange: [0.8, 0]
+             }).addTo(map);
 
     // Ortssuche mit Autovervollständigung.
     if (searchInput && searchResults) {
 
         searchInput.addEventListener('input', function () {
-
             clearTimeout(searchTimer);
-
             const searchTerm = searchInput.value.trim();
-
             if (searchTerm.length < 3) {
                 searchResults.innerHTML = '';
                 return;
             }
-
             searchTimer = setTimeout(function () {
                 getPosition(searchTerm);
             }, 350);
@@ -85,33 +90,23 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     async function getPosition(searchTerm) {
-
         if (searchController) {
             searchController.abort();
         }
-
         searchController = new AbortController();
-
         try {
-
             const response = await fetch(
                 `https://photon.komoot.io/api/?q=${encodeURIComponent(searchTerm)}&limit=5&lang=de`,
                 { signal: searchController.signal }
             );
-
             if (!response.ok) {
                 throw new Error(`HTTP-Fehler: ${response.status}`);
             }
-
             const data = await response.json();
-
             searchResults.innerHTML = '';
-
             data.features.forEach(function (feature) {
-
                 const properties = feature.properties;
                 const coordinates = feature.geometry.coordinates;
-
                 const name = [
                     properties.name,
                     properties.street,
@@ -152,7 +147,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 searchResults.appendChild(item);
             });
-
         } catch (error) {
 
             if (error.name !== 'AbortError') {
@@ -160,5 +154,4 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
     }
-
 });
