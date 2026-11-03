@@ -39,6 +39,9 @@
     public function render_fields()
     {
         error_log('HK_WC_Origin::render_fields aufgerufen');
+        error_log(
+    'HK_ORIGIN: ' . wp_debug_backtrace_summary()
+);
         global $post;
 
         $product = wc_get_product($post->ID);
