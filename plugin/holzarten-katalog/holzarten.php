@@ -22,6 +22,7 @@ require_once HK_PLUGIN_DIR . 'includes/class-hk-catalog.php';
 require_once HK_PLUGIN_DIR . 'includes/class-hk-woocommerce.php';
 require_once HK_PLUGIN_DIR . 'includes/class-hk-plugin.php';
 require_once HK_PLUGIN_DIR . 'includes/woocommerce/class-hk-wc-origin.php';
+require_once HK_PLUGIN_DIR . 'includes/class-hk-assets.php';
 
 // Aktivierung
 register_activation_hook(
@@ -33,3 +34,5 @@ register_activation_hook(
 HK_Plugin::instance();
 HK_WooCommerce::instance();
 HK_WC_Origin::instance();
+error_log('HK_ASSETS DATEI: ' . __FILE__);
+HK_Assets::init();
