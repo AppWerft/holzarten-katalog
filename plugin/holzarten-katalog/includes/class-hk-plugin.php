@@ -1,10 +1,12 @@
+
 <?php
 
 if (!defined('ABSPATH')) {
     exit;
 }
 
-class HK_Plugin {
+class HK_Plugin
+{
     private static $instance = null;
 
     public static function instance()
@@ -61,6 +63,7 @@ class HK_Plugin {
             },
             20
         );
+
         add_action(
             'wp_ajax_hk_toggle_status',
             [$this, 'ajax_toggle_status']
@@ -68,7 +71,7 @@ class HK_Plugin {
     }
 
     /**
-     * CSS nur auf unserer Plugin-Seite laden.
+     * CSS und JavaScript nur auf unserer Plugin-Seite laden.
      */
     public function enqueue_admin_assets($hook)
     {
@@ -76,19 +79,26 @@ class HK_Plugin {
             return;
         }
 
+        $plugin_dir = plugin_dir_path(dirname(__FILE__));
+        $plugin_url = plugin_dir_url(dirname(__FILE__));
+
         wp_enqueue_style(
             'hk-admin',
-            plugin_dir_url(dirname(__FILE__)) . 'assets/css/admin.css',
+            $plugin_url . 'assets/css/admin.css',
             [],
             '1.0.6'
         );
+
+        $js_file = $plugin_dir . 'assets/js/admin.js';
+
         wp_enqueue_script(
             'hk-admin',
-            plugin_dir_url(dirname(__FILE__)) . 'assets/js/admin.js',
+            $plugin_url . 'assets/js/admin.js',
             ['jquery'],
-            '1.0.2' .  time(),
+            file_exists($js_file) ? filemtime($js_file) : '1.0.2',
             true
         );
+
         wp_localize_script(
             'hk-admin',
             'hkAdmin',
@@ -96,7 +106,7 @@ class HK_Plugin {
                 'ajaxUrl' => admin_url('admin-ajax.php'),
                 'nonce'   => wp_create_nonce('hk_toggle_status'),
             ]
-);
+        );
     }
 
     /**
@@ -202,9 +212,6 @@ class HK_Plugin {
                 Holzarten-Katalog
             </h1>
 
-
-
-            
             <hr class="wp-header-end">
 
             <?php
@@ -315,6 +322,215 @@ class HK_Plugin {
         </div>
 
         <?php
+    }
+
+    /**
+     * Holzart speichern und Bilddatei verarbeiten.
+     */
+    public function handle_save()
+    {
+        if (!current_user_can('manage_options')) {
+            wp_die('Keine Berechtigung.');
+        }
+
+        check_admin_referer('hk_save_item');
+
+        $id = isset($_POST['id'])
+            ? sanitize_text_field(wp_unslash($_POST['id']))
+            : '';
+
+        $existing = $id
+            ? HK_Catalog::get($id)
+            : null;
+
+        $old_image_file = is_array($existing)
+            ? ($existing['image_file'] ?? '')
+            : '';
+
+        // Vorhandenes Bild zunächst beibehalten.
+        $image_file = $old_image_file;
+        $new_image_path = '';
+
+        // Löschanforderung prüfen.
+        $delete_image = isset($_POST['delete_image'])
+            && $_POST['delete_image'] === '1';
+
+        // Bild-Upload.
+        $has_upload = isset($_FILES['image_file'])
+            && $_FILES['image_file']['error'] !== UPLOAD_ERR_NO_FILE;
+
+        if ($has_upload) {
+
+            $file = $_FILES['image_file'];
+
+            if ($file['error'] !== UPLOAD_ERR_OK) {
+                wp_die(
+                    'Beim Hochladen der Bilddatei ist ein Fehler aufgetreten.'
+                );
+            }
+
+            $allowed_types = [
+                'jpg|jpeg' => 'image/jpeg',
+                'png'      => 'image/png',
+                'webp'     => 'image/webp',
+            ];
+
+            $checked = wp_check_filetype_and_ext(
+                $file['tmp_name'],
+                $file['name'],
+                $allowed_types
+            );
+
+            if (empty($checked['type'])) {
+                wp_die(
+                    'Ungültiger Bildtyp. Erlaubt sind JPG, PNG und WebP.'
+                );
+            }
+
+            $directory = trailingslashit(HK_Storage::directory())
+                . 'images/';
+
+            if (!wp_mkdir_p($directory)) {
+                wp_die('Das Bildverzeichnis konnte nicht angelegt werden.');
+            }
+
+            $base_name = sanitize_title(
+                wp_unslash($_POST['name_de'] ?? 'holzart')
+            );
+
+            if ($base_name === '') {
+                $base_name = 'holzart';
+            }
+
+            // Immer WebP verwenden.
+            $filename = wp_unique_filename(
+                $directory,
+                $base_name . '.webp'
+            );
+
+            $new_image_path = $directory . $filename;
+
+            // WordPress-Bildeditor laden.
+            $editor = wp_get_image_editor($file['tmp_name']);
+
+            if (is_wp_error($editor)) {
+                wp_die(
+                    'Das Bild konnte nicht verarbeitet werden: '
+                    . $editor->get_error_message()
+                );
+            }
+
+            // Originalgröße ermitteln.
+            $size = $editor->get_size();
+
+            $width  = $size['width'];
+            $height = $size['height'];
+
+            // Kleinere Dimension auf maximal 512 Pixel begrenzen.
+            $min_dimension = min($width, $height);
+
+            if ($min_dimension > 512) {
+
+                $factor = 512 / $min_dimension;
+
+                $new_width = (int) round($width * $factor);
+                $new_height = (int) round($height * $factor);
+
+                $result = $editor->resize(
+                    $new_width,
+                    $new_height,
+                    false
+                );
+
+                if (is_wp_error($result)) {
+                    wp_die('Das Bild konnte nicht skaliert werden.');
+                }
+            }
+
+            // Als WebP speichern.
+            $result = $editor->save(
+                $new_image_path,
+                'image/webp'
+            );
+
+            if (is_wp_error($result)) {
+                wp_die(
+                    'Das Bild konnte nicht als WebP gespeichert werden: '
+                    . $result->get_error_message()
+                );
+            }
+
+            $image_file = $filename;
+
+        } elseif ($delete_image) {
+
+            // Nur löschen, wenn kein neues Bild hochgeladen wurde.
+            $image_file = '';
+        }
+
+        // Katalogdaten zusammenstellen.
+        $data = [
+            'name_de' => sanitize_text_field(
+                wp_unslash($_POST['name_de'] ?? '')
+            ),
+
+            'name_latin' => sanitize_text_field(
+                wp_unslash($_POST['name_latin'] ?? '')
+            ),
+
+            'code' => sanitize_text_field(
+                wp_unslash($_POST['code'] ?? '')
+            ),
+
+            'description' => sanitize_textarea_field(
+                wp_unslash($_POST['description'] ?? '')
+            ),
+
+            'image_file' => $image_file,
+
+            'active' => !empty($_POST['active']),
+        ];
+
+        $result = HK_Catalog::save(
+            $data,
+            $id ?: null
+        );
+
+        $url = admin_url('admin.php?page=holzarten-katalog');
+
+        if (is_wp_error($result) || $result === false) {
+
+            // Neu hochgeladenes Bild bei fehlgeschlagenem Speichern entfernen.
+            if (
+                $new_image_path !== ''
+                && is_file($new_image_path)
+            ) {
+                unlink($new_image_path);
+            }
+
+            wp_safe_redirect(
+                add_query_arg('error', '1', $url)
+            );
+            exit;
+        }
+
+        // Altes Bild nur löschen, wenn es nicht mehr verwendet wird.
+        if (
+            $old_image_file !== ''
+            && $old_image_file !== $image_file
+        ) {
+            $this->delete_image_if_unused($old_image_file);
+        }
+
+        /*
+         * Die WooCommerce-Synchronisierung wird bereits zentral
+         * in HK_Catalog::save() vorgemerkt.
+         */
+
+        wp_safe_redirect(
+            add_query_arg('saved', '1', $url)
+        );
+        exit;
     }
 
     /**
@@ -542,67 +758,76 @@ class HK_Plugin {
                     </td>
                 </tr>
 
-<!-- Bilderhochlade: -->
-<tr>
-    <th>
-        <label>Bilddatei</label>
-    </th>
-    <td>
-        <div style="display:flex; gap:20px; align-items:flex-start;">
+                <!-- Bilderhochladen -->
+                <tr>
+                    <th>
+                        <label>Bilddatei</label>
+                    </th>
 
-            <!-- Zwischenablage -->
-            <div style="flex:1;">
+                    <td>
+                        <div style="display:flex; gap:20px; align-items:flex-start;">
 
-                <div id="hk-image-paste" tabindex="0"
-                     style="min-height:100px; padding:12px; border:2px dashed #aaa;">
+                            <!-- Zwischenablage -->
+                            <div style="flex:1;">
 
-                    <?php if ($image_url): ?>
-                        <img src="<?php echo esc_url($image_url); ?>"
-                             alt="<?php echo esc_attr($item['name_de'] ?? ''); ?>"
-                             style="max-width:180px;height:auto;">
+                                <div id="hk-image-paste"
+                                     tabindex="0"
+                                     style="min-height:100px; padding:12px; border:2px dashed #aaa;">
 
-                        <p class="description">
-                            Aktuelles Bild: <?php echo esc_html($image_file); ?>
-                        </p>
-                    <?php else: ?>
-                        Bild hier einfügen (⌘ V / Strg+V)
-                    <?php endif; ?>
+                                    <?php if ($image_url): ?>
 
-                    <div id="hk-image-preview"></div>
-                </div>
+                                        <img src="<?php echo esc_url($image_url); ?>"
+                                             alt="<?php echo esc_attr($item['name_de'] ?? ''); ?>"
+                                             style="max-width:180px;height:auto;">
 
-            </div>
+                                        <p class="description">
+                                            Aktuelles Bild:
+                                            <?php echo esc_html($image_file); ?>
+                                        </p>
 
-            <!-- Datei-Upload -->
-            <div style="flex:1;">
+                                    <?php else: ?>
 
-                <input type="file"
-                       id="image_file"
-                       name="image_file"
-                       accept=".jpg,.jpeg,.png,.webp">
+                                        Bild hier einfügen (⌘ V / Strg+V)
 
-                <p class="description">
-                    JPG, PNG oder WebP auswählen.
-                </p>
+                                    <?php endif; ?>
 
-            </div>
+                                    <div id="hk-image-preview"></div>
 
-        </div>
+                                </div>
 
-        <input type="hidden"
-               id="hk-delete-image"
-               name="delete_image"
-               value="0">
+                            </div>
 
-        <button type="button"
-                id="hk-delete-image-button"
-                class="button">
-            Bild löschen
-        </button>
+                            <!-- Datei-Upload -->
+                            <div style="flex:1;">
 
-    </td>
-</tr>
-<!-- /Bilderhochlade: -->
+                                <input type="file"
+                                       id="image_file"
+                                       name="image_file"
+                                       accept=".jpg,.jpeg,.png,.webp">
+
+                                <p class="description">
+                                    JPG, PNG oder WebP auswählen.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <input type="hidden"
+                               id="hk-delete-image"
+                               name="delete_image"
+                               value="0">
+
+                        <button type="button"
+                                id="hk-delete-image-button"
+                                class="button">
+                            Bild löschen
+                        </button>
+
+                    </td>
+                </tr>
+                <!-- /Bilderhochladen -->
+
                 <tr>
                     <th>Status</th>
                     <td>
@@ -635,12 +860,6 @@ class HK_Plugin {
     }
 
     /**
-     * JSON-Importformular darstellen.
-     *
-    
-     */
-   
-    /**
      * ZIP-Importformular darstellen.
      */
     private function render_import_form()
@@ -650,9 +869,11 @@ class HK_Plugin {
         <hr>
 
         <h2>Holzartenkatalog importieren</h2>
-<p class="description">
+
+        <p class="description">
             Importiert einen vollständigen Export mit Bäumen und ihren Holzbildern (*.zip).
         </p>
+
         <form method="post"
               action="<?php echo esc_url(admin_url('admin-post.php')); ?>"
               enctype="multipart/form-data">
@@ -676,11 +897,13 @@ class HK_Plugin {
                 false
             );
             ?>
+
         </form>
+
         <hr>
+
         <?php
     }
-
 
     /**
      * Tabelle mit allen Holzarten darstellen.
@@ -688,51 +911,58 @@ class HK_Plugin {
     private function render_table($items, $search)
     {
         ?>
-        <table width="100%"><tr><td>
 
+        <table width="100%">
+            <tr>
+                <td>
+                    <a href="<?php echo esc_url(
+                        admin_url('admin.php?page=holzarten-katalog&new=1')
+                    ); ?>" class="page-title-action">
+                        Neue Holzart anlegen
+                    </a>
+                </td>
 
-            <a href="<?php echo esc_url(
-                admin_url('admin.php?page=holzarten-katalog&new=1')
-            ); ?>" class="page-title-action">
-                Neue Holzart anlegen
-            </a>
-</td><td>
+                <td>
+                    <label class="hk-switch">
+                        <input type="checkbox" id="hk-only-active">
+                        <span class="hk-slider"></span>
+                        <span class="hk-switch-label">Nur aktive Hölzer</span>
+                    </label>
+                </td>
 
+                <td>
+                    <form method="get">
 
+                        <input type="hidden"
+                               name="page"
+                               value="holzarten-katalog">
 
-<label class="hk-switch">
-    <input type="checkbox" id="hk-only-active">
-    <span class="hk-slider"></span>
-    <span class="hk-switch-label">Nur aktive Hölzer</span>
-</label>
-                        </td><td>
-        <form method="get">
+                        <p class="search-box">
 
-            <input type="hidden"
-                   name="page"
-                   value="holzarten-katalog">
+                            <label class="screen-reader-text"
+                                   for="hk-search">
+                                Holzartenfilter
+                            </label>
 
-            <p class="search-box">
+                            <input type="search"
+                                   placeholder="Baumart"
+                                   id="hk-search"
+                                   name="s"
+                                   value="<?php echo esc_attr($search); ?>">
 
-                <label class="screen-reader-text" for="hk-search">
-                    Holzartenfilter
-                </label>
+                            <input type="submit"
+                                   class="button"
+                                   value="Filtern">
 
-                <input type="search"
-                            placeholder="Baumart"
-                       id="hk-search"
-                       name="s"
-                       value="<?php echo esc_attr($search); ?>">
+                        </p>
 
-                <input type="submit"
-                       class="button"
-                       value="Filtern">
+                    </form>
+                </td>
+            </tr>
+        </table>
 
-            </p>
-
-        </form>
-         <td></tr></table>                   
-        <table id="hk-catalog-table" class="wp-list-table widefat fixed striped">
+        <table id="hk-catalog-table"
+               class="wp-list-table widefat fixed striped">
 
             <thead>
                 <tr>
@@ -758,37 +988,45 @@ class HK_Plugin {
             <?php else: ?>
 
                 <?php foreach ($items as $item): ?>
+
                     <tr>
-                      <td>
-    <?php
-    $image_url = $this->get_image_url(
-        $item['image_file'] ?? ''
-    );
-    ?>
 
-   
-   <?php if ($image_url && file_exists(
-    trailingslashit(HK_Storage::directory())
-    . 'images/'
-    . basename($item['image_file'])
-)): ?>
+                        <td>
+                            <?php
+                            $image_file = $item['image_file'] ?? '';
 
-    <span class="hk-image-zoom">
-        <img src="<?php echo esc_url($image_url); ?>"
-             alt="<?php echo esc_attr($item['name_de'] ?? ''); ?>"
-             class="hk-wood-image">
-    </span>
+                            $image_url = $this->get_image_url(
+                                $image_file
+                            );
 
-<?php else: ?>
+                            $image_path = trailingslashit(
+                                HK_Storage::directory()
+                            ) . 'images/' . basename($image_file);
+                            ?>
 
-    <div>
-        <img class="hk-image-placeholder" src="<?php echo esc_url(
-            plugin_dir_url(dirname(__FILE__)) . 'assets/images/holz.png'
-        ); ?>" alt="Kein Bild verfügbar">
-    </div>
+                            <?php if ($image_url && is_file($image_path)): ?>
 
-<?php endif; ?>
-</td>
+                                <span class="hk-image-zoom">
+                                    <img src="<?php echo esc_url($image_url); ?>"
+                                         alt="<?php echo esc_attr($item['name_de'] ?? ''); ?>"
+                                         class="hk-wood-image">
+                                </span>
+
+                            <?php else: ?>
+
+                                <div>
+                                    <img class="hk-image-placeholder"
+                                         src="<?php echo esc_url(
+                                             plugin_dir_url(dirname(__FILE__))
+                                             . 'assets/images/holz.png'
+                                         ); ?>"
+                                         alt="Kein Bild verfügbar">
+                                </div>
+
+                            <?php endif; ?>
+
+                        </td>
+
                         <td>
                             <strong>
                                 <?php echo esc_html(
@@ -797,18 +1035,20 @@ class HK_Plugin {
                             </strong>
 
                             <?php if (!empty($item['description'])): ?>
-                                <div tabindex="0"  
-                                 style="
-                                  height:100px;
-             width:150px;
-             overflow:scroll;
-             overflow-wrap:anywhere;
-             background:#fff;">
-                                        <?php echo esc_html(
-                                            $item['description']
-                                        ); ?>
-                                    
-                              </div>
+
+                                <div tabindex="0"
+                                     style="
+                                         height:100px;
+                                         width:150px;
+                                         overflow:scroll;
+                                         overflow-wrap:anywhere;
+                                         background:#fff;
+                                     ">
+                                    <?php echo esc_html(
+                                        $item['description']
+                                    ); ?>
+                                </div>
+
                             <?php endif; ?>
                         </td>
 
@@ -826,18 +1066,20 @@ class HK_Plugin {
                             ); ?>
                         </td>
 
-                       <td>
-    <label>
-        <input type="checkbox"
-               class="hk-status-toggle"
-               data-id="<?php echo esc_attr($item['id']); ?>"
-               <?php checked(!empty($item['active'])); ?>>
+                        <td>
+                            <label>
+                                <input type="checkbox"
+                                       class="hk-status-toggle"
+                                       data-id="<?php echo esc_attr($item['id']); ?>"
+                                       <?php checked(!empty($item['active'])); ?>>
 
-        <span class="hk-status-label">
-            <?php echo !empty($item['active']) ? 'Aktiv' : 'Inaktiv'; ?>
-        </span>
-    </label>
-</td>
+                                <span class="hk-status-label">
+                                    <?php echo !empty($item['active'])
+                                        ? 'Aktiv'
+                                        : 'Inaktiv'; ?>
+                                </span>
+                            </label>
+                        </td>
 
                         <td>
 
@@ -847,11 +1089,16 @@ class HK_Plugin {
                                     . rawurlencode($item['id'])
                                 )
                             ); ?>">
-                                <img style="width:18px;"  src="<?php echo esc_url(
-            plugin_dir_url(dirname(__FILE__)) . 'assets/images/edit.svg'
-        ); ?>" />
+                                <img style="width:18px;"
+                                     src="<?php echo esc_url(
+                                         plugin_dir_url(dirname(__FILE__))
+                                         . 'assets/images/edit.svg'
+                                     ); ?>"
+                                     alt="Bearbeiten">
                             </a>
+
                             &nbsp;
+
                             <a href="<?php echo esc_url(
                                 wp_nonce_url(
                                     admin_url(
@@ -862,9 +1109,14 @@ class HK_Plugin {
                                 )
                             ); ?>"
                                onclick="return confirm('Diese Holzart wirklich löschen?');">
-                                <img style="width:16px;" src="<?php echo esc_url(
-                                plugin_dir_url(dirname(__FILE__)) . 'assets/images/delete.svg'
-        ); ?>" />
+
+                                <img style="width:16px;"
+                                     src="<?php echo esc_url(
+                                         plugin_dir_url(dirname(__FILE__))
+                                         . 'assets/images/delete.svg'
+                                     ); ?>"
+                                     alt="Löschen">
+
                             </a>
 
                         </td>
@@ -883,243 +1135,42 @@ class HK_Plugin {
     }
 
     /**
- * Aktiv-Status per AJAX ändern.
- */
-public function ajax_toggle_status()
-{
-    if (!current_user_can('manage_options')) {
-        wp_send_json_error([
-            'message' => 'Keine Berechtigung.'
-        ], 403);
-    }
-
-    check_ajax_referer('hk_toggle_status', 'nonce');
-
-    $id = isset($_POST['id'])
-        ? sanitize_text_field(wp_unslash($_POST['id']))
-        : '';
-
-    $active = isset($_POST['active'])
-        && $_POST['active'] === '1';
-
-    if ($id === '') {
-        wp_send_json_error([
-            'message' => 'Ungültige Holzarten-ID.'
-        ]);
-    }
-
-    $result = HK_Catalog::set_active($id, $active);
-
-    if (is_wp_error($result)) {
-        wp_send_json_error([
-            'message' => $result->get_error_message()
-        ]);
-    }
-
-    wp_send_json_success([
-        'active' => $active
-    ]);
-}
-    /**
-     * Holzart speichern und Bilddatei verarbeiten.
+     * Aktiv-Status per AJAX ändern.
      */
-    public function handle_save()
+    public function ajax_toggle_status()
     {
         if (!current_user_can('manage_options')) {
-            wp_die('Keine Berechtigung.');
+            wp_send_json_error([
+                'message' => 'Keine Berechtigung.',
+            ], 403);
         }
 
-        check_admin_referer('hk_save_item');
+        check_ajax_referer('hk_toggle_status', 'nonce');
 
         $id = isset($_POST['id'])
             ? sanitize_text_field(wp_unslash($_POST['id']))
             : '';
 
-        $existing = $id
-            ? HK_Catalog::get($id)
-            : null;
+        $active = isset($_POST['active'])
+            && $_POST['active'] === '1';
 
-        $old_image_file = is_array($existing)
-            ? ($existing['image_file'] ?? '')
-            : '';
-
-        // Vorhandenes Bild zunächst beibehalten.
-        $image_file = $old_image_file;
-        $new_image_path = '';
-
-        // Bild-Upload.
-        if (
-            isset($_FILES['image_file']) &&
-            $_FILES['image_file']['error'] !== UPLOAD_ERR_NO_FILE
-        ) {
-            $file = $_FILES['image_file'];
-
-            if ($file['error'] !== UPLOAD_ERR_OK) {
-                wp_die(
-                    'Beim Hochladen der Bilddatei ist ein Fehler aufgetreten.'
-                );
-            }
-
-            $allowed_types = [
-                'jpg|jpeg' => 'image/jpeg',
-                'png'      => 'image/png',
-                'webp'     => 'image/webp',
-            ];
-
-            $checked = wp_check_filetype_and_ext(
-                $file['tmp_name'],
-                $file['name'],
-                $allowed_types
-            );
-
-            if (empty($checked['type'])) {
-                wp_die(
-                    'Ungültiger Bildtyp. Erlaubt sind JPG, PNG und WebP.'
-                );
-            }
-
-            $directory = trailingslashit(HK_Storage::directory())
-                . 'images/';
-
-            if (!wp_mkdir_p($directory)) {
-                wp_die('Das Bildverzeichnis konnte nicht angelegt werden.');
-            }
-
-            $base_name = sanitize_title(
-                wp_unslash($_POST['name_de'] ?? 'holzart')
-            );
-
-            if ($base_name === '') {
-                $base_name = 'holzart';
-            }
-
-            $filename = $base_name . '.' . $checked['ext'];
-
-            $filename = wp_unique_filename(
-                $directory,
-                $filename
-            );
-
-            $new_image_path = $directory . $filename;
-
-        // WordPress-Bildeditor laden.
-        $editor = wp_get_image_editor($file['tmp_name']);
-
-        if (is_wp_error($editor)) {
-            wp_die(
-                'Das Bild konnte nicht verarbeitet werden: '
-                . $editor->get_error_message()
-            );
+        if ($id === '') {
+            wp_send_json_error([
+                'message' => 'Ungültige Holzarten-ID.',
+            ]);
         }
 
-        // Originalgröße ermitteln.
-        $size = $editor->get_size();
-
-        $width  = $size['width'];
-        $height = $size['height'];
-
-        // Kleinere Dimension auf maximal 512 Pixel begrenzen.
-        $min_dimension = min($width, $height);
-
-        if ($min_dimension > 512) {
-
-            $factor = 512 / $min_dimension;
-
-            $new_width = (int) round($width * $factor);
-            $new_height = (int) round($height * $factor);
-
-            $result = $editor->resize(
-                $new_width,
-                $new_height,
-                false
-            );
-
-            if (is_wp_error($result)) {
-                wp_die('Das Bild konnte nicht skaliert werden.');
-            }
-        }
-
-        // Skaliertes Bild speichern.
-        $result = $editor->save(
-            $new_image_path,
-            $checked['type']
-        );
+        $result = HK_Catalog::set_active($id, $active);
 
         if (is_wp_error($result)) {
-            wp_die(
-                'Das Bild konnte nicht gespeichert werden: '
-                . $result->get_error_message()
-            );
+            wp_send_json_error([
+                'message' => $result->get_error_message(),
+            ]);
         }
 
-$image_file = $filename;
-
-            $image_file = $filename;
-        }
-
-        // Katalogdaten zusammenstellen.
-        $data = [
-            'name_de' => sanitize_text_field(
-                wp_unslash($_POST['name_de'] ?? '')
-            ),
-
-            'name_latin' => sanitize_text_field(
-                wp_unslash($_POST['name_latin'] ?? '')
-            ),
-
-            'code' => sanitize_text_field(
-                wp_unslash($_POST['code'] ?? '')
-            ),
-
-            'description' => sanitize_textarea_field(
-                wp_unslash($_POST['description'] ?? '')
-            ),
-
-            'image_file' => $image_file,
-
-            'active' => !empty($_POST['active']),
-        ];
-
-        $result = HK_Catalog::save(
-            $data,
-            $id ?: null
-        );
-
-        $url = admin_url('admin.php?page=holzarten-katalog');
-
-        if (is_wp_error($result) || $result === false) {
-
-            // Neu hochgeladenes Bild bei fehlgeschlagenem Speichern entfernen.
-            if (
-                $new_image_path !== '' &&
-                is_file($new_image_path)
-            ) {
-                unlink($new_image_path);
-            }
-
-            wp_safe_redirect(
-                add_query_arg('error', '1', $url)
-            );
-            exit;
-        }
-
-        // Altes Bild nur löschen, wenn es nicht mehr verwendet wird.
-        if (
-            $old_image_file !== '' &&
-            $old_image_file !== $image_file
-        ) {
-            $this->delete_image_if_unused($old_image_file);
-        }
-
-        /*
-         * Die WooCommerce-Synchronisierung wird bereits zentral
-         * in HK_Catalog::save() vorgemerkt.
-         */
-
-        wp_safe_redirect(
-            add_query_arg('saved', '1', $url)
-        );
-        exit;
+        wp_send_json_success([
+            'active' => $active,
+        ]);
     }
 
     /**
@@ -1172,7 +1223,6 @@ $image_file = $filename;
         exit;
     }
 
-    
     /**
      * ZIP-Archiv mit dem Holzartenkatalog importieren.
      */
@@ -1255,5 +1305,4 @@ $image_file = $filename;
         );
         exit;
     }
-
 }
