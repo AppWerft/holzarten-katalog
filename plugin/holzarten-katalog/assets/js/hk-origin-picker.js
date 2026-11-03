@@ -42,21 +42,12 @@ document.addEventListener('DOMContentLoaded', function () {
             pingLayer = L.pingLayer({
                 duration: 1500,
                 fps: 32,
-                radiusRange: [5, 30],
+                color: 'red',
+                radiusRange: [5, 130],
                 opacityRange: [0.8, 0]
              }).addTo(map);
 
-            /*
-            marker = L.circleMarker([lat, lng], {
-                radius: 9,
-                color: '#ffffff',
-                weight: 1,
-                fillColor: '#d33',
-                fillOpacity: 1
-            }).addTo(map);
-
-            marker.bindPopup('Holzherkunft');
-            */
+            
             pingLayer.ping([lng, lat], 'origin');
             map.on('click', function (event) {
                 setPosition(event.latlng);
