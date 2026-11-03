@@ -114,3 +114,16 @@
 .hk-switch-label {
     font-size: 13px;
 }
+
+#hk-image-paste {
+    border: 2px dashed #aaa;
+    padding: 25px;
+    text-align: center;
+    cursor: pointer;
+    background: #f9f9f9;
+}
+
+#hk-image-paste:focus {
+    border-color: #3858e9;
+    outline: none;
+}

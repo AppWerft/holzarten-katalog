@@ -564,7 +564,11 @@ class HK_Plugin {
                             </p>
 
                         <?php else: ?>
+<div id="hk-image-paste" tabindex="0">
+    Bild hier einfügen (Cmd+V / Strg+V)
+</div>
 
+<div id="hk-image-preview"></div>
                             <p class="description">
                                 Noch kein Bild zugeordnet.
                             </p>
