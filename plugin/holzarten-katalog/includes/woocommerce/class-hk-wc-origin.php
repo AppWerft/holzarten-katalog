@@ -81,7 +81,7 @@
 
         echo '<p class="form-field">';
         echo '<label>&nbsp;</label>';
-        echo '<button type="button" class="button" id="hk-origin-picker">';
+        echo '<button style="display:none" type="button" class="button" id="hk-origin-picker">';
         echo 'Herkunft auf Karte wählen';
         echo '</button>';
         echo '</p>';
