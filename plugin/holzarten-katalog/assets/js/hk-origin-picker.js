@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let searchTimer = null;
     let searchController = null;
     let pingLayer = null;
-    
+
     button.addEventListener('click', function () {
 
         mapContainer.style.display = 'block';
@@ -61,8 +61,14 @@ document.addEventListener('DOMContentLoaded', function () {
             map.on('click', function (event) {
                 setPosition(event.latlng);
             });
-            
-            }
+            // Regelmäßig neue Pulse erzeugen.
+            pingTimer = setInterval(function () {
+                const currentLat = parseFloat(latField.value);
+                const currentLng = parseFloat(lngField.value);
+
+                pingLayer.ping([currentLng, currentLat], 'origin');
+            }, 700);
+                        }
 
         map.invalidateSize();
     });
