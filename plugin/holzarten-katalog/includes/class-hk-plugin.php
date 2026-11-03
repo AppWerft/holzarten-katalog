@@ -585,7 +585,16 @@ class HK_Plugin {
                             Erlaubt: JPG, PNG und WebP.
                             Ein neues Bild ersetzt das bisherige.
                         </p>
+<input type="hidden"
+       id="hk-delete-image"
+       name="delete_image"
+       value="0">
 
+<button type="button"
+        id="hk-delete-image-button"
+        class="button">
+    Bild löschen
+</button>
                     </td>
                 </tr>
                 <!-- /Bilderhochlade: -->
