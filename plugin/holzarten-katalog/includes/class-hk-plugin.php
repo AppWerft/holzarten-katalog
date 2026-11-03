@@ -543,61 +543,60 @@ class HK_Plugin {
                 </tr>
 
                 <!-- Bilderhochlade: -->
-                <tr>
-                    <th>
-                        <label for="image_file">Bilddatei</label>
-                    </th>
-                    <td>
+<tr>
+    <th>
+        <label for="image_file">Bilddatei</label>
+    </th>
+    <td>
 
-                        <?php if ($image_url): ?>
+        <div id="hk-image-paste" tabindex="0">
 
-                            <p>
-                                <img src="<?php echo esc_url($image_url); ?>"
-                                     alt="<?php echo esc_attr(
-                                         $item['name_de'] ?? ''
-                                     ); ?>"
-                                     style="max-width:180px;height:auto;">
-                            </p>
+            <?php if ($image_url): ?>
 
-                            <p class="description">
-                                Aktuelles Bild:
-                                <?php echo esc_html($image_file); ?>
-                            </p>
+                <img src="<?php echo esc_url($image_url); ?>"
+                     alt="<?php echo esc_attr(
+                         $item['name_de'] ?? ''
+                     ); ?>"
+                     style="max-width:180px;height:auto;">
 
-                        <?php else: ?>
-                            <div id="hk-image-paste" tabindex="0">
-                                Bild hier einfügen (Cmd+V / Strg+V)
-                            </div>
+                <p class="description">
+                    Aktuelles Bild: <?php echo esc_html($image_file); ?>
+                </p>
 
-                           
-                            <p class="description">
-                                Noch kein Bild zugeordnet.
-                            </p>
+            <?php else: ?>
 
-                        <?php endif; ?>
-                        <div id="hk-image-preview"></div>
-                        <input type="file"
-                               id="image_file"
-                               name="image_file"
-                               accept=".jpg,.jpeg,.png,.webp">
+                Bild hier einfügen (Cmd+V / Strg+V)
 
-                        <p class="description">
-                            Erlaubt: JPG, PNG und WebP.
-                            Ein neues Bild ersetzt das bisherige.
-                        </p>
-<input type="hidden"
-       id="hk-delete-image"
-       name="delete_image"
-       value="0">
+            <?php endif; ?>
 
-<button type="button"
-        id="hk-delete-image-button"
-        class="button">
-    Bild löschen
-</button>
-                    </td>
-                </tr>
-                <!-- /Bilderhochlade: -->
+            <div id="hk-image-preview"></div>
+
+        </div>
+
+        <input type="file"
+               id="image_file"
+               name="image_file"
+               accept=".jpg,.jpeg,.png,.webp">
+
+        <p class="description">
+            Erlaubt: JPG, PNG und WebP.
+            Ein neues Bild ersetzt das bisherige.
+        </p>
+
+        <input type="hidden"
+               id="hk-delete-image"
+               name="delete_image"
+               value="0">
+
+        <button type="button"
+                id="hk-delete-image-button"
+                class="button">
+            Bild löschen
+        </button>
+
+    </td>
+</tr>
+<!-- /Bilderhochlade: -->
                 <tr>
                     <th>Status</th>
                     <td>
