@@ -542,6 +542,7 @@ class HK_Plugin {
                     </td>
                 </tr>
 
+                <!-- Bilderhochlade: -->
                 <tr>
                     <th>
                         <label for="image_file">Bilddatei</label>
@@ -568,13 +569,13 @@ class HK_Plugin {
                                 Bild hier einfügen (Cmd+V / Strg+V)
                             </div>
 
-                            <div id="hk-image-preview"></div>
+                           
                             <p class="description">
                                 Noch kein Bild zugeordnet.
                             </p>
 
                         <?php endif; ?>
-
+                        <div id="hk-image-preview"></div>
                         <input type="file"
                                id="image_file"
                                name="image_file"
@@ -587,7 +588,7 @@ class HK_Plugin {
 
                     </td>
                 </tr>
-
+                <!-- /Bilderhochlade: -->
                 <tr>
                     <th>Status</th>
                     <td>

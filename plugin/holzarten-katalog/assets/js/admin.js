@@ -72,14 +72,50 @@ jQuery(document).ready(function ($) {
 
 });
 
-// Bild hochladen über Zwischenablage   
+// Bild hochladen über Zwischenablage
 jQuery(document).ready(function ($) {
 
     const $pasteArea = $('#hk-image-paste');
     const $preview = $('#hk-image-preview');
+    const $fileInput = $('#image_file');
 
+    let previewUrl = null;
+
+    function showPreview(file) {
+
+        // Alte Vorschau-URL freigeben.
+        if (previewUrl) {
+            URL.revokeObjectURL(previewUrl);
+        }
+
+        previewUrl = URL.createObjectURL(file);
+
+        $preview.empty().append(
+            $('<img>', {
+                src: previewUrl,
+                css: {
+                    maxWidth: '200px',
+                    maxHeight: '200px'
+                }
+            })
+        );
+    }
+
+    // Klassische Dateiauswahl.
+    $fileInput.on('change', function () {
+
+        const file = this.files[0];
+
+        if (file) {
+            showPreview(file);
+        }
+    });
+
+    // Bild aus der Zwischenablage übernehmen.
     $pasteArea.on('paste', function (event) {
-        console.log(event)
+
+        event.preventDefault();
+
         const clipboard = event.originalEvent.clipboardData;
 
         for (const item of clipboard.items) {
@@ -94,21 +130,38 @@ jQuery(document).ready(function ($) {
                 continue;
             }
 
-            const imageUrl = URL.createObjectURL(blob);
+            // Dateiendung anhand des MIME-Typs bestimmen.
+            const extensions = {
+                'image/jpeg': 'jpg',
+                'image/png': 'png',
+                'image/webp': 'webp'
+            };
 
-            $preview.empty().append(
-                $('<img>', {
-                    src: imageUrl,
-                    css: {
-                        maxWidth: '200px',
-                        maxHeight: '200px'
-                    }
-                })
+            const extension = extensions[blob.type];
+
+            if (!extension) {
+                continue;
+            }
+
+            const file = new File(
+                [blob],
+                'clipboard-image.' + extension,
+                { type: blob.type }
             );
 
-            console.log('Bild übernommen:', blob);
+            // File-Input wie bei einer normalen Dateiauswahl befüllen.
+            const dataTransfer = new DataTransfer();
+            dataTransfer.items.add(file);
+            $fileInput[0].files = dataTransfer.files;
 
-            // Hier folgt später der Upload zu WordPress.
+            // Vorschau anzeigen.
+            showPreview(file);
+
+            // Vorhandene change-Handler auslösen.
+            $fileInput.trigger('change');
+
+            console.log('Bild übernommen:', file);
+
             break;
         }
     });
