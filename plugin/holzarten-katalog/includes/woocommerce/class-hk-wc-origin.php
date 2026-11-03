@@ -71,23 +71,17 @@
         ]);
 
         // Ortssuche
-        echo '<p class="form-field">';
+        echo '<div class="form-field hk-origin-search">';
         echo '<label for="hk-origin-search-input">Ortssuche</label>';
+
+        echo '<div class="hk-origin-search-wrapper">';
+
         echo '<input type="search" id="hk-origin-search-input" ';
-        echo 'placeholder="Ort oder Adresse eingeben ..." style="width:60%;">';
-        echo '</p>';
+        echo 'placeholder="Ort oder Adresse eingeben ...">';
 
-        echo '<div id="hk-origin-search-results" style="margin-left:150px;"></div>';
+        echo '<div id="hk-origin-search-results"></div>';
 
-        echo '<p class="form-field">';
-        echo '<label>&nbsp;</label>';
-        echo '<button type="button" class="button" id="hk-origin-picker">';
-        echo 'Herkunft auf Karte wählen';
-        echo '</button>';
-        echo '</p>';
-
-        echo '<div id="hk-origin-map" style="display:none;height:400px;margin:10px 12px;"></div>';
-
+        echo '</div>';
         echo '</div>';
     }
 
