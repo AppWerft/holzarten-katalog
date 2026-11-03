@@ -47,11 +47,12 @@ jQuery(document).ready(function ($) {
     const $table = $('#hk-catalog-table');
 
     if (!$activeFilter.length || !$table.length) {
+        console.log('table nicht da oder kein Schalter')
         return;
     }
 
     function filterActiveRows() {
-
+        console.log('filterActiveRows')
         const onlyActive = $activeFilter.is(':checked');
 
         $table.find('tbody tr').each(function () {
