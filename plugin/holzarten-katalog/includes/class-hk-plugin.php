@@ -713,7 +713,7 @@ class HK_Plugin {
 
         </form>
          <td></tr></table>                   
-        <table class="wp-list-table widefat fixed striped">
+        <table id="hk-catalog-table" class="wp-list-table widefat fixed striped">
 
             <thead>
                 <tr>
