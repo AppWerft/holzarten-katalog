@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 const currentLng = parseFloat(lngField.value);
 
                 pingLayer.ping([currentLng, currentLat], 'origin');
-            }, 700);
+            }, 1400);
                         }
 
         map.invalidateSize();
