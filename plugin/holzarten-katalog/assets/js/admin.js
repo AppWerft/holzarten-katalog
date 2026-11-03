@@ -94,9 +94,11 @@ jQuery(document).ready(function ($) {
             $('<img>', {
                 src: previewUrl,
                 css: {
-                    maxWidth: '200px',
-                    maxHeight: '200px'
-                }
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    display: 'block'
+        }
             })
         );
     }
