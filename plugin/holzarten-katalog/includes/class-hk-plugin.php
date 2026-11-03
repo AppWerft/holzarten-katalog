@@ -678,6 +678,15 @@ class HK_Plugin {
                 Neue Holzart anlegen
             </a>
 </td><td>
+
+
+
+<label class="hk-switch">
+    <input type="checkbox" id="hk-only-active">
+    <span class="hk-slider"></span>
+    <span class="hk-switch-label">Nur aktive Hölzer</span>
+</label>
+                        </td><td>
         <form method="get">
 
             <input type="hidden"
