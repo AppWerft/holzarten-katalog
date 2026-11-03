@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function () {
             ).addTo(map);
             // Pinglayer bauen
             pingLayer = L.pingLayer({
-                duration: 1500,
+                duration: 2500,
                 fps: 32,
                 radiusRange: [5, 130],
                 opacityRange: [0.6, 0]
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 const currentLng = parseFloat(lngField.value);
 
                 pingLayer.ping([currentLng, currentLat], 'origin');
-            }, 1400);
+            }, 2500);
                         }
 
         map.invalidateSize();
