@@ -720,7 +720,7 @@ class HK_Plugin {
                     <th style="width:70px;">Holzbild</th>
                     <th>Deutscher Name</th>
                     <th>Botanischer Name</th>
-                    <th>EN-Code</th>
+                    <th>EN13556 - Code</th>
                     <th>Status</th>
                     <th style="width:100px;">Aktionen</th>
                 </tr>
