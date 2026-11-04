@@ -1,21 +1,13 @@
 # Holzarten-Katalog
 
-Datenaufbereitung und Entwicklung eines WordPress-Plugins
-für einen Holzartenkatalog.
+Wordpressmodul, das woocommerce um Holzarten erweitert
 
 ## Datenquellen
 
 - EN 13556 – Holzarten und Handelsbezeichnungen
 - Erweiterte Eigenschaften aus Wikipedia
 
-## Python-Skripte
-
-- holzarten.py
-- import_holzarten.py
-- normalize_holzarten.py
-- merge_holzarten.py
-- pruefe_holzarten.py
-- pruefe_zusammenfuehrung.py
+<img src="holzartenadmin.png" width="100%">
 
 ## Datenmodell
 
