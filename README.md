@@ -7,7 +7,7 @@ Wordpressmodul, das woocommerce um Holzarten erweitert
 - EN 13556 – Holzarten und Handelsbezeichnungen
 - Erweiterte Eigenschaften aus Wikipedia
 
-![Holzarten-Administration](images/holzartenadmin.png)
+![Holzarten-Übersicht](holzartenadmin.png)
 
 ## Datenmodell
 
@@ -17,12 +17,12 @@ Die zusammengeführten Daten befinden sich in holzarten_gesamt.json. Daten (Höl
 ## Holzbilder
 Bilder lassen sich klassisch mit lokaler Dateiauswahl oder per Pasting über die Zwischenanlage einfügen.
 
-![Holzarten-Administration](images/holzhochlade.png)
+![Holzarten-Hochlade](holzhochlade.png)
 
 
 ## Holzschlagort
 
 Die Geoposition lässt sich im woocommerce Teil als Attribut komfortable einpflegen. Eine Ortssuche unterstützt dabei.
 
-![Holzarten-Administration](images/holzverorter.png)
+![Holzarten-Holzort](holzverorte.png)
 
