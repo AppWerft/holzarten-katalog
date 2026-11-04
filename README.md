@@ -7,7 +7,7 @@ Wordpressmodul, das woocommerce um Holzarten erweitert
 - EN 13556 – Holzarten und Handelsbezeichnungen
 - Erweiterte Eigenschaften aus Wikipedia
 
-<img src="blob/main/images/holzartenadmin.png" width="80%">
+<img src="images/holzartenadmin.png" width="80%">
 
 ## Datenmodell
 
