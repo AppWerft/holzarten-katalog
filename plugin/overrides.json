@@ -1,0 +1,1476 @@
+{
+    "items": {
+        "ACPL": {
+            "id": "ACPL",
+            "name_de": "Spitzahorn",
+            "name_latin": "Acer platanoides",
+            "code": "ACPL",
+            "description": "",
+            "active": true,
+            "image_file": "spitzahorn.webp"
+        },
+        "ABAL": {
+            "id": "ABAL",
+            "codes": [
+                "ABAL"
+            ],
+            "wood_type": "Nadel",
+            "botanical_raw": "Abies alba",
+            "botanical_names": [
+                "Abies alba"
+            ],
+            "german_raw": "Weiß-Tanne",
+            "german_names": [
+                "Weiß-Tanne"
+            ],
+            "standard_raw": "Tanne",
+            "standard_names": [
+                "Tanne"
+            ],
+            "origin": null,
+            "protection": null,
+            "images": [],
+            "description": "Weißtanne ist ein wunderbares Holz aus deutschen Wäldern",
+            "source": "EN 13556 / Wikipedia",
+            "source_group": "ABAL",
+            "source_codes": [
+                "ABAL"
+            ],
+            "properties": {
+                "name_de": "Tanne",
+                "botanical_names_source": [
+                    "Abies alba"
+                ],
+                "wood_group": "Nadelholz",
+                "color": "",
+                "characteristics": "",
+                "hardness": "weich",
+                "durability": "4: wenig dauerhaft",
+                "uses": "Möbel, Bauholz",
+                "legacy_image_path": "bilder/ABAL.jpg",
+                "image_source": "",
+                "image_source_url": "",
+                "image_author": "",
+                "image_license": "",
+                "image_license_url": "",
+                "data_source": "https://de.wikipedia.org/wiki/Liste_der_Holzarten"
+            },
+            "name_de": "Weiß-Tanne",
+            "name_latin": "Abies alba",
+            "code": "ABAL",
+            "active": true,
+            "image_file": "weis-tanne.webp"
+        },
+        "ACPS": {
+            "id": "ACPS",
+            "name_de": "Berg-Ahorn",
+            "name_latin": "Acer pseudoplatanus",
+            "code": "ACPS",
+            "description": "",
+            "active": true,
+            "image_file": "berg-ahorn.jpg"
+        },
+        "AEHP": {
+            "id": "AEHP",
+            "name_de": "Gewöhnliche Rosskastanie",
+            "name_latin": "Aesculus hippocastanum",
+            "code": "AEHP",
+            "description": "",
+            "active": true,
+            "image_file": "gewohnliche-rosskastanie.jpg"
+        },
+        "AAXX": {
+            "id": "AAXX",
+            "codes": [
+                "AAXX"
+            ],
+            "wood_type": "Laub",
+            "botanical_raw": "Andira",
+            "botanical_names": [
+                "Andira"
+            ],
+            "german_raw": null,
+            "german_names": [],
+            "standard_raw": "Andira",
+            "standard_names": [
+                "Andira"
+            ],
+            "origin": null,
+            "protection": null,
+            "images": [],
+            "description": "Wirtschaftliche Bedeutung haben auch die Arten A. coriacea (Guyanas, Surinam) und A. surinamensis (Guyanas bis Bolivien). Die Hölzer dieser Arten unterscheiden sich in der Farbe des Kernholzes und der natürlichen Dauerhaftigkeit, jedoch nur geringfügig in den technischen Eigenschaften.",
+            "source": "EN 13556 / Wikipedia",
+            "source_group": "AAXX",
+            "source_codes": [
+                "AAXX"
+            ],
+            "properties": null,
+            "name_de": "Andira",
+            "name_latin": "Andira",
+            "code": "AAXX",
+            "active": false,
+            "image_file": "andira.jpg"
+        },
+        "CPBT": {
+            "id": "CPBT",
+            "name_de": "Hainbuche",
+            "name_latin": "Carpinus betulus",
+            "code": "CPBT",
+            "description": "",
+            "active": true,
+            "image_file": "hainbuche.webp"
+        },
+        "BTXX": {
+            "id": "BTXX",
+            "name_de": "Hänge-Birke",
+            "name_latin": "Betula pendula",
+            "code": "BTXX",
+            "description": "",
+            "active": true,
+            "image_file": "hange-birke.jpg"
+        },
+        "CTST": {
+            "id": "CTST",
+            "name_de": "Edelkastanie",
+            "name_latin": "Castanea sativa",
+            "code": "CTST",
+            "description": "",
+            "active": true,
+            "image_file": "edelkastanie.jpg"
+        },
+        "ALGL": {
+            "id": "ALGL",
+            "name_de": "Schwarz-Erle",
+            "name_latin": "Alnus glutinosa",
+            "code": "ALGL",
+            "description": "",
+            "active": true,
+            "image_file": "schwarz-erle.jpg"
+        },
+        "ABAM": {
+            "id": "ABAM",
+            "codes": [
+                "ABAM"
+            ],
+            "wood_type": "Nadel",
+            "botanical_raw": "Abies amabilis",
+            "botanical_names": [
+                "Abies amabilis"
+            ],
+            "german_raw": "Purpur-Tanne",
+            "german_names": [
+                "Purpur-Tanne"
+            ],
+            "standard_raw": "Purpurtanne",
+            "standard_names": [
+                "Purpurtanne"
+            ],
+            "origin": null,
+            "protection": null,
+            "images": [],
+            "description": "",
+            "source": "EN 13556 / Wikipedia",
+            "source_group": "ABAM",
+            "source_codes": [
+                "ABAM"
+            ],
+            "properties": null,
+            "name_de": "Purpur-Tanne",
+            "name_latin": "Abies amabilis",
+            "code": "ABAM",
+            "active": false
+        },
+        "TXBC": {
+            "id": "TXBC",
+            "name_de": "Europäische Eibe",
+            "name_latin": "Taxus baccata",
+            "code": "TXBC",
+            "description": "",
+            "active": true,
+            "image_file": "europaische-eibe.jpg"
+        },
+        "PSMN": {
+            "id": "PSMN",
+            "name_de": "Gewöhnliche Douglasie",
+            "name_latin": "Pseudotsuga menziesii",
+            "code": "PSMN",
+            "description": "",
+            "active": true,
+            "image_file": "gewohnliche-douglasie.jpg"
+        },
+        "PCAB": {
+            "id": "PCAB",
+            "name_de": "Gemeine Fichte",
+            "name_latin": "Picea abies",
+            "code": "PCAB",
+            "description": "",
+            "active": true,
+            "image_file": "gemeine-fichte.jpg"
+        },
+        "PNSY": {
+            "id": "PNSY",
+            "name_de": "Waldkiefer",
+            "name_latin": "Pinus sylvestris",
+            "code": "PNSY",
+            "description": "",
+            "active": true,
+            "image_file": "waldkiefer.webp"
+        },
+        "LADC": {
+            "id": "LADC",
+            "name_de": "Europäische Lärche",
+            "name_latin": "Larix decidua",
+            "code": "LADC",
+            "description": "",
+            "active": true,
+            "image_file": "europaische-larche.webp"
+        },
+        "PNST": {
+            "id": "PNST",
+            "name_de": "Weymouth-Kiefer",
+            "name_latin": "Pinus strobus",
+            "code": "PNST",
+            "description": "",
+            "active": true,
+            "image_file": "weymouth-kiefer.webp"
+        },
+        "SWMC": {
+            "id": "SWMC",
+            "name_de": "Amerikanisches Mahagoni",
+            "name_latin": "Swietenia macrophylla",
+            "code": "SWMC",
+            "description": "",
+            "active": true,
+            "image_file": "amerikanisches-mahagoni.jpg"
+        },
+        "KHXX": {
+            "id": "KHXX",
+            "name_de": "Afrikanisches Mahagoni",
+            "name_latin": "Khaya",
+            "code": "KHXX",
+            "description": "",
+            "active": true,
+            "image_file": "afrikanisches-mahagoni.webp"
+        },
+        "FASY": {
+            "id": "FASY",
+            "name_de": "Rotbuche",
+            "name_latin": "Fagus sylvatica",
+            "code": "FASY",
+            "description": "",
+            "active": true,
+            "image_file": "rotbuche.webp"
+        },
+        "DSXX": {
+            "id": "DSXX",
+            "name_de": "Ebenholzbäume",
+            "name_latin": "Diospyros",
+            "code": "DSXX",
+            "description": "",
+            "active": true,
+            "image_file": "ebenholzbaume.webp"
+        },
+        "QCXR": {
+            "id": "QCXR",
+            "name_de": "Roteiche",
+            "name_latin": "Quercus rubra",
+            "code": "QCXR",
+            "description": "",
+            "active": true,
+            "image_file": "roteiche.webp"
+        },
+        "ALIN": {
+            "id": "ALIN",
+            "name_de": "Grau-Erle",
+            "name_latin": "Alnus incana",
+            "code": "ALIN",
+            "description": "",
+            "active": true,
+            "image_file": "grau-erle.jpg"
+        },
+        "FXEX": {
+            "id": "FXEX",
+            "name_de": "Gemeine Esche",
+            "name_latin": "Fraxinus excelsior",
+            "code": "FXEX",
+            "description": "",
+            "active": true,
+            "image_file": "gemeine-esche.webp"
+        },
+        "PRAV": {
+            "id": "PRAV",
+            "name_de": "Vogel-Kirsche",
+            "name_latin": "Prunus avium",
+            "code": "PRAV",
+            "description": "",
+            "active": true,
+            "image_file": "vogel-kirsche.webp"
+        },
+        "TIXX": {
+            "id": "TIXX",
+            "name_de": "Winterlinde",
+            "name_latin": "Tilia cordata",
+            "code": "TIXX",
+            "description": "",
+            "active": true,
+            "image_file": "winterlinde.webp"
+        },
+        "POAL": {
+            "id": "POAL",
+            "codes": [
+                "POAL"
+            ],
+            "wood_type": "Laub",
+            "botanical_raw": "Populus alba",
+            "botanical_names": [
+                "Populus alba"
+            ],
+            "german_raw": "Silber-Pappel",
+            "german_names": [
+                "Silber-Pappel"
+            ],
+            "standard_raw": "Weißpappel",
+            "standard_names": [
+                "Weißpappel"
+            ],
+            "origin": null,
+            "protection": null,
+            "images": [],
+            "description": "",
+            "source": "EN 13556 / Wikipedia",
+            "source_group": "POAL",
+            "source_codes": [
+                "POAL"
+            ],
+            "properties": {
+                "name_de": "Pappel",
+                "botanical_names_source": [
+                    "Populus alba"
+                ],
+                "wood_group": "Laubholz",
+                "color": "",
+                "characteristics": "europäische Pappel, Weißpappel",
+                "hardness": "weich",
+                "durability": "5: nicht dauerhaft",
+                "uses": "Verpackungen, Zündhölzer, Holzschuhe",
+                "legacy_image_path": "bilder/POAL.jpg",
+                "image_source": "",
+                "image_source_url": "",
+                "image_author": "",
+                "image_license": "",
+                "image_license_url": "",
+                "data_source": "https://de.wikipedia.org/wiki/Liste_der_Holzarten"
+            },
+            "name_de": "Silber-Pappel",
+            "name_latin": "Populus alba",
+            "code": "POAL",
+            "active": true,
+            "image_file": "silber-pappel.webp"
+        },
+        "PLXH": {
+            "id": "PLXH",
+            "name_de": "Ahornblättrige Platane",
+            "name_latin": "Platanus × hispanica",
+            "code": "PLXH",
+            "description": "",
+            "active": true,
+            "image_file": "ahornblattrige-platane.webp"
+        },
+        "TEGR": {
+            "id": "TEGR",
+            "name_de": "Teakbaum",
+            "name_latin": "Tectona grandis",
+            "code": "TEGR",
+            "description": "",
+            "active": true,
+            "image_file": "teakbaum.webp"
+        },
+        "ULGL": {
+            "id": "ULGL",
+            "name_de": "Bergulme",
+            "name_latin": "Ulmus glabra",
+            "code": "ULGL",
+            "description": "",
+            "active": true,
+            "image_file": "bergulme.webp"
+        },
+        "JGRG": {
+            "id": "JGRG",
+            "name_de": "Echte Walnuss",
+            "name_latin": "Juglans regia",
+            "code": "JGRG",
+            "description": "",
+            "active": true,
+            "image_file": "echte-walnuss.webp"
+        },
+        "ILAQ": {
+            "id": "ILAQ",
+            "name_de": "Europäische Stechpalme",
+            "name_latin": "Ilex aquifolium",
+            "code": "ILAQ",
+            "description": "",
+            "active": true,
+            "image_file": "europaische-stechpalme.webp"
+        },
+        "ACCM": {
+            "id": "ACCM",
+            "name_de": "Feld-Ahorn",
+            "name_latin": "Acer campestre",
+            "code": "ACCM",
+            "description": "",
+            "active": true,
+            "image_file": "feld-ahorn.webp"
+        },
+        "BXSM": {
+            "id": "BXSM",
+            "name_de": "Gewöhnlicher Buchsbaum",
+            "name_latin": "Buxus sempervirens",
+            "code": "BXSM",
+            "description": "",
+            "active": true,
+            "image_file": "gewohnlicher-buchsbaum.webp"
+        },
+        "CAXX": {
+            "id": "CAXX",
+            "name_de": "Hickory",
+            "name_latin": "Carya",
+            "code": "CAXX",
+            "description": "",
+            "active": true,
+            "image_file": "hickory.webp"
+        },
+        "POBL": {
+            "id": "POBL",
+            "name_de": "Balsam-Pappel",
+            "name_latin": "Populus balsamifera",
+            "code": "POBL",
+            "description": "",
+            "active": true,
+            "image_file": "balsam-pappel.webp"
+        },
+        "SOTR": {
+            "id": "SOTR",
+            "name_de": "Elsbeere",
+            "name_latin": "Sorbus torminalis",
+            "code": "SOTR",
+            "description": "",
+            "active": true,
+            "image_file": "elsbeere.webp"
+        },
+        "CHTH": {
+            "id": "CHTH",
+            "name_de": "Weiße Scheinzypresse",
+            "name_latin": "Chamaecyparis thyoides",
+            "code": "CHTH",
+            "description": "Das Hinoki-Holz hat einen weisslichen, relativ schmalen Splint und einen gelblichbraunen Kern. Die Textur ist sehr homogen, ohne Harzkanäle, mit mehr oder weniger deutlichen Jahresringgrenzen. Das nach Zitrone riechende Holz ist sehr witterungsbeständig und extrem dauerhaft.",
+            "active": true,
+            "image_file": "weise-scheinzypresse.webp"
+        },
+        "AOXX": {
+            "id": "AOXX",
+            "codes": [
+                "AOXX"
+            ],
+            "wood_type": "Laub",
+            "botanical_raw": "Alstonia",
+            "botanical_names": [
+                "Alstonia"
+            ],
+            "german_raw": null,
+            "german_names": [],
+            "standard_raw": "Pulaï",
+            "standard_names": [
+                "Pulaï"
+            ],
+            "origin": null,
+            "protection": null,
+            "images": [],
+            "description": "",
+            "source": "EN 13556 / Wikipedia",
+            "source_group": "AOXX",
+            "source_codes": [
+                "AOXX"
+            ],
+            "properties": null,
+            "name_de": "",
+            "name_latin": "Alstonia",
+            "code": "AOXX",
+            "active": false
+        },
+        "APPT": {
+            "id": "APPT",
+            "codes": [
+                "APPT"
+            ],
+            "wood_type": "Laub",
+            "botanical_raw": "Amphimas pterocarpoides",
+            "botanical_names": [
+                "Amphimas pterocarpoides"
+            ],
+            "german_raw": null,
+            "german_names": [],
+            "standard_raw": "Lati",
+            "standard_names": [
+                "Lati"
+            ],
+            "origin": null,
+            "protection": null,
+            "images": [],
+            "description": "",
+            "source": "EN 13556 / Wikipedia",
+            "source_group": "APPT",
+            "source_codes": [
+                "APPT"
+            ],
+            "properties": null,
+            "name_de": "",
+            "name_latin": "Amphimas pterocarpoides",
+            "code": "APPT",
+            "active": false
+        },
+        "AOCO": {
+            "id": "AOCO",
+            "codes": [
+                "AOCO"
+            ],
+            "wood_type": "Laub",
+            "botanical_raw": "Alstonia congensis",
+            "botanical_names": [
+                "Alstonia congensis"
+            ],
+            "german_raw": null,
+            "german_names": [],
+            "standard_raw": "Emien",
+            "standard_names": [
+                "Emien"
+            ],
+            "origin": null,
+            "protection": null,
+            "images": [],
+            "description": "",
+            "source": "EN 13556 / Wikipedia",
+            "source_group": "AOCO",
+            "source_codes": [
+                "AOCO"
+            ],
+            "properties": null,
+            "name_de": "",
+            "name_latin": "Alstonia congensis",
+            "code": "AOCO",
+            "active": false
+        },
+        "ABBL": {
+            "id": "ABBL",
+            "codes": [
+                "ABBL"
+            ],
+            "wood_type": "Nadel",
+            "botanical_raw": "Abies balsamea",
+            "botanical_names": [
+                "Abies balsamea"
+            ],
+            "german_raw": "Balsam-Tanne",
+            "german_names": [
+                "Balsam-Tanne"
+            ],
+            "standard_raw": "Balsamtanne",
+            "standard_names": [
+                "Balsamtanne"
+            ],
+            "origin": null,
+            "protection": null,
+            "images": [],
+            "description": "",
+            "source": "EN 13556 / Wikipedia",
+            "source_group": "ABBL",
+            "source_codes": [
+                "ABBL"
+            ],
+            "properties": null,
+            "name_de": "Balsam-Tanne",
+            "name_latin": "Abies balsamea",
+            "code": "ABBL",
+            "active": false
+        },
+        "ARAN": {
+            "id": "ARAN",
+            "codes": [
+                "ARAN"
+            ],
+            "wood_type": "Laub",
+            "botanical_raw": "Araucaria angustifolia",
+            "botanical_names": [
+                "Araucaria angustifolia"
+            ],
+            "german_raw": "Brasilianische Araukarie",
+            "german_names": [
+                "Brasilianische Araukarie"
+            ],
+            "standard_raw": "Brasilkiefer",
+            "standard_names": [
+                "Brasilkiefer"
+            ],
+            "origin": null,
+            "protection": "ja",
+            "images": [],
+            "description": "",
+            "source": "EN 13556 / Wikipedia",
+            "source_group": "ARAN",
+            "source_codes": [
+                "ARAN"
+            ],
+            "properties": null,
+            "name_de": "Brasilianische Araukarie",
+            "name_latin": "Araucaria angustifolia",
+            "code": "ARAN",
+            "active": false
+        },
+        "AMCR": {
+            "id": "AMCR",
+            "codes": [
+                "AMCR"
+            ],
+            "wood_type": "Laub",
+            "botanical_raw": "Amburana cearensis",
+            "botanical_names": [
+                "Amburana cearensis"
+            ],
+            "german_raw": null,
+            "german_names": [],
+            "standard_raw": "Cerejeira",
+            "standard_names": [
+                "Cerejeira"
+            ],
+            "origin": null,
+            "protection": null,
+            "images": [],
+            "description": "",
+            "source": "EN 13556 / Wikipedia",
+            "source_group": "AMCR",
+            "source_codes": [
+                "AMCR"
+            ],
+            "properties": null,
+            "name_de": "",
+            "name_latin": "Amburana cearensis",
+            "code": "AMCR",
+            "active": false
+        },
+        "ABGR": {
+            "id": "ABGR",
+            "codes": [
+                "ABGR"
+            ],
+            "wood_type": "Nadel",
+            "botanical_raw": "Abies grandis",
+            "botanical_names": [
+                "Abies grandis"
+            ],
+            "german_raw": "Küsten-Tanne",
+            "german_names": [
+                "Küsten-Tanne"
+            ],
+            "standard_raw": "Riesentanne",
+            "standard_names": [
+                "Riesentanne"
+            ],
+            "origin": null,
+            "protection": null,
+            "images": [],
+            "description": "",
+            "source": "EN 13556 / Wikipedia",
+            "source_group": "ABGR",
+            "source_codes": [
+                "ABGR"
+            ],
+            "properties": null,
+            "name_de": "Küsten-Tanne",
+            "name_latin": "Abies grandis",
+            "code": "ABGR",
+            "active": false
+        },
+        "ABLS": {
+            "id": "ABLS",
+            "codes": [
+                "ABLS"
+            ],
+            "wood_type": "Nadel",
+            "botanical_raw": "Abies lasiocarpa",
+            "botanical_names": [
+                "Abies lasiocarpa"
+            ],
+            "german_raw": "Felsengebirgs-Tanne",
+            "german_names": [
+                "Felsengebirgs-Tanne"
+            ],
+            "standard_raw": "White fir",
+            "standard_names": [
+                "White fir"
+            ],
+            "origin": null,
+            "protection": null,
+            "images": [],
+            "description": "",
+            "source": "EN 13556 / Wikipedia",
+            "source_group": "ABLS",
+            "source_codes": [
+                "ABLS"
+            ],
+            "properties": null,
+            "name_de": "Felsengebirgs-Tanne",
+            "name_latin": "Abies lasiocarpa",
+            "code": "ABLS",
+            "active": false
+        },
+        "ABPR": {
+            "id": "ABPR",
+            "codes": [
+                "ABPR"
+            ],
+            "wood_type": "Nadel",
+            "botanical_raw": "Abies procera",
+            "botanical_names": [
+                "Abies procera"
+            ],
+            "german_raw": "Edel-Tanne",
+            "german_names": [
+                "Edel-Tanne"
+            ],
+            "standard_raw": "Edeltanne",
+            "standard_names": [
+                "Edeltanne"
+            ],
+            "origin": null,
+            "protection": null,
+            "images": [],
+            "description": "",
+            "source": "EN 13556 / Wikipedia",
+            "source_group": "ABPR",
+            "source_codes": [
+                "ABPR"
+            ],
+            "properties": null,
+            "name_de": "Edel-Tanne",
+            "name_latin": "Abies procera",
+            "code": "ABPR",
+            "active": false
+        },
+        "AGAS": {
+            "id": "AGAS",
+            "codes": [
+                "AGAS"
+            ],
+            "wood_type": "Laub",
+            "botanical_raw": "Agathis australis",
+            "botanical_names": [
+                "Agathis australis"
+            ],
+            "german_raw": "Neuseeländischer Kauri-Baum",
+            "german_names": [
+                "Neuseeländischer Kauri-Baum"
+            ],
+            "standard_raw": "Kauri",
+            "standard_names": [
+                "Kauri"
+            ],
+            "origin": null,
+            "protection": null,
+            "images": [],
+            "description": "",
+            "source": "EN 13556 / Wikipedia",
+            "source_group": "AGAS",
+            "source_codes": [
+                "AGAS"
+            ],
+            "properties": null,
+            "name_de": "Neuseeländischer Kauri-Baum",
+            "name_latin": "Agathis australis",
+            "code": "AGAS",
+            "active": false
+        },
+        "AFXX": {
+            "id": "AFXX",
+            "codes": [
+                "AFXX"
+            ],
+            "wood_type": "Laub",
+            "botanical_raw": "Afzelia",
+            "botanical_names": [
+                "Afzelia"
+            ],
+            "german_raw": null,
+            "german_names": [],
+            "standard_raw": "Afzelia",
+            "standard_names": [
+                "Afzelia"
+            ],
+            "origin": null,
+            "protection": null,
+            "images": [],
+            "description": "",
+            "source": "EN 13556 / Wikipedia",
+            "source_group": "AFXX",
+            "source_codes": [
+                "AFXX"
+            ],
+            "properties": null,
+            "name_de": "",
+            "name_latin": "Afzelia",
+            "code": "AFXX",
+            "active": false
+        },
+        "AGDM": {
+            "id": "AGDM",
+            "codes": [
+                "AGDM"
+            ],
+            "wood_type": "Laub",
+            "botanical_raw": "Agathis dammara",
+            "botanical_names": [
+                "Agathis dammara"
+            ],
+            "german_raw": null,
+            "german_names": [],
+            "standard_raw": "Agathis",
+            "standard_names": [
+                "Agathis"
+            ],
+            "origin": null,
+            "protection": null,
+            "images": [],
+            "description": "",
+            "source": "EN 13556 / Wikipedia",
+            "source_group": "AGDM",
+            "source_codes": [
+                "AGDM"
+            ],
+            "properties": null,
+            "name_de": "",
+            "name_latin": "Agathis dammara",
+            "code": "AGDM",
+            "active": false
+        },
+        "AIAL": {
+            "id": "AIAL",
+            "codes": [
+                "AIAL"
+            ],
+            "wood_type": "Laub",
+            "botanical_raw": "Ailanthus altissima",
+            "botanical_names": [
+                "Ailanthus altissima"
+            ],
+            "german_raw": "Götterbaum",
+            "german_names": [
+                "Götterbaum"
+            ],
+            "standard_raw": "Götterbaum",
+            "standard_names": [
+                "Götterbaum"
+            ],
+            "origin": null,
+            "protection": null,
+            "images": [],
+            "description": "",
+            "source": "EN 13556 / Wikipedia",
+            "source_group": "AIAL",
+            "source_codes": [
+                "AIAL"
+            ],
+            "properties": null,
+            "name_de": "Götterbaum",
+            "name_latin": "Ailanthus altissima",
+            "code": "AIAL",
+            "active": false
+        },
+        "AQXX": {
+            "id": "AQXX",
+            "codes": [
+                "AQXX"
+            ],
+            "wood_type": "Laub",
+            "botanical_raw": "Aningeria",
+            "botanical_names": [
+                "Aningeria"
+            ],
+            "german_raw": null,
+            "german_names": [],
+            "standard_raw": "Aningré",
+            "standard_names": [
+                "Aningré"
+            ],
+            "origin": null,
+            "protection": null,
+            "images": [],
+            "description": "",
+            "source": "EN 13556 / Wikipedia",
+            "source_group": "AQXX",
+            "source_codes": [
+                "AQXX"
+            ],
+            "properties": null,
+            "name_de": "",
+            "name_latin": "Aningeria",
+            "code": "AQXX",
+            "active": false
+        },
+        "ANXX": {
+            "id": "ANXX",
+            "codes": [
+                "ANXX"
+            ],
+            "wood_type": "Laub",
+            "botanical_raw": "Anisoptera",
+            "botanical_names": [
+                "Anisoptera"
+            ],
+            "german_raw": "Mersawa",
+            "german_names": [
+                "Mersawa"
+            ],
+            "standard_raw": "Mersawa",
+            "standard_names": [
+                "Mersawa"
+            ],
+            "origin": null,
+            "protection": null,
+            "images": [],
+            "description": "",
+            "source": "EN 13556 / Wikipedia",
+            "source_group": "ANXX",
+            "source_codes": [
+                "ANXX"
+            ],
+            "properties": null,
+            "name_de": "Mersawa",
+            "name_latin": "Anisoptera",
+            "code": "ANXX",
+            "active": false
+        },
+        "ARAR": {
+            "id": "ARAR",
+            "codes": [
+                "ARAR"
+            ],
+            "wood_type": "Laub",
+            "botanical_raw": "Araucaria araucana",
+            "botanical_names": [
+                "Araucaria araucana"
+            ],
+            "german_raw": "Chilenische Araukarie",
+            "german_names": [
+                "Chilenische Araukarie"
+            ],
+            "standard_raw": "Chiletanne",
+            "standard_names": [
+                "Chiletanne"
+            ],
+            "origin": null,
+            "protection": "ja",
+            "images": [],
+            "description": "",
+            "source": "EN 13556 / Wikipedia",
+            "source_group": "ARAR",
+            "source_codes": [
+                "ARAR"
+            ],
+            "properties": null,
+            "name_de": "Chilenische Araukarie",
+            "name_latin": "Araucaria araucana",
+            "code": "ARAR",
+            "active": false
+        },
+        "ASXX": {
+            "id": "ASXX",
+            "codes": [
+                "ASXX"
+            ],
+            "wood_type": "Laub",
+            "botanical_raw": "Aspidosperma polyneuron (auch für Aspidosperma quebracho-blanco)",
+            "botanical_names": [
+                "Aspidosperma polyneuron (auch für Aspidosperma quebracho-blanco)"
+            ],
+            "german_raw": null,
+            "german_names": [],
+            "standard_raw": "Peroba rosa",
+            "standard_names": [
+                "Peroba rosa"
+            ],
+            "origin": null,
+            "protection": null,
+            "images": [],
+            "description": "",
+            "source": "EN 13556 / Wikipedia",
+            "source_group": "ASXX",
+            "source_codes": [
+                "ASXX"
+            ],
+            "properties": null,
+            "name_de": "",
+            "name_latin": "Aspidosperma polyneuron (auch für Aspidosperma quebracho-blanco)",
+            "code": "ASXX",
+            "active": false
+        },
+        "ATTX": {
+            "id": "ATTX",
+            "codes": [
+                "ATTX"
+            ],
+            "wood_type": "Laub",
+            "botanical_raw": "Antiaris toxicaria",
+            "botanical_names": [
+                "Antiaris toxicaria"
+            ],
+            "german_raw": "Upasbaum",
+            "german_names": [
+                "Upasbaum"
+            ],
+            "standard_raw": "Ako",
+            "standard_names": [
+                "Ako"
+            ],
+            "origin": null,
+            "protection": null,
+            "images": [],
+            "description": "",
+            "source": "EN 13556 / Wikipedia",
+            "source_group": "ATTX",
+            "source_codes": [
+                "ATTX"
+            ],
+            "properties": null,
+            "name_de": "Upasbaum",
+            "name_latin": "Antiaris toxicaria",
+            "code": "ATTX",
+            "active": false
+        },
+        "AUKL": {
+            "id": "AUKL",
+            "codes": [
+                "AUKL"
+            ],
+            "wood_type": "Laub",
+            "botanical_raw": "Aucoumea klaineana",
+            "botanical_names": [
+                "Aucoumea klaineana"
+            ],
+            "german_raw": null,
+            "german_names": [],
+            "standard_raw": "Okoumé",
+            "standard_names": [
+                "Okoumé"
+            ],
+            "origin": null,
+            "protection": null,
+            "images": [],
+            "description": "",
+            "source": "EN 13556 / Wikipedia",
+            "source_group": "AUKL",
+            "source_codes": [
+                "AUKL"
+            ],
+            "properties": null,
+            "name_de": "",
+            "name_latin": "Aucoumea klaineana",
+            "code": "AUKL",
+            "active": false
+        },
+        "AVXX": {
+            "id": "AVXX",
+            "codes": [
+                "AVXX"
+            ],
+            "wood_type": "Laub",
+            "botanical_raw": "Astronium",
+            "botanical_names": [
+                "Astronium"
+            ],
+            "german_raw": null,
+            "german_names": [],
+            "standard_raw": "Gonçalo alvez",
+            "standard_names": [
+                "Gonçalo alvez"
+            ],
+            "origin": null,
+            "protection": null,
+            "images": [],
+            "description": "",
+            "source": "EN 13556 / Wikipedia",
+            "source_group": "AVXX",
+            "source_codes": [
+                "AVXX"
+            ],
+            "properties": null,
+            "name_de": "",
+            "name_latin": "Astronium",
+            "code": "AVXX",
+            "active": false
+        },
+        "AWCO": {
+            "id": "AWCO",
+            "codes": [
+                "AWCO"
+            ],
+            "wood_type": "Laub",
+            "botanical_raw": "Autranella congolensis",
+            "botanical_names": [
+                "Autranella congolensis"
+            ],
+            "german_raw": null,
+            "german_names": [],
+            "standard_raw": "Mukulungu",
+            "standard_names": [
+                "Mukulungu"
+            ],
+            "origin": null,
+            "protection": null,
+            "images": [],
+            "description": "",
+            "source": "EN 13556 / Wikipedia",
+            "source_group": "AWCO",
+            "source_codes": [
+                "AWCO"
+            ],
+            "properties": null,
+            "name_de": "",
+            "name_latin": "Autranella congolensis",
+            "code": "AWCO",
+            "active": false
+        },
+        "AZXX": {
+            "id": "AZXX",
+            "codes": [
+                "AZXX"
+            ],
+            "wood_type": "Laub",
+            "botanical_raw": "Albizia",
+            "botanical_names": [
+                "Albizia"
+            ],
+            "german_raw": null,
+            "german_names": [],
+            "standard_raw": "Iatandza",
+            "standard_names": [
+                "Iatandza"
+            ],
+            "origin": null,
+            "protection": null,
+            "images": [],
+            "description": "",
+            "source": "EN 13556 / Wikipedia",
+            "source_group": "AZXX",
+            "source_codes": [
+                "AZXX"
+            ],
+            "properties": null,
+            "name_de": "",
+            "name_latin": "Albizia",
+            "code": "AZXX",
+            "active": false
+        },
+        "BEXX": {
+            "id": "BEXX",
+            "codes": [
+                "BEXX"
+            ],
+            "wood_type": "Laub",
+            "botanical_raw": "Berlinia bracteosa, Berlinia confusa, Berlinia grandiflora",
+            "botanical_names": [
+                "Berlinia bracteosa",
+                "Berlinia confusa",
+                "Berlinia grandiflora"
+            ],
+            "german_raw": null,
+            "german_names": [],
+            "standard_raw": "Ebiara",
+            "standard_names": [
+                "Ebiara"
+            ],
+            "origin": null,
+            "protection": null,
+            "images": [],
+            "description": "",
+            "source": "EN 13556 / Wikipedia",
+            "source_group": "BEXX",
+            "source_codes": [
+                "BEXX"
+            ],
+            "properties": null,
+            "name_de": "",
+            "name_latin": "Berlinia bracteosa",
+            "code": "BEXX",
+            "active": false
+        },
+        "BFRD": {
+            "id": "BFRD",
+            "codes": [
+                "BFRD"
+            ],
+            "wood_type": "Laub",
+            "botanical_raw": "Balfourodendron riedelianum",
+            "botanical_names": [
+                "Balfourodendron riedelianum"
+            ],
+            "german_raw": null,
+            "german_names": [],
+            "standard_raw": "Guatambu",
+            "standard_names": [
+                "Guatambu"
+            ],
+            "origin": null,
+            "protection": null,
+            "images": [],
+            "description": "",
+            "source": "EN 13556 / Wikipedia",
+            "source_group": "BFRD",
+            "source_codes": [
+                "BFRD"
+            ],
+            "properties": null,
+            "name_de": "",
+            "name_latin": "Balfourodendron riedelianum",
+            "code": "BFRD",
+            "active": false
+        },
+        "BGGN": {
+            "id": "BGGN",
+            "codes": [
+                "BGGN"
+            ],
+            "wood_type": "Laub",
+            "botanical_raw": "Bagassa guianensis",
+            "botanical_names": [
+                "Bagassa guianensis"
+            ],
+            "german_raw": null,
+            "german_names": [],
+            "standard_raw": "Bagassa",
+            "standard_names": [
+                "Bagassa"
+            ],
+            "origin": null,
+            "protection": null,
+            "images": [],
+            "description": "",
+            "source": "EN 13556 / Wikipedia",
+            "source_group": "BGGN",
+            "source_codes": [
+                "BGGN"
+            ],
+            "properties": null,
+            "name_de": "",
+            "name_latin": "Bagassa guianensis",
+            "code": "BGGN",
+            "active": false
+        },
+        "BIXX": {
+            "id": "BIXX",
+            "codes": [
+                "BIXX"
+            ],
+            "wood_type": "Laub",
+            "botanical_raw": "Beilschmiedia",
+            "botanical_names": [
+                "Beilschmiedia"
+            ],
+            "german_raw": null,
+            "german_names": [],
+            "standard_raw": "Kanda",
+            "standard_names": [
+                "Kanda"
+            ],
+            "origin": null,
+            "protection": null,
+            "images": [],
+            "description": "",
+            "source": "EN 13556 / Wikipedia",
+            "source_group": "BIXX",
+            "source_codes": [
+                "BIXX"
+            ],
+            "properties": null,
+            "name_de": "",
+            "name_latin": "Beilschmiedia",
+            "code": "BIXX",
+            "active": false
+        },
+        "BOXX": {
+            "id": "BOXX",
+            "codes": [
+                "BOXX"
+            ],
+            "wood_type": "Laub",
+            "botanical_raw": "Bowdichia, Diplotropis",
+            "botanical_names": [
+                "Bowdichia",
+                "Diplotropis"
+            ],
+            "german_raw": null,
+            "german_names": [],
+            "standard_raw": "Sucupira",
+            "standard_names": [
+                "Sucupira"
+            ],
+            "origin": null,
+            "protection": null,
+            "images": [],
+            "description": "",
+            "source": "EN 13556 / Wikipedia",
+            "source_group": "BOXX",
+            "source_codes": [
+                "BOXX"
+            ],
+            "properties": null,
+            "name_de": "",
+            "name_latin": "Bowdichia",
+            "code": "BOXX",
+            "active": false
+        },
+        "BMBN": {
+            "id": "BMBN",
+            "codes": [
+                "BMBN"
+            ],
+            "wood_type": "Laub",
+            "botanical_raw": "Bombax buonopozense",
+            "botanical_names": [
+                "Bombax buonopozense"
+            ],
+            "german_raw": null,
+            "german_names": [],
+            "standard_raw": "Kapokier",
+            "standard_names": [
+                "Kapokier"
+            ],
+            "origin": null,
+            "protection": null,
+            "images": [],
+            "description": "",
+            "source": "EN 13556 / Wikipedia",
+            "source_group": "BMBN",
+            "source_codes": [
+                "BMBN"
+            ],
+            "properties": null,
+            "name_de": "",
+            "name_latin": "Bombax buonopozense",
+            "code": "BMBN",
+            "active": false
+        },
+        "BLTX": {
+            "id": "BLTX",
+            "codes": [
+                "BLTX"
+            ],
+            "wood_type": "Laub",
+            "botanical_raw": "Baillonella toxisperma",
+            "botanical_names": [
+                "Baillonella toxisperma"
+            ],
+            "german_raw": null,
+            "german_names": [],
+            "standard_raw": "Moabi",
+            "standard_names": [
+                "Moabi"
+            ],
+            "origin": null,
+            "protection": null,
+            "images": [],
+            "description": "",
+            "source": "EN 13556 / Wikipedia",
+            "source_group": "BLTX",
+            "source_codes": [
+                "BLTX"
+            ],
+            "properties": null,
+            "name_de": "",
+            "name_latin": "Baillonella toxisperma",
+            "code": "BLTX",
+            "active": false
+        },
+        "ACSC": {
+            "id": "ACSC",
+            "codes": [
+                "ACSC"
+            ],
+            "wood_type": "Laub",
+            "botanical_raw": "Acer saccharum",
+            "botanical_names": [
+                "Acer saccharum"
+            ],
+            "german_raw": "Zucker-Ahorn",
+            "german_names": [
+                "Zucker-Ahorn"
+            ],
+            "standard_raw": "Zuckerahorn",
+            "standard_names": [
+                "Zuckerahorn"
+            ],
+            "origin": null,
+            "protection": null,
+            "images": [],
+            "description": "",
+            "source": "EN 13556 / Wikipedia",
+            "source_group": "ACSC",
+            "source_codes": [
+                "ACSC"
+            ],
+            "properties": null,
+            "name_de": "Zucker-Ahorn",
+            "name_latin": "Acer saccharum",
+            "code": "ACSC",
+            "active": false
+        },
+        "ADCR": {
+            "id": "ADCR",
+            "codes": [
+                "ADCR"
+            ],
+            "wood_type": "Laub",
+            "botanical_raw": "Adina cordifolia (Syn.: Haldina cordifolia)",
+            "botanical_names": [
+                "Adina cordifolia (Syn.: Haldina cordifolia)"
+            ],
+            "german_raw": null,
+            "german_names": [],
+            "standard_raw": "Haldu",
+            "standard_names": [
+                "Haldu"
+            ],
+            "origin": null,
+            "protection": null,
+            "images": [],
+            "description": "",
+            "source": "EN 13556 / Wikipedia",
+            "source_group": "ADCR",
+            "source_codes": [
+                "ADCR"
+            ],
+            "properties": null,
+            "name_de": "",
+            "name_latin": "Adina cordifolia (Syn.: Haldina cordifolia)",
+            "code": "ADCR",
+            "active": false
+        },
+        "custom-d85218ca-71cd-47fd-a0b3-bbfd534ad186": {
+            "id": "custom-d85218ca-71cd-47fd-a0b3-bbfd534ad186",
+            "name_de": "Eberesche",
+            "name_latin": "Sorbus aucuparia",
+            "code": "",
+            "description": "",
+            "active": true,
+            "image_file": "eberesche.webp",
+            "custom": true
+        },
+        "custom-6700d685-5d99-4a87-8259-10c7cf8fa2bf": {
+            "id": "custom-6700d685-5d99-4a87-8259-10c7cf8fa2bf",
+            "name_de": "Birne",
+            "name_latin": "",
+            "code": "",
+            "description": "",
+            "active": true,
+            "image_file": "birne.png",
+            "custom": true
+        }
+    }
+}
