@@ -14,3 +14,6 @@ Wordpressmodul, das woocommerce um Holzarten erweitert
 Die Holzarten werden anhand ihrer EN-13556-Codes identifiziert.
 Die zusammengeführten Daten befinden sich in holzarten_gesamt.json. Daten (Hölzer und Bilder) lassen sich exportieren und wieder in einer anderen Instanz importieren.
 
+## Holzbilder
+Bilder lassen sich klassisch mit lokaler Dateiauswahl oder per Pasting über die Zwischenanlage einfügen.
+
