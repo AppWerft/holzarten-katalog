@@ -17,3 +17,5 @@ Die zusammengeführten Daten befinden sich in holzarten_gesamt.json. Daten (Höl
 ## Holzbilder
 Bilder lassen sich klassisch mit lokaler Dateiauswahl oder per Pasting über die Zwischenanlage einfügen.
 
+<img src="holzhochlade.png" width="100%">
+
