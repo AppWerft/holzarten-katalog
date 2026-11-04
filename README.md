@@ -31,3 +31,6 @@ Nach Auswahl wird die Karte auf den Punkt zentriert und die Position makiert. Di
 
 ![Holzarten-Holzort](images/holzverorte.png)
 
+## Installation
+
+Das Plugin lässt sich [hier runterladen](holzarten-katalog-plugin.zip). Danach lässt es sich in Pluginverwaltung von WP einbinden 
