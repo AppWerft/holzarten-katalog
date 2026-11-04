@@ -22,4 +22,4 @@ Bilder lassen sich klassisch mit lokaler Dateiauswahl oder per Pasting über die
 ## Holzschlagort
 
 Die Geoposition lässt sich im woocommerce Teil als Attribut komfortable einpflegen. Eine Ortssuche unterstützt dabei.
-<img src="images/holzeinschlage.png" width="100%">
+<img src="images/holzverorter.png" width="100%">
