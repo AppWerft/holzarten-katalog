@@ -100,7 +100,7 @@ echo '<div id="hk-origin-search-results" style="
     top:100%;
     left:0;
     right:0;
-    z-index:10000;
+    z-index:100000;
     color:white;
     background:#333;
     border:1px solid #ccc;
