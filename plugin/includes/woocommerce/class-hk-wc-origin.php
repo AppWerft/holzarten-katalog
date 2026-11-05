@@ -68,7 +68,12 @@
 
 
             // Ortssuche
-echo '<div class="form-field" style="display:flex;align-items:center;">';
+// Ortssuche
+echo '<div class="form-field" style="
+    display:grid;
+    grid-template-columns: 21% 64%;
+    align-items:center;
+">';
 
 // Label
 echo '<label for="hk-origin-search-input" style="margin: 10px;">';
