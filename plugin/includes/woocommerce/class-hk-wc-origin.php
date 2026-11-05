@@ -68,12 +68,11 @@
 
 
 
-
+            
             // Ortssuche
             echo '<div class="form-field">';
 
-            echo '<label for="hk-origin-search-input">Ortssuche</label>';
-
+        
             // Container für Eingabefeld und Trefferliste
             echo '<div style="
                         position:relative;
@@ -95,7 +94,13 @@
 ">';
 
 // Label
-            
+            echo '<label for="hk-origin-search-input" style="
+    display:block;
+    flex:0 0 200px;
+    margin:0;
+">';
+            echo 'Ortssuche';
+            echo '</label>';
 
             // Container für Eingabefeld und Trefferliste
             echo '<div style="
