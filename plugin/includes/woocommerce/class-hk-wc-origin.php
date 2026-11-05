@@ -13,84 +13,83 @@
             if (self::$instance === null) {
                 self::$instance = new self();
             }
-
             return self::$instance;
         }
-
         private function __construct()
         {
             add_action(
                 'woocommerce_product_options_general_product_data',
                 [$this, 'render_fields']
             );
-
             add_action(
                 'woocommerce_admin_process_product_object',
                 [$this, 'save_fields']
             );
-        
-        }
-    
-    
-
-    /**
-     * Herkunftskoordinaten im Produkteditor anzeigen.
-     */
-    public function render_fields()
-    {
-        error_log('HK_WC_Origin::render_fields aufgerufen');
-        error_log(
-    'HK_ORIGIN: ' . wp_debug_backtrace_summary()
-);
-        global $post;
-
-        $product = wc_get_product($post->ID);
-
-        if (!$product) {
-            return;
         }
 
-        echo '<div class="options_group">';
 
-        woocommerce_wp_text_input([
-            'id'          => '_hk_origin_lat',
-            'label'       => 'Breitengrad',
-            'type'        => 'number',
-            'custom_attributes' => [
-                'step' => 'any',
-            ],
-        ]);
 
-        woocommerce_wp_text_input([
-            'id'          => '_hk_origin_lng',
-            'label'       => 'Längengrad',
-            'type'        => 'number',
-            'custom_attributes' => [
-                'step' => 'any',
-            ],
-        ]);
+        /**
+         * Herkunftskoordinaten im Produkteditor anzeigen.
+         */
+        public function render_fields()
+        {
+            error_log('HK_WC_Origin::render_fields aufgerufen');
+            error_log(
+                'HK_ORIGIN: ' . wp_debug_backtrace_summary()
+            );
+            global $post;
 
-        // Ortssuche
-        echo '<p class="form-field">';
-        echo '<label for="hk-origin-search-input">Ortssuche</label>';
-        // Input
-        echo '<input type="search" id="hk-origin-search-input" ';
-        echo 'placeholder="Ort oder Adresse eingeben ..." style="width:60%;">';
-        echo '</p>';
-        // Trefferliste:
-        echo '<div id="hk-origin-search-results" style="border:red"></div>';
+            $product = wc_get_product($post->ID);
 
-        echo '<p class="form-field">';
-        echo '<label>&nbsp;</label>';
-        echo '<button style="display:none;height:0" type="button" class="button" id="hk-origin-picker">';
-        echo 'Herkunft auf Karte wählen';
-        echo '</button>';
-        echo '</p>';
+            if (!$product) {
+                return;
+            }
 
-        echo '<div id="hk-origin-map" style="display:none;height:400px;margin:10px 12px;"></div>';
+            echo '<div class="options_group">';
 
-        echo '</div>';
-    }
+            woocommerce_wp_text_input([
+                'id'          => '_hk_origin_lat',
+                'label'       => 'Breitengrad',
+                'type'        => 'number',
+                'custom_attributes' => [
+                    'step' => 'any',
+                ],
+            ]);
+
+            woocommerce_wp_text_input([
+                'id'          => '_hk_origin_lng',
+                'label'       => 'Längengrad',
+                'type'        => 'number',
+                'custom_attributes' => [
+                    'step' => 'any',
+                ],
+            ]);
+
+            // Ortssuche
+            echo '<p class="form-field">';
+            echo '<label for="hk-origin-search-input">Ortssuche</label>';
+            // Input
+            echo '<input type="search" id="hk-origin-search-input" ';
+            echo 'placeholder="Ort oder Adresse eingeben ..." style="width:60%;">';
+            echo '</p>';
+
+            // Trefferliste:
+            echo '<div id="hk-origin-search-results" 
+                style="border-color:red">
+              </div>';
+
+            echo '<p class="form-field">';
+            echo '<label>&nbsp;</label>';
+            echo '<button style="display:none;height:0" type="button" class="button" id="hk-origin-picker">';
+            echo 'Herkunft auf Karte wählen';
+            echo '</button>';
+            echo '</p>';
+
+            echo '<div id="hk-origin-map" style="display:none;height:400px;margin:10px 12px;"></div>';
+
+            echo '</div>';
+        }
 
 
         /**
