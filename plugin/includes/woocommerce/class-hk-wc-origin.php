@@ -74,10 +74,11 @@
 
             // Container für Eingabefeld und Trefferliste
             echo '<div style="
-    position:relative;
-    display:inline-block;
-    width:60%;
-">';
+                        position:relative;
+                        display:inline-block;
+                        width:60%;
+                        border:1px solid red
+                    ">';
 
             // Input
             echo '<input type="search"
