@@ -82,20 +82,21 @@ class HK_Plugin
         $plugin_dir = plugin_dir_path(dirname(__FILE__));
         $plugin_url = plugin_dir_url(dirname(__FILE__));
 
+        $css_file = $plugin_dir . 'assets/css/admin.css';
         wp_enqueue_style(
             'hk-admin',
             $plugin_url . 'assets/css/admin.css',
             [],
-            '1.0.8'
+            file_exists($css_file) ? filemtime($css_file) : '1.0.0'
         );
 
         $js_file = $plugin_dir . 'assets/js/admin.js';
-
+    
         wp_enqueue_script(
             'hk-admin',
             $plugin_url . 'assets/js/admin.js',
             ['jquery'],
-            file_exists($js_file) ? filemtime($js_file) : '1.0.3',
+            file_exists($js_file) ? filemtime($js_file) : '1.0.0',
             true
         );
 
