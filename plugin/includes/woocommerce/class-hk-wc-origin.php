@@ -71,7 +71,7 @@
 // Ortssuche
 echo '<div class="form-field" style="
     display:grid;
-    grid-template-columns: 16.5% 94%;
+    grid-template-columns: 16.5% 90%;
     align-items:center;
 ">';
 
