@@ -105,6 +105,16 @@
 
             echo '</div>';
             echo '</div>';
+              echo '<p class="form-field">';
+            echo '<label>&nbsp;</label>';
+            echo '<button style="display:none;height:0" type="button" class="button" id="hk-origin-picker">';
+            echo 'Herkunft auf Karte wählen';
+            echo '</button>';
+            echo '</p>';
+
+            echo '<div id="hk-origin-map" style="display:none;height:400px;margin:10px 12px;"></div>';
+
+            echo '</div>';
         }
 
         /**
