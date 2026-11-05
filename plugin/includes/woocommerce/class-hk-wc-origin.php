@@ -68,13 +68,13 @@
 // Ortssuche
 echo '<div class="form-field" style="
     display:flex;
-    align-items:flex-start;
+    align-items:center;
+    gap:16px;
 ">';
 
 // Label
 echo '<label for="hk-origin-search-input" style="
-    display:block;
-    flex:0 0 200px;
+    flex:0 0 240px;
     margin:0;
 ">';
 echo 'Ortssuche';
@@ -90,31 +90,41 @@ echo '<div style="
 echo '<input type="search"
     id="hk-origin-search-input"
     placeholder="Ort oder Adresse eingeben ..."
-    style="
-        width:100%;
-        box-sizing:border-box;
-    ">';
+    style="width:100%;">';
 
 // Trefferliste
-echo '<div id="hk-origin-search-results"
-    style="
-        position:absolute;
-        top:100%;
-        left:0;
-        right:0;
-        z-index:10000;
-        color:white;
-        background:#333;
-        border:1px solid #ccc;
-        border-top:none;
-        max-height:270px;
-        overflow-y:auto;
-        box-shadow:0 4px 8px rgba(0,0,0,0.15);
-    ">
-</div>';
+echo '<div id="hk-origin-search-results" style="
+    position:absolute;
+    top:100%;
+    left:0;
+    right:0;
+    z-index:10000;
+    color:white;
+    background:#333;
+    border:1px solid #ccc;
+    border-top:none;
+    max-height:270px;
+    overflow-y:auto;
+    box-shadow:0 4px 8px rgba(0,0,0,0.15);
+"></div>';
 
 echo '</div>';
 echo '</div>';
+
+// Button
+echo '<p class="form-field">';
+echo '<label>&nbsp;</label>';
+echo '<button style="display:none;height:0"
+    type="button"
+    class="button"
+    id="hk-origin-picker">';
+echo 'Herkunft auf Karte wählen';
+echo '</button>';
+echo '</p>';
+
+echo '<div id="hk-origin-map"
+    style="display:none;height:400px;margin:10px 12px;">
+</div>';
 
 
             
