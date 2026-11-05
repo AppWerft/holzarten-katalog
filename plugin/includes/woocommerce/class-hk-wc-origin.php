@@ -73,22 +73,18 @@ echo '<div class="form-field" style="
 ">';
 
 // Label
-echo '<label for="hk-origin-search-input" style="flex:0 0 10px;margin: 12px;">';
+echo '<label for="hk-origin-search-input" style="flex:0 0 10px;margin: 10px;">';
 echo 'Ortssuche';
 echo '</label>';
 
 // Container für Eingabefeld und Trefferliste
-echo '<div style="
-    position:relative;
-    border: 1px red solid;
-    width:60%;
-">';
+echo '<div style="position:relative;width:60%;">';
 
 // Input
 echo '<input type="search"
     id="hk-origin-search-input"
     placeholder="Ort oder Adresse eingeben ..."
-    style="width:100%;border: 1px blue solid">';
+    style="width:100%;">';
 
 // Trefferliste
 echo '<div id="hk-origin-search-results" style="
