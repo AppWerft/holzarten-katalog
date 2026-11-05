@@ -131,3 +131,19 @@
     border-color: #3858e9;
     outline: none;
 }
+.hk-origin-search-row {
+    display: grid;
+    grid-template-columns: 240px minmax(0, 1fr);
+    gap: 16px;
+    align-items: center;
+    margin: 15px 0;
+}
+
+.hk-origin-search-row label {
+    margin: 0;
+}
+
+.hk-origin-search-row input {
+    width: 100%;
+    box-sizing: border-box;
+}
