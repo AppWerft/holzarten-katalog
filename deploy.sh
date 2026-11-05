@@ -15,6 +15,8 @@ echo "4. Zu GitHub übertragen ..."
 git push
 
 echo "5. Plugin in LocalWP aktualisieren ..."
+
+echo "Start rsync"
 pwd
 ls -la
 
