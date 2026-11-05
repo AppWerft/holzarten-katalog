@@ -21,7 +21,7 @@ pwd
 ls -la
 
 rsync -av \
-    "plugin/holzarten-katalog/" \
+    "plugin/" \
     "$HOME/Local Sites/holzurne/app/public/wp-content/plugins/holzarten-katalog/"
 
 echo "Fertig.\n"
