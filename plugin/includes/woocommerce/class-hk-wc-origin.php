@@ -81,7 +81,6 @@
                 left: 150px;
                 right: 40px;
                 z-index: 1000;
-                position: absolute;
                 color: white;
                 background: #333;
                 border: 1px solid #ccc;
