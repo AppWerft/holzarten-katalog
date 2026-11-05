@@ -73,7 +73,7 @@ echo '<div class="form-field" style="
 ">';
 
 // Label
-echo '<label for="hk-origin-search-input" style="flex:0 0 10px;margin: 10px;">';
+echo '<label for="hk-origin-search-input" style="margin: 10px;">';
 echo 'Ortssuche';
 echo '</label>';
 
