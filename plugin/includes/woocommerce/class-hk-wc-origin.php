@@ -77,7 +77,8 @@
             // Trefferliste:
             echo '<div id="hk-origin-search-results" 
                 style="border-color:red;
-                left:100px">
+                left:100px;
+                position:absolute">
               </div>';
 
             echo '<p class="form-field">';
