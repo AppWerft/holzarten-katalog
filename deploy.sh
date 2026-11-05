@@ -4,9 +4,8 @@ zip -r holzarten-katalog-plugin.zip plugin/* -x "*/.DS_Store" "*/.git/*"
 pwd
 ls -la 
 
-git add plugin/*
-git add images/*
-git add *.md
+git add *
+
 echo "3. Commit erstellen ..."
 
 git commit -m "neue Plugin struktur ohen ZIP"
@@ -23,4 +22,4 @@ rsync -av \
     "plugin/holzarten-katalog/" \
     "$HOME/Local Sites/holzurne/app/public/wp-content/plugins/holzarten-katalog/"
 
-echo "Fertig."
+echo "Fertig.\n"

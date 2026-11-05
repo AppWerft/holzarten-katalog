@@ -41,20 +41,26 @@
     width: 100%;
 }
 
+.hk-origin-search {
+    position: relative;
+    width: 100%;
+}
+
 #hk-origin-search-results {
     position: absolute;
     top: 100%;
     left: 0;
     right: 0;
     z-index: 1000;
-
-    background: #fff;
+    color: white;
+    background: #333;
     border: 1px solid #ccc;
     border-top: none;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
 
     max-height: 250px;
     overflow-y: auto;
+
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 #hk-origin-search-results:empty {

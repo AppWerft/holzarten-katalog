@@ -14,42 +14,40 @@ jQuery(document).ready(function ($) {
             active: active ? '1' : '0'
         })
 
-        .done(function (response) {
+            .done(function (response) {
 
-            if (response.success) {
-                label.text(active ? 'Aktiv' : 'Inaktiv');
-            } else {
+                if (response.success) {
+                    label.text(active ? 'Aktiv' : 'Inaktiv');
+                } else {
+                    checkbox.prop('checked', !active);
+                    alert(response.data.message || 'Speichern fehlgeschlagen.');
+                }
+
+            })
+
+            .fail(function (xhr, status, error) {
+
+                console.error('AJAX-Fehler');
+                console.error('HTTP-Status:', xhr.status);
+                console.error('Status:', status);
+                console.error('Fehler:', error);
+                console.error('Antwort:', xhr.responseText);
+
                 checkbox.prop('checked', !active);
-                alert(response.data.message || 'Speichern fehlgeschlagen.');
-            }
 
-        })
-
-        .fail(function (xhr, status, error) {
-
-            console.error('AJAX-Fehler');
-            console.error('HTTP-Status:', xhr.status);
-            console.error('Status:', status);
-            console.error('Fehler:', error);
-            console.error('Antwort:', xhr.responseText);
-
-            checkbox.prop('checked', !active);
-
-        });
+            });
 
     });
 
 });
 
+// Schalter für Filterung "aktiv"
 jQuery(document).ready(function ($) {
-
     const $activeFilter = $('#hk-only-active');
     const $table = $('#hk-catalog-table');
-
     if (!$activeFilter.length || !$table.length) {
         return;
     }
-
     function filterActiveRows() {
         const onlyActive = $activeFilter.is(':checked');
         $table.find('tbody tr').each(function () {
@@ -101,7 +99,7 @@ jQuery(document).ready(function ($) {
                     height: '100%',
                     objectFit: 'cover',
                     display: 'block'
-        }
+                }
             })
         );
     }
@@ -158,34 +156,34 @@ jQuery(document).ready(function ($) {
             showPreview(file);
 
             // Vorhandene change-Handler auslösen.
-           // $fileInput.trigger('change');
+            // $fileInput.trigger('change');
             console.log('Bild übernommen:', file);
             break;
         }
     });
     const $deleteButton = $('#hk-delete-image-button');
-const $deleteFlag = $('#hk-delete-image');
+    const $deleteFlag = $('#hk-delete-image');
 
-// Bild löschen bzw. Auswahl verwerfen.
-$deleteButton.on('click', function () {
+    // Bild löschen bzw. Auswahl verwerfen.
+    $deleteButton.on('click', function () {
 
-    // File-Input leeren.
-    $fileInput.val('');
+        // File-Input leeren.
+        $fileInput.val('');
 
-    // Vorschau entfernen.
-    $preview.empty();
+        // Vorschau entfernen.
+        $preview.empty();
 
-    if (previewUrl) {
-        URL.revokeObjectURL(previewUrl);
-        previewUrl = null;
-    }
+        if (previewUrl) {
+            URL.revokeObjectURL(previewUrl);
+            previewUrl = null;
+        }
 
-    // Löschauftrag für ein bereits gespeichertes Bild setzen.
-    $deleteFlag.val('1');
+        // Löschauftrag für ein bereits gespeichertes Bild setzen.
+        $deleteFlag.val('1');
 
-    // Aktuelle Bildanzeige ausblenden.
-    $('#hk-current-image').hide();
-});
+        // Aktuelle Bildanzeige ausblenden.
+        $('#hk-current-image').hide();
+    });
 
 });
 
