@@ -65,12 +65,10 @@
                     'step' => 'any',
                 ],
             ]);
-// Ortssuche
-echo '<div class="form-field" style="
-    display:flex;
-    align-items:center;
-    gap:16px;
-">';
+
+
+            // Ortssuche
+echo '<div class="form-field" style="display:flex;align-items:center;">';
 
 // Label
 echo '<label for="hk-origin-search-input" style="margin: 10px;">';
@@ -78,13 +76,16 @@ echo 'Ortssuche';
 echo '</label>';
 
 // Container für Eingabefeld und Trefferliste
-echo '<div style="position:relative;width:60%;">';
+echo '<div style="position:relative;width:50%;">';
 
 // Input
 echo '<input type="search"
     id="hk-origin-search-input"
     placeholder="Ort oder Adresse eingeben ..."
-    style="width:100%">';
+    style="
+        width:100%;
+        box-sizing:border-box;
+    ">';
 
 // Trefferliste
 echo '<div id="hk-origin-search-results" style="
