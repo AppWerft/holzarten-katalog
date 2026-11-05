@@ -86,7 +86,7 @@ class HK_Plugin
             'hk-admin',
             $plugin_url . 'assets/css/admin.css',
             [],
-            '1.0.7'
+            '1.0.8'
         );
 
         $js_file = $plugin_dir . 'assets/js/admin.js';
