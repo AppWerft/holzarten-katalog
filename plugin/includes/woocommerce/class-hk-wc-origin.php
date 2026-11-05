@@ -82,16 +82,15 @@
 
             // Input
             echo '<input type="search"
-           id="hk-origin-search-input"
-           placeholder="Ort oder Adresse eingeben ..."
-           style="width:100%;">';
+                    id="hk-origin-search-input"
+                    placeholder="Ort oder Adresse eingeben ..."
+                    style="width:100%;">';
 
-            // Trefferliste
-           // Ortssuche
-            echo '<div class="form-field" style="
+           
+          /*  echo '<div class="form-field" style="
     display:flex;
     align-items:flex-start;
-">';
+">';*/
 
 // Label
             echo '<label for="hk-origin-search-input" style="
