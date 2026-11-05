@@ -68,6 +68,7 @@
 
             // Ortssuche
             echo '<p class="form-field">';
+            echo '<div style="position: relative;">';
             echo '<label for="hk-origin-search-input">Ortssuche</label>';
             // Input
             echo '<input type="search" id="hk-origin-search-input" ';
@@ -81,6 +82,7 @@
                 left: 150px;
                 right: 40px;
                 z-index: 1000;
+                position:absolute;
                 color: white;
                 background: #333;
                 border: 1px solid #ccc;
@@ -89,7 +91,7 @@
                 overflow-y: auto;
                 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
                 ">
-              </div>';
+              </div></div>';
 
             echo '<p class="form-field">';
             echo '<label>&nbsp;</label>';
