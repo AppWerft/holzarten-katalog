@@ -108,13 +108,13 @@
             ">';
 
             // Input
-            echo '<input type="search"
+          /*  echo '<input type="search"
                 id="hk-origin-search-input"
                 placeholder="Ort oder Adresse eingeben ..."
                 style="
                     width:100%;
                     box-sizing:border-box;
-                ">';
+                ">';*/
 
 // Trefferliste
 echo '<div id="hk-origin-search-results"
