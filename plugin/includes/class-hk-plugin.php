@@ -86,7 +86,7 @@ class HK_Plugin
             'hk-admin',
             $plugin_url . 'assets/css/admin.css',
             [],
-            '1.0.6'
+            '1.0.7'
         );
 
         $js_file = $plugin_dir . 'assets/js/admin.js';
@@ -95,7 +95,7 @@ class HK_Plugin
             'hk-admin',
             $plugin_url . 'assets/js/admin.js',
             ['jquery'],
-            file_exists($js_file) ? filemtime($js_file) : '1.0.2',
+            file_exists($js_file) ? filemtime($js_file) : '1.0.3',
             true
         );
 
