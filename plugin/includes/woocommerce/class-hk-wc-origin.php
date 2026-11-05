@@ -76,11 +76,19 @@
 
             // Trefferliste:
             echo '<div id="hk-origin-search-results" 
-                style="border-color:red;
-                left:150px;
-                background-color:#333;
-                color:white;
-                position:absolute">
+                style="
+                top: 100%;
+    left: 150px;
+    right: 40px;
+    z-index: 1000;
+    color: white;
+    background: #333;
+    border: 1px solid #ccc;
+    border-top: none;
+    max-height: 270px;
+    overflow-y: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+                ">
               </div>';
 
             echo '<p class="form-field">';
