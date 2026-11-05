@@ -96,7 +96,6 @@ echo '<input type="search"
 
 // Trefferliste
 echo '<div id="hk-origin-search-results" style="
-    position:absolute;
     top:100%;
     left:0;
     right:0;
