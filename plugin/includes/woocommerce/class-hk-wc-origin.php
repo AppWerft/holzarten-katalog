@@ -84,7 +84,7 @@ echo '<div style="position:relative;width:60%;">';
 echo '<input type="search"
     id="hk-origin-search-input"
     placeholder="Ort oder Adresse eingeben ..."
-    style="width:100%;">';
+    style="width:100%;margin-left:40px; width:200px">';
 
 // Trefferliste
 echo '<div id="hk-origin-search-results" style="
