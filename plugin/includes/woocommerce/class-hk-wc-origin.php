@@ -66,7 +66,7 @@
                 ],
             ]);
 
-            // Ortssuche
+
             // Ortssuche
             echo '<div class="form-field">';
 
@@ -106,7 +106,6 @@
             echo '</div>';
             echo '</div>';
         }
-
 
         /**
          * Herkunftskoordinaten speichern.
