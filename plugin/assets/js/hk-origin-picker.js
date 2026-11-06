@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // Geopositions-Icon
             const icon = document.createElement('img');
             icon.src = searchResults.dataset.iconUrl;
-            console.log(icon.url);
+            console.log(icon.src);
             icon.alt = '';
             icon.style.width = '20px';
             icon.style.height = '20px';
