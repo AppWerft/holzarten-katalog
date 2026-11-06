@@ -104,7 +104,7 @@
             z-index:100000;
             color:black;
             background:#ccc;
-            border:1px solid #ccc;
+            border:1px solid #eee;
             border-top:none;
             max-height:320px;
             overflow-y:auto;
