@@ -68,69 +68,66 @@
 
 
             // Ortssuche
-// Ortssuche
-echo '<div class="form-field" style="
-    display:grid;
-    grid-template-columns: 16.5% 90%;
-    align-items:center;
-">';
+        // Ortssuche
+        echo '<div class="form-field" style="
+            display:grid;
+            grid-template-columns: 16.5% 90%;
+            align-items:center;
+        ">';
 
-// Label
-echo '<label for="hk-origin-search-input" style="margin: 10px;">';
-echo 'Ortssuche';
-echo '</label>';
+        // Label
+        echo '<label for="hk-origin-search-input" style="margin: 10px;">';
+        echo 'Ortssuche';
+        echo '</label>';
 
-// Container für Eingabefeld und Trefferliste
-echo '<div style="position:relative;width:50%;">';
+        // Container für Eingabefeld und Trefferliste
+        echo '<div style="position:relative;width:50%;">';
 
-// Input
-echo '<input type="search"
-    id="hk-origin-search-input"
-    placeholder="Ort oder Adresse eingeben ..."
-    style="
-        width:100%;
-        background-image:url(\'' . plugins_url('assets/images/lupe.svg', HK_PLUGIN_FILE) . '\');
-        background-repeat:no-repeat;
-        background-position:right 12px center;
-        background-size:20px 20px;
-        box-sizing:border-box;
-    ">';
+        // Input
+        echo '<input type="search"
+            id="hk-origin-search-input"
+            placeholder="Ort oder Adresse eingeben …"
+            style="
+                width:100%;
+                background-image:url(\'' . plugins_url('assets/images/lupe.svg', HK_PLUGIN_FILE) . '\');
+                background-repeat:no-repeat;
+                background-position:right 12px center;
+                background-size:20px 20px;
+                box-sizing:border-box;
+            ">';
 
-// Trefferliste
-echo '<div id="hk-origin-search-results" style="
-    top:100%;
-    left:0;
-    right:0;
-    z-index:100000;
-    color:white;
-    background:#333;
-    border:1px solid #ccc;
-    border-top:none;
-    max-height:270px;
-    overflow-y:auto;
-    box-shadow:0 4px 8px rgba(0,0,0,0.15);
-"></div>';
+        // Trefferliste
+        echo '<div id="hk-origin-search-results" style="
+            top:100%;
+            left:0;
+            right:0;
+            z-index:100000;
+            color:white;
+            background:#333;
+            border:1px solid #ccc;
+            border-top:none;
+            max-height:320px;
+            overflow-y:auto;
+            box-shadow:0 4px 8px rgba(0,0,0,0.15);
+        "></div>';
 
-echo '</div>';
-echo '</div>';
+        echo '</div>';
+        echo '</div>';
 
-// Button
-echo '<p class="form-field">';
-echo '<label>&nbsp;</label>';
-echo '<button style="display:none;height:0"
-    type="button"
-    class="button"
-    id="hk-origin-picker">';
-echo 'Herkunft auf Karte wählen';
-echo '</button>';
-echo '</p>';
+        // Button
+        echo '<p class="form-field">';
+        echo '<label>&nbsp;</label>';
+        echo '<button style="display:none;height:0"
+            type="button"
+            class="button"
+            id="hk-origin-picker">';
+        echo 'Herkunft auf Karte wählen';
+        echo '</button>';
+        echo '</p>';
 
-echo '<div id="hk-origin-map"
-    style="display:none;height:400px;margin:10px 12px;">
-</div>';
-
-
-            
+        echo '<div id="hk-origin-map"
+            style="display:none;height:400px;margin:10px 12px;">
+        </div>';
             
         }
 
