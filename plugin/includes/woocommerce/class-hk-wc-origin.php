@@ -102,8 +102,8 @@
             left:0;
             right:0;
             z-index:100000;
-            color:white;
-            background:#333;
+            color:black;
+            background:#ccc;
             border:1px solid #ccc;
             border-top:none;
             max-height:320px;
