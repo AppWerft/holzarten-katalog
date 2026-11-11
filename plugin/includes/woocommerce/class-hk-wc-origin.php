@@ -65,26 +65,29 @@
                     'step' => 'any',
                 ],
             ]);
+            echo render_geosuche();
+        }
 
-
+        public function render_geosuche()
+        {
+            $bar = "";
             // Ortssuche
-            // Ortssuche
-            echo '<div class="form-field" style="
+            $bar .= '<div class="form-field" style="
             display:grid;
             grid-template-columns: 16.5% 90%;
             align-items:center;
         ">';
 
             // Label
-            echo '<label for="hk-origin-search-input" style="margin: 10px;">';
-            echo 'Ortssuche';
-            echo '</label>';
+            $bar .=  '<label for="hk-origin-search-input" style="margin: 10px;">';
+            $bar .=  'Ortssuche';
+            $bar .=  '</label>';
 
             // Container für Eingabefeld und Trefferliste
-            echo '<div style="position:relative;width:50%;">';
+            $bar .=  '<div style="position:relative;width:50%;">';
 
             // Input
-            echo '<input type="search"
+            $bar .=  '<input type="search"
             id="hk-origin-search-input"
             placeholder="Ort oder Adresse eingeben …"
             style="
@@ -97,7 +100,7 @@
             ">';
 
             // Trefferliste
-            echo '<div id="hk-origin-search-results" style="
+            $bar .=  '<div id="hk-origin-search-results" style="
             top:100%;
             left:0;
             right:0;
@@ -113,24 +116,23 @@
             
             ></div>';
 
-            echo '</div>';
-            echo '</div>';
+            $bar .=  '</div>';
+            $bar .=  '</div>';
 
             // Button
-            echo '<p class="form-field">';
-            echo '<label>&nbsp;</label>';
-            echo '<button style="display:none;height:0"
+            $bar .=  '<p class="form-field">';
+            $bar .=  '<label>&nbsp;</label>';
+            $bar .=  '<button style="display:none;height:0"
             type="button"
             class="button"
             id="hk-origin-picker">';
-            echo 'Herkunft auf Karte wählen';
-            echo '</button>';
-            echo '</p>';
+            $bar .=  'Herkunft auf Karte wählen';
+            $bar .=  '</button>';
+            $bar .=  '</p>';
 
-            echo '<div id="hk-origin-map"
-            style="display:none;height:400px;margin:10px 12px;">
-        </div>';
-        }
+            $bar .=  '<div id="hk-origin-map" style="display:none;height:400px;margin:10px 12px;"></div>';
+            return $bar;
+         }
 
         /**
          * Herkunftskoordinaten speichern.
