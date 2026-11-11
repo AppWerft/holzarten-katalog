@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 opacityRange: [0.6, 0]
             }).addTo(map);
 
-            pingLayer.ping([lng, lat], 'origin-marker');
+            pingLayer.ping([lng, lat]);
             map.on('click', function (event) {
                 setPosition(event.latlng);
             });
