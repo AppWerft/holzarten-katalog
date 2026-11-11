@@ -128,7 +128,7 @@
             echo '</p>';
 
             echo '<div id="hk-origin-map"
-            style="display:block;height:400px;margin:10px 12px;">
+            style="display:none;height:400px;margin:10px 12px;">
         </div>';
         }
 
