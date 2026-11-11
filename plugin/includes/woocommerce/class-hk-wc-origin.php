@@ -34,7 +34,8 @@
             // Ortssuche
             $bar .= '<div class="form-field" style="
             display:grid;
-            grid-template-columns: 16.5% 90%;
+           
+            grid-template-columns: 16.5% 83.5%;
             align-items:center;
         ">';
 
@@ -128,6 +129,7 @@
                     'step' => 'any',
                 ],
             ]);
+            echo "</div>";
             echo $this->render_geosuche();
         }
 
