@@ -69,7 +69,10 @@
     stroke: #00b38f !important;
     stroke-width: 2px;
 }
-
+.ping.origin-marker {
+    fill: #1b7180;
+    stroke: #2b91c0;
+}  
 .hk-switch {
     display: inline-flex;
     align-items: center;

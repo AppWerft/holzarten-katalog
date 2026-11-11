@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 opacityRange: [0.6, 0]
             }).addTo(map);
 
-            pingLayer.ping([lng, lat], 'origin');
+            pingLayer.ping([lng, lat], 'origin-marker');
             map.on('click', function (event) {
                 setPosition(event.latlng);
             });
@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const icon = document.createElement('img');
             icon.src = searchResults.dataset.iconUrl;
             console.log(icon);
-            console.log(searchResults.dataset);
+            console.log(searchResults.dataset); 
             icon.alt = '';
             icon.style.width = '20px';
             icon.style.height = '20px';
