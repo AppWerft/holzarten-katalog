@@ -67,11 +67,7 @@ class HK_Plugin
             'wp_ajax_hk_toggle_status',
             [$this, 'ajax_toggle_status']
         );
-        add_shortcode(
-            'hk_holzarten',
-            [$this, 'render_wood_catalog']
-        );
-        
+       $this->frontend = HK_Frontend::instance();
     }
 
     /**
