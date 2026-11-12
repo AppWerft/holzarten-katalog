@@ -65,7 +65,7 @@
     display: none;
 }
 .ping {
-    fill: #0026ff !important;
+    fill: #0026ff !important;   
     stroke: #117796 !important;
     stroke-width: 2px;
 }
@@ -147,3 +147,5 @@
     width: 100%;
     box-sizing: border-box;
 }
+
+.hk-wood-image {border-radius:30px}
