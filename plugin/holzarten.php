@@ -20,6 +20,7 @@ define('HK_PLUGIN_URL', plugin_dir_url(__FILE__));
 require_once HK_PLUGIN_DIR . 'includes/class-hk-storage.php';
 require_once HK_PLUGIN_DIR . 'includes/class-hk-catalog.php';
 require_once HK_PLUGIN_DIR . 'includes/class-hk-woocommerce.php';
+require_once HK_PLUGIN_DIR . 'includes/class-hk-frontend.php';
 require_once HK_PLUGIN_DIR . 'includes/class-hk-plugin.php';
 require_once HK_PLUGIN_DIR . 'includes/woocommerce/class-hk-wc-origin.php';
 require_once HK_PLUGIN_DIR . 'includes/class-hk-assets.php';
