@@ -69,7 +69,21 @@ public static function activate()
         }
     }
 }
+    /**
+ * URL eines Holzbildes zurückgeben.
+ */
+public static function image_url($filename)
+{
+    if (empty($filename)) {
+        return '';
+    }
 
+    $upload = wp_upload_dir();
+
+    return trailingslashit($upload['baseurl'])
+        . 'holzarten-daten/images/'
+        . rawurlencode($filename);
+}
     /**
      * Sichert die vorhandenen Katalogdateien und Bilder.
      */
