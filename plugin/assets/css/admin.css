@@ -148,4 +148,4 @@
     box-sizing: border-box;
 }
 
-.hk-wood-image {border-radius:30px}
+.hk-wood-image, .hk-image-placeholder {border-radius:30px}
