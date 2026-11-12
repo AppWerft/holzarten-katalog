@@ -1,4 +1,3 @@
-
 <?php
 
 if (!defined('ABSPATH')) {
@@ -17,7 +16,7 @@ class HK_Plugin
 
         return self::$instance;
     }
-
+    private $frontend;
     /**
      * Konstruktor.
      */
@@ -68,6 +67,11 @@ class HK_Plugin
             'wp_ajax_hk_toggle_status',
             [$this, 'ajax_toggle_status']
         );
+        add_shortcode(
+            'hk_holzarten',
+            [$this, 'render_wood_catalog']
+        );
+        
     }
 
     /**
@@ -78,10 +82,8 @@ class HK_Plugin
         if ($hook !== 'toplevel_page_holzarten-katalog') {
             return;
         }
-
         $plugin_dir = plugin_dir_path(dirname(__FILE__));
         $plugin_url = plugin_dir_url(dirname(__FILE__));
-
         $css_file = $plugin_dir . 'assets/css/admin.css';
         wp_enqueue_style(
             'hk-admin',
@@ -89,9 +91,7 @@ class HK_Plugin
             [],
             file_exists($css_file) ? filemtime($css_file) : '1.0.0'
         );
-
         $js_file = $plugin_dir . 'assets/js/admin.js';
-    
         wp_enqueue_script(
             'hk-admin',
             $plugin_url . 'assets/js/admin.js',
@@ -99,7 +99,6 @@ class HK_Plugin
             file_exists($js_file) ? filemtime($js_file) : '1.0.0',
             true
         );
-
         wp_localize_script(
             'hk-admin',
             'hkAdmin',
@@ -134,9 +133,7 @@ class HK_Plugin
         if (empty($filename)) {
             return '';
         }
-
         $upload = wp_upload_dir();
-
         return trailingslashit($upload['baseurl'])
             . 'holzarten-daten/images/'
             . rawurlencode(basename($filename));
@@ -151,20 +148,15 @@ class HK_Plugin
         if (empty($filename)) {
             return;
         }
-
         $filename = basename($filename);
-
         foreach (HK_Catalog::get_all() as $item) {
             if (($item['image_file'] ?? '') === $filename) {
                 return;
             }
         }
-
         $directory = trailingslashit(HK_Storage::directory())
             . 'images/';
-
         $path = $directory . $filename;
-
         if (is_file($path)) {
             unlink($path);
         }
@@ -205,7 +197,7 @@ class HK_Plugin
             });
         }
 
-        ?>
+?>
 
         <div class="wrap">
 
@@ -283,19 +275,18 @@ class HK_Plugin
             if ($item || isset($_GET['new'])) {
 
                 $this->render_form($item);
-
             } else {
 
-                ?>
+            ?>
 
                 <h2>Datensicherung und Klonen</h2>
 
                 <form method="post"
-                      action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
+                    action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
 
                     <input type="hidden"
-                           name="action"
-                           value="hk_export_catalog">
+                        name="action"
+                        value="hk_export_catalog">
 
                     <?php
                     wp_nonce_field(
@@ -313,7 +304,7 @@ class HK_Plugin
 
                 </form>
 
-                <?php
+            <?php
 
                 $this->render_import_form();
                 $this->render_table($items, $search);
@@ -322,7 +313,7 @@ class HK_Plugin
 
         </div>
 
-        <?php
+    <?php
     }
 
     /**
@@ -417,7 +408,7 @@ class HK_Plugin
             if (is_wp_error($editor)) {
                 wp_die(
                     'Das Bild konnte nicht verarbeitet werden: '
-                    . $editor->get_error_message()
+                        . $editor->get_error_message()
                 );
             }
 
@@ -457,12 +448,11 @@ class HK_Plugin
             if (is_wp_error($result)) {
                 wp_die(
                     'Das Bild konnte nicht als WebP gespeichert werden: '
-                    . $result->get_error_message()
+                        . $result->get_error_message()
                 );
             }
 
             $image_file = $filename;
-
         } elseif ($delete_image) {
 
             // Nur löschen, wenn kein neues Bild hochgeladen wurde.
@@ -588,7 +578,7 @@ class HK_Plugin
 
                 wp_die(
                     'Datei fehlt oder ist nicht lesbar: '
-                    . esc_html($filename)
+                        . esc_html($filename)
                 );
             }
 
@@ -598,7 +588,7 @@ class HK_Plugin
 
                 wp_die(
                     'Datei konnte nicht ins ZIP aufgenommen werden: '
-                    . esc_html($filename)
+                        . esc_html($filename)
                 );
             }
         }
@@ -651,8 +641,8 @@ class HK_Plugin
 
         header(
             'Content-Disposition: attachment; filename="'
-            . $download_name
-            . '"'
+                . $download_name
+                . '"'
         );
 
         header('Content-Length: ' . filesize($temp_file));
@@ -673,7 +663,7 @@ class HK_Plugin
         $image_file = $item['image_file'] ?? '';
         $image_url = $this->get_image_url($image_file);
 
-        ?>
+    ?>
 
         <h2>
             <?php echo $is_edit
@@ -682,16 +672,16 @@ class HK_Plugin
         </h2>
 
         <form method="post"
-              action="<?php echo esc_url(admin_url('admin-post.php')); ?>"
-              enctype="multipart/form-data">
+            action="<?php echo esc_url(admin_url('admin-post.php')); ?>"
+            enctype="multipart/form-data">
 
             <input type="hidden"
-                   name="action"
-                   value="hk_save_item">
+                name="action"
+                value="hk_save_item">
 
             <input type="hidden"
-                   name="id"
-                   value="<?php echo esc_attr($item['id'] ?? ''); ?>">
+                name="id"
+                value="<?php echo esc_attr($item['id'] ?? ''); ?>">
 
             <?php wp_nonce_field('hk_save_item'); ?>
 
@@ -703,13 +693,13 @@ class HK_Plugin
                     </th>
                     <td>
                         <input type="text"
-                               id="name_de"
-                               name="name_de"
-                               class="regular-text"
-                               required
-                               value="<?php echo esc_attr(
-                                   $item['name_de'] ?? ''
-                               ); ?>">
+                            id="name_de"
+                            name="name_de"
+                            class="regular-text"
+                            required
+                            value="<?php echo esc_attr(
+                                        $item['name_de'] ?? ''
+                                    ); ?>">
                     </td>
                 </tr>
 
@@ -719,12 +709,12 @@ class HK_Plugin
                     </th>
                     <td>
                         <input type="text"
-                               id="name_latin"
-                               name="name_latin"
-                               class="regular-text"
-                               value="<?php echo esc_attr(
-                                   $item['name_latin'] ?? ''
-                               ); ?>">
+                            id="name_latin"
+                            name="name_latin"
+                            class="regular-text"
+                            value="<?php echo esc_attr(
+                                        $item['name_latin'] ?? ''
+                                    ); ?>">
                     </td>
                 </tr>
 
@@ -734,12 +724,12 @@ class HK_Plugin
                     </th>
                     <td>
                         <input type="text"
-                               id="code"
-                               name="code"
-                               class="regular-text"
-                               value="<?php echo esc_attr(
-                                   $item['code'] ?? ''
-                               ); ?>">
+                            id="code"
+                            name="code"
+                            class="regular-text"
+                            value="<?php echo esc_attr(
+                                        $item['code'] ?? ''
+                                    ); ?>">
                     </td>
                 </tr>
 
@@ -749,13 +739,13 @@ class HK_Plugin
                     </th>
                     <td>
                         <textarea id="description"
-                                  name="description"
-                                  rows="5"
-                                  class="large-text"><?php
-                            echo esc_textarea(
-                                $item['description'] ?? ''
-                            );
-                        ?></textarea>
+                            name="description"
+                            rows="5"
+                            class="large-text"><?php
+                                                echo esc_textarea(
+                                                    $item['description'] ?? ''
+                                                );
+                                                ?></textarea>
                     </td>
                 </tr>
 
@@ -772,14 +762,14 @@ class HK_Plugin
                             <div style="flex:1;">
 
                                 <div id="hk-image-paste"
-                                     tabindex="0"
-                                     style="min-height:100px; padding:12px; border:2px dashed #aaa;">
+                                    tabindex="0"
+                                    style="min-height:100px; padding:12px; border:2px dashed #aaa;">
 
                                     <?php if ($image_url): ?>
 
                                         <img src="<?php echo esc_url($image_url); ?>"
-                                             alt="<?php echo esc_attr($item['name_de'] ?? ''); ?>"
-                                             style="max-width:180px;height:auto;">
+                                            alt="<?php echo esc_attr($item['name_de'] ?? ''); ?>"
+                                            style="max-width:180px;height:auto;">
 
                                         <p class="description">
                                             Aktuelles Bild:
@@ -802,9 +792,9 @@ class HK_Plugin
                             <div style="flex:1;">
 
                                 <input type="file"
-                                       id="image_file"
-                                       name="image_file"
-                                       accept=".jpg,.jpeg,.png,.webp">
+                                    id="image_file"
+                                    name="image_file"
+                                    accept=".jpg,.jpeg,.png,.webp">
 
                                 <p class="description">
                                     JPG, PNG oder WebP auswählen.
@@ -815,13 +805,13 @@ class HK_Plugin
                         </div>
 
                         <input type="hidden"
-                               id="hk-delete-image"
-                               name="delete_image"
-                               value="0">
+                            id="hk-delete-image"
+                            name="delete_image"
+                            value="0">
 
                         <button type="button"
-                                id="hk-delete-image-button"
-                                class="button">
+                            id="hk-delete-image-button"
+                            class="button">
                             Bild löschen
                         </button>
 
@@ -834,8 +824,8 @@ class HK_Plugin
                     <td>
                         <label>
                             <input type="checkbox"
-                                   name="active"
-                                   value="1"
+                                name="active"
+                                value="1"
                                 <?php checked(
                                     $item['active'] ?? true,
                                     true
@@ -850,14 +840,14 @@ class HK_Plugin
             <?php submit_button('Speichern'); ?>
 
             <a href="<?php echo esc_url(
-                admin_url('admin.php?page=holzarten-katalog')
-            ); ?>" class="button">
+                            admin_url('admin.php?page=holzarten-katalog')
+                        ); ?>" class="button">
                 Abbrechen
             </a>
 
         </form>
 
-        <?php
+    <?php
     }
 
     /**
@@ -865,7 +855,7 @@ class HK_Plugin
      */
     private function render_import_form()
     {
-        ?>
+    ?>
 
         <hr>
 
@@ -876,19 +866,19 @@ class HK_Plugin
         </p>
 
         <form method="post"
-              action="<?php echo esc_url(admin_url('admin-post.php')); ?>"
-              enctype="multipart/form-data">
+            action="<?php echo esc_url(admin_url('admin-post.php')); ?>"
+            enctype="multipart/form-data">
 
             <input type="hidden"
-                   name="action"
-                   value="hk_import_catalog">
+                name="action"
+                value="hk_import_catalog">
 
             <?php wp_nonce_field('hk_import_catalog'); ?>
 
             <input type="file"
-                   name="catalog_zip"
-                   accept=".zip,application/zip"
-                   required>
+                name="catalog_zip"
+                accept=".zip,application/zip"
+                required>
 
             <?php
             submit_button(
@@ -903,7 +893,7 @@ class HK_Plugin
 
         <hr>
 
-        <?php
+    <?php
     }
 
     /**
@@ -911,14 +901,14 @@ class HK_Plugin
      */
     private function render_table($items, $search)
     {
-        ?>
+    ?>
 
         <table width="100%">
             <tr>
                 <td>
                     <a href="<?php echo esc_url(
-                        admin_url('admin.php?page=holzarten-katalog&new=1')
-                    ); ?>" class="page-title-action">
+                                    admin_url('admin.php?page=holzarten-katalog&new=1')
+                                ); ?>" class="page-title-action">
                         Neue Holzart anlegen
                     </a>
                 </td>
@@ -935,25 +925,25 @@ class HK_Plugin
                     <form method="get">
 
                         <input type="hidden"
-                               name="page"
-                               value="holzarten-katalog">
+                            name="page"
+                            value="holzarten-katalog">
 
                         <p class="search-box">
 
                             <label class="screen-reader-text"
-                                   for="hk-search">
+                                for="hk-search">
                                 Holzartenfilter
                             </label>
 
                             <input type="search"
-                                   placeholder="Baumart"
-                                   id="hk-search"
-                                   name="s"
-                                   value="<?php echo esc_attr($search); ?>">
+                                placeholder="Baumart"
+                                id="hk-search"
+                                name="s"
+                                value="<?php echo esc_attr($search); ?>">
 
                             <input type="submit"
-                                   class="button"
-                                   value="Filtern">
+                                class="button"
+                                value="Filtern">
 
                         </p>
 
@@ -963,7 +953,7 @@ class HK_Plugin
         </table>
 
         <table id="hk-catalog-table"
-               class="wp-list-table widefat fixed striped">
+            class="wp-list-table widefat fixed striped">
 
             <thead>
                 <tr>
@@ -978,161 +968,161 @@ class HK_Plugin
 
             <tbody>
 
-            <?php if (empty($items)): ?>
-
-                <tr>
-                    <td colspan="6">
-                        Keine Holzarten gefunden.
-                    </td>
-                </tr>
-
-            <?php else: ?>
-
-                <?php foreach ($items as $item): ?>
+                <?php if (empty($items)): ?>
 
                     <tr>
-
-                        <td>
-                            <?php
-                            $image_file = $item['image_file'] ?? '';
-
-                            $image_url = $this->get_image_url(
-                                $image_file
-                            );
-
-                            $image_path = trailingslashit(
-                                HK_Storage::directory()
-                            ) . 'images/' . basename($image_file);
-                            ?>
-
-                            <?php if ($image_url && is_file($image_path)): ?>
-
-                                <span class="hk-image-zoom">
-                                    <img src="<?php echo esc_url($image_url); ?>"
-                                         alt="<?php echo esc_attr($item['name_de'] ?? ''); ?>"
-                                         class="hk-wood-image">
-                                </span>
-
-                            <?php else: ?>
-
-                                <div>
-                                    <img class="hk-image-placeholder"
-                                         src="<?php echo esc_url(
-                                             plugin_dir_url(dirname(__FILE__))
-                                             . 'assets/images/holz.png'
-                                         ); ?>"
-                                         alt="Kein Bild verfügbar">
-                                </div>
-
-                            <?php endif; ?>
-
+                        <td colspan="6">
+                            Keine Holzarten gefunden.
                         </td>
+                    </tr>
 
-                        <td>
-                            <strong>
-                                <?php echo esc_html(
-                                    $item['name_de'] ?? ''
-                                ); ?>
-                            </strong>
+                <?php else: ?>
 
-                            <?php if (!empty($item['description'])): ?>
+                    <?php foreach ($items as $item): ?>
 
-                                <div tabindex="0"
-                                     style="
+                        <tr>
+
+                            <td>
+                                <?php
+                                $image_file = $item['image_file'] ?? '';
+
+                                $image_url = $this->get_image_url(
+                                    $image_file
+                                );
+
+                                $image_path = trailingslashit(
+                                    HK_Storage::directory()
+                                ) . 'images/' . basename($image_file);
+                                ?>
+
+                                <?php if ($image_url && is_file($image_path)): ?>
+
+                                    <span class="hk-image-zoom">
+                                        <img src="<?php echo esc_url($image_url); ?>"
+                                            alt="<?php echo esc_attr($item['name_de'] ?? ''); ?>"
+                                            class="hk-wood-image">
+                                    </span>
+
+                                <?php else: ?>
+
+                                    <div>
+                                        <img class="hk-image-placeholder"
+                                            src="<?php echo esc_url(
+                                                        plugin_dir_url(dirname(__FILE__))
+                                                            . 'assets/images/holz.png'
+                                                    ); ?>"
+                                            alt="Kein Bild verfügbar">
+                                    </div>
+
+                                <?php endif; ?>
+
+                            </td>
+
+                            <td>
+                                <strong>
+                                    <?php echo esc_html(
+                                        $item['name_de'] ?? ''
+                                    ); ?>
+                                </strong>
+
+                                <?php if (!empty($item['description'])): ?>
+
+                                    <div tabindex="0"
+                                        style="
                                          height:100px;
                                          width:150px;
                                          overflow:scroll;
                                          overflow-wrap:anywhere;
                                          background:#fff;
                                      ">
+                                        <?php echo esc_html(
+                                            $item['description']
+                                        ); ?>
+                                    </div>
+
+                                <?php endif; ?>
+                            </td>
+
+                            <td>
+                                <em>
                                     <?php echo esc_html(
-                                        $item['description']
+                                        $item['name_latin'] ?? ''
                                     ); ?>
-                                </div>
+                                </em>
+                            </td>
 
-                            <?php endif; ?>
-                        </td>
-
-                        <td>
-                            <em>
+                            <td>
                                 <?php echo esc_html(
-                                    $item['name_latin'] ?? ''
+                                    $item['code'] ?? ''
                                 ); ?>
-                            </em>
-                        </td>
+                            </td>
 
-                        <td>
-                            <?php echo esc_html(
-                                $item['code'] ?? ''
-                            ); ?>
-                        </td>
+                            <td>
+                                <label>
+                                    <input type="checkbox"
+                                        class="hk-status-toggle"
+                                        data-id="<?php echo esc_attr($item['id']); ?>"
+                                        <?php checked(!empty($item['active'])); ?>>
 
-                        <td>
-                            <label>
-                                <input type="checkbox"
-                                       class="hk-status-toggle"
-                                       data-id="<?php echo esc_attr($item['id']); ?>"
-                                       <?php checked(!empty($item['active'])); ?>>
+                                    <span class="hk-status-label">
+                                        <?php echo !empty($item['active'])
+                                            ? 'Aktiv'
+                                            : 'Inaktiv'; ?>
+                                    </span>
+                                </label>
+                            </td>
 
-                                <span class="hk-status-label">
-                                    <?php echo !empty($item['active'])
-                                        ? 'Aktiv'
-                                        : 'Inaktiv'; ?>
-                                </span>
-                            </label>
-                        </td>
+                            <td>
 
-                        <td>
+                                <a href="<?php echo esc_url(
+                                                admin_url(
+                                                    'admin.php?page=holzarten-katalog&edit='
+                                                        . rawurlencode($item['id'])
+                                                )
+                                            ); ?>">
+                                    <img style="width:18px;"
+                                        src="<?php echo esc_url(
+                                                    plugin_dir_url(dirname(__FILE__))
+                                                        . 'assets/images/edit.svg'
+                                                ); ?>"
+                                        alt="Bearbeiten">
+                                </a>
 
-                            <a href="<?php echo esc_url(
-                                admin_url(
-                                    'admin.php?page=holzarten-katalog&edit='
-                                    . rawurlencode($item['id'])
-                                )
-                            ); ?>">
-                                <img style="width:18px;"
-                                     src="<?php echo esc_url(
-                                         plugin_dir_url(dirname(__FILE__))
-                                         . 'assets/images/edit.svg'
-                                     ); ?>"
-                                     alt="Bearbeiten">
-                            </a>
+                                &nbsp;
 
-                            &nbsp;
+                                <a href="<?php echo esc_url(
+                                                wp_nonce_url(
+                                                    admin_url(
+                                                        'admin-post.php?action=hk_delete_item&id='
+                                                            . rawurlencode($item['id'])
+                                                    ),
+                                                    'hk_delete_item_' . $item['id']
+                                                )
+                                            ); ?>"
+                                    onclick="return confirm('Diese Holzart wirklich löschen?');">
 
-                            <a href="<?php echo esc_url(
-                                wp_nonce_url(
-                                    admin_url(
-                                        'admin-post.php?action=hk_delete_item&id='
-                                        . rawurlencode($item['id'])
-                                    ),
-                                    'hk_delete_item_' . $item['id']
-                                )
-                            ); ?>"
-                               onclick="return confirm('Diese Holzart wirklich löschen?');">
+                                    <img style="width:16px;"
+                                        src="<?php echo esc_url(
+                                                    plugin_dir_url(dirname(__FILE__))
+                                                        . 'assets/images/delete.svg'
+                                                ); ?>"
+                                        alt="Löschen">
 
-                                <img style="width:16px;"
-                                     src="<?php echo esc_url(
-                                         plugin_dir_url(dirname(__FILE__))
-                                         . 'assets/images/delete.svg'
-                                     ); ?>"
-                                     alt="Löschen">
+                                </a>
 
-                            </a>
+                            </td>
 
-                        </td>
+                        </tr>
 
-                    </tr>
+                    <?php endforeach; ?>
 
-                <?php endforeach; ?>
-
-            <?php endif; ?>
+                <?php endif; ?>
 
             </tbody>
 
         </table>
 
-        <?php
+<?php
     }
 
     /**
@@ -1278,7 +1268,7 @@ class HK_Plugin
         if (is_wp_error($result)) {
             error_log(
                 'Holzarten-Katalog: ZIP-Import fehlgeschlagen: '
-                . $result->get_error_message()
+                    . $result->get_error_message()
             );
 
             wp_safe_redirect(
