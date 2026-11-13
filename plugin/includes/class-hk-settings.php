@@ -11,7 +11,7 @@ class HK_Settings
     public static function add_menu()
     {
         add_submenu_page(
-            'hk_catalog', // Parent-Slug ggf. anpassen
+            'holzarten-katalog', // Parent-Slug ggf. anpassen
             'Einstellungen',
             'Einstellungen',
             'manage_options',
