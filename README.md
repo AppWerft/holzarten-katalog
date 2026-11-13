@@ -45,5 +45,6 @@ Eine bebilderte Liste aller aktiven Holzarten lässt sich mit einem Shortcode im
 ### Holzart in der Urnenbeschreibung
 
 ### Fundstelle des Holzes
+Falls eine Geoposition angegeben ist, wird eine Karte unter der Urne angezeigt.
 
 
