@@ -39,4 +39,4 @@ Das Plugin lässt sich [hier runterladen](holzarten-katalog-plugin.zip). Danach 
 
 Eine bebilderte Liste aller aktiven Holzarten lässt sich mit einem Shortcode im Blockeditor anzeigen:
 
-[hk_holzarten]
+`[hk_holzarten]`
