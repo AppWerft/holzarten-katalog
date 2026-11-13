@@ -35,7 +35,7 @@ Nach Auswahl wird die Karte auf den Punkt zentriert und die Position makiert. Di
 
 Das Plugin lässt sich [hier runterladen](holzarten-katalog-plugin.zip). Danach lässt es sich in Pluginverwaltung von WP einbinden 
 
-## Anwenung im Frontend (öffentliche Seite) 
+## Anwendung im Frontend (öffentliche Seite) 
 
 ### Liste der Holzarten
 
