@@ -25,12 +25,22 @@
                 'woocommerce_admin_process_product_object',
                 [$this, 'save_fields']
             );
+
+            $settings = wp_parse_args(
+                get_option('hk_map_settings', []),
+                ['priority' => 35]
+            );
+
             add_action(
                 'woocommerce_single_product_summary',
-                [$this, 'render_map'],
-                35
+                [$this, 'render_map'], // tatsächlichen Methodennamen einsetzen
+                $settings['priority']
             );
-            add_action('wp_enqueue_scripts', [$this, 'enqueue_scripts']);
+
+            add_action(
+                'wp_enqueue_scripts',
+                [$this, 'enqueue_scripts']
+            );
         }
 
 
