@@ -35,8 +35,12 @@ Nach Auswahl wird die Karte auf den Punkt zentriert und die Position makiert. Di
 
 Das Plugin lässt sich [hier runterladen](holzarten-katalog-plugin.zip). Danach lässt es sich in Pluginverwaltung von WP einbinden 
 
-# Frontend 
+## Frontend 
 
 Eine bebilderte Liste aller aktiven Holzarten lässt sich mit einem Shortcode im Blockeditor anzeigen:
 
 `[hk_holzarten]`
+
+### Parameter
+
+
