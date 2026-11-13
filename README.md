@@ -1,6 +1,6 @@
 # Holzarten-Katalog
 
-Wordpressmodul, das woocommerce um Holzarten erweitert
+Wordpressmodul, das woocommerce um die Anzeige der Holzarten und ihrer Einschlagorte erweitert
 
 ## Datenquellen
 
