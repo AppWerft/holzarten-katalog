@@ -25,8 +25,50 @@
                 'woocommerce_admin_process_product_object',
                 [$this, 'save_fields']
             );
+            add_action(
+                'woocommerce_single_product_summary',
+                [$this, 'render_map'],
+                35
+            );
+            add_action('wp_enqueue_scripts', [$this, 'enqueue_scripts']);
         }
 
+
+        /**
+         * Karte auf der Produktseite anzeigen.
+         */
+        public function render_map()
+        {
+            global $product;
+
+            if (!$product) {
+                return;
+            }
+
+            $product_id = $product->get_id();
+
+            // Prüfen, ob das Attribut Geoposition zugeordnet ist.
+            if (!has_term('', 'pa_geoposition', $product_id)) {
+                return;
+            }
+
+            // Koordinaten auslesen.
+            $lat = get_post_meta($product_id, '_hk_origin_lat', true);
+            $lng = get_post_meta($product_id, '_hk_origin_lng', true);
+
+            if ($lat === '' || $lng === '') {
+                return;
+            }
+            wp_enqueue_script(
+                'hk-geopositions-map',
+                plugins_url('assets/js/geopositions-map.js', HK_PLUGIN_FILE),
+                ['jquery'],
+                '1.0.0',
+                true
+            );
+            
+            echo '<div data-geo="' . esc_attr($lat . ',' . $lng) . '" class="geopositions_map"></div>';
+        }
 
         public function render_geosuche()
         {
@@ -92,7 +134,7 @@
             $bar .=  '</p>';
             $bar .=  '<div id="hk-origin-map" style="display:none;height:400px;margin:10px 12px;"></div>';
             return $bar;
-         }
+        }
         /**
          * Herkunftskoordinaten im Produkteditor anzeigen.
          */
@@ -133,7 +175,7 @@
             echo $this->render_geosuche();
         }
 
-        
+
 
         /**
          * Herkunftskoordinaten speichern.

@@ -2,7 +2,10 @@ jQuery('.geopositions_map').each(function () {
     const $mapContainer = jQuery(this);
     const [lat, lng] = $mapContainer.data('geo').split(',').map(Number);
 
-    $mapContainer.css('display', 'block');
+    $mapContainer
+        .css('display', 'block');
+        .css('height','200px');
+        .css('width','100%')
 
     const map = L.map($mapContainer[0]).setView([lat, lng], 6);
 
