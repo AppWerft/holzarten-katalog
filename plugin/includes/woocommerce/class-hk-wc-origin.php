@@ -66,8 +66,31 @@
                 '1.0.0',
                 true
             );
-            
-            echo '<div data-geo="' . esc_attr($lat . ',' . $lng) . '" class="geopositions_map"></div>';
+            $settings = wp_parse_args(
+                get_option('hk_map_settings', []),
+                [
+                    'height' => 200,
+                    'width' => 100,
+                    'position' => 'center',
+                ]
+            );
+
+            $margin = match ($settings['position']) {
+                'left'  => '0 auto 0 0',
+                'right' => '0 0 0 auto',
+                default => '0 auto',
+            };
+
+            printf(
+                '<div data-geo="%s"
+                    class="geopositions_map"
+                    style="height:%dpx;width:%d%%;margin:%s">
+                </div>',
+                esc_attr($lat . ',' . $lng),
+                $settings['height'],
+                $settings['width'],
+                esc_attr($margin)
+            );
         }
 
         public function render_geosuche()
