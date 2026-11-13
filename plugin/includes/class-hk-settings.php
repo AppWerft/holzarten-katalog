@@ -11,7 +11,7 @@ class HK_Settings
     public static function add_menu()
     {
         add_submenu_page(
-            'holzarten-katalog', // Parent-Slug ggf. anpassen
+            'holzarten-katalog',
             'Einstellungen',
             'Einstellungen',
             'manage_options',
@@ -29,6 +29,21 @@ class HK_Settings
                 'sanitize_callback' => [self::class, 'sanitize']
             ]
         );
+    }
+
+    public static function render()
+    {
+?>
+        <div class="wrap">
+            <h1>Holzarten – Einstellungen</h1>
+            <form method="post" action="options.php">
+                <?php
+                settings_fields('hk_settings_group');
+                submit_button();
+                ?>
+            </form>
+        </div>
+<?php
     }
 
     public static function sanitize($input)
