@@ -13,7 +13,7 @@ class HK_Settings
         add_submenu_page(
             'holzarten-katalog',
             'Einstellungen',
-            'Einstellungen',
+            'Holzfundorte',
             'manage_options',
             'hk_settings',
             [self::class, 'render']
