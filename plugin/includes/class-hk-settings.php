@@ -44,7 +44,7 @@ public static function render()
     );
     ?>
     <div class="wrap">
-        <h1>Holzarten – Einstellungen</h1>
+        <h1>Holzfundortkarten – Einstellungen</h1>
 
         <form method="post" action="options.php">
             <?php settings_fields('hk_settings_group'); ?>
