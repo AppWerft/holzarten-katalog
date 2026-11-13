@@ -190,7 +190,7 @@ jQuery(document).ready(function ($) {
 
 jQuery(function ($) {
     const selector = 'select.attribute_values[data-taxonomy="pa_holzart"]';
-
+     alert('T')
     // Bereits vorhandene Mehrfachauswahlen auf eine reduzieren.
     $(selector).each(function () {
         const values = $(this).val();
