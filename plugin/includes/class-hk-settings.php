@@ -113,7 +113,25 @@ public static function render()
                         </select>
                     </td>
                 </tr>
-
+<tr>
+    <th scope="row">
+        <label for="hk-map-priority">Position in WooCommerce</label>
+    </th>
+    <td>
+        <input
+            type="number"
+            id="hk-map-priority"
+            name="hk_map_settings[priority]"
+            value="<?php echo esc_attr($settings['priority']); ?>"
+            min="1"
+            max="100"
+        >
+        <p class="description">
+            Hook-Priorität: kleinerer Wert = frühere Ausgabe.
+            Standard: 35.
+        </p>
+    </td>
+</tr>
             </table>
 
             <?php submit_button('Einstellungen speichern'); ?>
