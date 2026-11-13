@@ -136,7 +136,6 @@ class HK_Settings
 <?php
     }
 
-
     public static function sanitize($input)
     {
         return [
