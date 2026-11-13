@@ -112,7 +112,7 @@ class HK_Plugin
     {
         add_menu_page(
             'Holzarten-Katalog',
-            'Übersicht',
+            'Holzarten',
             'manage_options',
             'holzarten-katalog',
             [$this, 'admin_page'],
