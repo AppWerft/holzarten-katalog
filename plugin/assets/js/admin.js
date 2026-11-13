@@ -188,9 +188,11 @@ jQuery(document).ready(function ($) {
 });
 
 
-jQuery(document).ready(function ($){
-    const selector = 'select.attribute_values[data-taxonomy="pa_holzart"]';
-    
+jQuery(function ($) {
+
+    const selector =
+        'select.attribute_values[data-taxonomy="pa_holzart"]';
+
     // Bereits vorhandene Mehrfachauswahlen auf eine reduzieren.
     $(selector).each(function () {
         const values = $(this).val();
@@ -199,12 +201,15 @@ jQuery(document).ready(function ($){
             $(this).val([values[0]]).trigger('change');
         }
     });
+
     // Bei einer neuen Auswahl die bisherige ersetzen.
     $(document).on('select2:select', selector, function (event) {
         const selected = event.params.data.id;
+
         $(this)
             .val([selected])
             .trigger('change');
     });
+
 });
 

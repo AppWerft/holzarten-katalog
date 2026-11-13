@@ -41,9 +41,40 @@
                 'wp_enqueue_scripts',
                 [$this, 'enqueue_scripts']
             );
+            add_action(
+                'woocommerce_admin_process_product_object',
+                [$this, 'limit_wood_attribute'],
+                20
+            );
+            add_action(
+                'admin_enqueue_scripts',
+                [$this, 'enqueue_admin_scripts']
+            );
         }
 
+        public function limit_wood_attribute($product)
+        {
+            $attributes = $product->get_attributes();
 
+            if (!isset($attributes['pa_holzart'])) {
+                return;
+            }
+
+            $attribute = $attributes['pa_holzart'];
+
+            if (!$attribute->is_taxonomy()) {
+                return;
+            }
+
+            $options = $attribute->get_options();
+
+            if (count($options) > 1) {
+                $attribute->set_options(array_slice($options, 0, 1));
+                $attributes['pa_holzart'] = $attribute;
+
+                $product->set_attributes($attributes);
+            }
+        }
         /**
          * Karte auf der Produktseite anzeigen.
          */
@@ -102,7 +133,26 @@
                 esc_attr($margin)
             );
         }
+        public function enqueue_admin_scripts($hook)
+        {
+            if (!in_array($hook, ['post.php', 'post-new.php'], true)) {
+                return;
+            }
 
+            $screen = get_current_screen();
+
+            if (!$screen || $screen->post_type !== 'product') {
+                return;
+            }
+
+            wp_enqueue_script(
+                'hk-admin',
+                HK_PLUGIN_URL . 'assets/js/hk-admin.js',
+                ['jquery', 'wc-enhanced-select'],
+                HK_VERSION,
+                true
+            );
+        }
         public function render_geosuche()
         {
             $bar = "";
