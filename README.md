@@ -37,10 +37,14 @@ Das Plugin lässt sich [hier runterladen](holzarten-katalog-plugin.zip). Danach 
 
 ## Frontend 
 
+### Liste der Holzarten
+
 Eine bebilderte Liste aller aktiven Holzarten lässt sich mit einem Shortcode im Blockeditor anzeigen:
 
 `[hk_holzarten]`
 
-### Parameter
+### Holzart in der Urnenbeschreibung
+
+### Fundstelle des Holzes
 
 
