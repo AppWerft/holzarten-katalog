@@ -31,7 +31,7 @@ Von der Holzartenliste gelangt man über die Edit-Button zur Detailseite.
 
 ![Holzarten-Hochlade](images/holzhochlade.png)
 
-Das Holzphoto lässt sich klassisch aus dem lokalen Dateissystem ('Choose File') oder über die Zwischenablage in das feld einfügen.
+Das Holzphoto lässt sich klassisch aus dem lokalen Dateissystem ('Choose File') oder über die Zwischenablage in das Feld einfügen. Die Darstellung im öffentlichen Bereich lässt sich unter HOLZARTEN/EINSTELLUNGEN anpassen.
 
 ### Holzschlagort
 
