@@ -31,11 +31,11 @@ Von der Holzartenliste gelangt man über die Edit-Button zur Detailseite.
 
 ![Holzarten-Hochlade](images/holzhochlade.png)
 
-Das Holzphoto lässt sich klassisch aus dem lokalen Dateissystem ('Choose File') oder über die Zwischenablage in das Feld einfügen. Die Darstellung im öffentlichen Bereich lässt sich unter HOLZARTEN/EINSTELLUNGEN anpassen.
+Das Holzphoto lässt sich klassisch aus dem lokalen Dateissystem ('Choose File') oder über die Zwischenablage in das Feld einfügen. 
 
 ### Holzschlagort
 
-Die Geoposition lässt sich im woocommerce Teil als Attribut komfortable einpflegen. Eine Ortssuche unterstützt dabei.
+Die Geoposition lässt sich im woocommerce Teil als Attribut komfortabel einpflegen. Eine Ortssuche unterstützt dabei.
 Nach Eingabe erscheint eine Liste von möglichen Treffern. 
 
 ![Holzarten-Holzort](images/magdala.png)
@@ -43,6 +43,8 @@ Nach Eingabe erscheint eine Liste von möglichen Treffern.
 Nach Auswahl wird die Karte auf den Punkt zentriert und die Position markiert. Die Geodaten können dann dem Produkt zugeordnet werden.
 
 ![Holzarten-Holzort](images/holzverorte.png)
+
+### Zuordnung der Holzarten zu den Produkten
 
 
 ## Anwendung im Frontend (öffentliche Seite) 
