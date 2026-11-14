@@ -45,7 +45,7 @@ Nach Auswahl wird die Karte auf den Punkt zentriert und die Position markiert. D
 ![Holzarten-Holzort](images/holzverorte.png)
 
 ### Zuordnung der Holzarten zu den Produkten
-
+Die Zuordnung erfolgt im Editor des Produktes unter dem Punkt ATTRIBUTES. Dort lässt sich mit dem Dreieck die Liste der aktiven Holzarten aufrufen und die Holzart auswählen.
 
 ## Anwendung im Frontend (öffentliche Seite) 
 
@@ -56,6 +56,7 @@ Eine bebilderte Liste aller aktiven Holzarten lässt sich mit einem Shortcode im
 `[hk_holzarten]`
 
 ### Holzart in der Urnenbeschreibung
+
 
 
 ### Fundstelle des Holzes
