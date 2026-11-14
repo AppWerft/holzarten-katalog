@@ -7,19 +7,26 @@ Wordpressmodul, das woocommerce um die Anzeige der Holzarten und ihrer Einschlag
 - EN 13556 – Holzarten und Handelsbezeichnungen
 - Erweiterte Eigenschaften aus Wikipedia
 
-![Holzarten-Übersicht](images/holzartenadmin.png)
+
 
 ## Datenmodell
 
 Die Holzarten werden anhand ihrer EN-13556-Codes identifiziert.
 Die zusammengeführten Daten befinden sich in holzarten_gesamt.json. Daten (Hölzer und Bilder) lassen sich exportieren und wieder in einer anderen Instanz importieren.
 
-## Holzbilder
+## Admin (Verwaltung)
+
+### Liste der Holzarten
+
+![Holzarten-Übersicht](images/holzartenadmin.png)
+
+Die Liste der Holzarten lässt sich im Menüpunkt HOLZARTEN bearbeiten. Bei Auslieferung des Plugins sind schon viele Holzarten vorbelegt (Quelle: Wikipedia). Bearbeitungsständen lassen sich über EXPORT und IMPORT zwischen Instanzen kopieren.
+
 Bilder lassen sich klassisch mit lokaler Dateiauswahl oder per Pasting über die Zwischenanlage in der Einzelbearbeitung der Hölzer einfügen.
 
 ![Holzarten-Hochlade](images/holzhochlade.png)
 
-## Holzschlagort
+### Holzschlagort
 
 Die Geoposition lässt sich im woocommerce Teil als Attribut komfortable einpflegen. Eine Ortssuche unterstützt dabei.
 Nach Eingabe erscheint eine Liste von möglichen Treffern. 
@@ -30,9 +37,6 @@ Nach Auswahl wird die Karte auf den Punkt zentriert und die Position makiert. Di
 
 ![Holzarten-Holzort](images/holzverorte.png)
 
-## Installation
-
-Das Plugin lässt sich [hier runterladen](holzarten-katalog-plugin.zip). Danach lässt es sich in Pluginverwaltung von WP einbinden 
 
 ## Anwendung im Frontend (öffentliche Seite) 
 
@@ -48,4 +52,7 @@ Eine bebilderte Liste aller aktiven Holzarten lässt sich mit einem Shortcode im
 ### Fundstelle des Holzes
 Falls eine Geoposition angegeben ist, wird eine Karte unter der Urne angezeigt.
 
+## Installation
+
+Das Plugin lässt sich [hier runterladen](holzarten-katalog-plugin.zip). Danach lässt es sich in Pluginverwaltung von WP einbinden 
 
