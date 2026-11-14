@@ -24,7 +24,14 @@ Die Liste der Holzarten lässt sich im Menüpunkt HOLZARTEN bearbeiten. Bei Ausl
 
 Bilder lassen sich klassisch mit lokaler Dateiauswahl oder per Pasting über die Zwischenanlage in der Einzelbearbeitung der Hölzer einfügen.
 
+
+### Holzart
+
+Von der Holzartenliste gelangt man über die Edit-Button zur Detailseite.
+
 ![Holzarten-Hochlade](images/holzhochlade.png)
+
+Das Holzphoto lässt sich klassisch aus dem lokalen Dateissystem ('Choose File') oder über die Zwischenablage in das feld einfügen.
 
 ### Holzschlagort
 
@@ -33,7 +40,7 @@ Nach Eingabe erscheint eine Liste von möglichen Treffern.
 
 ![Holzarten-Holzort](images/magdala.png)
 
-Nach Auswahl wird die Karte auf den Punkt zentriert und die Position makiert. Die Geodaten können dann dem Produkt zugeordnet werden.
+Nach Auswahl wird die Karte auf den Punkt zentriert und die Position markiert. Die Geodaten können dann dem Produkt zugeordnet werden.
 
 ![Holzarten-Holzort](images/holzverorte.png)
 
