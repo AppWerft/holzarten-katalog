@@ -1,12 +1,11 @@
 # Holzarten-Katalog
 
-Wordpressmodul, das woocommerce um die Anzeige der Holzarten und ihrer Einschlagorte erweitert
+Wordpressmodul, das woocommerce um die Anzeige der Holzarten und ihrer Einschlagorte erweitert.
 
 ## Datenquellen
 
 - EN 13556 – Holzarten und Handelsbezeichnungen
 - Erweiterte Eigenschaften aus Wikipedia
-
 
 
 ## Datenmodell
