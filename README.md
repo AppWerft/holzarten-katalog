@@ -47,6 +47,8 @@ Nach Auswahl wird die Karte auf den Punkt zentriert und die Position markiert. D
 ### Zuordnung der Holzarten zu den Produkten
 Die Zuordnung erfolgt im Editor des Produktes unter dem Punkt ATTRIBUTES. Dort lässt sich mit dem Dreieck die Liste der aktiven Holzarten aufrufen und die Holzart auswählen.
 
+![Holzarten-Holzort](images/holzarten.png)
+
 ## Anwendung im Frontend (öffentliche Seite) 
 
 ### Liste der Holzarten
