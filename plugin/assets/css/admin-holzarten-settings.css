@@ -18,3 +18,13 @@
     border-radius: 50%;
     box-sizing: border-box;
 }
+
+/* Standard */
+#hk-wood-preview {
+    cursor: default;
+}
+
+/* Lupe aktiviert */
+#hk-wood-preview.hk-wood-zoom {
+    cursor: zoom-in;
+}
