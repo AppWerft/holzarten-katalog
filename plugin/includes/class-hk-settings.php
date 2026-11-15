@@ -175,7 +175,7 @@ class HK_Settings
 
                     </fieldset>
                     <fieldset class="hk-settings-subsection">
-                        <legend>Weitere Anzeigeoptionen</legend>
+                        <legend>Textanzeigen</legend>
 
                         <table class="form-table">
                            <tr>
@@ -188,37 +188,37 @@ class HK_Settings
                                         name="hk_holzarten_settings[description]"
                                         value="1"
                                         <?php checked(
-                                            get_option('hk_holzarten_settings', [])['ldescription'] ?? 0,
+                                            get_option('hk_holzarten_settings', [])['description'] ?? 0,
                                             1
                                         ); ?>>
                                 </td>
                             </tr> 
                             <tr>
-                                <th scope="row"><label for="hk-holzarten-lupe">Beschreibungstext?</label>
+                                <th scope="row"><label for="hk-holzarten-lat">Lateinischer Name?</label>
                                 </th>
                                 <td>
                                     <input
                                         type="checkbox"
-                                        id="hk-holzarten-description"
-                                        name="hk_holzarten_settings[description]"
+                                        id="hk-holzarten-lat"
+                                        name="hk_holzarten_settings[lat]"
                                         value="1"
                                         <?php checked(
-                                            get_option('hk_holzarten_settings', [])['ldescription'] ?? 0,
+                                            get_option('hk_holzarten_settings', [])['lat'] ?? 0,
                                             1
                                         ); ?>>
                                 </td>
                             </tr> 
                             <tr>
-                                <th scope="row"><label for="hk-holzarten-lupe">Beschreibungstext?</label>
+                                <th scope="row"><label for="hk-holzarten-ger">deutscher Name?</label>
                                 </th>
                                 <td>
                                     <input
                                         type="checkbox"
                                         id="hk-holzarten-description"
-                                        name="hk_holzarten_settings[description]"
+                                        name="hk_holzarten_settings[ger]"
                                         value="1"
                                         <?php checked(
-                                            get_option('hk_holzarten_settings', [])['ldescription'] ?? 0,
+                                            get_option('hk_holzarten_settings', [])['ger'] ?? 0,
                                             1
                                         ); ?>>
                                 </td>
