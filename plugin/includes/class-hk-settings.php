@@ -48,11 +48,11 @@ public static function render_holzarten()
                     </th>
                     <td>
                         <input
-                            type="text"
-                            name="hk_holzarten_settings[parameter1]"
+                            type="numeric"
+                            name="hk_holzarten_settings[size]"
                             value="<?php
                                 echo esc_attr(
-                                    get_option('hk_holzarten_settings', [])['parameter1'] ?? ''
+                                    get_option('hk_holzarten_settings', [])['size'] ?? ''
                                 );
                             ?>">
                     </td>
@@ -63,11 +63,11 @@ public static function render_holzarten()
                     </th>
                     <td>
                         <input
-                            type="text"
-                            name="hk_holzarten_settings[parameter1]"
+                            type="chwckbox"
+                            name="hk_holzarten_settings[rund]"
                             value="<?php
                                 echo esc_attr(
-                                    get_option('hk_holzarten_settings', [])['parameter1'] ?? ''
+                                    get_option('hk_holzarten_settings', [])['round'] ?? ''
                                 );
                             ?>">
                     </td>
