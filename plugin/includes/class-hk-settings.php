@@ -128,7 +128,7 @@ class HK_Settings
                 submit_button('Einstellungen speichern'); ?>
             
                 <div class="hk-preview-wrapper">
-                    <p><strong>Vorschau der Holzart in der Detailanzeige</strong></p>
+                    <p><i>Vorschau der Holzart in der Detailanzeige</i></p>
                     <div class="hk-preview">
                         <img
                             id="hk-wood-preview"
