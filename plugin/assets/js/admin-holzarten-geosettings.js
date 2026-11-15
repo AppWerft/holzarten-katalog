@@ -11,10 +11,8 @@ document.addEventListener('DOMContentLoaded', function () {
     // Darstellung des Kartencontainers
     const updatePreview = () => {
         const w = parseInt(widthInput.value, 10) || 120;
-        const h = parseInt(heightInput.value, 10) || 50;
-        preview.style.display = 'block';
-        preview.style.height = h+'%';
-        preview.style.border = '2px dotted darkgreen';
+        const h = parseInt(heightInput.value, 10)+'%' || '50%';
+        preview.style.height = h; 
         preview.style.width = w;
     }
     // Leaflet-Karte initialisieren
