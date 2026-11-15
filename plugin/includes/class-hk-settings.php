@@ -208,7 +208,7 @@ class HK_Settings
     ?>
         <div class="wrap">
             <h1>Holzfundortkarten – Darstellungseinstellungen</h1>
-
+            Den Produkten kann eine Geoposition zugeordnet werden.
             <form method="post" action="options.php">
                 <?php settings_fields('hk_settings_group'); ?>
 
