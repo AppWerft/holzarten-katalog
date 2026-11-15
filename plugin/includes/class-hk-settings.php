@@ -64,7 +64,7 @@ class HK_Settings
     {
 ?>
         <div class="wrap">
-            <h1>Holzarten – Einstellungen in Detailanzeige</h1>
+            <h1>Holzarteneinstellungen in Detailanzeige</h1>
             <form method="post" action="options.php">
                 <?php settings_fields('hk_holzarten_settings_group'); ?>
                 <table class="form-table">
@@ -128,7 +128,7 @@ class HK_Settings
                 submit_button('Einstellungen speichern'); ?>
 
                 <div class="hk-preview-wrapper">
-                    <p><i>Vorschau der Holzart in der Detailanzeige</i></p>
+                    <p><i>Vorschau der Holzart in der Detailanzeige:</i></p>
                     <div class="hk-preview">
                         <img
                             id="hk-wood-preview"
