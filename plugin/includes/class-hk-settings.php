@@ -46,6 +46,15 @@ class HK_Settings
             file_exists($js_file) ? filemtime($js_file) : HK_VERSION,
             true
         );
+         // CSS
+    $css_file = HK_PLUGIN_DIR . 'assets/css/admin-holzarten-settings.css';
+
+    wp_enqueue_style(
+        'hk-holzarten-settings',
+        HK_PLUGIN_URL . 'assets/css/admin-holzarten-settings.css',
+        [],
+        file_exists($css_file) ? filemtime($css_file) : HK_VERSION
+    );
     }
 
 
