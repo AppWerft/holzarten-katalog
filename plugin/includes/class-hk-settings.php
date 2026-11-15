@@ -20,11 +20,7 @@ class HK_Settings
             'hk_settings_fundorte',
             [self::class, 'render_fundorte']
         );
-        global $submenu;
 
-        if (isset($submenu['holzarten-katalog'][0])) {
-            $submenu['holzarten-katalog'][0][0] = 'Holzartenliste';
-        }
         // Einstellungen Holzarten
         add_submenu_page(
             'holzarten-katalog',
@@ -34,6 +30,8 @@ class HK_Settings
             'hk_settings_holzarten',
             [self::class, 'render_holzarten']
         );
+
+        // Automatischen ersten Menüpunkt umbenennen
         global $submenu;
 
         if (isset($submenu['holzarten-katalog'][0])) {
@@ -42,32 +40,53 @@ class HK_Settings
     }
 
     public static function enqueue_scripts($hook)
-    {
-        if ($hook !== 'holzartenkatalog_page_hk_settings_holzarten') {
-            return;
-        }
+{
+    // Holzarten-Einstellungen
+    if ($hook === 'holzartenkatalog_page_hk_settings_holzarten') {
 
-        $js_file = HK_PLUGIN_DIR . 'assets/js/admin-holzarten-geosettings.js';
+        $js_file = HK_PLUGIN_DIR . 'assets/js/admin-holzarten-holzsettings.js';
+
         wp_enqueue_script(
-            'hk-holzarten-settings',
-            HK_PLUGIN_URL . 'assets/js/admin-holzarten-geosettings.js',
+            'hk-holzarten-holzsettings',
+            HK_PLUGIN_URL . 'assets/js/admin-holzarten-holzsettings.js',
             [],
             file_exists($js_file) ? filemtime($js_file) : HK_VERSION,
             true
         );
-        // CSS
-        $css_file = HK_PLUGIN_DIR . 'assets/css/admin-holzarten-geosettings.css';
+
+        $css_file = HK_PLUGIN_DIR . 'assets/css/admin-holzarten-holzsettings.css';
 
         wp_enqueue_style(
             'hk-holzarten-settings',
-            HK_PLUGIN_URL . 'assets/css/admin-holzarten-geosettings.css',
+            HK_PLUGIN_URL . 'assets/css/admin-holzarten-holzsettings.css',
             [],
             file_exists($css_file) ? filemtime($css_file) : HK_VERSION
         );
     }
 
+    // Holzfundorte-Einstellungen
+    if ($hook === 'holzartenkatalog_page_hk_settings_fundorte') {
 
+        $js_file = HK_PLUGIN_DIR . 'assets/js/admin-holzarten-geosettings.js';
 
+        wp_enqueue_script(
+            'hk-holzarten-geosettings',
+            HK_PLUGIN_URL . 'assets/js/admin-holzarten-geosettings.js',
+            [],
+            file_exists($js_file) ? filemtime($js_file) : HK_VERSION,
+            true
+        );
+
+        $css_file = HK_PLUGIN_DIR . 'assets/css/admin-holzarten-geosettings.css';
+
+        wp_enqueue_style(
+            'hk-holzarten-geosettings',
+            HK_PLUGIN_URL . 'assets/css/admin-holzarten-geosettings.css',
+            [],
+            file_exists($css_file) ? filemtime($css_file) : HK_VERSION
+        );
+    }
+}
 
     public static function render_holzarten()
     {
