@@ -220,7 +220,7 @@ class HK_Settings
                         </th>
                         <td>
                             <input
-                                type="number"
+                                type="range"
                                 id="hk-map-height"
                                 name="hk_map_settings[height]"
                                 value="<?php echo esc_attr($settings['height']); ?>"
@@ -237,7 +237,7 @@ class HK_Settings
                         </th>
                         <td>
                             <input
-                                type="number"
+                                type="range"
                                 id="hk-map-width"
                                 name="hk_map_settings[width]"
                                 value="<?php echo esc_attr($settings['width']); ?>"
