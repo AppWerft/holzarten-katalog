@@ -41,7 +41,7 @@ class HK_Settings
         'hk-holzarten-settings',
         HK_PLUGIN_URL . 'assets/js/admin-holzarten-settings.js',
         [],
-        time(), // Cache vorübergehend umgehen
+        '1.0.1', 
         true
     );
 }
