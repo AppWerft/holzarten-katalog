@@ -32,15 +32,23 @@ class HK_Settings
 }
 
     public static function register_settings()
-    {
-        register_setting(
-            'hk_settings_group',
-            'hk_map_settings',
-            [
-                'sanitize_callback' => [self::class, 'sanitize']
-            ]
-        );
-    }
+{
+    register_setting(
+        'hk_settings_group',
+        'hk_map_settings',
+        [
+            'sanitize_callback' => [self::class, 'sanitize_map']
+        ]
+    );
+
+    register_setting(
+        'hk_holzarten_settings_group',
+        'hk_holzarten_settings',
+        [
+            'sanitize_callback' => [self::class, 'sanitize_holzarten']
+        ]
+    );
+}
 
 
     public static function render_fundorte()
