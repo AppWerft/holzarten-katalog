@@ -40,53 +40,73 @@ class HK_Settings
     }
 
     public static function enqueue_scripts($hook)
-{
-    // Holzarten-Einstellungen
-    if ($hook === 'holzartenkatalog_page_hk_settings_holzarten') {
+    {
 
-        $js_file = HK_PLUGIN_DIR . 'assets/js/admin-holzarten-holzsettings.js';
-
-        wp_enqueue_script(
-            'hk-holzarten-holzsettings',
-            HK_PLUGIN_URL . 'assets/js/admin-holzarten-holzsettings.js',
+        // Leaflet CSS
+        wp_enqueue_style(
+            'leaflet',
+            HK_PLUGIN_URL . 'assets/vendor/leaflet/leaflet.css',
             [],
-            file_exists($js_file) ? filemtime($js_file) : HK_VERSION,
+            '1.9.4'
+        );
+
+        // Leaflet JavaScript
+        wp_enqueue_script(
+            'leaflet',
+            HK_PLUGIN_URL . 'assets/vendor/leaflet/leaflet.js',
+            [],
+            '1.9.4',
             true
         );
 
-        $css_file = HK_PLUGIN_DIR . 'assets/css/admin-holzarten-holzsettings.css';
 
-        wp_enqueue_style(
-            'hk-holzarten-settings',
-            HK_PLUGIN_URL . 'assets/css/admin-holzarten-holzsettings.css',
-            [],
-            file_exists($css_file) ? filemtime($css_file) : HK_VERSION
-        );
+
+        // Holzarten-Einstellungen
+        if ($hook === 'holzartenkatalog_page_hk_settings_holzarten') {
+
+            $js_file = HK_PLUGIN_DIR . 'assets/js/admin-holzarten-holzsettings.js';
+
+            wp_enqueue_script(
+                'hk-holzarten-holzsettings',
+                HK_PLUGIN_URL . 'assets/js/admin-holzarten-holzsettings.js',
+                [],
+                file_exists($js_file) ? filemtime($js_file) : HK_VERSION,
+                true
+            );
+
+            $css_file = HK_PLUGIN_DIR . 'assets/css/admin-holzarten-holzsettings.css';
+
+            wp_enqueue_style(
+                'hk-holzarten-settings',
+                HK_PLUGIN_URL . 'assets/css/admin-holzarten-holzsettings.css',
+                [],
+                file_exists($css_file) ? filemtime($css_file) : HK_VERSION
+            );
+        }
+
+        // Holzfundorte-Einstellungen
+        if ($hook === 'holzartenkatalog_page_hk_settings_fundorte') {
+
+            $js_file = HK_PLUGIN_DIR . 'assets/js/admin-holzarten-geosettings.js';
+
+            wp_enqueue_script(
+                'hk-holzarten-geosettings',
+                HK_PLUGIN_URL . 'assets/js/admin-holzarten-geosettings.js',
+                [],
+                file_exists($js_file) ? filemtime($js_file) : HK_VERSION,
+                true
+            );
+
+            $css_file = HK_PLUGIN_DIR . 'assets/css/admin-holzarten-geosettings.css';
+
+            wp_enqueue_style(
+                'hk-holzarten-geosettings',
+                HK_PLUGIN_URL . 'assets/css/admin-holzarten-geosettings.css',
+                [],
+                file_exists($css_file) ? filemtime($css_file) : HK_VERSION
+            );
+        }
     }
-
-    // Holzfundorte-Einstellungen
-    if ($hook === 'holzartenkatalog_page_hk_settings_fundorte') {
-
-        $js_file = HK_PLUGIN_DIR . 'assets/js/admin-holzarten-geosettings.js';
-
-        wp_enqueue_script(
-            'hk-holzarten-geosettings',
-            HK_PLUGIN_URL . 'assets/js/admin-holzarten-geosettings.js',
-            [],
-            file_exists($js_file) ? filemtime($js_file) : HK_VERSION,
-            true
-        );
-
-        $css_file = HK_PLUGIN_DIR . 'assets/css/admin-holzarten-geosettings.css';
-
-        wp_enqueue_style(
-            'hk-holzarten-geosettings',
-            HK_PLUGIN_URL . 'assets/css/admin-holzarten-geosettings.css',
-            [],
-            file_exists($css_file) ? filemtime($css_file) : HK_VERSION
-        );
-    }
-}
 
     public static function render_holzarten()
     {
