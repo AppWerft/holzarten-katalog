@@ -59,11 +59,11 @@ public static function render_holzarten()
                 </tr>
 <tr>
                     <th scope="row">
-                        Radius
+                        als Kreis?
                     </th>
                     <td>
                         <input
-                            type="chwckbox"
+                            type="checkbox"
                             name="hk_holzarten_settings[rund]"
                             value="<?php
                                 echo esc_attr(
