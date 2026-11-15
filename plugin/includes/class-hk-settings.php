@@ -193,6 +193,36 @@ class HK_Settings
                                         ); ?>>
                                 </td>
                             </tr> 
+                            <tr>
+                                <th scope="row"><label for="hk-holzarten-lupe">Beschreibungstext?</label>
+                                </th>
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        id="hk-holzarten-description"
+                                        name="hk_holzarten_settings[description]"
+                                        value="1"
+                                        <?php checked(
+                                            get_option('hk_holzarten_settings', [])['ldescription'] ?? 0,
+                                            1
+                                        ); ?>>
+                                </td>
+                            </tr> 
+                            <tr>
+                                <th scope="row"><label for="hk-holzarten-lupe">Beschreibungstext?</label>
+                                </th>
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        id="hk-holzarten-description"
+                                        name="hk_holzarten_settings[description]"
+                                        value="1"
+                                        <?php checked(
+                                            get_option('hk_holzarten_settings', [])['ldescription'] ?? 0,
+                                            1
+                                        ); ?>>
+                                </td>
+                            </tr> 
                         </table>
                     </fieldset>
 
