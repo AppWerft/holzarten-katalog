@@ -316,7 +316,7 @@ class HK_Settings
             </form>
         </div>
         <i>Vorschau</i>
-        <div id="map-preview" style="width:50%;height:140px;border:1px dotted darkgreen"></div>
+        <div id="settings-preview-map"></div>
 <?php
     }
 
