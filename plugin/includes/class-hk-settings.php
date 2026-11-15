@@ -30,22 +30,18 @@ class HK_Settings
             [self::class, 'render_holzarten']
         );
     }
+    
+    
     public static function render_holzarten()
     {
 ?>
         <div class="wrap">
             <h1>Holzarten – Einstellungen in Detailanzeige</h1>
-
             <form method="post" action="options.php">
-
                 <?php settings_fields('hk_holzarten_settings_group'); ?>
-
                 <table class="form-table">
-
                     <tr>
-                        <th scope="row">
-                            Größe in Pixel
-                        </th>
+                        <th scope="row">Größe in Pixel</th>
                         <td>
                             <input
                                 type="range"
@@ -55,7 +51,6 @@ class HK_Settings
                                 min="40"
                                 max="300"
                                 step="10"
-
                                 value="<?php
                                         echo esc_attr(
                                             get_option('hk_holzarten_settings', [])['size'] ?? ''
@@ -64,8 +59,7 @@ class HK_Settings
                         </td>
                     </tr>
                     <tr>
-                        <th scope="row">
-                            <label for="hk-holzarten-round">Als Kreis darstellen?</label>
+                        <th scope="row"><label for="hk-holzarten-round">Als Kreis darstellen?</label>
                         </th>
                         <td>
                             <input
@@ -116,6 +110,8 @@ class HK_Settings
     <?php
     }
 
+
+    
     public static function sanitize_holzarten($input)
     {
         return [
