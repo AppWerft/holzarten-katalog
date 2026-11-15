@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     const preview = document.getElementById('admin-map-preview');
+    alert(preview)
     if (!preview) {
         return;
     }
