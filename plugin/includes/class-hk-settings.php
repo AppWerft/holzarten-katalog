@@ -99,7 +99,7 @@ class HK_Settings
                     <div class="hk-preview">
                         <img
                             id="hk-wood-preview"
-                            src="<?php echo esc_url(HK_PLUGIN_URL . 'assets/images/holz.png'); ?>"
+                            src="<?php echo esc_url(HK_PLUGIN_URL . 'assets/images/liveholz.png'); ?>"
                             alt="Vorschau Holzbild in Holzurnenanzeige"
                             style="
                 width: <?php echo esc_attr($size); ?>px;
