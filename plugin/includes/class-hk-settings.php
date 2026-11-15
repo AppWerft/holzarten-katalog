@@ -9,46 +9,81 @@ class HK_Settings
     }
 
     public static function add_menu()
+    {
+        // Einstellungen Holzfundorte
+        add_submenu_page(
+            'holzarten-katalog',
+            'Holzfundorte',
+            'Holzfundorte',
+            'manage_options',
+            'hk_settings_fundorte',
+            [self::class, 'render_fundorte']
+        );
+
+        // Einstellungen Holzarten
+        add_submenu_page(
+            'holzarten-katalog',
+            'Holzarten',
+            'Holzarten',
+            'manage_options',
+            'hk_settings_holzarten',
+            [self::class, 'render_holzarten']
+        );
+    }
+public static function render_holzarten()
 {
-    // Einstellungen Holzfundorte
-    add_submenu_page(
-        'holzarten-katalog',
-        'Holzfundorte',
-        'Holzfundorte',
-        'manage_options',
-        'hk_settings_fundorte',
-        [self::class, 'render_fundorte']
-    );
+    ?>
+    <div class="wrap">
+        <h1>Holzarten – Einstellungen</h1>
 
-    // Einstellungen Holzarten
-    add_submenu_page(
-        'holzarten-katalog',
-        'Holzarten',
-        'Holzarten',
-        'manage_options',
-        'hk_settings_holzarten',
-        [self::class, 'render_holzarten']
-    );
+        <form method="post" action="options.php">
+
+            <?php settings_fields('hk_holzarten_settings_group'); ?>
+
+            <table class="form-table">
+
+                <tr>
+                    <th scope="row">
+                        Beispielparameter
+                    </th>
+                    <td>
+                        <input
+                            type="text"
+                            name="hk_holzarten_settings[parameter1]"
+                            value="<?php
+                                echo esc_attr(
+                                    get_option('hk_holzarten_settings', [])['parameter1'] ?? ''
+                                );
+                            ?>">
+                    </td>
+                </tr>
+
+            </table>
+
+            <?php submit_button('Einstellungen speichern'); ?>
+
+        </form>
+    </div>
+    <?php
 }
-
     public static function register_settings()
-{
-    register_setting(
-        'hk_settings_group',
-        'hk_map_settings',
-        [
-            'sanitize_callback' => [self::class, 'sanitize_map']
-        ]
-    );
+    {
+        register_setting(
+            'hk_settings_group',
+            'hk_map_settings',
+            [
+                'sanitize_callback' => [self::class, 'sanitize_map']
+            ]
+        );
 
-    register_setting(
-        'hk_holzarten_settings_group',
-        'hk_holzarten_settings',
-        [
-            'sanitize_callback' => [self::class, 'sanitize_holzarten']
-        ]
-    );
-}
+        register_setting(
+            'hk_holzarten_settings_group',
+            'hk_holzarten_settings',
+            [
+                'sanitize_callback' => [self::class, 'sanitize_holzarten']
+            ]
+        );
+    }
 
 
     public static function render_fundorte()
