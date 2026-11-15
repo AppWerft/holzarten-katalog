@@ -3,64 +3,100 @@
 class HK_Frontend
 {
     private static $instance = null;
+
     public static function instance()
     {
         if (self::$instance === null) {
             self::$instance = new self();
         }
+
         return self::$instance;
     }
 
     private function __construct()
     {
-        add_shortcode(
-            'hk_holzarten',
-            [$this, 'render_wood_catalog']
-        );
+        add_shortcode('hk_holzarten', [$this, 'render_wood_catalog']);
+        add_action('wp_enqueue_scripts', [$this, 'enqueue_styles']);
     }
 
+    public function enqueue_styles()
+    {
+        wp_enqueue_style(
+            'hk-frontend-katalog',
+            HK_PLUGIN_URL . 'assets/css/frontend-katalog.css',
+            [],
+            HK_VERSION
+        );
+    }
     /**
-     * Öffentliche Übersicht aller aktiven Holzarten.
+     * Shortcode [hk_holzarten]
      */
-
-
     public function render_wood_catalog($atts = [])
     {
-        $atts = shortcode_atts(
+        // Gespeicherte Einstellungen als Standardwerte verwenden
+        $defaults = wp_parse_args(
+            get_option('hk_katalog_settings', []),
             [
                 'sortierung' => 'name',
-                'bilder'     => 'ja',
+                'bilder'     => 1,
                 'spalten'    => 3,
-            ],
+            ]
+        );
+
+        // Shortcode-Attribute können die Einstellungen überschreiben
+        $settings = shortcode_atts(
+            $defaults,
             $atts,
             'hk_holzarten'
         );
 
-        // Einzelne Parameter auslesen
-        $sortierung = $atts['sortierung'];
-        $bilder     = $atts['bilder'];
-        $spalten    = (int) $atts['spalten'];
+        return self::render_catalog($settings);
+    }
 
-        // Auswertung
-        if ($bilder === 'ja') {
-            echo 'Bilder werden angezeigt';
-        }
+    /**
+     * Gemeinsame HTML-Ausgabe für Frontend und Admin-Vorschau
+     */
+    public static function render_catalog($settings = [])
+    {
+        $settings = wp_parse_args(
+            $settings,
+            [
+                'sortierung' => 'name',
+                'bilder'     => 1,
+                'spalten'    => 3,
+            ]
+        );
 
-        if ($spalten === 4) {
-            echo 'Vier Spalten';
-        }
-        $items = HK_Catalog::get_all();
+        // Einstellungen absichern
+        $sortierung = $settings['sortierung'] === 'latin'
+            ? 'latin'
+            : 'name';
 
-        // Nur aktive Holzarten berücksichtigen.
-        $items = array_filter($items, function ($item) {
-            return !empty($item['active']);
-        });
+        $bilder = $settings['bilder'] === 1;
 
-        // Alphabetisch nach deutschem Namen sortieren.
-        usort($items, function ($a, $b) {
+        $spalten = max(1, min(6, absint($settings['spalten'])));
+
+        // Aktive Holzarten laden
+        $items = array_filter(
+            HK_Catalog::get_all(),
+            function ($item) {
+                return !empty($item['active']);
+            }
+        );
+
+        // Sortierung
+        usort($items, function ($a, $b) use ($sortierung) {
+
+            if ($sortierung === 'latin') {
+                return strnatcasecmp(
+                    $a['name_latin'] ?? '',
+                    $b['name_latin'] ?? ''
+                );
+            }
+
             return strnatcasecmp(
-                $a['name_de'],
-                $b['name_de']
+                $a['name_de'] ?? '',
+                $b['name_de'] ?? ''
             );
         });
 
@@ -68,51 +104,43 @@ class HK_Frontend
             return '<p>Keine aktiven Holzarten vorhanden.</p>';
         }
 
-        ob_start();
-        echo '<div class="hk-wood-grid">';
+        // HTML erzeugen
+        $html = '<div class="hk-wood-grid" style="--hk-columns:' . esc_attr($spalten) . ';">';
+
         foreach ($items as $item) {
 
-            echo '<div class="hk-wood-card">';
-            $image_file = $item['image_file'] ?? '';
-            $image_url = HK_Storage::image_url($image_file);
-            if ($image_url) {
-                echo '<img
-            class="hk-wood-image"
-            src="' . esc_url($image_url) . '"
-            alt="' . esc_attr($item['name_de']) . '"
-            loading="lazy"
-        >';
+            $name_de = $item['name_de'] ?? '';
+            $name_latin = $item['name_latin'] ?? '';
+
+            $html .= '<div class="hk-wood-card">';
+
+            // Bild nur bei entsprechender Einstellung
+            if ($bilder) {
+
+                $image_url = HK_Storage::image_url(
+                    $item['image_file'] ?? ''
+                );
+
+                if ($image_url) {
+                    $html .= '<img
+                        class="hk-wood-image"
+                        src="' . esc_url($image_url) . '"
+                        alt="' . esc_attr($name_de) . '"
+                        loading="lazy">';
+                }
             }
 
-            echo '<h3>' . esc_html($item['name_de']) . '</h3>';
+            $html .= '<h3>' . esc_html($name_de) . '</h3>';
 
-            if (!empty($item['name_latin'])) {
-                echo '<p>' . esc_html($item['name_latin']) . '</p>';
+            if ($name_latin !== '') {
+                $html .= '<p>' . esc_html($name_latin) . '</p>';
             }
 
-            echo '</div>';
+            $html .= '</div>';
         }
-        echo '<div class="hk-wood-card">';
-        $image_url = '';
-        // Bildausgabe folgt über die Plugin-Bildverwaltung.
 
-        echo '<h3>' . esc_html($item['name_de']) . '</h3>';
+        $html .= '</div>';
 
-        if (!empty($item['name_latin'])) {
-            echo '<p>' . esc_html($item['name_latin']) . '</p>';
-        }
-        echo '<img
-    class="hk-wood-image"
-    src="' . esc_url($image_url) . '"
-    alt="' . esc_attr($item['name_de']) . '"
-    loading="lazy"
->';
-
-        echo '</div>';
-
-
-        echo '</div>';
-
-        return ob_get_clean();
+        return $html;
     }
 }

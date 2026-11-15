@@ -338,15 +338,10 @@ public static function render_katalog()
     ?>
     <div class="wrap">
         <h1>Holzartenkatalog – Darstellung</h1>
-
         <p>Einstellungen für die öffentliche Holzartenübersicht.</p>
-
         <form method="post" action="options.php">
-
             <?php settings_fields('hk_katalog_settings_group'); ?>
-
             <table class="form-table">
-
                 <tr>
                     <th scope="row">Sortierung</th>
                     <td>
@@ -385,9 +380,7 @@ public static function render_katalog()
                             max="6">
                     </td>
                 </tr>
-
             </table>
-
             <?php submit_button('Einstellungen speichern'); ?>
 
         </form>
