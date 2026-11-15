@@ -307,7 +307,7 @@ class HK_Settings
                             <label for="hk-map-position">Ausrichtung</label>
                         </th>
                         <td>
-                            <select style="width:20px" 
+                            <select style="width:70px" 
                                 id="hk-map-position"
                                 name="hk_map_settings[position]">
                                 <option value="left"
