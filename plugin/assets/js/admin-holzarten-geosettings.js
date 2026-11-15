@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Leaflet-Karte initialisieren
     const map = L.map(preview).setView([53.5, 10.0], 6);
-
+    console.log(map)
     // OpenStreetMap-Kacheln
     L.tileLayer(
         'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
