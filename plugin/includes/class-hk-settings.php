@@ -34,7 +34,7 @@ public static function render_holzarten()
 {
     ?>
     <div class="wrap">
-        <h1>Holzarten – Einstellungen</h1>
+        <h1>Holzarten – Einstellungen in Detailanzeige</h1>
 
         <form method="post" action="options.php">
 
