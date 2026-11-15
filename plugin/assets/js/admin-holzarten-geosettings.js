@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
         r = parseInt(radiusInput.value, 10) || 0;
         preview.style.height = h + 'px';
         preview.style.width = w + '%';
-        preview.style.radius=r;
+        preview.style.borderRadius = r + 'px';
     }   
     if (!preview || !heightInput || !widthInput) {
         return;
