@@ -4,9 +4,31 @@ class HK_Settings
 {
     public static function init()
     {
-        add_action('admin_menu', [self::class, 'add_menu']);
-        add_action('admin_init', [self::class, 'register_settings']);
-        add_action('admin_enqueue_scripts', [self::class, 'enqueue_scripts']);
+    public static function enqueue_scripts($hook)
+{
+    if ($hook !== 'holzarten-katalog_page_hk_settings_holzarten') {
+        return;
+    }
+
+    $js_file = HK_PLUGIN_DIR . 'assets/js/admin-holzarten-settings.js';
+    $css_file = HK_PLUGIN_DIR . 'assets/css/admin-holzarten-settings.css';
+
+    wp_enqueue_script(
+        'hk-holzarten-settings',
+        HK_PLUGIN_URL . 'assets/js/admin-holzarten-settings.js',
+        [],
+        file_exists($js_file) ? filemtime($js_file) : HK_VERSION,
+        true
+    );
+
+    wp_enqueue_style(
+        'hk-holzarten-settings',
+        HK_PLUGIN_URL . 'assets/css/admin-holzarten-settings.css',
+        [],
+        file_exists($css_file) ? filemtime($css_file) : HK_VERSION
+    );
+   
+    
     }
 
     public static function add_menu()
