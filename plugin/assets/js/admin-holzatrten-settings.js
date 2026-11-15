@@ -1,5 +1,6 @@
+alert('test')
 document.addEventListener('DOMContentLoaded', function () {
-    alert('test')
+    
     const sizeInput = document.getElementById('hk-wood-size');
     const roundInput = document.getElementById('hk-holzarten-round');
     const preview = document.getElementById('hk-wood-preview');
