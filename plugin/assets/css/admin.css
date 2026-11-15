@@ -188,8 +188,8 @@
     justify-content: flex-start;
     width: auto;
     min-height: 180px;
-    padding: 0px;
     overflow: visible;
+    display:none
 }
 
 #hk-wood-preview {
