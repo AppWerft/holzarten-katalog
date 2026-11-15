@@ -117,9 +117,12 @@ class HK_Settings
             Folgende Einstellungen gelten für dieses Detail.
             <form method="post" action="options.php">
                 <?php settings_fields('hk_holzarten_settings_group'); ?>
+                <fieldset class="hk-settings-section">
+            <legend>Anzeige Holzinformationen</legend>
+
+            <fieldset class="hk-settings-subsection">
+                <legend>Anzeige Holzbild</legend>
                 <table class="form-table">
-                    <tr><th style="background-color:#eee" colspan="2">Anzeige Holzinformationen</th></tr>
-                    <tr><th style="background-color:#eee" colspan="2">Anzeige Holzbild</th></tr>
                     <tr>
                         <th scope="row">Größe in Pixel</th>
                         <td>
@@ -169,6 +172,16 @@ class HK_Settings
                         </td>
                     </tr>
                 </table>
+                 <fieldset class="hk-settings-subsection">
+                <legend>Weitere Anzeigeoptionen</legend>
+
+                <table class="form-table">
+                    <!-- Weitere Einstellungen -->
+
+                </table>
+            </fieldset>
+
+        </fieldset>
                 <?php
                 $settings = get_option('hk_holzarten_settings', [
                     'size'  => 120,

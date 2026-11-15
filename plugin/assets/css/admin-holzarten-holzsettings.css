@@ -26,3 +26,32 @@
 #hk-wood-preview.hk-wood-zoom {
     cursor: zoom-in;
 }
+
+/* holztabelle */
+.hk-settings-section {
+    border: 1px solid #ccc;
+    padding: 15px 20px;
+    margin: 20px 0;
+    background: #fff;
+}
+
+.hk-settings-section > legend {
+    font-size: 16px;
+    font-weight: 600;
+    padding: 0 8px;
+}
+
+.hk-settings-subsection {
+    border: 1px solid #e0e0e0;
+    padding: 10px 15px;
+    margin: 15px 0;
+}
+
+.hk-settings-subsection > legend {
+    font-weight: 600;
+    padding: 0 8px;
+}
+
+.hk-settings-section .form-table {
+    margin-top: 0;
+}
