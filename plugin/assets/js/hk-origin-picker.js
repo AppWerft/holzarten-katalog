@@ -69,8 +69,119 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     async function getPosition(searchTerm) {
-    if (searchController) {
-        searchController.abort();
+
+        if (searchController) {
+            searchController.abort();
+        }
+
+        const controller = new AbortController();
+        searchController = controller;
+
+        // Activity-Indikator anzeigen
+        searchResults.innerHTML = `
+        <div class="hk-search-loading">
+            <span class="hk-search-spinner"></span>
+            <span>Suche läuft …</span>
+        </div>
+    `;
+
+        try {
+            const response = await fetch(
+                `https://photon.komoot.io/api/?q=${encodeURIComponent(searchTerm)}&limit=5&lang=de`,
+                { signal: controller.signal }
+            );
+
+            if (!response.ok) {
+                throw new Error(`HTTP-Fehler: ${response.status}`);
+            }
+
+            const data = await response.json();
+
+            // Nur die aktuelle Anfrage darf die Treffer anzeigen.
+            if (searchController !== controller) return;
+
+            // Activity-Indikator entfernen
+            searchResults.innerHTML = '';
+
+            data.features.forEach(function (feature) {
+
+                const properties = feature.properties;
+                const coordinates = feature.geometry.coordinates;
+
+                const name = [
+                    properties.name,
+                    properties.street,
+                    properties.housenumber,
+                    properties.postcode,
+                    properties.city,
+                    properties.country
+                ].filter(Boolean).join(', ');
+
+                const item = document.createElement('div');
+
+                item.style.display = 'flex';
+                item.style.alignItems = 'center';
+                item.style.gap = '10px';
+                item.style.padding = '8px 12px';
+                item.style.cursor = 'pointer';
+                item.style.borderBottom = '1px solid #ddd';
+
+                const icon = document.createElement('img');
+                icon.src = searchResults.dataset.iconUrl;
+                icon.alt = '';
+                icon.style.width = '20px';
+                icon.style.height = '20px';
+                icon.style.objectFit = 'contain';
+                icon.style.flexShrink = '0';
+
+                item.appendChild(icon);
+
+                const label = document.createElement('span');
+                label.textContent = name;
+
+                item.appendChild(label);
+
+                item.addEventListener('click', function () {
+
+                    const position = {
+                        lat: coordinates[1],
+                        lng: coordinates[0]
+                    };
+
+                    if (!map) {
+                        button.click();
+                    }
+
+                    map.setView(
+                        [position.lat, position.lng],
+                        13
+                    );
+
+                    setPosition(position);
+                    searchInput.value = name;
+                    searchResults.innerHTML = '';
+                });
+
+                searchResults.appendChild(item);
+            });
+
+        } catch (error) {
+
+            if (error.name !== 'AbortError') {
+                console.error('Fehler bei der Ortssuche:', error);
+
+                if (searchController === controller) {
+                    searchResults.textContent = 'Die Suche ist fehlgeschlagen.';
+                }
+            }
+
+        } finally {
+
+            // Nur die eigene Anfrage darf ihren Status zurücksetzen.
+            if (searchController === controller) {
+                searchController = null;
+            }
+        }
     }
 
     searchController = new AbortController();

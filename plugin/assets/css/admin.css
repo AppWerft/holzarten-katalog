@@ -156,3 +156,28 @@
     border-radius: 30px;
     box-shadow: 0 3px 12px rgba(0, 0, 0, 0.12);
 }
+
+.hk-search-loading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+    color: #666;
+    font-size: 13px;
+}
+
+.hk-search-spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid #ddd;
+    border-top-color: #477cba;
+    border-radius: 50%;
+    animation: hk-spin 0.7s linear infinite;
+    flex-shrink: 0;
+}
+
+@keyframes hk-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}

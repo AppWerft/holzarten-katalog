@@ -16,7 +16,18 @@ class HK_Settings
             'Holzfundorte',
             'manage_options',
             'hk_settings',
-            [self::class, 'render']
+            [self::class, 'render_fundorte']
+        );
+    }
+    public static function add_menu()
+    {
+        add_submenu_page(
+            'holzarten-katalog',
+            'Einstellungen',
+            'Holzfundorte',
+            'manage_options',
+            'hk_settings',
+            [self::class, 'render_holzarten']
         );
     }
 
@@ -32,7 +43,7 @@ class HK_Settings
     }
 
 
-    public static function render()
+    public static function render_fundorte()
     {
         $settings = wp_parse_args(
             get_option('hk_map_settings', []),
@@ -44,7 +55,7 @@ class HK_Settings
         );
 ?>
         <div class="wrap">
-            <h1>Holzfundortkarten – Einstellungen</h1>
+            <h1>Holzfundortkarten – Darstellungseinstellungen</h1>
 
             <form method="post" action="options.php">
                 <?php settings_fields('hk_settings_group'); ?>
