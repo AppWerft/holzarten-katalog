@@ -1,30 +1,27 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const id = 'settings-preview-map';
-    const preview = document.getElementById(id);
-    const updatePreview = () => {
-        if (!preview) {
-            alert('no preview map')
-            return;
-        }
-        preview
-            .css('display', 'block')
-            .css('height', '200px')
-            .css('border', '2px dotted darkgreen')
-            .css('width', '100%');
 
+    const preview = document.getElementById('settings-preview-map');
 
-        const map = L.map(preview.setView([53.5, 10.0], 6));
-
-        L.tileLayer(
-            'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-            {
-                maxZoom: 19,
-                attribution: '&copy; OpenStreetMap-Mitwirkende'
-            }
-        ).addTo(map);
-
+    if (!preview) {
+        return;
     }
 
-    updatePreview();
+    // Darstellung des Kartencontainers
+    preview.style.display = 'block';
+    preview.style.height = '200px';
+    preview.style.border = '2px dotted darkgreen';
+    preview.style.width = '100%';
+
+    // Leaflet-Karte initialisieren
+    const map = L.map(preview).setView([53.5, 10.0], 6);
+
+    // OpenStreetMap-Kacheln
+    L.tileLayer(
+        'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+        {
+            maxZoom: 19,
+            attribution: '&copy; OpenStreetMap-Mitwirkende'
+        }
+    ).addTo(map);
 
 });
