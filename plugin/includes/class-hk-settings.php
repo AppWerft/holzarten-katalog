@@ -49,6 +49,7 @@ public static function render_holzarten()
                     <td>
                         <input
                             type="numeric"
+                            width="3"
                             name="hk_holzarten_settings[size]"
                             value="<?php
                                 echo esc_attr(
