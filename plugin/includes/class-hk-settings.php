@@ -94,7 +94,7 @@ class HK_Settings
                 ?>
 
                 <div class="hk-preview-wrapper">
-                    <p><strong>Vorschau der Detailanzeige</strong></p>
+                    <p><strong>Vorschau der Holzart in der Detailanzeige</strong></p>
 
                     <div class="hk-preview">
                         <img
