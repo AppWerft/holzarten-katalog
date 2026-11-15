@@ -1,17 +1,22 @@
 document.addEventListener('DOMContentLoaded', function () {
 
     const preview = document.getElementById('settings-preview-map');
+    const heightInput = document.getElementById('hk-map-height');
+    const widthInput = document.getElementById('hk-map-width');
 
     if (!preview) {
         return;
     }
 
     // Darstellung des Kartencontainers
-    preview.style.display = 'block';
-    preview.style.height = '200px';
-    preview.style.border = '2px dotted darkgreen';
-    preview.style.width = '90%';
-
+    const updatePreview = () => {
+        const w = parseInt(widthInput.value, 10) || 120;
+        const h = parseInt(heightInput.value, 10) || 50;
+        preview.style.display = 'block';
+        preview.style.height = h+'%';
+        preview.style.border = '2px dotted darkgreen';
+        preview.style.width = w;
+    }
     // Leaflet-Karte initialisieren
     const map = L.map(preview, {
         zoomControl: false
@@ -25,5 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
             attribution: '&copy; OpenStreetMap-Mitwirkende'
         }
     ).addTo(map);
+    heightInput.addEventListener('change', updatePreview);
+    widthInput.addEventListener('change', updatePreview);
 
 });
