@@ -32,8 +32,8 @@ class HK_Settings
         );
         add_submenu_page(
             'holzarten-katalog',
-            'Katalogdarstellung',
-            'Katalogdarstellung',
+            'Holzlistendarstellung',
+            'Holzlistendarstellung',
             'manage_options',
             'hk_settings_katalog',
             [self::class, 'render_katalog']
