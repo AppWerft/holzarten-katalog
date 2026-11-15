@@ -124,10 +124,9 @@ class HK_Settings
                 ]);
                 $size = absint($settings['size']);
                 $round = !empty($settings['round']);
-
+                $lupe = !empty($settings['lupe']);
                 submit_button('Einstellungen speichern'); ?>
-                
-                /** Vorschau: */
+            
                 <div class="hk-preview-wrapper">
                     <p><strong>Vorschau der Holzart in der Detailanzeige</strong></p>
                     <div class="hk-preview">
