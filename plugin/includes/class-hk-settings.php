@@ -299,7 +299,7 @@ class HK_Settings
                                 min="0"
                                 max="20"
                                 step="1">
-                            <span class="description">Eckenradius</span>
+                            <span class="description">Eckenradius in Pixeln</span>
                         </td>
                     </tr>
                     <tr>
@@ -307,7 +307,7 @@ class HK_Settings
                             <label for="hk-map-position">Ausrichtung</label>
                         </th>
                         <td>
-                            <select
+                            <select size="10"
                                 id="hk-map-position"
                                 name="hk_map_settings[position]">
                                 <option value="left"
