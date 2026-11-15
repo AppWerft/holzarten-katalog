@@ -325,7 +325,75 @@ class HK_Settings
         );
     }
 
+public static function render_katalog()
+{
+    $settings = wp_parse_args(
+        get_option('hk_katalog_settings', []),
+        [
+            'sortierung' => 'name',
+            'bilder'     => 'ja',
+            'spalten'    => 3,
+        ]
+    );
+    ?>
+    <div class="wrap">
+        <h1>Holzartenkatalog – Darstellung</h1>
 
+        <p>Einstellungen für die öffentliche Holzartenübersicht.</p>
+
+        <form method="post" action="options.php">
+
+            <?php settings_fields('hk_katalog_settings_group'); ?>
+
+            <table class="form-table">
+
+                <tr>
+                    <th scope="row">Sortierung</th>
+                    <td>
+                        <select name="hk_katalog_settings[sortierung]">
+                            <option value="name"
+                                <?php selected($settings['sortierung'], 'name'); ?>>
+                                Deutscher Name
+                            </option>
+                            <option value="latin"
+                                <?php selected($settings['sortierung'], 'latin'); ?>>
+                                Botanischer Name
+                            </option>
+                        </select>
+                    </td>
+                </tr>
+
+                <tr>
+                    <th scope="row">Bilder anzeigen</th>
+                    <td>
+                        <input
+                            type="checkbox"
+                            name="hk_katalog_settings[bilder]"
+                            value="ja"
+                            <?php checked($settings['bilder'], 'ja'); ?>>
+                    </td>
+                </tr>
+
+                <tr>
+                    <th scope="row">Anzahl Spalten</th>
+                    <td>
+                        <input
+                            type="number"
+                            name="hk_katalog_settings[spalten]"
+                            value="<?php echo esc_attr($settings['spalten']); ?>"
+                            min="1"
+                            max="6">
+                    </td>
+                </tr>
+
+            </table>
+
+            <?php submit_button('Einstellungen speichern'); ?>
+
+        </form>
+    </div>
+    <?php
+}
     public static function render_fundorte()
     {
         $settings = wp_parse_args(
