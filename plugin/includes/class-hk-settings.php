@@ -118,8 +118,8 @@ class HK_Settings
             <form method="post" action="options.php">
                 <?php settings_fields('hk_holzarten_settings_group'); ?>
                 <table class="form-table">
-                    <tr style="background-color:#eee"><th colspan="2">Anzeige Holzinformationen</th></tr>
-                    <tr style="background-color:#eee"><th colspan="2">Anzeige Holzbild</th></tr>
+                    <tr><th style="background-color:#eee" colspan="2">Anzeige Holzinformationen</th></tr>
+                    <tr><th style="background-color:#eee" colspan="2">Anzeige Holzbild</th></tr>
                     <tr>
                         <th scope="row">Größe in Pixel</th>
                         <td>
