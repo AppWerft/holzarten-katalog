@@ -78,7 +78,33 @@ class HK_Settings
 
 
                 </table>
+<?php
+$settings = get_option('hk_holzarten_settings', [
+    'size'  => 120,
+    'round' => 0,
+]);
 
+$size = absint($settings['size']);
+$round = !empty($settings['round']);
+?>
+
+<div class="hk-preview-wrapper">
+    <p><strong>Vorschau der Detailanzeige</strong></p>
+
+    <div class="hk-preview">
+        <img
+            id="hk-wood-preview"
+            src="<?php echo esc_url(HK_PLUGIN_URL . 'assets/images/holz.png'); ?>"
+            alt="Vorschau Holzbild"
+            style="
+                width: <?php echo esc_attr($size); ?>px;
+                height: <?php echo esc_attr($size); ?>px;
+                object-fit: cover;
+                border-radius: <?php echo $round ? '50%' : '0'; ?>;
+            "
+        >
+    </div>
+</div>
                 <?php submit_button('Einstellungen speichern'); ?>
 
             </form>
@@ -97,6 +123,8 @@ class HK_Settings
             'round' => !empty($input['round']) ? 1 : 0,
         ];
     }
+
+
     public static function register_settings()
     {
         register_setting(
