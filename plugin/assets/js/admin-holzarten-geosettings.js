@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const updatePreview = () => {
         const w = parseInt(widthInput.value, 10) || 120;
         const h = parseInt(heightInput.value, 10)+'%' || '50%';
+        console.log(w,h)
         preview.style.height = h; 
         preview.style.width = w;
     }
