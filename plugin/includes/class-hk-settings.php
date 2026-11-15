@@ -44,7 +44,7 @@ public static function render_holzarten()
 
                 <tr>
                     <th scope="row">
-                        Beispielparameter
+                        Größe in Pixel
                     </th>
                     <td>
                         <input
@@ -57,7 +57,21 @@ public static function render_holzarten()
                             ?>">
                     </td>
                 </tr>
-
+<tr>
+                    <th scope="row">
+                        Radius
+                    </th>
+                    <td>
+                        <input
+                            type="text"
+                            name="hk_holzarten_settings[parameter1]"
+                            value="<?php
+                                echo esc_attr(
+                                    get_option('hk_holzarten_settings', [])['parameter1'] ?? ''
+                                );
+                            ?>">
+                    </td>
+                </tr>
             </table>
 
             <?php submit_button('Einstellungen speichern'); ?>
