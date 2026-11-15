@@ -1,0 +1,28 @@
+/* Holzvorschau  */
+.hk-preview {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: auto;
+    min-height: 180px;
+    overflow: visible;
+    
+}
+
+#hk-wood-preview {
+    display: block;
+    flex: 0 0 auto;
+    aspect-ratio: 1 / 1;
+    max-width: none !important;
+    object-fit: cover;
+    border-radius: 50%;
+    box-sizing: border-box;
+}
+
+#hk-wood-preview {
+    cursor: default;
+}
+
+#hk-wood-preview.hk-wood-zoom {
+    cursor: zoom-in;
+}
