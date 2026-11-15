@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
     preview.style.width = '90%';
 
     // Leaflet-Karte initialisieren
-    const map = L.map(preview).setView([53.5, 10.0], 6);
+    const map = L.map(preview).setView([51.3406751,12.4256434], 12);
     console.log(map)
     // OpenStreetMap-Kacheln
     L.tileLayer(
