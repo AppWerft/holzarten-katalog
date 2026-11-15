@@ -179,7 +179,7 @@ class HK_Settings
 
                         <table class="form-table">
                            <tr>
-                                <th scope="row"><label for="hk-holzarten-lupe">Beschreibung?</label>
+                                <th scope="row"><label for="hk-holzarten-lupe">Beschreibungstext?</label>
                                 </th>
                                 <td>
                                     <input
