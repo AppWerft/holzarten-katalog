@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!lupeCheckbox || !sizeInput || !roundInput || !preview) {
         return;
     }
-
+    alert('Lupe')
     // Lupenfunktion
     const updateZoomCursor = () => {
         preview.classList.toggle(
