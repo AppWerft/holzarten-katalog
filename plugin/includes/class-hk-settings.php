@@ -74,6 +74,8 @@ class HK_Settings
 ?>
         <div class="wrap">
             <h1>Holzarteneinstellungen in Detailanzeige</h1>
+            In der Detailanzeige des Produkte kann optional die Holzart angezeigt werden.
+            Folgende Einstellungen gelten für dieses Detail.
             <form method="post" action="options.php">
                 <?php settings_fields('hk_holzarten_settings_group'); ?>
                 <table class="form-table">
