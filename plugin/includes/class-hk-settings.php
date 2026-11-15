@@ -28,8 +28,8 @@ class HK_Settings
         // Einstellungen Holzarten
         add_submenu_page(
             'holzarten-katalog',
-            'Holzarten im Shop',
-            'Holzarten im Shop',
+            'Holzarten',
+            'Holzarten',
             'manage_options',
             'hk_settings_holzarten',
             [self::class, 'render_holzarten']
