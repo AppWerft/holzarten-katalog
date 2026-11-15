@@ -4,31 +4,9 @@ class HK_Settings
 {
     public static function init()
     {
-    public static function enqueue_scripts($hook)
-{
-    if ($hook !== 'holzarten-katalog_page_hk_settings_holzarten') {
-        return;
-    }
-
-    $js_file = HK_PLUGIN_DIR . 'assets/js/admin-holzarten-settings.js';
-    $css_file = HK_PLUGIN_DIR . 'assets/css/admin-holzarten-settings.css';
-
-    wp_enqueue_script(
-        'hk-holzarten-settings',
-        HK_PLUGIN_URL . 'assets/js/admin-holzarten-settings.js',
-        [],
-        file_exists($js_file) ? filemtime($js_file) : HK_VERSION,
-        true
-    );
-
-    wp_enqueue_style(
-        'hk-holzarten-settings',
-        HK_PLUGIN_URL . 'assets/css/admin-holzarten-settings.css',
-        [],
-        file_exists($css_file) ? filemtime($css_file) : HK_VERSION
-    );
-   
-    
+        add_action('admin_menu', [self::class, 'add_menu']);
+        add_action('admin_init', [self::class, 'register_settings']);
+        add_action('admin_enqueue_scripts', [self::class, 'enqueue_scripts']);
     }
 
     public static function add_menu()
@@ -55,18 +33,31 @@ class HK_Settings
         add_action('admin_enqueue_scripts', [__CLASS__, 'enqueue_scripts']);
     }
 
-    public static function enqueue_scripts($hook)
-{
-    error_log('HK Settings Hook: ' . $hook);
 
-    wp_enqueue_script(
-        'hk-holzarten-settings',
-        HK_PLUGIN_URL . 'assets/js/admin-holzarten-settings.js',
-        [],
-        '1.0.1', 
-        true
-    );
-}
+    public static function enqueue_scripts($hook)
+    {
+        if ($hook !== 'holzarten-katalog_page_hk_settings_holzarten') {
+            return;
+        }
+
+        $js_file = HK_PLUGIN_DIR . 'assets/js/admin-holzarten-settings.js';
+        $css_file = HK_PLUGIN_DIR . 'assets/css/admin-holzarten-settings.css';
+
+        wp_enqueue_script(
+            'hk-holzarten-settings',
+            HK_PLUGIN_URL . 'assets/js/admin-holzarten-settings.js',
+            [],
+            file_exists($js_file) ? filemtime($js_file) : HK_VERSION,
+            true
+        );
+
+        wp_enqueue_style(
+            'hk-holzarten-settings',
+            HK_PLUGIN_URL . 'assets/css/admin-holzarten-settings.css',
+            [],
+            file_exists($css_file) ? filemtime($css_file) : HK_VERSION
+        );
+    }
     public static function render_holzarten()
     {
 ?>
@@ -116,7 +107,7 @@ class HK_Settings
                 ]);
                 $size = absint($settings['size']);
                 $round = !empty($settings['round']);
-                
+
                 submit_button('Einstellungen speichern'); ?>
                 <div class="hk-preview-wrapper">
                     <p><strong>Vorschau der Holzart in der Detailanzeige</strong></p>
@@ -133,7 +124,7 @@ class HK_Settings
             ">
                     </div>
                 </div>
-                
+
 
             </form>
         </div>
