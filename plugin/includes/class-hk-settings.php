@@ -6,6 +6,7 @@ class HK_Settings
     {
         add_action('admin_menu', [self::class, 'add_menu']);
         add_action('admin_init', [self::class, 'register_settings']);
+        add_action('admin_enqueue_scripts', [self::class, 'enqueue_scripts']);
     }
 
     public static function add_menu()
@@ -29,9 +30,24 @@ class HK_Settings
             'hk_settings_holzarten',
             [self::class, 'render_holzarten']
         );
+        add_action('admin_enqueue_scripts', [__CLASS__, 'enqueue_scripts']);
     }
-    
-    
+
+    public static function enqueue_scripts($hook)
+    {
+        // Nur auf der Einstellungsseite für die Detailanzeige laden.
+        if ($hook !== 'holzarten_page_hk_settings_holzarten') {
+            return;
+        }
+
+        wp_enqueue_script(
+            'hk-holzarten-settings',
+            HK_PLUGIN_URL . 'assets/js/admin-holzarten-settings.js',
+            [],
+            HK_VERSION,
+            true
+        );
+    }
     public static function render_holzarten()
     {
 ?>
@@ -73,9 +89,6 @@ class HK_Settings
                                 ); ?>>
                         </td>
                     </tr>
-
-
-
                 </table>
                 <?php
                 $settings = get_option('hk_holzarten_settings', [
@@ -111,7 +124,7 @@ class HK_Settings
     }
 
 
-    
+
     public static function sanitize_holzarten($input)
     {
         return [
