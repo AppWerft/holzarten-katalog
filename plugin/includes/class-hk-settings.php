@@ -67,21 +67,21 @@ class HK_Settings
     // Holzfundorte-Einstellungen
     if ($hook === 'holzartenkatalog_page_hk_settings_fundorte') {
 
-        $js_file = HK_PLUGIN_DIR . 'assets/js/admin-holzarten-geosettings.js';
+        $js_file = HK_PLUGIN_DIR . 'assets/js/admin-holzarten-settings.js';
 
         wp_enqueue_script(
             'hk-holzarten-geosettings',
-            HK_PLUGIN_URL . 'assets/js/admin-holzarten-geosettings.js',
+            HK_PLUGIN_URL . 'assets/js/admin-holzarten-settings.js',
             [],
             file_exists($js_file) ? filemtime($js_file) : HK_VERSION,
             true
         );
 
-        $css_file = HK_PLUGIN_DIR . 'assets/css/admin-holzarten-geosettings.css';
+        $css_file = HK_PLUGIN_DIR . 'assets/css/admin-holzarten-settings.css';
 
         wp_enqueue_style(
-            'hk-holzarten-geosettings',
-            HK_PLUGIN_URL . 'assets/css/admin-holzarten-geosettings.css',
+            'hk-holzarten-settings',
+            HK_PLUGIN_URL . 'assets/css/admin-holzarten-settings.css',
             [],
             file_exists($css_file) ? filemtime($css_file) : HK_VERSION
         );
