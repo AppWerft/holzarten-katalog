@@ -48,7 +48,7 @@ class HK_Settings
                         </th>
                         <td>
                             <input
-                                type="numeric"
+                                type="number"
                                 size="3"
                                 name="hk_holzarten_settings[size]"
                                 value="<?php
@@ -85,6 +85,18 @@ class HK_Settings
         </div>
     <?php
     }
+
+    public static function sanitize_holzarten($input)
+    {
+        return [
+            'size' => max(
+                10,
+                min(500, absint($input['size'] ?? 100))
+            ),
+
+            'round' => !empty($input['round']) ? 1 : 0,
+        ];
+    }
     public static function register_settings()
     {
         register_setting(
@@ -113,6 +125,7 @@ class HK_Settings
                 'height'   => 200,
                 'width'    => 100,
                 'position' => 'center',
+                'priority' => 35
             ]
         );
     ?>
@@ -209,7 +222,7 @@ class HK_Settings
 <?php
     }
 
-    public static function sanitize($input)
+    public static function sanitize_map($input)
     {
         return [
             'height' => max(100, min(800, absint($input['height'] ?? 200))),
