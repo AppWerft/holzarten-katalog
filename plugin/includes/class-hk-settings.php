@@ -281,9 +281,9 @@ class HK_Settings
                                 name="hk_map_settings[width]"
                                 value="<?php echo esc_attr($settings['width']); ?>"
                                 min="20"
-                                max="100"
+                                max="80"
                                 step="5">
-                            <span class="description">Prozent (20–100)</span>
+                            <span class="description">Prozent (20%–80%)</span>
                         </td>
                     </tr>
                     <tr>
