@@ -62,15 +62,26 @@ public static function render_holzarten()
                     <th scope="row">
                         als Kreis?
                     </th>
+
+
+                    
                     <td>
-                        <input
-                            type="checkbox"
-                            name="hk_holzarten_settings[rund]"
+
+<label class="hk-switch">
+                        <input type="checkbox" id="hk-rundesholz"
+                         name="hk_holzarten_settings[rund]"
                             value="<?php
                                 echo esc_attr(
                                     get_option('hk_holzarten_settings', [])['round'] ?? ''
                                 );
                             ?>">
+                        <span class="hk-slider"></span>
+                        <span class="hk-switch-label">runde Holzprobe</span>
+                    </label>
+
+
+                       
+                           
                     </td>
                 </tr>
             </table>
