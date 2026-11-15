@@ -34,17 +34,20 @@ class HK_Settings
     }
 
     public static function enqueue_scripts($hook)
-{
-    error_log('HK Settings Hook: ' . $hook);
+    {
+        // Nur auf der Einstellungsseite für die Detailanzeige laden.
+        if ($hook !== 'holzarten_page_hk_settings_holzarten') {
+            return;
+        }
 
-    wp_enqueue_script(
-        'hk-holzarten-settings',
-        HK_PLUGIN_URL . 'assets/js/admin-holzarten-settings.js',
-        [],
-        time(), // Cache vorübergehend umgehen
-        true
-    );
-}
+        wp_enqueue_script(
+            'hk-holzarten-settings',
+            HK_PLUGIN_URL . 'assets/js/admin-holzarten-settings.js',
+            [],
+            HK_VERSION,
+            true
+        );
+    }
     public static function render_holzarten()
     {
 ?>
