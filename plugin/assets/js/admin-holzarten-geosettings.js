@@ -1,14 +1,16 @@
 document.addEventListener('DOMContentLoaded', function () {
     const id = 'settings-preview-map';
     const preview = document.getElementById(id);
-    alert(preview)
+    
     if (!preview) {
         return;
     }
     preview
         .css('display', 'block')
         .css('height','200px')
+        .css('border','2px dotted darkgreen')
         .css('width','100%');
+
 
     const map = L.map(preview.setView([53.5,10.0], 6));
 
