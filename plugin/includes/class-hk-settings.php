@@ -297,7 +297,7 @@ class HK_Settings
                                 name="hk_map_settings[radius]"
                                 value="<?php echo esc_attr($settings['radius']); ?>"
                                 min="0"
-                                max="20"
+                                max="50"
                                 step="1">
                             <span class="description">Eckenradius in Pixeln</span>
                         </td>
