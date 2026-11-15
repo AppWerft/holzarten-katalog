@@ -194,7 +194,7 @@ class HK_Settings
                                 </td>
                             </tr> 
                             <tr>
-                                <th scope="row"><label for="hk-holzarten-lat">Lateinischer Name?</label>
+                                <th scope="row"><label for="hk-holzarten-lat">lateinischer Name?</label>
                                 </th>
                                 <td>
                                     <input
