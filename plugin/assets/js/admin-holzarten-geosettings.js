@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const preview = document.getElementById(id);
     
     if (!preview) {
+        alert('no preview map')
         return;
     }
     preview
