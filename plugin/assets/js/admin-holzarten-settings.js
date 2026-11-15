@@ -10,16 +10,13 @@ document.addEventListener('DOMContentLoaded', function () {
     function updatePreview() {
         const size = parseInt(sizeInput.value, 10) || 120;
 
-        preview.style.width = size + 'px';
-        preview.style.height = size + 'px';
-        preview.style.borderRadius = roundInput.checked ? '50%' : '0';
-
-        // Optional: Größenwert neben dem Slider aktualisieren
-        const sizeValue = document.getElementById('hk-wood-size-value');
-
-        if (sizeValue) {
-            sizeValue.textContent = size + ' px';
-        }
+        preview.style.setProperty('width', size + 'px');
+        preview.style.setProperty('height', size + 'px');
+        preview.style.setProperty('aspect-ratio', '1 / 1');
+        preview.style.setProperty(
+            'border-radius',
+            roundInput.checked ? '50%' : '0'
+        );
     }
 
     // Live-Aktualisierung
