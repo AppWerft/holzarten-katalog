@@ -67,7 +67,7 @@ class HK_Plugin
             'wp_ajax_hk_toggle_status',
             [$this, 'ajax_toggle_status']
         );
-       $this->frontend = HK_Frontend::instance();
+        $this->frontend = HK_Frontend::instance();
     }
 
     /**
@@ -87,12 +87,13 @@ class HK_Plugin
             [],
             file_exists($css_file) ? filemtime($css_file) : '1.0.0'
         );
-        $js_file = $plugin_dir . 'assets/js/admin.js';
+        $file = HK_PLUGIN_DIR . 'assets/js/admin-holzarten.js';
+
         wp_enqueue_script(
             'hk-admin',
-            $plugin_url . 'assets/js/admin.js',
+            HK_PLUGIN_URL . 'assets/js/admin-holzarten.js',
             ['jquery'],
-            file_exists($js_file) ? filemtime($js_file) : '1.0.0',
+            file_exists($file) ? filemtime($file) : HK_VERSION,
             true
         );
         wp_localize_script(
