@@ -101,6 +101,21 @@ class HK_Settings
                                 ); ?>>
                         </td>
                     </tr>
+                    <tr>
+                        <th scope="row"><label for="hk-holzarten-lupe">mit Lupe?</label>
+                        </th>
+                        <td>
+                            <input
+                                type="checkbox"
+                                id="hk-holzarten-lupe"
+                                name="hk_holzarten_settings[lupe]"
+                                value="1"
+                                <?php checked(
+                                    get_option('hk_holzarten_settings', [])['lupe'] ?? 0,
+                                    1
+                                ); ?>>
+                        </td>
+                    </tr>
                 </table>
                 <?php
                 $settings = get_option('hk_holzarten_settings', [
@@ -111,6 +126,8 @@ class HK_Settings
                 $round = !empty($settings['round']);
 
                 submit_button('Einstellungen speichern'); ?>
+                
+                /** Vorschau: */
                 <div class="hk-preview-wrapper">
                     <p><strong>Vorschau der Holzart in der Detailanzeige</strong></p>
                     <div class="hk-preview">
