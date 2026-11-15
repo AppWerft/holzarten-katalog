@@ -46,15 +46,15 @@ class HK_Settings
             file_exists($js_file) ? filemtime($js_file) : HK_VERSION,
             true
         );
-         // CSS
-    $css_file = HK_PLUGIN_DIR . 'assets/css/admin-holzarten-settings.css';
+        // CSS
+        $css_file = HK_PLUGIN_DIR . 'assets/css/admin-holzarten-settings.css';
 
-    wp_enqueue_style(
-        'hk-holzarten-settings',
-        HK_PLUGIN_URL . 'assets/css/admin-holzarten-settings.css',
-        [],
-        file_exists($css_file) ? filemtime($css_file) : HK_VERSION
-    );
+        wp_enqueue_style(
+            'hk-holzarten-settings',
+            HK_PLUGIN_URL . 'assets/css/admin-holzarten-settings.css',
+            [],
+            file_exists($css_file) ? filemtime($css_file) : HK_VERSION
+        );
     }
 
 
@@ -126,20 +126,21 @@ class HK_Settings
                 $round = !empty($settings['round']);
                 $lupe = !empty($settings['lupe']);
                 submit_button('Einstellungen speichern'); ?>
-            
+
                 <div class="hk-preview-wrapper">
                     <p><i>Vorschau der Holzart in der Detailanzeige</i></p>
                     <div class="hk-preview">
                         <img
                             id="hk-wood-preview"
+                            class="<?php echo $lupe ? 'hk-wood-zoom' : ''; ?>"
                             src="<?php echo esc_url(HK_PLUGIN_URL . 'assets/images/liveholz.png'); ?>"
                             alt="Vorschau Holzbild in Holzurnenanzeige"
                             style="
-                width: <?php echo esc_attr($size); ?>px;
-                height: <?php echo esc_attr($size); ?>px;
-                object-fit: cover;
-                border-radius: <?php echo $round ? '50%' : '0'; ?>;
-            ">
+                                width: <?php echo esc_attr($size); ?>px;
+                                height: <?php echo esc_attr($size); ?>px;
+                                object-fit: cover;
+                                border-radius: <?php echo $round ? '50%' : '0'; ?>;
+    ">
                     </div>
                 </div>
 
