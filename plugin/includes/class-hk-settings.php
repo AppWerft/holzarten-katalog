@@ -47,20 +47,20 @@ class HK_Settings
             return;
         }
 
-        $js_file = HK_PLUGIN_DIR . 'assets/js/admin-holzarten-settings.js';
+        $js_file = HK_PLUGIN_DIR . 'assets/js/admin-holzarten-geosettings.js';
         wp_enqueue_script(
             'hk-holzarten-settings',
-            HK_PLUGIN_URL . 'assets/js/admin-holzarten-settings.js',
+            HK_PLUGIN_URL . 'assets/js/admin-holzarten-geosettings.js',
             [],
             file_exists($js_file) ? filemtime($js_file) : HK_VERSION,
             true
         );
         // CSS
-        $css_file = HK_PLUGIN_DIR . 'assets/css/admin-holzarten-settings.css';
+        $css_file = HK_PLUGIN_DIR . 'assets/css/admin-holzarten-geosettings.css';
 
         wp_enqueue_style(
             'hk-holzarten-settings',
-            HK_PLUGIN_URL . 'assets/css/admin-holzarten-settings.css',
+            HK_PLUGIN_URL . 'assets/css/admin-holzarten-geosettings.css',
             [],
             file_exists($css_file) ? filemtime($css_file) : HK_VERSION
         );
