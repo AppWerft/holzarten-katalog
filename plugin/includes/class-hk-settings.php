@@ -267,6 +267,21 @@ class HK_Settings
     <?php
     }
 
+
+    public static function sanitize_katalog($input)
+    {
+        return [
+            'sortierung' => in_array(
+                $input['sortierung'] ?? '',
+                ['name', 'latin'],
+                true
+            ) ? $input['sortierung'] : 'name',
+
+            'bilder' => !empty($input['bilder']) ? 1 : 0,
+
+            'spalten' => max(1, min(6, absint($input['spalten'] ?? 3))),
+        ];
+    }
     public static function sanitize_holzarten($input)
     {
         return [
