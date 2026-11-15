@@ -11,12 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Darstellung des Kartencontainers
     const updatePreview = () => {
-        const w = parseInt(widthInput.value, 10) || 100;
-        const h = parseInt(heightInput.value, 10) || 200;
-        const r = parseInt(radiusInput.value, 10) || 0;
-        preview.style.height = h + 'px';
-        preview.style.width = w + '%';
-        preview.style.radius=r;
+        updatePreviewSize()
         // Leaflet-Größe neu berechnen
         map.invalidateSize();
     };
@@ -40,13 +35,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
     heightInput.addEventListener('change', updatePreview);
     widthInput.addEventListener('change', updatePreview);
-
+    radiusInput.addEventListener('change', updatePreview);
     function updatePreviewSize() {
         const w = parseInt(widthInput.value, 10) || 100;
         const h = parseInt(heightInput.value, 10) || 200;
         const r = parseInt(radiusInput.value, 10) || 0;
         preview.style.height = h + 'px';
         preview.style.width = w + '%';
+        preview.style.radius=r;
     }
 
     // Nach dem Rendern Größe aktualisieren
