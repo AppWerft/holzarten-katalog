@@ -30,7 +30,14 @@ class HK_Settings
             'hk_settings_holzarten',
             [self::class, 'render_holzarten']
         );
-
+        add_submenu_page(
+            'holzarten-katalog',
+            'Katalogdarstellung',
+            'Katalogdarstellung',
+            'manage_options',
+            'hk_settings_katalog',
+            [self::class, 'render_katalog']
+        );
         // Automatischen ersten Menüpunkt umbenennen
         global $submenu;
 
@@ -178,7 +185,7 @@ class HK_Settings
                         <legend>Textanzeigen</legend>
 
                         <table class="form-table">
-                           <tr>
+                            <tr>
                                 <th scope="row"><label for="hk-holzarten-lupe">Beschreibungstext?</label>
                                 </th>
                                 <td>
@@ -192,7 +199,7 @@ class HK_Settings
                                             1
                                         ); ?>>
                                 </td>
-                            </tr> 
+                            </tr>
                             <tr>
                                 <th scope="row"><label for="hk-holzarten-lat">lateinischer Name?</label>
                                 </th>
@@ -207,7 +214,7 @@ class HK_Settings
                                             1
                                         ); ?>>
                                 </td>
-                            </tr> 
+                            </tr>
                             <tr>
                                 <th scope="row"><label for="hk-holzarten-ger">deutscher Name?</label>
                                 </th>
@@ -222,7 +229,7 @@ class HK_Settings
                                             1
                                         ); ?>>
                                 </td>
-                            </tr> 
+                            </tr>
                         </table>
                     </fieldset>
 
@@ -273,7 +280,7 @@ class HK_Settings
             'description' => !empty($input['description']) ? 1 : 0,
             'lat' => !empty($input['lat']) ? 1 : 0,
             'ger' => !empty($input['ger']) ? 1 : 0
-            
+
         ];
     }
 
@@ -292,6 +299,13 @@ class HK_Settings
             'hk_holzarten_settings',
             [
                 'sanitize_callback' => [self::class, 'sanitize_holzarten']
+            ]
+        );
+        register_setting(
+            'hk_katalog_settings_group',
+            'hk_katalog_settings',
+            [
+                'sanitize_callback' => [self::class, 'sanitize_katalog']
             ]
         );
     }
