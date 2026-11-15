@@ -33,7 +33,40 @@ document.addEventListener('DOMContentLoaded', function () {
     sizeInput.addEventListener('input', updatePreview);
     roundInput.addEventListener('change', updatePreview);
     lupeCheckbox.addEventListener('change', updateZoomCursor);
+    // Zoom / Lightbox
+    const openZoom = () => {
+        if (!lupeCheckbox.checked) {
+            return;
+        }
 
+        const overlay = document.createElement('div');
+        overlay.className = 'hk-zoom-overlay';
+
+        const zoomImage = document.createElement('img');
+        zoomImage.src = preview.src;
+        zoomImage.alt = preview.alt;
+
+        overlay.appendChild(zoomImage);
+        document.body.appendChild(overlay);
+
+        // Schließen durch Klick
+        overlay.addEventListener('click', () => {
+            overlay.remove();
+        });
+
+        // ESC schließt die Vergrößerung
+        const closeOnEscape = (event) => {
+            if (event.key === 'Escape') {
+                overlay.remove();
+                document.removeEventListener('keydown', closeOnEscape);
+            }
+        };
+
+        document.addEventListener('keydown', closeOnEscape);
+    };
+
+    // Klick auf Vorschaubild
+    preview.addEventListener('click', openZoom);
     // Initiale Darstellung
     updatePreview();
     updateZoomCursor();
