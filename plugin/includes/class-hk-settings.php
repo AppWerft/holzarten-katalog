@@ -20,7 +20,11 @@ class HK_Settings
             'hk_settings_fundorte',
             [self::class, 'render_fundorte']
         );
+        global $submenu;
 
+        if (isset($submenu['holzarten-katalog'][0])) {
+            $submenu['holzarten-katalog'][0][0] = 'Holzartenliste';
+        }
         // Einstellungen Holzarten
         add_submenu_page(
             'holzarten-katalog',
@@ -30,6 +34,11 @@ class HK_Settings
             'hk_settings_holzarten',
             [self::class, 'render_holzarten']
         );
+        global $submenu;
+
+        if (isset($submenu['holzarten-katalog'][0])) {
+            $submenu['holzarten-katalog'][0][0] = 'Holzartenliste';
+        }
     }
 
     public static function enqueue_scripts($hook)
