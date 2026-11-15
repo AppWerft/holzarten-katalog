@@ -30,65 +30,61 @@ class HK_Settings
             [self::class, 'render_holzarten']
         );
     }
-public static function render_holzarten()
-{
-    ?>
-    <div class="wrap">
-        <h1>Holzarten – Einstellungen in Detailanzeige</h1>
+    public static function render_holzarten()
+    {
+?>
+        <div class="wrap">
+            <h1>Holzarten – Einstellungen in Detailanzeige</h1>
 
-        <form method="post" action="options.php">
+            <form method="post" action="options.php">
 
-            <?php settings_fields('hk_holzarten_settings_group'); ?>
+                <?php settings_fields('hk_holzarten_settings_group'); ?>
 
-            <table class="form-table">
+                <table class="form-table">
 
-                <tr>
-                    <th scope="row">
-                        Größe in Pixel
-                    </th>
-                    <td>
-                        <input
-                            type="numeric"
-                            size="3"
-                            name="hk_holzarten_settings[size]"
-                            value="<?php
-                                echo esc_attr(
-                                    get_option('hk_holzarten_settings', [])['size'] ?? ''
-                                );
-                            ?>">
-                    </td>
-                </tr>
-<tr>
-                    <th scope="row">
-                        als Kreis?
-                    </th>
+                    <tr>
+                        <th scope="row">
+                            Größe in Pixel
+                        </th>
+                        <td>
+                            <input
+                                type="numeric"
+                                size="3"
+                                name="hk_holzarten_settings[size]"
+                                value="<?php
+                                        echo esc_attr(
+                                            get_option('hk_holzarten_settings', [])['size'] ?? ''
+                                        );
+                                        ?>">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <label for="hk-holzarten-round">Als Kreis darstellen?</label>
+                        </th>
+                        <td>
+                            <input
+                                type="checkbox"
+                                id="hk-holzarten-round"
+                                name="hk_holzarten_settings[round]"
+                                value="1"
+                                <?php checked(
+                                    get_option('hk_holzarten_settings', [])['round'] ?? 0,
+                                    1
+                                ); ?>>
+                        </td>
+                    </tr>
 
 
-                    
-                    <td>
 
+                </table>
 
+                <?php submit_button('Einstellungen speichern'); ?>
 
-                    
-                        <input
-                            type="checkbox"
-                            class="switch"
-                            name="hk_holzarten_settings[rund]"
-                            value="<?php
-                                echo esc_attr(
-                                    get_option('hk_holzarten_settings', [])['round'] ?? ''
-                                );
-                            ?>">
-                    </td>
-                </tr>
-            </table>
-
-            <?php submit_button('Einstellungen speichern'); ?>
-
-        </form>
-    </div>
+            </form>
+        </div>
     <?php
-}
+    }
     public static function register_settings()
     {
         register_setting(
@@ -119,7 +115,7 @@ public static function render_holzarten()
                 'position' => 'center',
             ]
         );
-?>
+    ?>
         <div class="wrap">
             <h1>Holzfundortkarten – Darstellungseinstellungen</h1>
 
