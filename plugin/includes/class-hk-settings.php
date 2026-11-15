@@ -9,27 +9,27 @@ class HK_Settings
     }
 
     public static function add_menu()
-    {
-        add_submenu_page(
-            'holzarten-katalog',
-            'Einstellungen',
-            'Holzfundorte',
-            'manage_options',
-            'hk_settings',
-            [self::class, 'render_fundorte']
-        );
-    }
-    public static function add_menu()
-    {
-        add_submenu_page(
-            'holzarten-katalog',
-            'Einstellungen',
-            'Holzfundorte',
-            'manage_options',
-            'hk_settings',
-            [self::class, 'render_holzarten']
-        );
-    }
+{
+    // Einstellungen Holzfundorte
+    add_submenu_page(
+        'holzarten-katalog',
+        'Holzfundorte',
+        'Holzfundorte',
+        'manage_options',
+        'hk_settings_fundorte',
+        [self::class, 'render_fundorte']
+    );
+
+    // Einstellungen Holzarten
+    add_submenu_page(
+        'holzarten-katalog',
+        'Holzarten',
+        'Holzarten',
+        'manage_options',
+        'hk_settings_holzarten',
+        [self::class, 'render_holzarten']
+    );
+}
 
     public static function register_settings()
     {
