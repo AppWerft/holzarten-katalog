@@ -48,9 +48,14 @@ class HK_Settings
                         </th>
                         <td>
                             <input
-                                type="number"
+                                type="range"
                                 size="3"
+                                id="hk-wood-size"
                                 name="hk_holzarten_settings[size]"
+                                min="40"
+                                max="300"
+                                step="10"
+
                                 value="<?php
                                         echo esc_attr(
                                             get_option('hk_holzarten_settings', [])['size'] ?? ''
@@ -78,33 +83,32 @@ class HK_Settings
 
 
                 </table>
-<?php
-$settings = get_option('hk_holzarten_settings', [
-    'size'  => 120,
-    'round' => 0,
-]);
+                <?php
+                $settings = get_option('hk_holzarten_settings', [
+                    'size'  => 120,
+                    'round' => 0,
+                ]);
 
-$size = absint($settings['size']);
-$round = !empty($settings['round']);
-?>
+                $size = absint($settings['size']);
+                $round = !empty($settings['round']);
+                ?>
 
-<div class="hk-preview-wrapper">
-    <p><strong>Vorschau der Detailanzeige</strong></p>
+                <div class="hk-preview-wrapper">
+                    <p><strong>Vorschau der Detailanzeige</strong></p>
 
-    <div class="hk-preview">
-        <img
-            id="hk-wood-preview"
-            src="<?php echo esc_url(HK_PLUGIN_URL . 'assets/images/holz.png'); ?>"
-            alt="Vorschau Holzbild"
-            style="
+                    <div class="hk-preview">
+                        <img
+                            id="hk-wood-preview"
+                            src="<?php echo esc_url(HK_PLUGIN_URL . 'assets/images/holz.png'); ?>"
+                            alt="Vorschau Holzbild in Holzurnenanzeige"
+                            style="
                 width: <?php echo esc_attr($size); ?>px;
                 height: <?php echo esc_attr($size); ?>px;
                 object-fit: cover;
                 border-radius: <?php echo $round ? '50%' : '0'; ?>;
-            "
-        >
-    </div>
-</div>
+            ">
+                    </div>
+                </div>
                 <?php submit_button('Einstellungen speichern'); ?>
 
             </form>
