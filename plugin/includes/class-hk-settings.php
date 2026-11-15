@@ -296,6 +296,8 @@ class HK_Settings
                 <?php submit_button('Einstellungen speichern'); ?>
             </form>
         </div>
+        <i>Vorschau</i>
+        <div id="map-preview"></div>
 <?php
     }
 
