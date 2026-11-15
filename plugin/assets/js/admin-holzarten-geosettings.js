@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
     preview.style.display = 'block';
     preview.style.height = '200px';
     preview.style.border = '2px dotted darkgreen';
-    preview.style.width = '100%';
+    preview.style.width = '90%';
 
     // Leaflet-Karte initialisieren
     const map = L.map(preview).setView([53.5, 10.0], 6);
