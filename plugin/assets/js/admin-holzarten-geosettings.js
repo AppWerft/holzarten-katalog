@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const preview = document.getElementById('settings-preview-map');
     const heightInput = document.getElementById('hk-map-height');
     const widthInput = document.getElementById('hk-map-width');
+    const radiusInput = document.getElementById('hk-map-radius');
 
     if (!preview || !heightInput || !widthInput) {
         return;
@@ -12,10 +13,10 @@ document.addEventListener('DOMContentLoaded', function () {
     const updatePreview = () => {
         const w = parseInt(widthInput.value, 10) || 100;
         const h = parseInt(heightInput.value, 10) || 200;
-
+        const r = parseInt(radiusInput.value, 10) || 0;
         preview.style.height = h + 'px';
         preview.style.width = w + '%';
-
+        preview.style.radius=r;
         // Leaflet-Größe neu berechnen
         map.invalidateSize();
     };
@@ -43,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function updatePreviewSize() {
         const w = parseInt(widthInput.value, 10) || 100;
         const h = parseInt(heightInput.value, 10) || 200;
-
+        const r = parseInt(radiusInput.value, 10) || 0;
         preview.style.height = h + 'px';
         preview.style.width = w + '%';
     }

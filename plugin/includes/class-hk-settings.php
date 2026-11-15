@@ -286,7 +286,22 @@ class HK_Settings
                             <span class="description">Prozent (20–100)</span>
                         </td>
                     </tr>
-
+                    <tr>
+                        <th scope="row">
+                            <label for="hk-map-radius">Eckenradius</label>
+                        </th>
+                        <td>
+                            <input
+                                type="range"
+                                id="hk-map-radius"
+                                name="hk_map_settings[radius]"
+                                value="<?php echo esc_attr($settings['radius']); ?>"
+                                min="0"
+                                max="20"
+                                step="1">
+                            <span class="description">Eckenradius</span>
+                        </td>
+                    </tr>
                     <tr>
                         <th scope="row">
                             <label for="hk-map-position">Ausrichtung</label>
