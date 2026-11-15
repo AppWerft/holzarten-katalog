@@ -178,8 +178,21 @@ class HK_Settings
                         <legend>Weitere Anzeigeoptionen</legend>
 
                         <table class="form-table">
-                            <!-- Weitere Einstellungen -->
-
+                           <tr>
+                                <th scope="row"><label for="hk-holzarten-lupe">Beschreibung?</label>
+                                </th>
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        id="hk-holzarten-description"
+                                        name="hk_holzarten_settings[description]"
+                                        value="1"
+                                        <?php checked(
+                                            get_option('hk_holzarten_settings', [])['ldescription'] ?? 0,
+                                            1
+                                        ); ?>>
+                                </td>
+                            </tr> 
                         </table>
                     </fieldset>
 
