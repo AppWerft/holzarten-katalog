@@ -92,14 +92,12 @@ class HK_Settings
                     'size'  => 120,
                     'round' => 0,
                 ]);
-
                 $size = absint($settings['size']);
                 $round = !empty($settings['round']);
-                ?>
-
+                
+                submit_button('Einstellungen speichern'); ?>
                 <div class="hk-preview-wrapper">
                     <p><strong>Vorschau der Holzart in der Detailanzeige</strong></p>
-
                     <div class="hk-preview">
                         <img
                             id="hk-wood-preview"
@@ -113,14 +111,12 @@ class HK_Settings
             ">
                     </div>
                 </div>
-                <?php submit_button('Einstellungen speichern'); ?>
+                
 
             </form>
         </div>
     <?php
     }
-
-
 
     public static function sanitize_holzarten($input)
     {
@@ -133,7 +129,6 @@ class HK_Settings
             'round' => !empty($input['round']) ? 1 : 0,
         ];
     }
-
 
     public static function register_settings()
     {
