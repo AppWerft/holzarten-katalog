@@ -269,7 +269,11 @@ class HK_Settings
             ),
 
             'round' => !empty($input['round']) ? 1 : 0,
-            'lupe' => !empty($input['lupe']) ? 1 : 0
+            'lupe' => !empty($input['lupe']) ? 1 : 0,
+            'description' => !empty($input['description']) ? 1 : 0,
+            'lat' => !empty($input['lat']) ? 1 : 0,
+            'ger' => !empty($input['ger']) ? 1 : 0
+            
         ];
     }
 
