@@ -43,6 +43,12 @@ Nach Auswahl wird die Karte auf den Punkt zentriert und die Position markiert. D
 
 ![Holzarten-Holzort](images/holzverorte.png)
 
+### Holzschlagort im Frontend
+
+Das Layout und die Erscheinung im Frontend lässt sich im Adminmenü stylen.
+![Holzarten-Geomap](images/geomap.png)
+
+
 ### Zuordnung der Holzarten zu den Produkten
 Die Zuordnung erfolgt im Editor des Produktes unter dem Punkt ATTRIBUTES. Dort lässt sich mit dem Dreieck die Liste der aktiven Holzarten aufrufen und die Holzart auswählen.
 
