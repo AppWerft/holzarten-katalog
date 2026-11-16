@@ -428,12 +428,12 @@ class HK_Settings
                     <tr>
                         <th scope="row">Darstellung als<br>Material Design Cards</th>
                         <td>
-                           <input
+                            <input
                                 type="checkbox"
                                 name="hk_katalog_settings[card]"
-                                value="0"
-                                <?php checked($settings['card'], 0); ?>>
-               
+                                value="1"
+                                <?php checked($settings['card'] ?? 0, 1); ?>>
+
                         </td>
                     </tr>
                 </table>
@@ -442,7 +442,7 @@ class HK_Settings
             </form>
 
             <h2>Vorschau der Holzartenübersicht:</h2>
-            <p>Wird erst nach Abspeichern aktualisiert.</p> 
+            <p>Wird erst nach Abspeichern aktualisiert.</p>
             <div id="hk-katalog-preview">
                 <?php
                 echo HK_Frontend::render_catalog($settings);
