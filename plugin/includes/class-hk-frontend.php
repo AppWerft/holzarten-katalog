@@ -55,6 +55,7 @@ class HK_Frontend
 
     /**
      * Gemeinsame HTML-Ausgabe für Frontend und Admin-Vorschau
+     * Für die Darstellung der Holzarten gelten die Optionen aus render_holzarten()
      */
     public static function render_catalog($settings = [])
     {
@@ -64,8 +65,21 @@ class HK_Frontend
                 'sortierung' => 'name',
                 'bilder'     => 1,
                 'spalten'    => 3,
+
             ]
         );
+        // Einstellungen für die Darstellung der Holzarten
+        $holz_settings = wp_parse_args(
+            get_option('hk_holzarten_settings', []),
+            [
+                'size'  => 120,
+                'round' => 0,
+                'lupe'  => 0,
+            ]
+        );
+        $size  = absint($holz_settings['size']);
+        $round = !empty($holz_settings['round']);
+        $lupe  = !empty($holz_settings['lupe']);
 
         // Einstellungen absichern
         $sortierung = $settings['sortierung'] === 'latin'
@@ -121,12 +135,32 @@ class HK_Frontend
                     $item['image_file'] ?? ''
                 );
 
-                if ($image_url) {
-                    $html .= '<img
-                        class="hk-wood-image"
-                        src="' . esc_url($image_url) . '"
-                        alt="' . esc_attr($name_de) . '"
-                        loading="lazy">';
+                if ($bilder) {
+
+                    $image_url = HK_Storage::image_url(
+                        $item['image_file'] ?? ''
+                    );
+
+                    if ($image_url) {
+
+                        $image_class = 'hk-wood-image';
+
+                        if ($lupe) {
+                            $image_class .= ' hk-wood-zoom';
+                        }
+
+                        $html .= '<img
+                            class="' . esc_attr($image_class) . '"
+                            src="' . esc_url($image_url) . '"
+                            alt="' . esc_attr($name_de) . '"
+                            loading="lazy"
+                            style="
+                                width: ' . esc_attr($size) . 'px;
+                                height: ' . esc_attr($size) . 'px;
+                                object-fit: cover;
+                                border-radius: ' . ($round ? '50%' : '0') . ';
+                            ">';
+                    }
                 }
             }
 
