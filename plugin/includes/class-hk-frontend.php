@@ -112,11 +112,11 @@ class HK_Frontend
                     fn($term) => sanitize_title($term->name),
                     $terms
                 );
+                
+                
                 error_log('--- HK FILTERVERGLEICH ---');
-
                 foreach ($items as $item) {
                     $slug = sanitize_title($item['name_de'] ?? '');
-
                     error_log(
                         'KATALOG: ' . ($item['name_de'] ?? 'OHNE NAME') .
                             ' | SLUG: ' . $slug .
@@ -124,6 +124,7 @@ class HK_Frontend
                             (in_array($slug, $used_wood_slugs, true) ? 'JA' : 'NEIN')
                     );
                 }
+                
                 $items = array_filter(
                     $items,
                     function ($item) use ($used_wood_slugs) {
