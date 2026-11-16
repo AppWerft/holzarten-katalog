@@ -168,7 +168,7 @@ class HK_Frontend
                     if ($lupe) {
                         $image_class .= ' hk-wood-zoom';
                     }
-                    $html .= '<div class="hk-wood-image-wrapper">';
+                   $html .= '<div class="hk-wood-image-wrapper" style="width:' . $size . 'px;">';
                     $html .= '<img
                         class="' . esc_attr($image_class) . '"
                         src="' . esc_url($image_url) . '"
