@@ -11,7 +11,7 @@ git add *
 
 echo "3. Commit erstellen ..."
 
-git commit -m "neue Plugin struktur ohen ZIP"
+git commit -m "JS wieder hergestellt"
 
 echo "4. Zu GitHub übertragen ..."
 
