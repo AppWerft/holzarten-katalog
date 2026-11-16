@@ -103,19 +103,16 @@ class HK_Frontend
                 'taxonomy'   => 'pa_holzart',
                 'hide_empty' => true,
             ]);
-
             if (!is_wp_error($terms)) {
                 $used_wood_slugs = wp_list_pluck($terms, 'slug');
-
                 $items = array_filter(
                     $items,
                     function ($item) use ($used_wood_slugs) {
                         $slug = sanitize_title($item['name_de'] ?? '');
-
                         return in_array($slug, $used_wood_slugs, true);
                     }
                 );
-            }
+            } else error_log('wp error');
         }
         $terms = get_terms([
             'taxonomy'   => 'pa_holzart',
