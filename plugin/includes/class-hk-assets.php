@@ -5,7 +5,8 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class HK_Assets {
+class HK_Assets
+{
 
     public static function init()
     {
@@ -65,7 +66,14 @@ class HK_Assets {
      * Backend.
      */
     public static function enqueue_admin($hook)
-    {
+    { // Katalog-CSS für die Admin-Vorschau
+        wp_enqueue_style(
+            'hk-frontend-holzarten',
+            HK_PLUGIN_URL . 'assets/css/frontend-holzarten.css',
+            [],
+            HK_VERSION
+        );
+
         $screen = get_current_screen();
 
         if (
@@ -92,6 +100,15 @@ class HK_Assets {
      */
     public static function enqueue_frontend()
     {
+        // Katalog-CSS auf allen Frontend-Seiten
+        wp_enqueue_style(
+            'hk-frontend-holzarten',
+            HK_PLUGIN_URL . 'assets/css/frontend-holzarten.css',
+            [],
+            HK_VERSION
+        );
+
+        // Leaflet nur auf Produktseiten
         if (!is_product()) {
             return;
         }

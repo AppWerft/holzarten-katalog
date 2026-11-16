@@ -79,21 +79,21 @@ class HK_Settings
         // Holzarten-Einstellungen
         if ($hook === 'holzartenkatalog_page_hk_settings_holzarten') {
 
-            $js_file = HK_PLUGIN_DIR . 'assets/js/admin-holzarten-holzsettings.js';
+            $js_file = HK_PLUGIN_DIR . 'assets/js/admin-holzarten-settings.js';
 
             wp_enqueue_script(
-                'hk-holzarten-holzsettings',
-                HK_PLUGIN_URL . 'assets/js/admin-holzarten-holzsettings.js',
+                'hk-holzarten-settings',
+                HK_PLUGIN_URL . 'assets/js/admin-holzarten-settings.js',
                 [],
                 file_exists($js_file) ? filemtime($js_file) : HK_VERSION,
                 true
             );
 
-            $css_file = HK_PLUGIN_DIR . 'assets/css/admin-holzarten-holzsettings.css';
+            $css_file = HK_PLUGIN_DIR . 'assets/css/admin-holzarten-settings.css';
 
             wp_enqueue_style(
                 'hk-holzarten-settings',
-                HK_PLUGIN_URL . 'assets/css/admin-holzarten-holzsettings.css',
+                HK_PLUGIN_URL . 'assets/css/admin-holzarten-settings.css',
                 [],
                 file_exists($css_file) ? filemtime($css_file) : HK_VERSION
             );
@@ -194,7 +194,7 @@ class HK_Settings
 
                         <table class="form-table">
                             <tr>
-                                <th scope="row"><label for="hk-holzarten-lupe">Beschreibungstext?</label>
+                                <th scope="row"><label for="hk-holzarten-description">Beschreibungstext?</label>
                                 </th>
                                 <td>
                                     <input
