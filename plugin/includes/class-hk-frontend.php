@@ -99,20 +99,17 @@ class HK_Frontend
             }
         );
 
-        $taxonomy = 'pa_holzart';
-
         $terms = get_terms([
-            'taxonomy'   => $taxonomy,
+            'taxonomy'   => 'pa_holzart',
             'hide_empty' => false,
         ]);
 
-        if (is_wp_error($terms)) {
-            error_log('Holzarten-Taxonomie: ' . $terms->get_error_message());
-        } else {
-            error_log('Anzahl Holzarten-Terme: ' . count($terms));
-
-            foreach ($terms as $term) {
-                error_log('WooCommerce-Holzart: ' . $term->name . ' | Slug: ' . $term->slug);
+        foreach ($terms as $term) {
+            if ($term->count > 0) {
+                error_log(
+                    'Holzart mit Produkten: ' .
+                        $term->name . ' | Produkte: ' . $term->count
+                );
             }
         }
 
