@@ -11,7 +11,7 @@ git add *
 
 echo "3. Commit erstellen ..."
 
-git commit -m "JS wieder hergestellt"
+git commit -m "Holz ist rund, noch kein MD"
 
 echo "4. Zu GitHub übertragen ..."
 
