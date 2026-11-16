@@ -1,9 +1,12 @@
 cd ~/Projekte/holzarten-katalog/
-#cp "$HOME/Downloads/holzarten-export.zip" .
+
 zip -r holzarten-katalog-plugin.zip plugin/* -x "*/.DS_Store" "*/.git/*"
+
 pwd
+
 ls -la 
 
+git rm *
 git add *
 
 echo "3. Commit erstellen ..."
