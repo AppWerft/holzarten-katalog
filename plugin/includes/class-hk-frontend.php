@@ -98,30 +98,6 @@ class HK_Frontend
                 return !empty($item['active']);
             }
         );
-        / Nur Hölzer berücksichtigen, denen WooCommerce-Produkte zugeordnet sind
-if (!empty($settings['nurprodukte'])) {
-
-    $terms = get_terms([
-        'taxonomy'   => 'pa_holzart',
-        'hide_empty' => true,
-    ]);
-
-    if (!is_wp_error($terms)) {
-        $used_wood_names = wp_list_pluck($terms, 'name');
-
-        $items = array_filter(
-            $items,
-            function ($item) use ($used_wood_names) {
-                return in_array(
-                    $item['name_de'] ?? '',
-                    $used_wood_names,
-                    true
-                );
-            }
-        );
-    }
-}
-
 
         // Sortierung
         usort($items, function ($a, $b) use ($sortierung) {
