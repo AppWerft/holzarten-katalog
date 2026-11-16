@@ -110,10 +110,7 @@ class HK_Frontend
                 'taxonomy'   => 'pa_holzart',
                 'hide_empty' => true,
             ]);
-
-
             if (!is_wp_error($terms)) {
-
                 // Slugs aus den tatsächlich verwendeten Term-Namen erzeugen
                 $used_wood_slugs = array_map(
                     fn($term) => sanitize_title($term->name),
@@ -157,50 +154,27 @@ class HK_Frontend
         // HTML erzeugen:
         $html = '<div class="hk-wood-grid" style="--hk-columns:' . $spalten . ';">';
         foreach ($items as $item) {
-
             $name_de = $item['name_de'] ?? '';
             $name_latin = $item['name_latin'] ?? '';
-
             $html .= '<div class="hk-wood-card">';
 
             // Bild nur bei entsprechender Einstellung
             if ($bilder) {
-
                 $image_url = HK_Storage::image_url(
                     $item['image_file'] ?? ''
                 );
-
-                if ($bilder) {
-
-                    $image_url = HK_Storage::image_url(
-                        $item['image_file'] ?? ''
-                    );
-
-                    // Bild nur bei entsprechender Einstellung
-                    if ($bilder) {
-
-                        $image_url = HK_Storage::image_url(
-                            $item['image_file'] ?? ''
-                        );
-
-                        if ($image_url) {
-                            $image_class = 'hk-wood-image';
-                            if ($lupe) {
-                                $image_class .= ' hk-wood-zoom';
-                            }
-                            $html .= '<img
-                                class="' . esc_attr($image_class) . '"
-                                src="' . esc_url($image_url) . '"
-                                alt="' . esc_attr($name_de) . '"
-                                loading="lazy"
-                                style="
-                                    width: ' . esc_attr($size) . 'px;
-                                    height: ' . esc_attr($size) . 'px;
-                                    object-fit: cover;
-                                    border-radius: ' . ($round ? '50%' : '0') . ';
-                                ">';
-                        }
+                if ($image_url) {
+                    $image_class = 'hk-wood-image';
+                    if ($lupe) {
+                        $image_class .= ' hk-wood-zoom';
                     }
+                    $html .= '<div class="hk-wood-image-wrapper">';
+                    $html .= '<img
+                        class="' . esc_attr($image_class) . '"
+                        src="' . esc_url($image_url) . '"
+                        alt="' . esc_attr($name_de) . '"
+                        loading="lazy">';
+                    $html .= '</div>';
                 }
             }
 
