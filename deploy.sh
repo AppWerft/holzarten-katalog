@@ -11,7 +11,7 @@ git add *
 
 echo "3. Commit erstellen ..."
 
-git commit -m "Holz ist rund, noch kein MD"
+git commit -m "Bilder auf 512 skaliert"
 
 echo "4. Zu GitHub übertragen ..."
 
