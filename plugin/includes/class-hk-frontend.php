@@ -165,7 +165,7 @@ class HK_Frontend
                 }
             }
 
-            $html .= '<h4 style="padding:0;margin:0 0 50px 0">' . esc_html($name_de) . '</h4>';
+            $html .= '<h4 style="padding:0;margin:50px 0 0 0">' . esc_html($name_de) . '</h4>';
 
             if ($name_latin !== '') {
                 $html .= '<span>' . esc_html($name_latin) . '</span>';
