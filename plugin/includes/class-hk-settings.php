@@ -430,8 +430,8 @@ class HK_Settings
                            <input
                                 type="checkbox"
                                 name="hk_katalog_settings[card]"
-                                value=1
-                                <?php checked($settings['card'], 1); ?>>
+                                value="0"
+                                <?php checked($settings['card'], 0); ?>>
                
                         </td>
                     </tr>
