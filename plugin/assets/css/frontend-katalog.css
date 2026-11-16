@@ -13,3 +13,25 @@
     aspect-ratio: 1 / 1;
     object-fit: cover;
 }
+
+/* Material Design Cards */
+
+.hk-material-cards .hk-wood-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow:
+        0 2px 5px rgba(0, 0, 0, 0.12),
+        0 1px 2px rgba(0, 0, 0, 0.08);
+    padding: 16px;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.hk-material-cards .hk-wood-card:hover {
+    box-shadow:
+        0 6px 16px rgba(0, 0, 0, 0.16);
+    transform: translateY(-2px);
+}
+
+.hk-material-cards .hk-wood-card h4 {
+    margin-top: 12px !important;
+}
