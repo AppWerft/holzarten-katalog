@@ -325,68 +325,74 @@ class HK_Settings
         );
     }
 
-public static function render_katalog()
-{
-    $settings = wp_parse_args(
-        get_option('hk_katalog_settings', []),
-        [
-            'sortierung' => 'name',
-            'bilder'     => 'ja',
-            'spalten'    => 3,
-        ]
-    );
+    public static function render_katalog()
+    {
+        $settings = wp_parse_args(
+            get_option('hk_katalog_settings', []),
+            [
+                'sortierung' => 'name',
+                'bilder'     => 'ja',
+                'spalten'    => 3,
+            ]
+        );
     ?>
-    <div class="wrap">
-        <h1>Holzartenkatalog – Darstellung</h1>
-        <p>Einstellungen für die öffentliche Holzartenübersicht.</p>
-        <form method="post" action="options.php">
-            <?php settings_fields('hk_katalog_settings_group'); ?>
-            <table class="form-table">
-                <tr>
-                    <th scope="row">Sortierung</th>
-                    <td>
-                        <select name="hk_katalog_settings[sortierung]">
-                            <option value="name"
-                                <?php selected($settings['sortierung'], 'name'); ?>>
-                                Deutscher Name
-                            </option>
-                            <option value="latin"
-                                <?php selected($settings['sortierung'], 'latin'); ?>>
-                                Botanischer Name
-                            </option>
-                        </select>
-                    </td>
-                </tr>
+        <div class="wrap">
+            <h1>Holzartenkatalog – Darstellung</h1>
+            <p>Einstellungen für die öffentliche Holzartenübersicht.</p>
+            <form method="post" action="options.php">
+                <?php settings_fields('hk_katalog_settings_group'); ?>
+                <table class="form-table">
+                    <tr>
+                        <th scope="row">Sortierung</th>
+                        <td>
+                            <select name="hk_katalog_settings[sortierung]">
+                                <option value="name"
+                                    <?php selected($settings['sortierung'], 'name'); ?>>
+                                    Deutscher Name
+                                </option>
+                                <option value="latin"
+                                    <?php selected($settings['sortierung'], 'latin'); ?>>
+                                    Botanischer Name
+                                </option>
+                            </select>
+                        </td>
+                    </tr>
 
-                <tr>
-                    <th scope="row">Bilder anzeigen</th>
-                    <td>
-                        <input
-                            type="checkbox"
-                            name="hk_katalog_settings[bilder]"
-                            value="ja"
-                            <?php checked($settings['bilder'], 'ja'); ?>>
-                    </td>
-                </tr>
+                    <tr>
+                        <th scope="row">Bilder anzeigen</th>
+                        <td>
+                            <input
+                                type="checkbox"
+                                name="hk_katalog_settings[bilder]"
+                                value="ja"
+                                <?php checked($settings['bilder'], 'ja'); ?>>
+                        </td>
+                    </tr>
 
-                <tr>
-                    <th scope="row">Anzahl Spalten</th>
-                    <td>
-                        <input
-                            type="number"
-                            name="hk_katalog_settings[spalten]"
-                            value="<?php echo esc_attr($settings['spalten']); ?>"
-                            min="1"
-                            max="6">
-                    </td>
-                </tr>
-            </table>
-            <?php submit_button('Einstellungen speichern'); ?>
+                    <tr>
+                        <th scope="row">Anzahl Spalten</th>
+                        <td>
+                            <input
+                                type="number"
+                                name="hk_katalog_settings[spalten]"
+                                value="<?php echo esc_attr($settings['spalten']); ?>"
+                                min="1"
+                                max="6">
+                        </td>
+                    </tr>
+                </table>
+                <?php submit_button('Einstellungen speichern'); ?>
 
-        </form>
-    </div>
-    <?php
-}
+            </form>
+        </div>
+        <h2>Vorschau der Holzartenübersicht:</h2>
+        <div id="hk-katalog-preview">
+        <?php
+        echo HK_Frontend::render_catalog(
+            get_option('hk_katalog_settings', [])
+        );
+        echo '</div>';
+    }
     public static function render_fundorte()
     {
         $settings = wp_parse_args(
@@ -398,115 +404,115 @@ public static function render_katalog()
                 'priority' => 35
             ]
         );
-    ?>
-        <div class="wrap">
-            <h1>Holzfundortkarten – Darstellungseinstellungen</h1>
-            Den Produkten kann eine Geoposition zugeordnet werden.
-            <form method="post" action="options.php">
-                <?php settings_fields('hk_settings_group'); ?>
+        ?>
+            <div class="wrap">
+                <h1>Holzfundortkarten – Darstellungseinstellungen</h1>
+                Den Produkten kann eine Geoposition zugeordnet werden.
+                <form method="post" action="options.php">
+                    <?php settings_fields('hk_settings_group'); ?>
 
-                <table class="form-table">
+                    <table class="form-table">
 
-                    <tr>
-                        <th scope="row">
-                            <label for="hk-map-height">Kartenhöhe</label>
-                        </th>
-                        <td>
-                            <input
-                                type="range"
-                                id="hk-map-height"
-                                name="hk_map_settings[height]"
-                                value="<?php echo esc_attr($settings['height']); ?>"
-                                min="80"
-                                max="300"
-                                step="10">
-                            <span class="description">Pixel (80–300)</span>
-                        </td>
-                    </tr>
+                        <tr>
+                            <th scope="row">
+                                <label for="hk-map-height">Kartenhöhe</label>
+                            </th>
+                            <td>
+                                <input
+                                    type="range"
+                                    id="hk-map-height"
+                                    name="hk_map_settings[height]"
+                                    value="<?php echo esc_attr($settings['height']); ?>"
+                                    min="80"
+                                    max="300"
+                                    step="10">
+                                <span class="description">Pixel (80–300)</span>
+                            </td>
+                        </tr>
 
-                    <tr>
-                        <th scope="row">
-                            <label for="hk-map-width">Kartenbreite</label>
-                        </th>
-                        <td>
-                            <input
-                                type="range"
-                                id="hk-map-width"
-                                name="hk_map_settings[width]"
-                                value="<?php echo esc_attr($settings['width']); ?>"
-                                min="20"
-                                max="80"
-                                step="5">
-                            <span class="description">Prozent (20%–80%)</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">
-                            <label for="hk-map-radius">Eckenradius</label>
-                        </th>
-                        <td>
-                            <input
-                                type="range"
-                                id="hk-map-radius"
-                                name="hk_map_settings[radius]"
-                                value="<?php echo esc_attr($settings['radius']); ?>"
-                                min="0"
-                                max="50"
-                                step="1">
-                            <span class="description">Eckenradius in Pixeln</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">
-                            <label for="hk-map-position">Ausrichtung</label>
-                        </th>
-                        <td>
-                            <select style="width:12em"
-                                id="hk-map-position"
-                                name="hk_map_settings[position]">
-                                <option value="left"
-                                    <?php selected($settings['position'], 'left'); ?>>
-                                    Links
-                                </option>
+                        <tr>
+                            <th scope="row">
+                                <label for="hk-map-width">Kartenbreite</label>
+                            </th>
+                            <td>
+                                <input
+                                    type="range"
+                                    id="hk-map-width"
+                                    name="hk_map_settings[width]"
+                                    value="<?php echo esc_attr($settings['width']); ?>"
+                                    min="20"
+                                    max="80"
+                                    step="5">
+                                <span class="description">Prozent (20%–80%)</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                <label for="hk-map-radius">Eckenradius</label>
+                            </th>
+                            <td>
+                                <input
+                                    type="range"
+                                    id="hk-map-radius"
+                                    name="hk_map_settings[radius]"
+                                    value="<?php echo esc_attr($settings['radius']); ?>"
+                                    min="0"
+                                    max="50"
+                                    step="1">
+                                <span class="description">Eckenradius in Pixeln</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                <label for="hk-map-position">Ausrichtung</label>
+                            </th>
+                            <td>
+                                <select style="width:12em"
+                                    id="hk-map-position"
+                                    name="hk_map_settings[position]">
+                                    <option value="left"
+                                        <?php selected($settings['position'], 'left'); ?>>
+                                        Links
+                                    </option>
 
-                                <option value="center"
-                                    <?php selected($settings['position'], 'center'); ?>>
-                                    Mittig
-                                </option>
+                                    <option value="center"
+                                        <?php selected($settings['position'], 'center'); ?>>
+                                        Mittig
+                                    </option>
 
-                                <option value="right"
-                                    <?php selected($settings['position'], 'right'); ?>>
-                                    Rechts
-                                </option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">
-                            <label for="hk-map-priority">Position in WooCommerce</label>
-                        </th>
-                        <td>
-                            <input
-                                type="number"
-                                id="hk-map-priority"
-                                name="hk_map_settings[priority]"
-                                value="<?php echo esc_attr($settings['priority']); ?>"
-                                min="1"
-                                max="100">
-                            <p class="description">
-                                Hook-Priorität: kleinerer Wert = frühere Ausgabe.
-                                Standard: 35.
-                            </p>
-                        </td>
-                    </tr>
-                </table>
+                                    <option value="right"
+                                        <?php selected($settings['position'], 'right'); ?>>
+                                        Rechts
+                                    </option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                <label for="hk-map-priority">Position in WooCommerce</label>
+                            </th>
+                            <td>
+                                <input
+                                    type="number"
+                                    id="hk-map-priority"
+                                    name="hk_map_settings[priority]"
+                                    value="<?php echo esc_attr($settings['priority']); ?>"
+                                    min="1"
+                                    max="100">
+                                <p class="description">
+                                    Hook-Priorität: kleinerer Wert = frühere Ausgabe.
+                                    Standard: 35.
+                                </p>
+                            </td>
+                        </tr>
+                    </table>
 
-                <?php submit_button('Einstellungen speichern'); ?>
-            </form>
-        </div>
-        <i>Vorschau</i>
-        <div id="settings-preview-map"></div>
-<?php
+                    <?php submit_button('Einstellungen speichern'); ?>
+                </form>
+            </div>
+            <i>Vorschau</i>
+            <div id="settings-preview-map"></div>
+    <?php
     }
 
     public static function sanitize_map($input)
