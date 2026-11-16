@@ -98,7 +98,25 @@ class HK_Frontend
                 return !empty($item['active']);
             }
         );
+        if (!empty($settings['nurprodukte'])) {
+            $terms = get_terms([
+                'taxonomy'   => 'pa_holzart',
+                'hide_empty' => true,
+            ]);
 
+            if (!is_wp_error($terms)) {
+                $used_wood_slugs = wp_list_pluck($terms, 'slug');
+
+                $items = array_filter(
+                    $items,
+                    function ($item) use ($used_wood_slugs) {
+                        $slug = sanitize_title($item['name_de'] ?? '');
+
+                        return in_array($slug, $used_wood_slugs, true);
+                    }
+                );
+            }
+        }
         $terms = get_terms([
             'taxonomy'   => 'pa_holzart',
             'hide_empty' => false,
