@@ -75,12 +75,18 @@ class HK_Frontend
                 'size'  => 120,
                 'round' => 0,
                 'lupe'  => 0,
+                'description' => 0,
+                'lat'         => 1,
+                'ger'         => 1,
             ]
         );
 
         $size  = absint($holz_settings['size']);
         $round = !empty($holz_settings['round']);
         $lupe  = !empty($holz_settings['lupe']);
+        $description = !empty($holz_settings['description']);
+        $show_lat    = !empty($holz_settings['lat']);
+        $show_ger    = !empty($holz_settings['ger']);
 
         // Einstellungen absichern
         $sortierung = $settings['sortierung'] === 'latin'
@@ -105,6 +111,7 @@ class HK_Frontend
                 'hide_empty' => true,
             ]);
 
+
             if (!is_wp_error($terms)) {
 
                 // Slugs aus den tatsächlich verwendeten Term-Namen erzeugen
@@ -112,19 +119,9 @@ class HK_Frontend
                     fn($term) => sanitize_title($term->name),
                     $terms
                 );
-                
-                
-                error_log('--- HK FILTERVERGLEICH ---');
-                foreach ($items as $item) {
-                    $slug = sanitize_title($item['name_de'] ?? '');
-                    error_log(
-                        'KATALOG: ' . ($item['name_de'] ?? 'OHNE NAME') .
-                            ' | SLUG: ' . $slug .
-                            ' | TREFFER: ' .
-                            (in_array($slug, $used_wood_slugs, true) ? 'JA' : 'NEIN')
-                    );
-                }
-                
+
+
+
                 $items = array_filter(
                     $items,
                     function ($item) use ($used_wood_slugs) {
@@ -136,34 +133,7 @@ class HK_Frontend
                 $items = array_values($items);
             }
         }
-        $terms = get_terms([
-            'taxonomy'   => 'pa_holzart',
-            'hide_empty' => false,
-        ]);
 
-        foreach ($terms as $term) {
-            if ($term->count > 0) {
-                error_log(
-                    'Holzart mit Produkten: ' .
-                        $term->name . ' | Produkte: ' . $term->count
-                );
-            }
-        }
-
-        if (!is_wp_error($terms)) {
-            $used_wood_names = wp_list_pluck($terms, 'name');
-
-            $items = array_filter(
-                $items,
-                function ($item) use ($used_wood_names) {
-                    return in_array(
-                        $item['name_de'] ?? '',
-                        $used_wood_names,
-                        true
-                    );
-                }
-            );
-        }
         // Sortierung
         usort($items, function ($a, $b) use ($sortierung) {
 
@@ -206,33 +176,53 @@ class HK_Frontend
                         $item['image_file'] ?? ''
                     );
 
-                    if ($image_url) {
+                    // Bild nur bei entsprechender Einstellung
+                    if ($bilder) {
 
-                        $image_class = 'hk-wood-image';
+                        $image_url = HK_Storage::image_url(
+                            $item['image_file'] ?? ''
+                        );
 
-                        if ($lupe) {
-                            $image_class .= ' hk-wood-zoom';
+                        if ($image_url) {
+                            $image_class = 'hk-wood-image';
+                            if ($lupe) {
+                                $image_class .= ' hk-wood-zoom';
+                            }
+                            $html .= '<img
+                                class="' . esc_attr($image_class) . '"
+                                src="' . esc_url($image_url) . '"
+                                alt="' . esc_attr($name_de) . '"
+                                loading="lazy"
+                                style="
+                                    width: ' . esc_attr($size) . 'px;
+                                    height: ' . esc_attr($size) . 'px;
+                                    object-fit: cover;
+                                    border-radius: ' . ($round ? '50%' : '0') . ';
+                                ">';
                         }
-
-                        $html .= '<img
-                            class="' . esc_attr($image_class) . '"
-                            src="' . esc_url($image_url) . '"
-                            alt="' . esc_attr($name_de) . '"
-                            loading="lazy"
-                            style="
-                                width: ' . esc_attr($size) . 'px;
-                                height: ' . esc_attr($size) . 'px;
-                                object-fit: cover;
-                                border-radius: ' . ($round ? '50%' : '0') . ';
-                            ">';
                     }
                 }
             }
 
-            $html .= '<h4 style="padding:0;margin:0">' . esc_html($name_de) . '</h4>';
-            if ($name_latin !== '') {
-                $html .= '<span>' . esc_html($name_latin) . '</span>';
+            if ($show_ger && $name_de !== '') {
+                $html .= '<h4 style="padding:0;margin:0">'
+                    . esc_html($name_de)
+                    . '</h4>';
             }
+
+            if ($show_lat && $name_latin !== '') {
+                $html .= '<span>'
+                    . esc_html($name_latin)
+                    . '</span>';
+            }
+            if ($description && !empty($item['description'])) {
+                $html .= '<div class="hk-wood-description">'
+                    . wp_kses_post($item['description'])
+                    . '</div>';
+            }
+
+
+
             $html .= '</div>';
         }
 
