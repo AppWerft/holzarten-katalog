@@ -402,16 +402,19 @@ class HK_Settings
                     </tr>
 
                     <tr>
-                        <th scope="row">Anzahl Spalten</th>
-                        <td>
-                            <input
-                                type="number"
-                                name="hk_katalog_settings[spalten]"
-                                value="<?php echo esc_attr($settings['spalten']); ?>"
-                                min="1"
-                                max="6">
-                        </td>
-                    </tr>
+    <th scope="row">Anzahl der Spalten</th>
+    <td>
+        <select name="hk_katalog_settings[spalten]">
+            <?php for ($i = 1; $i <= 6; $i++) : ?>
+                <option
+                    value="<?php echo $i; ?>"
+                    <?php selected($settings['spalten'], $i); ?>>
+                    <?php echo $i; ?>
+                </option>
+            <?php endfor; ?>
+        </select>
+    </td>
+</tr>
                 </table>
                 <?php submit_button('Einstellungen speichern'); ?>
 
