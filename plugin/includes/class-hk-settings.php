@@ -286,6 +286,7 @@ class HK_Settings
             ) ? $input['sortierung'] : 'name',
 
             'bilder' => !empty($input['bilder']) ? 1 : 0,
+            'card' => !empty($input['card']) ? 1 : 0,
             'nurprodukte' => !empty($input['nurprodukte']) ? 1 : 0,
             'spalten' => max(1, min(6, absint($input['spalten'] ?? 3))),
         ];
