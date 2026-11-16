@@ -153,35 +153,56 @@ class HK_Frontend
 
         // HTML erzeugen:
         $html = '<div class="hk-wood-grid" style="--hk-columns:' . $spalten . ';">';
-        // Bild nur bei entsprechender Einstellung
-        if ($bilder) {
-            $image_url = HK_Storage::image_url(
-                $item['image_file'] ?? ''
-            );
+        foreach ($items as $item) {
+            $name_de = $item['name_de'] ?? '';
+            $name_latin = $item['name_latin'] ?? '';
+            $html .= '<div class="hk-wood-card">';
 
-            if ($image_url) {
-                // Klassen für jedes Bild neu initialisieren
-                $image_class = 'hk-wood-image';
-
-                if ($round) {
-                    $image_class .= ' hk-wood-image-round';
+            // Bild nur bei entsprechender Einstellung
+            if ($bilder) {
+                $image_url = HK_Storage::image_url(
+                    $item['image_file'] ?? ''
+                );
+                if ($image_url) {
+                    if ($round) {
+                        $image_class .= ' hk-wood-image-round';
+                    }
+                    if ($lupe) {
+                        $image_class .= ' hk-wood-zoom';
+                    }
+                    $html .= '<div class="hk-wood-image-wrapper" style="width:' . $size . 'px;">';
+                    $html .= '<img
+                        class="' . esc_attr($image_class) . '"
+                        src="' . esc_url($image_url) . '"
+                        alt="' . esc_attr($name_de) . '"
+                        loading="lazy">';
+                    $html .= '</div>';
                 }
-
-                if ($lupe) {
-                    $image_class .= ' hk-wood-zoom';
-                }
-
-                $html .= '<div class="hk-wood-image-wrapper" style="width:' . $size . 'px;">';
-
-                $html .= '<img
-            class="' . esc_attr($image_class) . '"
-            src="' . esc_url($image_url) . '"
-            alt="Holzbild"
-            loading="lazy">';
-
-                $html .= '</div>';
             }
+
+            if ($show_ger && $name_de !== '') {
+                $html .= '<h4 style="padding:0;margin:0">'
+                    . esc_html($name_de)
+                    . '</h4>';
+            }
+
+            if ($show_lat && $name_latin !== '') {
+                $html .= '<span>'
+                    . esc_html($name_latin)
+                    . '</span>';
+            }
+            if ($description && !empty($item['description'])) {
+                $html .= '<div class="hk-wood-description">'
+                    . wp_kses_post($item['description'])
+                    . '</div>';
+            }
+
+
+
+            $html .= '</div>';
         }
+
+        $html .= '</div>';
 
         return $html;
     }
