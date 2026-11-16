@@ -72,8 +72,9 @@ document.addEventListener('DOMContentLoaded', function () {
     updateZoomCursor();
 });
 
+// catalogdarstellung dynamisch anpassen:
 document.addEventListener('DOMContentLoaded', function () {
-    alert('JS')
+    alert('T')
     const columnsField = document.querySelector('[name="hk_settings[spalten]"]');
     const cardField = document.querySelector('[name="hk_settings[card]"]');
 
