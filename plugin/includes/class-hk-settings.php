@@ -425,7 +425,7 @@ class HK_Settings
                         </td>
                     </tr>
                     <tr>
-                        <th scope="row">Darstellung als Material Design Cards</th>
+                        <th scope="row">Darstellung als<br>Material Design Cards</th>
                         <td>
                            <input
                                 type="checkbox"
