@@ -120,8 +120,8 @@ class HK_Frontend
         }
 
         // HTML erzeugen
-        $html = '<div class="hk-wood-grid" style="--hk-columns:' . esc_attr($spalten) . ';">';
-
+       
+        $html = '<div class="hk-wood-grid" style="--hk-columns:' . $spalten . ';">';
         foreach ($items as $item) {
 
             $name_de = $item['name_de'] ?? '';
@@ -166,11 +166,9 @@ class HK_Frontend
             }
 
             $html .= '<h4 style="padding:0;margin:0">' . esc_html($name_de) . '</h4>';
-
             if ($name_latin !== '') {
                 $html .= '<span>' . esc_html($name_latin) . '</span>';
             }
-
             $html .= '</div>';
         }
 
