@@ -123,144 +123,144 @@ class HK_Settings
             <h1>Holzarteneinstellungen in Detailanzeige</h1>
             In der Detailanzeige des Produkte kann optional die Holzart angezeigt werden.
             Folgende Einstellungen gelten für dieses Detail.
+            <form method="post" action="options.php">
+                <?php settings_fields('hk_holzarten_settings_group'); ?>
+                <fieldset class="hk-settings-section">
+                    <legend>Anzeige Holzinformationen</legend>
 
-            <?php settings_fields('hk_holzarten_settings_group'); ?>
-            <fieldset class="hk-settings-section">
-                <legend>Anzeige Holzinformationen</legend>
+                    <fieldset class="hk-settings-subsection">
+                        <legend>Anzeige Holzbild</legend>
+                        <table class="form-table">
+                            <tr>
+                                <th scope="row">Größe in Pixel</th>
+                                <td>
+                                    <input
+                                        type="range"
+                                        size="3"
+                                        id="hk-wood-size"
+                                        name="hk_holzarten_settings[size]"
+                                        min="40"
+                                        max="300"
+                                        step="10"
+                                        value="<?php
+                                                echo esc_attr(
+                                                    get_option('hk_holzarten_settings', [])['size'] ?? ''
+                                                );
+                                                ?>">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><label for="hk-holzarten-round">Als Kreis darstellen?</label>
+                                </th>
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        id="hk-holzarten-round"
+                                        name="hk_holzarten_settings[round]"
+                                        value="1"
+                                        <?php checked(
+                                            get_option('hk_holzarten_settings', [])['round'] ?? 0,
+                                            1
+                                        ); ?>>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><label for="hk-holzarten-lupe">mit Lupe?</label>
+                                </th>
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        id="hk-holzarten-lupe"
+                                        name="hk_holzarten_settings[lupe]"
+                                        value="1"
+                                        <?php checked(
+                                            get_option('hk_holzarten_settings', [])['lupe'] ?? 0,
+                                            1
+                                        ); ?>>
+                                </td>
+                            </tr>
+                        </table>
 
-                <fieldset class="hk-settings-subsection">
-                    <legend>Anzeige Holzbild</legend>
-                    <table class="form-table">
-                        <tr>
-                            <th scope="row">Größe in Pixel</th>
-                            <td>
-                                <input
-                                    type="range"
-                                    size="3"
-                                    id="hk-wood-size"
-                                    name="hk_holzarten_settings[size]"
-                                    min="40"
-                                    max="300"
-                                    step="10"
-                                    value="<?php
-                                            echo esc_attr(
-                                                get_option('hk_holzarten_settings', [])['size'] ?? ''
-                                            );
-                                            ?>">
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><label for="hk-holzarten-round">Als Kreis darstellen?</label>
-                            </th>
-                            <td>
-                                <input
-                                    type="checkbox"
-                                    id="hk-holzarten-round"
-                                    name="hk_holzarten_settings[round]"
-                                    value="1"
-                                    <?php checked(
-                                        get_option('hk_holzarten_settings', [])['round'] ?? 0,
-                                        1
-                                    ); ?>>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><label for="hk-holzarten-lupe">mit Lupe?</label>
-                            </th>
-                            <td>
-                                <input
-                                    type="checkbox"
-                                    id="hk-holzarten-lupe"
-                                    name="hk_holzarten_settings[lupe]"
-                                    value="1"
-                                    <?php checked(
-                                        get_option('hk_holzarten_settings', [])['lupe'] ?? 0,
-                                        1
-                                    ); ?>>
-                            </td>
-                        </tr>
-                    </table>
+                    </fieldset>
+                    <fieldset class="hk-settings-subsection">
+                        <legend>Textanzeigen</legend>
+
+                        <table class="form-table">
+                            <tr>
+                                <th scope="row"><label for="hk-holzarten-lupe">Beschreibungstext?</label>
+                                </th>
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        id="hk-holzarten-description"
+                                        name="hk_holzarten_settings[description]"
+                                        value="1"
+                                        <?php checked(
+                                            get_option('hk_holzarten_settings', [])['description'] ?? 0,
+                                            1
+                                        ); ?>>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><label for="hk-holzarten-lat">lateinischer Name?</label>
+                                </th>
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        id="hk-holzarten-lat"
+                                        name="hk_holzarten_settings[lat]"
+                                        value="1"
+                                        <?php checked(
+                                            get_option('hk_holzarten_settings', [])['lat'] ?? 0,
+                                            1
+                                        ); ?>>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><label for="hk-holzarten-ger">deutscher Name?</label>
+                                </th>
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        id="hk-holzarten-description"
+                                        name="hk_holzarten_settings[ger]"
+                                        value="1"
+                                        <?php checked(
+                                            get_option('hk_holzarten_settings', [])['ger'] ?? 0,
+                                            1
+                                        ); ?>>
+                                </td>
+                            </tr>
+                        </table>
+                    </fieldset>
 
                 </fieldset>
-                <fieldset class="hk-settings-subsection">
-                    <legend>Textanzeigen</legend>
+                <?php
+                $settings = get_option('hk_holzarten_settings', [
+                    'size'  => 120,
+                    'round' => 0,
+                ]);
+                $size = absint($settings['size']);
+                $round = !empty($settings['round']);
+                $lupe = !empty($settings['lupe']);
+                submit_button('Einstellungen speichern'); ?>
 
-                    <table class="form-table">
-                        <tr>
-                            <th scope="row"><label for="hk-holzarten-lupe">Beschreibungstext?</label>
-                            </th>
-                            <td>
-                                <input
-                                    type="checkbox"
-                                    id="hk-holzarten-description"
-                                    name="hk_holzarten_settings[description]"
-                                    value="1"
-                                    <?php checked(
-                                        get_option('hk_holzarten_settings', [])['description'] ?? 0,
-                                        1
-                                    ); ?>>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><label for="hk-holzarten-lat">lateinischer Name?</label>
-                            </th>
-                            <td>
-                                <input
-                                    type="checkbox"
-                                    id="hk-holzarten-lat"
-                                    name="hk_holzarten_settings[lat]"
-                                    value="1"
-                                    <?php checked(
-                                        get_option('hk_holzarten_settings', [])['lat'] ?? 0,
-                                        1
-                                    ); ?>>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><label for="hk-holzarten-ger">deutscher Name?</label>
-                            </th>
-                            <td>
-                                <input
-                                    type="checkbox"
-                                    id="hk-holzarten-description"
-                                    name="hk_holzarten_settings[ger]"
-                                    value="1"
-                                    <?php checked(
-                                        get_option('hk_holzarten_settings', [])['ger'] ?? 0,
-                                        1
-                                    ); ?>>
-                            </td>
-                        </tr>
-                    </table>
-                </fieldset>
-
-            </fieldset>
-            <?php
-            $settings = get_option('hk_holzarten_settings', [
-                'size'  => 120,
-                'round' => 0,
-            ]);
-            $size = absint($settings['size']);
-            $round = !empty($settings['round']);
-            $lupe = !empty($settings['lupe']);
-            submit_button('Einstellungen speichern'); ?>
-
-            <div class="hk-preview-wrapper">
-                <p><i>Vorschau der Holzart in der Detailanzeige:</i></p>
-                <div class="hk-preview">
-                    <img
-                        id="hk-wood-preview"
-                        class="<?php echo $lupe ? 'hk-wood-zoom' : ''; ?>"
-                        src="<?php echo esc_url(HK_PLUGIN_URL . 'assets/images/liveholz.png'); ?>"
-                        alt="Vorschau Holzbild in Holzurnenanzeige"
-                        style="
+                <div class="hk-preview-wrapper">
+                    <p><i>Vorschau der Holzart in der Detailanzeige:</i></p>
+                    <div class="hk-preview">
+                        <img
+                            id="hk-wood-preview"
+                            class="<?php echo $lupe ? 'hk-wood-zoom' : ''; ?>"
+                            src="<?php echo esc_url(HK_PLUGIN_URL . 'assets/images/liveholz.png'); ?>"
+                            alt="Vorschau Holzbild in Holzurnenanzeige"
+                            style="
                                 width: <?php echo esc_attr($size); ?>px;
                                 height: <?php echo esc_attr($size); ?>px;
                                 object-fit: cover;
                                 border-radius: <?php echo $round ? '50%' : '0'; ?>;
     ">
+                    </div>
                 </div>
-            </div>
 
 
             </form>
@@ -279,7 +279,7 @@ class HK_Settings
             ) ? $input['sortierung'] : 'name',
 
             'bilder' => !empty($input['bilder']) ? 1 : 0,
-            'nurprodukte' =>!empty($input['nurprodukte  ']) ? 1 : 0,
+            'nurprodukte' => !empty($input['nurprodukte  ']) ? 1 : 0,
             'spalten' => max(1, min(6, absint($input['spalten'] ?? 3))),
         ];
     }
