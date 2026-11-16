@@ -153,30 +153,42 @@ class HK_Frontend
 
         // HTML erzeugen:
         $html = '<div class="hk-wood-grid" style="--hk-columns:' . $spalten . ';">';
+        // HTML erzeugen:
+        $html = '<div class="hk-wood-grid" style="--hk-columns:' . $spalten . ';">';
+
         foreach ($items as $item) {
-            $image_class='';
+
+            $image_class = 'hk-wood-image';
+
             $name_de = $item['name_de'] ?? '';
             $name_latin = $item['name_latin'] ?? '';
+
             $html .= '<div class="hk-wood-card">';
 
             // Bild nur bei entsprechender Einstellung
             if ($bilder) {
+
                 $image_url = HK_Storage::image_url(
                     $item['image_file'] ?? ''
                 );
+
                 if ($image_url) {
+
                     if ($round) {
                         $image_class .= ' hk-wood-image-round';
                     }
+
                     if ($lupe) {
                         $image_class .= ' hk-wood-zoom';
                     }
-                    $html .= '<div class="hk-wood-image-wrapper" style="width:' . $size . 'px;">';
+
+                    $html .= '<div class="hk-wood-image-wrapper">';
                     $html .= '<img
-                        class="' . esc_attr($image_class) . '"
-                        src="' . esc_url($image_url) . '"
-                        alt="' . esc_attr($name_de) . '"
-                        loading="lazy">';
+                class="' . esc_attr($image_class) . '"
+                style="width:' . esc_attr($size) . 'px;"
+                src="' . esc_url($image_url) . '"
+                alt="' . esc_attr($name_de) . '"
+                loading="lazy">';
                     $html .= '</div>';
                 }
             }
@@ -192,16 +204,19 @@ class HK_Frontend
                     . esc_html($name_latin)
                     . '</span>';
             }
+
             if ($description && !empty($item['description'])) {
                 $html .= '<div class="hk-wood-description">'
                     . wp_kses_post($item['description'])
                     . '</div>';
             }
 
-
-
             $html .= '</div>';
         }
+
+        $html .= '</div>';
+
+        return $html;
 
         $html .= '</div>';
 
