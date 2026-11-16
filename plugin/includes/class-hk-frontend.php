@@ -98,6 +98,30 @@ class HK_Frontend
                 return !empty($item['active']);
             }
         );
+        / Nur Hölzer berücksichtigen, denen WooCommerce-Produkte zugeordnet sind
+if (!empty($settings['nurprodukte'])) {
+
+    $terms = get_terms([
+        'taxonomy'   => 'pa_holzart',
+        'hide_empty' => true,
+    ]);
+
+    if (!is_wp_error($terms)) {
+        $used_wood_names = wp_list_pluck($terms, 'name');
+
+        $items = array_filter(
+            $items,
+            function ($item) use ($used_wood_names) {
+                return in_array(
+                    $item['name_de'] ?? '',
+                    $used_wood_names,
+                    true
+                );
+            }
+        );
+    }
+}
+
 
         // Sortierung
         usort($items, function ($a, $b) use ($sortierung) {
@@ -119,8 +143,7 @@ class HK_Frontend
             return '<p>Keine aktiven Holzarten vorhanden.</p>';
         }
 
-        // HTML erzeugen
-       
+        // HTML erzeugen:
         $html = '<div class="hk-wood-grid" style="--hk-columns:' . $spalten . ';">';
         foreach ($items as $item) {
 

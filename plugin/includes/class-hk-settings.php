@@ -286,7 +286,7 @@ class HK_Settings
             ) ? $input['sortierung'] : 'name',
 
             'bilder' => !empty($input['bilder']) ? 1 : 0,
-            'nurprodukte' => !empty($input['nurprodukte  ']) ? 1 : 0,
+            'nurprodukte' => !empty($input['nurprodukte']) ? 1 : 0,
             'spalten' => max(1, min(6, absint($input['spalten'] ?? 3))),
         ];
     }
@@ -360,8 +360,10 @@ class HK_Settings
             get_option('hk_katalog_settings', []),
             [
                 'sortierung' => 'name',
-                'bilder'     => 'ja',
-                'spalten'    => 3,
+                'bilder'     => 1,
+                'nurprodukte' => 0,
+                'spalten'    => 3
+
             ]
         );
     ?>
@@ -436,6 +438,8 @@ class HK_Settings
         </div>
     <?php
     }
+
+
     public static function render_fundorte()
     {
         $settings = wp_parse_args(
