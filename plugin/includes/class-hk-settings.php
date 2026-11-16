@@ -279,7 +279,7 @@ class HK_Settings
             ) ? $input['sortierung'] : 'name',
 
             'bilder' => !empty($input['bilder']) ? 1 : 0,
-            'nurprodukte' =>!empty($input['nurprodukte']) ? 1 : 0,
+            'nurprodukte' =>!empty($input['nurprodukte  ']) ? 1 : 0,
             'spalten' => max(1, min(6, absint($input['spalten'] ?? 3))),
         ];
     }
@@ -360,7 +360,7 @@ class HK_Settings
     ?>
         <div class="wrap">
             <h1>Holzartenkatalog – Darstellung</h1>
-            <p>Einstellungen für die öffentliche Holzartenübersicht.</p>
+            <p>Einstellungen für die öffentliche Holzartenübersicht. Für die Darstellung der Hölzer gelten die Einstellungen aus HOLZARTEN</p>
             <form id="hk-katalog-settings-form" method="post" action="options.php">
                 <?php settings_fields('hk_katalog_settings_group'); ?>
                 <table class="form-table">
