@@ -164,11 +164,13 @@ class HK_Frontend
                     $item['image_file'] ?? ''
                 );
                 if ($image_url) {
-                    $image_class = 'hk-wood-image';
+                    if ($round) {
+                        $image_class .= ' hk-wood-image-round';
+                    }
                     if ($lupe) {
                         $image_class .= ' hk-wood-zoom';
                     }
-                   $html .= '<div class="hk-wood-image-wrapper" style="width:' . $size . 'px;">';
+                    $html .= '<div class="hk-wood-image-wrapper" style="width:' . $size . 'px;">';
                     $html .= '<img
                         class="' . esc_attr($image_class) . '"
                         src="' . esc_url($image_url) . '"
