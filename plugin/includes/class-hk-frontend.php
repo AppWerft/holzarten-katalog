@@ -40,6 +40,7 @@ class HK_Frontend
                 'sortierung' => 'name',
                 'bilder'     => 1,
                 'spalten'    => 3,
+                'card' => 0,
             ]
         );
 
@@ -78,6 +79,7 @@ class HK_Frontend
                 'description' => 0,
                 'lat'         => 1,
                 'ger'         => 1,
+               
             ]
         );
 
@@ -87,6 +89,7 @@ class HK_Frontend
         $description = !empty($holz_settings['description']);
         $show_lat    = !empty($holz_settings['lat']);
         $show_ger    = !empty($holz_settings['ger']);
+        $card = !empty($settings['card']);
 
         // Einstellungen absichern
         $sortierung = $settings['sortierung'] === 'latin'
@@ -152,10 +155,13 @@ class HK_Frontend
         }
 
         // HTML erzeugen:
-        $html = '<div class="hk-wood-grid" style="--hk-columns:' . $spalten . ';">';
-        // HTML erzeugen:
-        $html = '<div class="hk-wood-grid" style="--hk-columns:' . $spalten . ';">';
+        $grid_class = 'hk-wood-grid';
 
+if ($card) {
+    $grid_class .= ' hk-material-cards';
+}
+
+$html = '<div class="' . esc_attr($grid_class) . '" style="--hk-columns:' . $spalten . ';">'; 
         foreach ($items as $item) {
 
             $image_class = 'hk-wood-image';
