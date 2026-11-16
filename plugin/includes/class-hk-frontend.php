@@ -77,6 +77,7 @@ class HK_Frontend
                 'lupe'  => 0,
             ]
         );
+
         $size  = absint($holz_settings['size']);
         $round = !empty($holz_settings['round']);
         $lupe  = !empty($holz_settings['lupe']);
@@ -164,10 +165,10 @@ class HK_Frontend
                 }
             }
 
-            $html .= '<h3>' . esc_html($name_de) . '</h3>';
+            $html .= '<h4>' . esc_html($name_de) . '</h4>';
 
             if ($name_latin !== '') {
-                $html .= '<p>' . esc_html($name_latin) . '</p>';
+                $html .= '<span>' . esc_html($name_latin) . '</span>';
             }
 
             $html .= '</div>';
