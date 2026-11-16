@@ -424,6 +424,17 @@ class HK_Settings
                             </select>
                         </td>
                     </tr>
+                    <tr>
+                        <th scope="row">Darstellung als Material Design Cards</th>
+                        <td>
+                           <input
+                                type="checkbox"
+                                name="hk_katalog_settings[card]"
+                                value=1
+                                <?php checked($settings['card'], 1); ?>>
+               
+                        </td>
+                    </tr>
                 </table>
                 <?php submit_button('Einstellungen speichern'); ?>
 
