@@ -6,7 +6,7 @@ pwd
 
 ls -la 
 
-git rm *
+
 git add *
 
 echo "3. Commit erstellen ..."
