@@ -99,12 +99,20 @@ class HK_Frontend
             }
         );
         if (!empty($settings['nurprodukte'])) {
+
             $terms = get_terms([
                 'taxonomy'   => 'pa_holzart',
                 'hide_empty' => true,
             ]);
+
             if (!is_wp_error($terms)) {
-                $used_wood_slugs = wp_list_pluck($terms, 'slug');
+
+                // Slugs aus den tatsächlich verwendeten Term-Namen erzeugen
+                $used_wood_slugs = array_map(
+                    fn($term) => sanitize_title($term->name),
+                    $terms
+                );
+
                 $items = array_filter(
                     $items,
                     function ($item) use ($used_wood_slugs) {
@@ -112,7 +120,9 @@ class HK_Frontend
                         return in_array($slug, $used_wood_slugs, true);
                     }
                 );
-            } else error_log('wp error');
+
+                $items = array_values($items);
+            }
         }
         $terms = get_terms([
             'taxonomy'   => 'pa_holzart',
