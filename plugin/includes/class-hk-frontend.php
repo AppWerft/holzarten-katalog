@@ -154,6 +154,7 @@ class HK_Frontend
         // HTML erzeugen:
         $html = '<div class="hk-wood-grid" style="--hk-columns:' . $spalten . ';">';
         foreach ($items as $item) {
+            $image_class='';
             $name_de = $item['name_de'] ?? '';
             $name_latin = $item['name_latin'] ?? '';
             $html .= '<div class="hk-wood-card">';
