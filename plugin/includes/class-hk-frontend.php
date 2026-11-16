@@ -106,7 +106,12 @@ class HK_Frontend
             ]);
 
             if (!is_wp_error($terms)) {
-
+foreach ($terms as $term) {
+    error_log(
+        'HOLZART-TERM: ' . $term->name .
+        ' | SLUG: ' . $term->slug
+    );
+}
                 // Slugs aus den tatsächlich verwendeten Term-Namen erzeugen
                 $used_wood_slugs = array_map(
                     fn($term) => sanitize_title($term->name),
