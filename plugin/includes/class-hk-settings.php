@@ -7,6 +7,7 @@ class HK_Settings
         add_action('admin_menu', [self::class, 'add_menu']);
         add_action('admin_init', [self::class, 'register_settings']);
         add_action('admin_enqueue_scripts', [self::class, 'enqueue_scripts']);
+        add_action('wp_ajax_hk_preview_katalog', [self::class, 'ajax_preview_katalog']);
     }
 
     public static function add_menu()
@@ -122,144 +123,144 @@ class HK_Settings
             <h1>Holzarteneinstellungen in Detailanzeige</h1>
             In der Detailanzeige des Produkte kann optional die Holzart angezeigt werden.
             Folgende Einstellungen gelten für dieses Detail.
-            <form method="post" action="options.php">
-                <?php settings_fields('hk_holzarten_settings_group'); ?>
-                <fieldset class="hk-settings-section">
-                    <legend>Anzeige Holzinformationen</legend>
 
-                    <fieldset class="hk-settings-subsection">
-                        <legend>Anzeige Holzbild</legend>
-                        <table class="form-table">
-                            <tr>
-                                <th scope="row">Größe in Pixel</th>
-                                <td>
-                                    <input
-                                        type="range"
-                                        size="3"
-                                        id="hk-wood-size"
-                                        name="hk_holzarten_settings[size]"
-                                        min="40"
-                                        max="300"
-                                        step="10"
-                                        value="<?php
-                                                echo esc_attr(
-                                                    get_option('hk_holzarten_settings', [])['size'] ?? ''
-                                                );
-                                                ?>">
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row"><label for="hk-holzarten-round">Als Kreis darstellen?</label>
-                                </th>
-                                <td>
-                                    <input
-                                        type="checkbox"
-                                        id="hk-holzarten-round"
-                                        name="hk_holzarten_settings[round]"
-                                        value="1"
-                                        <?php checked(
-                                            get_option('hk_holzarten_settings', [])['round'] ?? 0,
-                                            1
-                                        ); ?>>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row"><label for="hk-holzarten-lupe">mit Lupe?</label>
-                                </th>
-                                <td>
-                                    <input
-                                        type="checkbox"
-                                        id="hk-holzarten-lupe"
-                                        name="hk_holzarten_settings[lupe]"
-                                        value="1"
-                                        <?php checked(
-                                            get_option('hk_holzarten_settings', [])['lupe'] ?? 0,
-                                            1
-                                        ); ?>>
-                                </td>
-                            </tr>
-                        </table>
+            <?php settings_fields('hk_holzarten_settings_group'); ?>
+            <fieldset class="hk-settings-section">
+                <legend>Anzeige Holzinformationen</legend>
 
-                    </fieldset>
-                    <fieldset class="hk-settings-subsection">
-                        <legend>Textanzeigen</legend>
-
-                        <table class="form-table">
-                            <tr>
-                                <th scope="row"><label for="hk-holzarten-lupe">Beschreibungstext?</label>
-                                </th>
-                                <td>
-                                    <input
-                                        type="checkbox"
-                                        id="hk-holzarten-description"
-                                        name="hk_holzarten_settings[description]"
-                                        value="1"
-                                        <?php checked(
-                                            get_option('hk_holzarten_settings', [])['description'] ?? 0,
-                                            1
-                                        ); ?>>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row"><label for="hk-holzarten-lat">lateinischer Name?</label>
-                                </th>
-                                <td>
-                                    <input
-                                        type="checkbox"
-                                        id="hk-holzarten-lat"
-                                        name="hk_holzarten_settings[lat]"
-                                        value="1"
-                                        <?php checked(
-                                            get_option('hk_holzarten_settings', [])['lat'] ?? 0,
-                                            1
-                                        ); ?>>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row"><label for="hk-holzarten-ger">deutscher Name?</label>
-                                </th>
-                                <td>
-                                    <input
-                                        type="checkbox"
-                                        id="hk-holzarten-description"
-                                        name="hk_holzarten_settings[ger]"
-                                        value="1"
-                                        <?php checked(
-                                            get_option('hk_holzarten_settings', [])['ger'] ?? 0,
-                                            1
-                                        ); ?>>
-                                </td>
-                            </tr>
-                        </table>
-                    </fieldset>
+                <fieldset class="hk-settings-subsection">
+                    <legend>Anzeige Holzbild</legend>
+                    <table class="form-table">
+                        <tr>
+                            <th scope="row">Größe in Pixel</th>
+                            <td>
+                                <input
+                                    type="range"
+                                    size="3"
+                                    id="hk-wood-size"
+                                    name="hk_holzarten_settings[size]"
+                                    min="40"
+                                    max="300"
+                                    step="10"
+                                    value="<?php
+                                            echo esc_attr(
+                                                get_option('hk_holzarten_settings', [])['size'] ?? ''
+                                            );
+                                            ?>">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><label for="hk-holzarten-round">Als Kreis darstellen?</label>
+                            </th>
+                            <td>
+                                <input
+                                    type="checkbox"
+                                    id="hk-holzarten-round"
+                                    name="hk_holzarten_settings[round]"
+                                    value="1"
+                                    <?php checked(
+                                        get_option('hk_holzarten_settings', [])['round'] ?? 0,
+                                        1
+                                    ); ?>>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><label for="hk-holzarten-lupe">mit Lupe?</label>
+                            </th>
+                            <td>
+                                <input
+                                    type="checkbox"
+                                    id="hk-holzarten-lupe"
+                                    name="hk_holzarten_settings[lupe]"
+                                    value="1"
+                                    <?php checked(
+                                        get_option('hk_holzarten_settings', [])['lupe'] ?? 0,
+                                        1
+                                    ); ?>>
+                            </td>
+                        </tr>
+                    </table>
 
                 </fieldset>
-                <?php
-                $settings = get_option('hk_holzarten_settings', [
-                    'size'  => 120,
-                    'round' => 0,
-                ]);
-                $size = absint($settings['size']);
-                $round = !empty($settings['round']);
-                $lupe = !empty($settings['lupe']);
-                submit_button('Einstellungen speichern'); ?>
+                <fieldset class="hk-settings-subsection">
+                    <legend>Textanzeigen</legend>
 
-                <div class="hk-preview-wrapper">
-                    <p><i>Vorschau der Holzart in der Detailanzeige:</i></p>
-                    <div class="hk-preview">
-                        <img
-                            id="hk-wood-preview"
-                            class="<?php echo $lupe ? 'hk-wood-zoom' : ''; ?>"
-                            src="<?php echo esc_url(HK_PLUGIN_URL . 'assets/images/liveholz.png'); ?>"
-                            alt="Vorschau Holzbild in Holzurnenanzeige"
-                            style="
+                    <table class="form-table">
+                        <tr>
+                            <th scope="row"><label for="hk-holzarten-lupe">Beschreibungstext?</label>
+                            </th>
+                            <td>
+                                <input
+                                    type="checkbox"
+                                    id="hk-holzarten-description"
+                                    name="hk_holzarten_settings[description]"
+                                    value="1"
+                                    <?php checked(
+                                        get_option('hk_holzarten_settings', [])['description'] ?? 0,
+                                        1
+                                    ); ?>>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><label for="hk-holzarten-lat">lateinischer Name?</label>
+                            </th>
+                            <td>
+                                <input
+                                    type="checkbox"
+                                    id="hk-holzarten-lat"
+                                    name="hk_holzarten_settings[lat]"
+                                    value="1"
+                                    <?php checked(
+                                        get_option('hk_holzarten_settings', [])['lat'] ?? 0,
+                                        1
+                                    ); ?>>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><label for="hk-holzarten-ger">deutscher Name?</label>
+                            </th>
+                            <td>
+                                <input
+                                    type="checkbox"
+                                    id="hk-holzarten-description"
+                                    name="hk_holzarten_settings[ger]"
+                                    value="1"
+                                    <?php checked(
+                                        get_option('hk_holzarten_settings', [])['ger'] ?? 0,
+                                        1
+                                    ); ?>>
+                            </td>
+                        </tr>
+                    </table>
+                </fieldset>
+
+            </fieldset>
+            <?php
+            $settings = get_option('hk_holzarten_settings', [
+                'size'  => 120,
+                'round' => 0,
+            ]);
+            $size = absint($settings['size']);
+            $round = !empty($settings['round']);
+            $lupe = !empty($settings['lupe']);
+            submit_button('Einstellungen speichern'); ?>
+
+            <div class="hk-preview-wrapper">
+                <p><i>Vorschau der Holzart in der Detailanzeige:</i></p>
+                <div class="hk-preview">
+                    <img
+                        id="hk-wood-preview"
+                        class="<?php echo $lupe ? 'hk-wood-zoom' : ''; ?>"
+                        src="<?php echo esc_url(HK_PLUGIN_URL . 'assets/images/liveholz.png'); ?>"
+                        alt="Vorschau Holzbild in Holzurnenanzeige"
+                        style="
                                 width: <?php echo esc_attr($size); ?>px;
                                 height: <?php echo esc_attr($size); ?>px;
                                 object-fit: cover;
                                 border-radius: <?php echo $round ? '50%' : '0'; ?>;
     ">
-                    </div>
                 </div>
+            </div>
 
 
             </form>
@@ -281,6 +282,26 @@ class HK_Settings
 
             'spalten' => max(1, min(6, absint($input['spalten'] ?? 3))),
         ];
+    }
+
+    public static function ajax_preview_katalog()
+    {
+        check_ajax_referer('hk_katalog_preview', 'nonce');
+
+        if (!current_user_can('manage_options')) {
+            wp_die(-1, 403);
+        }
+
+        $input = isset($_POST['hk_katalog_settings'])
+            && is_array($_POST['hk_katalog_settings'])
+            ? wp_unslash($_POST['hk_katalog_settings'])
+            : [];
+
+        $settings = self::sanitize_katalog($input);
+
+        wp_send_json_success([
+            'html' => HK_Frontend::render_catalog($settings)
+        ]);
     }
     public static function sanitize_holzarten($input)
     {
@@ -339,7 +360,7 @@ class HK_Settings
         <div class="wrap">
             <h1>Holzartenkatalog – Darstellung</h1>
             <p>Einstellungen für die öffentliche Holzartenübersicht.</p>
-            <form method="post" action="options.php">
+            <form id="hk-katalog-settings-form" method="post" action="options.php">
                 <?php settings_fields('hk_katalog_settings_group'); ?>
                 <table class="form-table">
                     <tr>
@@ -384,14 +405,15 @@ class HK_Settings
                 <?php submit_button('Einstellungen speichern'); ?>
 
             </form>
+
+            <h2>Vorschau der Holzartenübersicht:</h2>
+            <div id="hk-katalog-preview">
+                <?php
+                echo HK_Frontend::render_catalog($settings);
+                ?>
+            </div>
         </div>
-        <h2>Vorschau der Holzartenübersicht:</h2>
-        <div id="hk-katalog-preview">
-        <?php
-        echo HK_Frontend::render_catalog(
-            get_option('hk_katalog_settings', [])
-        );
-        echo '</div>';
+    <?php
     }
     public static function render_fundorte()
     {
@@ -404,115 +426,115 @@ class HK_Settings
                 'priority' => 35
             ]
         );
-        ?>
-            <div class="wrap">
-                <h1>Holzfundortkarten – Darstellungseinstellungen</h1>
-                Den Produkten kann eine Geoposition zugeordnet werden.
-                <form method="post" action="options.php">
-                    <?php settings_fields('hk_settings_group'); ?>
+    ?>
+        <div class="wrap">
+            <h1>Holzfundortkarten – Darstellungseinstellungen</h1>
+            Den Produkten kann eine Geoposition zugeordnet werden.
+            <form method="post" action="options.php">
+                <?php settings_fields('hk_settings_group'); ?>
 
-                    <table class="form-table">
+                <table class="form-table">
 
-                        <tr>
-                            <th scope="row">
-                                <label for="hk-map-height">Kartenhöhe</label>
-                            </th>
-                            <td>
-                                <input
-                                    type="range"
-                                    id="hk-map-height"
-                                    name="hk_map_settings[height]"
-                                    value="<?php echo esc_attr($settings['height']); ?>"
-                                    min="80"
-                                    max="300"
-                                    step="10">
-                                <span class="description">Pixel (80–300)</span>
-                            </td>
-                        </tr>
+                    <tr>
+                        <th scope="row">
+                            <label for="hk-map-height">Kartenhöhe</label>
+                        </th>
+                        <td>
+                            <input
+                                type="range"
+                                id="hk-map-height"
+                                name="hk_map_settings[height]"
+                                value="<?php echo esc_attr($settings['height']); ?>"
+                                min="80"
+                                max="300"
+                                step="10">
+                            <span class="description">Pixel (80–300)</span>
+                        </td>
+                    </tr>
 
-                        <tr>
-                            <th scope="row">
-                                <label for="hk-map-width">Kartenbreite</label>
-                            </th>
-                            <td>
-                                <input
-                                    type="range"
-                                    id="hk-map-width"
-                                    name="hk_map_settings[width]"
-                                    value="<?php echo esc_attr($settings['width']); ?>"
-                                    min="20"
-                                    max="80"
-                                    step="5">
-                                <span class="description">Prozent (20%–80%)</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">
-                                <label for="hk-map-radius">Eckenradius</label>
-                            </th>
-                            <td>
-                                <input
-                                    type="range"
-                                    id="hk-map-radius"
-                                    name="hk_map_settings[radius]"
-                                    value="<?php echo esc_attr($settings['radius']); ?>"
-                                    min="0"
-                                    max="50"
-                                    step="1">
-                                <span class="description">Eckenradius in Pixeln</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">
-                                <label for="hk-map-position">Ausrichtung</label>
-                            </th>
-                            <td>
-                                <select style="width:12em"
-                                    id="hk-map-position"
-                                    name="hk_map_settings[position]">
-                                    <option value="left"
-                                        <?php selected($settings['position'], 'left'); ?>>
-                                        Links
-                                    </option>
+                    <tr>
+                        <th scope="row">
+                            <label for="hk-map-width">Kartenbreite</label>
+                        </th>
+                        <td>
+                            <input
+                                type="range"
+                                id="hk-map-width"
+                                name="hk_map_settings[width]"
+                                value="<?php echo esc_attr($settings['width']); ?>"
+                                min="20"
+                                max="80"
+                                step="5">
+                            <span class="description">Prozent (20%–80%)</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <label for="hk-map-radius">Eckenradius</label>
+                        </th>
+                        <td>
+                            <input
+                                type="range"
+                                id="hk-map-radius"
+                                name="hk_map_settings[radius]"
+                                value="<?php echo esc_attr($settings['radius']); ?>"
+                                min="0"
+                                max="50"
+                                step="1">
+                            <span class="description">Eckenradius in Pixeln</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <label for="hk-map-position">Ausrichtung</label>
+                        </th>
+                        <td>
+                            <select style="width:12em"
+                                id="hk-map-position"
+                                name="hk_map_settings[position]">
+                                <option value="left"
+                                    <?php selected($settings['position'], 'left'); ?>>
+                                    Links
+                                </option>
 
-                                    <option value="center"
-                                        <?php selected($settings['position'], 'center'); ?>>
-                                        Mittig
-                                    </option>
+                                <option value="center"
+                                    <?php selected($settings['position'], 'center'); ?>>
+                                    Mittig
+                                </option>
 
-                                    <option value="right"
-                                        <?php selected($settings['position'], 'right'); ?>>
-                                        Rechts
-                                    </option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">
-                                <label for="hk-map-priority">Position in WooCommerce</label>
-                            </th>
-                            <td>
-                                <input
-                                    type="number"
-                                    id="hk-map-priority"
-                                    name="hk_map_settings[priority]"
-                                    value="<?php echo esc_attr($settings['priority']); ?>"
-                                    min="1"
-                                    max="100">
-                                <p class="description">
-                                    Hook-Priorität: kleinerer Wert = frühere Ausgabe.
-                                    Standard: 35.
-                                </p>
-                            </td>
-                        </tr>
-                    </table>
+                                <option value="right"
+                                    <?php selected($settings['position'], 'right'); ?>>
+                                    Rechts
+                                </option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <label for="hk-map-priority">Position in WooCommerce</label>
+                        </th>
+                        <td>
+                            <input
+                                type="number"
+                                id="hk-map-priority"
+                                name="hk_map_settings[priority]"
+                                value="<?php echo esc_attr($settings['priority']); ?>"
+                                min="1"
+                                max="100">
+                            <p class="description">
+                                Hook-Priorität: kleinerer Wert = frühere Ausgabe.
+                                Standard: 35.
+                            </p>
+                        </td>
+                    </tr>
+                </table>
 
-                    <?php submit_button('Einstellungen speichern'); ?>
-                </form>
-            </div>
-            <i>Vorschau</i>
-            <div id="settings-preview-map"></div>
-    <?php
+                <?php submit_button('Einstellungen speichern'); ?>
+            </form>
+        </div>
+        <i>Vorschau</i>
+        <div id="settings-preview-map"></div>
+<?php
     }
 
     public static function sanitize_map($input)
