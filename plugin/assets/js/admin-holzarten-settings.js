@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // catalogdarstellung dynamisch anpassen:
 document.addEventListener('DOMContentLoaded', function () {
-    alert('T')
+    //alert('T')
     const columnsField = document.querySelector('[name="hk_settings[spalten]"]');
     const cardField = document.querySelector('[name="hk_settings[card]"]');
 
