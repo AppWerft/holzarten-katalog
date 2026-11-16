@@ -106,18 +106,24 @@ class HK_Frontend
             ]);
 
             if (!is_wp_error($terms)) {
-foreach ($terms as $term) {
-    error_log(
-        'HOLZART-TERM: ' . $term->name .
-        ' | SLUG: ' . $term->slug
-    );
-}
+
                 // Slugs aus den tatsächlich verwendeten Term-Namen erzeugen
                 $used_wood_slugs = array_map(
                     fn($term) => sanitize_title($term->name),
                     $terms
                 );
+                error_log('--- HK FILTERVERGLEICH ---');
 
+                foreach ($items as $item) {
+                    $slug = sanitize_title($item['name_de'] ?? '');
+
+                    error_log(
+                        'KATALOG: ' . ($item['name_de'] ?? 'OHNE NAME') .
+                            ' | SLUG: ' . $slug .
+                            ' | TREFFER: ' .
+                            (in_array($slug, $used_wood_slugs, true) ? 'JA' : 'NEIN')
+                    );
+                }
                 $items = array_filter(
                     $items,
                     function ($item) use ($used_wood_slugs) {
