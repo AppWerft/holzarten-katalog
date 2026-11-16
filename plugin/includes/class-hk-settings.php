@@ -430,7 +430,7 @@ class HK_Settings
             </form>
 
             <h2>Vorschau der Holzartenübersicht:</h2>
-            Wird erst nach Abspeichern aktualisiert. 
+            <p>Wird erst nach Abspeichern aktualisiert.</p> 
             <div id="hk-katalog-preview">
                 <?php
                 echo HK_Frontend::render_catalog($settings);
