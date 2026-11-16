@@ -3,3 +3,13 @@
     grid-template-columns: repeat(var(--hk-columns, 3), minmax(0, 1fr)) !important;
     gap: 20px;
 }   
+
+.hk-wood-image-round {
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.hk-wood-image {
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+}
