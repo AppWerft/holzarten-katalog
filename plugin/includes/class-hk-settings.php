@@ -66,7 +66,14 @@ class HK_Settings
             '1.9.4',
             true
         );
-
+        if ($hook === 'holzartenkatalog_page_hk_settings_katalog') {
+            wp_enqueue_style(
+                'hk-frontend-katalog',
+                HK_PLUGIN_URL . 'assets/css/frontend-katalog.css',
+                [],
+                filemtime(HK_PLUGIN_DIR . 'assets/css/frontend-katalog.css')
+            );
+        }
 
 
         // Holzarten-Einstellungen
@@ -402,19 +409,19 @@ class HK_Settings
                     </tr>
 
                     <tr>
-    <th scope="row">Anzahl der Spalten</th>
-    <td>
-        <select name="hk_katalog_settings[spalten]">
-            <?php for ($i = 1; $i <= 6; $i++) : ?>
-                <option
-                    value="<?php echo $i; ?>"
-                    <?php selected($settings['spalten'], $i); ?>>
-                    <?php echo $i; ?>
-                </option>
-            <?php endfor; ?>
-        </select>
-    </td>
-</tr>
+                        <th scope="row">Anzahl der Spalten</th>
+                        <td>
+                            <select name="hk_katalog_settings[spalten]">
+                                <?php for ($i = 1; $i <= 6; $i++) : ?>
+                                    <option
+                                        value="<?php echo $i; ?>"
+                                        <?php selected($settings['spalten'], $i); ?>>
+                                        <?php echo $i; ?>
+                                    </option>
+                                <?php endfor; ?>
+                            </select>
+                        </td>
+                    </tr>
                 </table>
                 <?php submit_button('Einstellungen speichern'); ?>
 
