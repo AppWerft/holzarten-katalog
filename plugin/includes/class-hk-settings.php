@@ -279,7 +279,7 @@ class HK_Settings
             ) ? $input['sortierung'] : 'name',
 
             'bilder' => !empty($input['bilder']) ? 1 : 0,
-
+            'nurprodukte' =>!empty($input['nurprodukte']) ? 1 : 0,
             'spalten' => max(1, min(6, absint($input['spalten'] ?? 3))),
         ];
     }
@@ -303,6 +303,7 @@ class HK_Settings
             'html' => HK_Frontend::render_catalog($settings)
         ]);
     }
+
     public static function sanitize_holzarten($input)
     {
         return [
@@ -385,8 +386,18 @@ class HK_Settings
                             <input
                                 type="checkbox"
                                 name="hk_katalog_settings[bilder]"
-                                value="ja"
-                                <?php checked($settings['bilder'], 'ja'); ?>>
+                                value=1
+                                <?php checked($settings['bilder'], 1); ?>>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">nur Hölzer für die es Produkte gibt</th>
+                        <td>
+                            <input
+                                type="checkbox"
+                                name="hk_katalog_settings[nurprodukte]"
+                                value=1
+                                <?php checked($settings['nurprodukte'], 1); ?>>
                         </td>
                     </tr>
 
