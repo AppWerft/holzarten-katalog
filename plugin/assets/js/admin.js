@@ -207,17 +207,11 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log(columns, card)
         // Spalten
         if (columns) {
-            const grid = preview.querySelector('.hk-katalog-grid');
-            console.log(
-                'Grid-Elemente:',
-                preview.querySelectorAll('[style*="--hk-columns"]')
-            );
+            const grid = preview.querySelector('.hk-wood-grid.hk-material-cards');
 
-            console.log('Grid:', grid);
-            console.log('Grid-Klasse:', grid?.className);
-            if (grid && columns) {
-                grid.style.setProperty('--hk-columns', columns);
-            }
+if (grid && columns) {
+    grid.style.setProperty('--hk-columns', columns);
+}
 
         }
 
