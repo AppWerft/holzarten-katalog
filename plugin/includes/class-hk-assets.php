@@ -1,19 +1,15 @@
 <?php
-
 if (!defined('ABSPATH')) {
     exit;
 }
-
 class HK_Assets
 {
-
     public static function init()
     {
         add_action(
             'admin_enqueue_scripts',
             [__CLASS__, 'enqueue_admin']
         );
-
         add_action(
             'wp_enqueue_scripts',
             [__CLASS__, 'enqueue_frontend']
@@ -106,14 +102,11 @@ class HK_Assets
             [],
             HK_VERSION
         );
-
         // Leaflet nur auf Produktseiten
         if (!is_product()) {
             return;
         }
-
         self::enqueue_leaflet();
-
         // Frontend-Karten-JavaScript folgt hier.
     }
 }
