@@ -196,7 +196,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function updatePreview() {
         console.log('updatePreview')
         const columns = columnsField?.value;
-        const card = cardField?.value;
+        const card = cardField?.checked ?? false;
 
         const preview = document.querySelector('#hk-katalog-preview');
 
