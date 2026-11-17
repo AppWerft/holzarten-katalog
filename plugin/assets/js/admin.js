@@ -190,8 +190,8 @@ jQuery(document).ready(function ($) {
 // catalogdarstellung dynamisch anpassen:
 document.addEventListener('DOMContentLoaded', function () {
    
-    const columnsField = document.querySelector('[name="hk_settings[spalten]"]');
-    const cardField = document.querySelector('[name="hk_katalog_settings[card]"]');
+    const columnsField = document.querySelector('[name="hk_katalog_settings[spalten]"]');
+    const cardField =    document.querySelector('[name="hk_katalog_settings[card]"]');
     console.log(columnsField,cardField)
     function updatePreview() {
         console.log('updatePreview')
