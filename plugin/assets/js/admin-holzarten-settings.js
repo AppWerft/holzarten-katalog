@@ -72,33 +72,3 @@ document.addEventListener('DOMContentLoaded', function () {
     updateZoomCursor();
 });
 
-// catalogdarstellung dynamisch anpassen:
-document.addEventListener('DOMContentLoaded', function () {
-    //alert('T')
-    const columnsField = document.querySelector('[name="hk_settings[spalten]"]');
-    const cardField = document.querySelector('[name="hk_settings[card]"]');
-
-    function updatePreview() {
-
-        const columns = columnsField?.value;
-        const card = cardField?.value;
-
-        const preview = document.querySelector('#hk-katalog-vorschau');
-
-        if (!preview) return;
-
-        // Spalten
-        if (columns) {
-            preview.style.setProperty('--hk-columns', columns);
-        }
-
-        // Kartenstil
-        if (card) {
-            preview.dataset.card = card;
-        }
-    }
-
-    columnsField?.addEventListener('change', updatePreview);
-    cardField?.addEventListener('change', updatePreview);
-
-});
