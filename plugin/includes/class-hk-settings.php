@@ -66,6 +66,7 @@ class HK_Settings
             '1.9.4',
             true
         );
+        // CSS
         if ($hook === 'holzartenkatalog_page_hk_settings_katalog') {
             wp_enqueue_style(
                 'hk-frontend-katalog',
@@ -77,7 +78,7 @@ class HK_Settings
 
 
         // Holzarten-Einstellungen
-        if ($hook === 'holzartenkatalog_page_hk_settings_holzarten') {
+        if ($hook === 'holzartenkatalog_page_hk_settings_holzarten' || true) {
 
             $js_file = HK_PLUGIN_DIR . 'assets/js/admin-holzarten-settings.js';
 
