@@ -69,6 +69,76 @@ public static function activate()
         }
     }
 }
+
+
+
+/**
+ * Importiert den mitgelieferten Initialbestand aus dem Plugin-Verzeichnis.
+ */
+public static function import_defaults($source)
+{
+    $source = trailingslashit($source);
+    $target = self::directory();
+
+    if (!is_dir($source)) {
+        return new WP_Error(
+            'defaults_directory',
+            'Das Datenverzeichnis wurde nicht gefunden: ' . $source
+        );
+    }
+
+    // JSON-Dateien übernehmen.
+    foreach (['catalog.json', 'overrides.json', 'images.json'] as $filename) {
+        $source_file = $source . $filename;
+        $target_file = $target . $filename;
+
+        if (file_exists($source_file)) {
+            if (!copy($source_file, $target_file)) {
+                return new WP_Error(
+                    'defaults_copy',
+                    'Die Datei konnte nicht importiert werden: ' . $filename
+                );
+            }
+        }
+    }
+
+    // Bilder übernehmen.
+    $source_images = $source . 'images/';
+    $target_images = $target . 'images/';
+
+    if (is_dir($source_images)) {
+        wp_mkdir_p($target_images);
+
+        $files = scandir($source_images);
+
+        if ($files === false) {
+            return new WP_Error(
+                'defaults_images',
+                'Das Bilderverzeichnis konnte nicht gelesen werden.'
+            );
+        }
+
+        foreach ($files as $filename) {
+            if ($filename === '.' || $filename === '..') {
+                continue;
+            }
+
+            $source_file = $source_images . $filename;
+            $target_file = $target_images . $filename;
+
+            if (is_file($source_file) && !file_exists($target_file)) {
+                if (!copy($source_file, $target_file)) {
+                    return new WP_Error(
+                        'defaults_image_copy',
+                        'Ein Bild konnte nicht importiert werden: ' . $filename
+                    );
+                }
+            }
+        }
+    }
+
+    return true;
+}
     /**
  * URL eines Holzbildes zurückgeben.
  */
