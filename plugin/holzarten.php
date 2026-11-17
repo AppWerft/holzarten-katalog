@@ -36,6 +36,5 @@ register_activation_hook(
 HK_Plugin::instance();
 HK_WooCommerce::instance();
 HK_WC_Origin::instance();
-error_log('HK_ASSETS DATEI: ' . __FILE__);  
 HK_Assets::init();
 HK_Settings::init();
