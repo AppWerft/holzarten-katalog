@@ -204,6 +204,7 @@ document.addEventListener('DOMContentLoaded', function () {
             console.error('preview not found');
             return;
         }
+        console.log(columns,card)
         // Spalten
         if (columns) {
             preview.style.setProperty('--hk-columns', columns);
