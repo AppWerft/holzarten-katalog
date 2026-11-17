@@ -26,11 +26,32 @@ require_once HK_PLUGIN_DIR . 'includes/class-hk-plugin.php';
 require_once HK_PLUGIN_DIR . 'includes/woocommerce/class-hk-wc-origin.php';
 require_once HK_PLUGIN_DIR . 'includes/class-hk-assets.php';
 
-// Aktivierung
+// Aktivierung#
+/*
 register_activation_hook(
     HK_PLUGIN_FILE,
     ['HK_Storage', 'activate']
-);
+);*/
+// Aktivierung – temporäre Ausgabediagnose
+register_activation_hook(HK_PLUGIN_FILE, function () {
+
+    ob_start();
+
+    HK_Storage::activate();
+
+    $output = ob_get_clean();
+
+    if ($output !== '') {
+        error_log(
+            'HK ACTIVATION OUTPUT: '
+            . strlen($output)
+            . ' Bytes | HEX: '
+            . bin2hex($output)
+            . ' | TEXT: '
+            . var_export($output, true)
+        );
+    }
+});
 
 // Klassen initialisieren
 HK_Plugin::instance();
