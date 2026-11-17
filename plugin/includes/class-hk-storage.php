@@ -13,7 +13,6 @@ class HK_Storage
             . 'holzarten-daten/';
     }
 
-
     /**
      * Initialisierung bei der Plugin-Aktivierung.
      *
@@ -36,9 +35,7 @@ class HK_Storage
             || empty($catalog['items'])
         ) {
             $source = HK_PLUGIN_DIR . 'data/';
-
             $result = self::import_defaults($source);
-
             if (is_wp_error($result)) {
                 error_log(
                     'Holzarten-Katalog: Erstimport fehlgeschlagen: '
@@ -61,8 +58,6 @@ class HK_Storage
             }
         }
     }
-
-
 
     /**
      * Importiert den mitgelieferten Initialbestand aus dem Plugin-Verzeichnis.
@@ -128,9 +123,9 @@ class HK_Storage
                 }
             }
         }
-
         return true;
     }
+    
     /**
      * URL eines Holzbildes zurückgeben.
      */
