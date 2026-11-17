@@ -192,7 +192,7 @@ document.addEventListener('DOMContentLoaded', function () {
    
     const columnsField = document.querySelector('[name="hk_settings[spalten]"]');
     const cardField = document.querySelector('[name="hk_settings[card]"]');
-
+    console.log(columnsField,cardField)
     function updatePreview() {
         console.log('updatePreview')
         const columns = columnsField?.value;
