@@ -17,7 +17,7 @@ define('HK_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('HK_PLUGIN_URL', plugin_dir_url(__FILE__));
 
 // Klassen laden
-//ob_start();
+ob_start();
 require_once HK_PLUGIN_DIR . 'includes/class-hk-storage.php';
 require_once HK_PLUGIN_DIR . 'includes/class-hk-catalog.php';
 require_once HK_PLUGIN_DIR . 'includes/class-hk-woocommerce.php';
@@ -39,7 +39,7 @@ HK_WooCommerce::instance();
 HK_WC_Origin::instance();
 HK_Assets::init();
 HK_Settings::init();
-/*
+
 $hk_output = ob_get_clean();
 
 if ($hk_output !== '') {
@@ -51,4 +51,4 @@ if ($hk_output !== '') {
         . ' | TEXT: '
         . var_export($hk_output, true)
     );
-}*/
+}
