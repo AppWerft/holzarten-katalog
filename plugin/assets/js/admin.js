@@ -198,7 +198,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const columns = columnsField?.value;
         const card = cardField?.value;
 
-        const preview = document.querySelector('#hk-katalog-vorschau');
+        const preview = document.querySelector('#hk-katalog-preview');
 
         if (!preview) {
             console.error('preview not found');
