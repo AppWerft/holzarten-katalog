@@ -79,7 +79,7 @@ class HK_Settings
 
         // Holzarten-Einstellungen
         if ($hook === 'holzartenkatalog_page_hk_settings_holzarten' || true) {
-
+            error_log('holzartenkatalog_page_hk_settings_holzarten');
             $js_file = HK_PLUGIN_DIR . 'assets/js/admin-holzarten-settings.js';
 
             wp_enqueue_script(
