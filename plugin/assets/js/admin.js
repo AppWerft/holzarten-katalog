@@ -192,7 +192,7 @@ document.addEventListener('DOMContentLoaded', function () {
    
     const columnsField = document.querySelector('[name="hk_katalog_settings[spalten]"]');
     const cardField =    document.querySelector('[name="hk_katalog_settings[card]"]');
-    console.log(columnsField,cardField)
+   
     function updatePreview() {
         console.log('updatePreview')
         const columns = columnsField?.value;
@@ -200,8 +200,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const preview = document.querySelector('#hk-katalog-vorschau');
 
-        if (!preview) return;
-
+        if (!preview) {
+            console.error('preview not found');
+            return;
+        }
         // Spalten
         if (columns) {
             preview.style.setProperty('--hk-columns', columns);
