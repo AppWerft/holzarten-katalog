@@ -208,8 +208,13 @@ document.addEventListener('DOMContentLoaded', function () {
         // Spalten
         if (columns) {
             const grid = preview.querySelector('.hk-katalog-grid');
+            console.log(
+                'Grid-Elemente:',
+                preview.querySelectorAll('[style*="--hk-columns"]')
+            );
+
             console.log('Grid:', grid);
-console.log('Grid-Klasse:', grid?.className);
+            console.log('Grid-Klasse:', grid?.className);
             if (grid && columns) {
                 grid.style.setProperty('--hk-columns', columns);
             }
