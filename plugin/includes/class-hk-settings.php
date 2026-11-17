@@ -76,20 +76,20 @@ class HK_Settings
             );
         }
 
-
-        // Holzarten-Einstellungen
-        if ($hook === 'holzartenkatalog_page_hk_settings_holzarten' || true) {
-            error_log('Hook=' . $hook);
-            $js_file = HK_PLUGIN_DIR . 'assets/js/admin-holzarten-settings.js';
-
+        if ($hook === 'holzartenkatalog_page_hk_settings_katalog') {
             wp_enqueue_script(
-                'hk-holzarten-settings',
-                HK_PLUGIN_URL . 'assets/js/admin-holzarten-settings.js',
-                [],
-                file_exists($js_file) ? filemtime($js_file) : HK_VERSION,
+                'hk-admin',
+                HK_PLUGIN_URL . 'assets/js/admin.js',
+                ['jquery'],
+                HK_VERSION,
                 true
             );
+        }
 
+        // Holzarten-Einstellungen
+        if ($hook === 'holzartenkatalog_page_hk_settings_holzarten') {
+
+            $js_file = HK_PLUGIN_DIR . 'assets/js/admin-holzarten-settings.js';
             $css_file = HK_PLUGIN_DIR . 'assets/css/admin-holzarten-settings.css';
 
             wp_enqueue_style(
