@@ -194,7 +194,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const cardField = document.querySelector('[name="hk_katalog_settings[card]"]');
 
     function updatePreview() {
-        console.log('updatePreview')
         const columns = columnsField?.value;
         const card = cardField?.checked ?? false;
 
@@ -204,19 +203,18 @@ document.addEventListener('DOMContentLoaded', function () {
             console.error('preview not found');
             return;
         }
-        console.log(columns, card)
-        // Spalten
-        if (columns) {
-            const grid = preview.querySelector('.hk-wood-grid.hk-material-cards');
 
-if (grid && columns) {
-    grid.style.setProperty('--hk-columns', columns);
-}
+        const grid = preview.querySelector('.hk-wood-grid');
 
+        if (grid) {
+            // Spalten
+            if (columns) {
+                grid.style.setProperty('--hk-columns', columns);
+            }
+
+            // Material Design ein-/ausschalten
+            grid.classList.toggle('hk-material-cards', card);
         }
-
-        // Kartenstil
-        preview.dataset.card = card ? '1' : '0';
     }
 
     columnsField?.addEventListener('change', updatePreview);
