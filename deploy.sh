@@ -11,7 +11,7 @@ git add *
 
 echo "3. Commit erstellen ..."
 
-git commit -m "Holzübersicht in MD"
+git commit -m "Holzübersicht in MD, mit Vorschau über JS"
 
 echo "4. Zu GitHub übertragen ..."
 
