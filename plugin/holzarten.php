@@ -1,11 +1,13 @@
 <?php
 
 /**
- * Plugin Name: Wood Species Catalog
+ * Plugin Name: Tree Species Catalog
  * Description: Extends woocommerce with a catalog of woods and harvesting location.
  * Version: 0.1.4
  * Author: Appwerft
  * Text Domain: holzarten-katalog
+ * License: GPL-2.0-or-later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
 
 if (!defined('ABSPATH')) {
@@ -17,8 +19,9 @@ define('HK_PLUGIN_FILE', __FILE__);
 define('HK_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('HK_PLUGIN_URL', plugin_dir_url(__FILE__));
 
+
 // --------------------------------------------------
-// Automatische Updates über GitHub
+// BEGIN GITHUB UPDATE
 // --------------------------------------------------
 
 require_once HK_PLUGIN_DIR
@@ -32,18 +35,15 @@ $hk_update_checker =
     );
 
 $hk_update_checker->setBranch('main');
-$hk_update_checker->setBranch('main');
 
 // GitHub Release-Assets verwenden
-$api = $hk_update_checker->getVcsApi();
-
-$api->enableReleaseAssets('/\.zip($|[?&#])/i');
-
-
-// Eigenes Installationspaket aus dem GitHub-Release verwenden
 $hk_update_checker->getVcsApi()->enableReleaseAssets(
     '/\.zip($|[?&#])/i'
 );
+
+// --------------------------------------------------
+// END GITHUB UPDATE
+// --------------------------------------------------
 
 // Klassen laden
 require_once HK_PLUGIN_DIR . 'includes/class-hk-storage.php';
