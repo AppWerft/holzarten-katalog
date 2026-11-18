@@ -1,15 +1,129 @@
 #!/bin/bash
 
+set -euo pipefail
+
 PROJECT="$HOME/Projekte/holzarten-katalog"
 SOURCE="$PROJECT/plugin"
 ZIP="$PROJECT/holzarten-katalog-plugin.zip"
 TARGET="$HOME/Local Sites/holzurne/app/public/wp-content/plugins/holzarten-katalog"
 
+VERSION="${1:-}"
+RELEASE=false
+
+# --------------------------------------------------
+# Parameter prüfen
+# --------------------------------------------------
+
+if [[ $# -gt 1 ]]; then
+    echo "Aufruf:"
+    echo "  ./deploy.sh"
+    echo "  ./deploy.sh 0.1.2"
+    exit 1
+fi
+
+if [[ -n "$VERSION" ]]; then
+    if [[ ! "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+        echo "Ungültige Versionsnummer: $VERSION"
+        exit 1
+    fi
+
+    RELEASE=true
+    TAG="v$VERSION"
+fi
+
 cd "$PROJECT" || exit 1
 
-echo "1. Plugin-ZIP erstellen ..."
+# Nur auf main arbeiten
+if [[ "$(git branch --show-current)" != "main" ]]; then
+    echo "FEHLER: Bitte zuerst auf den Branch main wechseln."
+    exit 1
+fi
 
-TEMP=$(mktemp -d) || exit 1
+# --------------------------------------------------
+# Release-Prüfungen
+# --------------------------------------------------
+
+if [[ "$RELEASE" == true ]]; then
+
+    if ! gh auth status >/dev/null 2>&1; then
+        echo "FEHLER: GitHub CLI ist nicht angemeldet."
+        exit 1
+    fi
+
+    if git rev-parse "$TAG" >/dev/null 2>&1; then
+        echo "FEHLER: Git-Tag $TAG existiert bereits."
+        exit 1
+    fi
+
+    if gh release view "$TAG" >/dev/null 2>&1; then
+        echo "FEHLER: GitHub-Release $TAG existiert bereits."
+        exit 1
+    fi
+
+    echo "1. Versionsnummer auf $VERSION setzen ..."
+
+    VERSION="$VERSION" perl -i -pe '
+        s/^ \* Version: .*/ * Version: $ENV{VERSION}/;
+        s/define\('\''HK_VERSION'\'', '\''[^'\'']+'\''\);/define('\''HK_VERSION'\'', '\''$ENV{VERSION}'\'');/
+    ' "$SOURCE/holzarten.php"
+
+    grep -q "Version: $VERSION" "$SOURCE/holzarten.php"
+    grep -q "HK_VERSION', '$VERSION'" "$SOURCE/holzarten.php"
+
+else
+    echo "Entwicklungs-Deployment ohne Release."
+fi
+
+# --------------------------------------------------
+# ZIP aus Git-Tracking entfernen
+# --------------------------------------------------
+
+if git ls-files --error-unmatch holzarten-katalog-plugin.zip >/dev/null 2>&1; then
+    echo "ZIP aus Git-Tracking entfernen ..."
+    git rm --cached -f holzarten-katalog-plugin.zip
+fi
+
+if ! grep -qxF "holzarten-katalog-plugin.zip" .gitignore 2>/dev/null; then
+    echo "holzarten-katalog-plugin.zip" >> .gitignore
+fi
+
+# --------------------------------------------------
+# Commit erstellen
+# --------------------------------------------------
+
+echo "2. Git-Änderungen übernehmen ..."
+
+git add -A
+
+if ! git diff --cached --quiet; then
+    if [[ "$RELEASE" == true ]]; then
+        COMMIT_MESSAGE="Release $TAG"
+    else
+        COMMIT_MESSAGE="Plugin aktualisiert"
+    fi
+
+    git commit -m "$COMMIT_MESSAGE"
+else
+    echo "Keine Änderungen zum Committen."
+fi
+
+# --------------------------------------------------
+# Zu GitHub übertragen
+# --------------------------------------------------
+
+echo "3. Zu GitHub übertragen ..."
+
+git push origin main
+
+# --------------------------------------------------
+# ZIP erstellen
+# --------------------------------------------------
+
+echo "4. Plugin-ZIP erstellen ..."
+
+TEMP=$(mktemp -d)
+trap 'rm -rf "$TEMP"' EXIT
+
 mkdir -p "$TEMP/holzarten-katalog"
 
 rsync -a \
@@ -22,21 +136,30 @@ rm -f "$ZIP"
 
 (cd "$TEMP" && zip -qr "$ZIP" holzarten-katalog)
 
-rm -rf "$TEMP"
+# --------------------------------------------------
+# GitHub Release
+# --------------------------------------------------
 
-echo "2. Git-Änderungen übernehmen ..."
+if [[ "$RELEASE" == true ]]; then
 
-git add .
+    echo "5. Git-Tag $TAG erstellen ..."
 
-echo "3. Commit erstellen ..."
+    git tag -a "$TAG" -m "Release $TAG"
+    git push origin "$TAG"
 
-git commit -m "Holzübersicht in MD, mit Vorschau über JS"
+    echo "6. GitHub-Release veröffentlichen ..."
 
-echo "4. Zu GitHub übertragen ..."
+    gh release create "$TAG" "$ZIP" \
+        --title "$TAG" \
+        --generate-notes
 
-git push || exit 1
+fi
 
-echo "5. Plugin in LocalWP aktualisieren ..."
+# --------------------------------------------------
+# LocalWP aktualisieren
+# --------------------------------------------------
+
+echo "7. LocalWP aktualisieren ..."
 
 mkdir -p "$TARGET"
 
@@ -46,6 +169,15 @@ rsync -av --delete \
     "$SOURCE/" \
     "$TARGET/"
 
-echo "Fertig."
+echo
+echo "----------------------------------------"
+
+if [[ "$RELEASE" == true ]]; then
+    echo "Release $TAG erfolgreich erstellt."
+else
+    echo "Entwicklungs-Deployment erfolgreich."
+fi
+
 echo "ZIP: $ZIP"
-echo "Deploy-Ziel: $TARGET"
+echo "LocalWP: $TARGET"
+echo "----------------------------------------"
