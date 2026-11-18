@@ -169,12 +169,12 @@ class HK_Plugin
         }
 
         // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- GET dient hier nur der Navigation, nicht der Verarbeitung einer Aktion.
-        $edit_id = isset($_GET['edit'])? sanitize_text_field(wp_unslash($_GET['edit'])): '';
+        $edit_id = isset($_GET['edit']) ? sanitize_text_field(wp_unslash($_GET['edit'])) : '';
 
         $item = $edit_id ? HK_Catalog::get($edit_id) : null;
-        
+
         // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- GET dient hier nur der Navigation, nicht der Verarbeitung einer Aktion.
-        $search = isset($_GET['s'])? sanitize_text_field(wp_unslash($_GET['s'])): '';
+        $search = isset($_GET['s']) ? sanitize_text_field(wp_unslash($_GET['s'])) : '';
 
         $items = HK_Catalog::get_all();
 
@@ -275,41 +275,42 @@ class HK_Plugin
             // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- GET dient hier nur der Navigation, nicht der Verarbeitung einer Aktion.
             if ($item || isset($_GET['new'])) {
                 $this->render_form($item);
-            }  
+            }
             ?>
 
-                <h2>Datensicherung und Klonen</h2>
+            <h2>Datensicherung und Klonen</h2>
 
-                <form method="post"
-                    action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
+            <form method="post"
+                action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
 
-                    <input type="hidden"
-                        name="action"
-                        value="hk_export_catalog">
+                <input type="hidden"
+                    name="action"
+                    value="hk_export_catalog">
 
-                    <?php
-                    
-                    wp_nonce_field(
-                        'hk_export_catalog',
-                        'hk_export_nonce'
-                    );
+                <?php
 
-                    submit_button(
-                        'Holzartenkatalog exportieren',
-                        'secondary',
-                        'submit',
-                        false
-                    );
-                    ?>
+                wp_nonce_field(
+                    'hk_export_catalog',
+                    'hk_export_nonce'
+                );
 
-                </form>
+                submit_button(
+                    'Holzartenkatalog exportieren',
+                    'secondary',
+                    'submit',
+                    false
+                );
+                ?>
+
+            </form>
 
             <?php
 
-                $this->render_import_form();
-                $this->render_table($items, $search);
-            }
+            $this->render_import_form();
+            $this->render_table($items, $search);
             ?>
+
+
 
         </div>
 
@@ -352,14 +353,17 @@ class HK_Plugin
             && $_FILES['image_file']['error'] !== UPLOAD_ERR_NO_FILE;
 
         if ($has_upload) {
-
             $file = $_FILES['image_file'];
-
-            if ($file['error'] !== UPLOAD_ERR_OK) {
+            if (
+                !isset($file['error']) ||
+                $file['error'] !== UPLOAD_ERR_OK
+            ) {
                 wp_die(
                     'Beim Hochladen der Bilddatei ist ein Fehler aufgetreten.'
                 );
             }
+
+
 
             $allowed_types = [
                 'jpg|jpeg' => 'image/jpeg',
@@ -1256,7 +1260,7 @@ class HK_Plugin
         }
 
         $url = admin_url('admin.php?page=holzarten-katalog');
-            $file = $_FILES['catalog_zip'] ?? null;
+        $file = $_FILES['catalog_zip'] ?? null;
         // Upload-Daten prüfen.
         if (
             !is_array($file)
