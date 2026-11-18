@@ -353,7 +353,27 @@ class HK_Plugin
             && $_FILES['image_file']['error'] !== UPLOAD_ERR_NO_FILE;
 
         if ($has_upload) {
-            $file = $_FILES['image_file'];
+            $file = isset($_FILES['image_file'])
+                && is_array($_FILES['image_file'])
+                ? $_FILES['image_file']
+                : [];
+            if (
+                !isset(
+                    $file['error'],
+                    $file['tmp_name'],
+                    $file['name'],
+                    $file['size']
+                )
+                || !is_string($file['tmp_name'])
+                || !is_string($file['name'])
+                || !is_numeric($file['size'])
+                || (int) $file['error'] !== UPLOAD_ERR_OK
+                || !is_uploaded_file($file['tmp_name'])
+            ) {
+                wp_die('Ungültige Bilddatei.');
+            }
+
+            $file['name'] = sanitize_file_name($file['name']);
 
             if ($file['error'] !== UPLOAD_ERR_OK) {
                 wp_die(
