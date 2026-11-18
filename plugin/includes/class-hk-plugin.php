@@ -437,7 +437,10 @@ class HK_Plugin
                 );
 
                 if (is_wp_error($result)) {
-                    wp_die('Das Bild konnte nicht skaliert werden.');
+                    esc_html(
+                        'Das Bild konnte nicht als WebP gespeichert werden: '
+                            . $result->get_error_message()
+                    );
                 }
             }
 
