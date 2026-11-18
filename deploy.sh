@@ -159,15 +159,15 @@ fi
 # LocalWP aktualisieren
 # --------------------------------------------------
 
-echo "7. LocalWP aktualisieren ..."
+#echo "7. LocalWP aktualisieren ..."
 
-mkdir -p "$TARGET"
+#mkdir -p "$TARGET"
 
-rsync -av --delete \
-    --exclude=".DS_Store" \
-    --exclude="*.zip" \
-    "$SOURCE/" \
-    "$TARGET/"
+#rsync -av --delete \
+#    --exclude=".DS_Store" \
+#    --exclude="*.zip" \
+#    "$SOURCE/" \
+#    "$TARGET/"
 
 echo
 echo "----------------------------------------"
