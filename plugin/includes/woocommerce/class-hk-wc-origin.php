@@ -236,8 +236,6 @@ class HK_WC_Origin
             return;
         }
 
-
-
         echo '<div class="options_group">';
 
         woocommerce_wp_text_input([
@@ -275,9 +273,7 @@ class HK_WC_Origin
                 continue;
             }
 
-            $value = isset($_POST[$key])
-                ? sanitize_text_field(wp_unslash($_POST[$key]))
-                : '';
+            $value = sanitize_text_field(wp_unslash($_POST[$key]));
 
             if ($value === '' || !is_numeric($value)) {
                 $product->delete_meta_data($key);
