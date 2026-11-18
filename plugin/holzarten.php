@@ -75,17 +75,21 @@ add_action('admin_notices', function () {
 // --------------------------------------------------
 
 HK_Plugin::instance();
+// --------------------------------------------------
+// Einstellungen-Link in der Pluginübersicht
+// --------------------------------------------------
+
 add_filter(
     'plugin_action_links_' . plugin_basename(__FILE__),
     function ($links) {
-
-        $settings_url = admin_url(
-            'admin.php?page=hk_settings_holzarten'
+      $settings_url = admin_url(
+            'admin.php?page=holzarten-katalog'
         );
 
         array_unshift(
             $links,
-            '<a href="' . esc_url($settings_url) . '">Einstellungen</a>'
+            '<a href="' . esc_url($settings_url) . '">'
+                . 'Einstellungen</a>'
         );
 
         return $links;
