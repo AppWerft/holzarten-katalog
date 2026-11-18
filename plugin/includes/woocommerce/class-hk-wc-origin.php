@@ -270,9 +270,9 @@ class HK_WC_Origin
         // Nonce-Prüfung.
         if (
             !isset($_POST['woocommerce_meta_nonce']) ||
-            !wp_verify_nonce(
-                sanitize_text_field(wp_unslash($_POST['woocommerce_meta_nonce'])),
-                'woocommerce_save_data'
+            !check_admin_referer(
+                'woocommerce_save_data',
+                'woocommerce_meta_nonce'
             )
         ) {
             return;
