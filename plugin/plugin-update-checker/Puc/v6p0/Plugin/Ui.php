@@ -150,7 +150,8 @@ if ( !class_exists(Ui::class, false) ):
 		 * @return void
 		 */
 		public function handleManualCheck() {
-			$shouldCheck =
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- GET dient hier nur der Navigation, nicht der Verarbeitung einer Aktion.	
+		$shouldCheck =
 				isset($_GET['puc_check_for_updates'], $_GET['puc_slug'])
 				&& $_GET['puc_slug'] == $this->updateChecker->slug
 				&& check_admin_referer('puc_check_for_updates');

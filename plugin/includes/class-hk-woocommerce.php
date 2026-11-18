@@ -114,11 +114,7 @@ class HK_WooCommerce
             'has_archives' => false,
         ]);
 
-        if (is_wp_error($result)) {
-            error_log(
-                'HK WooCommerce: ' . $result->get_error_message()
-            );
-        }
+        
 
         delete_transient('wc_attribute_taxonomies');
     }
@@ -141,9 +137,6 @@ class HK_WooCommerce
         ) . 'images/' . $filename;
 
         if (!file_exists($source)) {
-            error_log(
-                'HK WooCommerce: Bild nicht gefunden: ' . $source
-            );
             return;
         }
 
@@ -189,10 +182,6 @@ class HK_WooCommerce
             );
 
             if (is_wp_error($attachment_id)) {
-                error_log(
-                    'HK WooCommerce: ' .
-                        $attachment_id->get_error_message()
-                );
                 return;
             }
 

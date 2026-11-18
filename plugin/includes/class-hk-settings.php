@@ -580,11 +580,10 @@ class HK_Settings
     }
 
     public static function sanitize_map($input)
-    {
+    {   $input = is_array($input) ? $input : [];
         return [
             'height' => max(100, min(800, absint($input['height'] ?? 200))),
             'width' => max(20, min(100, absint($input['width'] ?? 100))),
-
             'position' => in_array(
                 $input['position'] ?? '',
                 ['left', 'center', 'right'],
