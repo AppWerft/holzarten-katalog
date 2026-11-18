@@ -32,7 +32,19 @@ $hk_update_checker =
     );
 
 $hk_update_checker->setBranch('main');
+$hk_update_checker->setBranch('main');
 
+// GitHub Release-Assets verwenden
+$api = $hk_update_checker->getVcsApi();
+
+$api->enableReleaseAssets('/\.zip($|[?&#])/i');
+
+// Debug
+error_log('HK API CLASS: ' . get_class($api));
+error_log(
+    'HK RELEASE ASSETS: '
+    . (method_exists($api, 'enableReleaseAssets') ? 'YES' : 'NO')
+);
 // Eigenes Installationspaket aus dem GitHub-Release verwenden
 $hk_update_checker->getVcsApi()->enableReleaseAssets(
     '/\.zip($|[?&#])/i'
