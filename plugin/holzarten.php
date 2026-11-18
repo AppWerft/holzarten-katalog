@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Plugin Name: Holzarten-Katalog
  * Description: Verwaltung und Darstellung eines Holzartenkatalogs mit Suche, Filtern und Bildern.
@@ -38,10 +39,10 @@ register_activation_hook(HK_PLUGIN_FILE, function () {
     if (!class_exists('WooCommerce')) {
         wp_die(
             'Das Plugin <strong>Holzarten-Katalog</strong> benötigt '
-            . 'das installierte und aktivierte Plugin '
-            . '<strong>WooCommerce</strong>.<br><br>'
-            . '<a href="' . esc_url(admin_url('plugins.php')) . '">'
-            . 'Zur Plugin-Verwaltung</a>',
+                . 'das installierte und aktivierte Plugin '
+                . '<strong>WooCommerce</strong>.<br><br>'
+                . '<a href="' . esc_url(admin_url('plugins.php')) . '">'
+                . 'Zur Plugin-Verwaltung</a>',
             'WooCommerce erforderlich',
             ['back_link' => true]
         );
@@ -66,7 +67,6 @@ add_action('admin_notices', function () {
             . 'des Holzarten-Katalogs verfügbar sind.';
         echo '</p></div>';
     }
-
 });
 
 
@@ -75,7 +75,22 @@ add_action('admin_notices', function () {
 // --------------------------------------------------
 
 HK_Plugin::instance();
+add_filter(
+    'plugin_action_links_' . plugin_basename(__FILE__),
+    function ($links) {
 
+        $settings_url = admin_url(
+            'admin.php?page=hk_settings_holzarten'
+        );
+
+        array_unshift(
+            $links,
+            '<a href="' . esc_url($settings_url) . '">Einstellungen</a>'
+        );
+
+        return $links;
+    }
+);
 HK_Assets::init();
 HK_Settings::init();
 

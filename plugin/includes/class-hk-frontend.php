@@ -3,7 +3,6 @@
 class HK_Frontend
 {
     private static $instance = null;
-
     public static function instance()
     {
         if (self::$instance === null) {
@@ -33,6 +32,13 @@ class HK_Frontend
      */
     public function render_wood_catalog($atts = [])
     {
+        // Parameter aus Shortcode:     
+        $atts = shortcode_atts([
+            'sortierung' => $settings['sortierung'] ?? 'name',
+            'bilder'     => $settings['bilder'] ?? 1,
+            'spalten'    => $settings['spalten'] ?? 3,
+            'card'       => $settings['card'] ?? 1,
+        ], $atts, 'hk_holzarten');
         // Gespeicherte Einstellungen als Standardwerte verwenden
         $defaults = wp_parse_args(
             get_option('hk_katalog_settings', []),
@@ -79,7 +85,7 @@ class HK_Frontend
                 'description' => 0,
                 'lat'         => 1,
                 'ger'         => 1,
-               
+
             ]
         );
 
@@ -157,11 +163,11 @@ class HK_Frontend
         // HTML erzeugen:
         $grid_class = 'hk-wood-grid';
 
-if ($card) {
-    $grid_class .= ' hk-material-cards';
-}
+        if ($card) {
+            $grid_class .= ' hk-material-cards';
+        }
 
-$html = '<div class="' . esc_attr($grid_class) . '" style="--hk-columns:' . $spalten . ';">'; 
+        $html = '<div class="' . esc_attr($grid_class) . '" style="--hk-columns:' . $spalten . ';">';
         foreach ($items as $item) {
 
             $image_class = 'hk-wood-image';
