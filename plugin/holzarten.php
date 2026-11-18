@@ -3,7 +3,7 @@
 /**
  * Plugin Name: Holzarten-Katalog
  * Description: Verwaltung und Darstellung eines Holzartenkatalogs mit Suche, Filtern und Bildern.
- * Version: 0.1.0
+ * Version: 0.1.1
  * Author: Appwerft
  * Text Domain: holzarten-katalog
  */
@@ -12,7 +12,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-define('HK_VERSION', '0.1.0');
+define('HK_VERSION', '0.1.1');
 define('HK_PLUGIN_FILE', __FILE__);
 define('HK_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('HK_PLUGIN_URL', plugin_dir_url(__FILE__));
@@ -39,20 +39,12 @@ $api = $hk_update_checker->getVcsApi();
 
 $api->enableReleaseAssets('/\.zip($|[?&#])/i');
 
-// Debug
-error_log('HK API CLASS: ' . get_class($api));
-error_log(
-    'HK RELEASE ASSETS: '
-    . (method_exists($api, 'enableReleaseAssets') ? 'YES' : 'NO')
-);
+
 // Eigenes Installationspaket aus dem GitHub-Release verwenden
 $hk_update_checker->getVcsApi()->enableReleaseAssets(
     '/\.zip($|[?&#])/i'
 );
-error_log('HK API CLASS: ' . get_class($api));
-error_log('HK RELEASE ASSETS: ' .
-    (method_exists($api, 'enableReleaseAssets') ? 'YES' : 'NO')
-);
+
 // Klassen laden
 require_once HK_PLUGIN_DIR . 'includes/class-hk-storage.php';
 require_once HK_PLUGIN_DIR . 'includes/class-hk-catalog.php';
@@ -138,7 +130,7 @@ if (class_exists('WooCommerce')) {
     HK_WooCommerce::instance();
     HK_WC_Origin::instance();
 }
-
+/*
 add_filter('upgrader_pre_install', function ($response, $hook_extra) {
     error_log('HK UPDATE: pre_install');
     error_log(print_r($hook_extra, true));
@@ -154,4 +146,4 @@ add_filter('upgrader_post_install', function ($response, $hook_extra, $result) {
 add_filter('upgrader_package_options', function ($options) {
     error_log('HK UPDATE PACKAGE: ' . print_r($options, true));
     return $options;
-});
+});*/
