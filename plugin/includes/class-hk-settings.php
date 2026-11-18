@@ -301,13 +301,18 @@ class HK_Settings
             wp_die(-1, 403);
         }
 
-        $input = isset($_POST['hk_katalog_settings'])
+        $input = [];
+        if (
+            isset($_POST['hk_katalog_settings'])
             && is_array($_POST['hk_katalog_settings'])
-            ? wp_unslash($_POST['hk_katalog_settings'])
-            : [];
+        ) {
+            $input = map_deep(
+                wp_unslash($_POST['hk_katalog_settings']),
+                'sanitize_text_field'
+            );
+        }
 
         $settings = self::sanitize_katalog($input);
-
 
 
         wp_send_json_success([
@@ -580,7 +585,8 @@ class HK_Settings
     }
 
     public static function sanitize_map($input)
-    {   $input = is_array($input) ? $input : [];
+    {
+        $input = is_array($input) ? $input : [];
         return [
             'height' => max(100, min(800, absint($input['height'] ?? 200))),
             'width' => max(20, min(100, absint($input['width'] ?? 100))),
