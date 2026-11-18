@@ -155,7 +155,7 @@ class HK_Plugin
             . 'images/';
         $path = $directory . $filename;
         if (is_file($path)) {
-            unlink($path);
+            wp_delete_file($path);
         }
     }
 
@@ -404,8 +404,10 @@ class HK_Plugin
 
             if (is_wp_error($editor)) {
                 wp_die(
-                    'Das Bild konnte nicht verarbeitet werden: '
-                        . $editor->get_error_message()
+                    esc_html(
+                        'Das Bild konnte nicht verarbeitet werden: '
+                            . $editor->get_error_message()
+                    )
                 );
             }
 
@@ -443,7 +445,7 @@ class HK_Plugin
             );
 
             if (is_wp_error($result)) {
-                wp_die(
+                esc_html(
                     'Das Bild konnte nicht als WebP gespeichert werden: '
                         . $result->get_error_message()
                 );
@@ -493,7 +495,7 @@ class HK_Plugin
                 $new_image_path !== ''
                 && is_file($new_image_path)
             ) {
-                unlink($new_image_path);
+                wp_delete_file($new_image_path);
             }
 
             wp_safe_redirect(
@@ -555,7 +557,7 @@ class HK_Plugin
         );
 
         if ($opened !== true) {
-            unlink($temp_file);
+            wp_delete_file($temp_file);
             wp_die('ZIP-Archiv konnte nicht erstellt werden.');
         }
 
@@ -571,7 +573,7 @@ class HK_Plugin
 
             if (!file_exists($path) || !is_readable($path)) {
                 $zip->close();
-                unlink($temp_file);
+                wp_delete_file($temp_file);
 
                 wp_die(
                     'Datei fehlt oder ist nicht lesbar: '
@@ -581,7 +583,7 @@ class HK_Plugin
 
             if (!$zip->addFile($path, $filename)) {
                 $zip->close();
-                unlink($temp_file);
+                wp_delete_file($temp_file);
 
                 wp_die(
                     'Datei konnte nicht ins ZIP aufgenommen werden: '
@@ -616,7 +618,7 @@ class HK_Plugin
 
                 if (!$zip->addFile($path, $relative_path)) {
                     $zip->close();
-                    unlink($temp_file);
+                    wp_delete_file($temp_file);
 
                     wp_die('Bild konnte nicht ins ZIP aufgenommen werden.');
                 }
@@ -626,7 +628,24 @@ class HK_Plugin
         $zip->close();
 
         // Download ausliefern.
-        $download_name = 'holzarten-export-' . date('Y-m-d-His') . '.zip';
+        // Download ausliefern.
+        $download_name = 'holzarten-export-' . gmdate('Y-m-d-His') . '.zip';
+
+        // WordPress-Dateisystem initialisieren.
+        global $wp_filesystem;
+
+        if (!WP_Filesystem()) {
+            wp_delete_file($temp_file);
+            wp_die('WordPress-Dateisystem konnte nicht initialisiert werden.');
+        }
+
+        // ZIP-Datei einlesen.
+        $file_contents = $wp_filesystem->get_contents($temp_file);
+
+        if ($file_contents === false) {
+            wp_delete_file($temp_file);
+            wp_die('Exportdatei konnte nicht gelesen werden.');
+        }
 
         while (ob_get_level()) {
             ob_end_clean();
@@ -642,11 +661,12 @@ class HK_Plugin
                 . '"'
         );
 
-        header('Content-Length: ' . filesize($temp_file));
+        header('Content-Length: ' . strlen($file_contents));
 
-        readfile($temp_file);
+        echo $file_contents;
 
-        unlink($temp_file);
+        wp_delete_file($temp_file);
+       
         exit;
     }
 

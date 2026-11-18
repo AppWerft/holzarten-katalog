@@ -128,8 +128,8 @@ class HK_WC_Origin
                     style="height:%dpx;width:%d%%;margin:%s">
                 </div>',
             esc_attr($lat . ',' . $lng),
-            $settings['height'],
-            $settings['width'],
+            absint($settings['height']),
+            absint($settings['width']),
             esc_attr($margin)
         );
     }
@@ -258,7 +258,7 @@ class HK_WC_Origin
             ],
         ]);
         echo "</div>";
-        echo $this->render_geosuche();
+        echo wp_kses_post($this->render_geosuche());
     }
     /**
      * Herkunftskoordinaten speichern.
