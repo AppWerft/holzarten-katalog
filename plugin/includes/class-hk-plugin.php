@@ -224,8 +224,8 @@ class HK_Plugin
 
             // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- GET dient hier nur der Navigation, nicht der Verarbeitung einer Aktion.
             if (isset($_GET['imported'])) {
-                $count = absint($_GET['imported']);
-
+                // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- GET dient hier nur der Navigation, nicht der Verarbeitung einer Aktion.
+                $count = absint(wp_unslash($_GET['imported']));
                 echo '<div class="notice notice-success is-dismissible">';
                 echo '<p>' . esc_html(
                     $count . ' Holzarten wurden erfolgreich importiert.'
@@ -353,6 +353,8 @@ class HK_Plugin
             && $_FILES['image_file']['error'] !== UPLOAD_ERR_NO_FILE;
 
         if ($has_upload) {
+
+            // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Upload-Array wird anschließend strukturell validiert und der Dateityp geprüft.
             $file = isset($_FILES['image_file'])
                 && is_array($_FILES['image_file'])
                 ? $_FILES['image_file']
@@ -1283,9 +1285,11 @@ class HK_Plugin
         $file = [];
 
         if (
+            // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Upload-Array wird anschließend strukturell validiert
             isset($_FILES['catalog_zip'])
             && is_array($_FILES['catalog_zip'])
         ) {
+            // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Upload-Array wird anschließend strukturell validiert
             $file = $_FILES['catalog_zip'];
         }
 
@@ -1309,7 +1313,7 @@ class HK_Plugin
             exit;
         }
 
-       
+
         // Dateinamen bereinigen.
         $file['name'] = sanitize_file_name($file['name']);
 
