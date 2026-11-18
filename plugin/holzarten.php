@@ -33,6 +33,11 @@ $hk_update_checker =
 
 $hk_update_checker->setBranch('main');
 
+// Eigenes Installationspaket aus dem GitHub-Release verwenden
+$hk_update_checker->getVcsApi()->enableReleaseAssets(
+    '/holzarten-katalog-plugin\.zip$/i'
+);
+
 // Klassen laden
 require_once HK_PLUGIN_DIR . 'includes/class-hk-storage.php';
 require_once HK_PLUGIN_DIR . 'includes/class-hk-catalog.php';
