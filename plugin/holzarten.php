@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Plugin Name: Wood Database
+ * Plugin Name: Wood Species Catalog
  * Description: Extends woocommerce with a catalog of woods and harvesting location.
  * Version: 0.1.4
  * Author: Appwerft
