@@ -663,10 +663,12 @@ class HK_Plugin
 
         header('Content-Length: ' . strlen($file_contents));
 
+        // ZIP-Datei binär und unverändert ausgeben.
+        // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Binary ZIP contents must not be escaped.
         echo $file_contents;
 
         wp_delete_file($temp_file);
-       
+
         exit;
     }
 

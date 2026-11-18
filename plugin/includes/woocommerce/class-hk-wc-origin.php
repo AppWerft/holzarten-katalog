@@ -178,7 +178,7 @@ class HK_WC_Origin
             placeholder="Ort oder Adresse eingeben …"
             style="
                 width:100%;
-                background-image:url(\'' . plugins_url('assets/images/lupe.svg', HK_PLUGIN_FILE) . '\');
+                background-image:url(\'' . esc_url(plugins_url('assets/images/lupe.svg', HK_PLUGIN_FILE)) . '\');
                 background-repeat:no-repeat;
                 background-position:right 12px center;
                 background-size:20px 20px;
