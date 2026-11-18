@@ -355,11 +355,7 @@ class HK_Plugin
         if ($has_upload) {
 
             // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Upload-Array wird anschließend strukturell validiert und der Dateityp geprüft.
-            $file = isset($_FILES['image_file'])
-                && is_array($_FILES['image_file'])
-                // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Upload-Array wird anschließend strukturell validiert
-                ? $_FILES['image_file']
-                : [];
+            $file = isset($_FILES['image_file']) && is_array($_FILES['image_file']) ? $_FILES['image_file'] : [];
             if (
                 !isset(
                     $file['error'],
