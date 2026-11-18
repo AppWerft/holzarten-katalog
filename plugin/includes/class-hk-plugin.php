@@ -167,12 +167,11 @@ class HK_Plugin
         if (!current_user_can('manage_options')) {
             wp_die('Keine Berechtigung.');
         }
+
         // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- GET dient hier nur der Navigation, nicht der Verarbeitung einer Aktion.
         $edit_id = isset($_GET['edit'])? sanitize_text_field(wp_unslash($_GET['edit'])): '';
 
-        $item = $edit_id
-            ? HK_Catalog::get($edit_id)
-            : null;
+        $item = $edit_id ? HK_Catalog::get($edit_id) : null;
         
         // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- GET dient hier nur der Navigation, nicht der Verarbeitung einer Aktion.
         $search = isset($_GET['s'])? sanitize_text_field(wp_unslash($_GET['s'])): '';
@@ -202,6 +201,7 @@ class HK_Plugin
             <hr class="wp-header-end">
 
             <?php
+
             // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- GET dient hier nur der Navigation, nicht der Verarbeitung einer Aktion.
             if (isset($_GET['saved'])) {
                 echo '<div class="notice notice-success is-dismissible">';
@@ -232,6 +232,7 @@ class HK_Plugin
                 ) . '</p>';
                 echo '</div>';
             }
+
             // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- GET dient hier nur der Navigation, nicht der Verarbeitung einer Aktion.
             if (isset($_GET['import_error'])) {
                 $errors = [
@@ -270,12 +271,11 @@ class HK_Plugin
             ?>
 
             <?php
+
             // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- GET dient hier nur der Navigation, nicht der Verarbeitung einer Aktion.
             if ($item || isset($_GET['new'])) {
-
                 $this->render_form($item);
-            } else {
-
+            }  
             ?>
 
                 <h2>Datensicherung und Klonen</h2>
@@ -288,6 +288,7 @@ class HK_Plugin
                         value="hk_export_catalog">
 
                     <?php
+                    
                     wp_nonce_field(
                         'hk_export_catalog',
                         'hk_export_nonce'
