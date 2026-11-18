@@ -267,6 +267,16 @@ class HK_WC_Origin
             '_hk_origin_lat' => ['min' => -90, 'max' => 90],
             '_hk_origin_lng' => ['min' => -180, 'max' => 180],
         ];
+        // Nonce-Prüfung.
+        if (
+            !isset($_POST['woocommerce_meta_nonce']) ||
+            !wp_verify_nonce(
+                sanitize_text_field(wp_unslash($_POST['woocommerce_meta_nonce'])),
+                'woocommerce_save_data'
+            )
+        ) {
+            return;
+        }
 
         foreach ($coordinates as $key => $range) {
             if (!isset($_POST[$key])) {
