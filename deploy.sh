@@ -119,24 +119,57 @@ git push origin main
 # --------------------------------------------------
 # ZIP-Dateien erstellen
 # --------------------------------------------------
+
 # --------------------------------------------------
+# ZIP-Dateien erstellen
+# --------------------------------------------------
+
+echo "4. GitHub- und WordPress.org-Pakete erstellen ..."
+
+TEMP=$(mktemp -d)
+trap 'rm -rf "$TEMP"' EXIT
+
 # GitHub-Paket: vollständiges Plugin
-# --------------------------------------------------
+mkdir -p "$TEMP/github/holzarten-katalog"
+
+rsync -a \
+    --exclude=".DS_Store" \
+    --exclude=".git" \
+    "$SOURCE/" \
+    "$TEMP/github/holzarten-katalog/"
 
 rm -f "$ZIP"
-
 (cd "$TEMP/github" && zip -qr "$ZIP" holzarten-katalog)
 
-# --------------------------------------------------
 # WordPress.org-Paket: ohne GitHub-Updater
-# --------------------------------------------------
+mkdir -p "$TEMP/wordpress/holzarten-katalog"
+
+rsync -a \
+    --exclude=".DS_Store" \
+    --exclude=".git" \
+    --exclude="plugin-update-checker/" \
+    "$SOURCE/" \
+    "$TEMP/wordpress/holzarten-katalog/"
+
+# GitHub-Update-Code entfernen
+awk '
+    /BEGIN GITHUB UPDATE/ { skip=1; next }
+    /END GITHUB UPDATE/   { skip=0; next }
+    !skip { print }
+' "$TEMP/wordpress/holzarten-katalog/holzarten.php" \
+  > "$TEMP/wordpress/holzarten-katalog/holzarten.php.tmp"
+
+mv \
+  "$TEMP/wordpress/holzarten-katalog/holzarten.php.tmp" \
+  "$TEMP/wordpress/holzarten-katalog/holzarten.php"
 
 rm -f "$WP_ZIP"
-
 (cd "$TEMP/wordpress" && zip -qr "$WP_ZIP" holzarten-katalog)
 
 echo "GitHub-ZIP:     $ZIP"
 echo "WordPress-ZIP:  $WP_ZIP"
+
+
 
 # --------------------------------------------------
 # GitHub Release
