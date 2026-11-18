@@ -130,20 +130,3 @@ if (class_exists('WooCommerce')) {
     HK_WooCommerce::instance();
     HK_WC_Origin::instance();
 }
-/*
-add_filter('upgrader_pre_install', function ($response, $hook_extra) {
-    error_log('HK UPDATE: pre_install');
-    error_log(print_r($hook_extra, true));
-    return $response;
-}, 10, 2);
-
-add_filter('upgrader_post_install', function ($response, $hook_extra, $result) {
-    error_log('HK UPDATE: post_install');
-    error_log(print_r($result, true));
-    return $response;
-}, 10, 3);
-
-add_filter('upgrader_package_options', function ($options) {
-    error_log('HK UPDATE PACKAGE: ' . print_r($options, true));
-    return $options;
-});*/

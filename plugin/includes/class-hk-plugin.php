@@ -167,7 +167,7 @@ class HK_Plugin
         if (!current_user_can('manage_options')) {
             wp_die('Keine Berechtigung.');
         }
-
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- GET dient hier nur der Navigation, nicht der Verarbeitung einer Aktion.
         $edit_id = isset($_GET['edit'])
             ? sanitize_text_field(wp_unslash($_GET['edit']))
             : '';
@@ -175,7 +175,7 @@ class HK_Plugin
         $item = $edit_id
             ? HK_Catalog::get($edit_id)
             : null;
-
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- GET dient hier nur der Navigation, nicht der Verarbeitung einer Aktion.
         $search = isset($_GET['s'])
             ? sanitize_text_field(wp_unslash($_GET['s']))
             : '';
@@ -205,12 +205,13 @@ class HK_Plugin
             <hr class="wp-header-end">
 
             <?php
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- GET dient hier nur der Navigation, nicht der Verarbeitung einer Aktion.
             if (isset($_GET['saved'])) {
                 echo '<div class="notice notice-success is-dismissible">';
                 echo '<p>Die Holzart wurde gespeichert.</p>';
                 echo '</div>';
             }
-
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- GET dient hier nur der Navigation, nicht der Verarbeitung einer Aktion.
             if (isset($_GET['deleted'])) {
                 echo '<div class="notice notice-success is-dismissible">';
                 echo '<p>Die Holzart wurde gelöscht.</p>';
@@ -222,7 +223,7 @@ class HK_Plugin
                 echo '<p>Die Aktion konnte nicht ausgeführt werden.</p>';
                 echo '</div>';
             }
-
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- GET dient hier nur der Navigation, nicht der Verarbeitung einer Aktion.
             if (isset($_GET['imported'])) {
                 $count = absint($_GET['imported']);
 
@@ -232,7 +233,7 @@ class HK_Plugin
                 ) . '</p>';
                 echo '</div>';
             }
-
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- GET dient hier nur der Navigation, nicht der Verarbeitung einer Aktion.
             if (isset($_GET['import_error'])) {
                 $errors = [
                     'upload'           => 'Keine gültige ZIP-Datei hochgeladen.',
@@ -269,6 +270,7 @@ class HK_Plugin
             ?>
 
             <?php
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- GET dient hier nur der Navigation, nicht der Verarbeitung einer Aktion.
             if ($item || isset($_GET['new'])) {
 
                 $this->render_form($item);
@@ -1253,7 +1255,7 @@ class HK_Plugin
         }
 
         $url = admin_url('admin.php?page=holzarten-katalog');
- 
+            $file = $_FILES['catalog_zip'] ?? null;
         // Upload-Daten prüfen.
         if (
             !is_array($file)
