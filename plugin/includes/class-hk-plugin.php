@@ -1191,7 +1191,7 @@ class HK_Plugin
         if (!current_user_can('manage_options')) {
             wp_die('Keine Berechtigung.');
         }
-
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only GET parameter; no data is modified.                                
         $id = isset($_GET['id'])
             ? sanitize_text_field(wp_unslash($_GET['id']))
             : '';
@@ -1253,19 +1253,21 @@ class HK_Plugin
         }
 
         $url = admin_url('admin.php?page=holzarten-katalog');
-
-        // Upload prüfen.
+ 
+        // Upload-Daten prüfen.
         if (
-            !isset($_FILES['catalog_zip'])
-            || $_FILES['catalog_zip']['error'] !== UPLOAD_ERR_OK
+            !is_array($file)
+            || !isset($file['error'], $file['name'], $file['tmp_name'])
+            || (int) $file['error'] !== UPLOAD_ERR_OK
+            || !is_string($file['name'])
+            || !is_string($file['tmp_name'])
+            || !is_uploaded_file($file['tmp_name'])
         ) {
             wp_safe_redirect(
                 add_query_arg('import_error', 'upload', $url)
             );
             exit;
         }
-
-        $file = $_FILES['catalog_zip'];
 
         // Dateiendung prüfen.
         if (
@@ -1283,36 +1285,5 @@ class HK_Plugin
             $file['tmp_name'],
             true
         );
-
-        if (is_wp_error($result)) {
-            error_log(
-                'Holzarten-Katalog: ZIP-Import fehlgeschlagen: '
-                    . $result->get_error_message()
-            );
-
-            wp_safe_redirect(
-                add_query_arg(
-                    'import_error',
-                    $result->get_error_code(),
-                    $url
-                )
-            );
-            exit;
-        }
-
-        // Anzahl der importierten Holzarten ermitteln.
-        $catalog = HK_Storage::read_json('catalog.json');
-
-        $count = count($catalog['items'] ?? []);
-
-        // WooCommerce-Synchronisierung vormerken.
-        if (class_exists('HK_WooCommerce')) {
-            HK_WooCommerce::schedule_sync();
-        }
-
-        wp_safe_redirect(
-            add_query_arg('imported', $count, $url)
-        );
-        exit;
     }
 }
