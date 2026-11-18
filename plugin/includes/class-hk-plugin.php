@@ -1279,14 +1279,28 @@ class HK_Plugin
         }
 
         $url = admin_url('admin.php?page=holzarten-katalog');
-        $file = $_FILES['catalog_zip'] ?? null;
+
+        $file = [];
+
+        if (
+            isset($_FILES['catalog_zip'])
+            && is_array($_FILES['catalog_zip'])
+        ) {
+            $file = $_FILES['catalog_zip'];
+        }
+
         // Upload-Daten prüfen.
         if (
-            !is_array($file)
-            || !isset($file['error'], $file['name'], $file['tmp_name'])
-            || (int) $file['error'] !== UPLOAD_ERR_OK
+            !isset(
+                $file['error'],
+                $file['name'],
+                $file['tmp_name'],
+                $file['size']
+            )
             || !is_string($file['name'])
             || !is_string($file['tmp_name'])
+            || !is_numeric($file['size'])
+            || (int) $file['error'] !== UPLOAD_ERR_OK
             || !is_uploaded_file($file['tmp_name'])
         ) {
             wp_safe_redirect(
@@ -1294,6 +1308,10 @@ class HK_Plugin
             );
             exit;
         }
+
+       
+        // Dateinamen bereinigen.
+        $file['name'] = sanitize_file_name($file['name']);
 
         // Dateiendung prüfen.
         if (
