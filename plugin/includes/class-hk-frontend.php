@@ -222,16 +222,9 @@ class HK_Frontend
                     . wp_kses_post($item['description'])
                     . '</div>';
             }
-
             $html .= '</div>';
         }
-
         $html .= '</div>';
-
-        return $html;
-
-        $html .= '</div>';
-
         return $html;
     }
 }

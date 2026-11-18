@@ -11,7 +11,7 @@ class HK_WooCommerce
      */
     private const ATTRIBUTE_NAME = 'Holzart';
     private const ATTRIBUTE_SLUG = 'holzart';
-    
+
     /**
      * Singleton.
      */
@@ -51,9 +51,7 @@ class HK_WooCommerce
             'admin_init',
             [$this, 'maybe_sync_pending'],
             20
-            );
-
-       
+        );
     }
     /**
      * Synchronisierung für den nächsten Admin-Aufruf vormerken.
@@ -125,105 +123,104 @@ class HK_WooCommerce
         delete_transient('wc_attribute_taxonomies');
     }
 
-/**
- * Holzarten-Bild in die Mediathek übernehmen
- * und als WooCommerce-Term-Bild speichern.
- */
-private function sync_term_image($term_id, $image_file)
-{
-    if (empty($image_file)) {
-        return;
-    }
-
-    $filename = basename($image_file);
-
-    // Quelldatei im Holzarten-Verzeichnis.
-    $source = trailingslashit(
-        HK_Storage::directory()
-    ) . 'images/' . $filename;
-
-    if (!file_exists($source)) {
-        error_log(
-            'HK WooCommerce: Bild nicht gefunden: ' . $source
-        );
-        return;
-    }
-
-    // Prüfen, ob dieses Bild bereits importiert wurde.
-    $attachments = get_posts([
-        'post_type'      => 'attachment',
-        'post_status'    => 'inherit',
-        'posts_per_page' => 1,
-        'fields'         => 'ids',
-        'meta_key'       => '_hk_source_image_file',
-        'meta_value'     => $filename,
-    ]);
-
-    if (!empty($attachments)) {
-
-        $attachment_id = (int) $attachments[0];
-
-    } else {
-
-        // Dateityp prüfen.
-        $filetype = wp_check_filetype($filename);
-
-        if (empty($filetype['type']) ||
-            strpos($filetype['type'], 'image/') !== 0) {
+    /**
+     * Holzarten-Bild in die Mediathek übernehmen
+     * und als WooCommerce-Term-Bild speichern.
+     */
+    private function sync_term_image($term_id, $image_file)
+    {
+        if (empty($image_file)) {
             return;
         }
 
-        // WordPress-Bildfunktionen laden.
-        require_once ABSPATH . 'wp-admin/includes/image.php';
+        $filename = basename($image_file);
 
-        // Mediathek-Eintrag erstellen.
-        $attachment_id = wp_insert_attachment(
-            [
-                'post_mime_type' => $filetype['type'],
-                'post_title'     => pathinfo(
-                    $filename,
-                    PATHINFO_FILENAME
-                ),
-                'post_status'    => 'inherit',
-            ],
-            $source
-        );
+        // Quelldatei im Holzarten-Verzeichnis.
+        $source = trailingslashit(
+            HK_Storage::directory()
+        ) . 'images/' . $filename;
 
-        if (is_wp_error($attachment_id)) {
+        if (!file_exists($source)) {
             error_log(
-                'HK WooCommerce: ' .
-                $attachment_id->get_error_message()
+                'HK WooCommerce: Bild nicht gefunden: ' . $source
             );
             return;
         }
 
-        $size = getimagesize($source);
+        // Prüfen, ob dieses Bild bereits importiert wurde.
+        $attachments = get_posts([
+            'post_type'      => 'attachment',
+            'post_status'    => 'inherit',
+            'posts_per_page' => 1,
+            'fields'         => 'ids',
+            'meta_key'       => '_hk_source_image_file',
+            'meta_value'     => $filename,
+        ]);
 
-wp_update_attachment_metadata(
-    $attachment_id,
-    [
-        'width'  => $size[0],
-        'height' => $size[1],
-        'file'   => _wp_relative_upload_path($source),
-    ]
-);  
-        // Ursprungsdatei merken, um Duplikate zu vermeiden.
-        update_post_meta(
-            $attachment_id,
-            '_hk_source_image_file',
-            $filename
+        if (!empty($attachments)) {
+
+            $attachment_id = (int) $attachments[0];
+        } else {
+
+            // Dateityp prüfen.
+            $filetype = wp_check_filetype($filename);
+
+            if (
+                empty($filetype['type']) ||
+                strpos($filetype['type'], 'image/') !== 0
+            ) {
+                return;
+            }
+
+            // WordPress-Bildfunktionen laden.
+            require_once ABSPATH . 'wp-admin/includes/image.php';
+
+            // Mediathek-Eintrag erstellen.
+            $attachment_id = wp_insert_attachment(
+                [
+                    'post_mime_type' => $filetype['type'],
+                    'post_title'     => pathinfo(
+                        $filename,
+                        PATHINFO_FILENAME
+                    ),
+                    'post_status'    => 'inherit',
+                ],
+                $source
+            );
+
+            if (is_wp_error($attachment_id)) {
+                error_log(
+                    'HK WooCommerce: ' .
+                        $attachment_id->get_error_message()
+                );
+                return;
+            }
+
+            $size = getimagesize($source);
+
+            wp_update_attachment_metadata(
+                $attachment_id,
+                [
+                    'width'  => $size[0],
+                    'height' => $size[1],
+                    'file'   => _wp_relative_upload_path($source),
+                ]
+            );
+            // Ursprungsdatei merken, um Duplikate zu vermeiden.
+            update_post_meta(
+                $attachment_id,
+                '_hk_source_image_file',
+                $filename
+            );
+        }
+
+        // WooCommerce-Term-Bild zuweisen.
+        update_term_meta(
+            $term_id,
+            'thumbnail_id',
+            $attachment_id
         );
     }
-
-    // WooCommerce-Term-Bild zuweisen.
-    update_term_meta(
-        $term_id,
-        'thumbnail_id',
-        $attachment_id
-    );
-
-    
-}
 
 
 
@@ -304,7 +301,6 @@ wp_update_attachment_metadata(
 
                 $term_id = $result['term_id'];
                 $created++;
-
             } else {
 
                 $term_id = $term->term_id;
@@ -393,14 +389,15 @@ wp_update_attachment_metadata(
             ]
         );
     }
-    
+
 
     /**
      * Synchronisierung über Admin-Aktion starten.
      */
-    public function handle_sync() {
+    public function handle_sync()
+    {
 
-        
+
         if (!current_user_can('manage_options')) {
             wp_die('Keine Berechtigung.');
         }
@@ -413,7 +410,7 @@ wp_update_attachment_metadata(
         $result = $this->sync_attributes();
 
         if (is_wp_error($result)) {
-            wp_die($result->get_error_message());
+            wp_die(esc_html($result->get_error_message()));
         }
 
         $url = admin_url(
@@ -441,9 +438,7 @@ wp_update_attachment_metadata(
     ) {
         $attributes = $variation->get_attributes();
 
-        $holzart_slug = $attributes[
-            'pa_' . self::ATTRIBUTE_SLUG
-        ] ?? '';
+        $holzart_slug = $attributes['pa_' . self::ATTRIBUTE_SLUG] ?? '';
 
         if ($holzart_slug === '') {
             return $variation_data;

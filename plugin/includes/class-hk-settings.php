@@ -308,6 +308,8 @@ class HK_Settings
 
         $settings = self::sanitize_katalog($input);
 
+
+
         wp_send_json_success([
             'html' => HK_Frontend::render_catalog($settings)
         ]);
@@ -418,9 +420,9 @@ class HK_Settings
                             <select name="hk_katalog_settings[spalten]">
                                 <?php for ($i = 1; $i <= 6; $i++) : ?>
                                     <option
-                                        value="<?php echo $i; ?>"
+                                        value="<?php echo absint($i); ?>"
                                         <?php selected($settings['spalten'], $i); ?>>
-                                        <?php echo $i; ?>
+                                        <?php echo absint($i); ?>
                                     </option>
                                 <?php endfor; ?>
                             </select>
@@ -446,6 +448,7 @@ class HK_Settings
             <p>Wird erst nach Abspeichern aktualisiert.</p>
             <div id="hk-katalog-preview">
                 <?php
+                // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- HTML is generated internally; dynamic values are escaped in render_catalog().
                 echo HK_Frontend::render_catalog($settings);
                 ?>
             </div>
