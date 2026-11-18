@@ -5,7 +5,7 @@
  * Description: Extends woocommerce with a catalog of woods and harvesting location.
  * Version: 0.1.4
  * Author: Appwerft
- * Text Domain: holzarten-katalog
+ * Text Domain: tree-species-catalog
  * License: GPL-2.0-or-later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
