@@ -349,21 +349,17 @@ class HK_Plugin
             && $_POST['delete_image'] === '1';
 
         // Bild-Upload.
-        $has_upload = isset($_FILES['image_file'])
+        $has_upload = isset($_FILES['image_file']['error'])
             && $_FILES['image_file']['error'] !== UPLOAD_ERR_NO_FILE;
 
         if ($has_upload) {
             $file = $_FILES['image_file'];
-            if (
-                !isset($file['error']) ||
-                $file['error'] !== UPLOAD_ERR_OK
-            ) {
+
+            if ($file['error'] !== UPLOAD_ERR_OK) {
                 wp_die(
                     'Beim Hochladen der Bilddatei ist ein Fehler aufgetreten.'
                 );
             }
-
-
 
             $allowed_types = [
                 'jpg|jpeg' => 'image/jpeg',
