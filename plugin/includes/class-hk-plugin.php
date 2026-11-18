@@ -168,17 +168,14 @@ class HK_Plugin
             wp_die('Keine Berechtigung.');
         }
         // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- GET dient hier nur der Navigation, nicht der Verarbeitung einer Aktion.
-        $edit_id = isset($_GET['edit'])
-            ? sanitize_text_field(wp_unslash($_GET['edit']))
-            : '';
+        $edit_id = isset($_GET['edit'])? sanitize_text_field(wp_unslash($_GET['edit'])): '';
 
         $item = $edit_id
             ? HK_Catalog::get($edit_id)
             : null;
+        
         // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- GET dient hier nur der Navigation, nicht der Verarbeitung einer Aktion.
-        $search = isset($_GET['s'])
-            ? sanitize_text_field(wp_unslash($_GET['s']))
-            : '';
+        $search = isset($_GET['s'])? sanitize_text_field(wp_unslash($_GET['s'])): '';
 
         $items = HK_Catalog::get_all();
 
@@ -218,11 +215,13 @@ class HK_Plugin
                 echo '</div>';
             }
 
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- GET
             if (isset($_GET['error'])) {
                 echo '<div class="notice notice-error">';
                 echo '<p>Die Aktion konnte nicht ausgeführt werden.</p>';
                 echo '</div>';
             }
+
             // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- GET dient hier nur der Navigation, nicht der Verarbeitung einer Aktion.
             if (isset($_GET['imported'])) {
                 $count = absint($_GET['imported']);
@@ -255,6 +254,7 @@ class HK_Plugin
                 ];
 
                 $error = sanitize_key(
+                    // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- GET
                     wp_unslash($_GET['import_error'])
                 );
 
