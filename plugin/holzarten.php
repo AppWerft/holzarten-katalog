@@ -17,6 +17,21 @@ define('HK_PLUGIN_FILE', __FILE__);
 define('HK_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('HK_PLUGIN_URL', plugin_dir_url(__FILE__));
 
+// --------------------------------------------------
+// Automatische Updates über GitHub
+// --------------------------------------------------
+
+require_once HK_PLUGIN_DIR
+    . 'plugin-update-checker/plugin-update-checker.php';
+
+$hk_update_checker =
+    YahnisElsts\PluginUpdateChecker\v6\PucFactory::buildUpdateChecker(
+        'https://github.com/AppWerft/holzarten-katalog/',
+        HK_PLUGIN_FILE,
+        'holzarten-katalog'
+    );
+
+$hk_update_checker->setBranch('main');
 
 // Klassen laden
 require_once HK_PLUGIN_DIR . 'includes/class-hk-storage.php';
