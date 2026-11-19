@@ -127,7 +127,7 @@ HK_Settings::init();
 
 
 
-if (class_exists('WooCommerce')) {
+if (class_exists('WooCommerce') || true) {
     HK_WooCommerce::instance();
     HK_WC_Origin::instance();
 
