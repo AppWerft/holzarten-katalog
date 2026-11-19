@@ -125,8 +125,19 @@ add_filter(
 HK_Assets::init();
 HK_Settings::init();
 
-// WooCommerce-spezifische Klassen nur bei aktivem WooCommerce
+
+
 if (class_exists('WooCommerce')) {
     HK_WooCommerce::instance();
     HK_WC_Origin::instance();
+
+    add_action(
+        'woocommerce_product_options_general_product_data',
+        function () {
+            echo '<p style="color:red;font-weight:bold;">
+                TEST: WooCommerce-Hook funktioniert!
+            </p>';
+        },
+        1
+    );
 }
