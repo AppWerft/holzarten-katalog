@@ -126,8 +126,7 @@ document.addEventListener('DOMContentLoaded', function () {
             [position.lng, position.lat],
             'origin'
         );
-        console.log('startPing=',position.lat.toFixed(6))
-        return
+
         pingTimer = setInterval(function () {
 
             const currentLat = parseFloat(latField.value);
@@ -143,16 +142,34 @@ document.addEventListener('DOMContentLoaded', function () {
                 );
             }
 
-        }, 3000);
+        }, 2500);
+    }
+
+    function setPosition(position) {
+
+        clearPing();
+
+        latField.value = position.lat.toFixed(6);
+        lngField.value = position.lng.toFixed(6);
+
+        map.setView(
+            [position.lat, position.lng],
+            Math.max(map.getZoom(), 13),
+            { animate: false }
+        );
+
+        requestAnimationFrame(function () {
+            startPing(position);
+        });
     }
 
     function setPosition(position) {
 
         latField.value = position.lat.toFixed(6);
         lngField.value = position.lng.toFixed(6);
-        console.log('setPosition=',position.lat.toFixed(6))
+        console.log('setPosition=', position.lat.toFixed(6))
         // Alten Ping und Timer entfernen
-       // clearPing();
+        // clearPing();
 
         // Karte ohne Animation auf die neue Position setzen
         map.setView(
@@ -168,8 +185,20 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Karte anklicken, um den Herkunftsort festzulegen
-    map.on('click', function (event) {
-        setPosition(event.latlng);
+    item.addEventListener('click', function (event) {
+
+        // Klick darf nicht bis zur Karte durchgereicht werden.
+        L.DomEvent.stopPropagation(event);
+
+        const position = {
+            lat: coordinates[1],
+            lng: coordinates[0]
+        };
+
+        setPosition(position);
+
+        searchInput.value = name;
+        searchResults.innerHTML = '';
     });
 
     // --------------------------------------------------
