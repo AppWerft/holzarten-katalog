@@ -1,14 +1,6 @@
 
 document.addEventListener('DOMContentLoaded', function () {
-    function clearPing() {
-        clearInterval(pingTimer);
-        pingTimer = null;
 
-        if (pingLayer) {
-            pingLayer._data = [];
-            pingLayer._updatePings(true);
-        }
-    }
     const mapContainer = document.getElementById('hk-origin-map');
     const latField = document.getElementById('_hk_origin_lat');
     const lngField = document.getElementById('_hk_origin_lng');
@@ -59,23 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
         opacityRange: [0.6, 0]
     }).addTo(map);
 
-    // Ursprüngliche Position markieren
-    pingLayer.ping([lng, lat], 'origin');
 
-    // Regelmäßig neue Pulse erzeugen
-    pingTimer = setInterval(function () {
-
-        const currentLat = parseFloat(latField.value);
-        const currentLng = parseFloat(lngField.value);
-
-        if (
-            Number.isFinite(currentLat) &&
-            Number.isFinite(currentLng)
-        ) {
-            pingLayer.ping([currentLng, currentLat], 'origin');
-        }
-
-    }, 2500);
 
     // --------------------------------------------------
     // Ortssuche als Leaflet-Control oben rechts
@@ -127,31 +103,44 @@ document.addEventListener('DOMContentLoaded', function () {
         map.invalidateSize();
     });
 
-    // --------------------------------------------------
-    // Koordinaten übernehmen
-    // --------------------------------------------------
 
+    function clearPing() {
+        clearInterval(pingTimer);
+        pingTimer = null;
+
+        if (pingLayer) {
+            pingLayer._data = [];
+            pingLayer._updatePings(true);
+        }
+    }
+
+    function startPing(position) {
+
+        clearPing();
+
+        pingLayer.ping(
+            [position.lng, position.lat],
+            'origin'
+        );
+
+        pingTimer = setInterval(function () {
+            pingLayer.ping(
+                [position.lng, position.lat],
+                'origin'
+            );
+        }, 2500);
+    }
     function setPosition(position) {
 
         latField.value = position.lat.toFixed(6);
         lngField.value = position.lng.toFixed(6);
 
-        // Karte auf die neue Position zentrieren
         map.setView(
             [position.lat, position.lng],
             Math.max(map.getZoom(), 13)
         );
 
-        // Alten Ping entfernen
-        clearPing();
-
-        // Neuen Ping setzen
-        pingLayer.ping([position.lng, position.lat], 'origin');
-
-        // Regelmäßige Pulse wieder starten
-        pingTimer = setInterval(function () {
-            pingLayer.ping([position.lng, position.lat], 'origin');
-        }, 2500);
+        startPing(position);
     }
 
     // Karte anklicken, um den Herkunftsort festzulegen
@@ -166,7 +155,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (searchInput && searchResults) {
 
         searchInput.addEventListener('input', function () {
-
+            clearPing();
             clearTimeout(searchTimer);
 
             const searchTerm = searchInput.value.trim();
