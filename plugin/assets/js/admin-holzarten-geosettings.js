@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', function () {
 
     const preview = document.getElementById('settings-preview-map');
@@ -11,7 +10,6 @@ document.addEventListener('DOMContentLoaded', function () {
         return;
     }
 
-    // Darstellung des Kartencontainers
     const updatePreviewSize = () => {
         const w = parseInt(widthInput.value, 10) || 100;
         const h = parseInt(heightInput.value, 10) || 200;
@@ -20,48 +18,44 @@ document.addEventListener('DOMContentLoaded', function () {
         preview.style.height = h + 'px';
         preview.style.width = w + '%';
         preview.style.borderRadius = r + 'px';
-
-        map.invalidateSize();
     };
 
-    // Leaflet-Karte initialisieren
+    updatePreviewSize();
+
     const map = L.map(preview, {
         zoomControl: false
     }).setView([51.3406751, 12.4256434], 12);
 
-    // Kartenprovider wechseln
-    let tileLayer;
+    let tileLayer = null;
 
     const setTileProvider = (provider) => {
 
-        // Vorhandenen Layer entfernen
         if (tileLayer) {
             map.removeLayer(tileLayer);
         }
 
-        // Neuen Provider laden
         tileLayer = L.tileLayer.provider(provider);
-
         tileLayer.addTo(map);
     };
 
-    // Initiale Darstellung
-    updatePreviewSize();
-
+    // Gespeicherten Anbieter verwenden
     setTileProvider(
         providerSelect?.value || 'OpenStreetMap.Mapnik'
     );
 
-    // Ereignisse
-    heightInput.addEventListener('change', updatePreviewSize);
-    widthInput.addEventListener('change', updatePreviewSize);
-    radiusInput?.addEventListener('change', updatePreviewSize);
+    const updatePreview = () => {
+        updatePreviewSize();
+        map.invalidateSize();
+    };
 
-    // Provider live wechseln
+    heightInput.addEventListener('change', updatePreview);
+    widthInput.addEventListener('change', updatePreview);
+    radiusInput?.addEventListener('change', updatePreview);
+
+    // Anbieter unmittelbar bei Auswahl wechseln
     providerSelect?.addEventListener('change', function () {
         setTileProvider(this.value);
     });
 
-    // Nach dem Rendern Größe aktualisieren
     setTimeout(() => map.invalidateSize(), 100);
 });
