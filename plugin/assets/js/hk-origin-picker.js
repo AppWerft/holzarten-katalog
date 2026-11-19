@@ -104,17 +104,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     function clearPing() {
-        if (pingTimer) {
-            console.log('=========== clearInterval')
-            clearInterval(pingTimer);
-            pingTimer = null;
-        }
+    if (pingTimer) {
+        clearInterval(pingTimer);
+        pingTimer = null;
+    }
 
-        if (pingLayer && map.hasLayer(pingLayer)) {
-            console.log('========= clearPing')
+    if (pingLayer) {
+        // Noch gespeicherte Ping-Animationen entfernen
+        pingLayer._data = [];
+
+        // Layer von der Karte entfernen
+        if (map.hasLayer(pingLayer)) {
             map.removeLayer(pingLayer);
         }
     }
+}
 
     function startPing(position) {
 
