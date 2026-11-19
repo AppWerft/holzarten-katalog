@@ -104,26 +104,29 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     function clearPing() {
-        if (pingTimer) {
-            clearInterval(pingTimer);
-            pingTimer = null;
-        }
-
-        if (pingLayer) {
-            // Alle noch vorhandenen SVG-Kreise entfernen
-            pingLayer.data().forEach(function (ping) {
-                ping.c.remove();
-            });
-
-            // Datenarray leeren
-            pingLayer.data().length = 0;
-
-            // Layer von der Karte entfernen
-            if (map.hasLayer(pingLayer)) {
-                map.removeLayer(pingLayer);
-            }
-        }
+    if (pingTimer) {
+        clearInterval(pingTimer);
+        pingTimer = null;
     }
+
+    if (!pingLayer) return;
+
+    // Vorhandene SVG-Kreise entfernen
+    const pings = pingLayer.data();
+
+    if (Array.isArray(pings)) {
+        pings.forEach(function (ping) {
+            ping.c.remove();
+        });
+
+        pings.length = 0;
+    }
+
+    // Layer entfernen
+    if (map.hasLayer(pingLayer)) {
+        map.removeLayer(pingLayer);
+    }
+}
 
     function startPing(position) {
 
