@@ -108,8 +108,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
         clearInterval(pingTimer);
         pingTimer = null;
-
+        console.log('clearInterval')
         if (pingLayer && map.hasLayer(pingLayer)) {
+            console.log('clearPing')
             map.removeLayer(pingLayer);
         }
     }
@@ -155,7 +156,7 @@ document.addEventListener('DOMContentLoaded', function () {
         map.setView(
             [position.lat, position.lng],
             Math.max(map.getZoom(), 13),
-            { animate: false }
+            { animate: true }
         );
 
         // Erst nach Aktualisierung der Kartenansicht pingen
