@@ -225,8 +225,8 @@ class HK_WC_Origin
     {
         echo '<p style="color:red">HK_WC_Origin::render_fields() wird ausgeführt</p>';
 
-        global $post;
-        global $post;
+       
+       /* global $post;
 
         if (!$post) {
             return;
@@ -237,7 +237,7 @@ class HK_WC_Origin
         if (!$product) {
             return;
         }
-
+*/
         echo '<div class="options_group">';
 
         woocommerce_wp_text_input([
