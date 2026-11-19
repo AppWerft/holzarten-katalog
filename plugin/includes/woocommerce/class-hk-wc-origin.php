@@ -153,71 +153,26 @@ class HK_WC_Origin
             true
         );
     }
+
+
     public function render_geosuche()
-    {
-        $bar = "";
-        // Ortssuche
-        $bar .= '<div class="form-field" style="
-            display:grid;
-           
-            grid-template-columns: 16.5% 83.5%;
-            align-items:center;
-        ">';
+{
+    return '
+        <div id="hk-origin-map-wrapper">
+            <div id="hk-origin-map"></div>
 
-        // Label
-        $bar .=  '<label for="hk-origin-search-input" style="margin: 10px;">';
-        $bar .=  'Ortssuche';
-        $bar .=  '</label>';
-
-        // Container für Eingabefeld und Trefferliste
-        $bar .=  '<div style="position:relative;width:50%;">';
-
-        // Input
-        $bar .=  '<input type="search"
-            id="hk-origin-search-input"
-            placeholder="Ort oder Adresse eingeben …"
-            style="
-                width:100%;
-                background-image:url(\'' . esc_url(plugins_url('assets/images/lupe.svg', HK_PLUGIN_FILE)) . '\');
-                background-repeat:no-repeat;
-                background-position:right 12px center;
-                background-size:20px 20px;
-                box-sizing:border-box;
-            ">';
-
-        // Trefferliste
-        $bar .=  '<div id="hk-origin-search-results" style="
-            top:100%;
-            left:0;
-            right:0;
-            z-index:100000;
-            color:black;
-            background:#ccc;
-            border:1px solid #eee;
-            border-top:none;
-            max-height:320px;
-            overflow-y:auto;
-            box-shadow:0 4px 8px rgba(0,0,0,0.15);"
-            data-icon-url="' . esc_url(plugins_url('assets/images/geoposition.webp', HK_PLUGIN_FILE)) . '"
-            
-            ></div>';
-
-        $bar .=  '</div>';
-        $bar .=  '</div>';
-
-        // Button
-        $bar .=  '<p class="form-field">';
-        $bar .=  '<label>&nbsp;</label>';
-        $bar .=  '<button style="display:none;height:0"
-            type="button"
-            class="button"
-            id="hk-origin-picker">';
-        $bar .=  'Herkunft auf Karte wählen';
-        $bar .=  '</button>';
-        $bar .=  '</p>';
-        $bar .=  '<div id="hk-origin-map" style="display:none;height:400px;margin:10px 12px;"></div>';
-        return $bar;
-    }
+            <div id="hk-origin-map-search">
+                <input
+                    type="search"
+                    id="hk-origin-search-input"
+                    placeholder="Ort oder Adresse suchen …"
+                    autocomplete="off"
+                >
+                <div id="hk-origin-search-results"></div>
+            </div>
+        </div>
+    ';
+}
     /**
      * Herkunftskoordinaten im Produkteditor anzeigen.
      */
@@ -244,6 +199,7 @@ class HK_WC_Origin
     ]);
 
     echo '</div>';
+
 
     echo wp_kses_post($this->render_geosuche());
 }
