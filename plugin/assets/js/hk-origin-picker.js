@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const mapContainer = document.getElementById('hk-origin-map');
     const latField = document.getElementById('_hk_origin_lat');
     const lngField = document.getElementById('_hk_origin_lng');
+
     let searchInput = null;
     let searchResults = null;
 
@@ -38,9 +39,35 @@ document.addEventListener('DOMContentLoaded', function () {
             attribution: '&copy; OpenStreetMap-Mitwirkende'
         }
     ).addTo(map);
+
     // --------------------------------------------------
-    // Ortssuche als Leaflet-Control oben rechts
+    // PingLayer initialisieren
     // --------------------------------------------------
+
+    pingLayer = L.pingLayer({
+        duration: 2500,
+        fps: 32,
+        radiusRange: [5, 130],
+        opacityRange: [0.6, 0]
+    }).addTo(map);
+
+    // Ursprüngliche Position markieren
+    pingLayer.ping([lng, lat], 'origin');
+
+    // Regelmäßig neue Pulse erzeugen
+    pingTimer = setInterval(function () {
+
+        const currentLat = parseFloat(latField.value);
+        const currentLng = parseFloat(lngField.value);
+
+        if (
+            Number.isFinite(currentLat) &&
+            Number.isFinite(currentLng)
+        ) {
+            pingLayer.ping([currentLng, currentLat], 'origin');
+        }
+
+    }, 2500);
 
     // --------------------------------------------------
     // Ortssuche als Leaflet-Control oben rechts
@@ -87,34 +114,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     map.addControl(new SearchControl());
 
-
-    /*
-        // PingLayer
-        pingLayer = L.pingLayer({
-            duration: 2500,
-            fps: 32,
-            radiusRange: [5, 130],
-            opacityRange: [0.6, 0]
-        }).addTo(map);
-    
-        pingLayer.ping([lng, lat], 'origin');
-    
-        // Karte anklicken, um den Herkunftsort festzulegen.
-        map.on('click', function (event) {
-            setPosition(event.latlng);
-        });
-    
-        // Regelmäßig neue Pulse erzeugen.
-        pingTimer = setInterval(function () {
-            const currentLat = parseFloat(latField.value);
-            const currentLng = parseFloat(lngField.value);
-    
-            if (Number.isFinite(currentLat) && Number.isFinite(currentLng)) {
-                pingLayer.ping([currentLng, currentLat], 'origin');
-            }
-        }, 2500);
-    */
-    // Größe nach dem Aufbau nochmals aktualisieren.
+    // Größe nach dem Aufbau nochmals aktualisieren
     requestAnimationFrame(function () {
         map.invalidateSize();
     });
@@ -128,8 +128,19 @@ document.addEventListener('DOMContentLoaded', function () {
         latField.value = position.lat.toFixed(6);
         lngField.value = position.lng.toFixed(6);
 
-        pingLayer.ping([position.lng, position.lat], 'origin');
+        // Sofort einen neuen Impuls erzeugen
+        if (pingLayer) {
+            pingLayer.ping(
+                [position.lng, position.lat],
+                'origin'
+            );
+        }
     }
+
+    // Karte anklicken, um den Herkunftsort festzulegen
+    map.on('click', function (event) {
+        setPosition(event.latlng);
+    });
 
     // --------------------------------------------------
     // Photon-Ortssuche
@@ -247,33 +258,3 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 });
-
-
-
-
-/*
-    // PingLayer
-    pingLayer = L.pingLayer({
-        duration: 2500,
-        fps: 32,
-        radiusRange: [5, 130],
-        opacityRange: [0.6, 0]
-    }).addTo(map);
-
-    pingLayer.ping([lng, lat], 'origin');
-
-    // Karte anklicken, um den Herkunftsort festzulegen.
-    map.on('click', function (event) {
-        setPosition(event.latlng);
-    });
-
-    // Regelmäßig neue Pulse erzeugen.
-    pingTimer = setInterval(function () {
-        const currentLat = parseFloat(latField.value);
-        const currentLng = parseFloat(lngField.value);
-
-        if (Number.isFinite(currentLat) && Number.isFinite(currentLng)) {
-            pingLayer.ping([currentLng, currentLat], 'origin');
-        }
-    }, 2500);
-*/
