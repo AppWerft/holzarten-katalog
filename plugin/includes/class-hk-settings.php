@@ -483,7 +483,21 @@ class HK_Settings
 
     public static function render_fundorte()
     {
+        $settings = wp_parse_args(
+            get_option('hk_map_settings', []),
+            [
+                'height'        => 200,
+                'width'         => 100,
+                'radius'        => 0,
+                'position'      => 'center',
+                'priority'      => 35,
+                'tile_provider' => 'OpenStreetMap.Mapnik',
+            ]
+        );
+
         $providers = self::get_map_providers();
+        $selected = $settings['tile_provider'];
+
         $selected = $settings['tile_provider']
             ?? 'OpenStreetMap.Mapnik';
         $settings = wp_parse_args(

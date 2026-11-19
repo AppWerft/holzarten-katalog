@@ -1,50 +1,66 @@
+
 document.addEventListener('DOMContentLoaded', function () {
 
-    const preview = document.getElementById('settings-preview-map'),
-    heightInput = document.getElementById('hk-map-height'),
-    widthInput = document.getElementById('hk-map-width'),
-    radiusInput = document.getElementById('hk-map-radius'),
-    updatePreviewSize=()=> {
-        const w = parseInt(widthInput.value, 10) || 100,
-        h = parseInt(heightInput.value, 10) || 200,
-        r = parseInt(radiusInput.value, 10) || 0;
-        preview.style.height = h + 'px';
-        preview.style.width = w + '%';
-        preview.style.borderRadius = r + 'px';
-    }   
+    const preview = document.getElementById('settings-preview-map');
+    const heightInput = document.getElementById('hk-map-height');
+    const widthInput = document.getElementById('hk-map-width');
+    const radiusInput = document.getElementById('hk-map-radius');
+    const providerSelect = document.getElementById('hk-tile-provider');
+
     if (!preview || !heightInput || !widthInput) {
         return;
     }
 
     // Darstellung des Kartencontainers
-    const updatePreview = () => {
-        updatePreviewSize()
-        // Leaflet-Größe neu berechnen
+    const updatePreviewSize = () => {
+        const w = parseInt(widthInput.value, 10) || 100;
+        const h = parseInt(heightInput.value, 10) || 200;
+        const r = parseInt(radiusInput?.value, 10) || 0;
+
+        preview.style.height = h + 'px';
+        preview.style.width = w + '%';
+        preview.style.borderRadius = r + 'px';
+
         map.invalidateSize();
     };
-
-    // Initiale Größe setzen
-    updatePreviewSize();
 
     // Leaflet-Karte initialisieren
     const map = L.map(preview, {
         zoomControl: false
     }).setView([51.3406751, 12.4256434], 12);
 
-    // OpenStreetMap-Kacheln
-    L.tileLayer(
-        'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-        {
-            maxZoom: 19,
-            attribution: '&copy; OpenStreetMap-Mitwirkende'
-        }
-    ).addTo(map);
+    // Kartenprovider wechseln
+    let tileLayer;
 
-    heightInput.addEventListener('change', updatePreview);
-    widthInput.addEventListener('change', updatePreview);
-    radiusInput.addEventListener('change', updatePreview);
-    
-    
+    const setTileProvider = (provider) => {
+
+        // Vorhandenen Layer entfernen
+        if (tileLayer) {
+            map.removeLayer(tileLayer);
+        }
+
+        // Neuen Provider laden
+        tileLayer = L.tileLayer.provider(provider);
+
+        tileLayer.addTo(map);
+    };
+
+    // Initiale Darstellung
+    updatePreviewSize();
+
+    setTileProvider(
+        providerSelect?.value || 'OpenStreetMap.Mapnik'
+    );
+
+    // Ereignisse
+    heightInput.addEventListener('change', updatePreviewSize);
+    widthInput.addEventListener('change', updatePreviewSize);
+    radiusInput?.addEventListener('change', updatePreviewSize);
+
+    // Provider live wechseln
+    providerSelect?.addEventListener('change', function () {
+        setTileProvider(this.value);
+    });
 
     // Nach dem Rendern Größe aktualisieren
     setTimeout(() => map.invalidateSize(), 100);
