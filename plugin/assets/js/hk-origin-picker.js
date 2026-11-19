@@ -185,7 +185,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Karte anklicken, um den Herkunftsort festzulegen
-    item.addEventListener('click', function (event) {
+   /*item.addEventListener('click', function (event) {
 
         // Klick darf nicht bis zur Karte durchgereicht werden.
         L.DomEvent.stopPropagation(event);
@@ -199,7 +199,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         searchInput.value = name;
         searchResults.innerHTML = '';
-    });
+    });*/
 
     // --------------------------------------------------
     // Photon-Ortssuche
