@@ -134,25 +134,32 @@ class HK_WC_Origin
         );
     }
     public function enqueue_admin_scripts($hook)
-    {
-        if (!in_array($hook, ['post.php', 'post-new.php'], true)) {
-            return;
-        }
-
-        $screen = get_current_screen();
-
-        if (!$screen || $screen->post_type !== 'product') {
-            return;
-        }
-
-        wp_enqueue_script(
-            'hk-admin',
-            HK_PLUGIN_URL . 'assets/js/hk-admin.js',
-            ['jquery', 'wc-enhanced-select'],
-            HK_VERSION,
-            true
-        );
+{
+    if (!in_array($hook, ['post.php', 'post-new.php'], true)) {
+        return;
     }
+
+    $screen = get_current_screen();
+
+    if (!$screen || $screen->post_type !== 'product') {
+        return;
+    }
+
+    wp_enqueue_style(
+        'hk-admin',
+        HK_PLUGIN_URL . 'assets/css/hk-admin.css',
+        [],
+        HK_VERSION
+    );
+
+    wp_enqueue_script(
+        'hk-admin',
+        HK_PLUGIN_URL . 'assets/js/hk-admin.js',
+        ['jquery', 'wc-enhanced-select'],
+        HK_VERSION,
+        true
+    );
+}
 
 
     public function render_geosuche()

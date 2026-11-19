@@ -1,0 +1,35 @@
+#hk-origin-map-wrapper {
+    position: relative;
+    margin: 12px;
+}
+
+#hk-origin-map {
+    width: 100%;
+    height: 400px;
+    z-index: 1;
+}
+
+#hk-origin-map-search {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 300px;
+    max-width: calc(100% - 24px);
+    z-index: 1000;
+}
+
+#hk-origin-search-input {
+    width: 100%;
+    background: #fff;
+    box-shadow: 0 1px 5px rgba(0,0,0,.3);
+}
+
+#hk-origin-search-results {
+    background: #fff;
+    max-height: 280px;
+    overflow-y: auto;
+}
+
+#hk-origin-search-results:empty {
+    display: none;
+}
