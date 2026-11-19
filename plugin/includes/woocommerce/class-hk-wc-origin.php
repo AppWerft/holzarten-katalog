@@ -163,10 +163,20 @@ class HK_WC_Origin
 
 
     public function render_geosuche()
-    {
-        return '
+{
+    $settings = wp_parse_args(
+        get_option('hk_map_settings', []),
+        [
+            'pingcolor' => '#4285F4',
+        ]
+    );
+
+    return '
         <div id="hk-origin-map-wrapper">
-            <div id="hk-origin-map"></div>
+            <div
+                id="hk-origin-map"
+                data-pingcolor="' . esc_attr($settings['pingcolor']) . '"
+            ></div>
 
             <div id="hk-origin-map-search">
                 <input
@@ -179,7 +189,7 @@ class HK_WC_Origin
             </div>
         </div>
     ';
-    }
+}
     /**
      * Herkunftskoordinaten im Produkteditor anzeigen.
      */

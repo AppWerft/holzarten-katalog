@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const mapContainer = document.getElementById('hk-origin-map');
     const latField = document.getElementById('_hk_origin_lat');
     const lngField = document.getElementById('_hk_origin_lng');
-
+    const pingColor = $('#hk-origin-map').data('pingcolor') || '#4285F4';
     let searchInput = null;
     let searchResults = null;
 
@@ -139,8 +139,8 @@ document.addEventListener('DOMContentLoaded', function () {
             const ping = pings[pings.length - 1];
 
             ping.c
-                .attr('fill', '#4285F4')
-                .attr('stroke', '#4285F4');
+                .attr('fill', pingColor)
+                .attr('stroke', pingColor);
         }
     }
     function startPing(position) {
