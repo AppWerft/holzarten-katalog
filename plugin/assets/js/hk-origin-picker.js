@@ -4,8 +4,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const mapContainer = document.getElementById('hk-origin-map');
     const latField = document.getElementById('_hk_origin_lat');
     const lngField = document.getElementById('_hk_origin_lng');
-    const searchInput = document.getElementById('hk-origin-search-input');
-    const searchResults = document.getElementById('hk-origin-search-results');
+    let searchInput = null;
+    let searchResults = null;
 
     if (!mapContainer || !latField || !lngField) return;
 
@@ -42,33 +42,50 @@ document.addEventListener('DOMContentLoaded', function () {
     // Ortssuche als Leaflet-Control oben rechts
     // --------------------------------------------------
 
-    ///if (searchInput && searchResults) {
+    // --------------------------------------------------
+    // Ortssuche als Leaflet-Control oben rechts
+    // --------------------------------------------------
 
-        const SearchControl = L.Control.extend({
+    const SearchControl = L.Control.extend({
 
-            options: {
-                position: 'topright'
-            },
+        options: {
+            position: 'topright'
+        },
 
-            onAdd: function () {
+        onAdd: function () {
 
-                const container = L.DomUtil.create(
-                    'div',
-                    'hk-origin-search-control'
-                );
+            const container = L.DomUtil.create(
+                'div',
+                'hk-origin-search-control'
+            );
 
-                container.appendChild(searchInput);
-                container.appendChild(searchResults);
+            searchInput = L.DomUtil.create(
+                'input',
+                '',
+                container
+            );
 
-                L.DomEvent.disableClickPropagation(container);
-                L.DomEvent.disableScrollPropagation(container);
+            searchInput.type = 'search';
+            searchInput.id = 'hk-origin-search-input';
+            searchInput.placeholder = 'Ort oder Adresse suchen …';
+            searchInput.autocomplete = 'off';
 
-                return container;
-            }
-        });
+            searchResults = L.DomUtil.create(
+                'div',
+                '',
+                container
+            );
 
-        map.addControl(new SearchControl());
-    //}
+            searchResults.id = 'hk-origin-search-results';
+
+            L.DomEvent.disableClickPropagation(container);
+            L.DomEvent.disableScrollPropagation(container);
+
+            return container;
+        }
+    });
+
+    map.addControl(new SearchControl());
 
 
     /*
