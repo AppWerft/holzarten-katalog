@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Ortssuche als Leaflet-Control oben rechts
     // --------------------------------------------------
 
-    if (searchInput && searchResults) {
+    ///if (searchInput && searchResults) {
 
         const SearchControl = L.Control.extend({
 
@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         map.addControl(new SearchControl());
-    }
+    //}
 
 
     /*
