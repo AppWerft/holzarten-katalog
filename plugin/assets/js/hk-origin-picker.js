@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', function () {
         lngField.value = position.lng.toFixed(6);
 
         // Alten Ping und Timer entfernen
-        clearPing();
+       // clearPing();
 
         // Karte ohne Animation auf die neue Position setzen
         map.setView(
@@ -163,7 +163,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // Erst nach Aktualisierung der Kartenansicht pingen
         setTimeout(function () {
             startPing(position)
-        }, 2000);
+        }, 200);
     }
 
     // Karte anklicken, um den Herkunftsort festzulegen
