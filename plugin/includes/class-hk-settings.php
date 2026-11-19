@@ -131,6 +131,7 @@ class HK_Settings
             );
         }
     }
+    
     private static function get_map_providers(): array
     {
         return [
@@ -141,8 +142,11 @@ class HK_Settings
             'Esri.WorldTopoMap'    => 'Esri – Topografisch',
             'Esri.WorldImagery'    => 'Esri – Satellit',
             'Esri.WorldStreetMap'  => 'Esri – Straßenkarte',
+            'Stadia.AlidadeSmooth' => 'Stadia Alidade Smooth'
         ];
     }
+
+
     public static function render_holzarten()
     {
 ?>
