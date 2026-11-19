@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
             attribution: '&copy; OpenStreetMap-Mitwirkende'
         }
     ).addTo(map);
-
+/*
     // PingLayer
     pingLayer = L.pingLayer({
         duration: 2500,
@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function () {
             pingLayer.ping([currentLng, currentLat], 'origin');
         }
     }, 2500);
-
+*/
     // Größe nach dem Aufbau nochmals aktualisieren.
     requestAnimationFrame(function () {
         map.invalidateSize();
