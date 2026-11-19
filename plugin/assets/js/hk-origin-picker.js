@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded', function () {
             [position.lng, position.lat],
             'origin'
         );
-
+        return
         pingTimer = setInterval(function () {
 
             const currentLat = parseFloat(latField.value);
