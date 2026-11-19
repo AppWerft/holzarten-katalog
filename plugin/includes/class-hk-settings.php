@@ -492,7 +492,7 @@ class HK_Settings
                                 name="hk_map_settings[hk-map-kartentyp]"
                                 value="<?php echo esc_attr($settings['hk-map-kartentyp']); ?>"
                             >
-                            <span class="description"><a href="https://leaflet-extras.github.io/leaflet-providers/preview/"></a></span>
+                            <span class="description"><a href="https://leaflet-extras.github.io/leaflet-providers/preview/">Liste der Kartentypen</a></span>
                         </td>
                     </tr>
                     <tr>
