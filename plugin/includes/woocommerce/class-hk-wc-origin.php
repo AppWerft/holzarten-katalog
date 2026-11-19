@@ -76,24 +76,57 @@ class HK_WC_Origin
         }
     }
 
+
     public static function register_zoomlevel_attribute()
-{
-    if (!function_exists('wc_create_attribute')) {
-        return;
+    {
+        if (!function_exists('wc_create_attribute')) {
+            return;
+        }
+
+        if (!wc_attribute_taxonomy_id_by_name('zoomlevel')) {
+            $result = wc_create_attribute([
+                'name'         => 'Zoomlevel',
+                'slug'         => 'zoomlevel',
+                'type'         => 'select',
+                'order_by'     => 'menu_order',
+                'has_archives' => false,
+            ]);
+
+            if (is_wp_error($result)) {
+                return;
+            }
+
+            delete_transient('wc_attribute_taxonomies');
+        }
+
+        // WooCommerce muss die Taxonomie zunächst registrieren.
+        if (!taxonomy_exists('pa_zoomlevel')) {
+            return;
+        }
+
+        for ($zoom = 1; $zoom <= 19; $zoom++) {
+            if (!term_exists((string) $zoom, 'pa_zoomlevel')) {
+                wp_insert_term((string) $zoom, 'pa_zoomlevel');
+            }
+        }
     }
 
-    if (!wc_attribute_taxonomy_id_by_name('zoomlevel')) {
-        wc_create_attribute([
-            'name'         => 'Zoomlevel',
-            'slug'         => 'zoomlevel',
-            'type'         => 'select',
-            'order_by'     => 'menu_order',
-            'has_archives' => false,
-        ]);
-    }
 
-    delete_transient('wc_attribute_taxonomies');
-}
+    public static function register_zoomlevel_terms()
+    {
+        if (!taxonomy_exists('pa_zoomlevel')) {
+            return;
+        }
+
+        for ($zoom = 1; $zoom <= 19; $zoom++) {
+            if (!term_exists((string) $zoom, 'pa_zoomlevel')) {
+                wp_insert_term(
+                    (string) $zoom,
+                    'pa_zoomlevel'
+                );
+            }
+        }
+    }
     /**
      * Karte auf der Produktseite anzeigen.
      */
@@ -119,6 +152,15 @@ class HK_WC_Origin
         if ($lat === '' || $lng === '') {
             return;
         }
+        $zoom_terms = wc_get_product_terms(
+            $product_id,
+            'pa_zoomlevel',
+            ['fields' => 'names']
+        );
+
+        $zoom = !empty($zoom_terms)
+            ? absint($zoom_terms[0])
+            : 6;
         wp_enqueue_script(
             'hk-geopositions-map',
             plugins_url('assets/js/geopositions-map.js', HK_PLUGIN_FILE),
@@ -233,7 +275,19 @@ class HK_WC_Origin
                 'step' => 'any',
             ],
         ]);
-
+        woocommerce_wp_select([
+            'id'      => '_hk_origin_zoom',
+            'label'   => 'Karten-Zoomlevel',
+            'options' => array_combine(
+                range(1, 19),
+                range(1, 19)
+            ),
+            'value'   => get_post_meta(
+                get_the_ID(),
+                '_hk_origin_zoom',
+                true
+            ) ?: 6,
+        ]);
         echo '</div>';
 
 
@@ -257,6 +311,13 @@ class HK_WC_Origin
             )
         ) {
             return;
+        }
+        if (isset($_POST['_hk_origin_zoom'])) {
+            $zoom = absint($_POST['_hk_origin_zoom']);
+
+            if ($zoom >= 1 && $zoom <= 19) {
+                $product->update_meta_data('_hk_origin_zoom', $zoom);
+            }
         }
 
         foreach ($coordinates as $key => $range) {
