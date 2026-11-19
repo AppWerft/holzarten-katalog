@@ -166,7 +166,17 @@ class HK_WC_Origin
     {
         return '
         <div id="hk-origin-map-wrapper">
-            
+            <div id="hk-origin-map"></div>
+
+            <div id="hk-origin-map-search">
+                <input
+                    type="search"
+                    id="hk-origin-search-input"
+                    placeholder="Ort oder Adresse suchen …"
+                    autocomplete="off"
+                >
+                <div id="hk-origin-search-results"></div>
+            </div>
         </div>
     ';
     }
