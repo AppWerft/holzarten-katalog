@@ -222,44 +222,31 @@ class HK_WC_Origin
      * Herkunftskoordinaten im Produkteditor anzeigen.
      */
     public function render_fields()
-    {
-        echo '<p style="color:red">HK_WC_Origin::render_fields() wird ausgeführt</p>';
+{
+    echo '<div class="options_group">';
 
-       
-       /* global $post;
+    woocommerce_wp_text_input([
+        'id'          => '_hk_origin_lat',
+        'label'       => 'Breitengrad',
+        'type'        => 'number',
+        'custom_attributes' => [
+            'step' => 'any',
+        ],
+    ]);
 
-        if (!$post) {
-            return;
-        }
+    woocommerce_wp_text_input([
+        'id'          => '_hk_origin_lng',
+        'label'       => 'Längengrad',
+        'type'        => 'number',
+        'custom_attributes' => [
+            'step' => 'any',
+        ],
+    ]);
 
-        $product = wc_get_product($post->ID);
+    echo '</div>';
 
-        if (!$product) {
-            return;
-        }
-*/
-        echo '<div class="options_group">';
-
-        woocommerce_wp_text_input([
-            'id'          => '_hk_origin_lat',
-            'label'       => 'Breitengrad',
-            'type'        => 'number',
-            'custom_attributes' => [
-                'step' => 'any',
-            ],
-        ]);
-
-        woocommerce_wp_text_input([
-            'id'          => '_hk_origin_lng',
-            'label'       => 'Längengrad',
-            'type'        => 'number',
-            'custom_attributes' => [
-                'step' => 'any',
-            ],
-        ]);
-        echo "</div>";
-        echo wp_kses_post($this->render_geosuche());
-    }
+    echo wp_kses_post($this->render_geosuche());
+}
     /**
      * Herkunftskoordinaten speichern.
      */
