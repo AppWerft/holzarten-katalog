@@ -1,6 +1,14 @@
 
 document.addEventListener('DOMContentLoaded', function () {
+    function clearPing() {
+        clearInterval(pingTimer);
+        pingTimer = null;
 
+        if (pingLayer) {
+            pingLayer._data = [];
+            pingLayer._updatePings(true);
+        }
+    }
     const mapContainer = document.getElementById('hk-origin-map');
     const latField = document.getElementById('_hk_origin_lat');
     const lngField = document.getElementById('_hk_origin_lng');
@@ -128,13 +136,22 @@ document.addEventListener('DOMContentLoaded', function () {
         latField.value = position.lat.toFixed(6);
         lngField.value = position.lng.toFixed(6);
 
-        // Sofort einen neuen Impuls erzeugen
-        if (pingLayer) {
-            pingLayer.ping(
-                [position.lng, position.lat],
-                'origin'
-            );
-        }
+        // Karte auf die neue Position zentrieren
+        map.setView(
+            [position.lat, position.lng],
+            Math.max(map.getZoom(), 13)
+        );
+
+        // Alten Ping entfernen
+        clearPing();
+
+        // Neuen Ping setzen
+        pingLayer.ping([position.lng, position.lat], 'origin');
+
+        // Regelmäßige Pulse wieder starten
+        pingTimer = setInterval(function () {
+            pingLayer.ping([position.lng, position.lat], 'origin');
+        }, 2500);
     }
 
     // Karte anklicken, um den Herkunftsort festzulegen
