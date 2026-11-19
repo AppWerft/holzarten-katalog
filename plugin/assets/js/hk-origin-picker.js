@@ -31,6 +31,12 @@ document.addEventListener('DOMContentLoaded', function () {
     const lng = Number.isFinite(initialLng) ? initialLng : 12.42860;
 
     const map = L.map(mapContainer).setView([lat, lng], 6);
+    
+    map.on('zoomend', function () {
+        $('#_hk_origin_zoom').val(map.getZoom());
+    });
+
+    // Hier den Zoomwert für die Produktattribut-Auswahl übernehmen.
 
     L.tileLayer(
         'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
