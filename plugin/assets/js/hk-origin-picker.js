@@ -135,12 +135,20 @@ document.addEventListener('DOMContentLoaded', function () {
         latField.value = position.lat.toFixed(6);
         lngField.value = position.lng.toFixed(6);
 
+        // Alten Ping und Timer entfernen
+        clearPing();
+
+        // Karte ohne Animation auf die neue Position setzen
         map.setView(
             [position.lat, position.lng],
-            Math.max(map.getZoom(), 13)
+            Math.max(map.getZoom(), 13),
+            { animate: false }
         );
 
-        startPing(position);
+        // Erst nach Aktualisierung der Kartenansicht pingen
+        requestAnimationFrame(function () {
+            startPing(position);
+        });
     }
 
     // Karte anklicken, um den Herkunftsort festzulegen
