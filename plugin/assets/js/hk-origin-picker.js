@@ -126,6 +126,7 @@ document.addEventListener('DOMContentLoaded', function () {
             [position.lng, position.lat],
             'origin'
         );
+        console.log('startPing=',position.lat.toFixed(6))
         return
         pingTimer = setInterval(function () {
 
@@ -149,7 +150,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         latField.value = position.lat.toFixed(6);
         lngField.value = position.lng.toFixed(6);
-
+        console.log('setPosition=',position.lat.toFixed(6))
         // Alten Ping und Timer entfernen
        // clearPing();
 
