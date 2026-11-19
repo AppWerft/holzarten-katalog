@@ -606,6 +606,8 @@ class HK_Settings
                             </select>
                         </td>
                     </tr>
+                   
+                   
                     <tr>
                         <th scope="row">
                             <label for="hk-map-priority">Position in WooCommerce</label>
@@ -624,6 +626,25 @@ class HK_Settings
                             </p>
                         </td>
                     </tr>
+                    <tr>
+                        <th scope="row">
+                            <label for="hk-map-priority">Farbe des Geostandortes</label>
+                        </th>
+                        <td>
+                            <input
+                                type="color"
+                                id="hk-map-pingcolor"
+                                name="hk_map_settings[pingcolor]"
+                                value="<?php echo esc_attr($settings['pingcolor']); ?>"
+                                min="1"
+                                max="100">
+                            <p class="description">
+                                
+                            </p>
+                        </td>
+                    </tr>
+
+
                 </table>
 
                 <?php submit_button('Einstellungen speichern'); ?>
