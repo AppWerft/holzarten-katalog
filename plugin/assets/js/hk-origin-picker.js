@@ -38,32 +38,65 @@ document.addEventListener('DOMContentLoaded', function () {
             attribution: '&copy; OpenStreetMap-Mitwirkende'
         }
     ).addTo(map);
-/*
-    // PingLayer
-    pingLayer = L.pingLayer({
-        duration: 2500,
-        fps: 32,
-        radiusRange: [5, 130],
-        opacityRange: [0.6, 0]
-    }).addTo(map);
+    // --------------------------------------------------
+    // Ortssuche als Leaflet-Control oben rechts
+    // --------------------------------------------------
 
-    pingLayer.ping([lng, lat], 'origin');
+    if (searchInput && searchResults) {
 
-    // Karte anklicken, um den Herkunftsort festzulegen.
-    map.on('click', function (event) {
-        setPosition(event.latlng);
-    });
+        const SearchControl = L.Control.extend({
 
-    // Regelmäßig neue Pulse erzeugen.
-    pingTimer = setInterval(function () {
-        const currentLat = parseFloat(latField.value);
-        const currentLng = parseFloat(lngField.value);
+            options: {
+                position: 'topright'
+            },
 
-        if (Number.isFinite(currentLat) && Number.isFinite(currentLng)) {
-            pingLayer.ping([currentLng, currentLat], 'origin');
-        }
-    }, 2500);
-*/
+            onAdd: function () {
+
+                const container = L.DomUtil.create(
+                    'div',
+                    'hk-origin-search-control'
+                );
+
+                container.appendChild(searchInput);
+                container.appendChild(searchResults);
+
+                L.DomEvent.disableClickPropagation(container);
+                L.DomEvent.disableScrollPropagation(container);
+
+                return container;
+            }
+        });
+
+        map.addControl(new SearchControl());
+    }
+
+
+    /*
+        // PingLayer
+        pingLayer = L.pingLayer({
+            duration: 2500,
+            fps: 32,
+            radiusRange: [5, 130],
+            opacityRange: [0.6, 0]
+        }).addTo(map);
+    
+        pingLayer.ping([lng, lat], 'origin');
+    
+        // Karte anklicken, um den Herkunftsort festzulegen.
+        map.on('click', function (event) {
+            setPosition(event.latlng);
+        });
+    
+        // Regelmäßig neue Pulse erzeugen.
+        pingTimer = setInterval(function () {
+            const currentLat = parseFloat(latField.value);
+            const currentLng = parseFloat(lngField.value);
+    
+            if (Number.isFinite(currentLat) && Number.isFinite(currentLng)) {
+                pingLayer.ping([currentLng, currentLat], 'origin');
+            }
+        }, 2500);
+    */
     // Größe nach dem Aufbau nochmals aktualisieren.
     requestAnimationFrame(function () {
         map.invalidateSize();
