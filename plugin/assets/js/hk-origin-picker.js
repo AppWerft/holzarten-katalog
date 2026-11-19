@@ -104,29 +104,29 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     function clearPing() {
-    if (pingTimer) {
-        clearInterval(pingTimer);
-        pingTimer = null;
+        if (pingTimer) {
+            clearInterval(pingTimer);
+            pingTimer = null;
+        }
+
+        if (!pingLayer) return;
+
+        // Vorhandene SVG-Kreise entfernen
+        const pings = pingLayer.data();
+
+        if (Array.isArray(pings)) {
+            pings.forEach(function (ping) {
+                ping.c.remove();
+            });
+
+            pings.length = 0;
+        }
+
+        // Layer entfernen
+        if (map.hasLayer(pingLayer)) {
+            map.removeLayer(pingLayer);
+        }
     }
-
-    if (!pingLayer) return;
-
-    // Vorhandene SVG-Kreise entfernen
-    const pings = pingLayer.data();
-
-    if (Array.isArray(pings)) {
-        pings.forEach(function (ping) {
-            ping.c.remove();
-        });
-
-        pings.length = 0;
-    }
-
-    // Layer entfernen
-    if (map.hasLayer(pingLayer)) {
-        map.removeLayer(pingLayer);
-    }
-}
 
     function startPing(position) {
 
@@ -138,6 +138,12 @@ document.addEventListener('DOMContentLoaded', function () {
             [position.lng, position.lat],
             'origin'
         );
+        // Farbe des neu erzeugten SVG-Kreises setzen
+        pingLayer.data().forEach(function (ping) {
+            ping.c
+                .attr('fill', '#4285F4')
+                .attr('stroke', '#4285F4');
+        });
 
         pingTimer = setInterval(function () {
 
