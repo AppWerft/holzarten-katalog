@@ -126,14 +126,7 @@ HK_Assets::init();
 HK_Settings::init();
 
 
-
-add_action('plugins_loaded', function () {
-
-    if (!class_exists('WooCommerce')) {
-        return;
-    }
-
+add_action('woocommerce_loaded', function () {
     HK_WooCommerce::instance();
     HK_WC_Origin::instance();
-
-}, 20);
+});
