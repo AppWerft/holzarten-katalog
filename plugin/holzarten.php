@@ -127,29 +127,13 @@ HK_Settings::init();
 
 
 
-if (class_exists('WooCommerce') || true) {
+add_action('plugins_loaded', function () {
+
+    if (!class_exists('WooCommerce')) {
+        return;
+    }
+
     HK_WooCommerce::instance();
     HK_WC_Origin::instance();
 
-    add_action(
-        'woocommerce_product_options_general_product_data',
-        function () {
-            echo '<p style="color:red;font-weight:bold;">
-                TEST: WooCommerce-Hook funktioniert!
-            </p>';
-        },
-        1
-    );
-    add_action('admin_notices', function () {
-    printf(
-        '<div class="notice notice-info"><p>
-        HK_WC_Origin geladen: %s<br>
-        Hook registriert: %s
-        </p></div>',
-        class_exists('HK_WC_Origin') ? 'JA' : 'NEIN',
-        has_action(
-            'woocommerce_product_options_general_product_data'
-        ) !== false ? 'JA' : 'NEIN'
-    );
-});
-}
+}, 20);
