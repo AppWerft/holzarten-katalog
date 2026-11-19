@@ -32,7 +32,7 @@
     background: #f0f0f0;
 }
 
-.ping {
-    fill: #4285F4!important;;
-    stroke: #4285F4!important;;
+.leaflet-overlay-pane circle.ping.origin {
+    fill: #4285F4 !important;
+    stroke: #4285F4 !important;
 }
