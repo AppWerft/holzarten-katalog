@@ -161,9 +161,9 @@ document.addEventListener('DOMContentLoaded', function () {
         );
 
         // Erst nach Aktualisierung der Kartenansicht pingen
-        requestAnimationFrame(function () {
-            startPing(position);
-        });
+        setTimeout(function () {
+            startPing(position)
+        }, 2000);
     }
 
     // Karte anklicken, um den Herkunftsort festzulegen
