@@ -48,9 +48,8 @@ document.addEventListener('DOMContentLoaded', function () {
         duration: 2500,
         fps: 32,
         radiusRange: [5, 130],
-        opacityRange: [0.6, 0]
+        opacityRange: [0.5, 0]
     });
-
 
 
     // --------------------------------------------------
@@ -105,11 +104,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     function clearPing() {
-        clearInterval(pingTimer);
-        pingTimer = null;
-        console.log('clearInterval')
+        if (pingTimer) {
+            console.log('=========== clearInterval')
+            clearInterval(pingTimer);
+            pingTimer = null;
+        }
+
         if (pingLayer && map.hasLayer(pingLayer)) {
-            console.log('clearPing')
+            console.log('========= clearPing')
             map.removeLayer(pingLayer);
         }
     }
@@ -119,7 +121,7 @@ document.addEventListener('DOMContentLoaded', function () {
         clearPing();
 
         pingLayer.addTo(map);
-        
+
         pingLayer.ping(
             [position.lng, position.lat],
             'origin'
