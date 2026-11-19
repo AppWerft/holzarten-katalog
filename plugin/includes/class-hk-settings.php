@@ -70,7 +70,7 @@ class HK_Settings
         wp_enqueue_script(
             'hk-leaflet-providers',
             HK_PLUGIN_URL . 'assets/vendor/leaflet/leaflet-providers.js',
-            ['leaflet'],
+            ['hk_leaflet'],
             HK_VERSION,
             true
         );
