@@ -140,4 +140,16 @@ if (class_exists('WooCommerce')) {
         },
         1
     );
+    add_action('admin_notices', function () {
+    printf(
+        '<div class="notice notice-info"><p>
+        HK_WC_Origin geladen: %s<br>
+        Hook registriert: %s
+        </p></div>',
+        class_exists('HK_WC_Origin') ? 'JA' : 'NEIN',
+        has_action(
+            'woocommerce_product_options_general_product_data'
+        ) !== false ? 'JA' : 'NEIN'
+    );
+});
 }
