@@ -524,7 +524,7 @@ class HK_Settings
                         <td>
                             <select
                                 name="hk_map_settings[tile_provider]"
-                                id="hk_tile_provider">
+                                id="hk-tile-provider">>
                                 <?php foreach ($providers as $key => $label) : ?>
                                     <option
                                         value="<?php echo esc_attr($key); ?>"
