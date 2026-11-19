@@ -100,7 +100,7 @@ if ! git diff --cached --quiet; then
     if [[ "$RELEASE" == true ]]; then
         COMMIT_MESSAGE="Release $TAG"
     else
-        COMMIT_MESSAGE="Plugin aktualisiert"
+        COMMIT_MESSAGE="Plugin aktualisiert, Kartenprovider im BE"
     fi
 
     git commit -m "$COMMIT_MESSAGE"
