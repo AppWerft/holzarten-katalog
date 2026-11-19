@@ -541,7 +541,7 @@ class HK_Settings
                                     </option>
                                 <?php endforeach; ?>
                             </select>
-                            <span class="description"></span>
+                            <span class="description">Beachte eventuelle Lizenzbeschränkungen!</span>
                         </td>
                     </tr>
                     <tr>
