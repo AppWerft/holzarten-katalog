@@ -258,7 +258,6 @@ document.addEventListener('DOMContentLoaded', function () {
             searchResults.innerHTML = '';
 
             data.features.forEach(function (feature) {
-
                 const properties = feature.properties;
                 const coordinates = feature.geometry.coordinates;
 
@@ -272,21 +271,16 @@ document.addEventListener('DOMContentLoaded', function () {
                 ].filter(Boolean).join(', ');
 
                 const item = document.createElement('div');
-
                 item.className = 'hk-search-result';
                 item.textContent = name;
 
-                item.addEventListener('click', function () {
+                item.addEventListener('click', function (event) {
+                    L.DomEvent.stopPropagation(event);
 
                     const position = {
                         lat: coordinates[1],
                         lng: coordinates[0]
                     };
-
-                    map.setView(
-                        [position.lat, position.lng],
-                        13
-                    );
 
                     setPosition(position);
 
