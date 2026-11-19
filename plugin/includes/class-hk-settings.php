@@ -585,8 +585,8 @@ class HK_Settings
                             <input
                                 type="range"
                                 id="hk-map-radius"
-                                name="hk_map_settings[radius]"
-                                value="<?php echo esc_attr($settings['radius']); ?>"
+                                name="hk_map_settings[hk-map-radius]"
+                                value="<?php echo esc_attr($settings['hk-map-radius']); ?>"
                                 min="0"
                                 max="50"
                                 step="1">
