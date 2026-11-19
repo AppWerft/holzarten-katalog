@@ -66,6 +66,14 @@ class HK_Settings
             '1.9.4',
             true
         );
+        // Leaflet JavaScript
+        wp_enqueue_script(
+            'leaflet',
+            HK_PLUGIN_URL . 'assets/vendor/leaflet/leaflet-providers.js',
+            [],
+            '1.9.4',
+            true
+        );
         // CSS
         if ($hook === 'holzartenkatalog_page_hk_settings_katalog') {
             wp_enqueue_style(
@@ -619,16 +627,41 @@ class HK_Settings
     public static function sanitize_map($input)
     {
         $input = is_array($input) ? $input : [];
+
+        // Kartenprovider validieren.
+        $providers = self::get_map_providers();
+
+        $provider = sanitize_text_field(
+            $input['tile_provider'] ?? ''
+        );
+
+        if (!array_key_exists($provider, $providers)) {
+            $provider = 'OpenStreetMap.Mapnik';
+        }
+
         return [
-            'height' => max(100, min(800, absint($input['height'] ?? 200))),
-            'width' => max(20, min(100, absint($input['width'] ?? 100))),
+            'height' => max(
+                100,
+                min(800, absint($input['height'] ?? 200))
+            ),
+
+            'width' => max(
+                20,
+                min(100, absint($input['width'] ?? 100))
+            ),
+
             'position' => in_array(
                 $input['position'] ?? '',
                 ['left', 'center', 'right'],
                 true
             ) ? $input['position'] : 'center',
 
-            'priority' => max(1, min(100, absint($input['priority'] ?? 35))),
+            'priority' => max(
+                1,
+                min(100, absint($input['priority'] ?? 35))
+            ),
+
+            'tile_provider' => $provider,
         ];
     }
 }
