@@ -33,6 +33,6 @@
 }
 
 .ping {
-    fill: #4285F4;
-    stroke: #4285F4;
+    fill: #4285F4!important;;
+    stroke: #4285F4!important;;
 }
