@@ -37,10 +37,10 @@ class HK_WC_Origin
             $settings['priority']
         );
 
-        /*   add_action(
+          add_action(
                 'wp_enqueue_scripts',
                 [$this, 'enqueue_scripts']
-            );*/
+            );
         add_action(
             'woocommerce_admin_process_product_object',
             [$this, 'limit_wood_attribute'],
@@ -134,37 +134,37 @@ class HK_WC_Origin
         );
     }
     public function enqueue_admin_scripts($hook)
-{
-    if (!in_array($hook, ['post.php', 'post-new.php'], true)) {
-        return;
+    {
+        if (!in_array($hook, ['post.php', 'post-new.php'], true)) {
+            return;
+        }
+
+        $screen = get_current_screen();
+
+        if (!$screen || $screen->post_type !== 'product') {
+            return;
+        }
+
+        wp_enqueue_style(
+            'hk-admin',
+            HK_PLUGIN_URL . 'assets/css/hk-admin.css',
+            [],
+            HK_VERSION
+        );
+
+        wp_enqueue_script(
+            'hk-admin',
+            HK_PLUGIN_URL . 'assets/js/hk-admin.js',
+            ['jquery', 'wc-enhanced-select'],
+            HK_VERSION,
+            true
+        );
     }
-
-    $screen = get_current_screen();
-
-    if (!$screen || $screen->post_type !== 'product') {
-        return;
-    }
-
-    wp_enqueue_style(
-        'hk-admin',
-        HK_PLUGIN_URL . 'assets/css/hk-admin.css',
-        [],
-        HK_VERSION
-    );
-
-    wp_enqueue_script(
-        'hk-admin',
-        HK_PLUGIN_URL . 'assets/js/hk-admin.js',
-        ['jquery', 'wc-enhanced-select'],
-        HK_VERSION,
-        true
-    );
-}
 
 
     public function render_geosuche()
-{
-    return '
+    {
+        return '
         <div id="hk-origin-map-wrapper">
             <div id="hk-origin-map"></div>
 
@@ -179,37 +179,37 @@ class HK_WC_Origin
             </div>
         </div>
     ';
-}
+    }
     /**
      * Herkunftskoordinaten im Produkteditor anzeigen.
      */
     public function render_fields()
-{
-    echo '<div class="options_group">';
+    {
+        echo '<div class="options_group">';
 
-    woocommerce_wp_text_input([
-        'id'          => '_hk_origin_lat',
-        'label'       => 'Breitengrad',
-        'type'        => 'number',
-        'custom_attributes' => [
-            'step' => 'any',
-        ],
-    ]);
+        woocommerce_wp_text_input([
+            'id'          => '_hk_origin_lat',
+            'label'       => 'Breitengrad',
+            'type'        => 'number',
+            'custom_attributes' => [
+                'step' => 'any',
+            ],
+        ]);
 
-    woocommerce_wp_text_input([
-        'id'          => '_hk_origin_lng',
-        'label'       => 'Längengrad',
-        'type'        => 'number',
-        'custom_attributes' => [
-            'step' => 'any',
-        ],
-    ]);
+        woocommerce_wp_text_input([
+            'id'          => '_hk_origin_lng',
+            'label'       => 'Längengrad',
+            'type'        => 'number',
+            'custom_attributes' => [
+                'step' => 'any',
+            ],
+        ]);
 
-    echo '</div>';
+        echo '</div>';
 
 
-    echo wp_kses_post($this->render_geosuche());
-}
+        echo wp_kses_post($this->render_geosuche());
+    }
     /**
      * Herkunftskoordinaten speichern.
      */
