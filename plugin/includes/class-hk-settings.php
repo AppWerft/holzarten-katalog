@@ -142,7 +142,9 @@ class HK_Settings
             'Esri.WorldTopoMap'    => 'Esri – Topografisch',
             'Esri.WorldImagery'    => 'Esri – Satellit',
             'Esri.WorldStreetMap'  => 'Esri – Straßenkarte',
-            'Stadia.AlidadeSmooth' => 'Stadia Alidade Smooth'
+            'Stadia.AlidadeSmooth' => 'Stadia Alidade Smooth',
+            'Stadia.AlidadeSmoothDark' => 'Stadia Alidade SmoothDark',
+            'Stadia.StamenWatercolor' => 'Stadia Stamen Watercolor'
         ];
     }
 
