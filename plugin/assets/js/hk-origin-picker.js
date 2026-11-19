@@ -105,7 +105,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     function clearPing() {
-
         clearInterval(pingTimer);
         pingTimer = null;
         console.log('clearInterval')
@@ -117,32 +116,32 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function startPing(position) {
 
-    clearPing();
+        clearPing();
 
-    pingLayer.addTo(map);
+        pingLayer.addTo(map);
+        
+        pingLayer.ping(
+            [position.lng, position.lat],
+            'origin'
+        );
 
-    pingLayer.ping(
-        [position.lng, position.lat],
-        'origin'
-    );
+        pingTimer = setInterval(function () {
 
-    pingTimer = setInterval(function () {
+            const currentLat = parseFloat(latField.value);
+            const currentLng = parseFloat(lngField.value);
 
-        const currentLat = parseFloat(latField.value);
-        const currentLng = parseFloat(lngField.value);
+            if (
+                Number.isFinite(currentLat) &&
+                Number.isFinite(currentLng)
+            ) {
+                pingLayer.ping(
+                    [currentLng, currentLat],
+                    'origin'
+                );
+            }
 
-        if (
-            Number.isFinite(currentLat) &&
-            Number.isFinite(currentLng)
-        ) {
-            pingLayer.ping(
-                [currentLng, currentLat],
-                'origin'
-            );
-        }
-
-    }, 2500);
-}
+        }, 3000);
+    }
 
     function setPosition(position) {
 
@@ -156,7 +155,7 @@ document.addEventListener('DOMContentLoaded', function () {
         map.setView(
             [position.lat, position.lng],
             Math.max(map.getZoom(), 13),
-            { animate: true }
+            { animate: false }
         );
 
         // Erst nach Aktualisierung der Kartenansicht pingen
