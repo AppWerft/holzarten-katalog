@@ -37,10 +37,10 @@ class HK_WC_Origin
             $settings['priority']
         );
 
-          add_action(
-                'wp_enqueue_scripts',
-                [$this, 'enqueue_scripts']
-            );
+        add_action(
+            'wp_enqueue_scripts',
+            [$this, 'enqueue_scripts']
+        );
         add_action(
             'woocommerce_admin_process_product_object',
             [$this, 'limit_wood_attribute'],
@@ -75,6 +75,25 @@ class HK_WC_Origin
             $product->set_attributes($attributes);
         }
     }
+
+    public static function register_zoomlevel_attribute()
+{
+    if (!function_exists('wc_create_attribute')) {
+        return;
+    }
+
+    if (!wc_attribute_taxonomy_id_by_name('zoomlevel')) {
+        wc_create_attribute([
+            'name'         => 'Zoomlevel',
+            'slug'         => 'zoomlevel',
+            'type'         => 'select',
+            'order_by'     => 'menu_order',
+            'has_archives' => false,
+        ]);
+    }
+
+    delete_transient('wc_attribute_taxonomies');
+}
     /**
      * Karte auf der Produktseite anzeigen.
      */
@@ -163,15 +182,15 @@ class HK_WC_Origin
 
 
     public function render_geosuche()
-{
-    $settings = wp_parse_args(
-        get_option('hk_map_settings', []),
-        [
-            'pingcolor' => '#4285F4',
-        ]
-    );
+    {
+        $settings = wp_parse_args(
+            get_option('hk_map_settings', []),
+            [
+                'pingcolor' => '#4285F4',
+            ]
+        );
 
-    return '
+        return '
         <div id="hk-origin-map-wrapper">
             <div
                 id="hk-origin-map"
@@ -189,7 +208,7 @@ class HK_WC_Origin
             </div>
         </div>
     ';
-}
+    }
     /**
      * Herkunftskoordinaten im Produkteditor anzeigen.
      */
