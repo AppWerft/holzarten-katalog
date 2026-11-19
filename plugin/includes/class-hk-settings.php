@@ -60,7 +60,7 @@ class HK_Settings
 
         // Leaflet JavaScript
         wp_enqueue_script(
-            'leaflet',
+            'hk_leaflet',
             HK_PLUGIN_URL . 'assets/vendor/leaflet/leaflet.js',
             [],
             '1.9.4',
