@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', function () {
             Math.max(map.getZoom(), 13),
             { animate: false }
         );
-
+        return
         // Erst nach Aktualisierung der Kartenansicht pingen
         requestAnimationFrame(function () {
             startPing(position);
