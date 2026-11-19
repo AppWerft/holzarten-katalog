@@ -127,26 +127,30 @@ document.addEventListener('DOMContentLoaded', function () {
             map.removeLayer(pingLayer);
         }
     }
-
-    function startPing(position) {
-
-        clearPing();
-
-        pingLayer.addTo(map);
-
+    function addPing(position) {
         pingLayer.ping(
             [position.lng, position.lat],
             'origin'
         );
-        // Farbe des neu erzeugten SVG-Kreises setzen
-        pingLayer.data().forEach(function (ping) {
+
+        const pings = pingLayer.data();
+
+        if (pings.length) {
+            const ping = pings[pings.length - 1];
+
             ping.c
                 .attr('fill', '#4285F4')
                 .attr('stroke', '#4285F4');
-        });
+        }
+    }
+    function startPing(position) {
+        clearPing();
+
+        pingLayer.addTo(map);
+
+        addPing(position);
 
         pingTimer = setInterval(function () {
-
             const currentLat = parseFloat(latField.value);
             const currentLng = parseFloat(lngField.value);
 
@@ -154,12 +158,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 Number.isFinite(currentLat) &&
                 Number.isFinite(currentLng)
             ) {
-                pingLayer.ping(
-                    [currentLng, currentLat],
-                    'origin'
-                );
+                addPing({
+                    lat: currentLat,
+                    lng: currentLng
+                });
             }
-
         }, 2500);
     }
 
