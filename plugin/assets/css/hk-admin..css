@@ -36,3 +36,13 @@
     fill: #4285F4 !important;
     stroke: #4285F4 !important;
 }
+
+
+const circle = document.querySelector('.ping');
+console.log(circle)
+console.log({
+    fill: circle?.getAttribute('fill'),
+    stroke: circle?.getAttribute('stroke'),
+    style: circle?.getAttribute('style'),
+    computedFill: circle && getComputedStyle(circle).fill
+});

@@ -607,8 +607,8 @@ class HK_Settings
                             </select>
                         </td>
                     </tr>
-                   
-                   
+
+
                     <tr>
                         <th scope="row">
                             <label for="hk-map-priority">Position in WooCommerce</label>
@@ -639,7 +639,7 @@ class HK_Settings
                                 value="<?php echo esc_attr($settings['pingcolor']); ?>"
                                 max="100">
                             <p class="description">
-                                
+
                             </p>
                         </td>
                     </tr>
@@ -681,7 +681,9 @@ class HK_Settings
             ) ? $input['position'] : 'center',
 
             'priority' => max(1, min(100, absint($input['priority'] ?? 35))),
-
+            'pingcolor' => sanitize_hex_color(
+                $input['pingcolor'] ?? '#4285F4'
+            ) ?: '#4285F4',
             'tile_provider' => $provider,
         ];
     }
