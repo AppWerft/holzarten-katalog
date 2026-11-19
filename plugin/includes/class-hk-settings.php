@@ -481,7 +481,20 @@ class HK_Settings
                 <?php settings_fields('hk_settings_group'); ?>
 
                 <table class="form-table">
-
+                    <tr>
+                        <th scope="row">
+                            <label for="hk-map-height">Kartentyp</label>
+                        </th>
+                        <td>
+                            <input
+                                type="text"
+                                id="hk-map-kartentyp"
+                                name="hk_map_settings[hk-map-kartentyp]"
+                                value="<?php echo esc_attr($settings['hk-map-kartentyp']); ?>"
+                            >
+                            <span class="description"><a href="https://leaflet-extras.github.io/leaflet-providers/preview/"></a></span>
+                        </td>
+                    </tr>
                     <tr>
                         <th scope="row">
                             <label for="hk-map-height">Kartenhöhe</label>
