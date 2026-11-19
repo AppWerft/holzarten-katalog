@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let searchTimer = null;
     let searchController = null;
     let pingLayer = null;
+    let pingTimer = null;
     button.addEventListener('click', function () {
         mapContainer.style.display = 'block';
         if (!map) {

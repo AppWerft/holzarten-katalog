@@ -223,7 +223,9 @@ class HK_WC_Origin
      */
     public function render_fields()
     {
+        echo '<p style="color:red">HK_WC_Origin::render_fields() wird ausgeführt</p>';
 
+        global $post;
         global $post;
 
         if (!$post) {
