@@ -123,7 +123,18 @@ class HK_Settings
             );
         }
     }
-
+    private static function get_map_providers(): array
+    {
+        return [
+            'OpenStreetMap.Mapnik' => 'OpenStreetMap – Standard',
+            'OpenStreetMap.DE'     => 'OpenStreetMap – Deutsch',
+            'OpenStreetMap.HOT'    => 'OpenStreetMap – Humanitarian',
+            'OpenTopoMap'          => 'OpenTopoMap – Gelände',
+            'Esri.WorldTopoMap'    => 'Esri – Topografisch',
+            'Esri.WorldImagery'    => 'Esri – Satellit',
+            'Esri.WorldStreetMap'  => 'Esri – Straßenkarte',
+        ];
+    }
     public static function render_holzarten()
     {
 ?>
@@ -464,6 +475,9 @@ class HK_Settings
 
     public static function render_fundorte()
     {
+        $providers = self::get_map_providers();
+        $selected = $settings['tile_provider']
+            ?? 'OpenStreetMap.Mapnik';
         $settings = wp_parse_args(
             get_option('hk_map_settings', []),
             [
@@ -483,16 +497,21 @@ class HK_Settings
                 <table class="form-table">
                     <tr>
                         <th scope="row">
-                            <label for="hk-map-height">Kartentyp</label>
+                            <label for="hk-map-height">Kartennanbieter</label>
                         </th>
                         <td>
-                            <input
-                                type="text"
-                                id="hk-map-kartentyp"
-                                name="hk_map_settings[hk-map-kartentyp]"
-                                value="<?php echo esc_attr($settings['hk-map-kartentyp']); ?>"
-                            >
-                            <span class="description"><a href="https://leaflet-extras.github.io/leaflet-providers/preview/">Liste der Kartentypen</a></span>
+                            <select
+                                name="hk_map_settings[tile_provider]"
+                                id="hk_tile_provider">
+                                <?php foreach ($providers as $key => $label) : ?>
+                                    <option
+                                        value="<?php echo esc_attr($key); ?>"
+                                        <?php selected($selected, $key); ?>>
+                                        <?php echo esc_html($label); ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
+                            <span class="description"></span>
                         </td>
                     </tr>
                     <tr>
