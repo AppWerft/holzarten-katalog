@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
         fps: 32,
         radiusRange: [5, 130],
         opacityRange: [0.6, 0]
-    }).addTo(map);
+    });
 
 
 
@@ -105,26 +105,26 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     function clearPing() {
+
         clearInterval(pingTimer);
         pingTimer = null;
 
-        if (pingLayer) {
-            pingLayer._data = [];
-            pingLayer._updatePings(true);
+        if (pingLayer && map.hasLayer(pingLayer)) {
+            map.removeLayer(pingLayer);
         }
     }
 
     function startPing(position) {
 
-    clearInterval(pingTimer);
-    pingTimer = null;
+    clearPing();
+
+    pingLayer.addTo(map);
 
     pingLayer.ping(
         [position.lng, position.lat],
         'origin'
     );
 
-    // Regelmäßig an der aktuellen Position wiederholen
     pingTimer = setInterval(function () {
 
         const currentLat = parseFloat(latField.value);
@@ -142,6 +142,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     }, 2500);
 }
+
     function setPosition(position) {
 
         latField.value = position.lat.toFixed(6);
@@ -156,7 +157,7 @@ document.addEventListener('DOMContentLoaded', function () {
             Math.max(map.getZoom(), 13),
             { animate: false }
         );
-        
+
         // Erst nach Aktualisierung der Kartenansicht pingen
         requestAnimationFrame(function () {
             startPing(position);
