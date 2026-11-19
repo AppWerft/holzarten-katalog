@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const mapContainer = document.getElementById('hk-origin-map');
     const latField = document.getElementById('_hk_origin_lat');
     const lngField = document.getElementById('_hk_origin_lng');
-    const pingColor = $('#hk-origin-map').data('pingcolor') || '#4285F4';
+    const pingColor = document.getElementById('hk-origin-map').dataset.pingcolor || '#4285F4';
     let searchInput = null;
     let searchResults = null;
 
