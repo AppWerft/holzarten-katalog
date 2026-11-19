@@ -104,21 +104,26 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     function clearPing() {
-    if (pingTimer) {
-        clearInterval(pingTimer);
-        pingTimer = null;
-    }
+        if (pingTimer) {
+            clearInterval(pingTimer);
+            pingTimer = null;
+        }
 
-    if (pingLayer) {
-        // Noch gespeicherte Ping-Animationen entfernen
-        pingLayer._data = [];
+        if (pingLayer) {
+            // Alle noch vorhandenen SVG-Kreise entfernen
+            pingLayer.data().forEach(function (ping) {
+                ping.c.remove();
+            });
 
-        // Layer von der Karte entfernen
-        if (map.hasLayer(pingLayer)) {
-            map.removeLayer(pingLayer);
+            // Datenarray leeren
+            pingLayer.data().length = 0;
+
+            // Layer von der Karte entfernen
+            if (map.hasLayer(pingLayer)) {
+                map.removeLayer(pingLayer);
+            }
         }
     }
-}
 
     function startPing(position) {
 
@@ -189,21 +194,21 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Karte anklicken, um den Herkunftsort festzulegen
-   /*item.addEventListener('click', function (event) {
-
-        // Klick darf nicht bis zur Karte durchgereicht werden.
-        L.DomEvent.stopPropagation(event);
-
-        const position = {
-            lat: coordinates[1],
-            lng: coordinates[0]
-        };
-
-        setPosition(position);
-
-        searchInput.value = name;
-        searchResults.innerHTML = '';
-    });*/
+    /*item.addEventListener('click', function (event) {
+ 
+         // Klick darf nicht bis zur Karte durchgereicht werden.
+         L.DomEvent.stopPropagation(event);
+ 
+         const position = {
+             lat: coordinates[1],
+             lng: coordinates[0]
+         };
+ 
+         setPosition(position);
+ 
+         searchInput.value = name;
+         searchResults.innerHTML = '';
+     });*/
 
     // --------------------------------------------------
     // Photon-Ortssuche
