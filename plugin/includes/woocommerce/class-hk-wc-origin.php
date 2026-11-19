@@ -258,7 +258,7 @@ class HK_WC_Origin
     {
         echo '<div class="options_group">';
 
-        woocommerce_wp_text_input([
+        woocommerce_wp_hidden_input([
             'id'          => '_hk_origin_lat',
             'label'       => 'Breitengrad',
             'type'        => 'number',
@@ -267,7 +267,7 @@ class HK_WC_Origin
             ],
         ]);
 
-        woocommerce_wp_text_input([
+        woocommerce_wp_hidden_input([
             'id'          => '_hk_origin_lng',
             'label'       => 'Längengrad',
             'type'        => 'number',
@@ -275,7 +275,7 @@ class HK_WC_Origin
                 'step' => 'any',
             ],
         ]);
-        woocommerce_wp_select([
+        woocommerce_wp_hidden_input([
             'id'      => '_hk_origin_zoom',
             'label'   => 'Karten-Zoomlevel',
             'options' => array_combine(
