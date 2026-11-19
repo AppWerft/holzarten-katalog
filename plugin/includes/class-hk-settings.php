@@ -68,10 +68,10 @@ class HK_Settings
         );
         // Leaflet JavaScript
         wp_enqueue_script(
-            'leaflet',
+            'hk-leaflet-providers',
             HK_PLUGIN_URL . 'assets/vendor/leaflet/leaflet-providers.js',
-            [],
-            '1.9.4',
+            ['leaflet'],
+            HK_VERSION,
             true
         );
         // CSS
