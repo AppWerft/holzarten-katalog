@@ -500,6 +500,7 @@ class HK_Settings
                 'position'      => 'center',
                 'priority'      => 35,
                 'tile_provider' => 'OpenStreetMap.Mapnik',
+                'pingcolor'     => '#4285F4'
             ]
         );
 
@@ -636,7 +637,6 @@ class HK_Settings
                                 id="hk-map-pingcolor"
                                 name="hk_map_settings[pingcolor]"
                                 value="<?php echo esc_attr($settings['pingcolor']); ?>"
-                                min="1"
                                 max="100">
                             <p class="description">
                                 
