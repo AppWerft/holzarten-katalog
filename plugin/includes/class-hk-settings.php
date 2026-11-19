@@ -116,7 +116,7 @@ class HK_Settings
             wp_enqueue_script(
                 'hk-holzarten-geosettings',
                 HK_PLUGIN_URL . 'assets/js/admin-holzarten-geosettings.js',
-                [],
+                ['leaflet', 'hk-leaflet-providers'],
                 file_exists($js_file) ? filemtime($js_file) : HK_VERSION,
                 true
             );
@@ -131,7 +131,7 @@ class HK_Settings
             );
         }
     }
-    
+
     private static function get_map_providers(): array
     {
         return [
@@ -505,18 +505,6 @@ class HK_Settings
 
         $providers = self::get_map_providers();
         $selected = $settings['tile_provider'];
-
-        $selected = $settings['tile_provider']
-            ?? 'OpenStreetMap.Mapnik';
-        $settings = wp_parse_args(
-            get_option('hk_map_settings', []),
-            [
-                'height'   => 200,
-                'width'    => 100,
-                'position' => 'center',
-                'priority' => 35
-            ]
-        );
     ?>
         <div class="wrap">
             <h1>Holzfundortkarten – Darstellungseinstellungen</h1>
@@ -527,12 +515,12 @@ class HK_Settings
                 <table class="form-table">
                     <tr>
                         <th scope="row">
-                            <label for="hk-map-height">Kartennanbieter</label>
+                            <label for="hk-tile-provider">Kartennanbieter</label>
                         </th>
                         <td>
                             <select
                                 name="hk_map_settings[tile_provider]"
-                                id="hk-tile-provider">>
+                                id="hk-tile-provider">
                                 <?php foreach ($providers as $key => $label) : ?>
                                     <option
                                         value="<?php echo esc_attr($key); ?>"
@@ -585,8 +573,8 @@ class HK_Settings
                             <input
                                 type="range"
                                 id="hk-map-radius"
-                                name="hk_map_settings[hk-map-radius]"
-                                value="<?php echo esc_attr($settings['hk-map-radius']); ?>"
+                                name="hk_map_settings[radius]"
+                                value="<?php echo esc_attr($settings['radius']); ?>"
                                 min="0"
                                 max="50"
                                 step="1">
@@ -650,7 +638,6 @@ class HK_Settings
     {
         $input = is_array($input) ? $input : [];
 
-        // Kartenprovider validieren.
         $providers = self::get_map_providers();
 
         $provider = sanitize_text_field(
@@ -662,15 +649,9 @@ class HK_Settings
         }
 
         return [
-            'height' => max(
-                100,
-                min(800, absint($input['height'] ?? 200))
-            ),
-
-            'width' => max(
-                20,
-                min(100, absint($input['width'] ?? 100))
-            ),
+            'height' => max(100, min(800, absint($input['height'] ?? 200))),
+            'width' => max(20, min(100, absint($input['width'] ?? 100))),
+            'radius' => max(0, min(50, absint($input['radius'] ?? 0))),
 
             'position' => in_array(
                 $input['position'] ?? '',
@@ -678,10 +659,7 @@ class HK_Settings
                 true
             ) ? $input['position'] : 'center',
 
-            'priority' => max(
-                1,
-                min(100, absint($input['priority'] ?? 35))
-            ),
+            'priority' => max(1, min(100, absint($input['priority'] ?? 35))),
 
             'tile_provider' => $provider,
         ];
