@@ -197,3 +197,33 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 });
+
+
+
+
+/*
+    // PingLayer
+    pingLayer = L.pingLayer({
+        duration: 2500,
+        fps: 32,
+        radiusRange: [5, 130],
+        opacityRange: [0.6, 0]
+    }).addTo(map);
+
+    pingLayer.ping([lng, lat], 'origin');
+
+    // Karte anklicken, um den Herkunftsort festzulegen.
+    map.on('click', function (event) {
+        setPosition(event.latlng);
+    });
+
+    // Regelmäßig neue Pulse erzeugen.
+    pingTimer = setInterval(function () {
+        const currentLat = parseFloat(latField.value);
+        const currentLng = parseFloat(lngField.value);
+
+        if (Number.isFinite(currentLat) && Number.isFinite(currentLng)) {
+            pingLayer.ping([currentLng, currentLat], 'origin');
+        }
+    }, 2500);
+*/
