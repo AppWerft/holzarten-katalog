@@ -249,38 +249,28 @@
         {
             echo '<div class="options_group">';
 
+            $product_id = get_the_ID();
+
+            $lat = get_post_meta($product_id, '_hk_origin_lat', true);
+            $lng = get_post_meta($product_id, '_hk_origin_lng', true);
+            $zoom = get_post_meta($product_id, '_hk_origin_zoom', true) ?: 6;
+
             woocommerce_wp_hidden_input([
-                'id'          => '_hk_origin_lat',
-                'label'       => 'Breitengrad',
-                'type'        => 'number',
-                'custom_attributes' => [
-                    'step' => 'any',
-                ],
+                'id'    => '_hk_origin_lat',
+                'value' => $lat,
             ]);
 
             woocommerce_wp_hidden_input([
-                'id'          => '_hk_origin_lng',
-                'label'       => 'Längengrad',
-                'type'        => 'number',
-                'custom_attributes' => [
-                    'step' => 'any',
-                ],
+                'id'    => '_hk_origin_lng',
+                'value' => $lng,
             ]);
+
             woocommerce_wp_hidden_input([
-                'id'      => '_hk_origin_zoom',
-                'label'   => 'Karten-Zoomlevel',
-                'options' => array_combine(
-                    range(1, 19),
-                    range(1, 19)
-                ),
-                'value'   => get_post_meta(
-                    get_the_ID(),
-                    '_hk_origin_zoom',
-                    true
-                ) ?: 6,
+                'id'    => '_hk_origin_zoom',
+                'value' => $zoom,
             ]);
+
             echo '</div>';
-
 
             echo wp_kses_post($this->render_geosuche());
         }
