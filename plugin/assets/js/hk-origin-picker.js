@@ -27,11 +27,17 @@ document.addEventListener('DOMContentLoaded', function () {
     const initialLat = parseFloat(latField.value);
     const initialLng = parseFloat(lngField.value);
 
+    const hasPosition =
+        Number.isFinite(initialLat) &&
+        Number.isFinite(initialLng);
+
+    mapContainer.classList.toggle('is-inactive', !hasPosition);
+
     const lat = Number.isFinite(initialLat) ? initialLat : 51.33988;
     const lng = Number.isFinite(initialLng) ? initialLng : 12.42860;
 
     const map = L.map(mapContainer).setView([lat, lng], 6);
-    
+
     map.on('zoomend', function () {
         $('#_hk_origin_zoom').val(map.getZoom());
     });
@@ -178,7 +184,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         latField.value = position.lat.toFixed(6);
         lngField.value = position.lng.toFixed(6);
-
+        mapContainer.classList.remove('is-inactive');
         map.setView(
             [position.lat, position.lng],
             Math.max(map.getZoom(), 13),
@@ -190,25 +196,8 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    function setPosition(position) {
-
-        latField.value = position.lat.toFixed(6);
-        lngField.value = position.lng.toFixed(6);
-        console.log('setPosition=', position.lat.toFixed(6))
-        // Alten Ping und Timer entfernen
-        // clearPing();
-
-        // Karte ohne Animation auf die neue Position setzen
-        map.setView(
-            [position.lat, position.lng],
-            Math.max(map.getZoom(), 13),
-            { animate: false }
-        );
-
-        // Erst nach Aktualisierung der Kartenansicht pingen
-        setTimeout(function () {
-            startPing(position)
-        }, 200);
+    function clearPosition() {
+        
     }
 
     // Karte anklicken, um den Herkunftsort festzulegen
