@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const mapContainer = document.getElementById('hk-origin-map');
     const latField = document.getElementById('_hk_origin_lat');
     const lngField = document.getElementById('_hk_origin_lng');
+    const zoomField = document.getElementById('_hk_origin_zoom');
     let clearButton = null;
     if (!mapContainer || !latField || !lngField) {
         console.error('fehlende Felder in der Form');
@@ -13,9 +14,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const pingColor = mapContainer.dataset.pingcolor || '#4285F4';
     const tileProvider = mapContainer.dataset.tileprovider;
     const zoom = parseInt(mapContainer.dataset.zoom, 10);
-    
-    console.log('Zoom='+zoom)
-    
+
+    console.log('Zoom=' + zoom)
+
     let initialZoom = zoom;
     let searchInput = null;
     let searchResults = null;
