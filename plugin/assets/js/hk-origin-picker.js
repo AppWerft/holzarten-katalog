@@ -13,6 +13,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const pingColor = mapContainer.dataset.pingcolor || '#4285F4';
     const tileProvider = mapContainer.dataset.tileprovider;
     const zoom = parseInt(mapContainer.dataset('zoom'), 10);
+    const initialZoom = zoomField && zoomField.value !== ''
+    ? parseInt(zoomField.value, 10)
+    : zoom;
 
     let searchInput = null;
     let searchResults = null;
@@ -45,9 +48,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const lat = Number.isFinite(initialLat) ? initialLat : 51.33988;
     const lng = Number.isFinite(initialLng) ? initialLng : 12.42860;
-
-    // Produktspezifischen Zoom bevorzugen, sonst Standardzoom verwenden.
-    const initialZoom = parseInt(mapContainer.dataset.zoom, 10) || 6;
 
     const map = L.map(mapContainer).setView(
         [lat, lng],
