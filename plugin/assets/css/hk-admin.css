@@ -53,3 +53,26 @@
 #hk-origin-search-input::-ms-clear {
     display: none;
 }
+.hk-origin-clear {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    margin-left: 5px;
+    padding: 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: #fff;
+    color: #c62828;
+    cursor: pointer;
+}
+
+.hk-origin-clear:hover {
+    background: #fbe9e7;
+    border-color: #c62828;
+}
+
+.hk-origin-clear svg {
+    display: block;
+}

@@ -1,6 +1,6 @@
 
 document.addEventListener('DOMContentLoaded', () => {
-
+    const STANDARDPOSITION = [51.33, 12.42];
     const mapContainer = document.getElementById('hk-origin-map');
     const latField = document.getElementById('_hk_origin_lat');
     const lngField = document.getElementById('_hk_origin_lng');
@@ -47,8 +47,8 @@ document.addEventListener('DOMContentLoaded', () => {
     mapContainer.classList.toggle('is-inactive', !hasPosition);
 
 
-    const lat = Number.isFinite(initialLat) ? initialLat : 51.33988;
-    const lng = Number.isFinite(initialLng) ? initialLng : 12.42860;
+    const lat = Number.isFinite(initialLat) ? initialLat : STANDARDPOSITION[0];
+    const lng = Number.isFinite(initialLng) ? initialLng : STANDARDPOSITION[1];
 
     const map = L.map(mapContainer).setView(
         [lat, lng],
@@ -57,9 +57,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Zoomänderung im Produktattribut speichern.
     map.on('zoomend', () => zoomField && (zoomField.value = map.getZoom()));
-
- map.on('zoomend', () => console.log('zoomend='+map.getZoom()));
-
 
     L.tileLayer.provider(tileProvider).addTo(map);
     // --------------------------------------------------
@@ -247,9 +244,12 @@ document.addEventListener('DOMContentLoaded', () => {
         lngField.value = '';
         searchInput.value = '';
         searchResults.innerHTML = '';
+        // Zoomlevel im Hidden-Input zurücksetzen
+        zoomField.value = 6;
         mapContainer.classList.add('is-inactive');
         clearButton.hidden = true;
-        map.setView([51.33988, 12.42860], zoom);
+        map.setView(STANDARDPOSITION, zoomField.value);
+
     }
 
     // Karte anklicken, um den Herkunftsort festzulegen

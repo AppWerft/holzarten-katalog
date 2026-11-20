@@ -150,6 +150,7 @@
             $lng = get_post_meta($product_id, '_hk_origin_lng', true);
 
             if ($lat === '' || $lng === '') {
+                $product->update_meta_data('_hk_origin_zoom', 6);
                 return;
             }
             $zoom_terms = wc_get_product_terms(
