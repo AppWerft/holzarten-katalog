@@ -309,10 +309,22 @@
             ) {
                 return;
             }
-            if (isset($_POST['_hk_origin_zoom'])) {
-                $zoom = absint(wp_unslash($_POST['_hk_origin_zoom']));
 
-                if ($zoom <= 19) {
+
+            error_log(
+                'HK Zoom POST: ' . print_r(
+                    $_POST['_hk_origin_zoom'] ?? 'NICHT VORHANDEN',
+                    true
+                )
+            );
+            if (isset($_POST['_hk_origin_zoom'])) {
+
+                $zoom = filter_var(
+                    wp_unslash($_POST['_hk_origin_zoom']),
+                    FILTER_VALIDATE_INT
+                );
+
+                if ($zoom !== false && $zoom >= 0 && $zoom <= 19) {
                     $product->update_meta_data('_hk_origin_zoom', $zoom);
                 }
             }
