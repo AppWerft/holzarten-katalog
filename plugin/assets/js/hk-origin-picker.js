@@ -58,6 +58,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Zoomänderung im Produktattribut speichern.
     map.on('zoomend', () => zoomField && (zoomField.value = map.getZoom()));
 
+ map.on('zoomend', () => console.log('zoomend='+map.getZoom()));
+
+
     L.tileLayer.provider(tileProvider).addTo(map);
     // --------------------------------------------------
     // PingLayer initialisieren
