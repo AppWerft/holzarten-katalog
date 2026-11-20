@@ -104,9 +104,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 'hk-origin-clear',
                 container
             );
-
+            clearButton.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg"
+                    width="19" height="19"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M3 6h18"/>
+                    <path d="M8 6V4h8v2"/>
+                    <path d="M19 6l-1 14H6L5 6"/>
+                    <path d="M10 11v6"/>
+                    <path d="M14 11v6"/>
+                </svg>
+`;
             clearButton.type = 'button';
-            clearButton.textContent = '×';
             clearButton.title = 'Geoposition löschen';
             clearButton.setAttribute(
                 'aria-label',
@@ -209,23 +223,17 @@ document.addEventListener('DOMContentLoaded', () => {
             Math.max(map.getZoom(), 13),
             { animate: false }
         );
-        requestAnimationFrame( () => startPing(position));
+        requestAnimationFrame(() => startPing(position));
     }
 
     function clearPosition() {
-
         clearPing();
-
         latField.value = '';
         lngField.value = '';
-
         searchInput.value = '';
         searchResults.innerHTML = '';
-
         mapContainer.classList.add('is-inactive');
-
         clearButton.hidden = true;
-
         map.setView([51.33988, 12.42860], 6);
     }
 
