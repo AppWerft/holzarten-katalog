@@ -1,5 +1,5 @@
 
-document.addEventListener('DOMContentLoaded',  ()=> {
+document.addEventListener('DOMContentLoaded', () => {
 
     const mapContainer = document.getElementById('hk-origin-map');
     const latField = document.getElementById('_hk_origin_lat');
@@ -199,23 +199,34 @@ document.addEventListener('DOMContentLoaded',  ()=> {
     }
 
     function setPosition(position) {
-
         clearPing();
-
         latField.value = position.lat.toFixed(6);
         lngField.value = position.lng.toFixed(6);
         mapContainer.classList.remove('is-inactive');
+        clearButton.hidden = false;
         map.setView(
             [position.lat, position.lng],
             Math.max(map.getZoom(), 13),
             { animate: false }
         );
-
-        requestAnimationFrame(() => startPing(position));
+        requestAnimationFrame( () => startPing(position));
     }
 
     function clearPosition() {
 
+        clearPing();
+
+        latField.value = '';
+        lngField.value = '';
+
+        searchInput.value = '';
+        searchResults.innerHTML = '';
+
+        mapContainer.classList.add('is-inactive');
+
+        clearButton.hidden = true;
+
+        map.setView([51.33988, 12.42860], 6);
     }
 
     // Karte anklicken, um den Herkunftsort festzulegen
@@ -253,6 +264,10 @@ document.addEventListener('DOMContentLoaded',  ()=> {
             }
 
             searchTimer = setTimeout(() => getPosition(searchTerm), 350);
+        });
+        searchInput.addEventListener('focus', () => {
+            searchInput.value = '';
+            searchResults.innerHTML = '';
         });
     }
 
@@ -306,7 +321,7 @@ document.addEventListener('DOMContentLoaded',  ()=> {
                 item.className = 'hk-search-result';
                 item.textContent = name;
 
-                item.addEventListener('click',  (event)=> {
+                item.addEventListener('click', (event) => {
                     L.DomEvent.stopPropagation(event);
 
                     const position = {
