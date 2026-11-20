@@ -241,15 +241,6 @@
 
             </div>
         ';
-            echo wp_kses_post($this->render_geosuche());
-
-            submit_button(
-                __('Aktualisieren'),
-                'primary',
-                'save',
-                false,
-                ['id' => 'hk-save-product-bottom']
-            );
         }
         /**
          * Herkunftskoordinaten im Produkteditor anzeigen.
@@ -282,6 +273,14 @@
             echo '</div>';
 
             echo wp_kses_post($this->render_geosuche());
+
+            submit_button(
+                __('Aktualisieren'),
+                'primary',
+                'save',
+                false,
+                ['id' => 'hk-save-product-bottom']
+            );
         }
         /**
          * Herkunftskoordinaten speichern.
