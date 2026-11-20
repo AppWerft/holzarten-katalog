@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const pingColor = mapContainer.dataset.pingcolor || '#4285F4';
-    const tileProvider = mapContainer.dataset('tileprovider');
+    const tileProvider = mapContainer.dataset.tileprovider;
     const zoom = parseInt(mapContainer.dataset('zoom'), 10);
 
     let searchInput = null;
@@ -44,24 +44,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     const lat = Number.isFinite(initialLat) ? initialLat : 51.33988;
-const lng = Number.isFinite(initialLng) ? initialLng : 12.42860;
+    const lng = Number.isFinite(initialLng) ? initialLng : 12.42860;
 
-// Produktspezifischen Zoom bevorzugen, sonst Standardzoom verwenden.
-const initialZoom = Number.isFinite(initialZoomValue)
-    ? initialZoomValue
-    : zoom;
+    // Produktspezifischen Zoom bevorzugen, sonst Standardzoom verwenden.
+    const initialZoom = parseInt(mapContainer.dataset.zoom, 10) || 6;
 
-const map = L.map(mapContainer).setView(
-    [lat, lng],
-    initialZoom
-);
+    const map = L.map(mapContainer).setView(
+        [lat, lng],
+        initialZoom
+    );
 
-// Zoomänderung im Produktattribut speichern.
-map.on('zoomend', () => {
-    document.getElementById('_hk_origin_zoom').value = map.getZoom();
-});
+    // Zoomänderung im Produktattribut speichern.
+    map.on('zoomend', () => {
+        document.getElementById('_hk_origin_zoom').value = map.getZoom();
+    });
 
-L.tileLayer.provider(tileProvider).addTo(map);
+    L.tileLayer.provider(tileProvider).addTo(map);
     // --------------------------------------------------
     // PingLayer initialisieren
     // --------------------------------------------------
@@ -249,7 +247,7 @@ L.tileLayer.provider(tileProvider).addTo(map);
         searchResults.innerHTML = '';
         mapContainer.classList.add('is-inactive');
         clearButton.hidden = true;
-        map.setView([51.33988, 12.42860], 6);
+        map.setView([51.33988, 12.42860], zoom);
     }
 
     // Karte anklicken, um den Herkunftsort festzulegen
