@@ -39,17 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
         Number.isFinite(initialLng);
 
     mapContainer.classList.toggle('is-inactive', !hasPosition);
-    // --------------------------------------------------
-    // Vorhandene Geoposition wiederherstellen
-    // --------------------------------------------------
 
-    if (hasPosition) {
-        console.log('Start Ping')
-        startPing({
-            lat: initialLat,
-            lng: initialLng
-        });
-    }
 
     const lat = Number.isFinite(initialLat) ? initialLat : 51.33988;
     const lng = Number.isFinite(initialLng) ? initialLng : 12.42860;
@@ -81,7 +71,17 @@ document.addEventListener('DOMContentLoaded', () => {
         opacityRange: [0.5, 0]
     });
 
+    // --------------------------------------------------
+    // Vorhandene Geoposition wiederherstellen
+    // --------------------------------------------------
 
+    if (hasPosition) {
+        console.log('Start Ping')
+        startPing({
+            lat: initialLat,
+            lng: initialLng
+        });
+    }
     // --------------------------------------------------
     // Ortssuche als Leaflet-Control oben rechts
     // --------------------------------------------------
