@@ -33,3 +33,23 @@
 #hk-origin-search-results:empty {
     display: none;
 }
+
+/* Karte ghosten */ 
+#hk-origin-map.is-inactive .leaflet-tile-pane,
+#hk-origin-map.is-inactive .leaflet-overlay-pane {
+    filter: grayscale(1);
+    opacity: 0.45;
+}
+
+/* nativen X weg */
+/* Safari / Chrome */
+#hk-origin-search-input::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    appearance: none;
+    display: none;
+}
+
+/* Edge */
+#hk-origin-search-input::-ms-clear {
+    display: none;
+}
