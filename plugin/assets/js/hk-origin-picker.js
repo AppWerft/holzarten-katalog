@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const pingColor = mapContainer.dataset.pingcolor || '#4285F4';
     const tileProvider = mapContainer.dataset.tileprovider;
-    const zoom = parseInt(mapContainer.dataset('zoom'), 10);
+    const zoom = parseInt(mapContainer.dataset.zoom, 10);
     const initialZoom = zoomField && zoomField.value !== ''
     ? parseInt(zoomField.value, 10)
     : zoom;
