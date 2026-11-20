@@ -13,7 +13,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const pingColor = mapContainer.dataset.pingcolor || '#4285F4';
     const tileProvider = mapContainer.dataset.tileprovider;
     const zoom = parseInt(mapContainer.dataset.zoom, 10);
-     console.log('Zoom='+zoom)
+    
+    console.log('Zoom='+zoom)
+    
     let initialZoom = zoom;
     let searchInput = null;
     let searchResults = null;
