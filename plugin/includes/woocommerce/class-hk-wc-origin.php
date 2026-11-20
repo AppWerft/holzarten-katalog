@@ -328,6 +328,10 @@
                     );
                     $product->update_meta_data('_hk_origin_zoom', $zoom);
                 }
+                error_log(
+                    'HK Zoom Objekt: ' .
+                        print_r($product->get_meta('_hk_origin_zoom'), true)
+                );
             }
 
             foreach ($coordinates as $key => $range) {
