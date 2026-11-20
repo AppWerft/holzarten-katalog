@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', function () {
             L.DomEvent.on(clearButton, 'click', clearPosition);
 
             return container;
-        }s
+        }
     });
 
     map.addControl(new SearchControl());
