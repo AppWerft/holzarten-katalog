@@ -223,14 +223,14 @@
         }
 
 
-        public function render_geosuche()
+        public function render_geosuche($zoom=6)
         {
             $settings = wp_parse_args(
                 get_option('hk_map_settings', []),
                 [
                     'pingcolor' => '#4285F4',
-                    'tile_provider' => 'OpenStreetMap.Mapnik',
-                    'zoom' => 6,
+                    'tile_provider' => 'OpenStreetMap.Mapnik'
+                    
 
                 ]
             );
@@ -241,7 +241,7 @@
                     id="hk-origin-map"
                     data-pingcolor="' . esc_attr($settings['pingcolor']) . '"
                     data-tileprovider="' . esc_attr($settings['tile_provider']) . '"
-                    data-zoom="' . esc_attr($settings['zoom']) . '"
+                    data-zoom="' . esc_attr($zoom) . '"
                 ></div>
             </div>
         ';
@@ -262,11 +262,7 @@
             if ($zoom === '') {
                 $zoom = 6;
             }
-
             $zoom = (int) $zoom;
-
-            error_log('HK Zoom GET: ' . $zoom);
-
             woocommerce_wp_hidden_input([
                 'id'    => '_hk_origin_lat',
                 'value' => $lat,
