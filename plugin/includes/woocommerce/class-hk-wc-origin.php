@@ -229,6 +229,9 @@
                 get_option('hk_map_settings', []),
                 [
                     'pingcolor' => '#4285F4',
+                    'tile_provider' => 'OpenStreetMap.Mapnik',
+                    'zoom' => 6,
+
                 ]
             );
 
@@ -237,8 +240,9 @@
                 <div
                     id="hk-origin-map"
                     data-pingcolor="' . esc_attr($settings['pingcolor']) . '"
+                    data-tileprovider="' . esc_attr($settings['tile_provider']) . '"
+                    data-zoom="' . esc_attr($settings['zoom']) . '"
                 ></div>
-
             </div>
         ';
         }

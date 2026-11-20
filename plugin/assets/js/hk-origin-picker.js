@@ -11,6 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const pingColor = mapContainer.dataset.pingcolor || '#4285F4';
+    const tileProvider = mapContainer.dataset('tileprovider');
+    const zoom = parseInt(mapContainer.dataset('zoom'), 10);
 
     let searchInput = null;
     let searchResults = null;
@@ -42,24 +44,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     const lat = Number.isFinite(initialLat) ? initialLat : 51.33988;
-    const lng = Number.isFinite(initialLng) ? initialLng : 12.42860;
+const lng = Number.isFinite(initialLng) ? initialLng : 12.42860;
 
-    const map = L.map(mapContainer).setView([lat, lng], 6);
+// Produktspezifischen Zoom bevorzugen, sonst Standardzoom verwenden.
+const initialZoom = Number.isFinite(initialZoomValue)
+    ? initialZoomValue
+    : zoom;
 
-    map.on('zoomend', () => {
-        document.getElementById('_hk_origin_zoom').value = map.getZoom();
-    });
+const map = L.map(mapContainer).setView(
+    [lat, lng],
+    initialZoom
+);
 
-    // Hier den Zoomwert für die Produktattribut-Auswahl übernehmen.
+// Zoomänderung im Produktattribut speichern.
+map.on('zoomend', () => {
+    document.getElementById('_hk_origin_zoom').value = map.getZoom();
+});
 
-    L.tileLayer(
-        'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-        {
-            maxZoom: 19,
-            attribution: '&copy; OpenStreetMap-Mitwirkende'
-        }
-    ).addTo(map);
-
+L.tileLayer.provider(tileProvider).addTo(map);
     // --------------------------------------------------
     // PingLayer initialisieren
     // --------------------------------------------------
