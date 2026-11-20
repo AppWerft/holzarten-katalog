@@ -280,7 +280,7 @@
 
             echo '</div>';
 
-            echo wp_kses_post($this->render_geosuche());
+            echo wp_kses_post($this->render_geosuche($zoom));
 
             submit_button(
                 __('Aktualisieren'),
