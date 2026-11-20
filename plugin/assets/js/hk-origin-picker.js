@@ -211,6 +211,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
         }, 2500);
+        // --------------------------------------------------
+        // Vorhandene Geoposition wiederherstellen
+        // --------------------------------------------------
+
+        if (hasPosition) {
+            startPing({
+                lat: initialLat,
+                lng: initialLng
+            });
+        }
     }
 
     function setPosition(position) {
