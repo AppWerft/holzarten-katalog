@@ -5,10 +5,13 @@ document.addEventListener('DOMContentLoaded', function () {
     const latField = document.getElementById('_hk_origin_lat');
     const lngField = document.getElementById('_hk_origin_lng');
 
-    if (!mapContainer || !latField || !lngField) return;
+    if (!mapContainer || !latField || !lngField) {
+        console.error('fehlende elems in der map');
+        return;
+    }
 
-    const pingColor = mapContainer.dataset.pingcolor || '#4285F4'; 
-  
+    const pingColor = mapContainer.dataset.pingcolor || '#4285F4';
+
     let searchInput = null;
     let searchResults = null;
 
