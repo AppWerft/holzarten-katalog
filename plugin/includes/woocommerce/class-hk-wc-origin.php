@@ -257,11 +257,15 @@
 
             $lat = get_post_meta($product_id, '_hk_origin_lat', true);
             $lng = get_post_meta($product_id, '_hk_origin_lng', true);
-            $zoom = get_post_meta($product_id, '_hk_origin_zoom', true) ?: 6;
+            $zoom = get_post_meta($product_id, '_hk_origin_zoom', true);
 
             if ($zoom === '') {
                 $zoom = 6;
             }
+
+            $zoom = (int) $zoom;
+
+            error_log('HK Zoom GET: ' . $zoom);
 
             woocommerce_wp_hidden_input([
                 'id'    => '_hk_origin_lat',
@@ -320,18 +324,9 @@
                 );
 
                 if ($zoom !== false && $zoom >= 0 && $zoom <= 19) {
-                    error_log(
-                        'HK Zoom POST: ' . print_r(
-                            $_POST['_hk_origin_zoom'] ?? 'NICHT VORHANDEN',
-                            true
-                        )
-                    );
+
                     $product->update_meta_data('_hk_origin_zoom', $zoom);
                 }
-                error_log(
-                    'HK Zoom Objekt: ' .
-                        print_r($product->get_meta('_hk_origin_zoom'), true)
-                );
             }
 
             foreach ($coordinates as $key => $range) {
