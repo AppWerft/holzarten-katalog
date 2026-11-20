@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const mapContainer = document.getElementById('hk-origin-map');
     const latField = document.getElementById('_hk_origin_lat');
     const lngField = document.getElementById('_hk_origin_lng');
-
+    let clearButton = null;
     if (!mapContainer || !latField || !lngField) {
         console.error('fehlende Felder in der Form');
         return;
@@ -99,6 +99,22 @@ document.addEventListener('DOMContentLoaded', function () {
             searchInput.placeholder = 'Ort oder Adresse suchen …';
             searchInput.autocomplete = 'off';
 
+            clearButton = L.DomUtil.create(
+                'button',
+                'hk-origin-clear',
+                container
+            );
+
+            clearButton.type = 'button';
+            clearButton.textContent = '×';
+            clearButton.title = 'Geoposition löschen';
+            clearButton.setAttribute(
+                'aria-label',
+                'Geoposition löschen'
+            );
+
+            clearButton.hidden = !hasPosition;
+
             searchResults = L.DomUtil.create(
                 'div',
                 '',
@@ -110,8 +126,10 @@ document.addEventListener('DOMContentLoaded', function () {
             L.DomEvent.disableClickPropagation(container);
             L.DomEvent.disableScrollPropagation(container);
 
+            L.DomEvent.on(clearButton, 'click', clearPosition);
+
             return container;
-        }
+        }s
     });
 
     map.addControl(new SearchControl());
