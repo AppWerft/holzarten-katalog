@@ -4,7 +4,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const mapContainer = document.getElementById('hk-origin-map');
     const latField = document.getElementById('_hk_origin_lat');
     const lngField = document.getElementById('_hk_origin_lng');
-    const pingColor = document.getElementById('hk-origin-map').dataset.pingcolor || '#4285F4';
+
+    if (!mapContainer || !latField || !lngField) return;
+
+    const pingColor = mapContainer.dataset.pingcolor || '#4285F4'; 
+  
     let searchInput = null;
     let searchResults = null;
 
@@ -197,7 +201,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function clearPosition() {
-        
+
     }
 
     // Karte anklicken, um den Herkunftsort festzulegen
