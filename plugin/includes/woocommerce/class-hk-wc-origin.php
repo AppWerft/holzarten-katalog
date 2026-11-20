@@ -36,7 +36,7 @@
                 [$this, 'render_map'], // tatsächlichen Methodennamen einsetzen
                 $settings['priority']
             );
-/*
+            /*
             add_action(
                 'wp_enqueue_scripts',
                 [$this, 'enqueue_scripts']
@@ -311,12 +311,7 @@
             }
 
 
-            error_log(
-                'HK Zoom POST: ' . print_r(
-                    $_POST['_hk_origin_zoom'] ?? 'NICHT VORHANDEN',
-                    true
-                )
-            );
+
             if (isset($_POST['_hk_origin_zoom'])) {
 
                 $zoom = filter_var(
@@ -325,6 +320,12 @@
                 );
 
                 if ($zoom !== false && $zoom >= 0 && $zoom <= 19) {
+                    error_log(
+                        'HK Zoom POST: ' . print_r(
+                            $_POST['_hk_origin_zoom'] ?? 'NICHT VORHANDEN',
+                            true
+                        )
+                    );
                     $product->update_meta_data('_hk_origin_zoom', $zoom);
                 }
             }
