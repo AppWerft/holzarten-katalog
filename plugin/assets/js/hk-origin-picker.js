@@ -1,5 +1,5 @@
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded',  ()=> {
 
     const mapContainer = document.getElementById('hk-origin-map');
     const latField = document.getElementById('_hk_origin_lat');
@@ -45,8 +45,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const map = L.map(mapContainer).setView([lat, lng], 6);
 
-    map.on('zoomend', function () {
-        $('#_hk_origin_zoom').val(map.getZoom());
+    map.on('zoomend', () => {
+        document.getElementById('_hk_origin_zoom').value = map.getZoom();
     });
 
     // Hier den Zoomwert für die Produktattribut-Auswahl übernehmen.
@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', function () {
             position: 'topright'
         },
 
-        onAdd: function () {
+        onAdd: () => {
 
             const container = L.DomUtil.create(
                 'div',
@@ -135,9 +135,7 @@ document.addEventListener('DOMContentLoaded', function () {
     map.addControl(new SearchControl());
 
     // Größe nach dem Aufbau nochmals aktualisieren
-    requestAnimationFrame(function () {
-        map.invalidateSize();
-    });
+    requestAnimationFrame(() => map.invalidateSize());
 
 
     function clearPing() {
@@ -152,10 +150,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const pings = pingLayer.data();
 
         if (Array.isArray(pings)) {
-            pings.forEach(function (ping) {
-                ping.c.remove();
-            });
-
+            pings.forEach(ping => ping.c.remove());
             pings.length = 0;
         }
 
@@ -187,7 +182,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         addPing(position);
 
-        pingTimer = setInterval(function () {
+        pingTimer = setInterval(() => {
             const currentLat = parseFloat(latField.value);
             const currentLng = parseFloat(lngField.value);
 
@@ -216,9 +211,7 @@ document.addEventListener('DOMContentLoaded', function () {
             { animate: false }
         );
 
-        requestAnimationFrame(function () {
-            startPing(position);
-        });
+        requestAnimationFrame(() => startPing(position));
     }
 
     function clearPosition() {
@@ -248,7 +241,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (searchInput && searchResults) {
 
-        searchInput.addEventListener('input', function () {
+        searchInput.addEventListener('input', () => {
             clearPing();
             clearTimeout(searchTimer);
 
@@ -259,9 +252,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 return;
             }
 
-            searchTimer = setTimeout(function () {
-                getPosition(searchTerm);
-            }, 350);
+            searchTimer = setTimeout(() => getPosition(searchTerm), 350);
         });
     }
 
@@ -298,7 +289,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             searchResults.innerHTML = '';
 
-            data.features.forEach(function (feature) {
+            data.features.forEach((feature) => {
                 const properties = feature.properties;
                 const coordinates = feature.geometry.coordinates;
 
@@ -315,7 +306,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 item.className = 'hk-search-result';
                 item.textContent = name;
 
-                item.addEventListener('click', function (event) {
+                item.addEventListener('click',  (event)=> {
                     L.DomEvent.stopPropagation(event);
 
                     const position = {
