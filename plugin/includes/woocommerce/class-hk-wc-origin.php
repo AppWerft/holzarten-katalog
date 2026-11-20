@@ -236,20 +236,9 @@
             <div id="hk-origin-map-wrapper">
                 <div
                     id="hk-origin-map"
-                    data-lat="<?php echo esc_attr($latitude); ?>"
-                    data-lng="<?php echo esc_attr($longitude); ?>"
                     data-pingcolor="' . esc_attr($settings['pingcolor']) . '"
                 ></div>
 
-                <div id="hk-origin-map-search">
-                    <input
-                        type="search"
-                        id="hk-origin-search-input"
-                        placeholder="Ort oder Adresse suchen …"
-                        autocomplete="off"
-                    >
-                    <div id="hk-origin-search-results"></div>
-                </div>
             </div>
         ';
         }

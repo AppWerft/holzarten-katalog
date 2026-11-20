@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const lngField = document.getElementById('_hk_origin_lng');
 
     if (!mapContainer || !latField || !lngField) {
-        console.error('fehlende elems in der map');
+        console.error('fehlende Felder in der Form');
         return;
     }
 
