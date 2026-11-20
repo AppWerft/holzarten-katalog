@@ -36,11 +36,11 @@
                 [$this, 'render_map'], // tatsächlichen Methodennamen einsetzen
                 $settings['priority']
             );
-
+/*
             add_action(
                 'wp_enqueue_scripts',
                 [$this, 'enqueue_scripts']
-            );
+            );*/
             add_action(
                 'woocommerce_admin_process_product_object',
                 [$this, 'limit_wood_attribute'],
