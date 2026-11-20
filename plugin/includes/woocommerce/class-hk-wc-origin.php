@@ -258,7 +258,9 @@
             $lat = get_post_meta($product_id, '_hk_origin_lat', true);
             $lng = get_post_meta($product_id, '_hk_origin_lng', true);
             $zoom = get_post_meta($product_id, '_hk_origin_zoom', true) ?: 6;
-
+            if ($zoom === '') {
+                $zoom = 6;
+            }
             woocommerce_wp_hidden_input([
                 'id'    => '_hk_origin_lat',
                 'value' => $lat,
@@ -271,7 +273,7 @@
 
             woocommerce_wp_hidden_input([
                 'id'    => '_hk_origin_zoom',
-                'value' => $zoom,
+                'value' => $zoom
             ]);
 
             echo '</div>';
@@ -307,7 +309,6 @@
             }
             if (isset($_POST['_hk_origin_zoom'])) {
                 $zoom = absint($_POST['_hk_origin_zoom']);
-
                 if ($zoom >= 1 && $zoom <= 19) {
                     $product->update_meta_data('_hk_origin_zoom', $zoom);
                 }
