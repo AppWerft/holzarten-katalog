@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const pingColor = mapContainer.dataset.pingcolor || '#4285F4';
     const tileProvider = mapContainer.dataset.tileprovider;
     const zoom = parseInt(mapContainer.dataset.zoom, 10);
+     console.log('Zoom='+zoom)
     let initialZoom = zoom;
     let searchInput = null;
     let searchResults = null;
@@ -52,9 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
     );
 
     // Zoomänderung im Produktattribut speichern.
-    map.on('zoomend', () => {
-        document.getElementById('_hk_origin_zoom').value = map.getZoom();
-    });
+    map.on('zoomend', () => zoomField && (zoomField.value = map.getZoom()));
 
     L.tileLayer.provider(tileProvider).addTo(map);
     // --------------------------------------------------
