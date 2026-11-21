@@ -544,9 +544,9 @@ class HK_Settings
                                 name="hk_map_settings[height]"
                                 value="<?php echo esc_attr($settings['height']); ?>"
                                 min="80"
-                                max="300"
+                                max="400"
                                 step="10">
-                            <span class="description">Pixel (80–300)</span>
+                            <span class="description">Pixel (80–400)</span>
                         </td>
                     </tr>
 
