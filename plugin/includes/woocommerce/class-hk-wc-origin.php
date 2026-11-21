@@ -229,26 +229,32 @@
             $settings = wp_parse_args(
                 get_option('hk_map_settings', []),
                 [
-                    'pingcolor' => '#4285F4',
+                    'pingcolor'     => '#4285F4',
                     'tile_provider' => 'OpenStreetMap.Mapnik',
-                    'height' => 200,
-                    'width' => '100%',
-                    'radius' => 0,
-                    'position' => 'left'
-
+                    'height'        => 200,
+                    'width'         => '100%',
+                    'radius'        => 0,
+                    'position'      => 'left'
                 ]
-            );
+            );  
+            $options = [
+                'pingcolor'     => $settings['pingcolor'],
+                'tileprovider'  => $settings['tile_provider'],
+                'zoom'          => (int) $zoom,
+                'height'        => (int) $settings['height'],
+                'width'         => $settings['width'],
+                'radius'        => (int) $settings['radius'],
+                'position'      => $settings['position']
+            ];
 
-            return '
-            <div id="hk-origin-map-wrapper">
-                <div
-                    id="hk-origin-map"
-                    data-pingcolor="' . esc_attr($settings['pingcolor']) . '"
-                    data-tileprovider="' . esc_attr($settings['tile_provider']) . '"
-                    data-zoom="' . esc_attr($zoom) . '"
-                ></div>
-            </div>
-        ';
+             return '
+        <div id="hk-origin-map-wrapper">
+            <div
+                id="hk-origin-map"
+                data-options="' . esc_attr(wp_json_encode($options)) . '"
+            ></div>
+        </div>
+    ';
         }
         /**
          * Herkunftskoordinaten im Produkteditor anzeigen.
