@@ -1,8 +1,6 @@
 
 document.addEventListener('DOMContentLoaded', function () {
-    // 1. Layer deklarieren
-    let pingLayer = null;
-    let pingTimer = null;
+
     const STANDARDPOSITION = [51.3406751, 12.4256434];
 
     const previewMap = document.getElementById('settings-preview-map');
@@ -20,7 +18,15 @@ document.addEventListener('DOMContentLoaded', function () {
         return;
     }
 
+    let pingLayer = null;
+    let pingTimer = null;
+    let tileLayer = null;
+
     previewWrapper.style.display = 'flex';
+
+    // --------------------------------------------------
+    // Vorschaugröße und Position
+    // --------------------------------------------------
 
     const updatePreviewSize = () => {
 
@@ -36,96 +42,24 @@ document.addEventListener('DOMContentLoaded', function () {
 
         previewWrapper.style.justifyContent =
             position === 'right' ? 'flex-end' :
-                position === 'center' ? 'center' :
-                    'flex-start';
+            position === 'center' ? 'center' :
+            'flex-start';
     };
 
     updatePreviewSize();
 
-    // Leaflet-Karte initialisieren
+    // --------------------------------------------------
+    // Leaflet-Karte
+    // --------------------------------------------------
+
     const map = L.map(previewMap, {
         zoomControl: false
     }).setView(STANDARDPOSITION, 12);
 
-    // 3. PingLayer erzeugen
-    pingLayer = L.pingLayer({
-        duration: 2500,
-        fps: 32,
-        radiusRange: [5, 130],
-        opacityRange: [0.5, 0]
-    });
-
-    // PingLayer mit variabler Farbe
-    const updatePingLayer = () => {
-
-        if (pingLayer) {
-            map.removeLayer(pingLayer);
-        }
-
-        const pingColor = pingcolorInput?.value || '#555555';
-
-
-        // --------------------------------------------------
-        // PingLayer initialisieren
-        // --------------------------------------------------
-
-        
-
-        
-        function addPing() {
-
-            pingLayer.ping(
-                [STANDARDPOSITION[1], STANDARDPOSITION[0]],
-                'preview'
-            );
-
-            const pings = pingLayer.data();
-
-            if (pings.length) {
-                const ping = pings[pings.length - 1];
-
-                const pingColor = pingcolorInput?.value || '#555555';
-
-                ping.c
-                    .attr('fill', pingColor)
-                    .attr('stroke', pingColor);
-            }
-        }
-
-        function startPing() {
-
-            if (pingTimer) {
-                clearInterval(pingTimer);
-            }
-
-            if (!map.hasLayer(pingLayer)) {
-                pingLayer.addTo(map);
-            }
-
-            addPing();
-
-            pingTimer = setInterval(addPing, 2500);
-        }
-
-        startPing();
-
-        // Farbe unmittelbar bei Änderung aktualisieren
-        pingcolorInput?.addEventListener('input', () => {
-
-            const pingColor = pingcolorInput.value || '#555555';
-
-            pingLayer.data().forEach(ping => {
-                ping.c
-                    .attr('fill', pingColor)
-                    .attr('stroke', pingColor);
-            });
-        });
-
-    };
-
-    updatePingLayer();
-
+    // --------------------------------------------------
     // Kartenanbieter
+    // --------------------------------------------------
+
     const setTileProvider = (provider) => {
 
         if (tileLayer) {
@@ -140,8 +74,61 @@ document.addEventListener('DOMContentLoaded', function () {
         providerSelect?.value || 'OpenStreetMap.Mapnik'
     );
 
+    // --------------------------------------------------
+    // PingLayer
+    // --------------------------------------------------
+
+    pingLayer = L.pingLayer({
+        duration: 2500,
+        fps: 32,
+        radiusRange: [5, 130],
+        opacityRange: [0.5, 0]
+    });
+
+    function addPing() {
+
+        pingLayer.ping(
+            [STANDARDPOSITION[1], STANDARDPOSITION[0]],
+            'preview'
+        );
+
+        const pings = pingLayer.data();
+
+        if (pings.length) {
+
+            const ping = pings[pings.length - 1];
+            const pingColor = pingcolorInput?.value || '#555555';
+
+            ping.c
+                .attr('fill', pingColor)
+                .attr('stroke', pingColor);
+        }
+    }
+
+    pingLayer.addTo(map);
+
+    addPing();
+
+    pingTimer = setInterval(addPing, 2500);
+
+    // Farbe unmittelbar aktualisieren
+    pingcolorInput?.addEventListener('input', function () {
+
+        const pingColor = this.value || '#555555';
+
+        pingLayer.data().forEach(ping => {
+            ping.c
+                .attr('fill', pingColor)
+                .attr('stroke', pingColor);
+        });
+    });
+
+    // --------------------------------------------------
     // Vorschau aktualisieren
+    // --------------------------------------------------
+
     const updatePreview = () => {
+
         updatePreviewSize();
 
         requestAnimationFrame(() => {
@@ -154,10 +141,6 @@ document.addEventListener('DOMContentLoaded', function () {
     radiusInput?.addEventListener('input', updatePreview);
     positionSelect?.addEventListener('change', updatePreview);
 
-    // Pingfarbe unmittelbar aktualisieren
-    pingcolorInput?.addEventListener('input', updatePingLayer);
-
-    // Kartenanbieter wechseln
     providerSelect?.addEventListener('change', function () {
         setTileProvider(this.value);
     });
