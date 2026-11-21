@@ -1,6 +1,6 @@
 
 document.addEventListener('DOMContentLoaded', () => {
-    const STANDARDPOSITION = [51.33, 12.42];
+    const STANDARDPOSITION = [51.33, 12.42a];
     const mapContainer = document.getElementById('hk-origin-map');
     const latField = document.getElementById('_hk_origin_lat');
     const lngField = document.getElementById('_hk_origin_lng');
@@ -11,11 +11,15 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
-    const pingColor = mapContainer.dataset.pingcolor || '#4285F4';
-    const tileProvider = mapContainer.dataset.tileprovider;
-    const zoom = parseInt(mapContainer.dataset.zoom, 10);
+    const options = JSON.parse(mapContainer.dataset.options);
 
-    console.log('Zoom=' + zoom)
+    const pingColor = options.pingcolor || '#4285F4';
+    const tileProvider = options.tileprovider;
+    const zoom = parseInt(options.zoom, 10);
+    const height = parseInt(options.height, 10);
+    const width = options.width;
+    const radius = parseInt(options.radius, 10);
+    const position = options.position;
 
     let initialZoom = zoom;
     let searchInput = null;
@@ -39,22 +43,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const initialLat = parseFloat(latField.value);
     const initialLng = parseFloat(lngField.value);
-
     const hasPosition =
         Number.isFinite(initialLat) &&
         Number.isFinite(initialLng);
-
     mapContainer.classList.toggle('is-inactive', !hasPosition);
+    mapContainer.style.height = `${height}px`;
+    mapContainer.style.width = `${width}%`;
+    mapContainer.style.borderRadius = `${radius}px`;
+    const mapWrapper = document.getElementById('hk-origin-map-wrapper');
+    if (mapWrapper) {
+        mapWrapper.style.display = 'flex'
 
-
+        mapWrapper.style.justifyContent =
+            position === 'right' ? 'flex-end' :
+                position === 'center' ? 'center' :
+                    'flex-start';
+    }
     const lat = Number.isFinite(initialLat) ? initialLat : STANDARDPOSITION[0];
     const lng = Number.isFinite(initialLng) ? initialLng : STANDARDPOSITION[1];
-
     const map = L.map(mapContainer).setView(
         [lat, lng],
         initialZoom
     );
-
     // Zoomänderung im Produktattribut speichern.
     map.on('zoomend', () => zoomField && (zoomField.value = map.getZoom()));
 

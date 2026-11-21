@@ -224,14 +224,17 @@
         }
 
 
-        public function render_geosuche($zoom=6)
+        public function render_geosuche($zoom = 6)
         {
             $settings = wp_parse_args(
                 get_option('hk_map_settings', []),
                 [
                     'pingcolor' => '#4285F4',
-                    'tile_provider' => 'OpenStreetMap.Mapnik'
-                    
+                    'tile_provider' => 'OpenStreetMap.Mapnik',
+                    'height' => 200,
+                    'width' => '100%',
+                    'radius' => 0,
+                    'position' => 'left'
 
                 ]
             );
