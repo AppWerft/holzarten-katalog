@@ -1,6 +1,6 @@
 
 document.addEventListener('DOMContentLoaded', () => {
-    const STANDARDPOSITION = [51.33, 12.42a];
+    const STANDARDPOSITION = [51.33, 12.42];
     const mapContainer = document.getElementById('hk-origin-map');
     const latField = document.getElementById('_hk_origin_lat');
     const lngField = document.getElementById('_hk_origin_lng');
