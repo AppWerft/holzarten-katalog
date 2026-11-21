@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error('fehlende Felder in der Form');
         return;
     }
-
+    console.log(mapContainer.dataset.options)
     const options = JSON.parse(mapContainer.dataset.options);
 
     const pingColor = options.pingcolor || '#4285F4';
