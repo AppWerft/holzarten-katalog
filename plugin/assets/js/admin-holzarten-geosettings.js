@@ -34,8 +34,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         previewWrapper.style.justifyContent =
             position === 'right' ? 'flex-end' :
-            position === 'center' ? 'center' :
-            'flex-start';
+                position === 'center' ? 'center' :
+                    'flex-start';
     };
 
     updatePreviewSize();
@@ -58,8 +58,13 @@ document.addEventListener('DOMContentLoaded', function () {
         const pingColor = pingcolorInput?.value || '#555555';
 
         pingLayer = L.pingLayer(STANDARDPOSITION, {
-            color: pingColor
-        });
+            color: pingColor,
+            duration: 2500,
+            fps: 32,
+            radiusRange: [5, 130],
+            opacityRange: [0.5, 0]
+        }
+        );
 
         pingLayer.addTo(map);
     };
