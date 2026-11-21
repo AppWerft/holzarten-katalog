@@ -57,16 +57,69 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const pingColor = pingcolorInput?.value || '#555555';
 
-        pingLayer = L.pingLayer(STANDARDPOSITION, {
-            color: pingColor,
+
+        // --------------------------------------------------
+        // PingLayer initialisieren
+        // --------------------------------------------------
+
+        const pingLayer = L.pingLayer({
             duration: 2500,
             fps: 32,
             radiusRange: [5, 130],
             opacityRange: [0.5, 0]
-        }
-        );
+        });
 
-        pingLayer.addTo(map);
+        let pingTimer = null;
+
+        function addPing() {
+
+            pingLayer.ping(
+                [STANDARDPOSITION[1], STANDARDPOSITION[0]],
+                'preview'
+            );
+
+            const pings = pingLayer.data();
+
+            if (pings.length) {
+                const ping = pings[pings.length - 1];
+
+                const pingColor = pingcolorInput?.value || '#555555';
+
+                ping.c
+                    .attr('fill', pingColor)
+                    .attr('stroke', pingColor);
+            }
+        }
+
+        function startPing() {
+
+            if (pingTimer) {
+                clearInterval(pingTimer);
+            }
+
+            if (!map.hasLayer(pingLayer)) {
+                pingLayer.addTo(map);
+            }
+
+            addPing();
+
+            pingTimer = setInterval(addPing, 2500);
+        }
+
+        startPing();
+
+        // Farbe unmittelbar bei Änderung aktualisieren
+        pingcolorInput?.addEventListener('input', () => {
+
+            const pingColor = pingcolorInput.value || '#555555';
+
+            pingLayer.data().forEach(ping => {
+                ping.c
+                    .attr('fill', pingColor)
+                    .attr('stroke', pingColor);
+            });
+        });
+
     };
 
     updatePingLayer();
