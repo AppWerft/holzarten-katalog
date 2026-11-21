@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
     updatePreviewSize();
-  
+  console.log(L.pingLayer)
 
     // Leaflet-Karte initialisieren
     const map = L.map(previewMap, {
