@@ -68,7 +68,7 @@ class HK_Settings
         );
         wp_enqueue_script(
             'hk-d3',
-            HK_PLUGIN_URL . 'assets/vendor/d3/d3.js',
+            HK_PLUGIN_URL . 'assets/vendor/d3/d3v5.js',
             [],
             HK_VERSION,
             true
