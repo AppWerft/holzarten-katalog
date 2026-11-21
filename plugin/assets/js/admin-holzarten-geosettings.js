@@ -1,6 +1,8 @@
 
 document.addEventListener('DOMContentLoaded', function () {
-
+    // 1. Layer deklarieren
+    let pingLayer = null;
+    let pingTimer = null;
     const STANDARDPOSITION = [51.3406751, 12.4256434];
 
     const previewMap = document.getElementById('settings-preview-map');
@@ -45,8 +47,13 @@ document.addEventListener('DOMContentLoaded', function () {
         zoomControl: false
     }).setView(STANDARDPOSITION, 12);
 
-    let pingLayer = null;
-    let tileLayer = null;
+    // 3. PingLayer erzeugen
+    pingLayer = L.pingLayer({
+        duration: 2500,
+        fps: 32,
+        radiusRange: [5, 130],
+        opacityRange: [0.5, 0]
+    });
 
     // PingLayer mit variabler Farbe
     const updatePingLayer = () => {
@@ -62,15 +69,9 @@ document.addEventListener('DOMContentLoaded', function () {
         // PingLayer initialisieren
         // --------------------------------------------------
 
-        const pingLayer = L.pingLayer({
-            duration: 2500,
-            fps: 32,
-            radiusRange: [5, 130],
-            opacityRange: [0.5, 0]
-        });
+        
 
-        let pingTimer = null;
-
+        
         function addPing() {
 
             pingLayer.ping(
