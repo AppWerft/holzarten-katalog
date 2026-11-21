@@ -18,7 +18,6 @@ document.addEventListener('DOMContentLoaded', function () {
         return;
     }
 
-    // Vorschau initialisieren
     previewWrapper.style.display = 'flex';
 
     const updatePreviewSize = () => {
@@ -35,20 +34,39 @@ document.addEventListener('DOMContentLoaded', function () {
 
         previewWrapper.style.justifyContent =
             position === 'right' ? 'flex-end' :
-                position === 'center' ? 'center' :
-                    'flex-start';
+            position === 'center' ? 'center' :
+            'flex-start';
     };
 
     updatePreviewSize();
-  console.log(L.pingLayer)
 
     // Leaflet-Karte initialisieren
     const map = L.map(previewMap, {
         zoomControl: false
     }).setView(STANDARDPOSITION, 12);
-    
+
+    let pingLayer = null;
     let tileLayer = null;
 
+    // PingLayer mit variabler Farbe
+    const updatePingLayer = () => {
+
+        if (pingLayer) {
+            map.removeLayer(pingLayer);
+        }
+
+        const pingColor = pingcolorInput?.value || '#555555';
+
+        pingLayer = L.pingLayer(STANDARDPOSITION, {
+            color: pingColor
+        });
+
+        pingLayer.addTo(map);
+    };
+
+    updatePingLayer();
+
+    // Kartenanbieter
     const setTileProvider = (provider) => {
 
         if (tileLayer) {
@@ -74,16 +92,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
     heightInput.addEventListener('input', updatePreview);
     widthInput.addEventListener('input', updatePreview);
-
     radiusInput?.addEventListener('input', updatePreview);
     positionSelect?.addEventListener('change', updatePreview);
+
+    // Pingfarbe unmittelbar aktualisieren
+    pingcolorInput?.addEventListener('input', updatePingLayer);
 
     // Kartenanbieter wechseln
     providerSelect?.addEventListener('change', function () {
         setTileProvider(this.value);
     });
 
-    // Initiale Größenberechnung
     setTimeout(() => map.invalidateSize(), 100);
 
 });
