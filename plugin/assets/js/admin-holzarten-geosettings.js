@@ -40,21 +40,13 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
     updatePreviewSize();
-    console.log('Preview:', previewMap);
-    console.log('Leaflet:', typeof L);
-    console.log('Container:', previewMap.getBoundingClientRect());
+  
 
     // Leaflet-Karte initialisieren
     const map = L.map(previewMap, {
         zoomControl: false
     }).setView(STANDARDPOSITION, 12);
-    console.log('Map initialized:', map);
-    console.log('Tile provider:', providerSelect?.value);
-    console.log(
-        'Map dimensions:',
-        previewMap.offsetWidth,
-        previewMap.offsetHeight
-    );
+    
     let tileLayer = null;
 
     const setTileProvider = (provider) => {
