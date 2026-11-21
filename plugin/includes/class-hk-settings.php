@@ -651,7 +651,9 @@ class HK_Settings
             </form>
         </div>
         <i>Vorschau</i>
-        <div id="settings-preview-map"></div>
+        <div id="settings-preview-wrapper">
+            <div id="settings-preview-map"></div>
+        </div>
 <?php
     }
 
