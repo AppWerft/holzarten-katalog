@@ -66,6 +66,14 @@ class HK_Settings
             '1.9.4',
             true
         );
+         // PingLayer
+        wp_enqueue_script(
+            'hk-ping-layer',
+            HK_PLUGIN_URL . 'assets/vendor/leaflet/leaflet-d3.js',
+            ['hk-leaflet', 'hk-d3'],
+            HK_VERSION,
+            true
+        );
         // Leaflet JavaScript
         wp_enqueue_script(
             'hk-leaflet-providers',
