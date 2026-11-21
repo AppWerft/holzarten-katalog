@@ -1,30 +1,50 @@
+
 document.addEventListener('DOMContentLoaded', function () {
 
-    const preview = document.getElementById('settings-preview-map');
+    const STANDARDPOSITION = [51.3406751, 12.4256434];
+
+    const previewMap = document.getElementById('settings-preview-map');
+    const previewWrapper = document.getElementById('settings-preview-wrapper');
+
     const heightInput = document.getElementById('hk-map-height');
     const widthInput = document.getElementById('hk-map-width');
     const radiusInput = document.getElementById('hk-map-radius');
-    const providerSelect = document.getElementById('hk-tile-provider');
+    const positionSelect = document.getElementById('hk-map-position');
 
-    if (!preview || !heightInput || !widthInput) {
+    const providerSelect = document.getElementById('hk-tile-provider');
+    const pingcolorInput = document.getElementById('hk-map-pingcolor');
+
+    if (!previewMap || !previewWrapper || !heightInput || !widthInput) {
         return;
     }
 
-    const updatePreviewSize = () => {
-        const w = parseInt(widthInput.value, 10) || 100;
-        const h = parseInt(heightInput.value, 10) || 200;
-        const r = parseInt(radiusInput?.value, 10) || 0;
+    // Vorschau initialisieren
+    previewWrapper.style.display = 'flex';
 
-        preview.style.height = h + 'px';
-        preview.style.width = w + '%';
-        preview.style.borderRadius = r + 'px';
+    const updatePreviewSize = () => {
+
+        const width = parseInt(widthInput.value, 10) || 100;
+        const height = parseInt(heightInput.value, 10) || 200;
+        const radius = parseInt(radiusInput?.value, 10) || 0;
+
+        previewMap.style.width = width + '%';
+        previewMap.style.height = height + 'px';
+        previewMap.style.borderRadius = radius + 'px';
+
+        const position = positionSelect?.value || 'left';
+
+        previewWrapper.style.justifyContent =
+            position === 'right' ? 'flex-end' :
+            position === 'center' ? 'center' :
+            'flex-start';
     };
 
     updatePreviewSize();
 
-    const map = L.map(preview, {
+    // Leaflet-Karte initialisieren
+    const map = L.map(previewMap, {
         zoomControl: false
-    }).setView([51.3406751, 12.4256434], 12);
+    }).setView(STANDARDPOSITION, 12);
 
     let tileLayer = null;
 
@@ -38,24 +58,31 @@ document.addEventListener('DOMContentLoaded', function () {
         tileLayer.addTo(map);
     };
 
-    // Gespeicherten Anbieter verwenden
     setTileProvider(
         providerSelect?.value || 'OpenStreetMap.Mapnik'
     );
 
+    // Vorschau aktualisieren
     const updatePreview = () => {
         updatePreviewSize();
-        map.invalidateSize();
+
+        requestAnimationFrame(() => {
+            map.invalidateSize();
+        });
     };
 
-    heightInput.addEventListener('change', updatePreview);
-    widthInput.addEventListener('change', updatePreview);
-    radiusInput?.addEventListener('change', updatePreview);
+    heightInput.addEventListener('input', updatePreview);
+    widthInput.addEventListener('input', updatePreview);
 
-    // Anbieter unmittelbar bei Auswahl wechseln
+    radiusInput?.addEventListener('input', updatePreview);
+    positionSelect?.addEventListener('change', updatePreview);
+
+    // Kartenanbieter wechseln
     providerSelect?.addEventListener('change', function () {
         setTileProvider(this.value);
     });
 
+    // Initiale Größenberechnung
     setTimeout(() => map.invalidateSize(), 100);
+
 });
