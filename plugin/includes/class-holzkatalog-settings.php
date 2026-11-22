@@ -301,7 +301,7 @@ class HOLZKATALOG_Settings
                         <img
                             id="hk-wood-preview"
                             class="<?php echo $lupe ? 'hk-wood-zoom' : ''; ?>"
-                            src="<?php echo esc_url(HOLZKATALOG_URL . 'assets/images/liveholz.png'); ?>"
+                            src="<?php echo esc_url(HOLZKATALOG_URL . 'assets/images/liveholz.webp'); ?>"
                             alt="Vorschau Holzbild in Holzurnenanzeige"
                             style="
                                 width: <?php echo esc_attr($size); ?>px;
