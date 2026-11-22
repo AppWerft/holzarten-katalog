@@ -106,7 +106,8 @@ class HOLZKATALOG_Admins
         }
 
         echo '<div class="wrap">';
-        echo '<h1>Holzarten – Import / Export</h1>Hier können erfasste Datenbestände, einschließlich der Holzbilder zwischen zwei WP-Instanzen kopiert werden.';
+        echo '<h1>Holzarten – Import / Export</h1>
+        <p>Hier können erfasste Datenbestände, einschließlich der Holzbilder zwischen zwei WP-Instanzen kopiert werden.</p>';
 
         // Exportformular
         //$this->render_export_form();
