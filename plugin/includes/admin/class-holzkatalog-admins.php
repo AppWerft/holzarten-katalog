@@ -111,7 +111,7 @@ class HOLZKATALOG_Admins
             <div class="hk-import-export-header">
                 <img
                     src="' . esc_url(
-                    HOLZKATALOG_PLUGIN_URL . 'assets/images/importexport.webp'
+                    HOLZKATALOG_PLUGIN_URL . 'assets/images/importexport.png'
                 ) . '"
                     width="48"
                     height="48"
