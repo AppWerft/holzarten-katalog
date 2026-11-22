@@ -1,38 +1,28 @@
 
 document.addEventListener('DOMContentLoaded', () => {
-    const STANDARDPOSITION = [51.33, 12.42];
-    const mapContainer = document.getElementById('hk-origin-map');
-    const latField = document.getElementById('_hk_origin_lat');
-    const lngField = document.getElementById('_hk_origin_lng');
-    const zoomField = document.getElementById('_hk_origin_zoom');
+    const STANDARDPOSITION = [51.33, 12.42],
+        mapContainer = document.getElementById('hk-origin-map'),
+        latField = document.getElementById('_hk_origin_lat'),
+        lngField = document.getElementById('_hk_origin_lng'),
+        zoomField = document.getElementById('_hk_origin_zoom');
     let clearButton = null;
-    if (!mapContainer || !latField || !lngField) {
-        console.error('fehlende Felder in der Form');
-        return;
-    }
-    console.log(mapContainer.dataset);
-    console.log(mapContainer.dataset.options)
-    const options = JSON.parse(mapContainer.dataset.options);
-
-    const pingColor = options.pingcolor || '#4285F4';
-    const tileProvider = options.tileprovider;
-    const zoom = parseInt(options.zoom, 10);
-    const height = parseInt(options.height, 10);
-    const width = options.width;
-    const radius = parseInt(options.radius, 10);
-    const position = options.position;
-
-    let initialZoom = zoom;
-    let searchInput = null;
-    let searchResults = null;
-
     if (!mapContainer || !latField || !lngField) return;
-
+    const options = JSON.parse(mapContainer.dataset.options)
+    pingColor = options.pingcolor || '#4285F4',
+        tileProvider = options.tileprovider,
+        zoom = parseInt(options.zoom, 10),
+        height = parseInt(options.height, 10),
+        width = options.width,
+        radius = parseInt(options.radius, 10),
+        position = options.position;
+    let initialZoom = zoom,
+        searchInput = null,
+        searchResults = null;
+    if (!mapContainer || !latField || !lngField) return;
     if (typeof L === 'undefined') {
         console.error('Leaflet ist nicht geladen.');
         return;
     }
-
     let searchTimer = null;
     let searchController = null;
     let pingLayer = null;
@@ -41,7 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // --------------------------------------------------
     // Karte sofort initialisieren
     // --------------------------------------------------
-
     const initialLat = parseFloat(latField.value);
     const initialLng = parseFloat(lngField.value);
     const hasPosition =
@@ -54,7 +43,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const mapWrapper = document.getElementById('hk-origin-map-wrapper');
     if (mapWrapper) {
         mapWrapper.style.display = 'flex'
-
         mapWrapper.style.justifyContent =
             position === 'right' ? 'flex-end' :
                 position === 'center' ? 'center' :
@@ -68,12 +56,10 @@ document.addEventListener('DOMContentLoaded', () => {
     );
     // Zoomänderung im Produktattribut speichern.
     map.on('zoomend', () => zoomField && (zoomField.value = map.getZoom()));
-
     L.tileLayer.provider(tileProvider).addTo(map);
     // --------------------------------------------------
     // PingLayer initialisieren
     // --------------------------------------------------
-
     pingLayer = L.pingLayer({
         duration: 2500,
         fps: 32,
@@ -86,7 +72,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // --------------------------------------------------
 
     if (hasPosition) {
-        console.log('Start Ping')
         startPing({
             lat: initialLat,
             lng: initialLng
@@ -172,10 +157,9 @@ document.addEventListener('DOMContentLoaded', () => {
             pings.length = 0;
         }
         // Layer entfernen
-        if (map.hasLayer(pingLayer)) {
-            map.removeLayer(pingLayer);
-        }
+        if (map.hasLayer(pingLayer)) map.removeLayer(pingLayer);
     }
+
     function addPing(position) {
         pingLayer.ping(
             [position.lng, position.lat],
@@ -192,27 +176,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function darkenColor(hex, factor = 0.75) {
         hex = hex.replace('#', '');
-        const r = parseInt(hex.substring(0, 2), 16);
-        const g = parseInt(hex.substring(2, 4), 16);
-        const b = parseInt(hex.substring(4, 6), 16);
-        const toHex = value =>
-            Math.round(value * factor)
-                .toString(16)
-                .padStart(2, '0');
+        const r = parseInt(hex.substring(0, 2), 16)
+        g = parseInt(hex.substring(2, 4), 16),
+            b = parseInt(hex.substring(4, 6), 16),
+            toHex = value =>
+                Math.round(value * factor)
+                    .toString(16)
+                    .padStart(2, '0');
         return '#' + toHex(r) + toHex(g) + toHex(b);
     }
 
     function startPing(position) {
         clearPing();
-
         pingLayer.addTo(map);
-
         addPing(position);
-
         pingTimer = setInterval(() => {
-            const currentLat = parseFloat(latField.value);
-            const currentLng = parseFloat(lngField.value);
-
+            const currentLat = parseFloat(latField.value),
+                currentLng = parseFloat(lngField.value);
             if (
                 Number.isFinite(currentLat) &&
                 Number.isFinite(currentLng)
@@ -250,43 +230,22 @@ document.addEventListener('DOMContentLoaded', () => {
         mapContainer.classList.add('is-inactive');
         clearButton.hidden = true;
         map.setView(STANDARDPOSITION, zoomField.value);
-
     }
 
-    // Karte anklicken, um den Herkunftsort festzulegen
-    /*item.addEventListener('click', function (event) {
- 
-         // Klick darf nicht bis zur Karte durchgereicht werden.
-         L.DomEvent.stopPropagation(event);
- 
-         const position = {
-             lat: coordinates[1],
-             lng: coordinates[0]
-         };
- 
-         setPosition(position);
- 
-         searchInput.value = name;
-         searchResults.innerHTML = '';
-     });*/
 
     // --------------------------------------------------
     // Photon-Ortssuche
     // --------------------------------------------------
 
     if (searchInput && searchResults) {
-
         searchInput.addEventListener('input', () => {
             clearPing();
             clearTimeout(searchTimer);
-
             const searchTerm = searchInput.value.trim();
-
             if (searchTerm.length < 3) {
                 searchResults.innerHTML = '';
                 return;
             }
-
             searchTimer = setTimeout(() => getPosition(searchTerm), 350);
         });
         searchInput.addEventListener('focus', () => {
@@ -296,10 +255,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     async function getPosition(searchTerm) {
-
-        if (searchController) {
+        if (searchController)
             searchController.abort();
-        }
+
 
         const controller = new AbortController();
         searchController = controller;
@@ -329,32 +287,28 @@ document.addEventListener('DOMContentLoaded', () => {
             searchResults.innerHTML = '';
 
             data.features.forEach((feature) => {
-                const properties = feature.properties;
-                const coordinates = feature.geometry.coordinates;
+                const properties = feature.properties,
+                    coordinates = feature.geometry.coordinates,
+                    name = [
+                        properties.name,
+                        properties.street,
+                        properties.housenumber,
+                        properties.postcode,
+                        properties.city,
+                        properties.country
+                    ].filter(Boolean).join(', '),
 
-                const name = [
-                    properties.name,
-                    properties.street,
-                    properties.housenumber,
-                    properties.postcode,
-                    properties.city,
-                    properties.country
-                ].filter(Boolean).join(', ');
-
-                const item = document.createElement('div');
+                    item = document.createElement('div');
                 item.className = 'hk-search-result';
                 item.textContent = name;
 
                 item.addEventListener('click', (event) => {
                     L.DomEvent.stopPropagation(event);
-
                     const position = {
                         lat: coordinates[1],
                         lng: coordinates[0]
                     };
-
                     setPosition(position);
-
                     searchInput.value = name;
                     searchResults.innerHTML = '';
                 });
@@ -363,22 +317,16 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
         } catch (error) {
-
             if (error.name !== 'AbortError') {
-
                 console.error('Fehler bei der Ortssuche:', error);
-
                 if (searchController === controller) {
                     searchResults.textContent = 'Die Suche ist fehlgeschlagen.';
                 }
             }
-
         } finally {
-
             if (searchController === controller) {
                 searchController = null;
             }
         }
     }
-
 });
