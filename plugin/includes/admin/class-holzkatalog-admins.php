@@ -78,8 +78,35 @@ class HOLZKATALOG_Admins
             'dashicons-palmtree',
             25
         );
+        add_submenu_page(
+            'holzarten-katalog',
+            'Import / Export',
+            'Import / Export',
+            'manage_options',
+            'holzarten-import-export',
+            [$this, 'import_export_page']
+        );
     }
-   
+    /**
+ * Import- und Exportseite anzeigen.
+ */
+public function import_export_page()
+{
+    if (!current_user_can('manage_options')) {
+        wp_die('Keine Berechtigung.');
+    }
+
+    echo '<div class="wrap">';
+    echo '<h1>Holzarten – Import / Export</h1>';
+
+    // Exportformular
+    //$this->render_export_form();
+
+    // Importformular
+    $this->render_import_form();
+
+    echo '</div>';
+}
     /**
      * Admin-Seite darstellen.
      */
