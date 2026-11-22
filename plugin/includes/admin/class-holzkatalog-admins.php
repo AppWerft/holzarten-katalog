@@ -612,10 +612,10 @@ class HOLZKATALOG_Admins
                                 <?php else: ?>
 
                                     <div>
-                                        <img class="hk-image-placeholder"
+                                        <img
+                                            class="hk-image-placeholder"
                                             src="<?php echo esc_url(
-                                                        plugin_dir_url(dirname(__FILE__))
-                                                            . 'assets/images/holz.png'
+                                                        HOLZKATALOG_URL . 'assets/images/holz.png'
                                                     ); ?>"
                                             alt="Kein Bild verfügbar">
                                     </div>
@@ -707,10 +707,10 @@ class HOLZKATALOG_Admins
                                             ); ?>"
                                     onclick="return confirm('Diese Holzart wirklich löschen?');">
 
-                                    <img style="width:16px;"
+                                    <img
+                                        style="width:16px;"
                                         src="<?php echo esc_url(
-                                                    plugin_dir_url(dirname(__FILE__))
-                                                        . 'assets/images/delete.svg'
+                                                    HOLZKATALOG_URL . 'assets/images/delete.svg'
                                                 ); ?>"
                                         alt="Löschen">
 
