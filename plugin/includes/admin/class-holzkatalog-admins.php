@@ -88,25 +88,25 @@ class HOLZKATALOG_Admins
         );
     }
     /**
- * Import- und Exportseite anzeigen.
- */
-public function import_export_page()
-{
-    if (!current_user_can('manage_options')) {
-        wp_die('Keine Berechtigung.');
+     * Import- und Exportseite anzeigen.
+     */
+    public function import_export_page()
+    {
+        if (!current_user_can('manage_options')) {
+            wp_die('Keine Berechtigung.');
+        }
+
+        echo '<div class="wrap">';
+        echo '<h1>Holzarten – Import / Export</h1>';
+
+        // Exportformular
+        //$this->render_export_form();
+
+        // Importformular
+        $this->render_importexport_form();
+
+        echo '</div>';
     }
-
-    echo '<div class="wrap">';
-    echo '<h1>Holzarten – Import / Export</h1>';
-
-    // Exportformular
-    //$this->render_export_form();
-
-    // Importformular
-    $this->render_importexport_form();
-
-    echo '</div>';
-}
     /**
      * Admin-Seite darstellen.
      */
@@ -240,7 +240,7 @@ public function import_export_page()
             if ($item || isset($_GET['new'])) {
                 $this->render_form($item);
             }
-            
+
             $this->render_importexport_form();
             $this->render_table($items, $search);
             ?>
@@ -446,9 +446,17 @@ public function import_export_page()
      * ZIP-Importformular darstellen.
      */
     private function render_importexport_form()
-    {
-    ?>
-<h2>Datensicherung und Klonen</h2>
+{
+?>
+    <div class="hk-import-export-grid">
+
+        <div class="hk-import-export-box">
+            <h2>Export – Datensicherung und Klonen</h2>
+
+            <p class="description">
+                Erstellt einen vollständigen Export des Holzartenkatalogs
+                einschließlich der Holzbilder.
+            </p>
 
             <form method="post"
                 action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
@@ -458,7 +466,6 @@ public function import_export_page()
                     value="hk_export_catalog">
 
                 <?php
-
                 wp_nonce_field(
                     'hk_export_catalog',
                     'hk_export_nonce'
@@ -471,46 +478,45 @@ public function import_export_page()
                     false
                 );
                 ?>
-
             </form>
-        
+        </div>
 
-        <h2>Holzartenkatalog importieren</h2>
+        <div class="hk-import-export-box">
+            <h2>Import – Holzartenkatalog</h2>
+            <p>Hier kann der Datenbestand der Hölzer von einer WP-Instanz zu einer anderen kopiert werden.
 
-        <p class="description">
-            Importiert einen vollständigen Export mit Bäumen und ihren Holzbildern (*.zip).
-        </p>
+            
+            </p>
 
-        <form method="post"
-            action="<?php echo esc_url(admin_url('admin-post.php')); ?>"
-            enctype="multipart/form-data">
+            <form method="post"
+                action="<?php echo esc_url(admin_url('admin-post.php')); ?>"
+                enctype="multipart/form-data">
 
-            <input type="hidden"
-                name="action"
-                value="hk_import_catalog">
+                <input type="hidden"
+                    name="action"
+                    value="hk_import_catalog">
 
-            <?php wp_nonce_field('hk_import_catalog'); ?>
+                <?php wp_nonce_field('hk_import_catalog'); ?>
 
-            <input type="file"
-                name="catalog_zip"
-                accept=".zip,application/zip"
-                required>
+                <input type="file"
+                    name="catalog_zip"
+                    accept=".zip,application/zip"
+                    required>
 
-            <?php
-            submit_button(
-                'Holzartenkatalog importieren',
-                'secondary',
-                'submit',
-                false
-            );
-            ?>
+                <?php
+                submit_button(
+                    'Holzartenkatalog importieren',
+                    'secondary',
+                    'submit',
+                    false
+                );
+                ?>
+            </form>
+        </div>
 
-        </form>
-
-        <hr>
-
-    <?php
-    }
+    </div>
+<?php
+}
 
 
     /**
