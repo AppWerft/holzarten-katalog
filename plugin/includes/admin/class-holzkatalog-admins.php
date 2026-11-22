@@ -248,12 +248,8 @@ class HOLZKATALOG_Admins
             <?php
 
             // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- GET dient hier nur der Navigation, nicht der Verarbeitung einer Aktion.
-            if ($item || isset($_GET['new'])) {
-                $this->render_form($item);
-            }
-
-            $this->render_importexport_form();
-            $this->render_table($items, $search);
+            if ($item || isset($_GET['new'])) $this->render_form($item);
+            else $this->render_table($items, $search);
             ?>
         </div>
     <?php
