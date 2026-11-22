@@ -293,7 +293,7 @@
             echo wp_kses_post($this->render_geosuche($zoom));
     ?>
             <div style="margin-bottom:20px;display: flex; align-items: center; gap: 10px;">
-                <button onclick="document.reload()" type="button" class="button" id="hk-settings-cancel">
+                <button onclick="window.location.reload()" type="button" class="button" id="hk-settings-cancel">
                     Abbrechen
                 </button>
         <?
