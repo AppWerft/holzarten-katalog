@@ -33,7 +33,16 @@ class HOLZKATALOG_Admins
      */
     public function enqueue_admin_assets($hook)
     {
-        if ($hook !== 'toplevel_page_holzarten-katalog') {
+        if (
+            !in_array(
+                $hook,
+                [
+                    'toplevel_page_holzarten-katalog',
+                    'holzarten-katalog_page_holzarten-import-export',
+                ],
+                true
+            )
+        ) {
             return;
         }
 
@@ -443,78 +452,78 @@ class HOLZKATALOG_Admins
     <?php
     }
     private function render_importexport_form()
-{
-?>
-    <div class="hk-import-export-grid">
+    {
+    ?>
+        <div class="hk-import-export-grid">
 
-        <div class="hk-import-export-box">
-            <h2>Export – Datensicherung und Klonen</h2>
+            <div class="hk-import-export-box">
+                <h2>Export – Datensicherung und Klonen</h2>
 
-            <p class="description">
-                Erstellt einen vollständigen Export des Holzartenkatalogs
-                einschließlich der Holzbilder.
-            </p>
+                <p class="description">
+                    Erstellt einen vollständigen Export des Holzartenkatalogs
+                    einschließlich der Holzbilder.
+                </p>
 
-            <form method="post"
-                action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
+                <form method="post"
+                    action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
 
-                <input type="hidden"
-                    name="action"
-                    value="hk_export_catalog">
+                    <input type="hidden"
+                        name="action"
+                        value="hk_export_catalog">
 
-                <?php
-                wp_nonce_field(
-                    'hk_export_catalog',
-                    'hk_export_nonce'
-                );
+                    <?php
+                    wp_nonce_field(
+                        'hk_export_catalog',
+                        'hk_export_nonce'
+                    );
 
-                submit_button(
-                    'Holzartenkatalog exportieren',
-                    'secondary',
-                    'submit',
-                    false
-                );
-                ?>
-            </form>
+                    submit_button(
+                        'Holzartenkatalog exportieren',
+                        'secondary',
+                        'submit',
+                        false
+                    );
+                    ?>
+                </form>
+            </div>
+
+            <div class="hk-import-export-box">
+                <h2>Import – Holzartenkatalog</h2>
+
+                <p class="description">
+                    Importiert einen vollständigen Export mit Bäumen
+                    und ihren Holzbildern (*.zip).
+                </p>
+
+                <form method="post"
+                    action="<?php echo esc_url(admin_url('admin-post.php')); ?>"
+                    enctype="multipart/form-data">
+
+                    <input type="hidden"
+                        name="action"
+                        value="hk_import_catalog">
+
+                    <?php wp_nonce_field('hk_import_catalog'); ?>
+
+                    <input type="file"
+                        name="catalog_zip"
+                        accept=".zip,application/zip"
+                        required>
+
+                    <?php
+                    submit_button(
+                        'Holzartenkatalog importieren',
+                        'secondary',
+                        'submit',
+                        false
+                    );
+                    ?>
+                </form>
+            </div>
+
         </div>
-
-        <div class="hk-import-export-box">
-            <h2>Import – Holzartenkatalog</h2>
-
-            <p class="description">
-                Importiert einen vollständigen Export mit Bäumen
-                und ihren Holzbildern (*.zip).
-            </p>
-
-            <form method="post"
-                action="<?php echo esc_url(admin_url('admin-post.php')); ?>"
-                enctype="multipart/form-data">
-
-                <input type="hidden"
-                    name="action"
-                    value="hk_import_catalog">
-
-                <?php wp_nonce_field('hk_import_catalog'); ?>
-
-                <input type="file"
-                    name="catalog_zip"
-                    accept=".zip,application/zip"
-                    required>
-
-                <?php
-                submit_button(
-                    'Holzartenkatalog importieren',
-                    'secondary',
-                    'submit',
-                    false
-                );
-                ?>
-            </form>
-        </div>
-
-    </div>
-<?php
-}
+    <?php
+    }
 
 
     /**
