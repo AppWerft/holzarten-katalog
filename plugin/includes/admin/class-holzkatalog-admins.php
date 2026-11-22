@@ -110,9 +110,8 @@ class HOLZKATALOG_Admins
         echo '
             <div class="hk-import-export-header">
                 <img
-                    src="' . esc_url(
-                    HOLZKATALOG_URL . 'assets/images/importexport.webp'
-                ) . '"
+                    src="' . esc_url(HOLZKATALOG_URL . 'assets/images/importexport.webp')
+                    . '" 
                     width="64"
                     height="64"
                     alt="ExportImport"
@@ -650,7 +649,7 @@ class HOLZKATALOG_Admins
                                             src="<?php echo esc_url(
                                                     HOLZKATALOG_URL . 'assets/images/holz.png'
                                                 ); ?>"
-                                            alt="Kein Bild verfügbar">
+                                            alt="[Kein Bild verfügbar]">
                                     </div>
 
                                 <?php endif; ?>
