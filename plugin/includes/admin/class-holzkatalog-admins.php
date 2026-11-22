@@ -113,8 +113,8 @@ class HOLZKATALOG_Admins
                     src="' . esc_url(
                     HOLZKATALOG_PLUGIN_URL . 'assets/images/importexport.png'
                 ) . '"
-                    width="48"
-                    height="48"
+                    width="64"
+                    height="64"
                     alt="ExportImport"
                 >
                 <h1>Holzarten – Import / Export</h1>
@@ -122,7 +122,7 @@ class HOLZKATALOG_Admins
 
             <p>
                 Hier können erfasste Datenbestände, einschließlich der Holzbilder,
-                zwischen zwei WP-Instanzen kopiert werden.
+                zwischen zwei WordPress-Instanzen kopiert werden.
             </p>
         ';
 
