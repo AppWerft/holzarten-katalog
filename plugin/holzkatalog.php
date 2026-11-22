@@ -52,11 +52,16 @@ require_once HOLZKATALOG_PLUGIN_DIR . 'includes/class-holzkatalog-catalog.php';
 require_once HOLZKATALOG_PLUGIN_DIR . 'includes/class-holzkatalog-woocommerce.php';
 require_once HOLZKATALOG_PLUGIN_DIR . 'includes/class-holzkatalog-settings.php';
 require_once HOLZKATALOG_PLUGIN_DIR . 'includes/class-holzkatalog-frontend.php';
-require_once HOLZKATALOG_PLUGIN_DIR . 'includes/class-holzkatalog-plugin.php';
 require_once HOLZKATALOG_PLUGIN_DIR . 'includes/woocommerce/class-holzkatalog-wc-origin.php';
 require_once HOLZKATALOG_PLUGIN_DIR . 'includes/class-holzkatalog-assets.php';
 
+// Admin-Klassen
+require_once HOLZKATALOG_PLUGIN_DIR . 'includes/admin/class-holzkatalog-admins.php';
+require_once HOLZKATALOG_PLUGIN_DIR . 'includes/admin/class-holzkatalog-actions.php';
 
+
+// Zentrale Plugin-Klasse zuletzt
+require_once HOLZKATALOG_PLUGIN_DIR . 'includes/class-holzkatalog-plugin.php';
 // --------------------------------------------------
 // Aktivierung
 // --------------------------------------------------
