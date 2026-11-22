@@ -32,7 +32,7 @@ class HOLZKATALOG_Admins
      * CSS und JavaScript nur auf unserer Plugin-Seite laden.
      */
     public function enqueue_admin_assets($hook)
-    {
+    {error_log('HOLZKATALOG Admin Hook: ' . $hook);
         /*if (
             !in_array(
                 $hook,
