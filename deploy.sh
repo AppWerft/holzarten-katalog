@@ -156,12 +156,12 @@ awk '
     /BEGIN GITHUB UPDATE/ { skip=1; next }
     /END GITHUB UPDATE/   { skip=0; next }
     !skip { print }
-' "$TEMP/wordpress/holzarten-katalog/holzarten.php" \
-  > "$TEMP/wordpress/holzarten-katalog/holzarten.php.tmp"
+' "$TEMP/wordpress/holzarten-katalog/holzkatalog.php" \
+  > "$TEMP/wordpress/holzarten-katalog/holzkatalog.php.tmp"
 
 mv \
-  "$TEMP/wordpress/holzarten-katalog/holzarten.php.tmp" \
-  "$TEMP/wordpress/holzarten-katalog/holzarten.php"
+  "$TEMP/wordpress/holzarten-katalog/holzkatalog.php.tmp" \
+  "$TEMP/wordpress/holzarten-katalog/holzkatalog.php"
 
 rm -f "$WP_ZIP"
 (cd "$TEMP/wordpress" && zip -qr "$WP_ZIP" holzarten-katalog)
