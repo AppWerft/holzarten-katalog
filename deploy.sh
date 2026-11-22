@@ -100,7 +100,7 @@ if ! git diff --cached --quiet; then
     if [[ "$RELEASE" == true ]]; then
         COMMIT_MESSAGE="Release $TAG"
     else
-        COMMIT_MESSAGE="Plugin aktualisiert, Ortssuche in Karte, noch kein Puls"
+        COMMIT_MESSAGE="vor dem Umbau nach admin/*"
     fi
 
     git commit -m "$COMMIT_MESSAGE"
