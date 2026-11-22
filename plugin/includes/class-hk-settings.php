@@ -487,11 +487,16 @@ class HK_Settings
                         </td>
                     </tr>
                 </table>
-                <?php submit_button('Einstellungen speichern'); ?>
-                <button type="button" class="button" id="hk-settings-cancel">
-                    Abbrechen
-                </button>
 
+                <div style="display: flex; align-items: center; gap: 10px;">
+
+                    <button type="button" class="button" id="hk-settings-cancel">
+                        Abbrechen
+                    </button>
+
+                    <?php submit_button('Einstellungen speichern'); ?>
+
+                </div>
             </form>
 
             <h2>Vorschau der Holzartenübersicht:</h2>
@@ -669,7 +674,7 @@ class HK_Settings
                         Abbrechen
                     </button>
                     <?php submit_button('Einstellungen speichern'); ?>
-                    
+
                 </div>
             </form>
         </div>
