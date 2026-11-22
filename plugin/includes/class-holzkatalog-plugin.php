@@ -4,7 +4,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class HK_Plugin
+class HOLZKATALOG_Plugin
 {
     private static $instance = null;
 
@@ -57,7 +57,7 @@ class HK_Plugin
             'plugins_loaded',
             function () {
                 if (class_exists('WooCommerce')) {
-                    HK_WooCommerce::instance();
+                    HOLZKATALOG_WooCommerce::instance();
                 }
             },
             20
@@ -67,7 +67,7 @@ class HK_Plugin
             'wp_ajax_hk_toggle_status',
             [$this, 'ajax_toggle_status']
         );
-        $this->frontend = HK_Frontend::instance();
+        $this->frontend = HOLZKATALOG_Frontend::instance();
     }
 
     /**
@@ -87,13 +87,13 @@ class HK_Plugin
             [],
             file_exists($css_file) ? filemtime($css_file) : '1.0.0'
         );
-        $file = HK_PLUGIN_DIR . 'assets/js/admin-holzarten.js';
+        $file = HOLZKATALOG_PLUGIN_DIR . 'assets/js/admin-holzarten.js';
 
         wp_enqueue_script(
             'hk-admin',
-            HK_PLUGIN_URL . 'assets/js/admin-holzarten.js',
+            HOLZKATALOG_PLUGIN_URL . 'assets/js/admin-holzarten.js',
             ['jquery'],
-            file_exists($file) ? filemtime($file) : HK_VERSION,
+            file_exists($file) ? filemtime($file) : HOLZKATALOG_VERSION,
             true
         );
         wp_localize_script(
@@ -146,12 +146,12 @@ class HK_Plugin
             return;
         }
         $filename = basename($filename);
-        foreach (HK_Catalog::get_all() as $item) {
+        foreach (HOLZKATALOG_Catalog::get_all() as $item) {
             if (($item['image_file'] ?? '') === $filename) {
                 return;
             }
         }
-        $directory = trailingslashit(HK_Storage::directory())
+        $directory = trailingslashit(HOLZKATALOG_Storage::directory())
             . 'images/';
         $path = $directory . $filename;
         if (is_file($path)) {
@@ -171,12 +171,12 @@ class HK_Plugin
         // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- GET dient hier nur der Navigation, nicht der Verarbeitung einer Aktion.
         $edit_id = isset($_GET['edit']) ? sanitize_text_field(wp_unslash($_GET['edit'])) : '';
 
-        $item = $edit_id ? HK_Catalog::get($edit_id) : null;
+        $item = $edit_id ? HOLZKATALOG_Catalog::get($edit_id) : null;
 
         // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- GET dient hier nur der Navigation, nicht der Verarbeitung einer Aktion.
         $search = isset($_GET['s']) ? sanitize_text_field(wp_unslash($_GET['s'])) : '';
 
-        $items = HK_Catalog::get_all();
+        $items = HOLZKATALOG_Catalog::get_all();
 
         if ($search !== '') {
             $items = array_filter($items, function ($entry) use ($search) {
@@ -349,7 +349,7 @@ class HK_Plugin
             : '';
 
         $existing = $id
-            ? HK_Catalog::get($id)
+            ? HOLZKATALOG_Catalog::get($id)
             : null;
 
         $old_image_file = is_array($existing)
@@ -414,7 +414,7 @@ class HK_Plugin
                 );
             }
 
-            $directory = trailingslashit(HK_Storage::directory())
+            $directory = trailingslashit(HOLZKATALOG_Storage::directory())
                 . 'images/';
 
             if (!wp_mkdir_p($directory)) {
@@ -522,7 +522,7 @@ class HK_Plugin
             'active' => !empty($_POST['active']),
         ];
 
-        $result = HK_Catalog::save(
+        $result = HOLZKATALOG_Catalog::save(
             $data,
             $id ?: null
         );
@@ -555,7 +555,7 @@ class HK_Plugin
 
         /*
          * Die WooCommerce-Synchronisierung wird bereits zentral
-         * in HK_Catalog::save() vorgemerkt.
+         * in HOLZKATALOG_Catalog::save() vorgemerkt.
          */
 
         wp_safe_redirect(
@@ -582,7 +582,7 @@ class HK_Plugin
             wp_die('Die PHP-Erweiterung ZipArchive ist nicht verfügbar.');
         }
 
-        $base = trailingslashit(HK_Storage::directory());
+        $base = trailingslashit(HOLZKATALOG_Storage::directory());
 
         $temp_file = tempnam(sys_get_temp_dir(), 'hk-export-');
 
@@ -1051,7 +1051,7 @@ class HK_Plugin
                                 );
 
                                 $image_path = trailingslashit(
-                                    HK_Storage::directory()
+                                    HOLZKATALOG_Storage::directory()
                                 ) . 'images/' . basename($image_file);
                                 ?>
 
@@ -1211,7 +1211,7 @@ class HK_Plugin
             ]);
         }
 
-        $result = HK_Catalog::set_active($id, $active);
+        $result = HOLZKATALOG_Catalog::set_active($id, $active);
 
         if (is_wp_error($result)) {
             wp_send_json_error([
@@ -1243,9 +1243,9 @@ class HK_Plugin
 
         check_admin_referer('hk_delete_item_' . $id);
 
-        $item = HK_Catalog::get($id);
+        $item = HOLZKATALOG_Catalog::get($id);
 
-        $result = HK_Catalog::delete($id);
+        $result = HOLZKATALOG_Catalog::delete($id);
 
         $url = admin_url('admin.php?page=holzarten-katalog');
 
@@ -1265,7 +1265,7 @@ class HK_Plugin
 
         /*
          * Die WooCommerce-Synchronisierung wird bereits zentral
-         * in HK_Catalog::delete() vorgemerkt.
+         * in HOLZKATALOG_Catalog::delete() vorgemerkt.
          */
 
         wp_safe_redirect(
@@ -1348,7 +1348,7 @@ class HK_Plugin
         }
 
         // Gemeinsame Importfunktion der Speicherklasse aufrufen.
-        $result = HK_Storage::import_archive(
+        $result = HOLZKATALOG_Storage::import_archive(
             $file['tmp_name'],
             true
         );
@@ -1371,7 +1371,7 @@ class HK_Plugin
             exit;
         }
 
-        $count = count(HK_Catalog::get_all());
+        $count = count(HOLZKATALOG_Catalog::get_all());
 
         wp_safe_redirect(
             add_query_arg('imported', $count, $url)

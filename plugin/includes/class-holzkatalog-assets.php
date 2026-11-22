@@ -3,7 +3,7 @@
 if (!defined('ABSPATH')) {
     exit;
 }
-class HK_Assets
+class HOLZKATALOG_Assets
 {
     public static function init()
     {
@@ -25,7 +25,7 @@ class HK_Assets
         // Leaflet CSS
         wp_enqueue_style(
             'hk-leaflet',
-            HK_PLUGIN_URL . 'assets/vendor/leaflet/leaflet.css',
+            HOLZKATALOG_PLUGIN_URL . 'assets/vendor/leaflet/leaflet.css',
             [],
             '1.9.4'
         );
@@ -33,7 +33,7 @@ class HK_Assets
         // D3
         wp_enqueue_script(
             'hk-d3',
-            HK_PLUGIN_URL . 'assets/vendor/d3/d3v5.js',
+            HOLZKATALOG_PLUGIN_URL . 'assets/vendor/d3/d3v5.js',
             [],
             '5.16.0',
             true
@@ -42,7 +42,7 @@ class HK_Assets
         // Leaflet
         wp_enqueue_script(
             'hk-leaflet',
-            HK_PLUGIN_URL . 'assets/vendor/leaflet/leaflet.js',
+            HOLZKATALOG_PLUGIN_URL . 'assets/vendor/leaflet/leaflet.js',
             [],
             '1.9.4',
             true
@@ -51,9 +51,9 @@ class HK_Assets
         // PingLayer
         wp_enqueue_script(
             'hk-ping-layer',
-            HK_PLUGIN_URL . 'assets/vendor/leaflet/leaflet-d3.js',
+            HOLZKATALOG_PLUGIN_URL . 'assets/vendor/leaflet/leaflet-d3.js',
             ['hk-leaflet', 'hk-d3'],
-            HK_VERSION,
+            HOLZKATALOG_VERSION,
             true
         );
     }
@@ -65,9 +65,9 @@ class HK_Assets
     { // Katalog-CSS für die Admin-Vorschau
         wp_enqueue_style(
             'hk-frontend-holzarten',
-            HK_PLUGIN_URL . 'assets/css/frontend-holzarten.css',
+            HOLZKATALOG_PLUGIN_URL . 'assets/css/frontend-holzarten.css',
             [],
-            HK_VERSION
+            HOLZKATALOG_VERSION
         );
 
         $screen = get_current_screen();
@@ -84,9 +84,9 @@ class HK_Assets
 
         wp_enqueue_script(
             'hk-origin-picker',
-            HK_PLUGIN_URL . 'assets/js/hk-origin-picker.js',
+            HOLZKATALOG_PLUGIN_URL . 'assets/js/hk-origin-picker.js',
             ['hk-leaflet', 'hk-ping-layer'],
-            HK_VERSION,
+            HOLZKATALOG_VERSION,
             true
         );
     }
@@ -99,9 +99,9 @@ class HK_Assets
         // Katalog-CSS auf allen Frontend-Seiten
         wp_enqueue_style(
             'hk-frontend-holzarten',
-            HK_PLUGIN_URL . 'assets/css/frontend-holzarten.css',
+            HOLZKATALOG_PLUGIN_URL . 'assets/css/frontend-holzarten.css',
             [],
-            HK_VERSION
+            HOLZKATALOG_VERSION
         );
         // Leaflet nur auf Produktseiten
         if (!is_product()) {

@@ -1,6 +1,6 @@
 <?php
 
-class HK_Frontend
+class HOLZKATALOG_Frontend
 {
     private static $instance = null;
     public static function instance()
@@ -22,9 +22,9 @@ class HK_Frontend
     {
         wp_enqueue_style(
             'hk-frontend-katalog',
-            HK_PLUGIN_URL . 'assets/css/frontend-katalog.css',
+            HOLZKATALOG_PLUGIN_URL . 'assets/css/frontend-katalog.css',
             [],
-            HK_VERSION
+            HOLZKATALOG_VERSION
         );
     }
     /**
@@ -108,7 +108,7 @@ class HK_Frontend
 
         // Aktive Holzarten laden
         $items = array_filter(
-            HK_Catalog::get_all(),
+            HOLZKATALOG_Catalog::get_all(),
             function ($item) {
                 return !empty($item['active']);
             }
@@ -180,7 +180,7 @@ class HK_Frontend
             // Bild nur bei entsprechender Einstellung
             if ($bilder) {
 
-                $image_url = HK_Storage::image_url(
+                $image_url = HOLZKATALOG_Storage::image_url(
                     $item['image_file'] ?? ''
                 );
 

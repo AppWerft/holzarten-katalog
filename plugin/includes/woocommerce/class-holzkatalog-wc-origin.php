@@ -4,7 +4,7 @@
         exit;
     }
 
-    class HK_WC_Origin
+    class HOLZKATALOG_WC_Origin
     {
         private static $instance = null;
 
@@ -164,7 +164,7 @@
                 : 6;
             wp_enqueue_script(
                 'hk-geopositions-map',
-                plugins_url('assets/js/geopositions-map.js', HK_PLUGIN_FILE),
+                plugins_url('assets/js/geopositions-map.js', HOLZKATALOG_PLUGIN_FILE),
                 ['jquery'],
                 '1.0.0',
                 true
@@ -209,16 +209,16 @@
 
             wp_enqueue_style(
                 'hk-admin',
-                HK_PLUGIN_URL . 'assets/css/hk-admin.css',
+                HOLZKATALOG_PLUGIN_URL . 'assets/css/hk-admin.css',
                 [],
-                HK_VERSION
+                HOLZKATALOG_VERSION
             );
 
             wp_enqueue_script(
                 'hk-admin',
-                HK_PLUGIN_URL . 'assets/js/hk-admin.js',
+                HOLZKATALOG_PLUGIN_URL . 'assets/js/hk-admin.js',
                 ['jquery', 'wc-enhanced-select'],
-                HK_VERSION,
+                HOLZKATALOG_VERSION,
                 true
             );
         }

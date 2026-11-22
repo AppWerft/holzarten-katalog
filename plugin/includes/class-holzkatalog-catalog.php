@@ -4,7 +4,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class HK_Catalog
+class HOLZKATALOG_Catalog
 {   
     /**
      * Namensfelder aus dem JSON-Katalog für das Backend aufbereiten.
@@ -28,8 +28,8 @@ class HK_Catalog
      */
     public static function get_all()
     {
-        $catalog = HK_Storage::read_json('catalog.json');
-        $overrides = HK_Storage::read_json('overrides.json');
+        $catalog = HOLZKATALOG_Storage::read_json('catalog.json');
+        $overrides = HOLZKATALOG_Storage::read_json('overrides.json');
 
         $items = $catalog['items'] ?? [];
         $changes = $overrides['items'] ?? [];
@@ -100,7 +100,7 @@ class HK_Catalog
      */
     public static function save($data, $id = null)
     {
-        $overrides = HK_Storage::read_json('overrides.json');
+        $overrides = HOLZKATALOG_Storage::read_json('overrides.json');
 
         if (!is_array($overrides)) {
             $overrides = ['items' => []];
@@ -140,7 +140,7 @@ class HK_Catalog
         }
 
         // Bei neuen Holzarten kennzeichnen wir den Datensatz.
-        $catalog = HK_Storage::read_json('catalog.json');
+        $catalog = HOLZKATALOG_Storage::read_json('catalog.json');
         $catalog_items = $catalog['items'] ?? [];
 
         $is_imported = false;
@@ -158,9 +158,9 @@ class HK_Catalog
 
         $overrides['items'][$id] = $item;
 
-        $path = HK_Storage::directory() . 'overrides.json';
+        $path = HOLZKATALOG_Storage::directory() . 'overrides.json';
 
-        if (!HK_Storage::write_json($path, $overrides)) {
+        if (!HOLZKATALOG_Storage::write_json($path, $overrides)) {
             return new WP_Error(
                 'write_failed',
                 'Die Holzart konnte nicht gespeichert werden.'
@@ -177,7 +177,7 @@ class HK_Catalog
      */
     public static function delete($id)
     {
-        $overrides = HK_Storage::read_json('overrides.json');
+        $overrides = HOLZKATALOG_Storage::read_json('overrides.json');
 
         if (!is_array($overrides)) {
             $overrides = ['items' => []];
@@ -188,7 +188,7 @@ class HK_Catalog
             $overrides['items'] = [];
         }
 
-        $catalog = HK_Storage::read_json('catalog.json');
+        $catalog = HOLZKATALOG_Storage::read_json('catalog.json');
         $catalog_items = $catalog['items'] ?? [];
 
         $is_imported = false;
@@ -209,9 +209,9 @@ class HK_Catalog
             unset($overrides['items'][$id]);
         }
 
-        $path = HK_Storage::directory() . 'overrides.json';
+        $path = HOLZKATALOG_Storage::directory() . 'overrides.json';
 
-        if (!HK_Storage::write_json($path, $overrides)) {
+        if (!HOLZKATALOG_Storage::write_json($path, $overrides)) {
             return new WP_Error(
                 'write_failed',
                 'Die Holzart konnte nicht gelöscht werden.'
@@ -225,7 +225,7 @@ class HK_Catalog
  */
 public static function set_active($id, $active)
 {
-    $overrides = HK_Storage::read_json('overrides.json');
+    $overrides = HOLZKATALOG_Storage::read_json('overrides.json');
 
     if (!is_array($overrides)) {
         $overrides = ['items' => []];
@@ -250,17 +250,17 @@ public static function set_active($id, $active)
 
     $overrides['items'][$id] = $change;
 
-    $path = HK_Storage::directory() . 'overrides.json';
+    $path = HOLZKATALOG_Storage::directory() . 'overrides.json';
 
-    if (!HK_Storage::write_json($path, $overrides)) {
+    if (!HOLZKATALOG_Storage::write_json($path, $overrides)) {
         return new WP_Error(
             'write_failed',
             'Der Status konnte nicht gespeichert werden.'
         );
     }
 
-    if (class_exists('HK_WooCommerce')) {
-        HK_WooCommerce::schedule_sync();
+    if (class_exists('HOLZKATALOG_WooCommerce')) {
+        HOLZKATALOG_WooCommerce::schedule_sync();
     }
 
     return true;

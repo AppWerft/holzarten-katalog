@@ -1,6 +1,6 @@
 <?php
 
-class HK_Settings
+class HOLZKATALOG_Settings
 {
     public static function init()
     {
@@ -53,7 +53,7 @@ class HK_Settings
         // Leaflet CSS
         wp_enqueue_style(
             'leaflet',
-            HK_PLUGIN_URL . 'assets/vendor/leaflet/leaflet.css',
+            HOLZKATALOG_PLUGIN_URL . 'assets/vendor/leaflet/leaflet.css',
             [],
             '1.9.4'
         );
@@ -61,50 +61,50 @@ class HK_Settings
         // Leaflet JavaScript
         wp_enqueue_script(
             'hk-leaflet',
-            HK_PLUGIN_URL . 'assets/vendor/leaflet/leaflet.js',
+            HOLZKATALOG_PLUGIN_URL . 'assets/vendor/leaflet/leaflet.js',
             [],
             '1.9.4',
             true
         );
         wp_enqueue_script(
             'hk-d3',
-            HK_PLUGIN_URL . 'assets/vendor/d3/d3v5.js',
+            HOLZKATALOG_PLUGIN_URL . 'assets/vendor/d3/d3v5.js',
             [],
-            HK_VERSION,
+            HOLZKATALOG_VERSION,
             true
         );
         // PingLayer
         wp_enqueue_script(
             'hk-ping-layer',
-            HK_PLUGIN_URL . 'assets/vendor/leaflet/leaflet-d3.js',
+            HOLZKATALOG_PLUGIN_URL . 'assets/vendor/leaflet/leaflet-d3.js',
             ['hk-leaflet', 'hk-d3'],
-            HK_VERSION,
+            HOLZKATALOG_VERSION,
             true
         );
         // Leaflet JavaScript
         wp_enqueue_script(
             'hk-leaflet-providers',
-            HK_PLUGIN_URL . 'assets/vendor/leaflet/leaflet-providers.js',
+            HOLZKATALOG_PLUGIN_URL . 'assets/vendor/leaflet/leaflet-providers.js',
             ['hk-leaflet'],
-            HK_VERSION,
+            HOLZKATALOG_VERSION,
             true
         );
         // CSS
         if ($hook === 'holzartenkatalog_page_hk_settings_katalog') {
             wp_enqueue_style(
                 'hk-frontend-katalog',
-                HK_PLUGIN_URL . 'assets/css/frontend-katalog.css',
+                HOLZKATALOG_PLUGIN_URL . 'assets/css/frontend-katalog.css',
                 [],
-                filemtime(HK_PLUGIN_DIR . 'assets/css/frontend-katalog.css')
+                filemtime(HOLZKATALOG_PLUGIN_DIR . 'assets/css/frontend-katalog.css')
             );
         }
 
         if ($hook === 'holzartenkatalog_page_hk_settings_katalog') {
             wp_enqueue_script(
                 'hk-admin',
-                HK_PLUGIN_URL . 'assets/js/admin.js',
+                HOLZKATALOG_PLUGIN_URL . 'assets/js/admin.js',
                 ['jquery'],
-                HK_VERSION,
+                HOLZKATALOG_VERSION,
                 true
             );
         }
@@ -112,37 +112,37 @@ class HK_Settings
         // Holzarten-Einstellungen
         if ($hook === 'holzartenkatalog_page_hk_settings_holzarten') {
 
-            $js_file = HK_PLUGIN_DIR . 'assets/js/admin-holzarten-settings.js';
-            $css_file = HK_PLUGIN_DIR . 'assets/css/admin-holzarten-settings.css';
+            $js_file = HOLZKATALOG_PLUGIN_DIR . 'assets/js/admin-holzarten-settings.js';
+            $css_file = HOLZKATALOG_PLUGIN_DIR . 'assets/css/admin-holzarten-settings.css';
 
             wp_enqueue_style(
                 'hk-holzarten-settings',
-                HK_PLUGIN_URL . 'assets/css/admin-holzarten-settings.css',
+                HOLZKATALOG_PLUGIN_URL . 'assets/css/admin-holzarten-settings.css',
                 [],
-                file_exists($css_file) ? filemtime($css_file) : HK_VERSION
+                file_exists($css_file) ? filemtime($css_file) : HOLZKATALOG_VERSION
             );
         }
 
         // Holzfundorte-Einstellungen
         if ($hook === 'holzartenkatalog_page_hk_settings_fundorte') {
 
-            $js_file = HK_PLUGIN_DIR . 'assets/js/admin-holzarten-geosettings.js';
+            $js_file = HOLZKATALOG_PLUGIN_DIR . 'assets/js/admin-holzarten-geosettings.js';
 
             wp_enqueue_script(
                 'hk-holzarten-geosettings',
-                HK_PLUGIN_URL . 'assets/js/admin-holzarten-geosettings.js',
+                HOLZKATALOG_PLUGIN_URL . 'assets/js/admin-holzarten-geosettings.js',
                 ['hk-leaflet', 'hk-leaflet-providers'],
-                file_exists($js_file) ? filemtime($js_file) : HK_VERSION,
+                file_exists($js_file) ? filemtime($js_file) : HOLZKATALOG_VERSION,
                 true
             );
 
-            $css_file = HK_PLUGIN_DIR . 'assets/css/admin-holzarten-geosettings.css';
+            $css_file = HOLZKATALOG_PLUGIN_DIR . 'assets/css/admin-holzarten-geosettings.css';
 
             wp_enqueue_style(
                 'hk-holzarten-geosettings',
-                HK_PLUGIN_URL . 'assets/css/admin-holzarten-geosettings.css',
+                HOLZKATALOG_PLUGIN_URL . 'assets/css/admin-holzarten-geosettings.css',
                 [],
-                file_exists($css_file) ? filemtime($css_file) : HK_VERSION
+                file_exists($css_file) ? filemtime($css_file) : HOLZKATALOG_VERSION
             );
         }
     }
@@ -301,7 +301,7 @@ class HK_Settings
                         <img
                             id="hk-wood-preview"
                             class="<?php echo $lupe ? 'hk-wood-zoom' : ''; ?>"
-                            src="<?php echo esc_url(HK_PLUGIN_URL . 'assets/images/liveholz.png'); ?>"
+                            src="<?php echo esc_url(HOLZKATALOG_PLUGIN_URL . 'assets/images/liveholz.png'); ?>"
                             alt="Vorschau Holzbild in Holzurnenanzeige"
                             style="
                                 width: <?php echo esc_attr($size); ?>px;
@@ -358,7 +358,7 @@ class HK_Settings
 
 
         wp_send_json_success([
-            'html' => HK_Frontend::render_catalog($settings)
+            'html' => HOLZKATALOG_Frontend::render_catalog($settings)
         ]);
     }
 
@@ -504,7 +504,7 @@ class HK_Settings
             <div id="hk-katalog-preview">
                 <?php
                 // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- HTML is generated internally; dynamic values are escaped in render_catalog().
-                echo HK_Frontend::render_catalog($settings);
+                echo HOLZKATALOG_Frontend::render_catalog($settings);
                 ?>
             </div>
         </div>

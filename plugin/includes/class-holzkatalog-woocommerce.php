@@ -4,7 +4,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class HK_WooCommerce
+class HOLZKATALOG_WooCommerce
 {
     /**
      * Globales WooCommerce-Attribut.
@@ -133,7 +133,7 @@ class HK_WooCommerce
 
         // Quelldatei im Holzarten-Verzeichnis.
         $source = trailingslashit(
-            HK_Storage::directory()
+            HOLZKATALOG_Storage::directory()
         ) . 'images/' . $filename;
 
         if (!file_exists($source)) {
@@ -255,7 +255,7 @@ class HK_WooCommerce
             );
         }
 
-        $items = HK_Catalog::get_all();
+        $items = HOLZKATALOG_Catalog::get_all();
 
         $created = 0;
         $updated = 0;
@@ -447,7 +447,7 @@ class HK_WooCommerce
             return $variation_data;
         }
 
-        $items = HK_Catalog::get_all();
+        $items = HOLZKATALOG_Catalog::get_all();
 
         foreach ($items as $item) {
 

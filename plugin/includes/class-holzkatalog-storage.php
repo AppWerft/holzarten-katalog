@@ -4,7 +4,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-class HK_Storage
+class HOLZKATALOG_Storage
 {
     public static function directory()
     {
@@ -34,7 +34,7 @@ class HK_Storage
             !is_array($catalog)
             || empty($catalog['items'])
         ) {
-            $source = HK_PLUGIN_DIR . 'data/';
+            $source = HOLZKATALOG_PLUGIN_DIR . 'data/';
             $result = self::import_defaults($source);
             
         }
@@ -445,7 +445,7 @@ class HK_Storage
 
         // Vorhandene manuelle Felder anhand der ID sichern.
         if ($preserve_manual) {
-            $existing_items = HK_Catalog::get_all();
+            $existing_items = HOLZKATALOG_Catalog::get_all();
             $existing_by_id = [];
 
             foreach ($existing_items as $item) {
