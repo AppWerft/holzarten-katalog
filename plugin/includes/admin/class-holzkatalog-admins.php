@@ -28,7 +28,7 @@ class HOLZKATALOG_Admins
             [$this, 'enqueue_admin_assets']
         );
     }
-/**
+    /**
      * CSS und JavaScript nur auf unserer Plugin-Seite laden.
      */
     public function enqueue_admin_assets($hook)
@@ -92,7 +92,7 @@ class HOLZKATALOG_Admins
             . 'holzarten-daten/images/'
             . rawurlencode(basename($filename));
     }
-/**
+    /**
      * Admin-Seite darstellen.
      */
     public function admin_page()
@@ -500,7 +500,7 @@ class HOLZKATALOG_Admins
 
     <?php
     }
-      
+
 
     /**
      * Tabelle mit allen Holzarten darstellen.
@@ -686,10 +686,10 @@ class HOLZKATALOG_Admins
                                                         . rawurlencode($item['id'])
                                                 )
                                             ); ?>">
-                                    <img style="width:18px;"
+                                    <img
+                                        style="width:18px;"
                                         src="<?php echo esc_url(
-                                                    plugin_dir_url(dirname(__FILE__))
-                                                        . 'assets/images/edit.svg'
+                                                    HOLZKATALOG_URL . 'assets/images/edit.svg'
                                                 ); ?>"
                                         alt="Bearbeiten">
                                 </a>

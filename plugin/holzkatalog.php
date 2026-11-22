@@ -99,6 +99,7 @@ add_filter(
 HOLZKATALOG_Assets::init();
 HOLZKATALOG_Settings::init();
 
+define('HOLZKATALOG_URL', plugin_dir_url(__FILE__));
 
 add_action('woocommerce_loaded', function () {
     HOLZKATALOG_WooCommerce::instance();
