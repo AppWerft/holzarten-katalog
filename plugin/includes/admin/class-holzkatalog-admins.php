@@ -112,8 +112,8 @@ class HOLZKATALOG_Admins
                 <img
                     src="' . esc_url(HOLZKATALOG_URL . 'assets/images/exportimport.webp')
                     . '" 
-                    width="64"
-                    height="64"
+                    width="72"
+                    height="72"
                     alt="ExportImport"
                 >
                 <h1>Holzarten – Import / Export</h1>
