@@ -106,30 +106,29 @@ class HOLZKATALOG_Admins
             wp_die('Keine Berechtigung.');
         }
 
-       echo '<div class="wrap">';
+        echo '<div class="wrap">';
+        echo '
+            <div class="hk-import-export-header">
+                <img
+                    src="' . esc_url(
+                    HOLZKATALOG_PLUGIN_URL . 'assets/images/importexport.webp'
+                ) . '"
+                    width="48"
+                    height="48"
+                    alt="ExportImport"
+                >
+                <h1>Holzarten – Import / Export</h1>
+            </div>
 
-echo '
-    <div class="hk-import-export-header">
-        <img
-            src="' . esc_url(
-                HOLZKATALOG_PLUGIN_URL . 'assets/images/importexport.webp'
-            ) . '"
-            width="48"
-            height="48"
-            alt=""
-        >
-        <h1>Holzarten – Import / Export</h1>
-    </div>
+            <p>
+                Hier können erfasste Datenbestände, einschließlich der Holzbilder,
+                zwischen zwei WP-Instanzen kopiert werden.
+            </p>
+        ';
 
-    <p>
-        Hier können erfasste Datenbestände, einschließlich der Holzbilder,
-        zwischen zwei WP-Instanzen kopiert werden.
-    </p>
-';
+        $this->render_importexport_form();
 
-$this->render_importexport_form();
-
-echo '</div>';
+        echo '</div>';
     }
     /**
      * Admin-Seite darstellen.
