@@ -36,8 +36,9 @@ class HOLZKATALOG_Admins
         if ($hook !== 'toplevel_page_holzarten-katalog') {
             return;
         }
-        $plugin_dir = plugin_dir_path(dirname(__FILE__));
-        $plugin_url = plugin_dir_url(dirname(__FILE__));
+
+        $plugin_dir = HOLZKATALOG_PLUGIN_DIR;
+        $plugin_url = HOLZKATALOG_PLUGIN_URL;
         $css_file = $plugin_dir . 'assets/css/admin.css';
         wp_enqueue_style(
             'hk-admin',
