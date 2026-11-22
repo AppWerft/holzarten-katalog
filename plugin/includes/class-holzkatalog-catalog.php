@@ -5,7 +5,7 @@ if (!defined('ABSPATH')) {
 }
 
 class HOLZKATALOG_Catalog
-{   
+{
     /**
      * Namensfelder aus dem JSON-Katalog für das Backend aufbereiten.
      */
@@ -43,37 +43,40 @@ class HOLZKATALOG_Catalog
 
             $id = $item['id'];
 
-            if (isset($changes[$id]['deleted'])
-                && $changes[$id]['deleted']) {
+            if (
+                isset($changes[$id]['deleted'])
+                && $changes[$id]['deleted']
+            ) {
                 continue;
             }
 
-                    
-        if (isset($changes[$id])) {
-            $item = array_merge($item, $changes[$id]);
-        }
 
-        // ZIP-Datenmodell auf die Backend-Feldnamen abbilden.
-        $item['name_de'] = self::format_names(
-            $item['name_de'] ?? $item['german_names'] ?? []
-        );
+            if (isset($changes[$id])) {
+                $item = array_merge($item, $changes[$id]);
+            }
 
-        $item['name_latin'] = self::format_names(
-            $item['name_latin'] ?? $item['botanical_names'] ?? []
-        );
+            // ZIP-Datenmodell auf die Backend-Feldnamen abbilden.
+            $item['name_de'] = self::format_names(
+                $item['name_de'] ?? $item['german_names'] ?? []
+            );
 
-        $item['code'] = self::format_names(
-            $item['code'] ?? $item['codes'] ?? []
-        );
+            $item['name_latin'] = self::format_names(
+                $item['name_latin'] ?? $item['botanical_names'] ?? []
+            );
 
-        $result[$id] = $item;
+            $item['code'] = self::format_names(
+                $item['code'] ?? $item['codes'] ?? []
+            );
 
+            $result[$id] = $item;
         }
 
         // Manuell hinzugefügte Holzarten ergänzen.
         foreach ($changes as $id => $change) {
-            if (!empty($change['custom'])
-                && empty($change['deleted'])) {
+            if (
+                !empty($change['custom'])
+                && empty($change['deleted'])
+            ) {
                 $result[$id] = $change;
             }
         }
@@ -106,8 +109,10 @@ class HOLZKATALOG_Catalog
             $overrides = ['items' => []];
         }
 
-        if (!isset($overrides['items'])
-            || !is_array($overrides['items'])) {
+        if (
+            !isset($overrides['items'])
+            || !is_array($overrides['items'])
+        ) {
             $overrides['items'] = [];
         }
 
@@ -123,8 +128,12 @@ class HOLZKATALOG_Catalog
             'description' => sanitize_textarea_field($data['description'] ?? ''),
             'active' => !empty($data['active']),
         ];
+
         // Vorhandene Bildzuordnung erhalten, wenn kein neues Bild übergeben wird.
-        $existing = $overrides['items'][$id]['image_file'] ?? '';
+        $current_item = self::get($id);
+        $existing = $overrides['items'][$id]['image_file']
+            ?? ($current_item['image_file'] ?? '');
+
 
         if (!empty($data['image_file'])) {
             $item['image_file'] = sanitize_file_name($data['image_file']);
@@ -183,8 +192,10 @@ class HOLZKATALOG_Catalog
             $overrides = ['items' => []];
         }
 
-        if (!isset($overrides['items'])
-            || !is_array($overrides['items'])) {
+        if (
+            !isset($overrides['items'])
+            || !is_array($overrides['items'])
+        ) {
             $overrides['items'] = [];
         }
 
@@ -220,6 +231,54 @@ class HOLZKATALOG_Catalog
 
         return true;
     }
+    /**
+     * Aktiv-Status einer Holzart ändern.
+     */
+    public static function set_active($id, $active)
+    {
+        $overrides = HOLZKATALOG_Storage::read_json('overrides.json');
+
+        if (!is_array($overrides)) {
+            $overrides = ['items' => []];
+        }
+
+        if (
+            !isset($overrides['items'])
+            || !is_array($overrides['items'])
+        ) {
+            $overrides['items'] = [];
+        }
+
+        $item = self::get($id);
+
+        if (!is_array($item)) {
+            return new WP_Error(
+                'item_not_found',
+                'Die Holzart wurde nicht gefunden.'
+            );
+        }
+
+        $change = $overrides['items'][$id] ?? [];
 
 
+        $change = array_merge($item, $change);
+        $change['active'] = (bool) $active;
+
+        $overrides['items'][$id] = $change;
+
+        $path = HOLZKATALOG_Storage::directory() . 'overrides.json';
+
+        if (!HOLZKATALOG_Storage::write_json($path, $overrides)) {
+            return new WP_Error(
+                'write_failed',
+                'Der Status konnte nicht gespeichert werden.'
+            );
+        }
+
+        if (class_exists('HOLZKATALOG_WooCommerce')) {
+            HOLZKATALOG_WooCommerce::schedule_sync();
+        }
+
+        return true;
+    }
 }

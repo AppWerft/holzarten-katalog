@@ -465,6 +465,11 @@ class HOLZKATALOG_Actions
         }
 
         $result = HOLZKATALOG_Catalog::set_active($id, $active);
+        if ($result !== true) {
+            wp_send_json_error([
+                'message' => 'Der Status konnte nicht geändert werden.',
+            ]);
+        }
 
         if (is_wp_error($result)) {
             wp_send_json_error([
