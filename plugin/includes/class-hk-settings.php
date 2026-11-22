@@ -665,7 +665,7 @@ class HK_Settings
 
                 </table>
                 <div style="display: flex; align-items: center; gap: 10px;">
-                    <button type="button" class="button" id="hk-settings-cancel">
+                    <button onclick="window.location.reload" type="button" class="button" id="hk-settings-cancel">
                         Abbrechen
                     </button>
                     <?php submit_button('Einstellungen speichern'); ?>
