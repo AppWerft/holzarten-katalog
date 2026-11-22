@@ -32,19 +32,20 @@ class HOLZKATALOG_Admins
      * CSS und JavaScript nur auf unserer Plugin-Seite laden.
      */
     public function enqueue_admin_assets($hook)
-    {error_log('HOLZKATALOG Admin Hook: ' . $hook);
-        /*if (
+    {
+        error_log('HOLZKATALOG Admin Hook: ' . $hook);
+        if (
             !in_array(
                 $hook,
                 [
                     'toplevel_page_holzarten-katalog',
-                    'holzarten-katalog_page_holzarten-import-export',
+                    'holzartenkatalog_page_holzarten-import-export',
                 ],
                 true
             )
         ) {
             return;
-        }*/
+        }
 
         $plugin_dir = HOLZKATALOG_PLUGIN_DIR;
         $plugin_url = HOLZKATALOG_PLUGIN_URL;
