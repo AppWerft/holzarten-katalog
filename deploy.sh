@@ -65,11 +65,11 @@ if [[ "$RELEASE" == true ]]; then
 
     VERSION="$VERSION" perl -i -pe '
         s/^ \* Version: .*/ * Version: $ENV{VERSION}/;
-        s/define\('\''HK_VERSION'\'', '\''[^'\'']+'\''\);/define('\''HK_VERSION'\'', '\''$ENV{VERSION}'\'');/
-    ' "$SOURCE/holzarten.php"
+        s/define\('\''HOLZKATALOG_VERSION'\'', '\''[^'\'']+'\''\);/define('\''HOLZKATALOG_VERSION'\'', '\''$ENV{VERSION}'\'');/
+    ' "$SOURCE/holzkatalog.php"
 
-    grep -q "Version: $VERSION" "$SOURCE/holzarten.php"
-    grep -q "HK_VERSION', '$VERSION'" "$SOURCE/holzarten.php"
+    grep -q "Version: $VERSION" "$SOURCE/holzkatalog.php"
+    grep -q "HOLZKATALOG_VERSION', '$VERSION'" "$SOURCE/holzkatalog.php"
 
 else
     echo "Entwicklungs-Deployment ohne Release."

@@ -7,7 +7,6 @@ if (!defined('ABSPATH')) {
 class HOLZKATALOG_Plugin
 {
     private static $instance = null;
-
     public static function instance()
     {
         if (self::$instance === null) {
@@ -253,7 +252,7 @@ class HOLZKATALOG_Plugin
                     'write_json'       => 'Eine JSON-Datei konnte nicht gespeichert werden.',
                     'image_write'      => 'Ein geprüftes Bild konnte nicht gespeichert werden.',
                     'zip_entries'      => 'Das Archiv enthält keine Dateien oder zu viele Einträge.',
-                    'zip_entry_invalid'=> 'Ein Archiveintrag ist ungültig.',
+                    'zip_entry_invalid' => 'Ein Archiveintrag ist ungültig.',
                     'zip_duplicate'    => 'Das Archiv enthält doppelte Dateinamen.',
                     'zip_symlink'      => 'Das Archiv enthält einen nicht erlaubten symbolischen Link.',
                     'zip_too_large'    => 'Das Archiv oder ein Eintrag ist zu groß.',
@@ -472,10 +471,13 @@ class HOLZKATALOG_Plugin
                 );
 
                 if (is_wp_error($result)) {
-                    esc_html(
-                        'Das Bild konnte nicht als WebP gespeichert werden: '
-                            . $result->get_error_message()
+                    wp_die(
+                        esc_html(
+                            'Das Bild konnte nicht als WebP gespeichert werden: '
+                                . $result->get_error_message()
+                        )
                     );
+                
                 }
             }
 
@@ -486,11 +488,13 @@ class HOLZKATALOG_Plugin
             );
 
             if (is_wp_error($result)) {
-                esc_html(
-                    'Das Bild konnte nicht als WebP gespeichert werden: '
-                        . $result->get_error_message()
-                );
-            }
+    wp_die(
+        esc_html(
+            'Das Bild konnte nicht als WebP gespeichert werden: '
+            . $result->get_error_message()
+        )
+    );
+}
 
             $image_file = $filename;
         } elseif ($delete_image) {
