@@ -240,34 +240,7 @@ public function import_export_page()
             if ($item || isset($_GET['new'])) {
                 $this->render_form($item);
             }
-            ?>
-
-            <h2>Datensicherung und Klonen</h2>
-
-            <form method="post"
-                action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
-
-                <input type="hidden"
-                    name="action"
-                    value="hk_export_catalog">
-
-                <?php
-
-                wp_nonce_field(
-                    'hk_export_catalog',
-                    'hk_export_nonce'
-                );
-
-                submit_button(
-                    'Holzartenkatalog exportieren',
-                    'secondary',
-                    'submit',
-                    false
-                );
-                ?>
-
-            </form>
-            <?php
+            
             $this->render_importexport_form();
             $this->render_table($items, $search);
             ?>
@@ -475,8 +448,32 @@ public function import_export_page()
     private function render_importexport_form()
     {
     ?>
+<h2>Datensicherung und Klonen</h2>
 
-        <hr>
+            <form method="post"
+                action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
+
+                <input type="hidden"
+                    name="action"
+                    value="hk_export_catalog">
+
+                <?php
+
+                wp_nonce_field(
+                    'hk_export_catalog',
+                    'hk_export_nonce'
+                );
+
+                submit_button(
+                    'Holzartenkatalog exportieren',
+                    'secondary',
+                    'submit',
+                    false
+                );
+                ?>
+
+            </form>
+        
 
         <h2>Holzartenkatalog importieren</h2>
 
