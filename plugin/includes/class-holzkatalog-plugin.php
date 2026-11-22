@@ -12,7 +12,6 @@ class HOLZKATALOG_Plugin
         if (self::$instance === null) {
             self::$instance = new self();
         }
-
         return self::$instance;
     }
     private $frontend;
@@ -21,12 +20,7 @@ class HOLZKATALOG_Plugin
      */
     private function __construct()
     {
-        
-        add_action(
-            'admin_enqueue_scripts',
-            [$this, 'enqueue_admin_assets']
-        );
-
+    
         add_action(
             'admin_post_hk_save_item',
             [$this, 'handle_save']
