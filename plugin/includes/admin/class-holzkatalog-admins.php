@@ -33,7 +33,7 @@ class HOLZKATALOG_Admins
      */
     public function enqueue_admin_assets($hook)
     {
-        if (
+        /*if (
             !in_array(
                 $hook,
                 [
@@ -44,7 +44,7 @@ class HOLZKATALOG_Admins
             )
         ) {
             return;
-        }
+        }*/
 
         $plugin_dir = HOLZKATALOG_PLUGIN_DIR;
         $plugin_url = HOLZKATALOG_PLUGIN_URL;
