@@ -236,7 +236,7 @@
                     'radius'        => 0,
                     'position'      => 'left'
                 ]
-            );  
+            );
             $options = [
                 'pingcolor'     => $settings['pingcolor'],
                 'tileprovider'  => $settings['tile_provider'],
@@ -247,7 +247,7 @@
                 'position'      => $settings['position']
             ];
 
-             return '
+            return '
         <div id="hk-origin-map-wrapper">
             <div
                 id="hk-origin-map"
@@ -291,7 +291,12 @@
             echo '</div>';
 
             echo wp_kses_post($this->render_geosuche($zoom));
-
+    ?>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <button type="button" class="button" id="hk-settings-cancel">
+                    Abbrechen
+                </button>
+        <?
             submit_button(
                 __('Aktualisieren'),
                 'primary',
@@ -299,6 +304,7 @@
                 false,
                 ['id' => 'hk-save-product-bottom']
             );
+            echo ('</div>');
         }
         /**
          * Herkunftskoordinaten speichern.
