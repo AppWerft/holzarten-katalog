@@ -111,7 +111,7 @@ class HOLZKATALOG_Admins
             <div class="hk-import-export-header">
                 <img
                     src="' . esc_url(
-                    HOLZKATALOG_URL . 'assets/images/importexport.png'
+                    HOLZKATALOG_URL . 'assets/images/importexport.webp'
                 ) . '"
                     width="64"
                     height="64"
@@ -648,8 +648,8 @@ class HOLZKATALOG_Admins
                                         <img
                                             class="hk-image-placeholder"
                                             src="<?php echo esc_url(
-                                                        HOLZKATALOG_URL . 'assets/images/holz.png'
-                                                    ); ?>"
+                                                    HOLZKATALOG_URL . 'assets/images/holz.png'
+                                                ); ?>"
                                             alt="Kein Bild verfügbar">
                                     </div>
 
