@@ -220,49 +220,6 @@ class HOLZKATALOG_Catalog
 
         return true;
     }
-    /**
- * Aktiv-Status einer Holzart ändern.
- */
-public static function set_active($id, $active)
-{
-    $overrides = HOLZKATALOG_Storage::read_json('overrides.json');
 
-    if (!is_array($overrides)) {
-        $overrides = ['items' => []];
-    }
 
-    if (!isset($overrides['items']) || !is_array($overrides['items'])) {
-        $overrides['items'] = [];
-    }
-
-    $item = self::get($id);
-
-    if (!$item) {
-        return new WP_Error(
-            'item_not_found',
-            'Die Holzart wurde nicht gefunden.'
-        );
-    }
-
-    $change = $overrides['items'][$id] ?? [];
-    $change = array_merge($item, $change);
-    $change['active'] = (bool) $active;
-
-    $overrides['items'][$id] = $change;
-
-    $path = HOLZKATALOG_Storage::directory() . 'overrides.json';
-
-    if (!HOLZKATALOG_Storage::write_json($path, $overrides)) {
-        return new WP_Error(
-            'write_failed',
-            'Der Status konnte nicht gespeichert werden.'
-        );
-    }
-
-    if (class_exists('HOLZKATALOG_WooCommerce')) {
-        HOLZKATALOG_WooCommerce::schedule_sync();
-    }
-
-    return true;
-}
 }

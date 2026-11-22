@@ -403,27 +403,16 @@ class HOLZKATALOG_Actions
                 }
             }
         }
-
         $zip->close();
 
         // Download ausliefern.
-        // Download ausliefern.
         $download_name = 'holzarten-export-' . gmdate('Y-m-d-His') . '.zip';
 
-        // WordPress-Dateisystem initialisieren.
-        global $wp_filesystem;
+        $filesize = filesize($temp_file);
 
-        if (!WP_Filesystem()) {
+        if ($filesize === false) {
             wp_delete_file($temp_file);
-            wp_die('WordPress-Dateisystem konnte nicht initialisiert werden.');
-        }
-
-        // ZIP-Datei einlesen.
-        $file_contents = $wp_filesystem->get_contents($temp_file);
-
-        if ($file_contents === false) {
-            wp_delete_file($temp_file);
-            wp_die('Exportdatei konnte nicht gelesen werden.');
+            wp_die('Exportdateigröße konnte nicht ermittelt werden.');
         }
 
         while (ob_get_level()) {
@@ -433,25 +422,21 @@ class HOLZKATALOG_Actions
         nocache_headers();
 
         header('Content-Type: application/zip');
-
         header(
             'Content-Disposition: attachment; filename="'
                 . $download_name
                 . '"'
         );
+        header('Content-Length: ' . $filesize);
 
-        header('Content-Length: ' . strlen($file_contents));
-
-        // ZIP-Datei binär und unverändert ausgeben.
-        // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Binary ZIP contents must not be escaped.
-        echo $file_contents;
+        // ZIP-Datei direkt ausgeben.
+        readfile($temp_file);
 
         wp_delete_file($temp_file);
-
         exit;
     }
 
-  
+
 
     /**
      * Aktiv-Status per AJAX ändern.
@@ -537,6 +522,111 @@ class HOLZKATALOG_Actions
 
         wp_safe_redirect(
             add_query_arg('deleted', '1', $url)
+        );
+        exit;
+    }
+
+    /**
+     * ZIP-Archiv mit dem Holzartenkatalog importieren.
+     */
+    public function handle_import()
+    {
+        if (!current_user_can('manage_options')) {
+            wp_die('Keine Berechtigung.');
+        }
+
+        if (
+            !check_admin_referer(
+                'hk_import_catalog',
+                '_wpnonce',
+                false
+            )
+        ) {
+            wp_die('Import abgebrochen: Ungültige Sicherheitsprüfung.');
+        }
+
+        $url = admin_url('admin.php?page=holzarten-katalog');
+
+        $file = [];
+
+        if (
+            // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Upload-Array wird anschließend strukturell validiert
+            isset($_FILES['catalog_zip'])
+            && is_array($_FILES['catalog_zip'])
+        ) {
+            // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Upload-Array wird anschließend strukturell validiert
+            $file = $_FILES['catalog_zip'];
+        }
+
+        // Upload-Daten prüfen.
+        if (
+            !isset(
+                $file['error'],
+                $file['name'],
+                $file['tmp_name'],
+                $file['size']
+            )
+            || !is_string($file['name'])
+            || !is_string($file['tmp_name'])
+            || $file['tmp_name'] === ''
+            || !isset($file['size'])
+            || !is_int($file['size'])
+            || $file['size'] < 1
+            || $file['size'] > (50 * MB_IN_BYTES)
+            || !isset($file['error'])
+            || !is_int($file['error'])
+            || $file['error'] !== UPLOAD_ERR_OK
+            || !is_uploaded_file($file['tmp_name'])
+        ) {
+            wp_safe_redirect(
+                add_query_arg('import_error', 'upload', $url)
+            );
+            exit;
+        }
+
+
+        // Dateinamen bereinigen.
+        $file['name'] = sanitize_file_name($file['name']);
+
+        // Dateiendung prüfen.
+        if (
+            strtolower(pathinfo($file['name'], PATHINFO_EXTENSION))
+            !== 'zip'
+        ) {
+            wp_safe_redirect(
+                add_query_arg('import_error', 'type', $url)
+            );
+            exit;
+        }
+
+        // Gemeinsame Importfunktion der Speicherklasse aufrufen.
+        $result = HOLZKATALOG_Storage::import_archive(
+            $file['tmp_name'],
+            true
+        );
+
+        if (is_wp_error($result)) {
+            wp_safe_redirect(
+                add_query_arg(
+                    'import_error',
+                    sanitize_key($result->get_error_code()),
+                    $url
+                )
+            );
+            exit;
+        }
+
+        if ($result !== true) {
+            wp_safe_redirect(
+                add_query_arg('import_error', 'import_failed', $url)
+            );
+            exit;
+        }
+
+        $count = count(HOLZKATALOG_Catalog::get_all());
+
+        wp_safe_redirect(
+            add_query_arg('imported', $count, $url)
         );
         exit;
     }
