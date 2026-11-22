@@ -95,31 +95,24 @@ document.addEventListener('DOMContentLoaded', () => {
     // --------------------------------------------------
     // Ortssuche als Leaflet-Control oben rechts
     // --------------------------------------------------
-
     const SearchControl = L.Control.extend({
-
         options: {
             position: 'topright'
         },
-
         onAdd: () => {
-
             const container = L.DomUtil.create(
                 'div',
                 'hk-origin-search-control'
             );
-
             searchInput = L.DomUtil.create(
                 'input',
                 '',
                 container
             );
-
             searchInput.type = 'search';
             searchInput.id = 'hk-origin-search-input';
             searchInput.placeholder = 'Ort oder Adresse suchen …';
             searchInput.autocomplete = 'off';
-
             clearButton = L.DomUtil.create(
                 'button',
                 'hk-origin-clear',
@@ -140,30 +133,23 @@ document.addEventListener('DOMContentLoaded', () => {
                     <path d="M19 6l-1 14H6L5 6"/>
                     <path d="M10 11v6"/>
                     <path d="M14 11v6"/>
-                </svg>
-`;
+                </svg>`;
             clearButton.type = 'button';
             clearButton.title = 'Geoposition löschen';
             clearButton.setAttribute(
                 'aria-label',
                 'Geoposition löschen'
             );
-
             clearButton.hidden = !hasPosition;
-
             searchResults = L.DomUtil.create(
                 'div',
                 '',
                 container
             );
-
             searchResults.id = 'hk-origin-search-results';
-
             L.DomEvent.disableClickPropagation(container);
             L.DomEvent.disableScrollPropagation(container);
-
             L.DomEvent.on(clearButton, 'click', clearPosition);
-
             return container;
         }
     });
@@ -173,23 +159,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // Größe nach dem Aufbau nochmals aktualisieren
     requestAnimationFrame(() => map.invalidateSize());
 
-
     function clearPing() {
         if (pingTimer) {
             clearInterval(pingTimer);
             pingTimer = null;
         }
-
         if (!pingLayer) return;
-
         // Vorhandene SVG-Kreise entfernen
         const pings = pingLayer.data();
-
         if (Array.isArray(pings)) {
             pings.forEach(ping => ping.c.remove());
             pings.length = 0;
         }
-
         // Layer entfernen
         if (map.hasLayer(pingLayer)) {
             map.removeLayer(pingLayer);
@@ -200,9 +181,7 @@ document.addEventListener('DOMContentLoaded', () => {
             [position.lng, position.lat],
             'origin'
         );
-
         const pings = pingLayer.data();
-
         if (pings.length) {
             const ping = pings[pings.length - 1];
             ping.c
@@ -210,21 +189,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 .attr('stroke', darkenColor(pingColor));
         }
     }
+
     function darkenColor(hex, factor = 0.75) {
-
         hex = hex.replace('#', '');
-
         const r = parseInt(hex.substring(0, 2), 16);
         const g = parseInt(hex.substring(2, 4), 16);
         const b = parseInt(hex.substring(4, 6), 16);
-
         const toHex = value =>
             Math.round(value * factor)
                 .toString(16)
                 .padStart(2, '0');
-
         return '#' + toHex(r) + toHex(g) + toHex(b);
     }
+
     function startPing(position) {
         clearPing();
 
@@ -246,7 +223,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
         }, 2500);
-
     }
 
     function setPosition(position) {
