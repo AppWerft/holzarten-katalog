@@ -265,14 +265,16 @@
 
             $product_id = get_the_ID();
 
-            $lat = get_post_meta($product_id, '_hk_origin_lat', true);
-            $lng = get_post_meta($product_id, '_hk_origin_lng', true);
+            $lat  = get_post_meta($product_id, '_hk_origin_lat', true);
+            $lng  = get_post_meta($product_id, '_hk_origin_lng', true);
             $zoom = get_post_meta($product_id, '_hk_origin_zoom', true);
 
             if ($zoom === '') {
                 $zoom = 6;
             }
+
             $zoom = (int) $zoom;
+
             woocommerce_wp_hidden_input([
                 'id'    => '_hk_origin_lat',
                 'value' => $lat,
@@ -291,18 +293,17 @@
             echo '</div>';
 
             echo wp_kses_post($this->render_geosuche($zoom));
-        ?>
-            <div style="margin-bottom:20px; display:flex; align-items:center; gap:10px;">
 
-            <button
-                onclick="window.location.reload()"
-                type="button"
-                class="button"
-                id="hk-settings-cancel">
-                Abbrechen
-            </button>
+            echo '<div style="margin-bottom:20px; display:flex; align-items:center; gap:10px;">';
 
-            <?php
+            echo '<button
+                    onclick="window.location.reload()"
+                    type="button"
+                    class="button"
+                    id="hk-settings-cancel">
+                    Abbrechen
+                </button>';
+
             submit_button(
                 __('Aktualisieren'),
                 'primary',
@@ -310,9 +311,10 @@
                 false,
                 ['id' => 'hk-save-product-bottom']
             );
-            ?>
 
-        </div>  
+            echo '</div>';
+        }
+
         /**
          * Herkunftskoordinaten speichern.
          */
