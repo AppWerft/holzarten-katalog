@@ -664,11 +664,12 @@ class HK_Settings
 
 
                 </table>
-
-                <?php submit_button('Einstellungen speichern'); ?>
-                <button type="button" class="button" id="hk-settings-cancel">
-                    Abbrechen
-                </button>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <?php submit_button('Einstellungen speichern'); ?>
+                    <button type="button" class="button" id="hk-settings-cancel">
+                        Abbrechen
+                    </button>
+                </div>
             </form>
         </div>
         <i>Vorschau</i>
