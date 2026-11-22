@@ -251,7 +251,23 @@ class HK_Plugin
                     'backup_scan'      => 'Das Bilderverzeichnis konnte nicht gelesen werden.',
                     'backup_image'     => 'Ein vorhandenes Bild konnte nicht gesichert werden.',
                     'write_json'       => 'Eine JSON-Datei konnte nicht gespeichert werden.',
-                    'image_write'      => 'Ein Bild konnte nicht gespeichert werden.',
+                    'image_write'      => 'Ein geprüftes Bild konnte nicht gespeichert werden.',
+                    'zip_entries'      => 'Das Archiv enthält keine Dateien oder zu viele Einträge.',
+                    'zip_entry_invalid'=> 'Ein Archiveintrag ist ungültig.',
+                    'zip_duplicate'    => 'Das Archiv enthält doppelte Dateinamen.',
+                    'zip_symlink'      => 'Das Archiv enthält einen nicht erlaubten symbolischen Link.',
+                    'zip_too_large'    => 'Das Archiv oder ein Eintrag ist zu groß.',
+                    'json_too_large'   => 'Eine JSON-Datei im Archiv ist zu groß.',
+                    'zip_read'         => 'Eine Datei im Archiv konnte nicht gelesen werden.',
+                    'zip_path'         => 'Das Archiv enthält einen nicht erlaubten Dateipfad.',
+                    'image_name'       => 'Das Archiv enthält einen ungültigen Bilddateinamen.',
+                    'image_empty'      => 'Das Archiv enthält eine leere Bilddatei.',
+                    'image_read'       => 'Ein Bild im Archiv konnte nicht gelesen werden.',
+                    'image_validation_unavailable' => 'Die Bildprüfung ist auf diesem Server nicht verfügbar.',
+                    'image_type'       => 'Eine Datei ist kein gültiges JPEG-, PNG- oder WebP-Bild.',
+                    'catalog_item_invalid' => 'Der Katalog enthält einen ungültigen Eintrag.',
+                    'catalog_image_reference' => 'Der Katalog enthält einen ungültigen Bilddateinamen.',
+                    'import_failed'    => 'Der Import konnte nicht abgeschlossen werden.',
                 ];
 
                 $error = sanitize_key(
@@ -1300,8 +1316,14 @@ class HK_Plugin
             )
             || !is_string($file['name'])
             || !is_string($file['tmp_name'])
-            || !is_numeric($file['size'])
-            || (int) $file['error'] !== UPLOAD_ERR_OK
+            || $file['tmp_name'] === ''
+            || !isset($file['size'])
+            || !is_int($file['size'])
+            || $file['size'] < 1
+            || $file['size'] > (50 * MB_IN_BYTES)
+            || !isset($file['error'])
+            || !is_int($file['error'])
+            || $file['error'] !== UPLOAD_ERR_OK
             || !is_uploaded_file($file['tmp_name'])
         ) {
             wp_safe_redirect(
@@ -1330,5 +1352,30 @@ class HK_Plugin
             $file['tmp_name'],
             true
         );
+
+        if (is_wp_error($result)) {
+            wp_safe_redirect(
+                add_query_arg(
+                    'import_error',
+                    sanitize_key($result->get_error_code()),
+                    $url
+                )
+            );
+            exit;
+        }
+
+        if ($result !== true) {
+            wp_safe_redirect(
+                add_query_arg('import_error', 'import_failed', $url)
+            );
+            exit;
+        }
+
+        $count = count(HK_Catalog::get_all());
+
+        wp_safe_redirect(
+            add_query_arg('imported', $count, $url)
+        );
+        exit;
     }
 }

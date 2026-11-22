@@ -141,6 +141,13 @@ class HK_Storage
         $archive_path,
         $preserve_manual = true
     ) {
+        // Grenzen gegen übergroße Archive und ZIP-Bomben.
+        $max_archive_size = 50 * MB_IN_BYTES;
+        $max_total_size   = 100 * MB_IN_BYTES;
+        $max_entry_size   = 20 * MB_IN_BYTES;
+        $max_json_size    = 10 * MB_IN_BYTES;
+        $max_entries      = 1000;
+
         if (!class_exists('ZipArchive')) {
             return new WP_Error(
                 'zip_missing',
@@ -148,111 +155,153 @@ class HK_Storage
             );
         }
 
-        if (!is_file($archive_path) || !is_readable($archive_path)) {
-            return new WP_Error(
-                'archive_missing',
-                'Die ZIP-Datei wurde nicht gefunden oder ist nicht lesbar.'
-            );
-        }
-
-        $base = self::directory();
-
         if (
-            !wp_mkdir_p($base . 'images/')
-            || !wp_mkdir_p($base . 'backups/')
+            !is_file($archive_path)
+            || !is_readable($archive_path)
+            || filesize($archive_path) === false
+            || filesize($archive_path) > $max_archive_size
         ) {
             return new WP_Error(
-                'directory',
-                'Das Datenverzeichnis konnte nicht angelegt werden.'
+                'archive_missing',
+                'Die ZIP-Datei fehlt, ist nicht lesbar oder überschreitet die zulässige Größe.'
             );
         }
 
         $zip = new ZipArchive();
+        $opened = $zip->open($archive_path);
 
-        if ($zip->open($archive_path) !== true) {
+        if ($opened !== true) {
             return new WP_Error(
                 'zip_open',
                 'Das ZIP-Archiv konnte nicht geöffnet werden.'
             );
         }
 
-        // Katalogdatei lesen und prüfen.
-        $catalog_json = $zip->getFromName('catalog.json');
-
-        if ($catalog_json === false) {
+        if ($zip->numFiles < 1 || $zip->numFiles > $max_entries) {
             $zip->close();
 
             return new WP_Error(
-                'catalog_missing',
-                'Im ZIP-Archiv fehlt die Datei catalog.json.'
+                'zip_entries',
+                'Das ZIP-Archiv enthält keine Dateien oder zu viele Einträge.'
             );
         }
 
-        $catalog = json_decode($catalog_json, true);
+        /*
+         * Zuerst das komplette Archiv prüfen und alle erlaubten Inhalte
+         * einlesen. Vor Abschluss dieser Prüfung wird nichts gespeichert.
+         */
+        $allowed_json = [
+            'catalog.json',
+            'overrides.json',
+            'images.json',
+        ];
 
-        if (
-            json_last_error() !== JSON_ERROR_NONE
-            || !is_array($catalog)
-            || !isset($catalog['items'])
-            || !is_array($catalog['items'])
-        ) {
-            $zip->close();
+        $json_data = [];
+        $images = [];
+        $seen_names = [];
+        $total_size = 0;
 
-            return new WP_Error(
-                'catalog_invalid',
-                'Die catalog.json ist ungültig oder hat eine falsche Struktur.'
-            );
-        }
+        for ($i = 0; $i < $zip->numFiles; $i++) {
+            $stat = $zip->statIndex($i);
+            $filename = $zip->getNameIndex($i);
 
-        // Vorhandene manuelle Felder anhand der ID sichern.
-        if ($preserve_manual) {
-            $existing_items = HK_Catalog::get_all();
-            $existing_by_id = [];
+            if (
+                $stat === false
+                || $filename === false
+                || !isset($stat['size'])
+                || !is_int($stat['size'])
+                || $stat['size'] < 0
+            ) {
+                $zip->close();
 
-            foreach ($existing_items as $item) {
-                if (!empty($item['id'])) {
-                    $existing_by_id[$item['id']] = $item;
-                }
+                return new WP_Error(
+                    'zip_entry_invalid',
+                    'Ein Eintrag im ZIP-Archiv ist ungültig.'
+                );
             }
 
-            foreach ($catalog['items'] as &$item) {
-                if (
-                    !is_array($item)
-                    || empty($item['id'])
-                    || !isset($existing_by_id[$item['id']])
-                ) {
-                    continue;
-                }
+            // Doppelte Namen können Dateien im Archiv gezielt überschreiben.
+            $normalized_name = strtolower($filename);
 
-                $old = $existing_by_id[$item['id']];
+            if (isset($seen_names[$normalized_name])) {
+                $zip->close();
 
-                foreach (
-                    ['image_file', 'description', 'active']
-                    as $field
-                ) {
-                    if (array_key_exists($field, $old)) {
-                        $item[$field] = $old[$field];
+                return new WP_Error(
+                    'zip_duplicate',
+                    'Das ZIP-Archiv enthält doppelte Dateinamen.'
+                );
+            }
+            $seen_names[$normalized_name] = true;
+
+            // Symlinks im ZIP-Archiv grundsätzlich ablehnen.
+            if (method_exists($zip, 'getExternalAttributesIndex')) {
+                $opsys = 0;
+                $attributes = 0;
+
+                if ($zip->getExternalAttributesIndex(
+                    $i,
+                    $opsys,
+                    $attributes
+                )) {
+                    $file_type = ($attributes >> 16) & 0170000;
+
+                    if ($file_type === 0120000) {
+                        $zip->close();
+
+                        return new WP_Error(
+                            'zip_symlink',
+                            'Das ZIP-Archiv enthält einen nicht erlaubten symbolischen Link.'
+                        );
                     }
                 }
             }
 
-            unset($item);
-        }
+            $total_size += $stat['size'];
 
-        // JSON-Dateien aus dem Archiv vorbereiten.
-        $json_data = [
-            'catalog.json' => $catalog,
-        ];
-
-        if (!$preserve_manual) {
-            foreach (
-                ['overrides.json', 'images.json']
-                as $filename
+            if (
+                $stat['size'] > $max_entry_size
+                || $total_size > $max_total_size
             ) {
-                $content = $zip->getFromName($filename);
+                $zip->close();
+
+                return new WP_Error(
+                    'zip_too_large',
+                    'Das ZIP-Archiv oder ein einzelner Eintrag ist zu groß.'
+                );
+            }
+
+            // Verzeichnis-Einträge sind nur für images/ erlaubt.
+            if (substr($filename, -1) === '/') {
+                if ($filename !== 'images/') {
+                    $zip->close();
+
+                    return new WP_Error(
+                        'zip_path',
+                        'Das ZIP-Archiv enthält einen nicht erlaubten Verzeichnispfad.'
+                    );
+                }
+                continue;
+            }
+
+            if (in_array($filename, $allowed_json, true)) {
+                if ($stat['size'] > $max_json_size) {
+                    $zip->close();
+
+                    return new WP_Error(
+                        'json_too_large',
+                        'Eine JSON-Datei im ZIP-Archiv ist zu groß.'
+                    );
+                }
+
+                $content = $zip->getFromIndex($i);
 
                 if ($content === false) {
-                    continue;
+                    $zip->close();
+
+                    return new WP_Error(
+                        'zip_read',
+                        'Eine Datei im ZIP-Archiv konnte nicht gelesen werden.'
+                    );
                 }
 
                 $data = json_decode($content, true);
@@ -269,8 +318,179 @@ class HK_Storage
                     );
                 }
 
-                $json_data[$filename] = $data;
+                $json_data[$filename] = self::sanitize_import_data($data);
+                continue;
             }
+
+            // Bilder ausschließlich direkt unter images/ erlauben.
+            if (strpos($filename, 'images/') !== 0) {
+                $zip->close();
+
+                return new WP_Error(
+                    'zip_path',
+                    'Das ZIP-Archiv enthält einen nicht erlaubten Dateipfad.'
+                );
+            }
+
+            $image_name = substr($filename, 7);
+
+            if (
+                $image_name === ''
+                || basename($image_name) !== $image_name
+                || !preg_match(
+                    '/^[A-Za-z0-9][A-Za-z0-9._-]{0,179}\\.(?:jpe?g|png|webp)$/i',
+                    $image_name
+                )
+            ) {
+                $zip->close();
+
+                return new WP_Error(
+                    'image_name',
+                    'Das Archiv enthält einen ungültigen Bilddateinamen.'
+                );
+            }
+
+            if ($stat['size'] < 1) {
+                $zip->close();
+
+                return new WP_Error(
+                    'image_empty',
+                    'Das Archiv enthält eine leere Bilddatei.'
+                );
+            }
+
+            $content = $zip->getFromIndex($i);
+
+            if ($content === false) {
+                $zip->close();
+
+                return new WP_Error(
+                    'image_read',
+                    'Ein Bild im ZIP-Archiv konnte nicht gelesen werden.'
+                );
+            }
+
+            if (!function_exists('getimagesizefromstring')) {
+                $zip->close();
+
+                return new WP_Error(
+                    'image_validation_unavailable',
+                    'Die Bildprüfung ist auf diesem Server nicht verfügbar.'
+                );
+            }
+
+            $image_info = getimagesizefromstring($content);
+            $extension = strtolower(pathinfo($image_name, PATHINFO_EXTENSION));
+            $allowed_mimes = [
+                'jpg'  => 'image/jpeg',
+                'jpeg' => 'image/jpeg',
+                'png'  => 'image/png',
+                'webp' => 'image/webp',
+            ];
+
+            if (
+                $image_info === false
+                || empty($image_info['mime'])
+                || empty($image_info[0])
+                || empty($image_info[1])
+                || ($image_info[0] * $image_info[1]) > 40000000
+                || !isset($allowed_mimes[$extension])
+                || $image_info['mime'] !== $allowed_mimes[$extension]
+            ) {
+                $zip->close();
+
+                return new WP_Error(
+                    'image_type',
+                    'Eine Datei ist kein gültiges JPEG-, PNG- oder WebP-Bild: '
+                        . $image_name
+                );
+            }
+
+            $images[$image_name] = $content;
+        }
+
+        $zip->close();
+
+        // Die Katalogdatei ist zwingend erforderlich.
+        if (
+            !isset($json_data['catalog.json'])
+            || !isset($json_data['catalog.json']['items'])
+            || !is_array($json_data['catalog.json']['items'])
+        ) {
+            return new WP_Error(
+                'catalog_invalid',
+                'Die catalog.json fehlt oder hat eine falsche Struktur.'
+            );
+        }
+
+        $catalog = $json_data['catalog.json'];
+
+        // Alle Einträge müssen Arrays sein. Bildreferenzen dürfen keine Pfade enthalten.
+        foreach ($catalog['items'] as $item) {
+            if (!is_array($item)) {
+                return new WP_Error(
+                    'catalog_item_invalid',
+                    'Der Katalog enthält einen ungültigen Eintrag.'
+                );
+            }
+        }
+
+        foreach ($json_data as $json_file => $data) {
+            $reference_error = self::validate_import_image_references($data);
+
+            if (is_wp_error($reference_error)) {
+                return $reference_error;
+            }
+        }
+
+        // Vorhandene manuelle Felder anhand der ID sichern.
+        if ($preserve_manual) {
+            $existing_items = HK_Catalog::get_all();
+            $existing_by_id = [];
+
+            foreach ($existing_items as $item) {
+                if (!empty($item['id'])) {
+                    $existing_by_id[$item['id']] = $item;
+                }
+            }
+
+            foreach ($catalog['items'] as &$item) {
+                if (
+                    empty($item['id'])
+                    || !isset($existing_by_id[$item['id']])
+                ) {
+                    continue;
+                }
+
+                $old = $existing_by_id[$item['id']];
+
+                foreach (
+                    ['image_file', 'description', 'active']
+                    as $field
+                ) {
+                    if (array_key_exists($field, $old)) {
+                        $item[$field] = $old[$field];
+                    }
+                }
+            }
+            unset($item);
+
+            // Beim manuellen Import werden Zusatzdateien nicht überschrieben.
+            $json_data = [
+                'catalog.json' => $catalog,
+            ];
+        }
+
+        $base = self::directory();
+
+        if (
+            !wp_mkdir_p($base . 'images/')
+            || !wp_mkdir_p($base . 'backups/')
+        ) {
+            return new WP_Error(
+                'directory',
+                'Das Datenverzeichnis konnte nicht angelegt werden.'
+            );
         }
 
         // Vorhandene Daten vor einem manuellen Import sichern.
@@ -278,17 +498,13 @@ class HK_Storage
             $backup = self::create_backup($base);
 
             if (is_wp_error($backup)) {
-                $zip->close();
-
                 return $backup;
             }
         }
 
-        // JSON-Dateien schreiben.
+        // Erst nach vollständiger Archivprüfung werden Daten geschrieben.
         foreach ($json_data as $filename => $data) {
             if (!self::write_json($base . $filename, $data)) {
-                $zip->close();
-
                 return new WP_Error(
                     'write_json',
                     'Die Datei ' . $filename . ' konnte nicht gespeichert werden.'
@@ -296,52 +512,102 @@ class HK_Storage
             }
         }
 
-        // Bilder aus dem ZIP übernehmen.
-        for ($i = 0; $i < $zip->numFiles; $i++) {
-            $filename = $zip->getNameIndex($i);
-
-            if (
-                $filename === false
-                || strpos($filename, 'images/') !== 0
-                || substr($filename, -1) === '/'
-            ) {
-                continue;
-            }
-
-            $image_name = substr($filename, 7);
-
-            // Nur Dateien direkt im images-Verzeichnis zulassen.
-            if (
-                $image_name === ''
-                || basename($image_name) !== $image_name
-                || $image_name === '.'
-                || $image_name === '..'
-            ) {
-                continue;
-            }
-
-            $content = $zip->getFromIndex($i);
-
-            if (
-                $content === false
-                || file_put_contents(
-                    $base . 'images/' . $image_name,
-                    $content,
-                    LOCK_EX
-                ) === false
-            ) {
-                $zip->close();
-
+        foreach ($images as $image_name => $content) {
+            if (file_put_contents(
+                $base . 'images/' . $image_name,
+                $content,
+                LOCK_EX
+            ) === false) {
                 return new WP_Error(
                     'image_write',
-                    'Ein Bild konnte nicht gespeichert werden: ' . $image_name
+                    'Ein geprüftes Bild konnte nicht gespeichert werden: '
+                        . $image_name
                 );
             }
         }
 
-        $zip->close();
+        return true;
+    }
+
+    /**
+     * Prüft Bildreferenzen in allen importierten JSON-Daten.
+     */
+    private static function validate_import_image_references($data)
+    {
+        if (!is_array($data)) {
+            return true;
+        }
+
+        foreach ($data as $key => $value) {
+            if ($key === 'image_file' && $value !== '' && $value !== null) {
+                if (
+                    !is_string($value)
+                    || basename($value) !== $value
+                    || !preg_match(
+                        '/^[A-Za-z0-9][A-Za-z0-9._-]{0,179}\\.(?:jpe?g|png|webp)$/i',
+                        $value
+                    )
+                ) {
+                    return new WP_Error(
+                        'catalog_image_reference',
+                        'Der Katalog enthält einen ungültigen Bilddateinamen.'
+                    );
+                }
+            }
+
+            $result = self::validate_import_image_references($value);
+
+            if (is_wp_error($result)) {
+                return $result;
+            }
+        }
 
         return true;
+    }
+
+    /**
+     * Bereinigt rekursiv alle Textwerte aus importierten JSON-Dateien.
+     */
+    private static function sanitize_import_data($data, $key = '')
+    {
+        if (is_array($data)) {
+            $clean = [];
+
+            foreach ($data as $child_key => $value) {
+                $clean[$child_key] = self::sanitize_import_data(
+                    $value,
+                    is_string($child_key) ? $child_key : ''
+                );
+            }
+
+            return $clean;
+        }
+
+        if (!is_string($data)) {
+            return $data;
+        }
+
+        $url_fields = [
+            'image_source_url',
+            'image_license_url',
+            'url',
+        ];
+
+        if (in_array($key, $url_fields, true)) {
+            return esc_url_raw($data);
+        }
+
+        $textarea_fields = [
+            'description',
+            'characteristics',
+            'uses',
+        ];
+
+        if (in_array($key, $textarea_fields, true)) {
+            return sanitize_textarea_field($data);
+        }
+
+        return sanitize_text_field($data);
     }
 
 

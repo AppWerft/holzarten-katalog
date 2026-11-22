@@ -99,6 +99,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         return '#' + toHex(r) + toHex(g) + toHex(b);
     }
+   
     function addPing() {
 
         pingLayer.ping(
