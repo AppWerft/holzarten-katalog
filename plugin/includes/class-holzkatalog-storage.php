@@ -36,7 +36,15 @@ class HOLZKATALOG_Storage
         ) {
             $source = HOLZKATALOG_PLUGIN_DIR . 'data/';
             $result = self::import_defaults($source);
-            
+
+            if (is_wp_error($result)) {
+                wp_die(
+                    esc_html(
+                        'Holzarten-Katalog: Die Standarddaten konnten nicht importiert werden. '
+                            . $result->get_error_message()
+                    )
+                );
+            }
         }
 
         // Fehlende Zusatzdateien anlegen.

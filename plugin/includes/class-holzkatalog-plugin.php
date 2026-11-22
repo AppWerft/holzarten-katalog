@@ -20,6 +20,5 @@ class HOLZKATALOG_Plugin
        HOLZKATALOG_Admins::instance();
        HOLZKATALOG_Actions::instance();
        $this->frontend = HOLZKATALOG_Frontend::instance();
-
     }
 }

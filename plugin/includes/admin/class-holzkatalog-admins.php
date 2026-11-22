@@ -79,19 +79,7 @@ class HOLZKATALOG_Admins
             25
         );
     }
-    /**
-     * URL einer Bilddatei ermitteln.
-     */
-    private function get_image_url($filename)
-    {
-        if (empty($filename)) {
-            return '';
-        }
-        $upload = wp_upload_dir();
-        return trailingslashit($upload['baseurl'])
-            . 'holzarten-daten/images/'
-            . rawurlencode(basename($filename));
-    }
+   
     /**
      * Admin-Seite darstellen.
      */
@@ -267,10 +255,9 @@ class HOLZKATALOG_Admins
         $is_edit = is_array($item);
 
         $image_file = $item['image_file'] ?? '';
-        $image_url = $this->get_image_url($image_file);
+        $image_url = HOLZKATALOG_Storage::image_url($image_file);
 
     ?>
-
         <h2>
             <?php echo $is_edit
                 ? 'Holzart bearbeiten'
@@ -592,7 +579,7 @@ class HOLZKATALOG_Admins
                                 <?php
                                 $image_file = $item['image_file'] ?? '';
 
-                                $image_url = $this->get_image_url(
+                                $image_url = HOLZKATALOG_Storage::image_url(
                                     $image_file
                                 );
 
