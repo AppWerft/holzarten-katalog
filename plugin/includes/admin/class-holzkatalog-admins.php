@@ -442,9 +442,6 @@ class HOLZKATALOG_Admins
 
     <?php
     }
-    /**
-     * ZIP-Importformular darstellen.
-     */
     private function render_importexport_form()
 {
 ?>
@@ -483,9 +480,10 @@ class HOLZKATALOG_Admins
 
         <div class="hk-import-export-box">
             <h2>Import – Holzartenkatalog</h2>
-            <p>Hier kann der Datenbestand der Hölzer von einer WP-Instanz zu einer anderen kopiert werden.
 
-            
+            <p class="description">
+                Importiert einen vollständigen Export mit Bäumen
+                und ihren Holzbildern (*.zip).
             </p>
 
             <form method="post"
