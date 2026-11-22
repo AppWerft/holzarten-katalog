@@ -110,7 +110,7 @@ class HOLZKATALOG_Admins
         echo '
             <div class="hk-import-export-header">
                 <img
-                    src="' . esc_url(HOLZKATALOG_URL . 'assets/images/importexport.webp')
+                    src="' . esc_url(HOLZKATALOG_URL . 'assets/images/exportimport.webp')
                     . '" 
                     width="64"
                     height="64"
