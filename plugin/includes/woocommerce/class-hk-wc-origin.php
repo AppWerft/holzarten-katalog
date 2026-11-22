@@ -291,12 +291,18 @@
             echo '</div>';
 
             echo wp_kses_post($this->render_geosuche($zoom));
-    ?>
-            <div style="margin-bottom:20px;display: flex; align-items: center; gap: 10px;">
-                <button onclick="window.location.reload()" type="button" class="button" id="hk-settings-cancel">
-                    Abbrechen
-                </button>
-        <?
+        ?>
+            <div style="margin-bottom:20px; display:flex; align-items:center; gap:10px;">
+
+            <button
+                onclick="window.location.reload()"
+                type="button"
+                class="button"
+                id="hk-settings-cancel">
+                Abbrechen
+            </button>
+
+            <?php
             submit_button(
                 __('Aktualisieren'),
                 'primary',
@@ -304,8 +310,9 @@
                 false,
                 ['id' => 'hk-save-product-bottom']
             );
-            echo ('</div>');
-        }
+            ?>
+
+        </div>  
         /**
          * Herkunftskoordinaten speichern.
          */
