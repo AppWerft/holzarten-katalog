@@ -119,7 +119,7 @@ class HOLZKATALOG_Admins
                 >
                 <h1>Holzarten – Import / Export</h1>
             </div>
-
+http://holzurne.local/wp-content/plugins/holzarten-katalog/assets/images/exportimport.png
             <p>
                 Hier können erfasste Datenbestände, einschließlich der Holzbilder,
                 zwischen zwei WordPress-Instanzen kopiert werden.
