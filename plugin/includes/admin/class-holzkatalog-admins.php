@@ -103,7 +103,7 @@ public function import_export_page()
     //$this->render_export_form();
 
     // Importformular
-    $this->render_import_form();
+    $this->render_importexport_form();
 
     echo '</div>';
 }
@@ -268,7 +268,7 @@ public function import_export_page()
 
             </form>
             <?php
-            $this->render_import_form();
+            $this->render_importexport_form();
             $this->render_table($items, $search);
             ?>
         </div>
@@ -472,7 +472,7 @@ public function import_export_page()
     /**
      * ZIP-Importformular darstellen.
      */
-    private function render_import_form()
+    private function render_importexport_form()
     {
     ?>
 
