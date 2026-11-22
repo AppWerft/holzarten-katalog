@@ -488,6 +488,9 @@ class HK_Settings
                     </tr>
                 </table>
                 <?php submit_button('Einstellungen speichern'); ?>
+                <button type="button" class="button" id="hk-settings-cancel">
+                    Abbrechen
+                </button>
 
             </form>
 
