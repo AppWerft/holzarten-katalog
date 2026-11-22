@@ -205,11 +205,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (pings.length) {
             const ping = pings[pings.length - 1];
-
             ping.c
                 .attr('fill', pingColor)
-                .attr('stroke', pingColor);
+                .attr('stroke', darkenColor(pingColor));
         }
+    }
+    function darkenColor(hex, factor = 0.75) {
+
+        hex = hex.replace('#', '');
+
+        const r = parseInt(hex.substring(0, 2), 16);
+        const g = parseInt(hex.substring(2, 4), 16);
+        const b = parseInt(hex.substring(4, 6), 16);
+
+        const toHex = value =>
+            Math.round(value * factor)
+                .toString(16)
+                .padStart(2, '0');
+
+        return '#' + toHex(r) + toHex(g) + toHex(b);
     }
     function startPing(position) {
         clearPing();

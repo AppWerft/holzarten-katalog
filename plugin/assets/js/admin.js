@@ -221,9 +221,4 @@ document.addEventListener('DOMContentLoaded', function () {
     cardField?.addEventListener('change', updatePreview);
 
 });
-// Abbruch:
-document.getElementById('hk-settings-cancel')
-    ?.addEventListener('click', function () {
-        window.location.reload();
-    });
 
