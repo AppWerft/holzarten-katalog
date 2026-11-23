@@ -159,12 +159,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
     providerSelect?.addEventListener('change', function () {
         setTileProvider(this.value);
-        providerRequiresApiKey(this.value)
-
+        const needKey = providerRequiresApiKey(this.value);
+        const tr = document.getElementById('hk-map-apikey-wrapper');
+        if (tr) tr.style.display = needKey ? '' : 'none';    
     });
 
+
     function providerRequiresApiKey(providerName) {
-        console.log(providerName)
         const providers = L.TileLayer.Provider.providers;
         if (!providers || !providers[providerName]) {
             return false;
