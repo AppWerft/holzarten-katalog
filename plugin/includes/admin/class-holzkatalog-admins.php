@@ -71,6 +71,7 @@ class HOLZKATALOG_Admins
             [
                 'ajaxUrl' => admin_url('admin-ajax.php'),
                 'nonce'   => wp_create_nonce('hk_toggle_status'),
+                'catalogNonce' => wp_create_nonce('hk_catalog_nonce'),
             ]
         );
     }
@@ -111,7 +112,7 @@ class HOLZKATALOG_Admins
             <div class="hk-import-export-header">
                 <img
                     src="' . esc_url(HOLZKATALOG_URL . 'assets/images/exportimport.webp')
-                    . '" 
+            . '" 
                     width="72"
                     height="72"
                     alt="ExportImport"
@@ -552,8 +553,17 @@ class HOLZKATALOG_Admins
                 </td>
 
                 <td>
+
+                    <? $only_active = (bool) get_user_meta(
+                        get_current_user_id(),
+                        '_hk_only_active',
+                        true
+                    ); ?>
                     <label class="hk-switch">
-                        <input type="checkbox" id="hk-only-active">
+                        <input
+                            type="checkbox"
+                            id="hk-only-active"
+                            <?php checked($only_active); ?>>
                         <span class="hk-slider"></span>
                         <span class="hk-switch-label">Nur aktive Hölzer</span>
                     </label>
@@ -647,8 +657,8 @@ class HOLZKATALOG_Admins
                                         <img
                                             class="hk-image-placeholder"
                                             src="<?php echo esc_url(
-                                                    HOLZKATALOG_URL . 'assets/images/holz.png'
-                                                ); ?>"
+                                                        HOLZKATALOG_URL . 'assets/images/holz.png'
+                                                    ); ?>"
                                             alt="[Kein Bild verfügbar]">
                                     </div>
 
