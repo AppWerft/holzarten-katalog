@@ -102,7 +102,7 @@ class HOLZKATALOG_Settings
         if ($hook === 'holzartenkatalog_page_hk_settings_katalog') {
             wp_enqueue_script(
                 'hk-admin',
-                HOLZKATALOG_PLUGIN_URL . 'assets/js/admin.js',
+                HOLZKATALOG_PLUGIN_URL . 'assets/js/hk_admin.js',
                 ['jquery'],
                 HOLZKATALOG_VERSION,
                 true
