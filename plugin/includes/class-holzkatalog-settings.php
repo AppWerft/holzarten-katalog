@@ -584,7 +584,7 @@ class HOLZKATALOG_Settings
                         </td>
                     </tr>
 
-<tr>
+                    <tr>
                         <th scope="row">
                             <label for="hk-map-apikey">
                                 Optionaler API-Key
@@ -592,13 +592,12 @@ class HOLZKATALOG_Settings
                         </th>
                         <td>
                             <input
-                               size="12"
+                                size="12"
                                 id="hk-map-apikey"
                                 name="hk_map_settings[apikey]"
-                                value="<?php echo esc_attr($settings['apikey']); ?>"
-                                >
+                                value="<?php echo esc_attr($settings['apikey']); ?>">
                             <span class="description"><br>
-                                Ein Teil der Kachelanbieter benötigt einen API-Key 
+                                Ein Teil der Kachelanbieter benötigt einen API-Key
                             </span>
                         </td>
                     </tr>
@@ -771,11 +770,12 @@ class HOLZKATALOG_Settings
     public static function sanitize_map($input)
     {
         $input = is_array($input) ? $input : [];
-
         $providers = self::get_map_providers();
-
         $provider = sanitize_text_field(
             $input['tile_provider'] ?? ''
+        );
+        $apikey = sanitize_text_field(
+            trim($input['apikey'] ?? '')
         );
 
         if (!array_key_exists($provider, $providers)) {
@@ -798,6 +798,7 @@ class HOLZKATALOG_Settings
                 $input['pingcolor'] ?? '#4285F4'
             ) ?: '#4285F4',
             'tile_provider' => $provider,
+            'apikey' => $apikey
         ];
     }
 }
