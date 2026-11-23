@@ -782,42 +782,4 @@ class HOLZKATALOG_Storage
             ? $data
             : null;
     }
-
-    public static function write_json($path, $data)
-    {
-        $json = wp_json_encode(
-            $data,
-            JSON_PRETTY_PRINT
-                | JSON_UNESCAPED_UNICODE
-                | JSON_UNESCAPED_SLASHES
-        );
-
-        if ($json === false) {
-            return false;
-        }
-
-        $temp = $path . '.tmp';
-
-        if (file_put_contents($temp, $json, LOCK_EX) === false) {
-            return false;
-        }
-
-        // WordPress-Dateisystem initialisieren.
-        require_once ABSPATH . 'wp-admin/includes/file.php';
-
-        global $wp_filesystem;
-
-        if (!WP_Filesystem()) {
-            wp_delete_file($temp);
-            return false;
-        }
-
-        // Temporäre Datei an den endgültigen Speicherort verschieben.
-        if (!$wp_filesystem->move($temp, $path, true)) {
-            wp_delete_file($temp);
-            return false;
-        }
-
-        return true;
-    }
 }
