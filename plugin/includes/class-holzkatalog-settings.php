@@ -66,6 +66,7 @@ class HOLZKATALOG_Settings
             '1.9.4',
             true
         );
+        // D3v5 für Pinglayer
         wp_enqueue_script(
             'holzkat-d3',
             HOLZKATALOG_PLUGIN_URL . 'assets/vendor/d3/d3v5.js',
@@ -90,7 +91,7 @@ class HOLZKATALOG_Settings
             true
         );
         // CSS
-        if ($hook === 'holzartenkatalog_page_hk_settings_katalog') {
+        if ($hook === 'hk_page_hk_settings_katalog') {
             wp_enqueue_style(
                 'holzkat-frontend-katalog',
                 HOLZKATALOG_PLUGIN_URL . 'assets/css/frontend-katalog.css',
@@ -99,7 +100,7 @@ class HOLZKATALOG_Settings
             );
         }
 
-        if ($hook === 'holzartenkatalog_page_hk_settings_katalog') {
+        if ($hook === 'hk_page_hk_settings_katalog') {
             wp_enqueue_script(
                 'holzkat-admin',
                 HOLZKATALOG_PLUGIN_URL . 'assets/js/holzkatalog-admin.js',
