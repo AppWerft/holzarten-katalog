@@ -584,7 +584,7 @@ class HOLZKATALOG_Settings
                         </td>
                     </tr>
 
-                    <tr>
+                    <tr id="hk-map-apikey-wrapper" style="display:none">
                         <th scope="row">
                             <label for="hk-map-apikey">
                                 Optionaler API-Key
