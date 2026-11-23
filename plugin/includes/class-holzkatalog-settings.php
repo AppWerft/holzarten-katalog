@@ -587,7 +587,7 @@ class HOLZKATALOG_Settings
 <tr>
                         <th scope="row">
                             <label for="hk-map-apikey">
-                                Kartenhöhe
+                                Optionaler API-Key
                             </label>
                         </th>
                         <td>
