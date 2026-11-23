@@ -187,6 +187,12 @@ if [[ "$RELEASE" == true ]]; then
     gh release create "$TAG" "$ZIP" \
         --title "$TAG" \
         --generate-notes
+    # Version in readme.txt aktualisieren
+    VERSION="$VERSION" perl -i -pe '
+        s/^Stable tag: .*/Stable tag: $ENV{VERSION}/;
+        ' "$SOURCE/readme.txt"
+
+    grep -q "^Stable tag: $VERSION$" "$SOURCE/readme.txt"
 
 fi
 
