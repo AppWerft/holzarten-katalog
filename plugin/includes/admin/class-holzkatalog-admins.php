@@ -91,7 +91,7 @@ class HOLZKATALOG_Admins
             'holzarten-katalog',
             [$this, 'admin_page'],
             'dashicons-palmtree',
-            25
+            50
         );
         add_submenu_page(
             'holzarten-katalog',
