@@ -101,7 +101,7 @@ class HOLZKATALOG_Settings
 
         if ($hook === 'holzartenkatalog_page_hk_settings_katalog') {
             wp_enqueue_script(
-                'holzkatalog-admin',
+                'hk-admin',
                 HOLZKATALOG_PLUGIN_URL . 'assets/js/hk_admin.js',
                 ['jquery'],
                 HOLZKATALOG_VERSION,
@@ -512,6 +512,7 @@ class HOLZKATALOG_Settings
     }
 
 
+
     public static function render_fundorte()
     {
         $settings = wp_parse_args(
@@ -523,23 +524,35 @@ class HOLZKATALOG_Settings
                 'position'      => 'center',
                 'priority'      => 35,
                 'tile_provider' => 'OpenStreetMap.Mapnik',
-                'pingcolor'     => '#4285F4'
+                'pingcolor'     => '#4285F4',
             ]
         );
 
         $providers = self::get_map_providers();
-        $selected = $settings['tile_provider'];
+        $selected  = $settings['tile_provider'];
     ?>
+
         <div class="wrap">
+
             <h1>Holzfundortkarten – Darstellungseinstellungen</h1>
-            Den Produkten kann eine Geoposition zugeordnet werden. In diesem Formular kann die Darstellung für alle Produkte konfiguriert werden.
+
+            <p>
+                Den Produkten kann eine Geoposition zugeordnet werden.
+                In diesem Formular kann die Darstellung für alle Produkte
+                konfiguriert werden.
+            </p>
+
             <form method="post" action="options.php">
+
                 <?php settings_fields('hk_settings_group'); ?>
 
                 <table class="form-table">
+
                     <tr>
                         <th scope="row">
-                            <label for="hk-tile-provider">Kartennanbieter</label>
+                            <label for="hk-tile-provider">
+                                Kartenanbieter
+                            </label>
                         </th>
                         <td>
                             <select
@@ -553,12 +566,19 @@ class HOLZKATALOG_Settings
                                     </option>
                                 <?php endforeach; ?>
                             </select>
-                            <span class="description">Beachte eventuelle Lizenzbeschränkungen!</span>
+
+                            <p class="description">
+                                Beachte die jeweiligen Lizenz- und Nutzungsbedingungen
+                                des Kartenanbieters.
+                            </p>
                         </td>
                     </tr>
+
                     <tr>
                         <th scope="row">
-                            <label for="hk-map-height">Kartenhöhe</label>
+                            <label for="hk-map-height">
+                                Kartenhöhe
+                            </label>
                         </th>
                         <td>
                             <input
@@ -569,13 +589,17 @@ class HOLZKATALOG_Settings
                                 min="80"
                                 max="400"
                                 step="10">
-                            <span class="description">Pixel (80–400)</span>
+                            <span class="description">
+                                Pixel (80–400)
+                            </span>
                         </td>
                     </tr>
 
                     <tr>
                         <th scope="row">
-                            <label for="hk-map-width">Kartenbreite</label>
+                            <label for="hk-map-width">
+                                Kartenbreite
+                            </label>
                         </th>
                         <td>
                             <input
@@ -586,12 +610,17 @@ class HOLZKATALOG_Settings
                                 min="20"
                                 max="100"
                                 step="5">
-                            <span class="description">Prozent (20%–100%)</span>
+                            <span class="description">
+                                Prozent (20–100 %)
+                            </span>
                         </td>
                     </tr>
+
                     <tr>
                         <th scope="row">
-                            <label for="hk-map-radius">Eckenradius</label>
+                            <label for="hk-map-radius">
+                                Eckenradius
+                            </label>
                         </th>
                         <td>
                             <input
@@ -602,28 +631,37 @@ class HOLZKATALOG_Settings
                                 min="0"
                                 max="50"
                                 step="1">
-                            <span class="description">Eckenradius in Pixeln</span>
+                            <span class="description">
+                                Pixel (0–50)
+                            </span>
                         </td>
                     </tr>
+
                     <tr>
                         <th scope="row">
-                            <label for="hk-map-position">Ausrichtung</label>
+                            <label for="hk-map-position">
+                                Ausrichtung
+                            </label>
                         </th>
                         <td>
-                            <select style="width:12em"
+                            <select
                                 id="hk-map-position"
-                                name="hk_map_settings[position]">
-                                <option value="left"
+                                name="hk_map_settings[position]"
+                                style="width: 12em;">
+                                <option
+                                    value="left"
                                     <?php selected($settings['position'], 'left'); ?>>
                                     Links
                                 </option>
 
-                                <option value="center"
+                                <option
+                                    value="center"
                                     <?php selected($settings['position'], 'center'); ?>>
                                     Mittig
                                 </option>
 
-                                <option value="right"
+                                <option
+                                    value="right"
                                     <?php selected($settings['position'], 'right'); ?>>
                                     Rechts
                                 </option>
@@ -631,10 +669,11 @@ class HOLZKATALOG_Settings
                         </td>
                     </tr>
 
-
                     <tr>
                         <th scope="row">
-                            <label for="hk-map-priority">Position in WooCommerce</label>
+                            <label for="hk-map-priority">
+                                Position in WooCommerce
+                            </label>
                         </th>
                         <td>
                             <input
@@ -645,45 +684,59 @@ class HOLZKATALOG_Settings
                                 min="1"
                                 max="100">
                             <p class="description">
-                                Hook-Priorität: kleinerer Wert = frühere Ausgabe.
-                                Standard: 35.
+                                Hook-Priorität: Ein kleinerer Wert bedeutet eine
+                                frühere Ausgabe. Standard: 35.
                             </p>
                         </td>
                     </tr>
+
                     <tr>
                         <th scope="row">
-                            <label for="hk-map-priority">Farbe des Geostandortes</label>
+                            <label for="hk-map-pingcolor">
+                                Farbe des Geostandortes
+                            </label>
                         </th>
                         <td>
                             <input
                                 type="color"
                                 id="hk-map-pingcolor"
                                 name="hk_map_settings[pingcolor]"
-                                value="<?php echo esc_attr($settings['pingcolor']); ?>"
-                                max="100">
+                                value="<?php echo esc_attr($settings['pingcolor']); ?>">
                             <p class="description">
-
+                                Farbe des Markierungseffekts auf der Karte.
                             </p>
                         </td>
                     </tr>
 
-
                 </table>
+
                 <div style="display: flex; align-items: center; gap: 10px;">
-                    <button onclick="window.location.reload()" type="button" class="button" id="hk-settings-cancel">
+
+                    <button
+                        onclick="window.location.reload()"
+                        type="button"
+                        class="button"
+                        id="hk-settings-cancel">
                         Abbrechen
                     </button>
+
                     <?php submit_button('Einstellungen speichern'); ?>
 
                 </div>
+
             </form>
+
+            <h2>Vorschau</h2>
+
+            <div id="settings-preview-wrapper">
+                <div id="settings-preview-map"></div>
+            </div>
+
         </div>
-        <i>Vorschau</i>
-        <div id="settings-preview-wrapper">
-            <div id="settings-preview-map"></div>
-        </div>
+
 <?php
     }
+
 
     public static function sanitize_map($input)
     {
