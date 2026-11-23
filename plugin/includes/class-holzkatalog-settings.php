@@ -584,6 +584,26 @@ class HOLZKATALOG_Settings
                         </td>
                     </tr>
 
+<tr>
+                        <th scope="row">
+                            <label for="hk-map-apikey">
+                                Kartenhöhe
+                            </label>
+                        </th>
+                        <td>
+                            <input
+                               
+                                id="hk-map-apikey"
+                                name="hk_map_settings[apikey]"
+                                value="<?php echo esc_attr($settings['apikey']); ?>"
+                                >
+                            <span class="description">
+                                Ein Teil der Kachelanbieter benötigt einen API-Key 
+                            </span>
+                        </td>
+                    </tr>
+
+
                     <tr>
                         <th scope="row">
                             <label for="hk-map-height">
