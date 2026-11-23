@@ -74,6 +74,10 @@ class HOLZKATALOG_Admins
                 'catalogNonce' => wp_create_nonce('hk_catalog_nonce'),
             ]
         );
+        add_action(
+            'wp_ajax_hk_save_only_active',
+            [$this, 'save_only_active']
+        );
     }
     /**
      * Admin-Menü registrieren.
