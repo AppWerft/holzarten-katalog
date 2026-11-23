@@ -592,7 +592,7 @@ class HOLZKATALOG_Settings
                         </th>
                         <td>
                             <input
-                               
+                               size="8"
                                 id="hk-map-apikey"
                                 name="hk_map_settings[apikey]"
                                 value="<?php echo esc_attr($settings['apikey']); ?>"
