@@ -49,7 +49,7 @@ class HOLZKATALOG_Settings
 
     public static function enqueue_scripts($hook)
     {
-       
+        error_log('HOLZKATALOG Hook: ' . $hook);
         // Leaflet CSS
         wp_enqueue_style(
             'leaflet',
@@ -134,7 +134,7 @@ class HOLZKATALOG_Settings
             );
         }
         // Holzfundorte-Einstellungen
-        if ($hook === 'holzartenkatalog_page_hk_settings_fundorte') {error_clear_last()
+        if ($hook === 'holzarten-katalog_page_hk_settings_fundorte') {
 
             $js_file = HOLZKATALOG_PLUGIN_DIR . 'assets/js/admin-holzarten-geosettings.js';
 
