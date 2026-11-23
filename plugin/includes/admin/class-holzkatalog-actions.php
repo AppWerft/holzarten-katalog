@@ -447,7 +447,8 @@ class HOLZKATALOG_Actions
                 . '"'
         );
         header('Content-Length: ' . strlen($content));
-
+        
+        // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
         echo $content;
 
         wp_delete_file($temp_file);
