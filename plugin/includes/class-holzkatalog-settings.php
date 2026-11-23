@@ -49,6 +49,7 @@ class HOLZKATALOG_Settings
 
     public static function enqueue_scripts($hook)
     {
+       
         // Leaflet CSS
         wp_enqueue_style(
             'leaflet',
@@ -582,24 +583,7 @@ class HOLZKATALOG_Settings
                             </p>
                         </td>
                     </tr>
-                    <tr>
-                        <th scope="row">
-                            <label for="hk-map-apikey">
-                                API-Key
-                            </label>
-                        </th>
-                        <td>
-                            <input
-                               
-                                id="hk-map-apikey"
-                                name="hk_map_settings[apikey]"
-                                value="<?php echo esc_attr($settings['apikey']); ?>"
-                               >
-                            <span class="description">
-                                Ein Teil der Kachelanbieter benötigt einen API-Key
-                            </span>
-                        </td>
-                    </tr>
+
                     <tr>
                         <th scope="row">
                             <label for="hk-map-height">
