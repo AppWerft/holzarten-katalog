@@ -134,7 +134,7 @@ class HOLZKATALOG_Settings
             );
         }
         // Holzfundorte-Einstellungen
-        if ($hook === 'holzarten-katalog_page_hk_settings_fundorte') {
+        if ($hook === 'holzartenkatalog_page_hk_settings_fundorte') {
 
             $js_file = HOLZKATALOG_PLUGIN_DIR . 'assets/js/admin-holzarten-geosettings.js';
 
