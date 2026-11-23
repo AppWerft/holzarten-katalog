@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     previewWrapper.style.display = 'flex';
 
+
     // --------------------------------------------------
     // Vorschaugröße und Position
     // --------------------------------------------------
@@ -99,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         return '#' + toHex(r) + toHex(g) + toHex(b);
     }
-   
+
     function addPing() {
 
         pingLayer.ping(
@@ -158,8 +159,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
     providerSelect?.addEventListener('change', function () {
         setTileProvider(this.value);
+        providerRequiresApiKey(this.value)
+
     });
 
+    function providerRequiresApiKey(providerName) {
+        console.log(providerName)
+        const providers = L.TileLayer.Provider.providers;
+        if (!providers || !providers[providerName]) {
+            return false;
+        }
+        const provider = providers[providerName];
+        return /\{(key|apikey|apiKey|accessToken|subscriptionKey)\}/
+            .test(provider.url || '');
+    }
     setTimeout(() => map.invalidateSize(), 100);
 
 });
