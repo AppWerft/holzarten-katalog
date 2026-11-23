@@ -102,12 +102,13 @@ class HOLZKATALOG_Settings
         if ($hook === 'holzartenkatalog_page_hk_settings_katalog') {
             wp_enqueue_script(
                 'hk-admin',
-                HOLZKATALOG_PLUGIN_URL . 'assets/js/holzkatalog_admin.js',
+                HOLZKATALOG_PLUGIN_URL . 'assets/js/holzkatalog-admin.js',
                 ['jquery'],
                 HOLZKATALOG_VERSION,
                 true
             );
         }
+        
 
         // Holzarten-Einstellungen
         if ($hook === 'holzartenkatalog_page_hk_settings_holzarten') {
