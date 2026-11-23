@@ -305,7 +305,7 @@
                 </button>';
 
             submit_button(
-                __('Aktualisieren'),
+                __('Aktualisieren','holzarten-katalog'),
                 'primary',
                 'save',
                 false,

@@ -430,7 +430,7 @@ class HOLZKATALOG_Actions
         header('Content-Length: ' . $filesize);
 
         // ZIP-Datei direkt ausgeben.
-        readfile($temp_file);
+        WP_Filesystem->get_contents($temp_file);
 
         wp_delete_file($temp_file);
         exit;
