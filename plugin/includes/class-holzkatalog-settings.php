@@ -132,7 +132,7 @@ class HOLZKATALOG_Settings
             wp_enqueue_script(
                 'holzkat-holzarten-geosettings',
                 HOLZKATALOG_PLUGIN_URL . 'assets/js/admin-holzarten-geosettings.js',
-                ['hk-leaflet', 'hk-leaflet-providers'],
+                ['holzkat-leaflet', 'holzkat-leaflet-providers'],
                 file_exists($js_file) ? filemtime($js_file) : HOLZKATALOG_VERSION,
                 true
             );
