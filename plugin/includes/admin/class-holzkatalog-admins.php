@@ -79,26 +79,23 @@ class HOLZKATALOG_Admins
             ]
         );
     }
+    /**
+     * Admin-Menü registrieren.
+     */
     public function register_admin_menu()
     {
-        if (class_exists('WooCommerce')) {
-            $parent = 'woocommerce';
-        } else {
-            $parent = 'tools.php';
-        }
-
-        add_submenu_page(
-            $parent,
+        add_menu_page(
             'Holzarten-Katalog',
             'Holzartenkatalog',
             'manage_options',
             'holzarten-katalog',
-            [$this, 'admin_page']
+            [$this, 'admin_page'],
+            'dashicons-palmtree',
+            25
         );
-
         add_submenu_page(
-            $parent,
-            'Holzarten Import / Export',
+            'holzarten-katalog',
+            'Import / Export',
             'Import / Export',
             'manage_options',
             'holzarten-import-export',
