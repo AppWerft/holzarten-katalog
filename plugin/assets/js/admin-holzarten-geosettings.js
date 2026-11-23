@@ -159,21 +159,31 @@ document.addEventListener('DOMContentLoaded', function () {
 
     providerSelect?.addEventListener('change', function () {
         setTileProvider(this.value);
-        const needKey = providerRequiresApiKey(this.value);
+        const key = providerRequiresApiKey(this.value);
         const tr = document.getElementById('hk-map-apikey-wrapper');
-        if (tr) tr.style.display = needKey ? '' : 'none';    
+        if (tr) tr.style.display = key ? '' : 'none';
     });
 
 
     function providerRequiresApiKey(providerName) {
         const providers = L.TileLayer.Provider.providers;
-        if (!providers || !providers[providerName]) {
-            return false;
+        const provider = providers?.[providerName];
+        if (!provider) {
+            return null;
         }
-        const provider = providers[providerName];
-        return /\{(key|apikey|apiKey|accessToken|subscriptionKey)\}/
-            .test(provider.url || '');
+        const match = (provider.url || '').match(
+            /\{(key|apikey|apiKey|accessToken|subscriptionKey)\}/
+        );
+        if (!match) {
+            return null;
+        }
+        const key = match[1];
+        return {
+            key: key,
+            value: provider.options?.[key] ?? null
+        };
     }
+
     setTimeout(() => map.invalidateSize(), 100);
 
 });
