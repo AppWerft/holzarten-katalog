@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const sizeInput = document.getElementById('hk-wood-size');
     const roundInput = document.getElementById('hk-holzarten-round');
     const preview = document.getElementById('hk-wood-preview');
-
+    alert('updateZoomCurso');
     if (!lupeCheckbox || !sizeInput || !roundInput || !preview) {
         return;
     }
