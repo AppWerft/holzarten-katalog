@@ -165,9 +165,6 @@ class HOLZKATALOG_WooCommerce
                 return;
             }
 
-            // WordPress-Bildfunktionen laden.
-            require_once ABSPATH . 'wp-admin/includes/image.php';
-
             // Mediathek-Eintrag erstellen.
             $attachment_id = wp_insert_attachment(
                 [

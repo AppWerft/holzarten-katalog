@@ -104,10 +104,12 @@ class HOLZKATALOG_Assets
             HOLZKATALOG_VERSION
         );
         // Leaflet nur auf Produktseiten
-        if (!is_product()) {
-            return;
-        }
-        self::enqueue_leaflet();
-        // Frontend-Karten-JavaScript folgt hier.
+        if (
+            function_exists('is_product')
+            && is_product()
+        ) {
+             self::enqueue_leaflet();
+        }       
+
     }
 }

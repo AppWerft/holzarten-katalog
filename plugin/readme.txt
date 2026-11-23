@@ -40,7 +40,25 @@ No. The basic catalog functionality can be used without WooCommerce. WooCommerce
 
 Insert the `[hk_holzarten]` shortcode into a page or post.
 
+
+== External services ==
+
+This plugin uses the Photon geocoding service provided by Komoot to search for geographical locations in the product origin picker.
+
+When an administrator enters a search term in the location search field, the search term is sent to the Photon API at photon.komoot.io. The request also transmits the user's IP address and standard connection metadata to the service provider.
+
+The service is only contacted when an administrator actively uses the location search. No requests are made automatically on plugin activation or during normal frontend page views.
+
+Photon is provided by Komoot and uses OpenStreetMap data.
+
+Terms of use: https://photon.komoot.io/
+
+Privacy policy: https://www.komoot.com/privacy
+
+
+
 == Changelog ==
 
 = 0.1.4 =
 * Initial release.
+
