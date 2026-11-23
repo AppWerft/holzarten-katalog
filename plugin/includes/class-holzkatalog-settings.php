@@ -592,12 +592,12 @@ class HOLZKATALOG_Settings
                         </th>
                         <td>
                             <input
-                               size="8"
+                               size="12"
                                 id="hk-map-apikey"
                                 name="hk_map_settings[apikey]"
                                 value="<?php echo esc_attr($settings['apikey']); ?>"
                                 >
-                            <span class="description">
+                            <span class="description"><br>
                                 Ein Teil der Kachelanbieter benötigt einen API-Key 
                             </span>
                         </td>
