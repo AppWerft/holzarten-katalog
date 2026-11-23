@@ -6,7 +6,7 @@
  * Version: 0.1.22
  * Author: Appwerft
  * Requires Plugins: woocommerce
- * Text Domain: tree-species-catalog
+ * Text Domain: holzarten-katalog
  * License: GPL-2.0-or-later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */

@@ -38,7 +38,6 @@ class HOLZKATALOG_Admins
      */
     public function enqueue_admin_assets($hook)
     {
-        error_log('HOLZKATALOG Admin Hook: ' . $hook);
         if (
             !in_array(
                 $hook,
