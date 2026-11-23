@@ -32,6 +32,7 @@ class HOLZKATALOG_Admins
             [$this, 'save_only_active']
         );
     }
+
     /**
      * CSS und JavaScript nur auf unserer Plugin-Seite laden.
      */
@@ -558,11 +559,15 @@ class HOLZKATALOG_Admins
 
                 <td>
 
-                    <? $only_active = (bool) get_user_meta(
+                    <?php
+                    $only_active = get_user_meta(
                         get_current_user_id(),
                         '_hk_only_active',
                         true
-                    ); ?>
+                    ) === '1';
+                    ?>
+
+
                     <label class="hk-switch">
                         <input
                             type="checkbox"
@@ -775,5 +780,31 @@ class HOLZKATALOG_Admins
         </table>
 
 <?php
+    }
+    /**
+     * Filterzustand "Nur aktive" speichern.
+     */
+    public function save_only_active()
+    {
+        check_ajax_referer('hk_catalog_nonce', 'nonce');
+
+        if (!current_user_can('manage_options')) {
+            wp_send_json_error('Keine Berechtigung', 403);
+        }
+
+        $only_active = isset($_POST['only_active'])
+            && sanitize_text_field(
+                wp_unslash($_POST['only_active'])
+            ) === '1';
+
+        update_user_meta(
+            get_current_user_id(),
+            '_hk_only_active',
+            $only_active ? '1' : '0'
+        );
+
+        wp_send_json_success([
+            'only_active' => $only_active,
+        ]);
     }
 }
