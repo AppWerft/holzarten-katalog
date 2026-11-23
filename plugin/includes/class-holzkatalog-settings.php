@@ -109,13 +109,21 @@ class HOLZKATALOG_Settings
                 true
             );
         }
-        
+
 
         // Holzarten-Einstellungen
-       // if ($hook === 'hk_page_hk_settings_holzarten') {
+        if ($hook === 'hk_page_hk_settings_holzarten') {
 
             $js_file = HOLZKATALOG_PLUGIN_DIR . 'assets/js/admin-holzarten-settings.js';
             $css_file = HOLZKATALOG_PLUGIN_DIR . 'assets/css/admin-holzarten-settings.css';
+
+            wp_enqueue_script(
+                'holzkat-holzarten-settings',
+                HOLZKATALOG_PLUGIN_URL . 'assets/js/admin-holzarten-settings.js',
+                ['jquery'],
+                file_exists($js_file) ? filemtime($js_file) : HOLZKATALOG_VERSION,
+                true
+            );
 
             wp_enqueue_style(
                 'holzkat-holzarten-settings',
@@ -123,8 +131,7 @@ class HOLZKATALOG_Settings
                 [],
                 file_exists($css_file) ? filemtime($css_file) : HOLZKATALOG_VERSION
             );
-      //  }
-
+        }
         // Holzfundorte-Einstellungen
         if ($hook === 'hk_page_hk_settings_fundorte') {
 
