@@ -21,27 +21,27 @@ class HOLZKATALOG_Actions
     private function __construct()
     {
         add_action(
-            'admin_post_hk_save_item',
+            'admin_post_holzkatalog_save_item',
             [$this, 'handle_save']
         );
 
         add_action(
-            'admin_post_hk_delete_item',
+            'admin_post_holzkatalog_delete_item',
             [$this, 'handle_delete']
         );
 
         add_action(
-            'admin_post_hk_import_catalog',
+            'admin_post_holzkatalog_import_catalog',
             [$this, 'handle_import']
         );
 
         add_action(
-            'admin_post_hk_export_catalog',
+            'admin_post_holzkatalog_export_catalog',
             [$this, 'handle_export']
         );
 
         add_action(
-            'wp_ajax_hk_toggle_status',
+            'wp_ajax_holzkatalog_toggle_status',
             [$this, 'ajax_toggle_status']
         );
     }
@@ -77,7 +77,7 @@ class HOLZKATALOG_Actions
             wp_die('Keine Berechtigung.');
         }
 
-        check_admin_referer('hk_save_item');
+        check_admin_referer('holzkatalog_save_item');
 
         $id = isset($_POST['id'])
             ? sanitize_text_field(wp_unslash($_POST['id']))
@@ -312,7 +312,7 @@ class HOLZKATALOG_Actions
         }
 
         check_admin_referer(
-            'hk_export_catalog',
+            'holzkatalog_export_catalog',
             'hk_export_nonce'
         );
 
@@ -468,7 +468,7 @@ class HOLZKATALOG_Actions
             ], 403);
         }
 
-        check_ajax_referer('hk_toggle_status', 'nonce');
+        check_ajax_referer('holzkatalog_toggle_status', 'nonce');
 
         $id = isset($_POST['id'])
             ? sanitize_text_field(wp_unslash($_POST['id']))
@@ -484,17 +484,18 @@ class HOLZKATALOG_Actions
         }
 
         $result = HOLZKATALOG_Catalog::set_active($id, $active);
-        if ($result !== true) {
-            wp_send_json_error([
-                'message' => 'Der Status konnte nicht geändert werden.',
-            ]);
-        }
 
-        if (is_wp_error($result)) {
-            wp_send_json_error([
-                'message' => $result->get_error_message(),
-            ]);
-        }
+if (is_wp_error($result)) {
+    wp_send_json_error([
+        'message' => $result->get_error_message(),
+    ]);
+}
+
+if ($result !== true) {
+    wp_send_json_error([
+        'message' => 'Der Status konnte nicht geändert werden.',
+    ]);
+}
 
         wp_send_json_success([
             'active' => $active,
@@ -517,7 +518,7 @@ class HOLZKATALOG_Actions
             wp_die('Ungültige Holzarten-ID.');
         }
 
-        check_admin_referer('hk_delete_item_' . $id);
+        check_admin_referer('holzkatalog_delete_item_' . $id);
 
         $item = HOLZKATALOG_Catalog::get($id);
 
@@ -561,7 +562,7 @@ class HOLZKATALOG_Actions
 
         if (
             !check_admin_referer(
-                'hk_import_catalog',
+                'holzkatalog_import_catalog',
                 '_wpnonce',
                 false
             )

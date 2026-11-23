@@ -8,7 +8,7 @@ jQuery(document).ready(function ($) {
         const label = checkbox.siblings('.hk-status-label');
 
         $.post(hkAdmin.ajaxUrl, {
-            action: 'hk_toggle_status',
+            action: 'holzkatalog_toggle_status',
             nonce: hkAdmin.nonce,
             id: id,
             active: active ? '1' : '0'

@@ -12,7 +12,58 @@ class HOLZKATALOG_Storage
         return trailingslashit($upload['basedir'])
             . 'holzarten-daten/';
     }
+    public static function write_json($path, $data, $filesystem = null)
+    {
+        if ($filesystem === null) {
+            $filesystem = self::get_filesystem();
+        }
 
+        if (is_wp_error($filesystem)) {
+            return false;
+        }
+
+        $json = wp_json_encode(
+            $data,
+            JSON_PRETTY_PRINT
+                | JSON_UNESCAPED_UNICODE
+                | JSON_UNESCAPED_SLASHES
+        );
+
+        if ($json === false) {
+            return false;
+        }
+
+        $temp = $path . '.tmp-' . wp_generate_password(8, false, false);
+
+        if (!$filesystem->put_contents($temp, $json, FS_CHMOD_FILE)) {
+            return false;
+        }
+
+        if (!$filesystem->move($temp, $path, true)) {
+            $filesystem->delete($temp);
+            return false;
+        }
+
+        return true;
+    }
+    /**
+     * WordPress-Dateisystem initialisieren.
+     */
+    private static function get_filesystem()
+    {
+        require_once ABSPATH . 'wp-admin/includes/file.php';
+
+        global $wp_filesystem;
+
+        if (!WP_Filesystem()) {
+            return new WP_Error(
+                'filesystem_unavailable',
+                'Das WordPress-Dateisystem konnte nicht initialisiert werden.'
+            );
+        }
+
+        return $wp_filesystem;
+    }
     /**
      * Initialisierung bei der Plugin-Aktivierung.
      *
@@ -510,9 +561,15 @@ class HOLZKATALOG_Storage
             }
         }
 
+        $filesystem = self::get_filesystem();
+
+        if (is_wp_error($filesystem)) {
+            return $filesystem;
+        }
+
         // Erst nach vollständiger Archivprüfung werden Daten geschrieben.
         foreach ($json_data as $filename => $data) {
-            if (!self::write_json($base . $filename, $data)) {
+            if (!self::write_json($base . $filename, $data, $filesystem)) {
                 return new WP_Error(
                     'write_json',
                     'Die Datei ' . $filename . ' konnte nicht gespeichert werden.'
@@ -521,11 +578,13 @@ class HOLZKATALOG_Storage
         }
 
         foreach ($images as $image_name => $content) {
-            if (file_put_contents(
-                $base . 'images/' . $image_name,
+            $image_path = $base . 'images/' . $image_name;
+
+            if (!$filesystem->put_contents(
+                $image_path,
                 $content,
-                LOCK_EX
-            ) === false) {
+                FS_CHMOD_FILE
+            )) {
                 return new WP_Error(
                     'image_write',
                     'Ein geprüftes Bild konnte nicht gespeichert werden: '

@@ -74,7 +74,7 @@ class HOLZKATALOG_Admins
             'hkAdmin',
             [
                 'ajaxUrl' => admin_url('admin-ajax.php'),
-                'nonce'   => wp_create_nonce('hk_toggle_status'),
+                'nonce'   => wp_create_nonce('holzkatalog_toggle_status'),
                 'catalogNonce' => wp_create_nonce('hk_catalog_nonce'),
             ]
         );
@@ -292,13 +292,13 @@ class HOLZKATALOG_Admins
 
             <input type="hidden"
                 name="action"
-                value="hk_save_item">
+                value="holzkatalog_save_item">
 
             <input type="hidden"
                 name="id"
                 value="<?php echo esc_attr($item['id'] ?? ''); ?>">
 
-            <?php wp_nonce_field('hk_save_item'); ?>
+            <?php wp_nonce_field('holzkatalog_save_item'); ?>
 
             <table class="form-table">
 
@@ -482,11 +482,11 @@ class HOLZKATALOG_Admins
 
                     <input type="hidden"
                         name="action"
-                        value="hk_export_catalog">
+                        value="holzkatalog_export_catalog">
 
                     <?php
                     wp_nonce_field(
-                        'hk_export_catalog',
+                        'holzkatalog_export_catalog',
                         'hk_export_nonce'
                     );
 
@@ -514,9 +514,9 @@ class HOLZKATALOG_Admins
 
                     <input type="hidden"
                         name="action"
-                        value="hk_import_catalog">
+                        value="holzkatalog_import_catalog">
 
-                    <?php wp_nonce_field('hk_import_catalog'); ?>
+                    <?php wp_nonce_field('holzkatalog_import_catalog'); ?>
 
                     <input type="file"
                         name="catalog_zip"
@@ -752,7 +752,7 @@ class HOLZKATALOG_Admins
                                                         'admin-post.php?action=hk_delete_item&id='
                                                             . rawurlencode($item['id'])
                                                     ),
-                                                    'hk_delete_item_' . $item['id']
+                                                    'holzkatalog_delete_item_' . $item['id']
                                                 )
                                             ); ?>"
                                     onclick="return confirm('Diese Holzart wirklich löschen?');">
