@@ -447,7 +447,7 @@ class HOLZKATALOG_Actions
                 . '"'
         );
         header('Content-Length: ' . strlen($content));
-        
+
         // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
         echo $content;
 
@@ -485,17 +485,17 @@ class HOLZKATALOG_Actions
 
         $result = HOLZKATALOG_Catalog::set_active($id, $active);
 
-if (is_wp_error($result)) {
-    wp_send_json_error([
-        'message' => $result->get_error_message(),
-    ]);
-}
+        if (is_wp_error($result)) {
+            wp_send_json_error([
+                'message' => $result->get_error_message(),
+            ]);
+        }
 
-if ($result !== true) {
-    wp_send_json_error([
-        'message' => 'Der Status konnte nicht geändert werden.',
-    ]);
-}
+        if ($result !== true) {
+            wp_send_json_error([
+                'message' => 'Der Status konnte nicht geändert werden.',
+            ]);
+        }
 
         wp_send_json_success([
             'active' => $active,
