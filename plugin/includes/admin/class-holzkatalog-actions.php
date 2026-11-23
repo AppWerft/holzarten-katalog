@@ -421,16 +421,34 @@ class HOLZKATALOG_Actions
 
         nocache_headers();
 
+        require_once ABSPATH . 'wp-admin/includes/file.php';
+
+        global $wp_filesystem;
+
+        if (!WP_Filesystem()) {
+            wp_delete_file($temp_file);
+            wp_die('WordPress Filesystem konnte nicht initialisiert werden.');
+        }
+
+        $content = $wp_filesystem->get_contents($temp_file);
+
+        if ($content === false) {
+            wp_delete_file($temp_file);
+            wp_die('ZIP-Datei konnte nicht gelesen werden.');
+        }
+
+        // Download ausliefern.
+        nocache_headers();
+
         header('Content-Type: application/zip');
         header(
             'Content-Disposition: attachment; filename="'
                 . $download_name
                 . '"'
         );
-        header('Content-Length: ' . $filesize);
+        header('Content-Length: ' . strlen($content));
 
-        // ZIP-Datei direkt ausgeben.
-        WP_Filesystem->get_contents($temp_file);
+        echo $content;
 
         wp_delete_file($temp_file);
         exit;
