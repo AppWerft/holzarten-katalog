@@ -85,7 +85,7 @@ class HOLZKATALOG_Settings
         wp_enqueue_script(
             'holzkat-leaflet-providers',
             HOLZKATALOG_PLUGIN_URL . 'assets/vendor/leaflet/leaflet-providers.js',
-            ['hk-leaflet'],
+            ['holzkat-leaflet'],
             HOLZKATALOG_VERSION,
             true
         );
