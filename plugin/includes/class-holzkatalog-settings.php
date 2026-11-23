@@ -585,22 +585,25 @@ class HOLZKATALOG_Settings
                     </tr>
 
                     <tr id="hk-map-apikey-wrapper" style="display:none">
-                        <th scope="row">
-                            <label for="hk-map-apikey">
-                                Optionaler API-Key
-                            </label>
-                        </th>
-                        <td>
-                            <input
-                                size="12"
-                                id="hk-map-apikey"
-                                name="hk_map_settings[apikey]"
-                                value="<?php echo esc_attr($settings['apikey']); ?>">
-                            <span class="description"><br>
-                                Ein Teil der Kachelanbieter benötigt einen API-Key
-                            </span>
-                        </td>
-                    </tr>
+    <td scope="row">
+        <span id="hk-map-apikey-keyname"></span>=
+
+        <input
+            type="hidden"
+            id="hk-map-apikey-key"
+            name="hk_map_settings[apikey_key]"
+            value="<?php echo esc_attr($settings['apikey_key'] ?? ''); ?>"
+        >
+
+        <input
+            size="20"
+            type="text"
+            id="hk-map-apikey-value"
+            name="hk_map_settings[apikey]"
+            value="<?php echo esc_attr($settings['apikey'] ?? ''); ?>"
+        >
+    </td>
+</tr>
 
 
                     <tr>

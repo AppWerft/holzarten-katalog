@@ -157,27 +157,24 @@ document.addEventListener('DOMContentLoaded', function () {
     radiusInput?.addEventListener('input', updatePreview);
     positionSelect?.addEventListener('change', updatePreview);
 
-    providerSelect?.addEventListener('change', function () {
-        setTileProvider(this.value);
-        const key = providerRequiresApiKey(this.value);
-        const tr = document.getElementById('hk-map-apikey-wrapper');
-        if (tr) tr.style.display = key ? '' : 'none';
-    });
-
-
     function providerRequiresApiKey(providerName) {
         const providers = L.TileLayer.Provider.providers;
         const provider = providers?.[providerName];
+
         if (!provider) {
             return null;
         }
+
         const match = (provider.url || '').match(
             /\{(key|apikey|apiKey|accessToken|subscriptionKey)\}/
         );
+
         if (!match) {
             return null;
         }
+
         const key = match[1];
+
         return {
             key: key,
             value: provider.options?.[key] ?? null
