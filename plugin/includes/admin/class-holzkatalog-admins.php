@@ -27,6 +27,10 @@ class HOLZKATALOG_Admins
             'admin_enqueue_scripts',
             [$this, 'enqueue_admin_assets']
         );
+        add_action(
+            'wp_ajax_hk_save_only_active',
+            [$this, 'save_only_active']
+        );
     }
     /**
      * CSS und JavaScript nur auf unserer Plugin-Seite laden.
@@ -73,10 +77,6 @@ class HOLZKATALOG_Admins
                 'nonce'   => wp_create_nonce('hk_toggle_status'),
                 'catalogNonce' => wp_create_nonce('hk_catalog_nonce'),
             ]
-        );
-        add_action(
-            'wp_ajax_hk_save_only_active',
-            [$this, 'save_only_active']
         );
     }
     /**
