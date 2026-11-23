@@ -49,7 +49,7 @@ class HOLZKATALOG_Settings
 
     public static function enqueue_scripts($hook)
     {
-
+        error_log('HOLZKATALOG Hook: ' . $hook);
         // Leaflet CSS
         wp_enqueue_style(
             'leaflet',
@@ -111,8 +111,9 @@ class HOLZKATALOG_Settings
         }
 
 
-        // Holzarten-Einstellungen
-       if ($hook === 'holzarten-katalog_page_hk_settings_holzarten') {
+
+        // Holzarten
+        if ($hook === 'holzarten-katalog_page_hk_settings_holzarten') {
 
             $js_file = HOLZKATALOG_PLUGIN_DIR . 'assets/js/admin-holzarten-settings.js';
             $css_file = HOLZKATALOG_PLUGIN_DIR . 'assets/css/admin-holzarten-settings.css';
@@ -133,7 +134,7 @@ class HOLZKATALOG_Settings
             );
         }
         // Holzfundorte-Einstellungen
-        if ($hook === 'hk_page_hk_settings_fundorte') {
+        if ($hook === 'holzarten-katalog_page_hk_settings_fundorte') {
 
             $js_file = HOLZKATALOG_PLUGIN_DIR . 'assets/js/admin-holzarten-geosettings.js';
 
