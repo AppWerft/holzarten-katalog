@@ -33,7 +33,7 @@ class HOLZKATALOG_Frontend
             'holzkat-admin',
             $jsfile,
             ['jquery'],
-            file_exists($file) ? filemtime($file) : HOLZKATALOG_VERSION,
+            file_exists($jsfile) ? filemtime($jsfile) : HOLZKATALOG_VERSION,
             true
         );
     }
