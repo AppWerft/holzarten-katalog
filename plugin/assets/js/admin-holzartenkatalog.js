@@ -208,19 +208,19 @@ jQuery(document).ready(function ($) {
 document.addEventListener('DOMContentLoaded', function () {
 
     const columnsField = document.querySelector(
-        '[name="HOLZKATALOG_CONSTANTS::KATALOG_SETTINGS[spalten]"]'
+        '[name="hk_katalog_settings[spalten]"]'
     );
 
     const cardField = document.querySelector(
-        '[name="HOLZKATALOG_CONSTANTS::KATALOG_SETTINGS[card]"]'
+        '[name="hk_katalog_settings[card]"]'
     );
 
     const nurprodukteField = document.querySelector(
-        '[name="HOLZKATALOG_CONSTANTS::KATALOG_SETTINGS[nurprodukte]"]'
+        '[name="hk_katalog_settings[nurprodukte]"]'
     );
 
     const sortField = document.querySelector(
-        '[name="HOLZKATALOG_CONSTANTS::KATALOG_SETTINGS[sortierung]"]'
+        '[name="hk_katalog_settings[sortierung]"]'
     );
 
     const preview = document.querySelector('#hk-katalog-preview');

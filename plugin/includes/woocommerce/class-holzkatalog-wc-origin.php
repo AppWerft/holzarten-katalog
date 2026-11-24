@@ -27,7 +27,7 @@
             );
 
             $settings = wp_parse_args(
-                get_option(HOLZKATALOG_CONSTANTS::MAP_SETTINGS, []),
+                get_option('hk_map_settings', []),
                 ['priority' => 35]
             );
 
@@ -166,7 +166,7 @@
                 true
             );
             $settings = wp_parse_args(
-                get_option(HOLZKATALOG_CONSTANTS::MAP_SETTINGS, []),
+                get_option('hk_map_settings', []),
                 [
                     'height' => 200,
                     'width' => 100,
@@ -223,7 +223,7 @@
         public function render_geosuche($zoom = 6)
         {
             $settings = wp_parse_args(
-                get_option(HOLZKATALOG_CONSTANTS::MAP_SETTINGS, []),
+                get_option('hk_map_settings', []),
                 [
                     'pingcolor'     => '#4285F4',
                     'tile_provider' => 'OpenStreetMap.Mapnik',

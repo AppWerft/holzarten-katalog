@@ -380,11 +380,11 @@ class HOLZKATALOG_Settings
 
         $input = [];
         if (
-            isset($_POST['HOLZKATALOG_CONSTANTS::KATALOG_SETTINGS'])
-            && is_array($_POST['HOLZKATALOG_CONSTANTS::KATALOG_SETTINGS'])
+            isset($_POST['hk_katalog_settings'])
+            && is_array($_POST['hk_katalog_settings'])
         ) {
             $input = map_deep(
-                wp_unslash($_POST['HOLZKATALOG_CONSTANTS::KATALOG_SETTINGS']),
+                wp_unslash($_POST['hk_katalog_settings']),
                 'sanitize_text_field'
             );
         }
@@ -432,8 +432,8 @@ class HOLZKATALOG_Settings
             ]
         );
         register_setting(
-            'HOLZKATALOG_CONSTANTS::KATALOG_SETTINGS_group',
-            'HOLZKATALOG_CONSTANTS::KATALOG_SETTINGS',
+            'hk_katalog_settings_group',
+            'hk_katalog_settings',
             [
                 'sanitize_callback' => [self::class, 'sanitize_katalog']
             ]
@@ -443,7 +443,7 @@ class HOLZKATALOG_Settings
     public static function render_katalog()
     {
         $settings = wp_parse_args(
-            get_option('HOLZKATALOG_CONSTANTS::KATALOG_SETTINGS', []),
+            get_option('hk_katalog_settings', []),
             [
                 'sortierung' => 'name',
                 'bilder'     => 1,
@@ -457,12 +457,12 @@ class HOLZKATALOG_Settings
             <h1>Holzartenkatalog – Darstellung</h1>
             <p>Einstellungen für die öffentliche Holzartenübersicht. Für die Darstellung der Hölzer gelten die Einstellungen aus HOLZARTEN</p>
             <form id="hk-katalog-settings-form" method="post" action="options.php">
-                <?php settings_fields('HOLZKATALOG_CONSTANTS::KATALOG_SETTINGS_group'); ?>
+                <?php settings_fields('hk_katalog_settings_group'); ?>
                 <table class="form-table">
                     <tr>
                         <th scope="row">Sortierung</th>
                         <td>
-                            <select name="HOLZKATALOG_CONSTANTS::KATALOG_SETTINGS[sortierung]">
+                            <select name="hk_katalog_settings[sortierung]">
                                 <option value="name"
                                     <?php selected($settings['sortierung'], 'name'); ?>>
                                     Deutscher Name
@@ -480,7 +480,7 @@ class HOLZKATALOG_Settings
                         <td>
                             <input
                                 type="checkbox"
-                                name="HOLZKATALOG_CONSTANTS::KATALOG_SETTINGS[bilder]"
+                                name="hk_katalog_settings[bilder]"
                                 value=1
                                 <?php checked($settings['bilder'], 1); ?>>
                         </td>
@@ -490,7 +490,7 @@ class HOLZKATALOG_Settings
                         <td>
                             <input
                                 type="checkbox"
-                                name="HOLZKATALOG_CONSTANTS::KATALOG_SETTINGS[nurprodukte]"
+                                name="hk_katalog_settings[nurprodukte]"
                                 value=1
                                 <?php checked($settings['nurprodukte'], 1); ?>>
                         </td>
@@ -499,7 +499,7 @@ class HOLZKATALOG_Settings
                     <tr>
                         <th scope="row">Anzahl der Spalten</th>
                         <td>
-                            <select name="HOLZKATALOG_CONSTANTS::KATALOG_SETTINGS[spalten]">
+                            <select name="hk_katalog_settings[spalten]">
                                 <?php for ($i = 1; $i <= 6; $i++) : ?>
                                     <option
                                         value="<?php echo absint($i); ?>"
@@ -515,7 +515,7 @@ class HOLZKATALOG_Settings
                         <td>
                             <input
                                 type="checkbox"
-                                name="HOLZKATALOG_CONSTANTS::KATALOG_SETTINGS[card]"
+                                name="hk_katalog_settings[card]"
                                 value="1"
                                 <?php checked($settings['card'] ?? 0, 1); ?>>
 

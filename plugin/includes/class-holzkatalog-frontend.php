@@ -23,7 +23,7 @@ class HOLZKATALOG_Frontend
         $jsfile = HOLZKATALOG_PLUGIN_DIR . 'assets/js/admin-holzartenkatalog.js';
 
         wp_enqueue_style(
-            'holzkat-frontend-katalog',
+            HOLZKATALOG_CONSTANTS::HANDLE_HK_FRONTEND_KATALOG,
             HOLZKATALOG_PLUGIN_URL . 'assets/css/frontend-katalog.css',
             [],
             HOLZKATALOG_VERSION
@@ -53,7 +53,7 @@ class HOLZKATALOG_Frontend
     {
         // Gespeicherte Einstellungen als Standardwerte
         $defaults = wp_parse_args(
-            get_option('HOLZKATALOG_CONSTANTS::KATALOG_SETTINGS', []),
+            get_option('hk_katalog_settings', []),
             [
                 'sortierung' => 'name',
                 'bilder'     => 1,
