@@ -186,8 +186,6 @@ document.addEventListener('DOMContentLoaded', function () {
     function updateApiKeyField(providerName) {
         const key = providerRequiresApiKey(providerName);
         const tr = document.getElementById('hk-map-apikey-wrapper');
-       
-
         if (tr) {
             tr.style.display = key ? '' : 'none';
         }

@@ -112,7 +112,7 @@ class HOLZKATALOG_Settings
         }
 
         // Holzarten
-        if ($hook === 'holzartenkatalog_page_hk_settings_holzarten' || true) {
+        if ($hook === 'holzartenkatalog_page_hk_settings_holzarten') {
 
             $js_file = HOLZKATALOG_PLUGIN_DIR . 'assets/js/admin-holzarten-settings.js';
             $css_file = HOLZKATALOG_PLUGIN_DIR . 'assets/css/admin-holzarten-settings.css';
@@ -124,7 +124,13 @@ class HOLZKATALOG_Settings
                 file_exists($js_file) ? filemtime($js_file) : HOLZKATALOG_VERSION,
                 true
             );
-
+            wp_enqueue_script(
+                'holzkat-holzarten',
+                HOLZKATALOG_PLUGIN_URL . 'assets/js/admin-holzarten.js',
+                ['jquery'],
+                file_exists($js_file) ? filemtime($js_file) : HOLZKATALOG_VERSION,
+                true
+            );
             wp_enqueue_style(
                 'holzkat-holzarten-settings',
                 HOLZKATALOG_PLUGIN_URL . 'assets/css/admin-holzarten-settings.css',
@@ -773,70 +779,69 @@ class HOLZKATALOG_Settings
     }
 
 
-    
-public static function sanitize_map($input)
-{
-    $input = is_array($input) ? $input : [];
 
-    $providers = self::get_map_providers();
+    public static function sanitize_map($input)
+    {
+        $input = is_array($input) ? $input : [];
 
-    $provider = sanitize_text_field(
-        $input['tile_provider'] ?? ''
-    );
+        $providers = self::get_map_providers();
 
-    if (!array_key_exists($provider, $providers)) {
-        $provider = 'OpenStreetMap.Mapnik';
-    }
+        $provider = sanitize_text_field(
+            $input['tile_provider'] ?? ''
+        );
 
-    // API-Key-Platzhalter
-    $allowed_api_keys = [
-        'key',
-        'apikey',
-        'apiKey',
-        'accessToken',
-        'subscriptionKey',
-    ];
+        if (!array_key_exists($provider, $providers)) {
+            $provider = 'OpenStreetMap.Mapnik';
+        }
 
-    $apikey_key = sanitize_text_field(
-        $input['apikey_key'] ?? ''
-    );
+        // API-Key-Platzhalter
+        $allowed_api_keys = [
+            'key',
+            'apikey',
+            'apiKey',
+            'accessToken',
+            'subscriptionKey',
+        ];
 
-    $apikey_key = in_array(
-        $apikey_key,
-        $allowed_api_keys,
-        true
-    ) ? $apikey_key : '';
+        $apikey_key = sanitize_text_field(
+            $input['apikey_key'] ?? ''
+        );
 
-    // API-Key
-    $apikey = sanitize_text_field(
-        trim($input['apikey'] ?? '')
-    );
-
-    if (!$apikey_key) {
-        $apikey = '';
-    }
-
-    return [
-        'height' => max(100, min(800, absint($input['height'] ?? 200))),
-        'width' => max(20, min(100, absint($input['width'] ?? 100))),
-        'radius' => max(0, min(50, absint($input['radius'] ?? 0))),
-
-        'position' => in_array(
-            $input['position'] ?? '',
-            ['left', 'center', 'right'],
+        $apikey_key = in_array(
+            $apikey_key,
+            $allowed_api_keys,
             true
-        ) ? $input['position'] : 'center',
+        ) ? $apikey_key : '';
 
-        'priority' => max(1, min(100, absint($input['priority'] ?? 35))),
+        // API-Key
+        $apikey = sanitize_text_field(
+            trim($input['apikey'] ?? '')
+        );
 
-        'pingcolor' => sanitize_hex_color(
-            $input['pingcolor'] ?? '#4285F4'
-        ) ?: '#4285F4',
+        if (!$apikey_key) {
+            $apikey = '';
+        }
 
-        'tile_provider' => $provider,
-        'apikey_key' => $apikey_key,
-        'apikey' => $apikey,
-    ];
-}
+        return [
+            'height' => max(100, min(800, absint($input['height'] ?? 200))),
+            'width' => max(20, min(100, absint($input['width'] ?? 100))),
+            'radius' => max(0, min(50, absint($input['radius'] ?? 0))),
 
+            'position' => in_array(
+                $input['position'] ?? '',
+                ['left', 'center', 'right'],
+                true
+            ) ? $input['position'] : 'center',
+
+            'priority' => max(1, min(100, absint($input['priority'] ?? 35))),
+
+            'pingcolor' => sanitize_hex_color(
+                $input['pingcolor'] ?? '#4285F4'
+            ) ?: '#4285F4',
+
+            'tile_provider' => $provider,
+            'apikey_key' => $apikey_key,
+            'apikey' => $apikey,
+        ];
+    }
 }
