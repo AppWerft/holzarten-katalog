@@ -1,5 +1,4 @@
 jQuery(document).ready(function ($) {
-    
     $('.hk-status-toggle').on('change', function () {
 
         const checkbox = $(this);
@@ -205,7 +204,7 @@ jQuery(document).ready(function ($) {
 
 // catalogdarstellung dynamisch anpassen:
 document.addEventListener('DOMContentLoaded', function () {
-
+    console.log('hk_katalog_settings[spalten]')
     const columnsField = document.querySelector('[name="hk_katalog_settings[spalten]"]');
     const cardField = document.querySelector('[name="hk_katalog_settings[card]"]');
 
