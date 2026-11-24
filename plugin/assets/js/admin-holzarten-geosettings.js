@@ -159,7 +159,10 @@ document.addEventListener('DOMContentLoaded', function () {
     function providerRequiresApiKey(providerName) {
 
         const providers = L.TileLayer.Provider.providers;
-        const provider = providers?.[providerName];
+
+        // Provider-Hauptnamen ermitteln
+        const baseName = providerName.split('.')[0];
+        const provider = providers?.[baseName];
 
         if (!provider) {
             return null;
