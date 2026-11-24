@@ -592,7 +592,7 @@ class HOLZKATALOG_Settings
                                 type="text"
                                 readonly
                                 disabled
-                                size="8"
+                                size="6"
                                 id="hk-map-apikey-key"
                                 name="hk_map_settings[apikey_key]"
                                 value="<?php echo esc_attr($settings['apikey_keyname'] ?? ''); ?>"

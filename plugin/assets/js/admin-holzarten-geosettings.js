@@ -186,12 +186,12 @@ document.addEventListener('DOMContentLoaded', function () {
     function updateApiKeyField(providerName) {
         const key = providerRequiresApiKey(providerName);
         const tr = document.getElementById('hk-map-apikey-wrapper');
-        const keyname = document.getElementById('hk-map-apikey-keyname');
+       
 
         if (tr) {
             tr.style.display = key ? '' : 'none';
         }
-
+        const keyname = document.getElementById('hk-map-apikey-key');
         if (keyname) {
             keyname.value = key?.key || '';
         }
