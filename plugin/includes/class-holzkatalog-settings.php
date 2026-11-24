@@ -589,16 +589,16 @@ class HOLZKATALOG_Settings
                         <th scope="row">Eingabe Schlüssel</th>
                         <td>
                             <input
-                                type="hidden"    
+                                type="hidden"
                                 name="hk_map_settings[apikey_key]"
-                                id="hk-map-apikey-key-form" 
+                                id="hk-map-apikey-key-form"
                                 value="<?php echo esc_attr($settings['apikey_key'] ?? ''); ?>">
                             <input
                                 type="text"
                                 readonly
                                 disabled
                                 size="6"
-                                id="hk-map-apikey-key"                      
+                                id="hk-map-apikey-key"
                                 value="<?php echo esc_attr($settings['apikey_key'] ?? ''); ?>">&nbsp;=&nbsp;
                             <input
                                 size="20"
@@ -774,38 +774,70 @@ class HOLZKATALOG_Settings
     }
 
 
-    public static function sanitize_map($input)
-    {
-        $input = is_array($input) ? $input : [];
-        $providers = self::get_map_providers();
-        $provider = sanitize_text_field(
-            $input['tile_provider'] ?? ''
-        );
-        $apikey = sanitize_text_field(
-            trim($input['apikey'] ?? '')
-        );
+    
+public static function sanitize_map($input)
+{
+    $input = is_array($input) ? $input : [];
 
-        if (!array_key_exists($provider, $providers)) {
-            $provider = 'OpenStreetMap.Mapnik';
-        }
+    $providers = self::get_map_providers();
 
-        return [
-            'height' => max(100, min(800, absint($input['height'] ?? 200))),
-            'width' => max(20, min(100, absint($input['width'] ?? 100))),
-            'radius' => max(0, min(50, absint($input['radius'] ?? 0))),
+    $provider = sanitize_text_field(
+        $input['tile_provider'] ?? ''
+    );
 
-            'position' => in_array(
-                $input['position'] ?? '',
-                ['left', 'center', 'right'],
-                true
-            ) ? $input['position'] : 'center',
-
-            'priority' => max(1, min(100, absint($input['priority'] ?? 35))),
-            'pingcolor' => sanitize_hex_color(
-                $input['pingcolor'] ?? '#4285F4'
-            ) ?: '#4285F4',
-            'tile_provider' => $provider,
-            'apikey' => $apikey
-        ];
+    if (!array_key_exists($provider, $providers)) {
+        $provider = 'OpenStreetMap.Mapnik';
     }
+
+    // API-Key-Platzhalter
+    $allowed_api_keys = [
+        'key',
+        'apikey',
+        'apiKey',
+        'accessToken',
+        'subscriptionKey',
+    ];
+
+    $apikey_key = sanitize_text_field(
+        $input['apikey_key'] ?? ''
+    );
+
+    $apikey_key = in_array(
+        $apikey_key,
+        $allowed_api_keys,
+        true
+    ) ? $apikey_key : '';
+
+    // API-Key
+    $apikey = sanitize_text_field(
+        trim($input['apikey'] ?? '')
+    );
+
+    if (!$apikey_key) {
+        $apikey = '';
+    }
+
+    return [
+        'height' => max(100, min(800, absint($input['height'] ?? 200))),
+        'width' => max(20, min(100, absint($input['width'] ?? 100))),
+        'radius' => max(0, min(50, absint($input['radius'] ?? 0))),
+
+        'position' => in_array(
+            $input['position'] ?? '',
+            ['left', 'center', 'right'],
+            true
+        ) ? $input['position'] : 'center',
+
+        'priority' => max(1, min(100, absint($input['priority'] ?? 35))),
+
+        'pingcolor' => sanitize_hex_color(
+            $input['pingcolor'] ?? '#4285F4'
+        ) ?: '#4285F4',
+
+        'tile_provider' => $provider,
+        'apikey_key' => $apikey_key,
+        'apikey' => $apikey,
+    ];
+}
+
 }
