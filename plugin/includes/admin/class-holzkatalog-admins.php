@@ -573,7 +573,7 @@ class HOLZKATALOG_Admins
                             id="hk-only-active"
                             <?php checked($only_active); ?>>
                         <span class="hk-slider"></span>
-                        <span class="hk-switch-label">Nur aktive Hölzer</span>
+                        <span class="hk-switch-label">Nur als aktiv markierte Hölzer</span>
                     </label>
                 </td>
 
