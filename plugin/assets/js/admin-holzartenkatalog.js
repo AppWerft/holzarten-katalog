@@ -208,28 +208,25 @@ jQuery(document).ready(function ($) {
 document.addEventListener('DOMContentLoaded', function () {
 
     const columnsField = document.querySelector(
-        '[name="hk_katalog_settings[spalten]"]'
+        '[name="HOLZKATALOG_CONSTANTS::KATALOG_SETTINGS[spalten]"]'
     );
 
     const cardField = document.querySelector(
-        '[name="hk_katalog_settings[card]"]'
+        '[name="HOLZKATALOG_CONSTANTS::KATALOG_SETTINGS[card]"]'
     );
 
     const nurprodukteField = document.querySelector(
-        '[name="hk_katalog_settings[nurprodukte]"]'
+        '[name="HOLZKATALOG_CONSTANTS::KATALOG_SETTINGS[nurprodukte]"]'
     );
 
     const sortField = document.querySelector(
-        '[name="hk_katalog_settings[sortierung]"]'
+        '[name="HOLZKATALOG_CONSTANTS::KATALOG_SETTINGS[sortierung]"]'
     );
 
     const preview = document.querySelector('#hk-katalog-preview');
 
     function updatePreview() {
-
         if (!preview) return;
-        
-
         const columns = columnsField?.value;
         const card = cardField?.checked ?? false;
         const onlyProducts = nurprodukteField?.checked ?? false;

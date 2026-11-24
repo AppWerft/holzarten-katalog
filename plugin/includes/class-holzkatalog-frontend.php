@@ -53,7 +53,7 @@ class HOLZKATALOG_Frontend
     {
         // Gespeicherte Einstellungen als Standardwerte
         $defaults = wp_parse_args(
-            get_option('hk_katalog_settings', []),
+            get_option('HOLZKATALOG_CONSTANTS::KATALOG_SETTINGS', []),
             [
                 'sortierung' => 'name',
                 'bilder'     => 1,
