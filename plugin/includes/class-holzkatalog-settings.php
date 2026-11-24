@@ -49,6 +49,28 @@ class HOLZKATALOG_Settings
 
     public static function enqueue_scripts($hook)
     {
+
+    if ($hook === 'holzartenkatalog_page_hk_settings_katalog') {
+
+    wp_enqueue_style(
+        'holzkat-frontend-katalog',
+        HOLZKATALOG_PLUGIN_URL . 'assets/css/frontend-katalog.css',
+        [],
+        filemtime(
+            HOLZKATALOG_PLUGIN_DIR . 'assets/css/frontend-katalog.css'
+        )
+    );
+
+    wp_enqueue_script(
+        'holzkat-holzarten',
+        HOLZKATALOG_PLUGIN_URL . 'assets/js/admin-holzarten.js',
+        ['jquery'],
+        filemtime(
+            HOLZKATALOG_PLUGIN_DIR . 'assets/js/admin-holzarten.js'
+        ),
+        true
+    );
+}
         error_log('HOLZKATALOG Hook: ' . $hook);
         // Leaflet CSS
         wp_enqueue_style(
