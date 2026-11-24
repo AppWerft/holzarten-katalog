@@ -61,6 +61,7 @@ class HOLZKATALOG_Admins
             file_exists($css_file) ? filemtime($css_file) : '1.0.0'
         );
         $jsfile = HOLZKATALOG_PLUGIN_DIR . 'assets/js/admin-holzartenkatalog.js';
+        error_log($jsfile);
         wp_enqueue_script(
             'holzkat-admin',
             $jsfile,
