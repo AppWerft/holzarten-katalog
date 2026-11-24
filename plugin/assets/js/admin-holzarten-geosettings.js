@@ -195,6 +195,10 @@ document.addEventListener('DOMContentLoaded', function () {
         if (keyname) {
             keyname.value = key?.key || '';
         }
+        const keynameform = document.getElementById('hk-map-apikey-key-form');
+        if (keynameform) {
+            keynameform.value = key?.key || '';
+        }
     }
 
     providerSelect?.addEventListener('change', function () {

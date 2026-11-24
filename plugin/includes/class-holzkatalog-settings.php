@@ -586,26 +586,28 @@ class HOLZKATALOG_Settings
                     </tr>
 
                     <tr id="hk-map-apikey-wrapper" style="display:none">
-                        <th scope="row">Eingabe Schlüssel</th><td>
-    
+                        <th scope="row">Eingabe Schlüssel</th>
+                        <td>
+                            <input
+                                type="hidden"    
+                                name="hk_map_settings[apikey_key]"
+                                id="hk-map-apikey-key-form" 
+                                value="<?php echo esc_attr($settings['apikey_key'] ?? ''); ?>">
                             <input
                                 type="text"
                                 readonly
+                                disabled
                                 size="6"
-                                id="hk-map-apikey-key"
-                                name="hk_map_settings[apikey_key]"
-                                value="<?php echo esc_attr($settings['apikey_key'] ?? ''); ?>"
-                            >&nbsp;=&nbsp;
-
+                                id="hk-map-apikey-key"                      
+                                value="<?php echo esc_attr($settings['apikey_key'] ?? ''); ?>">&nbsp;=&nbsp;
                             <input
                                 size="20"
                                 type="text"
                                 id="hk-map-apikey-value"
                                 name="hk_map_settings[apikey]"
-                                value="<?php echo esc_attr($settings['apikey'] ?? ''); ?>"
-                            >
+                                value="<?php echo esc_attr($settings['apikey'] ?? ''); ?>">
                         </td>
-</tr>
+                    </tr>
 
 
                     <tr>
