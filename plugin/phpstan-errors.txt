@@ -1,0 +1,1726 @@
+ ------ --------------------------------------------------------------------------------------------------------------- 
+  Line   holzkatalog.php                                                                                                
+ ------ --------------------------------------------------------------------------------------------------------------- 
+  20     Function plugin_dir_path not found.                                                                            
+         🪪  function.notFound                                                                                          
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                           
+  21     Function plugin_dir_url not found.                                                                             
+         🪪  function.notFound                                                                                          
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                           
+  32     Call to static method buildUpdateChecker() on an unknown class YahnisElsts\PluginUpdateChecker\v6\PucFactory.  
+         🪪  class.notFound                                                                                             
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                           
+  70     Function register_activation_hook not found.                                                                   
+         🪪  function.notFound                                                                                          
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                           
+  84     Function add_filter not found.                                                                                 
+         🪪  function.notFound                                                                                          
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                           
+  85     Function plugin_basename not found.                                                                            
+         🪪  function.notFound                                                                                          
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                           
+  87     Function admin_url not found.                                                                                  
+         🪪  function.notFound                                                                                          
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                           
+  93     Function esc_url not found.                                                                                    
+         🪪  function.notFound                                                                                          
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                           
+  103    Function plugin_dir_url not found.                                                                             
+         🪪  function.notFound                                                                                          
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                           
+  105    Function add_action not found.                                                                                 
+         🪪  function.notFound                                                                                          
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                           
+ ------ --------------------------------------------------------------------------------------------------------------- 
+
+ ------ --------------------------------------------------------------------------------- 
+  Line   includes/admin/class-holzkatalog-actions.php                                     
+ ------ --------------------------------------------------------------------------------- 
+  23     Function add_action not found.                                                   
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  28     Function add_action not found.                                                   
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  33     Function add_action not found.                                                   
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  38     Function add_action not found.                                                   
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  43     Function add_action not found.                                                   
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  64     Function trailingslashit not found.                                              
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  68     Function wp_delete_file not found.                                               
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  76     Function current_user_can not found.                                             
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  77     Function wp_die not found.                                                       
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  80     Function check_admin_referer not found.                                          
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  83     Function sanitize_text_field not found.                                          
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  83     Function wp_unslash not found.                                                   
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  123    Function wp_die not found.                                                       
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  126    Function sanitize_file_name not found.                                           
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  129    Function wp_die not found.                                                       
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  140    Function wp_check_filetype_and_ext not found.                                    
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  147    Function wp_die not found.                                                       
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  152    Function trailingslashit not found.                                              
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  155    Function wp_mkdir_p not found.                                                   
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  156    Function wp_die not found.                                                       
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  159    Function sanitize_title not found.                                               
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  160    Function wp_unslash not found.                                                   
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  168    Function wp_unique_filename not found.                                           
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  176    Function wp_get_image_editor not found.                                          
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  178    Function is_wp_error not found.                                                  
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  179    Function wp_die not found.                                                       
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  180    Function esc_html not found.                                                     
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  209    Function is_wp_error not found.                                                  
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  210    Function wp_die not found.                                                       
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  211    Function esc_html not found.                                                     
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  225    Function is_wp_error not found.                                                  
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  226    Function wp_die not found.                                                       
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  227    Function esc_html not found.                                                     
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  243    Function sanitize_text_field not found.                                          
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  244    Function wp_unslash not found.                                                   
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  247    Function sanitize_text_field not found.                                          
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  248    Function wp_unslash not found.                                                   
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  251    Function sanitize_text_field not found.                                          
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  252    Function wp_unslash not found.                                                   
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  255    Function sanitize_textarea_field not found.                                      
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  256    Function wp_unslash not found.                                                   
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  269    Function admin_url not found.                                                    
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  271    Function is_wp_error not found.                                                  
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  278    Function wp_delete_file not found.                                               
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  281    Function wp_safe_redirect not found.                                             
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  282    Function add_query_arg not found.                                                
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  300    Function wp_safe_redirect not found.                                             
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  301    Function add_query_arg not found.                                                
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  310    Function current_user_can not found.                                             
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  311    Function wp_die not found.                                                       
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  314    Function check_admin_referer not found.                                          
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  320    Function wp_die not found.                                                       
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  323    Function trailingslashit not found.                                              
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  328    Function wp_die not found.                                                       
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  339    Function wp_delete_file not found.                                               
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  340    Function wp_die not found.                                                       
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  355    Function wp_delete_file not found.                                               
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  357    Function wp_die not found.                                                       
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  359    Function esc_html not found.                                                     
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  365    Function wp_delete_file not found.                                               
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  367    Function wp_die not found.                                                       
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  369    Function esc_html not found.                                                     
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  400    Function wp_delete_file not found.                                               
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  402    Function wp_die not found.                                                       
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  414    Function wp_delete_file not found.                                               
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  415    Function wp_die not found.                                                       
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  422    Function nocache_headers not found.                                              
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  428    Function WP_Filesystem not found.                                                
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  429    Function wp_delete_file not found.                                               
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  430    Function wp_die not found.                                                       
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  436    Function wp_delete_file not found.                                               
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  437    Function wp_die not found.                                                       
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  441    Function nocache_headers not found.                                              
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  454    Function wp_delete_file not found.                                               
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  465    Function current_user_can not found.                                             
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  466    Function wp_send_json_error not found.                                           
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  471    Function check_ajax_referer not found.                                           
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  474    Function sanitize_text_field not found.                                          
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  474    Function wp_unslash not found.                                                   
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  481    Function wp_send_json_error not found.                                           
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  488    Function is_wp_error not found.                                                  
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  489    Function wp_send_json_error not found.                                           
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  495    Function wp_send_json_error not found.                                           
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  500    Function wp_send_json_success not found.                                         
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  509    Function current_user_can not found.                                             
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  510    Function wp_die not found.                                                       
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  514    Function sanitize_text_field not found.                                          
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  514    Function wp_unslash not found.                                                   
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  518    Function wp_die not found.                                                       
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  521    Function check_admin_referer not found.                                          
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  527    Function admin_url not found.                                                    
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  529    Function is_wp_error not found.                                                  
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  530    Function wp_safe_redirect not found.                                             
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  531    Function add_query_arg not found.                                                
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  548    Function wp_safe_redirect not found.                                             
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  549    Function add_query_arg not found.                                                
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  559    Function current_user_can not found.                                             
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  560    Function wp_die not found.                                                       
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  564    Function check_admin_referer not found.                                          
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  570    Function wp_die not found.                                                       
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  573    Function admin_url not found.                                                    
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  597    Offset 'size' on non-empty-array in isset() always exists and is not nullable.   
+         🪪  isset.offset                                                                 
+  600    Constant MB_IN_BYTES not found.                                                  
+         🪪  constant.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  601    Offset 'error' on non-empty-array in isset() always exists and is not nullable.  
+         🪪  isset.offset                                                                 
+  606    Function wp_safe_redirect not found.                                             
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  607    Function add_query_arg not found.                                                
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  614    Function sanitize_file_name not found.                                           
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  621    Function wp_safe_redirect not found.                                             
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  622    Function add_query_arg not found.                                                
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  633    Function is_wp_error not found.                                                  
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  634    Function wp_safe_redirect not found.                                             
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  635    Function add_query_arg not found.                                                
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  637    Function sanitize_key not found.                                                 
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  645    Function wp_safe_redirect not found.                                             
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  646    Function add_query_arg not found.                                                
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  653    Function wp_safe_redirect not found.                                             
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+  654    Function add_query_arg not found.                                                
+         🪪  function.notFound                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols             
+ ------ --------------------------------------------------------------------------------- 
+
+ ------ ---------------------------------------------------------------------- 
+  Line   includes/admin/class-holzkatalog-admins.php                           
+ ------ ---------------------------------------------------------------------- 
+  21     Function add_action not found.                                        
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  26     Function add_action not found.                                        
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  30     Function add_action not found.                                        
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  54     Constant HOLZKATALOG_PLUGIN_DIR not found.                            
+         🪪  constant.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  55     Constant HOLZKATALOG_PLUGIN_URL not found.                            
+         🪪  constant.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  57     Function wp_enqueue_style not found.                                  
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  65     Function wp_enqueue_script not found.                                 
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  72     Function wp_localize_script not found.                                
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  76     Function admin_url not found.                                         
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  77     Function wp_create_nonce not found.                                   
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  78     Function wp_create_nonce not found.                                   
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  88     Function add_menu_page not found.                                     
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  97     Function add_submenu_page not found.                                  
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  111    Function current_user_can not found.                                  
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  112    Function wp_die not found.                                            
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  119    Constant HOLZKATALOG_URL not found.                                   
+         🪪  constant.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  119    Function esc_url not found.                                           
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  142    Function current_user_can not found.                                  
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  143    Function wp_die not found.                                            
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  147    Function sanitize_text_field not found.                               
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  147    Function wp_unslash not found.                                        
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  152    Function sanitize_text_field not found.                               
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  152    Function wp_unslash not found.                                        
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  203    Function absint not found.                                            
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  203    Function wp_unslash not found.                                        
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  205    Function esc_html not found.                                          
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  248    Function sanitize_key not found.                                      
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  250    Function wp_unslash not found.                                        
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  257    Function esc_html not found.                                          
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  291    Function admin_url not found.                                         
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  291    Function esc_url not found.                                           
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  300    Function esc_attr not found.                                          
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  302    Function wp_nonce_field not found.                                    
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  316    Function esc_attr not found.                                          
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  331    Function esc_attr not found.                                          
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  346    Function esc_attr not found.                                          
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  361    Function esc_textarea not found.                                      
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  386    Function esc_url not found.                                           
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  387    Function esc_attr not found.                                          
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  392    Function esc_html not found.                                          
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  445    Function checked not found.                                           
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  456    Function submit_button not found.                                     
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  458    Function esc_url not found.                                           
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  459    Function admin_url not found.                                         
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  482    Function admin_url not found.                                         
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  482    Function esc_url not found.                                           
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  489    Function wp_nonce_field not found.                                    
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  494    Function submit_button not found.                                     
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  513    Function admin_url not found.                                         
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  513    Function esc_url not found.                                           
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  520    Function wp_nonce_field not found.                                    
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  528    Function submit_button not found.                                     
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  553    Function esc_url not found.                                           
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  554    Function admin_url not found.                                         
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  563    Function get_user_meta not found.                                     
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  564    Function get_current_user_id not found.                               
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  575    Function checked not found.                                           
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  599    Function esc_attr not found.                                          
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  650    Function trailingslashit not found.                                   
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  658    Function esc_url not found.                                           
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  659    Function esc_attr not found.                                          
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  668    Function esc_url not found.                                           
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  669    Constant HOLZKATALOG_URL not found.                                   
+         🪪  constant.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  680    Function esc_html not found.                                          
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  695    Function esc_html not found.                                          
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  705    Function esc_html not found.                                          
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  712    Function esc_html not found.                                          
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  721    Function esc_attr not found.                                          
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  722    Function checked not found.                                           
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  734    Function esc_url not found.                                           
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  735    Function admin_url not found.                                         
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  742    Function esc_url not found.                                           
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  743    Constant HOLZKATALOG_URL not found.                                   
+         🪪  constant.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  750    Function esc_url not found.                                           
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  751    Function wp_nonce_url not found.                                      
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  752    Function admin_url not found.                                         
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  763    Function esc_url not found.                                           
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  764    Constant HOLZKATALOG_URL not found.                                   
+         🪪  constant.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  789    Function check_ajax_referer not found.                                
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  791    Function current_user_can not found.                                  
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  792    Function wp_send_json_error not found.                                
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  796    Function sanitize_text_field not found.                               
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  797    Function wp_unslash not found.                                        
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  800    Function update_user_meta not found.                                  
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  801    Function get_current_user_id not found.                               
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  806    Function wp_send_json_success not found.                              
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+ ------ ---------------------------------------------------------------------- 
+
+ ------ ---------------------------------------------------------------------- 
+  Line   includes/class-holzkatalog-assets.php                                 
+ ------ ---------------------------------------------------------------------- 
+  10     Function add_action not found.                                        
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  14     Function add_action not found.                                        
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  26     Function wp_enqueue_style not found.                                  
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  28     Constant HOLZKATALOG_PLUGIN_URL not found.                            
+         🪪  constant.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  34     Function wp_enqueue_script not found.                                 
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  36     Constant HOLZKATALOG_PLUGIN_URL not found.                            
+         🪪  constant.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  43     Function wp_enqueue_script not found.                                 
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  45     Constant HOLZKATALOG_PLUGIN_URL not found.                            
+         🪪  constant.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  52     Function wp_enqueue_script not found.                                 
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  54     Constant HOLZKATALOG_PLUGIN_URL not found.                            
+         🪪  constant.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  66     Function wp_enqueue_style not found.                                  
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  68     Constant HOLZKATALOG_PLUGIN_URL not found.                            
+         🪪  constant.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  73     Function get_current_screen not found.                                
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  85     Function wp_enqueue_script not found.                                 
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  87     Constant HOLZKATALOG_PLUGIN_URL not found.                            
+         🪪  constant.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  100    Function wp_enqueue_style not found.                                  
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  102    Constant HOLZKATALOG_PLUGIN_URL not found.                            
+         🪪  constant.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+ ------ ---------------------------------------------------------------------- 
+
+ ------ ---------------------------------------------------------------------- 
+  Line   includes/class-holzkatalog-catalog.php                                
+ ------ ---------------------------------------------------------------------- 
+  120    Function wp_generate_uuid4 not found.                                 
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  124    Function sanitize_text_field not found.                               
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  125    Function sanitize_text_field not found.                               
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  126    Function sanitize_text_field not found.                               
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  127    Function sanitize_text_field not found.                               
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  128    Function sanitize_textarea_field not found.                           
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  139    Function sanitize_file_name not found.                                
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  145    Instantiated class WP_Error not found.                                
+         🪪  class.notFound                                                    
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  173    Instantiated class WP_Error not found.                                
+         🪪  class.notFound                                                    
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  226    Instantiated class WP_Error not found.                                
+         🪪  class.notFound                                                    
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  255    Instantiated class WP_Error not found.                                
+         🪪  class.notFound                                                    
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  272    Instantiated class WP_Error not found.                                
+         🪪  class.notFound                                                    
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+ ------ ---------------------------------------------------------------------- 
+
+ ------ ---------------------------------------------------------------------- 
+  Line   includes/class-holzkatalog-frontend.php                               
+ ------ ---------------------------------------------------------------------- 
+  17     Function add_shortcode not found.                                     
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  18     Function add_action not found.                                        
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  23     Constant HOLZKATALOG_PLUGIN_DIR not found.                            
+         🪪  constant.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  25     Function wp_enqueue_style not found.                                  
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  27     Constant HOLZKATALOG_PLUGIN_URL not found.                            
+         🪪  constant.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  32     Function wp_enqueue_script not found.                                 
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  42     Function wp_enqueue_style not found.                                  
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  44     Constant HOLZKATALOG_PLUGIN_URL not found.                            
+         🪪  constant.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  55     Function wp_parse_args not found.                                     
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  56     Function get_option not found.                                        
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  66     Function shortcode_atts not found.                                    
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  83     Function wp_parse_args not found.                                     
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  95     Function wp_parse_args not found.                                     
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  96     Function get_option not found.                                        
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  107    Function absint not found.                                            
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  126    Function absint not found.                                            
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  144    Function get_terms not found.                                         
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  150    Function is_wp_error not found.                                       
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  152    Function sanitize_title not found.                                    
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  167    Function sanitize_title not found.                                    
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  207    Function esc_attr not found.                                          
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  208    Function esc_attr not found.                                          
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  217    Function sanitize_title not found.                                    
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  225    Function esc_attr not found.                                          
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  226    Function esc_attr not found.                                          
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  251    Function esc_attr not found.                                          
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  252    Function esc_attr not found.                                          
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  253    Function esc_url not found.                                           
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  254    Function esc_attr not found.                                          
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  264    Function esc_html not found.                                          
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  271    Function esc_html not found.                                          
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  278    Function wp_kses_post not found.                                      
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+ ------ ---------------------------------------------------------------------- 
+
+ ------ ---------------------------------------------------------------------- 
+  Line   includes/class-holzkatalog-settings.php                               
+ ------ ---------------------------------------------------------------------- 
+  7      Function add_action not found.                                        
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  8      Function add_action not found.                                        
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  9      Function add_action not found.                                        
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  10     Function add_action not found.                                        
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  16     Function add_submenu_page not found.                                  
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  26     Function add_submenu_page not found.                                  
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  34     Function add_submenu_page not found.                                  
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  57     Constant HOLZKATALOG_PLUGIN_DIR not found.                            
+         🪪  constant.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  60     Constant HOLZKATALOG_PLUGIN_DIR not found.                            
+         🪪  constant.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  63     Function wp_enqueue_style not found.                                  
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  65     Constant HOLZKATALOG_PLUGIN_URL not found.                            
+         🪪  constant.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  72     Function wp_enqueue_script not found.                                 
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  74     Constant HOLZKATALOG_PLUGIN_URL not found.                            
+         🪪  constant.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  82     Function wp_enqueue_script not found.                                 
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  84     Constant HOLZKATALOG_PLUGIN_URL not found.                            
+         🪪  constant.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  94     Constant HOLZKATALOG_PLUGIN_DIR not found.                            
+         🪪  constant.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  97     Constant HOLZKATALOG_PLUGIN_DIR not found.                            
+         🪪  constant.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  100    Function wp_enqueue_script not found.                                 
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  102    Constant HOLZKATALOG_PLUGIN_URL not found.                            
+         🪪  constant.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  110    Function wp_enqueue_script not found.                                 
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  112    Constant HOLZKATALOG_PLUGIN_URL not found.                            
+         🪪  constant.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  120    Function wp_enqueue_style not found.                                  
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  122    Constant HOLZKATALOG_PLUGIN_URL not found.                            
+         🪪  constant.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  134    Function wp_enqueue_style not found.                                  
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  136    Constant HOLZKATALOG_PLUGIN_URL not found.                            
+         🪪  constant.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  142    Function wp_enqueue_script not found.                                 
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  144    Constant HOLZKATALOG_PLUGIN_URL not found.                            
+         🪪  constant.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  151    Function wp_enqueue_script not found.                                 
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  153    Constant HOLZKATALOG_PLUGIN_URL not found.                            
+         🪪  constant.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  160    Function wp_enqueue_script not found.                                 
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  162    Constant HOLZKATALOG_PLUGIN_URL not found.                            
+         🪪  constant.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  169    Function wp_enqueue_script not found.                                 
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  171    Constant HOLZKATALOG_PLUGIN_URL not found.                            
+         🪪  constant.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  177    Constant HOLZKATALOG_PLUGIN_DIR not found.                            
+         🪪  constant.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  180    Function wp_enqueue_script not found.                                 
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  182    Constant HOLZKATALOG_PLUGIN_URL not found.                            
+         🪪  constant.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  190    Constant HOLZKATALOG_PLUGIN_DIR not found.                            
+         🪪  constant.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  193    Function wp_enqueue_style not found.                                  
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  195    Constant HOLZKATALOG_PLUGIN_URL not found.                            
+         🪪  constant.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  212    Function settings_fields not found.                                   
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  231    Function esc_attr not found.                                          
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  232    Function get_option not found.                                        
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  246    Function checked not found.                                           
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  247    Function get_option not found.                                        
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  261    Function checked not found.                                           
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  262    Function get_option not found.                                        
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  283    Function checked not found.                                           
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  284    Function get_option not found.                                        
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  298    Function checked not found.                                           
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  299    Function get_option not found.                                        
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  313    Function checked not found.                                           
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  314    Function get_option not found.                                        
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  324    Function get_option not found.                                        
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  328    Function absint not found.                                            
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  331    Function submit_button not found.                                     
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  339    Constant HOLZKATALOG_URL not found.                                   
+         🪪  constant.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  339    Function esc_url not found.                                           
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  342    Function esc_attr not found.                                          
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  343    Function esc_attr not found.                                          
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  369    Function absint not found.                                            
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  375    Function check_ajax_referer not found.                                
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  377    Function current_user_can not found.                                  
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  378    Function wp_die not found.                                            
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  386    Function map_deep not found.                                          
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  387    Function wp_unslash not found.                                        
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  395    Function wp_send_json_success not found.                              
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  405    Function absint not found.                                            
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  419    Function register_setting not found.                                  
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  427    Function register_setting not found.                                  
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  434    Function register_setting not found.                                  
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  445    Function wp_parse_args not found.                                     
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  446    Function get_option not found.                                        
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  460    Function settings_fields not found.                                   
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  467    Function selected not found.                                          
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  471    Function selected not found.                                          
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  485    Function checked not found.                                           
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  495    Function checked not found.                                           
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  505    Function absint not found.                                            
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  506    Function selected not found.                                          
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  507    Function absint not found.                                            
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  520    Function checked not found.                                           
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  532    Function submit_button not found.                                     
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  553    Function wp_parse_args not found.                                     
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  554    Function get_option not found.                                        
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  582    Function settings_fields not found.                                   
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  598    Function esc_attr not found.                                          
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  599    Function selected not found.                                          
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  600    Function esc_html not found.                                          
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  619    Function esc_attr not found.                                          
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  626    Function esc_attr not found.                                          
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  632    Function esc_attr not found.                                          
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  648    Function esc_attr not found.                                          
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  669    Function esc_attr not found.                                          
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  690    Function esc_attr not found.                                          
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  713    Function selected not found.                                          
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  719    Function selected not found.                                          
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  725    Function selected not found.                                          
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  743    Function esc_attr not found.                                          
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  764    Function esc_attr not found.                                          
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  783    Function submit_button not found.                                     
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  826    Function sanitize_text_field not found.                               
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  843    Function sanitize_text_field not found.                               
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  854    Function sanitize_text_field not found.                               
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  863    Function absint not found.                                            
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  864    Function absint not found.                                            
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  865    Function absint not found.                                            
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  873    Function absint not found.                                            
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  875    Function sanitize_hex_color not found.                                
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+ ------ ---------------------------------------------------------------------- 
+
+ ------ --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
+  Line   includes/class-holzkatalog-storage.php                                                                                                                                           
+ ------ --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
+  11     Function wp_upload_dir not found.                                                                                                                                                
+         🪪  function.notFound                                                                                                                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                                                                                             
+  12     Function trailingslashit not found.                                                                                                                                              
+         🪪  function.notFound                                                                                                                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                                                                                             
+  21     Function is_wp_error not found.                                                                                                                                                  
+         🪪  function.notFound                                                                                                                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                                                                                             
+  25     Function wp_json_encode not found.                                                                                                                                               
+         🪪  function.notFound                                                                                                                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                                                                                             
+  36     Function wp_generate_password not found.                                                                                                                                         
+         🪪  function.notFound                                                                                                                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                                                                                             
+  38     Constant FS_CHMOD_FILE not found.                                                                                                                                                
+         🪪  constant.notFound                                                                                                                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                                                                                             
+  58     Function WP_Filesystem not found.                                                                                                                                                
+         🪪  function.notFound                                                                                                                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                                                                                             
+  59     Instantiated class WP_Error not found.                                                                                                                                           
+         🪪  class.notFound                                                                                                                                                               
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                                                                                             
+  77     Function wp_mkdir_p not found.                                                                                                                                                   
+         🪪  function.notFound                                                                                                                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                                                                                             
+  78     Function wp_mkdir_p not found.                                                                                                                                                   
+         🪪  function.notFound                                                                                                                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                                                                                             
+  88     Constant HOLZKATALOG_PLUGIN_DIR not found.                                                                                                                                       
+         🪪  constant.notFound                                                                                                                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                                                                                             
+  91     Function is_wp_error not found.                                                                                                                                                  
+         🪪  function.notFound                                                                                                                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                                                                                             
+  92     Function wp_die not found.                                                                                                                                                       
+         🪪  function.notFound                                                                                                                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                                                                                             
+  93     Function esc_html not found.                                                                                                                                                     
+         🪪  function.notFound                                                                                                                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                                                                                             
+  121    Function trailingslashit not found.                                                                                                                                              
+         🪪  function.notFound                                                                                                                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                                                                                             
+  125    Instantiated class WP_Error not found.                                                                                                                                           
+         🪪  class.notFound                                                                                                                                                               
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                                                                                             
+  138    Instantiated class WP_Error not found.                                                                                                                                           
+         🪪  class.notFound                                                                                                                                                               
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                                                                                             
+  151    Function wp_mkdir_p not found.                                                                                                                                                   
+         🪪  function.notFound                                                                                                                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                                                                                             
+  156    Instantiated class WP_Error not found.                                                                                                                                           
+         🪪  class.notFound                                                                                                                                                               
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                                                                                             
+  172    Instantiated class WP_Error not found.                                                                                                                                           
+         🪪  class.notFound                                                                                                                                                               
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                                                                                             
+  192    Function wp_upload_dir not found.                                                                                                                                                
+         🪪  function.notFound                                                                                                                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                                                                                             
+  194    Function trailingslashit not found.                                                                                                                                              
+         🪪  function.notFound                                                                                                                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                                                                                             
+  204    Constant MB_IN_BYTES not found.                                                                                                                                                  
+         🪪  constant.notFound                                                                                                                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                                                                                             
+  205    Constant MB_IN_BYTES not found.                                                                                                                                                  
+         🪪  constant.notFound                                                                                                                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                                                                                             
+  206    Constant MB_IN_BYTES not found.                                                                                                                                                  
+         🪪  constant.notFound                                                                                                                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                                                                                             
+  207    Constant MB_IN_BYTES not found.                                                                                                                                                  
+         🪪  constant.notFound                                                                                                                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                                                                                             
+  211    Instantiated class WP_Error not found.                                                                                                                                           
+         🪪  class.notFound                                                                                                                                                               
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                                                                                             
+  223    Instantiated class WP_Error not found.                                                                                                                                           
+         🪪  class.notFound                                                                                                                                                               
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                                                                                             
+  233    Instantiated class WP_Error not found.                                                                                                                                           
+         🪪  class.notFound                                                                                                                                                               
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                                                                                             
+  242    Instantiated class WP_Error not found.                                                                                                                                           
+         🪪  class.notFound                                                                                                                                                               
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                                                                                             
+  270    Offset 'size' on array{name: string, index: int, crc: int, size: int, mtime: int, comp_size: int, comp_method: int, encryption_method: int} in isset() always exists and is not  
+         nullable.                                                                                                                                                                        
+         🪪  isset.offset                                                                                                                                                                 
+  271    Negated boolean expression is always false.                                                                                                                                      
+         🪪  booleanNot.alwaysFalse                                                                                                                                                       
+         💡  Because the type is coming from a PHPDoc, you can turn off this check by setting treatPhpDocTypesAsCertain: false in your phpstan.neon.                                      
+  276    Instantiated class WP_Error not found.                                                                                                                                           
+         🪪  class.notFound                                                                                                                                                               
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                                                                                             
+  288    Instantiated class WP_Error not found.                                                                                                                                           
+         🪪  class.notFound                                                                                                                                                               
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                                                                                             
+  296    Call to function method_exists() with ZipArchive and 'getExternalAttribut…' will always evaluate to true.                                                                        
+         🪪  function.alreadyNarrowedType                                                                                                                                                 
+  310    Instantiated class WP_Error not found.                                                                                                                                           
+         🪪  class.notFound                                                                                                                                                               
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                                                                                             
+  326    Instantiated class WP_Error not found.                                                                                                                                           
+         🪪  class.notFound                                                                                                                                                               
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                                                                                             
+  337    Instantiated class WP_Error not found.                                                                                                                                           
+         🪪  class.notFound                                                                                                                                                               
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                                                                                             
+  349    Instantiated class WP_Error not found.                                                                                                                                           
+         🪪  class.notFound                                                                                                                                                               
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                                                                                             
+  360    Instantiated class WP_Error not found.                                                                                                                                           
+         🪪  class.notFound                                                                                                                                                               
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                                                                                             
+  374    Instantiated class WP_Error not found.                                                                                                                                           
+         🪪  class.notFound                                                                                                                                                               
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                                                                                             
+  388    Instantiated class WP_Error not found.                                                                                                                                           
+         🪪  class.notFound                                                                                                                                                               
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                                                                                             
+  406    Instantiated class WP_Error not found.                                                                                                                                           
+         🪪  class.notFound                                                                                                                                                               
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                                                                                             
+  415    Instantiated class WP_Error not found.                                                                                                                                           
+         🪪  class.notFound                                                                                                                                                               
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                                                                                             
+  426    Instantiated class WP_Error not found.                                                                                                                                           
+         🪪  class.notFound                                                                                                                                                               
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                                                                                             
+  435    Instantiated class WP_Error not found.                                                                                                                                           
+         🪪  class.notFound                                                                                                                                                               
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                                                                                             
+  461    Instantiated class WP_Error not found.                                                                                                                                           
+         🪪  class.notFound                                                                                                                                                               
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                                                                                             
+  479    Instantiated class WP_Error not found.                                                                                                                                           
+         🪪  class.notFound                                                                                                                                                               
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                                                                                             
+  490    Instantiated class WP_Error not found.                                                                                                                                           
+         🪪  class.notFound                                                                                                                                                               
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                                                                                             
+  500    Function is_wp_error not found.                                                                                                                                                  
+         🪪  function.notFound                                                                                                                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                                                                                             
+  546    Function wp_mkdir_p not found.                                                                                                                                                   
+         🪪  function.notFound                                                                                                                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                                                                                             
+  547    Function wp_mkdir_p not found.                                                                                                                                                   
+         🪪  function.notFound                                                                                                                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                                                                                             
+  549    Instantiated class WP_Error not found.                                                                                                                                           
+         🪪  class.notFound                                                                                                                                                               
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                                                                                             
+  559    Function is_wp_error not found.                                                                                                                                                  
+         🪪  function.notFound                                                                                                                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                                                                                             
+  566    Function is_wp_error not found.                                                                                                                                                  
+         🪪  function.notFound                                                                                                                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                                                                                             
+  573    Instantiated class WP_Error not found.                                                                                                                                           
+         🪪  class.notFound                                                                                                                                                               
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                                                                                             
+  586    Constant FS_CHMOD_FILE not found.                                                                                                                                                
+         🪪  constant.notFound                                                                                                                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                                                                                             
+  588    Instantiated class WP_Error not found.                                                                                                                                           
+         🪪  class.notFound                                                                                                                                                               
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                                                                                             
+  618    Instantiated class WP_Error not found.                                                                                                                                           
+         🪪  class.notFound                                                                                                                                                               
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                                                                                             
+  627    Function is_wp_error not found.                                                                                                                                                  
+         🪪  function.notFound                                                                                                                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                                                                                             
+  664    Function esc_url_raw not found.                                                                                                                                                  
+         🪪  function.notFound                                                                                                                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                                                                                             
+  674    Function sanitize_textarea_field not found.                                                                                                                                      
+         🪪  function.notFound                                                                                                                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                                                                                             
+  677    Function sanitize_text_field not found.                                                                                                                                          
+         🪪  function.notFound                                                                                                                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                                                                                             
+  700    Function wp_mkdir_p not found.                                                                                                                                                   
+         🪪  function.notFound                                                                                                                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                                                                                             
+  701    Instantiated class WP_Error not found.                                                                                                                                           
+         🪪  class.notFound                                                                                                                                                               
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                                                                                             
+  718    Instantiated class WP_Error not found.                                                                                                                                           
+         🪪  class.notFound                                                                                                                                                               
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                                                                                             
+  731    Function wp_mkdir_p not found.                                                                                                                                                   
+         🪪  function.notFound                                                                                                                                                            
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                                                                                             
+  732    Instantiated class WP_Error not found.                                                                                                                                           
+         🪪  class.notFound                                                                                                                                                               
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                                                                                             
+  741    Instantiated class WP_Error not found.                                                                                                                                           
+         🪪  class.notFound                                                                                                                                                               
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                                                                                             
+  758    Instantiated class WP_Error not found.                                                                                                                                           
+         🪪  class.notFound                                                                                                                                                               
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols                                                                                                             
+ ------ --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
+
+ ------ ---------------------------------------------------------------------- 
+  Line   includes/class-holzkatalog-woocommerce.php                            
+ ------ ---------------------------------------------------------------------- 
+  32     Function add_action not found.                                        
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  38     Function add_action not found.                                        
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  44     Function add_filter not found.                                        
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  50     Function add_action not found.                                        
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  61     Function update_option not found.                                     
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  69     Function get_option not found.                                        
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  81     Function taxonomy_exists not found.                                   
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  89     Function delete_option not found.                                     
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  101    Function wc_attribute_taxonomy_id_by_name not found.                  
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  119    Function delete_transient not found.                                  
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  135    Function trailingslashit not found.                                   
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  144    Function get_posts not found.                                         
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  159    Function wp_check_filetype not found.                                 
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  169    Function wp_insert_attachment not found.                              
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  181    Function is_wp_error not found.                                       
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  187    Function wp_update_attachment_metadata not found.                     
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  192    Function _wp_relative_upload_path not found.                          
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  196    Function update_post_meta not found.                                  
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  204    Function update_term_meta not found.                                  
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  219    Instantiated class WP_Error not found.                                
+         🪪  class.notFound                                                    
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  225    Function wc_attribute_taxonomy_id_by_name not found.                  
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  232    Function wc_attribute_taxonomy_id_by_name not found.                  
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  238    Instantiated class WP_Error not found.                                
+         🪪  class.notFound                                                    
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  244    Function wc_attribute_taxonomy_name not found.                        
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  248    Function taxonomy_exists not found.                                   
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  249    Instantiated class WP_Error not found.                                
+         🪪  class.notFound                                                    
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  272    Function sanitize_title not found.                                    
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  274    Function get_term_by not found.                                       
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  278    Function wp_insert_term not found.                                    
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  284    Function is_wp_error not found.                                       
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  295    Function wp_update_term not found.                                    
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  306    Function update_term_meta not found.                                  
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  312    Function update_term_meta not found.                                  
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  318    Function update_term_meta not found.                                  
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  341    Function wc_get_product not found.                                    
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  347    Function get_the_terms not found.                                     
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  352    Function is_wp_error not found.                                       
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  358    Function get_term_meta not found.                                     
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  368    Function wp_get_attachment_image not found.                           
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  387    Function current_user_can not found.                                  
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  388    Function wp_die not found.                                            
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  391    Function check_admin_referer not found.                               
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  398    Function is_wp_error not found.                                       
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  399    Function esc_html not found.                                          
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  399    Function wp_die not found.                                            
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  402    Function admin_url not found.                                         
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  406    Function wp_safe_redirect not found.                                  
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  407    Function add_query_arg not found.                                     
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  433    Function wc_attribute_taxonomy_name not found.                        
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  437    Function get_term_by not found.                                       
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  443    Function is_wp_error not found.                                       
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  452    Function sanitize_title not found.                                    
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  462    Function wp_upload_dir not found.                                     
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  464    Function trailingslashit not found.                                   
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  469    Function esc_url not found.                                           
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+ ------ ---------------------------------------------------------------------- 
+
+ ------ ---------------------------------------------------------------------- 
+  Line   includes/woocommerce/class-holzkatalog-wc-origin.php                  
+ ------ ---------------------------------------------------------------------- 
+  20     Function add_action not found.                                        
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  24     Function add_action not found.                                        
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  29     Function wp_parse_args not found.                                     
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  30     Function get_option not found.                                        
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  34     Function add_action not found.                                        
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  40     Function add_action not found.                                        
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  45     Function add_action not found.                                        
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  77     Function wc_attribute_taxonomy_id_by_name not found.                  
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  86     Function is_wp_error not found.                                       
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  90     Function delete_transient not found.                                  
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  94     Function taxonomy_exists not found.                                   
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  99     Function term_exists not found.                                       
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  100    Function wp_insert_term not found.                                    
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  108    Function taxonomy_exists not found.                                   
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  113    Function term_exists not found.                                       
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  114    Function wp_insert_term not found.                                    
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  133    Function has_term not found.                                          
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  138    Function get_post_meta not found.                                     
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  139    Function get_post_meta not found.                                     
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  145    Function wc_get_product_terms not found.                              
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  152    Function absint not found.                                            
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  154    Function wp_enqueue_script not found.                                 
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  156    Function plugins_url not found.                                       
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  161    Function wp_parse_args not found.                                     
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  162    Function get_option not found.                                        
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  181    Function esc_attr not found.                                          
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  182    Function absint not found.                                            
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  183    Function absint not found.                                            
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  184    Function esc_attr not found.                                          
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  193    Function get_current_screen not found.                                
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  199    Function wp_enqueue_style not found.                                  
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  201    Constant HOLZKATALOG_PLUGIN_URL not found.                            
+         🪪  constant.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  206    Function wp_enqueue_script not found.                                 
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  208    Constant HOLZKATALOG_PLUGIN_URL not found.                            
+         🪪  constant.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  218    Function wp_parse_args not found.                                     
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  219    Function get_option not found.                                        
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  243    Function esc_attr not found.                                          
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  243    Function wp_json_encode not found.                                    
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  254    Function get_the_ID not found.                                        
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  255    Function get_post_meta not found.                                     
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  256    Function get_post_meta not found.                                     
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  257    Function get_post_meta not found.                                     
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  264    Function woocommerce_wp_hidden_input not found.                       
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  269    Function woocommerce_wp_hidden_input not found.                       
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  274    Function woocommerce_wp_hidden_input not found.                       
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  281    Function wp_kses_post not found.                                      
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  293    Function submit_button not found.                                     
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  294    Function __ not found.                                                
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  316    Function check_admin_referer not found.                               
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  325    Function wp_unslash not found.                                        
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  336    Function sanitize_text_field not found.                               
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+  336    Function wp_unslash not found.                                        
+         🪪  function.notFound                                                 
+         💡  Learn more at https://phpstan.org/user-guide/discovering-symbols  
+ ------ ---------------------------------------------------------------------- 
+
+ [ERROR] Found 559 errors                                                                                               
+

@@ -11,5 +11,11 @@ final class HOLZKATALOG_CONSTANTS
     public const KATALOG_SETTINGS   = 'hk_katalog_settings';
     public const HANDLE_HK_FRONTEND_KATALOG = 'holzkat-frontend-katalog'; 
     public const HANDLE_HK_ADMIN = 'holzkat-admin';  
-    public const HOLZARTEN_GEOPOSITION_MAP =HOLZKATALOG_CONSTANTS::HOLZARTEN_GEOPOSITION_MAP;
+    public const HOLZARTEN_GEOPOSITION_MAP ='holzkat-geopositions-map';
+}
+final class HOLZKATALOG_HOOKS
+{
+}
+final class HOLZKATALOG_HANDLES
+{
 }

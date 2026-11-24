@@ -1,0 +1,16 @@
+
+includes:
+    - vendor/szepeviktor/phpstan-wordpress/extension.neon
+
+parameters:
+    level: 5
+
+    paths:
+        - holzkatalog.php
+        - includes
+
+    excludePaths:
+        analyse:
+            - vendor
+            - plugin-update-checker
+    
