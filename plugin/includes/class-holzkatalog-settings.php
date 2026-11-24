@@ -591,11 +591,10 @@ class HOLZKATALOG_Settings
                             <input
                                 type="text"
                                 readonly
-                                disabled
                                 size="6"
                                 id="hk-map-apikey-key"
                                 name="hk_map_settings[apikey_key]"
-                                value="<?php echo esc_attr($settings['apikey_keyname'] ?? ''); ?>"
+                                value="<?php echo esc_attr($settings['apikey_key'] ?? ''); ?>"
                             >&nbsp;=&nbsp;
 
                             <input
