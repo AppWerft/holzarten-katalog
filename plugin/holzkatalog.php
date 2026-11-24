@@ -47,6 +47,7 @@ $holzkatalog_update_checker->getVcsApi()->enableReleaseAssets(
 // --------------------------------------------------
 
 // Klassen laden
+require_once HOLZKATALOG_PLUGIN_DIR . 'includes/class-holzkatalog-constants.php';
 require_once HOLZKATALOG_PLUGIN_DIR . 'includes/class-holzkatalog-storage.php';
 require_once HOLZKATALOG_PLUGIN_DIR . 'includes/class-holzkatalog-catalog.php';
 require_once HOLZKATALOG_PLUGIN_DIR . 'includes/class-holzkatalog-woocommerce.php';
