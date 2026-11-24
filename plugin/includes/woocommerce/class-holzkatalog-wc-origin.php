@@ -159,14 +159,14 @@
                 ? absint($zoom_terms[0])
                 : 6;
             wp_enqueue_script(
-                'holzkat-geopositions-map',
+                HOLZKATALOG_CONSTANTS::HOLZARTEN_GEOPOSITION_MAP,
                 plugins_url('assets/js/geopositions-map.js', HOLZKATALOG_PLUGIN_FILE),
                 ['jquery'],
                 '1.0.0',
                 true
             );
             $settings = wp_parse_args(
-                get_option('hk_map_settings', []),
+                get_option(HOLZKATALOG_CONSTANTS::MAP_SETTINGS, []),
                 [
                     'height' => 200,
                     'width' => 100,
@@ -204,7 +204,7 @@
             }
 
             wp_enqueue_style(
-                HOLZKATALOG_CONSTANTS::HANDLE_HK_ADMIN,
+                'holzkat-admin',
                 HOLZKATALOG_PLUGIN_URL . 'assets/css/hk-admin.css',
                 [],
                 HOLZKATALOG_VERSION
