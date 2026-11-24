@@ -1,7 +1,6 @@
 jQuery(function ($) {
     const selector =
         'select.attribute_values[data-taxonomy="pa_holzart"]';
-    alert('holzkatalog-admin.js')
     // Bereits vorhandene Mehrfachauswahlen auf eine reduzieren.
     $(selector).each(function () {
         const values = $(this).val();
