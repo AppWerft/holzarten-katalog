@@ -14,7 +14,7 @@ class HOLZKATALOG_Settings
     {
         // Einstellungen Holzfundorte
         add_submenu_page(
-            'holzarten-katalog',
+            'holzartenkatalog',
             'Holzfundorte',
             'Holzfundorte',
             'manage_options',
