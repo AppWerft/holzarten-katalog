@@ -204,7 +204,7 @@ jQuery(document).ready(function ($) {
 
 // catalogdarstellung dynamisch anpassen:
 document.addEventListener('DOMContentLoaded', function () {
-    console.log('hk_katalog_settings[spalten]')
+
     const columnsField = document.querySelector('[name="hk_katalog_settings[spalten]"]');
     const cardField = document.querySelector('[name="hk_katalog_settings[card]"]');
 
@@ -212,7 +212,7 @@ document.addEventListener('DOMContentLoaded', function () {
        
         const columns = columnsField?.value;
         const card = cardField?.checked ?? false;
- console.log('updatePreview',columns)
+        console.log('updatePreview',columns)
         const preview = document.querySelector('#hk-katalog-preview');
 
         if (!preview) {
@@ -230,7 +230,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Material Design ein-/ausschalten
             grid.classList.toggle('hk-material-cards', card);
-        }
+        } else console.log('no grid')
     }
 
     columnsField?.addEventListener('change', updatePreview);
