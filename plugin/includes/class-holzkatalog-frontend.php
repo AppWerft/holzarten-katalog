@@ -15,12 +15,12 @@ class HOLZKATALOG_Frontend
     private function __construct()
     {
         add_shortcode('hk_holzarten', [$this, 'render_wood_catalog']);
-        add_action('wp_enqueue_scripts', [$this, 'enqueue_styles']);
         add_action('wp_enqueue_scripts', [$this, 'enqueue_frontend_assets']);
     }
+
     public function enqueue_frontend_assets()
     {
-        $file = HOLZKATALOG_PLUGIN_DIR . 'assets/js/admin-holzarten.js';
+        $jsfile = HOLZKATALOG_PLUGIN_DIR . 'assets/js/admin-holzarten.js';
 
         wp_enqueue_style(
             'holzkat-frontend-katalog',
@@ -31,7 +31,7 @@ class HOLZKATALOG_Frontend
 
         wp_enqueue_script(
             'holzkat-admin',
-            HOLZKATALOG_PLUGIN_URL . 'assets/js/admin-holzarten.js',
+            $jsfile,
             ['jquery'],
             file_exists($file) ? filemtime($file) : HOLZKATALOG_VERSION,
             true
@@ -115,7 +115,7 @@ class HOLZKATALOG_Frontend
             ? 'latin'
             : 'name';
 
-        $bilder = $settings['bilder'] === 1;
+        $bilder = !empty($settings['bilder']);
 
         $spalten = max(1, min(6, absint($settings['spalten'])));
 
