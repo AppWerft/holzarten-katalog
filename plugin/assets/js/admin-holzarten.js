@@ -1,5 +1,5 @@
 jQuery(document).ready(function ($) {
-
+    alert('admin-holzarten')
     $('.hk-status-toggle').on('change', function () {
 
         const checkbox = $(this);

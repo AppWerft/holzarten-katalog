@@ -24,7 +24,7 @@ class HOLZKATALOG_Assets
     {
         // Leaflet CSS
         wp_enqueue_style(
-            'hk-leaflet',
+            'holzkat-leaflet',
             HOLZKATALOG_PLUGIN_URL . 'assets/vendor/leaflet/leaflet.css',
             [],
             '1.9.4'
@@ -32,7 +32,7 @@ class HOLZKATALOG_Assets
 
         // D3
         wp_enqueue_script(
-            'hk-d3',
+            'holzkat-d3',
             HOLZKATALOG_PLUGIN_URL . 'assets/vendor/d3/d3v5.js',
             [],
             '5.16.0',
@@ -41,7 +41,7 @@ class HOLZKATALOG_Assets
 
         // Leaflet
         wp_enqueue_script(
-            'hk-leaflet',
+            'holzkat-leaflet',
             HOLZKATALOG_PLUGIN_URL . 'assets/vendor/leaflet/leaflet.js',
             [],
             '1.9.4',
@@ -50,9 +50,9 @@ class HOLZKATALOG_Assets
 
         // PingLayer
         wp_enqueue_script(
-            'hk-ping-layer',
+            'holzkat-ping-layer',
             HOLZKATALOG_PLUGIN_URL . 'assets/vendor/leaflet/leaflet-d3.js',
-            ['hk-leaflet', 'hk-d3'],
+            ['holzkat-leaflet', 'holzkat-d3'],
             HOLZKATALOG_VERSION,
             true
         );
@@ -64,7 +64,7 @@ class HOLZKATALOG_Assets
     public static function enqueue_admin($hook)
     { // Katalog-CSS für die Admin-Vorschau
         wp_enqueue_style(
-            'hk-frontend-holzarten',
+            'holzkat-frontend-holzarten',
             HOLZKATALOG_PLUGIN_URL . 'assets/css/frontend-holzarten.css',
             [],
             HOLZKATALOG_VERSION
@@ -83,9 +83,9 @@ class HOLZKATALOG_Assets
         self::enqueue_leaflet();
 
         wp_enqueue_script(
-            'hk-origin-picker',
+            'holzkat-origin-picker',
             HOLZKATALOG_PLUGIN_URL . 'assets/js/hk-origin-picker.js',
-            ['hk-leaflet', 'hk-ping-layer'],
+            ['holzkat-leaflet', 'holzkat-ping-layer'],
             HOLZKATALOG_VERSION,
             true
         );
@@ -98,7 +98,7 @@ class HOLZKATALOG_Assets
     {
         // Katalog-CSS auf allen Frontend-Seiten
         wp_enqueue_style(
-            'hk-frontend-holzarten',
+            'holzkat-frontend-holzarten',
             HOLZKATALOG_PLUGIN_URL . 'assets/css/frontend-holzarten.css',
             [],
             HOLZKATALOG_VERSION

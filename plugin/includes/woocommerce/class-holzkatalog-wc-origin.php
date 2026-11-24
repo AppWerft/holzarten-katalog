@@ -36,11 +36,7 @@
                 [$this, 'render_map'], // tatsächlichen Methodennamen einsetzen
                 $settings['priority']
             );
-            /*
-            add_action(
-                'wp_enqueue_scripts',
-                [$this, 'enqueue_scripts']
-            );*/
+           
             add_action(
                 'woocommerce_admin_process_product_object',
                 [$this, 'limit_wood_attribute'],
@@ -163,7 +159,7 @@
                 ? absint($zoom_terms[0])
                 : 6;
             wp_enqueue_script(
-                'hk-geopositions-map',
+                'holzkat-geopositions-map',
                 plugins_url('assets/js/geopositions-map.js', HOLZKATALOG_PLUGIN_FILE),
                 ['jquery'],
                 '1.0.0',
@@ -208,14 +204,14 @@
             }
 
             wp_enqueue_style(
-                'hk-admin',
+                'holzkat-admin',
                 HOLZKATALOG_PLUGIN_URL . 'assets/css/hk-admin.css',
                 [],
                 HOLZKATALOG_VERSION
             );
 
             wp_enqueue_script(
-                'hk-admin',
+                'holzkat-admin',
                 HOLZKATALOG_PLUGIN_URL . 'assets/js/hk-admin.js',
                 ['jquery', 'wc-enhanced-select'],
                 HOLZKATALOG_VERSION,
