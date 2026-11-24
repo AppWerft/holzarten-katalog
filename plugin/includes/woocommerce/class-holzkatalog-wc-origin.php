@@ -197,7 +197,7 @@
             }
 
             wp_enqueue_style(
-                'holzkat-admin',
+                HOLZKATALOG_CONSTANTS::HANDLE_HK_ADMIN,
                 HOLZKATALOG_PLUGIN_URL . 'assets/css/hk-admin.css',
                 [],
                 HOLZKATALOG_VERSION
@@ -251,13 +251,10 @@
         public function render_fields()
         {
             echo '<div class="options_group">';
-
             $product_id = get_the_ID();
-
             $lat  = get_post_meta($product_id, '_hk_origin_lat', true);
             $lng  = get_post_meta($product_id, '_hk_origin_lng', true);
             $zoom = get_post_meta($product_id, '_hk_origin_zoom', true);
-
             if ($zoom === '') {
                 $zoom = 6;
             }
@@ -323,18 +320,12 @@
             ) {
                 return;
             }
-
-
-
             if (isset($_POST['_hk_origin_zoom'])) {
-
                 $zoom = filter_var(
                     wp_unslash($_POST['_hk_origin_zoom']),
                     FILTER_VALIDATE_INT
                 );
-
                 if ($zoom !== false && $zoom >= 0 && $zoom <= 19) {
-
                     $product->update_meta_data('_hk_origin_zoom', $zoom);
                 }
             }
