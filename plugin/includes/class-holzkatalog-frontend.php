@@ -21,7 +21,7 @@ class HOLZKATALOG_Frontend
     public function enqueue_styles()
     {
         wp_enqueue_style(
-            'hk-frontend-katalog',
+            'holzkat-frontend-katalog',
             HOLZKATALOG_PLUGIN_URL . 'assets/css/frontend-katalog.css',
             [],
             HOLZKATALOG_VERSION
@@ -31,40 +31,34 @@ class HOLZKATALOG_Frontend
      * Shortcode [hk_holzarten]
      */
     public function render_wood_catalog($atts = [])
-    {
-        // Parameter aus Shortcode:     
-        $atts = shortcode_atts([
-            'sortierung' => $settings['sortierung'] ?? 'name',
-            'bilder'     => $settings['bilder'] ?? 1,
-            'spalten'    => $settings['spalten'] ?? 3,
-            'card'       => $settings['card'] ?? 1,
-        ], $atts, 'hk_holzarten');
-        // Gespeicherte Einstellungen als Standardwerte verwenden
-        $defaults = wp_parse_args(
-            get_option('hk_katalog_settings', []),
-            [
-                'sortierung' => 'name',
-                'bilder'     => 1,
-                'spalten'    => 3,
-                'card' => 0,
-            ]
-        );
+{
+    // Gespeicherte Einstellungen als Standardwerte
+    $defaults = wp_parse_args(
+        get_option('hk_katalog_settings', []),
+        [
+            'sortierung' => 'name',
+            'bilder'     => 1,
+            'spalten'    => 3,
+            'card'       => 0,
+        ]
+    );
 
-        // Shortcode-Attribute können die Einstellungen überschreiben
-        $settings = shortcode_atts(
-            $defaults,
-            $atts,
-            'hk_holzarten'
-        );
+    // Shortcode-Attribute können Einstellungen überschreiben
+    $settings = shortcode_atts(
+        $defaults,
+        $atts,
+        'hk_holzarten'
+    );
 
-        return self::render_catalog($settings);
-    }
+    return self::render_catalog($settings);
+}
 
     /**
      * Gemeinsame HTML-Ausgabe für Frontend und Admin-Vorschau
      * Für die Darstellung der Holzarten gelten die Optionen aus render_holzarten()
      */
-    public static function render_catalog($settings = [])
+    
+public static function render_catalog($settings = [])
     {
         $settings = wp_parse_args(
             $settings,
