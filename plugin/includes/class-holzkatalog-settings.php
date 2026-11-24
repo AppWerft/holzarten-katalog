@@ -41,7 +41,6 @@ class HOLZKATALOG_Settings
         );
         // Automatischen ersten Menüpunkt umbenennen
         global $submenu;
-
         if (isset($submenu['holzarten-katalog'][0])) {
             $submenu['holzarten-katalog'][0][0] = 'Holzartenliste';
         }
@@ -49,9 +48,7 @@ class HOLZKATALOG_Settings
 
     public static function enqueue_scripts($hook)
     {
-
     if ($hook === 'holzartenkatalog_page_hk_settings_katalog') {
-
     wp_enqueue_style(
         'holzkat-frontend-katalog',
         HOLZKATALOG_PLUGIN_URL . 'assets/css/frontend-katalog.css',
@@ -130,12 +127,10 @@ class HOLZKATALOG_Settings
                 HOLZKATALOG_VERSION,
                 true
             );
-            error_log(HOLZKATALOG_PLUGIN_URL . 'assets/js/holzkatalog-admin.js');
         }
 
         // Holzarten
         if ($hook === 'holzartenkatalog_page_hk_settings_holzarten') {
-
             $js_file = HOLZKATALOG_PLUGIN_DIR . 'assets/js/admin-holzarten-settings.js';
             $css_file = HOLZKATALOG_PLUGIN_DIR . 'assets/css/admin-holzarten-settings.css';
 
@@ -162,9 +157,7 @@ class HOLZKATALOG_Settings
         }
         // Holzfundorte-Einstellungen
         if ($hook === 'holzartenkatalog_page_hk_settings_fundorte') {
-
             $js_file = HOLZKATALOG_PLUGIN_DIR . 'assets/js/admin-holzarten-geosettings.js';
-
             wp_enqueue_script(
                 'holzkat-holzarten-geosettings',
                 HOLZKATALOG_PLUGIN_URL . 'assets/js/admin-holzarten-geosettings.js',
@@ -172,9 +165,7 @@ class HOLZKATALOG_Settings
                 file_exists($js_file) ? filemtime($js_file) : HOLZKATALOG_VERSION,
                 true
             );
-
             $css_file = HOLZKATALOG_PLUGIN_DIR . 'assets/css/admin-holzarten-geosettings.css';
-
             wp_enqueue_style(
                 'holzkat-holzarten-geosettings',
                 HOLZKATALOG_PLUGIN_URL . 'assets/css/admin-holzarten-geosettings.css',
