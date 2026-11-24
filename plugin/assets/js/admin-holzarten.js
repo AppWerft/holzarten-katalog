@@ -235,7 +235,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     columnsField?.addEventListener('change', updatePreview);
     cardField?.addEventListener('change', updatePreview);
-
+    updatePreview();
 });
 
 
