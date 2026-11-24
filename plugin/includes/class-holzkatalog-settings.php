@@ -46,80 +46,39 @@ class HOLZKATALOG_Settings
         }
     }
 
+
     public static function enqueue_scripts($hook)
     {
-    if ($hook === 'holzartenkatalog_page_hk_settings_katalog') {
-    wp_enqueue_style(
-        'holzkat-frontend-katalog',
-        HOLZKATALOG_PLUGIN_URL . 'assets/css/frontend-katalog.css',
-        [],
-        filemtime(
-            HOLZKATALOG_PLUGIN_DIR . 'assets/css/frontend-katalog.css'
-        )
-    );
-
-    wp_enqueue_script(
-        'holzkat-holzarten',
-        HOLZKATALOG_PLUGIN_URL . 'assets/js/admin-holzarten.js',
-        ['jquery'],
-        filemtime(
-            HOLZKATALOG_PLUGIN_DIR . 'assets/js/admin-holzarten.js'
-        ),
-        true
-    );
-}
         error_log('HOLZKATALOG Hook: ' . $hook);
-        // Leaflet CSS
-        wp_enqueue_style(
-            'leaflet',
-            HOLZKATALOG_PLUGIN_URL . 'assets/vendor/leaflet/leaflet.css',
-            [],
-            '1.9.4'
-        );
 
-        // Leaflet JavaScript
-        wp_enqueue_script(
-            'holzkat-leaflet',
-            HOLZKATALOG_PLUGIN_URL . 'assets/vendor/leaflet/leaflet.js',
-            [],
-            '1.9.4',
-            true
-        );
-        // D3v5 für Pinglayer
-        wp_enqueue_script(
-            'holzkat-d3',
-            HOLZKATALOG_PLUGIN_URL . 'assets/vendor/d3/d3v5.js',
-            [],
-            HOLZKATALOG_VERSION,
-            true
-        );
-        // PingLayer
-        wp_enqueue_script(
-            'holzkat-ping-layer',
-            HOLZKATALOG_PLUGIN_URL . 'assets/vendor/leaflet/leaflet-d3.js',
-            ['holzkat-leaflet', 'holzkat-d3'],
-            HOLZKATALOG_VERSION,
-            true
-        );
-        // Leaflet JavaScript
-        wp_enqueue_script(
-            'holzkat-leaflet-providers',
-            HOLZKATALOG_PLUGIN_URL . 'assets/vendor/leaflet/leaflet-providers.js',
-            ['holzkat-leaflet'],
-            HOLZKATALOG_VERSION,
-            true
-        );
-        // CSS
-        if ($hook === 'hk_page_hk_settings_katalog') {
+        // Holzlistendarstellung
+        if ($hook === 'holzartenkatalog_page_hk_settings_katalog') {
+
+            $css_file = HOLZKATALOG_PLUGIN_DIR
+                . 'assets/css/frontend-katalog.css';
+
+            $js_file = HOLZKATALOG_PLUGIN_DIR
+                . 'assets/js/admin-holzarten.js';
+
             wp_enqueue_style(
                 'holzkat-frontend-katalog',
                 HOLZKATALOG_PLUGIN_URL . 'assets/css/frontend-katalog.css',
                 [],
-                filemtime(HOLZKATALOG_PLUGIN_DIR . 'assets/css/frontend-katalog.css')
+                file_exists($css_file)
+                    ? filemtime($css_file)
+                    : HOLZKATALOG_VERSION
             );
-        }
 
-        if ($hook === 'holzartenkatalog_page_hk_settings_katalog') {
+            wp_enqueue_script(
+                'holzkat-holzarten',
+                HOLZKATALOG_PLUGIN_URL . 'assets/js/admin-holzarten.js',
+                ['jquery'],
+                file_exists($js_file)
+                    ? filemtime($js_file)
+                    : HOLZKATALOG_VERSION,
+                true
+            );
+
             wp_enqueue_script(
                 'holzkat-admin',
                 HOLZKATALOG_PLUGIN_URL . 'assets/js/holzkatalog-admin.js',
@@ -129,70 +88,119 @@ class HOLZKATALOG_Settings
             );
         }
 
-        // Holzarten
+        // Holzarteneinstellungen
         if ($hook === 'holzartenkatalog_page_hk_settings_holzarten') {
-            $js_file = HOLZKATALOG_PLUGIN_DIR . 'assets/js/admin-holzarten-settings.js';
-            $css_file = HOLZKATALOG_PLUGIN_DIR . 'assets/css/admin-holzarten-settings.css';
+
+            $js_file = HOLZKATALOG_PLUGIN_DIR
+                . 'assets/js/admin-holzarten-settings.js';
+
+            $css_file = HOLZKATALOG_PLUGIN_DIR
+                . 'assets/css/admin-holzarten-settings.css';
 
             wp_enqueue_script(
                 'holzkat-holzarten-settings',
                 HOLZKATALOG_PLUGIN_URL . 'assets/js/admin-holzarten-settings.js',
                 ['jquery'],
-                file_exists($js_file) ? filemtime($js_file) : HOLZKATALOG_VERSION,
+                file_exists($js_file)
+                    ? filemtime($js_file)
+                    : HOLZKATALOG_VERSION,
                 true
             );
+
             wp_enqueue_script(
                 'holzkat-holzarten',
                 HOLZKATALOG_PLUGIN_URL . 'assets/js/admin-holzarten.js',
                 ['jquery'],
-                file_exists($js_file) ? filemtime($js_file) : HOLZKATALOG_VERSION,
+                file_exists($js_file)
+                    ? filemtime($js_file)
+                    : HOLZKATALOG_VERSION,
                 true
             );
+
             wp_enqueue_style(
                 'holzkat-holzarten-settings',
                 HOLZKATALOG_PLUGIN_URL . 'assets/css/admin-holzarten-settings.css',
                 [],
-                file_exists($css_file) ? filemtime($css_file) : HOLZKATALOG_VERSION
+                file_exists($css_file)
+                    ? filemtime($css_file)
+                    : HOLZKATALOG_VERSION
             );
         }
-        // Holzfundorte-Einstellungen
+
+        // Holzfundorteinstellungen
         if ($hook === 'holzartenkatalog_page_hk_settings_fundorte') {
-            $js_file = HOLZKATALOG_PLUGIN_DIR . 'assets/js/admin-holzarten-geosettings.js';
+
+            // Leaflet CSS
+            wp_enqueue_style(
+                'leaflet',
+                HOLZKATALOG_PLUGIN_URL . 'assets/vendor/leaflet/leaflet.css',
+                [],
+                '1.9.4'
+            );
+
+            // Leaflet JavaScript
+            wp_enqueue_script(
+                'holzkat-leaflet',
+                HOLZKATALOG_PLUGIN_URL . 'assets/vendor/leaflet/leaflet.js',
+                [],
+                '1.9.4',
+                true
+            );
+
+            // D3 v5
+            wp_enqueue_script(
+                'holzkat-d3',
+                HOLZKATALOG_PLUGIN_URL . 'assets/vendor/d3/d3v5.js',
+                [],
+                HOLZKATALOG_VERSION,
+                true
+            );
+
+            // PingLayer
+            wp_enqueue_script(
+                'holzkat-ping-layer',
+                HOLZKATALOG_PLUGIN_URL . 'assets/vendor/leaflet/leaflet-d3.js',
+                ['holzkat-leaflet', 'holzkat-d3'],
+                HOLZKATALOG_VERSION,
+                true
+            );
+
+            // Tile Provider
+            wp_enqueue_script(
+                'holzkat-leaflet-providers',
+                HOLZKATALOG_PLUGIN_URL . 'assets/vendor/leaflet/leaflet-providers.js',
+                ['holzkat-leaflet'],
+                HOLZKATALOG_VERSION,
+                true
+            );
+
+            $js_file = HOLZKATALOG_PLUGIN_DIR
+                . 'assets/js/admin-holzarten-geosettings.js';
+
             wp_enqueue_script(
                 'holzkat-holzarten-geosettings',
                 HOLZKATALOG_PLUGIN_URL . 'assets/js/admin-holzarten-geosettings.js',
                 ['holzkat-leaflet', 'holzkat-leaflet-providers'],
-                file_exists($js_file) ? filemtime($js_file) : HOLZKATALOG_VERSION,
+                file_exists($js_file)
+                    ? filemtime($js_file)
+                    : HOLZKATALOG_VERSION,
                 true
             );
-            $css_file = HOLZKATALOG_PLUGIN_DIR . 'assets/css/admin-holzarten-geosettings.css';
+
+            $css_file = HOLZKATALOG_PLUGIN_DIR
+                . 'assets/css/admin-holzarten-geosettings.css';
+
             wp_enqueue_style(
                 'holzkat-holzarten-geosettings',
                 HOLZKATALOG_PLUGIN_URL . 'assets/css/admin-holzarten-geosettings.css',
                 [],
-                file_exists($css_file) ? filemtime($css_file) : HOLZKATALOG_VERSION
+                file_exists($css_file)
+                    ? filemtime($css_file)
+                    : HOLZKATALOG_VERSION
             );
         }
     }
 
-    private static function get_map_providers(): array
-    {
-        return [
-            'OpenStreetMap.Mapnik' => 'OpenStreetMap – Standard',
-            'OpenStreetMap.DE'     => 'OpenStreetMap – Deutsch',
-            'OpenStreetMap.HOT'    => 'OpenStreetMap – Humanitarian',
-            'OpenTopoMap'          => 'OpenTopoMap – Gelände',
-            'Esri.WorldTopoMap'    => 'Esri – Topografisch',
-            'Esri.WorldImagery'    => 'Esri – Satellit',
-            'Esri.WorldStreetMap'  => 'Esri – Straßenkarte',
-            'Stadia.AlidadeSmooth' => 'Stadia Alidade Smooth',
-            'Stadia.AlidadeSmoothDark' => 'Stadia Alidade SmoothDark',
-            'Stadia.StamenTonerDark' => 'Stadia Stamen TonerDark',
-            'Stadia.StamenWatercolor' => 'Stadia Stamen Watercolor',
-            'Stadia.StamenTerrain' => 'Stadia Stamen Terrain',
-            'Thunderforest.Landscape' => 'Thunderforest Landscape'
-        ];
-    }
 
 
     public static function render_holzarten()
