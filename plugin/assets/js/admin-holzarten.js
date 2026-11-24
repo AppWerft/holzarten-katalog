@@ -209,9 +209,10 @@ document.addEventListener('DOMContentLoaded', function () {
     const cardField = document.querySelector('[name="hk_katalog_settings[card]"]');
 
     function updatePreview() {
+       
         const columns = columnsField?.value;
         const card = cardField?.checked ?? false;
-
+ console.log('updatePreview',columns)
         const preview = document.querySelector('#hk-katalog-preview');
 
         if (!preview) {
