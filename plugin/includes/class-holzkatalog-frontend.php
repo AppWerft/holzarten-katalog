@@ -16,8 +16,27 @@ class HOLZKATALOG_Frontend
     {
         add_shortcode('hk_holzarten', [$this, 'render_wood_catalog']);
         add_action('wp_enqueue_scripts', [$this, 'enqueue_styles']);
+        add_action('wp_enqueue_scripts', [$this, 'enqueue_frontend_assets']);
     }
+    public function enqueue_frontend_assets()
+    {
+        $file = HOLZKATALOG_PLUGIN_DIR . 'assets/js/admin-holzarten.js';
 
+        wp_enqueue_style(
+            'holzkat-frontend-katalog',
+            HOLZKATALOG_PLUGIN_URL . 'assets/css/frontend-katalog.css',
+            [],
+            HOLZKATALOG_VERSION
+        );
+
+        wp_enqueue_script(
+            'holzkat-admin',
+            HOLZKATALOG_PLUGIN_URL . 'assets/js/admin-holzarten.js',
+            ['jquery'],
+            file_exists($file) ? filemtime($file) : HOLZKATALOG_VERSION,
+            true
+        );
+    }
     public function enqueue_styles()
     {
         wp_enqueue_style(
@@ -31,34 +50,34 @@ class HOLZKATALOG_Frontend
      * Shortcode [hk_holzarten]
      */
     public function render_wood_catalog($atts = [])
-{
-    // Gespeicherte Einstellungen als Standardwerte
-    $defaults = wp_parse_args(
-        get_option('hk_katalog_settings', []),
-        [
-            'sortierung' => 'name',
-            'bilder'     => 1,
-            'spalten'    => 3,
-            'card'       => 0,
-        ]
-    );
+    {
+        // Gespeicherte Einstellungen als Standardwerte
+        $defaults = wp_parse_args(
+            get_option('hk_katalog_settings', []),
+            [
+                'sortierung' => 'name',
+                'bilder'     => 1,
+                'spalten'    => 3,
+                'card'       => 0,
+            ]
+        );
 
-    // Shortcode-Attribute können Einstellungen überschreiben
-    $settings = shortcode_atts(
-        $defaults,
-        $atts,
-        'hk_holzarten'
-    );
+        // Shortcode-Attribute können Einstellungen überschreiben
+        $settings = shortcode_atts(
+            $defaults,
+            $atts,
+            'hk_holzarten'
+        );
 
-    return self::render_catalog($settings);
-}
+        return self::render_catalog($settings);
+    }
 
     /**
      * Gemeinsame HTML-Ausgabe für Frontend und Admin-Vorschau
      * Für die Darstellung der Holzarten gelten die Optionen aus render_holzarten()
      */
-    
-public static function render_catalog($settings = [])
+
+    public static function render_catalog($settings = [])
     {
         $settings = wp_parse_args(
             $settings,
