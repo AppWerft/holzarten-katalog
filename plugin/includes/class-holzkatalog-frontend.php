@@ -72,90 +72,113 @@ class HOLZKATALOG_Frontend
         return self::render_catalog($settings);
     }
 
-    /**
-     * Gemeinsame HTML-Ausgabe für Frontend und Admin-Vorschau
-     * Für die Darstellung der Holzarten gelten die Optionen aus render_holzarten()
-     */
+   
+/**
+ * Gemeinsame HTML-Ausgabe für Frontend und Admin-Vorschau.
+ * Für die Darstellung der Holzarten gelten die Optionen aus render_holzarten().
+ */
+public static function render_catalog($settings = [])
+{
+    // Katalog-Einstellungen
+    $settings = wp_parse_args(
+        $settings,
+        [
+            'sortierung'  => 'name',
+            'bilder'      => 1,
+            'spalten'     => 3,
+            'card'        => 0,
+            'nurprodukte' => 0,
+        ]
+    );
 
-    public static function render_catalog($settings = [])
-    {
-        $settings = wp_parse_args(
-            $settings,
-            [
-                'sortierung' => 'name',
-                'bilder'     => 1,
-                'spalten'    => 3,
+    // Einstellungen für die Darstellung der Holzarten
+    $holz_settings = wp_parse_args(
+        get_option('hk_holzarten_settings', []),
+        [
+            'size'        => 120,
+            'round'       => 0,
+            'lupe'        => 0,
+            'description' => 0,
+            'lat'         => 1,
+            'ger'         => 1,
+        ]
+    );
 
-            ]
-        );
-        // Einstellungen für die Darstellung der Holzarten
-        $holz_settings = wp_parse_args(
-            get_option('hk_holzarten_settings', []),
-            [
-                'size'  => 120,
-                'round' => 0,
-                'lupe'  => 0,
-                'description' => 0,
-                'lat'         => 1,
-                'ger'         => 1,
+    $size        = absint($holz_settings['size']);
+    $round       = !empty($holz_settings['round']);
+    $lupe        = !empty($holz_settings['lupe']);
+    $description = !empty($holz_settings['description']);
+    $show_lat    = !empty($holz_settings['lat']);
+    $show_ger    = !empty($holz_settings['ger']);
 
-            ]
-        );
+    // Einstellungen absichern
+    $card = !empty($settings['card']);
 
-        $size  = absint($holz_settings['size']);
-        $round = !empty($holz_settings['round']);
-        $lupe  = !empty($holz_settings['lupe']);
-        $description = !empty($holz_settings['description']);
-        $show_lat    = !empty($holz_settings['lat']);
-        $show_ger    = !empty($holz_settings['ger']);
-        $card = !empty($settings['card']);
+    $sortierung = $settings['sortierung'] === 'latin'
+        ? 'latin'
+        : 'name';
 
-        // Einstellungen absichern
-        $sortierung = $settings['sortierung'] === 'latin'
-            ? 'latin'
-            : 'name';
+    $bilder      = !empty($settings['bilder']);
+    $nurprodukte = !empty($settings['nurprodukte']);
 
-        $bilder = !empty($settings['bilder']);
+    $spalten = max(
+        1,
+        min(6, absint($settings['spalten']))
+    );
 
-        $spalten = max(1, min(6, absint($settings['spalten'])));
-
-        // Aktive Holzarten laden
-        $items = array_filter(
-            HOLZKATALOG_Catalog::get_all(),
-            function ($item) {
-                return !empty($item['active']);
-            }
-        );
-        if (!empty($settings['nurprodukte'])) {
-
-            $terms = get_terms([
-                'taxonomy'   => 'pa_holzart',
-                'hide_empty' => true,
-            ]);
-            if (!is_wp_error($terms)) {
-                // Slugs aus den tatsächlich verwendeten Term-Namen erzeugen
-                $used_wood_slugs = array_map(
-                    fn($term) => sanitize_title($term->name),
-                    $terms
-                );
-
-
-
-                $items = array_filter(
-                    $items,
-                    function ($item) use ($used_wood_slugs) {
-                        $slug = sanitize_title($item['name_de'] ?? '');
-                        return in_array($slug, $used_wood_slugs, true);
-                    }
-                );
-
-                $items = array_values($items);
-            }
+    // Aktive Holzarten laden
+    $items = array_filter(
+        HOLZKATALOG_Catalog::get_all(),
+        function ($item) {
+            return !empty($item['active']);
         }
+    );
 
-        // Sortierung
-        usort($items, function ($a, $b) use ($sortierung) {
+    /*
+     * Produktzuordnung ermitteln.
+     * Verwendet werden ausschließlich tatsächlich belegte
+     * WooCommerce-Holzart-Terme.
+     */
+    $used_wood_slugs = [];
 
+    $terms = get_terms([
+        'taxonomy'   => 'pa_holzart',
+        'hide_empty' => true,
+        'fields'     => 'all',
+    ]);
+
+    if (!is_wp_error($terms)) {
+        foreach ($terms as $term) {
+            $used_wood_slugs[] = sanitize_title($term->name);
+        }
+    }
+
+    // Doppelte Einträge vermeiden
+    $used_wood_slugs = array_unique($used_wood_slugs);
+
+    /*
+     * Nur Holzarten mit Produktzuordnung anzeigen,
+     * sofern die entsprechende Option aktiviert ist.
+     */
+    if ($nurprodukte) {
+        $items = array_filter(
+            $items,
+            function ($item) use ($used_wood_slugs) {
+                $slug = sanitize_title($item['name_de'] ?? '');
+
+                return in_array(
+                    $slug,
+                    $used_wood_slugs,
+                    true
+                );
+            }
+        );
+    }
+
+    // Sortierung
+    usort(
+        $items,
+        function ($a, $b) use ($sortierung) {
             if ($sortierung === 'latin') {
                 return strnatcasecmp(
                     $a['name_latin'] ?? '',
@@ -167,83 +190,97 @@ class HOLZKATALOG_Frontend
                 $a['name_de'] ?? '',
                 $b['name_de'] ?? ''
             );
-        });
-
-        if (empty($items)) {
-            return '<p>Keine aktiven Holzarten vorhanden.</p>';
         }
+    );
 
-        // HTML erzeugen:
-        $grid_class = 'hk-wood-grid';
-
-        if ($card) {
-            $grid_class .= ' hk-material-cards';
-        }
-
-        $html = '<div class="' . esc_attr($grid_class) . '" style="--hk-columns:' . $spalten . ';">';
-        foreach ($items as $item) {
-
-            $image_class = 'hk-wood-image';
-
-            $name_de = $item['name_de'] ?? '';
-            $name_latin = $item['name_latin'] ?? '';
-
-            // Produktzuordnung
-            $has_product = false;
-
-            // Debug
-            error_log($name_de . ': ' . ($has_product ? '1' : '0'));
-
-            $html .= '<div class="hk-wood-card" data-nurprodukt="' .
-                ($has_product ? '1' : '0') . '">';
-            // Bild nur bei entsprechender Einstellung
-            if ($bilder) {
-
-                $image_url = HOLZKATALOG_Storage::image_url(
-                    $item['image_file'] ?? ''
-                );
-
-                if ($image_url) {
-
-                    if ($round) {
-                        $image_class .= ' hk-wood-image-round';
-                    }
-
-                    if ($lupe) {
-                        $image_class .= ' hk-wood-zoom';
-                    }
-
-                    $html .= '<div class="hk-wood-image-wrapper">';
-                    $html .= '<img
-                class="' . esc_attr($image_class) . '"
-                style="width:' . esc_attr($size) . 'px;"
-                src="' . esc_url($image_url) . '"
-                alt="' . esc_attr($name_de) . '"
-                loading="lazy">';
-                    $html .= '</div>';
-                }
-            }
-
-            if ($show_ger && $name_de !== '') {
-                $html .= '<h4 style="padding:0;margin:0">'
-                    . esc_html($name_de)
-                    . '</h4>';
-            }
-
-            if ($show_lat && $name_latin !== '') {
-                $html .= '<span>'
-                    . esc_html($name_latin)
-                    . '</span>';
-            }
-
-            if ($description && !empty($item['description'])) {
-                $html .= '<div class="hk-wood-description">'
-                    . wp_kses_post($item['description'])
-                    . '</div>';
-            }
-            $html .= '</div>';
-        }
-        $html .= '</div>';
-        return $html;
+    if (empty($items)) {
+        return '<p>Keine aktiven Holzarten vorhanden.</p>';
     }
+
+    // Grid erzeugen
+    $grid_class = 'hk-wood-grid';
+
+    if ($card) {
+        $grid_class .= ' hk-material-cards';
+    }
+
+    $html = '<div class="' . esc_attr($grid_class) .
+        '" style="--hk-columns:' . esc_attr($spalten) . ';">';
+
+    foreach ($items as $item) {
+
+        $name_de    = $item['name_de'] ?? '';
+        $name_latin = $item['name_latin'] ?? '';
+
+        // Produktzuordnung für JavaScript-Vorschau
+        $has_product = in_array(
+            sanitize_title($name_de),
+            $used_wood_slugs,
+            true
+        );
+
+        $html .= '<div class="hk-wood-card" data-nurprodukt="' .
+            ($has_product ? '1' : '0') . '">';
+
+        // Bild nur bei entsprechender Einstellung
+        if ($bilder) {
+
+            $image_url = HOLZKATALOG_Storage::image_url(
+                $item['image_file'] ?? ''
+            );
+
+            if ($image_url) {
+
+                $image_class = 'hk-wood-image';
+
+                if ($round) {
+                    $image_class .= ' hk-wood-image-round';
+                }
+
+                if ($lupe) {
+                    $image_class .= ' hk-wood-zoom';
+                }
+
+                $html .= '<div class="hk-wood-image-wrapper">';
+
+                $html .= '<img
+                    class="' . esc_attr($image_class) . '"
+                    style="width:' . esc_attr($size) . 'px;"
+                    src="' . esc_url($image_url) . '"
+                    alt="' . esc_attr($name_de) . '"
+                    loading="lazy">';
+
+                $html .= '</div>';
+            }
+        }
+
+        // Deutscher Name
+        if ($show_ger && $name_de !== '') {
+            $html .= '<h4 style="padding:0;margin:0">'
+                . esc_html($name_de)
+                . '</h4>';
+        }
+
+        // Botanischer Name
+        if ($show_lat && $name_latin !== '') {
+            $html .= '<span>'
+                . esc_html($name_latin)
+                . '</span>';
+        }
+
+        // Beschreibung
+        if ($description && !empty($item['description'])) {
+            $html .= '<div class="hk-wood-description">'
+                . wp_kses_post($item['description'])
+                . '</div>';
+        }
+
+        $html .= '</div>';
+    }
+
+    $html .= '</div>';
+
+    return $html;
+}
+
 }
