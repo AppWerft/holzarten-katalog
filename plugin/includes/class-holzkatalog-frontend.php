@@ -219,8 +219,12 @@ public static function render_catalog($settings = [])
             true
         );
 
-        $html .= '<div class="hk-wood-card" data-nurprodukt="' .
-            ($has_product ? '1' : '0') . '">';
+        $html .= '<div 
+            class="hk-wood-card" 
+            data-nurprodukt="' . ($has_product ? '1' : '0') . '"
+            data-name-de="' . esc_attr($name_de) . '"
+            data-name-latin="' . esc_attr($name_latin) . '"
+        >';
 
         // Bild nur bei entsprechender Einstellung
         if ($bilder) {

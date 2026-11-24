@@ -204,20 +204,28 @@ jQuery(document).ready(function ($) {
 
 // catalogdarstellung dynamisch anpassen:
 
+
 document.addEventListener('DOMContentLoaded', function () {
 
     const columnsField = document.querySelector(
         '[name="hk_katalog_settings[spalten]"]'
     );
+
     const cardField = document.querySelector(
         '[name="hk_katalog_settings[card]"]'
     );
+
     const nurprodukteField = document.querySelector(
         '[name="hk_katalog_settings[nurprodukte]"]'
     );
 
+    const sortField = document.querySelector(
+        '[name="hk_katalog_settings[sortierung]"]'
+    );
+
+    const preview = document.querySelector('#hk-katalog-preview');
+
     function updatePreview() {
-        const preview = document.querySelector('#hk-katalog-preview');
 
         if (!preview) {
             console.error('preview not found');
@@ -248,12 +256,39 @@ document.addEventListener('DOMContentLoaded', function () {
             const isProduct = woodCard.dataset.nurprodukt === '1';
             woodCard.hidden = onlyProducts && !isProduct;
         });
+
+        // Livesortierung
+        const sortKey = sortField?.value === 'latin'
+            ? 'nameLatin'
+            : 'nameDe';
+
+        const cards = Array.from(
+            grid.querySelectorAll('.hk-wood-card')
+        );
+
+        cards.sort((a, b) => {
+            return (a.dataset[sortKey] || '').localeCompare(
+                b.dataset[sortKey] || '',
+                'de',
+                {
+                    sensitivity: 'base',
+                    numeric: true
+                }
+            );
+        });
+
+        cards.forEach(woodCard => {
+            grid.appendChild(woodCard);
+        });
     }
 
+    // Änderungen beobachten
     columnsField?.addEventListener('change', updatePreview);
     cardField?.addEventListener('change', updatePreview);
     nurprodukteField?.addEventListener('change', updatePreview);
+    sortField?.addEventListener('change', updatePreview);
 
+    // Initiale Darstellung
     updatePreview();
 });
 
