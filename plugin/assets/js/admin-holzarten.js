@@ -1,4 +1,5 @@
-jQuery(document).ready(function
+jQuery(document).ready(function ($) {
+    
     $('.hk-status-toggle').on('change', function () {
 
         const checkbox = $(this);
