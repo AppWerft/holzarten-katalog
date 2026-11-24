@@ -201,8 +201,6 @@ class HOLZKATALOG_Settings
         }
     }
 
-
-
     public static function render_holzarten()
     {
 ?>

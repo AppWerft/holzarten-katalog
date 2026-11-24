@@ -188,7 +188,7 @@ class HOLZKATALOG_Frontend
             $name_de = $item['name_de'] ?? '';
             $name_latin = $item['name_latin'] ?? '';
 
-            $html .= '<div class="hk-wood-card">';
+            $html .= '<div class="hk-wood-card" data-nurprodukt="' . ($has_product ? '1' : '0') . '">';
 
             // Bild nur bei entsprechender Einstellung
             if ($bilder) {
