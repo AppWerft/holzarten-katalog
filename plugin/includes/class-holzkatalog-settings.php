@@ -587,13 +587,14 @@ class HOLZKATALOG_Settings
 
                     <tr id="hk-map-apikey-wrapper" style="display:none">
                         <td scope="row" colspan="2">
-                            <span id="hk-map-apikey-keyname"></span>=
+    
                             <input
                                 type="text"
                                 readonly
+                                size="8"
                                 id="hk-map-apikey-key"
                                 name="hk_map_settings[apikey_key]"
-                                value="<?php echo esc_attr($settings['apikey_key'] ?? ''); ?>"
+                                value="<?php echo esc_attr($settings['apikey_keyname'] ?? ''); ?>"
                             >&nbsp;=&nbsp;
 
                             <input
