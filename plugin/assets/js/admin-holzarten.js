@@ -203,16 +203,20 @@ jQuery(document).ready(function ($) {
 });
 
 // catalogdarstellung dynamisch anpassen:
+
 document.addEventListener('DOMContentLoaded', function () {
 
-    const columnsField = document.querySelector('[name="hk_katalog_settings[spalten]"]');
-    const cardField = document.querySelector('[name="hk_katalog_settings[card]"]');
+    const columnsField = document.querySelector(
+        '[name="hk_katalog_settings[spalten]"]'
+    );
+    const cardField = document.querySelector(
+        '[name="hk_katalog_settings[card]"]'
+    );
+    const nurprodukteField = document.querySelector(
+        '[name="hk_katalog_settings[nurprodukte]"]'
+    );
 
     function updatePreview() {
-       
-        const columns = columnsField?.value;
-        const card = cardField?.checked ?? false;
-        console.log('updatePreview',columns)
         const preview = document.querySelector('#hk-katalog-preview');
 
         if (!preview) {
@@ -220,22 +224,38 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
+        const columns = columnsField?.value;
+        const card = cardField?.checked ?? false;
+        const onlyProducts = nurprodukteField?.checked ?? false;
+
         const grid = preview.querySelector('.hk-wood-grid');
 
-        if (grid) {
-            // Spalten
-            if (columns) {
-                grid.style.setProperty('--hk-columns', columns);
-            }
+        if (!grid) {
+            console.log('no grid');
+            return;
+        }
 
-            // Material Design ein-/ausschalten
-            grid.classList.toggle('hk-material-cards', card);
-        } else console.log('no grid')
+        // Spaltenzahl
+        if (columns) {
+            grid.style.setProperty('--hk-columns', columns);
+        }
+
+        // Material Design
+        grid.classList.toggle('hk-material-cards', card);
+
+        // Nur Holzarten mit WooCommerce-Produkt anzeigen
+        grid.querySelectorAll('.hk-wood-card').forEach(woodCard => {
+            const isProduct = woodCard.dataset.nurprodukt === '1';
+            woodCard.hidden = onlyProducts && !isProduct;
+        });
     }
 
     columnsField?.addEventListener('change', updatePreview);
     cardField?.addEventListener('change', updatePreview);
+    nurprodukteField?.addEventListener('change', updatePreview);
+
     updatePreview();
 });
+
 
 
