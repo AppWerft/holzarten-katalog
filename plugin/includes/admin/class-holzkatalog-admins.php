@@ -64,7 +64,7 @@ class HOLZKATALOG_Admins
 
         wp_enqueue_script(
             'holzkat-admin',
-            HOLZKATALOG_PLUGIN_URL . 'assets/js/admin-holzarten.js',
+            $file,
             ['jquery'],
             file_exists($file) ? filemtime($file) : HOLZKATALOG_VERSION,
             true
