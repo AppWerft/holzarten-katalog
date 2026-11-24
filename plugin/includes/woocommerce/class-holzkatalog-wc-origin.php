@@ -38,7 +38,7 @@
             );
            
             add_action(
-                'woocommerce_admin_process_product_object',
+                'woocommerce_admin_process_product_object', // Hook
                 [$this, 'limit_wood_attribute'],
                 20
             );
@@ -51,19 +51,14 @@
         public function limit_wood_attribute($product)
         {
             $attributes = $product->get_attributes();
-
             if (!isset($attributes['pa_holzart'])) {
                 return;
             }
-
             $attribute = $attributes['pa_holzart'];
-
             if (!$attribute->is_taxonomy()) {
                 return;
             }
-
             $options = $attribute->get_options();
-
             if (count($options) > 1) {
                 $attribute->set_options(array_slice($options, 0, 1));
                 $attributes['pa_holzart'] = $attribute;
@@ -129,11 +124,9 @@
         public function render_map()
         {
             global $product;
-
             if (!$product) {
                 return;
             }
-
             $product_id = $product->get_id();
 
             // Prüfen, ob das Attribut Geoposition zugeordnet ist.
@@ -345,21 +338,16 @@
                     $product->update_meta_data('_hk_origin_zoom', $zoom);
                 }
             }
-
             foreach ($coordinates as $key => $range) {
                 if (!isset($_POST[$key])) {
                     continue;
                 }
-
                 $value = sanitize_text_field(wp_unslash($_POST[$key]));
-
                 if ($value === '' || !is_numeric($value)) {
                     $product->delete_meta_data($key);
                     continue;
                 }
-
                 $value = (float) $value;
-
                 if ($value >= $range['min'] && $value <= $range['max']) {
                     $product->update_meta_data($key, $value);
                 }
