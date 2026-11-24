@@ -30,7 +30,7 @@ class HOLZKATALOG_Frontend
         );
 
         wp_enqueue_script(
-            'holzkat-admin',
+            HOLZKATALOG_CONSTANTS::HANDLE_HK_ADMIN,
             $jsfile,
             ['jquery'],
             file_exists($jsfile) ? filemtime($jsfile) : HOLZKATALOG_VERSION,
@@ -40,7 +40,7 @@ class HOLZKATALOG_Frontend
     public function enqueue_styles()
     {
         wp_enqueue_style(
-            admin-holzartenkatalog.js,
+            'holzkat-frontend-katalog',
             HOLZKATALOG_PLUGIN_URL . 'assets/css/frontend-katalog.css',
             [],
             HOLZKATALOG_VERSION

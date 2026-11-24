@@ -204,14 +204,14 @@
             }
 
             wp_enqueue_style(
-                'holzkat-admin',
+                HOLZKATALOG_CONSTANTS::HANDLE_HK_ADMIN,
                 HOLZKATALOG_PLUGIN_URL . 'assets/css/hk-admin.css',
                 [],
                 HOLZKATALOG_VERSION
             );
 
             wp_enqueue_script(
-                'holzkat-admin',
+                HOLZKATALOG_CONSTANTS::HANDLE_HK_ADMIN,
                 HOLZKATALOG_PLUGIN_URL . 'assets/js/hk-admin.js',
                 ['jquery', 'wc-enhanced-select'],
                 HOLZKATALOG_VERSION,

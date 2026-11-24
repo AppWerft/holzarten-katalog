@@ -55,7 +55,7 @@ class HOLZKATALOG_Admins
         $plugin_url = HOLZKATALOG_PLUGIN_URL;
         $css_file = $plugin_dir . 'assets/css/admin.css';
         wp_enqueue_style(
-            'holzkat-admin',
+            HOLZKATALOG_CONSTANTS::HANDLE_HK_ADMIN,
             $plugin_url . 'assets/css/admin.css',
             [],
             file_exists($css_file) ? filemtime($css_file) : '1.0.0'
@@ -63,14 +63,14 @@ class HOLZKATALOG_Admins
         $jsfile = $plugin_dir . 'assets/js/admin-holzartenkatalog.js';
         error_log($jsfile);
         wp_enqueue_script(
-            'holzkat-admin',
+            HOLZKATALOG_CONSTANTS::HANDLE_HK_ADMIN,
             $plugin_url .'assets/js/admin-holzartenkatalog.js',
             ['jquery'],
             file_exists($jsfile) ? filemtime($jsfile) : HOLZKATALOG_VERSION,
             true
         );
         wp_localize_script(
-            'holzkat-admin',
+            HOLZKATALOG_CONSTANTS::HANDLE_HK_ADMIN,
             'hkAdmin',
             [
                 'ajaxUrl' => admin_url('admin-ajax.php'),
