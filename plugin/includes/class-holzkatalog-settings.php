@@ -586,7 +586,7 @@ class HOLZKATALOG_Settings
                     </tr>
 
                     <tr id="hk-map-apikey-wrapper" style="display:none">
-                        <td scope="row" colspan="2">
+                        <th scope="row">Eingabe Schlüssel</th><td>
     
                             <input
                                 type="text"
