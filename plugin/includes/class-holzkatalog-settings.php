@@ -796,6 +796,24 @@ class HOLZKATALOG_Settings
 
 <?php
     }
+ private static function get_map_providers(): array
+    {
+        return [
+            'OpenStreetMap.Mapnik' => 'OpenStreetMap – Standard',
+            'OpenStreetMap.DE'     => 'OpenStreetMap – Deutsch',
+            'OpenStreetMap.HOT'    => 'OpenStreetMap – Humanitarian',
+            'OpenTopoMap'          => 'OpenTopoMap – Gelände',
+            'Esri.WorldTopoMap'    => 'Esri – Topografisch',
+            'Esri.WorldImagery'    => 'Esri – Satellit',
+            'Esri.WorldStreetMap'  => 'Esri – Straßenkarte',
+            'Stadia.AlidadeSmooth' => 'Stadia Alidade Smooth',
+            'Stadia.AlidadeSmoothDark' => 'Stadia Alidade SmoothDark',
+            'Stadia.StamenTonerDark' => 'Stadia Stamen TonerDark',
+            'Stadia.StamenWatercolor' => 'Stadia Stamen Watercolor',
+            'Stadia.StamenTerrain' => 'Stadia Stamen Terrain',
+            'Thunderforest.Landscape' => 'Thunderforest Landscape'
+        ];
+    }
 
 
 
