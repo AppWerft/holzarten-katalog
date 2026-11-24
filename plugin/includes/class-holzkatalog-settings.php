@@ -171,7 +171,8 @@ class HOLZKATALOG_Settings
             'Stadia.AlidadeSmoothDark' => 'Stadia Alidade SmoothDark',
             'Stadia.StamenTonerDark' => 'Stadia Stamen TonerDark',
             'Stadia.StamenWatercolor' => 'Stadia Stamen Watercolor',
-            'Stadia.StamenTerrain' => 'Stadia Stamen Terrain'
+            'Stadia.StamenTerrain' => 'Stadia Stamen Terrain',
+            'Thunderforest.Landscape' => 'Thunderforest Landscape'
         ];
     }
 

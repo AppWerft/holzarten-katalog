@@ -157,28 +157,28 @@ document.addEventListener('DOMContentLoaded', function () {
     radiusInput?.addEventListener('input', updatePreview);
     positionSelect?.addEventListener('change', updatePreview);
 
-    function providerRequiresApiKey(providerName) {
-        const providers = L.TileLayer.Provider.providers;
-        const provider = providers?.[providerName];
+    function updateApiKeyField(providerName) {
+        const key = providerRequiresApiKey(providerName);
+        const tr = document.getElementById('hk-map-apikey-wrapper');
+        const keyname = document.getElementById('hk-map-apikey-keyname');
 
-        if (!provider) {
-            return null;
+        if (tr) {
+            tr.style.display = key ? '' : 'none';
         }
 
-        const match = (provider.url || '').match(
-            /\{(key|apikey|apiKey|accessToken|subscriptionKey)\}/
-        );
-
-        if (!match) {
-            return null;
+        if (keyname) {
+            keyname.textContent = key?.key || '';
         }
+    }
 
-        const key = match[1];
+    providerSelect?.addEventListener('change', function () {
+        setTileProvider(this.value);
+        updateApiKeyField(this.value);
+    });
 
-        return {
-            key: key,
-            value: provider.options?.[key] ?? null
-        };
+    // Initialisieren
+    if (providerSelect) {
+        updateApiKeyField(providerSelect.value);
     }
 
     setTimeout(() => map.invalidateSize(), 100);
