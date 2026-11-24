@@ -14,7 +14,7 @@ class HOLZKATALOG_Settings
     {
         // Einstellungen Holzfundorte
         add_submenu_page(
-            'holzartenkatalog',
+            'holzarten-katalog',
             'Holzfundorte',
             'Holzfundorte',
             'manage_options',
@@ -100,7 +100,7 @@ class HOLZKATALOG_Settings
             );
         }
 
-        if ($hook === 'holzartenkatalog_page_hk_settings_katalog') {
+        if ($hook === 'holzarten-katalog_page_hk_settings_katalog') {
             wp_enqueue_script(
                 'holzkat-admin',
                 HOLZKATALOG_PLUGIN_URL . 'assets/js/holzkatalog-admin.js',
@@ -113,7 +113,7 @@ class HOLZKATALOG_Settings
 
 
         // Holzarten
-        if ($hook === 'holzartenkatalog_page_hk_settings_holzarten') {
+        if ($hook === 'holzarten-katalog_page_hk_settings_holzarten') {
 
             $js_file = HOLZKATALOG_PLUGIN_DIR . 'assets/js/admin-holzarten-settings.js';
             $css_file = HOLZKATALOG_PLUGIN_DIR . 'assets/css/admin-holzarten-settings.css';
@@ -134,7 +134,7 @@ class HOLZKATALOG_Settings
             );
         }
         // Holzfundorte-Einstellungen
-        if ($hook === 'holzartenkatalog_page_hk_settings_fundorte') {
+        if ($hook === 'holzarten-katalog_page_hk_settings_fundorte') {
 
             $js_file = HOLZKATALOG_PLUGIN_DIR . 'assets/js/admin-holzarten-geosettings.js';
 
