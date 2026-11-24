@@ -60,7 +60,7 @@ class HOLZKATALOG_Admins
             [],
             file_exists($css_file) ? filemtime($css_file) : '1.0.0'
         );
-        $jsfile = HOLZKATALOG_PLUGIN_DIR . 'assets/js/admin-holzarten.js';
+        $jsfile = HOLZKATALOG_PLUGIN_DIR . 'assets/js/admin-holzartenkatalog.js';
         wp_enqueue_script(
             'holzkat-admin',
             $jsfile,
@@ -78,7 +78,7 @@ class HOLZKATALOG_Admins
             ]
         );
     }
-    
+
     /**
      * Admin-Menü registrieren.
      */

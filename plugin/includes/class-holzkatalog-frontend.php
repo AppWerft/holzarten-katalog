@@ -20,7 +20,7 @@ class HOLZKATALOG_Frontend
 
     public function enqueue_frontend_assets()
     {
-        $jsfile = HOLZKATALOG_PLUGIN_DIR . 'assets/js/admin-holzarten.js';
+        $jsfile = HOLZKATALOG_PLUGIN_DIR . 'assets/js/admin-holzartenkatalog.js';
 
         wp_enqueue_style(
             'holzkat-frontend-katalog',

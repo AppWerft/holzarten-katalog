@@ -49,7 +49,7 @@ class HOLZKATALOG_Settings
 
     public static function enqueue_scripts($hook)
     {
-        error_log('HOLZKATALOG Hook: ' . $hook);
+        //error_log('HOLZKATALOG Hook: ' . $hook);
 
         // Holzlistendarstellung
         if ($hook === 'holzartenkatalog_page_hk_settings_katalog') {
@@ -58,7 +58,7 @@ class HOLZKATALOG_Settings
                 . 'assets/css/frontend-katalog.css';
 
             $js_file = HOLZKATALOG_PLUGIN_DIR
-                . 'assets/js/admin-holzarten.js';
+                . 'assets/js/admin-holzartenkatalog.js';
 
             wp_enqueue_style(
                 'holzkat-frontend-katalog',
@@ -71,7 +71,7 @@ class HOLZKATALOG_Settings
 
             wp_enqueue_script(
                 'holzkat-holzarten',
-                HOLZKATALOG_PLUGIN_URL . 'assets/js/admin-holzarten.js',
+                HOLZKATALOG_PLUGIN_URL . 'assets/js/admin-holzartenkatalog.js',
                 ['jquery'],
                 file_exists($js_file)
                     ? filemtime($js_file)
@@ -109,7 +109,7 @@ class HOLZKATALOG_Settings
 
             wp_enqueue_script(
                 'holzkat-holzarten',
-                HOLZKATALOG_PLUGIN_URL . 'assets/js/admin-holzarten.js',
+                HOLZKATALOG_PLUGIN_URL . 'assets/js/admin-holzartenkatalog.js',
                 ['jquery'],
                 file_exists($js_file)
                     ? filemtime($js_file)
