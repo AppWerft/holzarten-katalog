@@ -418,7 +418,6 @@ class HOLZKATALOG_Settings
 
     public static function render_katalog()
     {
-        error_log('HOLZKATALOG Hook: ' . $hook);
         $settings = wp_parse_args(
             get_option('hk_katalog_settings', []),
             [
