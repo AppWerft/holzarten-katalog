@@ -134,7 +134,7 @@ class HOLZKATALOG_Settings
         }
 
         // Holzarten
-        if ($hook === 'holzartenkatalog_page_hk_settings_holzarten'  || true) {
+        if ($hook === 'holzartenkatalog_page_hk_settings_holzarten') {
 
             $js_file = HOLZKATALOG_PLUGIN_DIR . 'assets/js/admin-holzarten-settings.js';
             $css_file = HOLZKATALOG_PLUGIN_DIR . 'assets/css/admin-holzarten-settings.css';
