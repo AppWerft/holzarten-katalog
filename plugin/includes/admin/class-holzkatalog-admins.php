@@ -60,13 +60,12 @@ class HOLZKATALOG_Admins
             [],
             file_exists($css_file) ? filemtime($css_file) : '1.0.0'
         );
-        $file = HOLZKATALOG_PLUGIN_DIR . 'assets/js/admin-holzarten.js';
-
+        $jsfile = HOLZKATALOG_PLUGIN_DIR . 'assets/js/admin-holzarten.js';
         wp_enqueue_script(
             'holzkat-admin',
-            $file,
+            $jsfile,
             ['jquery'],
-            file_exists($file) ? filemtime($file) : HOLZKATALOG_VERSION,
+            file_exists($jsfile) ? filemtime($jsfile) : HOLZKATALOG_VERSION,
             true
         );
         wp_localize_script(
@@ -79,6 +78,7 @@ class HOLZKATALOG_Admins
             ]
         );
     }
+    
     /**
      * Admin-Menü registrieren.
      */
