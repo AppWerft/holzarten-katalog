@@ -591,6 +591,7 @@ class HOLZKATALOG_Settings
                             <input
                                 type="text"
                                 readonly
+                                disabled
                                 size="8"
                                 id="hk-map-apikey-key"
                                 name="hk_map_settings[apikey_key]"

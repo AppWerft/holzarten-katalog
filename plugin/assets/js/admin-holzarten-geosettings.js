@@ -193,7 +193,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         if (keyname) {
-            keyname.textContent = key?.key || '';
+            keyname.value = key?.key || '';
         }
     }
 
