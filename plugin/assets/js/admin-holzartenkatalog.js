@@ -227,10 +227,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function updatePreview() {
 
-        if (!preview) {
-            console.error('preview not found');
-            return;
-        }
+        if (!preview) return;
+        
 
         const columns = columnsField?.value;
         const card = cardField?.checked ?? false;
