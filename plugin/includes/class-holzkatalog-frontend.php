@@ -40,7 +40,7 @@ class HOLZKATALOG_Frontend
     public function enqueue_styles()
     {
         wp_enqueue_style(
-            'holzkat-frontend-katalog',
+            admin-holzartenkatalog.js,
             HOLZKATALOG_PLUGIN_URL . 'assets/css/frontend-katalog.css',
             [],
             HOLZKATALOG_VERSION

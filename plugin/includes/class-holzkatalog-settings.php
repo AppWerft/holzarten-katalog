@@ -61,7 +61,7 @@ class HOLZKATALOG_Settings
                 . 'assets/js/admin-holzartenkatalog.js';
 
             wp_enqueue_style(
-                'holzkat-frontend-katalog',
+                admin-holzartenkatalog.js,
                 HOLZKATALOG_PLUGIN_URL . 'assets/css/frontend-katalog.css',
                 [],
                 file_exists($css_file)
