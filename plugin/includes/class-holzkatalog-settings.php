@@ -108,7 +108,7 @@ class HOLZKATALOG_Settings
                 HOLZKATALOG_VERSION,
                 true
             );
-            error_log(HOLZKATALOG_PLUGIN_URL . 'assets/js/holzkatalog-admin.js')
+            error_log(HOLZKATALOG_PLUGIN_URL . 'assets/js/holzkatalog-admin.js');
         }
 
         // Holzarten
