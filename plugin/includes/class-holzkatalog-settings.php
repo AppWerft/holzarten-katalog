@@ -113,7 +113,7 @@ class HOLZKATALOG_Settings
             true
         );
         // CSS
-        if ($hook === 'hk_page_hk_settings_katalog' || true) {
+        if ($hook === 'hk_page_hk_settings_katalog') {
             wp_enqueue_style(
                 'holzkat-frontend-katalog',
                 HOLZKATALOG_PLUGIN_URL . 'assets/css/frontend-katalog.css',
