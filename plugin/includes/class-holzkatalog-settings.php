@@ -59,16 +59,9 @@ class HOLZKATALOG_Settings
 
             $js_file = HOLZKATALOG_PLUGIN_DIR
                 . HOLZKATALOG_JS::ADMIN_HOLZARTENKATALOG;
-
-            wp_enqueue_style(
-                HOLZKATALOG_STYLE_HANDLES::FRONTEND_KATALOG,
-                HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_CSS::FRONTEND_KATALOG,
-                [],
-                file_exists($css_file)
-                    ? filemtime($css_file)
-                    : HOLZKATALOG_VERSION
-            );
-
+            error_log('JS URL: ' . HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_JS::ADMIN_HOLZARTENKATALOG);
+            error_log('JS FILE: ' . $js_file);
+            error_log('JS EXISTS: ' . (file_exists($js_file) ? 'YES' : 'NO'));
             wp_enqueue_script(
                 HOLZKATALOG_SCRIPT_HANDLES::HOLZCAT_HOLZARTEN,
                 HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_JS::ADMIN_HOLZARTENKATALOG,
@@ -77,6 +70,14 @@ class HOLZKATALOG_Settings
                     ? filemtime($js_file)
                     : HOLZKATALOG_VERSION,
                 true
+            );
+            wp_enqueue_style(
+                HOLZKATALOG_STYLE_HANDLES::FRONTEND_KATALOG,
+                HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_CSS::FRONTEND_KATALOG,
+                [],
+                file_exists($css_file)
+                    ? filemtime($css_file)
+                    : HOLZKATALOG_VERSION
             );
 
             wp_enqueue_script(
@@ -192,7 +193,7 @@ class HOLZKATALOG_Settings
 
             wp_enqueue_style(
                 HOLZKATALOG_STYLE_HANDLES::HOLZCAT_HOLZARTEN_GEOSETTINGS_CSS,
-                HOLZKATALOG_PLUGIN_URL .HOLZKATALOG_CSS::ADMIN_HOLZARTEN_SETTINGS,
+                HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_CSS::ADMIN_HOLZARTEN_SETTINGS,
                 [],
                 file_exists($css_file)
                     ? filemtime($css_file)
@@ -796,7 +797,7 @@ class HOLZKATALOG_Settings
 
 <?php
     }
- private static function get_map_providers(): array
+    private static function get_map_providers(): array
     {
         return [
             'OpenStreetMap.Mapnik' => 'OpenStreetMap – Standard',
