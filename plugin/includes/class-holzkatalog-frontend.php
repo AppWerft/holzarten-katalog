@@ -17,20 +17,20 @@ class HOLZKATALOG_Frontend
         add_action(HOLZKATALOG_HOOKS::WP_ADMIN_ENQUEUE_SCRIPTS, [$this, 'enqueue_frontend_assets']);
     }
 
-        public function enqueue_frontend_assets()
+    public function enqueue_frontend_assets()
     {
-        $jsfile = HOLZKATALOG_PLUGIN_DIR . HOLZKATALOG_JS::ADMIN_HOLZARTEN_KATALOG;
-
         wp_enqueue_style(
             HOLZKATALOG_STYLE_HANDLES::FRONTEND_KATALOG,
             HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_CSS::FRONTEND_KATALOG,
             [],
             HOLZKATALOG_VERSION
         );
-
+        $jsfile = HOLZKATALOG_PLUGIN_DIR . HOLZKATALOG_JS::ADMIN_HOLZARTEN_KATALOG;
+        $jsurl= HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_JS::ADMIN_HOLZARTEN_KATALOG;
+        error_log($jsurl);
         wp_enqueue_script(
             HOLZKATALOG_SCRIPT_HANDLES::ADMIN,
-            $jsfile,
+            $jsurl,
             ['jquery'],
             file_exists($jsfile) ? filemtime($jsfile) : HOLZKATALOG_VERSION,
             true

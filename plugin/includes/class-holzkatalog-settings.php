@@ -107,7 +107,7 @@ class HOLZKATALOG_Settings
                 true
             );
 
-           /* wp_enqueue_script(
+            wp_enqueue_script(
                 HOLZKATALOG_SCRIPT_HANDLES::HOLZCAT_HOLZARTEN,
                 HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_JS::ADMIN_HOLZARTEN_KATALOG,
                 [HOLZKATALOG_SCRIPT_HANDLES::JQUERY],
@@ -116,7 +116,7 @@ class HOLZKATALOG_Settings
                     : HOLZKATALOG_VERSION,
                 true
             );
-*/
+
             wp_enqueue_style(
                 HOLZKATALOG_STYLE_HANDLES::HOLZCAT_HOLZARTEN_SETTING,
                 HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_CSS::ADMIN_HOLZARTEN_SETTINGS,
