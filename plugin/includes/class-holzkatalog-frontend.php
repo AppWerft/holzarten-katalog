@@ -17,9 +17,9 @@ class HOLZKATALOG_Frontend
         add_action(HOLZKATALOG_HOOKS::WP_ADMIN_ENQUEUE_SCRIPTS, [$this, 'enqueue_frontend_assets']);
     }
 
-    public function enqueue_frontend_assets()
+        public function enqueue_frontend_assets()
     {
-        $jsfile = HOLZKATALOG_PLUGIN_DIR . HOLZKATALOG_JS::ADMIN_HOLZARTENKATALOG;
+        $jsfile = HOLZKATALOG_PLUGIN_DIR . HOLZKATALOG_JS::ADMIN_HOLZARTEN_KATALOG;
 
         wp_enqueue_style(
             HOLZKATALOG_STYLE_HANDLES::FRONTEND_KATALOG,
