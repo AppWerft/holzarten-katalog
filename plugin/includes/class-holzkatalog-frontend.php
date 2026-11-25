@@ -20,6 +20,11 @@ class HOLZKATALOG_Frontend
     public function enqueue_frontend_assets()
     {
         $jsfile = HOLZKATALOG_PLUGIN_DIR . HOLZKATALOG_JS::ADMIN_HOLZARTENKATALOG;
+
+        error_log('DIR: ' . HOLZKATALOG_PLUGIN_DIR);
+        error_log('URL: ' . HOLZKATALOG_PLUGIN_URL);
+        error_log('JS: ' . $jsfile);
+        error_log('JS exists: ' . (file_exists($jsfile) ? 'YES' : 'NO'));
         wp_enqueue_style(
             HOLZKATALOG_STYLE_HANDLES::FRONTEND_KATALOG,
             HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_CSS::FRONTEND_KATALOG,
