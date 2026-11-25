@@ -59,7 +59,7 @@ final class HOLZKATALOG_OPTIONS
     public const GER = 'ger';
     public const NAME = 'name';
 }
-final class HOLZKATALOG_ASSETS
+final class HOLZKATALOG_JS_CSS
 {
     public const ADMIN_HOLZARTENKATALOG_JS = 'assets/js/admin-holzartenkatalog.js';
     public const FRONTEND_KATALOG_CSS = 'assets/css/frontend-katalog.css';
