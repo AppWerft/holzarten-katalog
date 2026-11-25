@@ -85,7 +85,7 @@ final class HOLZKATALOG_JS_CSS
     public const HK_ADMIN_CSS = 'assets/css/hk-admin.css';
     public const HK_ADMIN_JS = 'assets/css/hk-admin.js';
 
-    public const ADMIN_HOLZARTENKATALOG_JS = 'assets/js/admin-holzartenkatalog.js';
+    public const ADMIN_HOLZARTENKATALOG_JS = 'assets/js/admin-holzarten-katalog.js';
     public const FRONTEND_KATALOG_CSS = 'assets/css/frontend-katalog.css';
     public const HOLZKATLOG_ADMIN_JS = 'assets/js/holzkatalog-admin.js';
     public const LEAFLET_CSS = 'assets/vendor/leaflet/leaflet.css';
