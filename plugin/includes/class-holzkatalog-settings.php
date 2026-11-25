@@ -59,9 +59,6 @@ class HOLZKATALOG_Settings
 
             $js_file = HOLZKATALOG_PLUGIN_DIR
                 . HOLZKATALOG_JS::ADMIN_HOLZARTENKATALOG;
-            error_log('JS URL2: ' . HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_JS::ADMIN_HOLZARTENKATALOG);
-            error_log('JS FILE: ' . $js_file);
-            error_log('JS EXISTS: ' . (file_exists($js_file) ? 'YES' : 'NO'));
             wp_enqueue_script(
                 HOLZKATALOG_SCRIPT_HANDLES::HOLZCAT_HOLZARTEN,
                 HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_JS::ADMIN_HOLZARTENKATALOG,

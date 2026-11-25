@@ -55,22 +55,22 @@ class HOLZKATALOG_Admins
         $plugin_url = HOLZKATALOG_PLUGIN_URL;
         $css_file = $plugin_dir . 'assets/css/admin.css';
         wp_enqueue_style(
-            HOLZKATALOG_HANDLES::ADMIN,
+            HOLZKATALOG_STYLE_HANDLES::ADMIN,
             $plugin_url . 'assets/css/admin.css',
             [],
             file_exists($css_file) ? filemtime($css_file) : '1.0.0'
         );
         $jsfile = $plugin_dir . 'assets/js/admin-holzartenkatalog.js';
-        error_log($jsfile);
+        
         wp_enqueue_script(
-            HOLZKATALOG_HANDLES::ADMIN,
+            HOLZKATALOG_SCRIPT_HANDLES::ADMIN,
             $plugin_url .'assets/js/admin-holzartenkatalog.js',
             ['jquery'],
             file_exists($jsfile) ? filemtime($jsfile) : HOLZKATALOG_VERSION,
             true
         );
         wp_localize_script(
-            HOLZKATALOG_HANDLES::ADMIN,
+            HOLZKATALOG_SCRIPT_HANDLES::ADMIN,
             'hkAdmin',
             [
                 'ajaxUrl' => admin_url('admin-ajax.php'),

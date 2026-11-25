@@ -132,7 +132,7 @@
             // Prüfen, ob das Attribut Geoposition zugeordnet ist.
             if (!has_term('', 'pa_geoposition', $product_id)) {
                 return;
-            }
+            }  
 
             // Koordinaten auslesen.
             $lat = get_post_meta($product_id, '_hk_origin_lat', true);
@@ -152,7 +152,7 @@
                 ? absint($zoom_terms[0])
                 : 6;
             wp_enqueue_script(
-                HOLZKATALOG_HANDLES::GEOPOSITION_MAP,
+                HOLZKATALOG_SCRIPT_HANDLES::GEOPOSITION_MAP,
                 plugins_url('assets/js/geopositions-map.js', HOLZKATALOG_PLUGIN_FILE),
                 ['jquery'],
                 '1.0.0',
