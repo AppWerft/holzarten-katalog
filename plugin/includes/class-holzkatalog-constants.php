@@ -38,7 +38,7 @@ final class HOLZKATALOG_NONCES
 
 final class HOLZKATALOG_STYLE_HANDLES
 {
-    public const LEAFLET_CSS = 'holzcat-leaflet_css';
+    public const LEAFLET = 'holzcat-leaflet_css';
     public const LEAFLET = 'holzkat-leaflet-css';
     public const HOLZCAT_HOLZARTEN_GEOSETTINGS_CSS = 'holzkat-holzarten-geosettings_css';
     public const HOLZCAT_HOLZARTEN_SETTING = 'holzkat-holzarten-settings-css';
@@ -91,9 +91,9 @@ final class HOLZKATALOG_OPTIONS
 
 final class HOLZKATALOG_JS
 {
-    public const ADMIN_HOLZARTEN_SETTINGS_JS = 'assets/js/admin-holzarten-settings.js';
-    public const ADMIN_HOLZARTENKATALOG_JS = 'assets/js/admin-holzarten-katalog.js';
-    public const ADMIN_HOLZARTEN_GEOSETTINGS_JS = 'assets/js/admin-holzarten-geosettings.js'; 
+    public const ADMIN_HOLZARTEN_SETTINGS = 'assets/js/admin-holzarten-settings.js';
+    public const ADMIN_HOLZARTENKATALOG = 'assets/js/admin-holzarten-katalog.js';
+    public const ADMIN_HOLZARTEN_GEOSETTINGS = 'assets/js/admin-holzarten-geosettings.js'; 
     public const HK_ADMIN_JS = 'assets/css/hk-admin.js';
     public const HOLZKATLOG_ADMIN_JS = 'assets/js/holzkatalog-admin.js';
     public const LEAFLET_JS = 'assets/vendor/leaflet/leaflet.js';
@@ -107,9 +107,9 @@ final class HOLZKATALOG_JS
 final class HOLZKATALOG_CSS
 {
     public const FRONTEND_HOLZARTEN = 'assets/css/frontend-holzarten.css';
-    public const HK_ADMIN_CSS = 'assets/css/hk-admin.css';
-    public const ADMIN_HOLZARTEN_GEOSETTINGS_CSS = 'assets/js/admin-holzarten-geosettings.css';
-    public const ADMIN_HOLZARTEN_SETTINGS_CSS = 'assets/css/admin-holzarten-settings.css';
-    public const LEAFLET_CSS = 'assets/vendor/leaflet/leaflet.css';
-    public const FRONTEND_KATALOG_CSS = 'assets/css/frontend-katalog.css';
+    public const HK_ADMIN = 'assets/css/hk-admin.css';
+    public const ADMIN_HOLZARTEN_GEOSETTINGS = 'assets/js/admin-holzarten-geosettings.css';
+    public const ADMIN_HOLZARTEN_SETTINGS = 'assets/css/admin-holzarten-settings.css';
+    public const LEAFLET = 'assets/vendor/leaflet/leaflet.css';
+    public const FRONTEND_KATALOG = 'assets/css/frontend-katalog.css';
 }

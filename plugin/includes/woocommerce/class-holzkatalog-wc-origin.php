@@ -198,7 +198,7 @@
 
             wp_enqueue_style(
                 HOLZKATALOG_STYLE_HANDLES::ADMIN,
-                HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_CSS::HK_ADMIN_CSS,
+                HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_CSS::HK_ADMIN,
                 [],
                 HOLZKATALOG_VERSION
             );
