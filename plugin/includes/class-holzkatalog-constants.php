@@ -80,7 +80,7 @@ final class HOLZKATALOG_OPTIONS
 final class HOLZKATALOG_JS_CSS
 {
     public const ADMIN_HOLZARTEN_SETTINGS_JS = 'assets/js/admin-holzarten-settings.js';
-    public const ADMIN_HOLZARTEN_SETTINGS_CSS = 'assets/js/admin-holzarten-settings.css';
+    public const ADMIN_HOLZARTEN_SETTINGS_CSS = 'assets/css/admin-holzarten-settings.css';
 
     public const HK_ADMIN_CSS = 'assets/css/hk-admin.css';
     public const HK_ADMIN_JS = 'assets/css/hk-admin.js';
