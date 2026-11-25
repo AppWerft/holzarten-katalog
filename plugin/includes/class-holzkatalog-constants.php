@@ -45,6 +45,7 @@ final class HOLZKATALOG_STYLE_HANDLES
     public const HOLZCAT_FRONTEND_HOLZARTEN = 'holzkat-frontend-holzarten';
     public const ADMIN = 'holzkat-admin-css';
 }
+
 final class HOLZKATALOG_SCRIPT_HANDLES
 {
     public const HOLZCAT_LEAFLET_PROVIDERS = 'holzkat-leaflet-providers';
@@ -93,6 +94,7 @@ final class HOLZKATALOG_JS
     public const ADMIN_HOLZARTEN_SETTINGS = 'assets/js/admin-holzarten-settings.js';
     public const ADMIN_HOLZARTENKATALOG = 'assets/js/admin-holzarten-katalog.js';
     public const ADMIN_HOLZARTEN_GEOSETTINGS = 'assets/js/admin-holzarten-geosettings.js'; 
+    
     public const HK_ADMIN_JS = 'assets/css/hk-admin.js';
     public const HOLZKATLOG_ADMIN_JS = 'assets/js/holzkatalog-admin.js';
     public const LEAFLET_JS = 'assets/vendor/leaflet/leaflet.js';
