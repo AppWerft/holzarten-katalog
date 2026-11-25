@@ -140,7 +140,7 @@ class HOLZKATALOG_Settings
 
             // Leaflet JavaScript
             wp_enqueue_script(
-                HOLZKATALOG_SCRIPT_HANDLES::LEAFLET_JS,
+                HOLZKATALOG_SCRIPT_HANDLES::LEAFLET,
                 HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_JS_CSS::LEAFLET_JS,
                 [],
                 '1.9.4',
