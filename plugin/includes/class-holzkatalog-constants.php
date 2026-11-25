@@ -7,8 +7,7 @@ if (!defined('ABSPATH')) {
 final class HOLZKATALOG_CONSTANTS
 {  
    
-    public const HANDLE_HK_FRONTEND_KATALOG = 'holzkat-frontend-katalog'; 
-    public const HANDLE_HK_ADMIN = 'holzkat-admin';  
+    
     public const HOLZARTEN_GEOPOSITION_MAP ='holzkat-geopositions-map';
 }
 final class HOLZKATALOG_HOOKS
@@ -18,6 +17,8 @@ final class HOLZKATALOG_HOOKS
 }
 final class HOLZKATALOG_HANDLES
 {
+    public const FRONTEND_KATALOG = 'holzkat-frontend-katalog'; 
+    public const ADMIN = 'holzkat-admin';  
 }
 
 final class HOLZKATALOG_OPTIONS

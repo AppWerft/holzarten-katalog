@@ -159,7 +159,7 @@
                 true
             );
             $settings = wp_parse_args(
-                get_option(HOLZKATALOG_CONSTANTS::MAP_SETTINGS, []),
+                get_option(HOLZKATALOG_OPTIONS::MAP_SETTINGS, []),
                 [
                     'height' => 200,
                     'width' => 100,
@@ -197,14 +197,14 @@
             }
 
             wp_enqueue_style(
-                HOLZKATALOG_CONSTANTS::HANDLE_HK_ADMIN,
+                HOLZKATALOG_HANDLES::ADMIN,
                 HOLZKATALOG_PLUGIN_URL . 'assets/css/hk-admin.css',
                 [],
                 HOLZKATALOG_VERSION
             );
 
             wp_enqueue_script(
-                HOLZKATALOG_CONSTANTS::HANDLE_HK_ADMIN,
+                HOLZKATALOG_HANDLES::ADMIN,
                 HOLZKATALOG_PLUGIN_URL . 'assets/js/hk-admin.js',
                 ['jquery', 'wc-enhanced-select'],
                 HOLZKATALOG_VERSION,
