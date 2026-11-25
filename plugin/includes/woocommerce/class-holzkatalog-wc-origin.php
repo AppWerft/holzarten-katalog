@@ -152,7 +152,7 @@
                 ? absint($zoom_terms[0])
                 : 6;
             wp_enqueue_script(
-                HOLZKATALOG_CONSTANTS::HOLZARTEN_GEOPOSITION_MAP,
+                HOLZKATALOG_HANDLES::GEOPOSITION_MAP,
                 plugins_url('assets/js/geopositions-map.js', HOLZKATALOG_PLUGIN_FILE),
                 ['jquery'],
                 '1.0.0',
@@ -163,11 +163,11 @@
                 [
                     'height' => 200,
                     'width' => 100,
-                    'position' => 'center',
+                    HOLZKATALOG_OPTIONS::POSITION => 'center',
                 ]
             );
 
-            $margin = match ($settings['position']) {
+            $margin = match ($settings[HOLZKATALOG_OPTIONS::POSITION]) {
                 'left'  => '0 auto 0 0',
                 'right' => '0 0 0 auto',
                 default => '0 auto',
@@ -198,14 +198,14 @@
 
             wp_enqueue_style(
                 HOLZKATALOG_HANDLES::ADMIN,
-                HOLZKATALOG_PLUGIN_URL . 'assets/css/hk-admin.css',
+                HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_JS_CSS::HK_ADMIN_CSS,
                 [],
                 HOLZKATALOG_VERSION
             );
 
             wp_enqueue_script(
                 HOLZKATALOG_HANDLES::ADMIN,
-                HOLZKATALOG_PLUGIN_URL . 'assets/js/hk-admin.js',
+                HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_JS_CSS::HK_ADMIN_JS,
                 ['jquery', 'wc-enhanced-select'],
                 HOLZKATALOG_VERSION,
                 true
@@ -218,22 +218,22 @@
             $settings = wp_parse_args(
                 get_option('hk_map_settings', []),
                 [
-                    'pingcolor'     => '#4285F4',
-                    'tile_provider' => 'OpenStreetMap.Mapnik',
-                    'height'        => 200,
-                    'width'         => '100%',
-                    'radius'        => 0,
-                    'position'      => 'left'
+                    HOLZKATALOG_OPTIONS::PINGCOLOR    => '#4285F4',
+                    HOLZKATALOG_OPTIONS::TILE_PROVIDER => 'OpenStreetMap.Mapnik',
+                    HOLZKATALOG_OPTIONS::HEIGHT  => 200,
+                    HOLZKATALOG_OPTIONS::WIDTH  => '100%',
+                    HOLZKATALOG_OPTIONS::RADIUS  => 0,
+                    HOLZKATALOG_OPTIONS::POSITION => 'left'
                 ]
             );
             $options = [
-                'pingcolor'     => $settings['pingcolor'],
-                'tileprovider'  => $settings['tile_provider'],
-                'zoom'          => (int) $zoom,
-                'height'        => (int) $settings['height'],
-                'width'         => $settings['width'],
-                'radius'        => (int) $settings['radius'],
-                'position'      => $settings['position']
+                HOLZKATALOG_OPTIONS::PINGCOLOR    => $settings[HOLZKATALOG_OPTIONS::PINGCOLOR],
+                HOLZKATALOG_OPTIONS::TILE_PROVIDER => $settings[HOLZKATALOG_OPTIONS::TILE_PROVIDER],
+                HOLZKATALOG_OPTIONS::ZOOM  => (int) HOLZKATALOG_OPTIONS::ZOOM,
+                HOLZKATALOG_OPTIONS::HEIGHT  => (int) $settings[HOLZKATALOG_OPTIONS::HEIGHT],
+                HOLZKATALOG_OPTIONS::WIDTH  => $settings[HOLZKATALOG_OPTIONS::WIDTH],
+                HOLZKATALOG_OPTIONS::RADIUS => (int) $settings[HOLZKATALOG_OPTIONS::RADIUS],
+                HOLZKATALOG_OPTIONS::POSITION  => $settings[HOLZKATALOG_OPTIONS::POSITION]
             ];
 
             return '

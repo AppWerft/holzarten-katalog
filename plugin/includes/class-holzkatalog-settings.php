@@ -52,17 +52,17 @@ class HOLZKATALOG_Settings
         //error_log('HOLZKATALOG Hook: ' . $hook);
 
         // Holzlistendarstellung
-        if ($hook === 'holzartenkatalog_page_hk_settings_katalog') {
+        if ($hook === HOLZKATALOG_HOOKS::HOLZARTENKATALOG_PAGE_HK_SETTING_KATALOG) {
 
             $css_file = HOLZKATALOG_PLUGIN_DIR
-                . 'assets/css/frontend-katalog.css';
+                . HOLZKATALOG_JS_CSS::FRONTEND_KATALOG_CSS;
 
             $js_file = HOLZKATALOG_PLUGIN_DIR
-                . 'assets/js/admin-holzartenkatalog.js';
+                . HOLZKATALOG_JS_CSS::ADMIN_HOLZARTENKATALOG_JS;
 
             wp_enqueue_style(
-                'holzkat-frontend-katalog',
-                HOLZKATALOG_PLUGIN_URL . 'assets/css/frontend-katalog.css',
+                HOLZKATALOG_HANDLES::FRONTEND_KATALOG,
+                HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_JS_CSS::FRONTEND_KATALOG_CSS,
                 [],
                 file_exists($css_file)
                     ? filemtime($css_file)
@@ -70,9 +70,9 @@ class HOLZKATALOG_Settings
             );
 
             wp_enqueue_script(
-                'holzkat-holzarten',
-                HOLZKATALOG_PLUGIN_URL . 'assets/js/admin-holzartenkatalog.js',
-                ['jquery'],
+                HOLZKATALOG_HANDLES::HOLZCAT_HOLZARTEN,
+                HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_JS_CSS::ADMIN_HOLZARTENKATALOG_JS,
+                [HOLZKATALOG_HANDLES::JQUERY],
                 file_exists($js_file)
                     ? filemtime($js_file)
                     : HOLZKATALOG_VERSION,
@@ -80,27 +80,27 @@ class HOLZKATALOG_Settings
             );
 
             wp_enqueue_script(
-                'holzkat-admin',
-                HOLZKATALOG_PLUGIN_URL . 'assets/js/holzkatalog-admin.js',
-                ['jquery'],
+                HOLZKATALOG_HANDLES::ADMIN,
+                HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_JS_CSS::HOLZKATLOG_ADMIN_JS,
+                [HOLZKATALOG_HANDLES::JQUERY],
                 HOLZKATALOG_VERSION,
                 true
             );
         }
 
         // Holzarteneinstellungen
-        if ($hook === 'holzartenkatalog_page_hk_settings_holzarten') {
+        if ($hook === HOLZKATALOG_HOOKS::HOLZARTENKATALOG_PAGE_HK_SETTINGS_HOLZARTEN) {
 
             $js_file = HOLZKATALOG_PLUGIN_DIR
-                . 'assets/js/admin-holzarten-settings.js';
+                . HOLZKATALOG_JS_CSS::ADMIN_HOLZARTEN_SETTINGS_JS;
 
             $css_file = HOLZKATALOG_PLUGIN_DIR
-                . 'assets/css/admin-holzarten-settings.css';
+                . HOLZKATALOG_JS_CSS::ADMIN_HOLZARTEN_SETTINGS_CSS;
 
             wp_enqueue_script(
-                'holzkat-holzarten-settings',
-                HOLZKATALOG_PLUGIN_URL . 'assets/js/admin-holzarten-settings.js',
-                ['jquery'],
+                HOLZKATALOG_HANDLES::HOLZCAT_HOLZARTEN_SETTING,
+                HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_JS_CSS::ADMIN_HOLZARTEN_SETTINGS_JS,
+                [HOLZKATALOG_HANDLES::JQUERY],
                 file_exists($js_file)
                     ? filemtime($js_file)
                     : HOLZKATALOG_VERSION,
@@ -108,9 +108,9 @@ class HOLZKATALOG_Settings
             );
 
             wp_enqueue_script(
-                'holzkat-holzarten',
-                HOLZKATALOG_PLUGIN_URL . 'assets/js/admin-holzartenkatalog.js',
-                ['jquery'],
+                HOLZKATALOG_HANDLES::HOLZCAT_HOLZARTEN,
+                HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_JS_CSS::ADMIN_HOLZARTENKATALOG_JS,
+                [HOLZKATALOG_HANDLES::JQUERY],
                 file_exists($js_file)
                     ? filemtime($js_file)
                     : HOLZKATALOG_VERSION,
@@ -119,7 +119,7 @@ class HOLZKATALOG_Settings
 
             wp_enqueue_style(
                 'holzkat-holzarten-settings',
-                HOLZKATALOG_PLUGIN_URL . 'assets/css/admin-holzarten-settings.css',
+                HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_JS_CSS::ADMIN_HOLZARTEN_SETTINGS_CSS,
                 [],
                 file_exists($css_file)
                     ? filemtime($css_file)
@@ -128,20 +128,20 @@ class HOLZKATALOG_Settings
         }
 
         // Holzfundorteinstellungen
-        if ($hook === 'holzartenkatalog_page_hk_settings_fundorte') {
+        if ($hook === HOLZKATALOG_HOOKS::HOLZARTENKATALOG_PAGE_HK_SETTINGS_FUNDORTE) {
 
             // Leaflet CSS
             wp_enqueue_style(
-                'leaflet',
-                HOLZKATALOG_PLUGIN_URL . 'assets/vendor/leaflet/leaflet.css',
+                HOLZKATALOG_HANDLES::LEAFLET_CSS,
+                HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_JS_CSS::LEAFLET_CSS,
                 [],
                 '1.9.4'
             );
 
             // Leaflet JavaScript
             wp_enqueue_script(
-                'holzkat-leaflet',
-                HOLZKATALOG_PLUGIN_URL . 'assets/vendor/leaflet/leaflet.js',
+                HOLZKATALOG_HANDLES::LEAFLET_JS,
+                HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_JS_CSS::LEAFLET_JS,
                 [],
                 '1.9.4',
                 true
@@ -149,8 +149,8 @@ class HOLZKATALOG_Settings
 
             // D3 v5
             wp_enqueue_script(
-                'holzkat-d3',
-                HOLZKATALOG_PLUGIN_URL . 'assets/vendor/d3/d3v5.js',
+                HOLZKATALOG_HANDLES::HOLZCAT_D3,
+                HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_JS_CSS::D3V5,
                 [],
                 HOLZKATALOG_VERSION,
                 true
@@ -158,29 +158,29 @@ class HOLZKATALOG_Settings
 
             // PingLayer
             wp_enqueue_script(
-                'holzkat-ping-layer',
-                HOLZKATALOG_PLUGIN_URL . 'assets/vendor/leaflet/leaflet-d3.js',
-                ['holzkat-leaflet', 'holzkat-d3'],
+                HOLZKATALOG_HANDLES::HOLZCAT_PINGLAYER,
+                HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_JS_CSS::PINGLAYER,
+                [HOLZKATALOG_HANDLES::LEAFLET_JS, HOLZKATALOG_HANDLES::HOLZCAT_D3],
                 HOLZKATALOG_VERSION,
                 true
             );
 
             // Tile Provider
             wp_enqueue_script(
-                'holzkat-leaflet-providers',
-                HOLZKATALOG_PLUGIN_URL . 'assets/vendor/leaflet/leaflet-providers.js',
-                ['holzkat-leaflet'],
+                HOLZKATALOG_HANDLES::HOLZCAT_LEAFLET_PROVIDERS,
+                HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_JS_CSS::LEAFLET_PROVIDERS,
+                [HOLZKATALOG_HANDLES::LEAFLET_JS],
                 HOLZKATALOG_VERSION,
                 true
             );
 
             $js_file = HOLZKATALOG_PLUGIN_DIR
-                . 'assets/js/admin-holzarten-geosettings.js';
+                . HOLZKATALOG_JS_CSS::ADMIN_HOLZARTEN_GEOSETTINGS_JS;
 
             wp_enqueue_script(
-                'holzkat-holzarten-geosettings',
-                HOLZKATALOG_PLUGIN_URL . 'assets/js/admin-holzarten-geosettings.js',
-                ['holzkat-leaflet', 'holzkat-leaflet-providers'],
+                HOLZKATALOG_HANDLES::HOLZCAT_HOLZARTEN_GEOSETTINGS_JS,
+                HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_JS_CSS::ADMIN_HOLZARTEN_GEOSETTINGS_JS,
+                [HOLZKATALOG_HANDLES::LEAFLET_JS, HOLZKATALOG_HANDLES::HOLZCAT_LEAFLET_PROVIDERS],
                 file_exists($js_file)
                     ? filemtime($js_file)
                     : HOLZKATALOG_VERSION,
@@ -188,11 +188,11 @@ class HOLZKATALOG_Settings
             );
 
             $css_file = HOLZKATALOG_PLUGIN_DIR
-                . 'assets/css/admin-holzarten-geosettings.css';
+                . HOLZKATALOG_JS_CSS::ADMIN_HOLZARTEN_SETTINGS_CSS;
 
             wp_enqueue_style(
-                'holzkat-holzarten-geosettings',
-                HOLZKATALOG_PLUGIN_URL . 'assets/css/admin-holzarten-geosettings.css',
+                HOLZKATALOG_HANDLES::HOLZCAT_HOLZARTEN_GEOSETTINGS_CSS,
+                HOLZKATALOG_PLUGIN_URL .HOLZKATALOG_JS_CSS::ADMIN_HOLZARTEN_SETTINGS_CSS,
                 [],
                 file_exists($css_file)
                     ? filemtime($css_file)
@@ -426,14 +426,14 @@ class HOLZKATALOG_Settings
 
         register_setting(
             'hk_holzarten_settings_group',
-            'hk_holzarten_settings',
+            HOLZKATALOG_OPTIONS::HOLZARTEN_SETTINGS,
             [
                 'sanitize_callback' => [self::class, 'sanitize_holzarten']
             ]
         );
         register_setting(
             'hk_katalog_settings_group',
-            'hk_katalog_settings',
+            HOLZKATALOG_OPTIONS::KATALOG_SETTINGS,
             [
                 'sanitize_callback' => [self::class, 'sanitize_katalog']
             ]
@@ -556,7 +556,7 @@ class HOLZKATALOG_Settings
                 'height'        => 200,
                 'width'         => 100,
                 'radius'        => 0,
-                'position'      => 'center',
+                HOLZKATALOG_OPTIONS::POSITION => 'center',
                 'priority'      => 35,
                 'tile_provider' => 'OpenStreetMap.Mapnik',
                 'pingcolor'     => '#4285F4',
