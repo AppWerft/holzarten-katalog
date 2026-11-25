@@ -325,9 +325,9 @@ class HOLZKATALOG_Settings
                     'size'  => 120,
                     'round' => 0,
                 ]);
-                $size = absint($settings['size']);
-                $round = !empty($settings['round']);
-                $lupe = !empty($settings['lupe']);
+                $size = absint($settings[HOLZKATALOG_OPTIONS::SIZE]);
+                $round = !empty($settings[HOLZKATALOG_OPTIONS::ROUND]);
+                $lupe = !empty($settings[HOLZKATALOG_OPTIONS::LUPE]);
                 submit_button('Einstellungen speichern'); ?>
 
                 <div class="hk-preview-wrapper">
@@ -358,15 +358,15 @@ class HOLZKATALOG_Settings
     {
         return [
             'sortierung' => in_array(
-                $input['sortierung'] ?? '',
+                $input[HOLZKATALOG_OPTIONS::SORTIERUNG] ?? '',
                 ['name', 'latin'],
                 true
-            ) ? $input['sortierung'] : 'name',
+            ) ? $input[HOLZKATALOG_OPTIONS::SORTIERUNG] : 'name',
 
-            'bilder' => !empty($input['bilder']) ? 1 : 0,
-            'card' => !empty($input['card']) ? 1 : 0,
-            'nurprodukte' => !empty($input['nurprodukte']) ? 1 : 0,
-            'spalten' => max(1, min(6, absint($input['spalten'] ?? 3))),
+            'bilder' => !empty($input[HOLZKATALOG_OPTIONS::BILDER]) ? 1 : 0,
+            'card' => !empty($input[HOLZKATALOG_OPTIONS::CARD]) ? 1 : 0,
+            'nurprodukte' => !empty($input[HOLZKATALOG_OPTIONS::NURPRODUKTE]) ? 1 : 0,
+            'spalten' => max(1, min(6, absint($input[HOLZKATALOG_OPTIONS::SPALTEN] ?? 3))),
         ];
     }
 
@@ -402,14 +402,14 @@ class HOLZKATALOG_Settings
         return [
             'size' => max(
                 10,
-                min(500, absint($input['size'] ?? 100))
+                min(500, absint($input[HOLZKATALOG_OPTIONS::SIZE] ?? 100))
             ),
 
-            'round' => !empty($input['round']) ? 1 : 0,
-            'lupe' => !empty($input['lupe']) ? 1 : 0,
-            'description' => !empty($input['description']) ? 1 : 0,
-            'lat' => !empty($input['lat']) ? 1 : 0,
-            'ger' => !empty($input['ger']) ? 1 : 0
+            'round' => !empty($input[HOLZKATALOG_OPTIONS::ROUND]) ? 1 : 0,
+            'lupe' => !empty($input[HOLZKATALOG_OPTIONS::LUPE]) ? 1 : 0,
+            'description' => !empty($input[HOLZKATALOG_OPTIONS::DESCRIPTION]) ? 1 : 0,
+            'lat' => !empty($input[HOLZKATALOG_OPTIONS::LAT]) ? 1 : 0,
+            'ger' => !empty($input[HOLZKATALOG_OPTIONS::GER]) ? 1 : 0
 
         ];
     }
@@ -464,11 +464,11 @@ class HOLZKATALOG_Settings
                         <td>
                             <select name="hk_katalog_settings[sortierung]">
                                 <option value="name"
-                                    <?php selected($settings['sortierung'], 'name'); ?>>
+                                    <?php selected($settings[HOLZKATALOG_OPTIONS::SORTIERUNG], 'name'); ?>>
                                     Deutscher Name
                                 </option>
                                 <option value="latin"
-                                    <?php selected($settings['sortierung'], 'latin'); ?>>
+                                    <?php selected($settings[HOLZKATALOG_OPTIONS::SORTIERUNG], 'latin'); ?>>
                                     Botanischer Name
                                 </option>
                             </select>
@@ -482,7 +482,7 @@ class HOLZKATALOG_Settings
                                 type="checkbox"
                                 name="hk_katalog_settings[bilder]"
                                 value=1
-                                <?php checked($settings['bilder'], 1); ?>>
+                                <?php checked($settings[HOLZKATALOG_OPTIONS::BILDER], 1); ?>>
                         </td>
                     </tr>
                     <tr>
@@ -492,7 +492,7 @@ class HOLZKATALOG_Settings
                                 type="checkbox"
                                 name="hk_katalog_settings[nurprodukte]"
                                 value=1
-                                <?php checked($settings['nurprodukte'], 1); ?>>
+                                <?php checked($settings[HOLZKATALOG_OPTIONS::NURPRODUKTE], 1); ?>>
                         </td>
                     </tr>
 
@@ -503,7 +503,7 @@ class HOLZKATALOG_Settings
                                 <?php for ($i = 1; $i <= 6; $i++) : ?>
                                     <option
                                         value="<?php echo absint($i); ?>"
-                                        <?php selected($settings['spalten'], $i); ?>>
+                                        <?php selected($settings[HOLZKATALOG_OPTIONS::SPALTEN], $i); ?>>
                                         <?php echo absint($i); ?>
                                     </option>
                                 <?php endfor; ?>
@@ -517,7 +517,7 @@ class HOLZKATALOG_Settings
                                 type="checkbox"
                                 name="hk_katalog_settings[card]"
                                 value="1"
-                                <?php checked($settings['card'] ?? 0, 1); ?>>
+                                <?php checked($settings[HOLZKATALOG_OPTIONS::CARD] ?? 0, 1); ?>>
 
                         </td>
                     </tr>
@@ -564,7 +564,7 @@ class HOLZKATALOG_Settings
         );
 
         $providers = self::get_map_providers();
-        $selected  = $settings['tile_provider'];
+        $selected  = $settings[HOLZKATALOG_OPTIONS::TILE_PROVIDER];
     ?>
 
         <div class="wrap">
@@ -616,20 +616,20 @@ class HOLZKATALOG_Settings
                                 type="hidden"
                                 name="hk_map_settings[apikey_key]"
                                 id="hk-map-apikey-key-form"
-                                value="<?php echo esc_attr($settings['apikey_key'] ?? ''); ?>">
+                                value="<?php echo esc_attr($settings[HOLZKATALOG_OPTIONS::APIKEY_KEY] ?? ''); ?>">
                             <input
                                 type="text"
                                 readonly
                                 disabled
                                 size="6"
                                 id="hk-map-apikey-key"
-                                value="<?php echo esc_attr($settings['apikey_key'] ?? ''); ?>">&nbsp;=&nbsp;
+                                value="<?php echo esc_attr($settings[HOLZKATALOG_OPTIONS::APIKEY_KEY] ?? ''); ?>">&nbsp;=&nbsp;
                             <input
                                 size="20"
                                 type="text"
                                 id="hk-map-apikey-value"
                                 name="hk_map_settings[apikey]"
-                                value="<?php echo esc_attr($settings['apikey'] ?? ''); ?>">
+                                value="<?php echo esc_attr($settings[HOLZKATALOG_OPTIONS::APIKEY] ?? ''); ?>">
                         </td>
                     </tr>
 
@@ -645,7 +645,7 @@ class HOLZKATALOG_Settings
                                 type="range"
                                 id="hk-map-height"
                                 name="hk_map_settings[height]"
-                                value="<?php echo esc_attr($settings['height']); ?>"
+                                value="<?php echo esc_attr($settings[HOLZKATALOG_OPTIONS::HEIGHT]); ?>"
                                 min="80"
                                 max="400"
                                 step="10">
@@ -666,7 +666,7 @@ class HOLZKATALOG_Settings
                                 type="range"
                                 id="hk-map-width"
                                 name="hk_map_settings[width]"
-                                value="<?php echo esc_attr($settings['width']); ?>"
+                                value="<?php echo esc_attr($settings[HOLZKATALOG_OPTIONS::WIDTH]); ?>"
                                 min="20"
                                 max="100"
                                 step="5">
@@ -687,7 +687,7 @@ class HOLZKATALOG_Settings
                                 type="range"
                                 id="hk-map-radius"
                                 name="hk_map_settings[radius]"
-                                value="<?php echo esc_attr($settings['radius']); ?>"
+                                value="<?php echo esc_attr($settings[HOLZKATALOG_OPTIONS::RADIUS]); ?>"
                                 min="0"
                                 max="50"
                                 step="1">
@@ -710,19 +710,19 @@ class HOLZKATALOG_Settings
                                 style="width: 12em;">
                                 <option
                                     value="left"
-                                    <?php selected($settings['position'], 'left'); ?>>
+                                    <?php selected($settings[HOLZKATALOG_OPTIONS::POSITION], 'left'); ?>>
                                     Links
                                 </option>
 
                                 <option
                                     value="center"
-                                    <?php selected($settings['position'], 'center'); ?>>
+                                    <?php selected($settings[HOLZKATALOG_OPTIONS::POSITION], 'center'); ?>>
                                     Mittig
                                 </option>
 
                                 <option
                                     value="right"
-                                    <?php selected($settings['position'], 'right'); ?>>
+                                    <?php selected($settings[HOLZKATALOG_OPTIONS::POSITION], 'right'); ?>>
                                     Rechts
                                 </option>
                             </select>
@@ -740,7 +740,7 @@ class HOLZKATALOG_Settings
                                 type="number"
                                 id="hk-map-priority"
                                 name="hk_map_settings[priority]"
-                                value="<?php echo esc_attr($settings['priority']); ?>"
+                                value="<?php echo esc_attr($settings[HOLZKATALOG_OPTIONS::PRIORITY]); ?>"
                                 min="1"
                                 max="100">
                             <p class="description">
@@ -761,7 +761,7 @@ class HOLZKATALOG_Settings
                                 type="color"
                                 id="hk-map-pingcolor"
                                 name="hk_map_settings[pingcolor]"
-                                value="<?php echo esc_attr($settings['pingcolor']); ?>">
+                                value="<?php echo esc_attr($settings[HOLZKATALOG_OPTIONS::PINGCOLOR]); ?>">
                             <p class="description">
                                 Farbe des Markierungseffekts auf der Karte.
                             </p>
@@ -824,7 +824,7 @@ class HOLZKATALOG_Settings
         $providers = self::get_map_providers();
 
         $provider = sanitize_text_field(
-            $input['tile_provider'] ?? ''
+            $input[HOLZKATALOG_OPTIONS::TILE_PROVIDER] ?? ''
         );
 
         if (!array_key_exists($provider, $providers)) {
@@ -841,7 +841,7 @@ class HOLZKATALOG_Settings
         ];
 
         $apikey_key = sanitize_text_field(
-            $input['apikey_key'] ?? ''
+            $input[HOLZKATALOG_OPTIONS::APIKEY_KEY] ?? ''
         );
 
         $apikey_key = in_array(
@@ -852,7 +852,7 @@ class HOLZKATALOG_Settings
 
         // API-Key
         $apikey = sanitize_text_field(
-            trim($input['apikey'] ?? '')
+            trim($input[HOLZKATALOG_OPTIONS::APIKEY] ?? '')
         );
 
         if (!$apikey_key) {
@@ -860,25 +860,25 @@ class HOLZKATALOG_Settings
         }
 
         return [
-            'height' => max(100, min(800, absint($input['height'] ?? 200))),
-            'width' => max(20, min(100, absint($input['width'] ?? 100))),
-            'radius' => max(0, min(50, absint($input['radius'] ?? 0))),
+            HOLZKATALOG_OPTIONS::HEIGHT => max(100, min(800, absint($input[HOLZKATALOG_OPTIONS::HEIGHT] ?? 200))),
+            HOLZKATALOG_OPTIONS::WIDTH => max(20, min(100, absint($input[HOLZKATALOG_OPTIONS::WIDTH] ?? 100))),
+            HOLZKATALOG_OPTIONS::RADIUS => max(0, min(50, absint($input[HOLZKATALOG_OPTIONS::RADIUS] ?? 0))),
 
-            'position' => in_array(
-                $input['position'] ?? '',
+            HOLZKATALOG_OPTIONS::POSITION => in_array(
+                $input[HOLZKATALOG_OPTIONS::POSITION] ?? '',
                 ['left', 'center', 'right'],
                 true
-            ) ? $input['position'] : 'center',
+            ) ? $input[HOLZKATALOG_OPTIONS::POSITION] : 'center',
 
-            'priority' => max(1, min(100, absint($input['priority'] ?? 35))),
+            HOLZKATALOG_OPTIONS::PRIORITY => max(1, min(100, absint($input[HOLZKATALOG_OPTIONS::PRIORITY] ?? 35))),
 
-            'pingcolor' => sanitize_hex_color(
-                $input['pingcolor'] ?? '#4285F4'
+            HOLZKATALOG_OPTIONS::PINGCOLOR => sanitize_hex_color(
+                $input[HOLZKATALOG_OPTIONS::PINGCOLOR] ?? '#4285F4'
             ) ?: '#4285F4',
 
-            'tile_provider' => $provider,
-            'apikey_key' => $apikey_key,
-            'apikey' => $apikey,
+            HOLZKATALOG_OPTIONS::TILE_PROVIDER => $provider,
+            HOLZKATALOG_OPTIONS::APIKEY_KEY => $apikey_key,
+            HOLZKATALOG_OPTIONS::APIKEY => $apikey,
         ];
     }
 }

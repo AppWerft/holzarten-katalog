@@ -53,7 +53,7 @@ class HOLZKATALOG_Admins
 
         $plugin_dir = HOLZKATALOG_PLUGIN_DIR;
         $plugin_url = HOLZKATALOG_PLUGIN_URL;
-        
+            
         $css_file = HOLZKATALOG_PLUGIN_DIR . HOLZKATALOG_CSS::ADMIN;
         wp_enqueue_style(
             HOLZKATALOG_STYLE_HANDLES::ADMIN,

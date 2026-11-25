@@ -38,12 +38,12 @@
             );
            
             add_action(
-                HOLZKATALOG_HOOKS::WC_'woocommerce_admin_process_product_object', // Hook
+                HOLZKATALOG_HOOKS::WC_ADMIN_PROCESS_PRODUCT_OBJECT, // Hook
                 [$this, 'limit_wood_attribute'],
                 20
             );
             add_action(
-                'admin_enqueue_scripts',
+                HOLZKATALOG_HOOKS::WP_ADMIN_ENQUEUE_SCRIPTS,
                 [$this, 'enqueue_admin_scripts']
             );
         }
