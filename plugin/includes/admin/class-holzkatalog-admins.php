@@ -19,16 +19,16 @@ class HOLZKATALOG_Admins
     private function __construct()
     {
         add_action(
-            'admin_menu',
+            HOLZKATALOG_HOOKS::WP_ADMIN_MENU,
             [$this, 'register_admin_menu']
         );
 
         add_action(
-            'admin_enqueue_scripts',
+            HOLZKATALOG_HOOKS::WP_ADMIN_ENQUEUE_SCRIPTS,
             [$this, 'enqueue_admin_assets']
         );
         add_action(
-            'wp_ajax_hk_save_only_active',
+            HOLZKATALOG_HOOKS::WC_AJAX_SAVE_ONLYACTIVE,
             [$this, 'save_only_active']
         );
     }
@@ -42,8 +42,8 @@ class HOLZKATALOG_Admins
             !in_array(
                 $hook,
                 [
-                    'toplevel_page_holzarten-katalog',
-                    'holzartenkatalog_page_holzarten-import-export',
+                    HOLZKATALOG_HOOKSUFFIXES::TOPLEVEL_PAGE_HOLZARTENKATALOG,
+                    HOLZKATALOG_HOOKSUFFIXES::HOLZARTENKATALOG_PAGE_IMPORTEXPORT,
                 ],
                 true
             )
@@ -55,7 +55,7 @@ class HOLZKATALOG_Admins
         $plugin_url = HOLZKATALOG_PLUGIN_URL;
         $css_file = $plugin_dir . 'assets/css/admin.css';
         wp_enqueue_style(
-            HOLZKATALOG_CONSTANTS::HANDLE_HK_ADMIN,
+            HOLZKATALOG_HANDLES::ADMIN,
             $plugin_url . 'assets/css/admin.css',
             [],
             file_exists($css_file) ? filemtime($css_file) : '1.0.0'
@@ -63,19 +63,19 @@ class HOLZKATALOG_Admins
         $jsfile = $plugin_dir . 'assets/js/admin-holzartenkatalog.js';
         error_log($jsfile);
         wp_enqueue_script(
-            HOLZKATALOG_CONSTANTS::HANDLE_HK_ADMIN,
+            HOLZKATALOG_HANDLES::ADMIN,
             $plugin_url .'assets/js/admin-holzartenkatalog.js',
             ['jquery'],
             file_exists($jsfile) ? filemtime($jsfile) : HOLZKATALOG_VERSION,
             true
         );
         wp_localize_script(
-            HOLZKATALOG_CONSTANTS::HANDLE_HK_ADMIN,
+            HOLZKATALOG_HANDLES::ADMIN,
             'hkAdmin',
             [
                 'ajaxUrl' => admin_url('admin-ajax.php'),
-                'nonce'   => wp_create_nonce('holzkatalog_toggle_status'),
-                'catalogNonce' => wp_create_nonce('hk_catalog_nonce'),
+                'nonce'   => wp_create_nonce(HOLZKATALOG_NONCES::TOGGLE_STATUS),
+                'catalogNonce' => wp_create_nonce(HOLZKATALOG_NONCES::CAT_NONCE),
             ]
         );
     }
