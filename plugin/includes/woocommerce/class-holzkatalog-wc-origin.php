@@ -18,11 +18,11 @@
         private function __construct()
         {
             add_action(
-                'woocommerce_product_options_general_product_data',
+                HOLZKATALOG_HOOKS::WC_PRODUCT_DATA,
                 [$this, 'render_fields']
             );
             add_action(
-                'woocommerce_admin_process_product_object',
+                HOLZKATALOG_HOOKS::WC_PRODUCT_OBJECT,
                 [$this, 'save_fields']
             );
 
