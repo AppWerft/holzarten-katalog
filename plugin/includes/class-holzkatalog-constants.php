@@ -113,4 +113,5 @@ final class HOLZKATALOG_CSS
     public const ADMIN_HOLZARTEN_SETTINGS = 'assets/css/admin-holzarten-settings.css';
     public const LEAFLET = 'assets/vendor/leaflet/leaflet.css';
     public const FRONTEND_KATALOG = 'assets/css/frontend-katalog.css';
+    public const ADMIN ='assets/css/admin.css';
 }
