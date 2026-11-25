@@ -56,15 +56,16 @@ class HOLZKATALOG_Settings
 
             $css_file = HOLZKATALOG_PLUGIN_DIR
                 . HOLZKATALOG_CSS::FRONTEND_KATALOG;
-
-            $js_file = HOLZKATALOG_PLUGIN_DIR . HOLZKATALOG_JS::ADMIN_HOLZARTEN_KATALOG;
-            $js_url = HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_JS::ADMIN_HOLZARTEN_KATALOG;
+            
+            $js_file = HOLZKATALOG_JS::ADMIN_HOLZARTEN_KATALOG;
+            $js_path = HOLZKATALOG_PLUGIN_DIR . $js_file;
+            $js_url = HOLZKATALOG_PLUGIN_URL . $js_file;
             wp_enqueue_script(
                 HOLZKATALOG_SCRIPT_HANDLES::HOLZCAT_HOLZARTEN,
                 $js_url,
                 [HOLZKATALOG_SCRIPT_HANDLES::JQUERY],
-                file_exists($js_file)
-                    ? filemtime($js_file)
+                file_exists($js_path)
+                    ? filemtime($js_path)
                     : HOLZKATALOG_VERSION,
                 true
             );
