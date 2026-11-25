@@ -80,7 +80,7 @@ class HOLZKATALOG_Settings
             );
 
             wp_enqueue_script(
-                HOLZKATALOG_CONSTANTS::HANDLE_HK_ADMIN,
+                'holzkat-admin',
                 HOLZKATALOG_PLUGIN_URL . 'assets/js/holzkatalog-admin.js',
                 ['jquery'],
                 HOLZKATALOG_VERSION,
@@ -418,7 +418,7 @@ class HOLZKATALOG_Settings
     {
         register_setting(
             'hk_settings_group',
-            HOLZKATALOG_CONSTANTS::MAP_SETTINGS,
+            HOLZKATALOG_OPTIONS::MAP_SETTINGS,
             [
                 'sanitize_callback' => [self::class, 'sanitize_map']
             ]
@@ -551,7 +551,7 @@ class HOLZKATALOG_Settings
     public static function render_fundorte()
     {
         $settings = wp_parse_args(
-            get_option(HOLZKATALOG_CONSTANTS::MAP_SETTINGS, []),
+            get_option(HOLZKATALOG_OPTIONS::MAP_SETTINGS, []),
             [
                 'height'        => 200,
                 'width'         => 100,
