@@ -197,15 +197,15 @@
             }
 
             wp_enqueue_style(
-                HOLZKATALOG_HANDLES::ADMIN,
-                HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_JS_CSS::HK_ADMIN_CSS,
+                HOLZKATALOG_STYLE_HANDLES::ADMIN,
+                HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_CSS::HK_ADMIN_CSS,
                 [],
                 HOLZKATALOG_VERSION
             );
 
             wp_enqueue_script(
-                HOLZKATALOG_HANDLES::ADMIN,
-                HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_JS_CSS::HK_ADMIN_JS,
+                HOLZKATALOG_SCRIPT_HANDLES::ADMIN,
+                HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_JS::HK_ADMIN_JS,
                 ['jquery', 'wc-enhanced-select'],
                 HOLZKATALOG_VERSION,
                 true
