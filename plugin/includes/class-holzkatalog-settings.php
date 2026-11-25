@@ -49,8 +49,6 @@ class HOLZKATALOG_Settings
 
     public static function enqueue_scripts($hook)
     {
-        //error_log('HOLZKATALOG Hook: ' . $hook);
-
         // Holzlistendarstellung
         if ($hook === HOLZKATALOG_HOOKS::HOLZARTENKATALOG_PAGE_HK_SETTING_KATALOG) {
 
@@ -69,7 +67,6 @@ class HOLZKATALOG_Settings
                     : HOLZKATALOG_VERSION,
                 true
             );
-            error_log($js_url);
             wp_enqueue_style(
                 HOLZKATALOG_STYLE_HANDLES::FRONTEND_KATALOG,
                 HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_CSS::FRONTEND_KATALOG,
