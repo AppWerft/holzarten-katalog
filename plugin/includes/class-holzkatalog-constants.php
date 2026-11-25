@@ -99,5 +99,4 @@ final class HOLZKATALOG_JS_CSS
     public const D3V5 = 'assets/vendor/d3/d3v5.js';
     // noch nicht genutzt:
     public const FRONTEND_KATALOG_JS = 'assets/js/frontend-katalog.js';
-       
-    
+}   
