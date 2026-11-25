@@ -34,22 +34,34 @@ final class HOLZKATALOG_NONCES
     public const CAT_NONCE = 'hk_catalog_nonce';
 }
 
-final class HOLZKATALOG_HANDLES
+final class HOLZKATALOG_STYLE_HANDLES
 {
-    public const JQUERY = 'jquery';
     public const LEAFLET_CSS = 'holzcat-leaflet_css';
-    public const LEAFLET_JS = 'holzcat-leaflet_js';
-    public const FRONTEND_KATALOG = 'holzkat-frontend-katalog';
-    public const ADMIN = 'holzkat-admin';
-    public const HOLZCAT_HOLZARTEN = 'holzkat-holzarten';
-    public const HOLZCAT_HOLZARTEN_SETTING = 'holzkat-holzarten-settings';
-    public const GEOPOSITION_MAP = 'holzkat-geopositions-map';
-    public const HOLZCAT_D3 = 'holzkat-d3';
-    public const HOLZCAT_PINGLAYER = 'holzkat-ping-layer';
+    public const LEAFLET = 'holzkat-leaflet-css';
+    public const HOLZCAT_HOLZARTEN_GEOSETTINGS_CSS = 'holzkat-holzarten-geosettings_css';
+    public const HOLZCAT_HOLZARTEN_SETTING = 'holzkat-holzarten-settings-css';
+    public const FRONTEND_KATALOG = 'holzkat-frontend-katalog-css';
+    public const HOLZCAT_FRONTEND_HOLZARTEN = 'holzkat-frontend-holzarten';
+}
+
+final class HOLZKATALOG_SCRIPT_HANDLES
+{
     public const HOLZCAT_LEAFLET_PROVIDERS = 'holzkat-leaflet-providers';
     public const HOLZCAT_HOLZARTEN_GEOSETTINGS_JS = 'holzkat-holzarten-geosettings_js';
-    public const HOLZCAT_HOLZARTEN_GEOSETTINGS_CSS = 'holzkat-holzarten-geosettings_css';
+    public const HOLZCAT_PINGLAYER = 'holzkat-ping-layer';
+    public const HOLZCAT_HOLZARTEN_SETTING = 'holzkat-holzarten-settings';
+    public const LEAFLET = 'holzcat-leaflet_js';
+    public const HOLZCAT_D3 = 'holzkat-d3';
+    public const HOLZCAT_HOLZARTEN = 'holzkat-holzarten';
+    public const JQUERY = 'jquery';
+    public const ADMIN = 'holzkat-admin';
+    public const HOLZARTEN = 'holzkat-holzarten';
+    public const HOLZARTEN_SETTINGS = 'holzkat-holzarten-settings';
+    public const GEOPOSITION_MAP = 'holzkat-geopositions-map';
+    public const HOLZCAT_ORIGIN_PICKER = 'holzkat-origin-picker';
 }
+
+
 
 final class HOLZKATALOG_OPTIONS
 {
@@ -94,9 +106,9 @@ final class HOLZKATALOG_JS_CSS
     public const LEAFLET_PROVIDERS = 'assets/vendor/leaflet/leaflet-providers.js';
     public const ADMIN_HOLZARTEN_GEOSETTINGS_JS = 'assets/js/admin-holzarten-geosettings.js';
     public const ADMIN_HOLZARTEN_GEOSETTINGS_CSS = 'assets/js/admin-holzarten-geosettings.css';
-
-
+    public const FRONTEND_HOLZARTEN = 'assets/css/frontend-holzarten.css';
+    public const HK_ORIGIN_PICKER_JS = 'assets/js/hk-origin-picker.js';
     public const D3V5 = 'assets/vendor/d3/d3v5.js';
     // noch nicht genutzt:
     public const FRONTEND_KATALOG_JS = 'assets/js/frontend-katalog.js';
-}   
+}

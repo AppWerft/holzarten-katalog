@@ -22,14 +22,14 @@ class HOLZKATALOG_Frontend
         $jsfile = HOLZKATALOG_PLUGIN_DIR . HOLZKATALOG_JS_CSS::ADMIN_HOLZARTENKATALOG_JS;
 
         wp_enqueue_style(
-            HOLZKATALOG_HANDLES::FRONTEND_KATALOG,
+            HOLZKATALOG_STYLE_HANDLES::FRONTEND_KATALOG,
             HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_JS_CSS::FRONTEND_KATALOG_CSS,
             [],
             HOLZKATALOG_VERSION
         );
 
         wp_enqueue_script(
-            HOLZKATALOG_HANDLES::ADMIN,
+            HOLZKATALOG_SCRIPT_HANDLES::ADMIN,
             $jsfile,
             ['jquery'],
             file_exists($jsfile) ? filemtime($jsfile) : HOLZKATALOG_VERSION,
