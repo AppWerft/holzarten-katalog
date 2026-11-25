@@ -44,7 +44,8 @@ final class HOLZKATALOG_STYLE_HANDLES
     public const HOLZCAT_HOLZARTEN_SETTING = 'holzkat-holzarten-settings-css';
     public const FRONTEND_KATALOG = 'holzkat-frontend-katalog-css';
     public const HOLZCAT_FRONTEND_HOLZARTEN = 'holzkat-frontend-holzarten';
-}
+ public const ADMIN = 'holzkat-admin-css';
+    }
 
 final class HOLZKATALOG_SCRIPT_HANDLES
 {
@@ -56,7 +57,7 @@ final class HOLZKATALOG_SCRIPT_HANDLES
     public const HOLZCAT_D3 = 'holzkat-d3';
     public const HOLZCAT_HOLZARTEN = 'holzkat-holzarten';
     public const JQUERY = 'jquery';
-    public const ADMIN = 'holzkat-admin';
+    public const ADMIN = 'holzkat-admin-js';
     public const HOLZARTEN = 'holzkat-holzarten';
     public const HOLZARTEN_SETTINGS = 'holzkat-holzarten-settings';
     public const GEOPOSITION_MAP = 'holzkat-geopositions-map';
@@ -91,7 +92,7 @@ final class HOLZKATALOG_OPTIONS
     public const TILE_PROVIDER = 'tile_provider';
 }
 
-final class HOLZKATALOG_JS_CSS
+final class HOLZKATALOG_JS
 {
     public const ADMIN_HOLZARTEN_SETTINGS_JS = 'assets/js/admin-holzarten-settings.js';
     public const ADMIN_HOLZARTENKATALOG_JS = 'assets/js/admin-holzarten-katalog.js';
@@ -99,20 +100,23 @@ final class HOLZKATALOG_JS_CSS
     public const HK_ADMIN_JS = 'assets/css/hk-admin.js';
 
     public const HOLZKATLOG_ADMIN_JS = 'assets/js/holzkatalog-admin.js';
-    
+
     public const LEAFLET_JS = 'assets/vendor/leaflet/leaflet.js';
     public const PINGLAYER = 'assets/vendor/leaflet/leaflet-d3.js';
     public const LEAFLET_PROVIDERS = 'assets/vendor/leaflet/leaflet-providers.js';
     public const ADMIN_HOLZARTEN_GEOSETTINGS_JS = 'assets/js/admin-holzarten-geosettings.js';
-    public const FRONTEND_HOLZARTEN = 'assets/css/frontend-holzarten.css';
     public const HK_ORIGIN_PICKER_JS = 'assets/js/hk-origin-picker.js';
     public const D3V5 = 'assets/vendor/d3/d3v5.js';
     // noch nicht genutzt:
     public const FRONTEND_KATALOG_JS = 'assets/js/frontend-katalog.js';
-    
+}
+
+final class HOLZKATALOG_CSS
+{
+    public const FRONTEND_HOLZARTEN = 'assets/css/frontend-holzarten.css';
+    public const HK_ADMIN_CSS = 'assets/css/hk-admin.css';
     public const ADMIN_HOLZARTEN_GEOSETTINGS_CSS = 'assets/js/admin-holzarten-geosettings.css';
     public const ADMIN_HOLZARTEN_SETTINGS_CSS = 'assets/css/admin-holzarten-settings.css';
-    public const HK_ADMIN_CSS = 'assets/css/hk-admin.css';
-    public const FRONTEND_KATALOG_CSS = 'assets/css/frontend-katalog.css';
     public const LEAFLET_CSS = 'assets/vendor/leaflet/leaflet.css';
+    public const FRONTEND_KATALOG_CSS = 'assets/css/frontend-katalog.css';
 }
