@@ -39,7 +39,6 @@ final class HOLZKATALOG_NONCES
 final class HOLZKATALOG_STYLE_HANDLES
 {
     public const LEAFLET = 'holzcat-leaflet_css';
-    public const LEAFLET = 'holzkat-leaflet-css';
     public const HOLZCAT_HOLZARTEN_GEOSETTINGS_CSS = 'holzkat-holzarten-geosettings_css';
     public const HOLZCAT_HOLZARTEN_SETTING = 'holzkat-holzarten-settings-css';
     public const FRONTEND_KATALOG = 'holzkat-frontend-katalog-css';
