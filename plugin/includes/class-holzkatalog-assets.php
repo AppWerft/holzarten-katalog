@@ -24,7 +24,7 @@ class HOLZKATALOG_Assets
     {
         // Leaflet CSS
         wp_enqueue_style(
-            'holzkat-leaflet',
+            HOLZKATALOG_SCRIPT_HANDLES::LEAFLET,
             HOLZKATALOG_PLUGIN_URL . 'assets/vendor/leaflet/leaflet.css',
             [],
             '1.9.4'
@@ -64,8 +64,8 @@ class HOLZKATALOG_Assets
     public static function enqueue_admin($hook)
     { // Katalog-CSS für die Admin-Vorschau
         wp_enqueue_style(
-            'holzkat-frontend-holzarten',
-            HOLZKATALOG_PLUGIN_URL . 'assets/css/frontend-holzarten.css',
+            HOLZKATALOG_STYLE_HANDLES::HOLZCAT_FRONTEND_HOLZARTEN,
+            HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_JS_CSS::FRONTEND_HOLZARTEN,
             [],
             HOLZKATALOG_VERSION
         );
@@ -83,9 +83,9 @@ class HOLZKATALOG_Assets
         self::enqueue_leaflet();
 
         wp_enqueue_script(
-            'holzkat-origin-picker',
-            HOLZKATALOG_PLUGIN_URL . 'assets/js/hk-origin-picker.js',
-            ['holzkat-leaflet', 'holzkat-ping-layer'],
+            HOLZKATALOG_SCRIPT_HANDLES::HOLZCAT_ORIGIN_PICKER,
+            HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_JS_CSS::HK_ORIGIN_PICKER_JS,
+            [HOLZKATALOG_HOOKS::LEAFLET, HOLZKATALOG_SCRIPT_HANDLES::HOLZCAT_PINGLAYER],
             HOLZKATALOG_VERSION,
             true
         );
