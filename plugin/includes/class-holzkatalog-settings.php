@@ -14,12 +14,12 @@ class HOLZKATALOG_Settings
     {
         // Einstellungen Holzfundorte
         add_submenu_page(
-            'holzarten-katalog',
-            'Holzfundorte',
-            'Holzfundorte',
-            'manage_options',
-            'hk_settings_fundorte',
-            [self::class, 'render_fundorte']
+            'holzarten-katalog',             // Slug der übergeordneten Admin-Menüseite, unter der das Untermenü erscheint.
+            'Holzfundorte',                   // Seitentitel: Wird im Browser bzw. als Titel der Admin-Seite verwendet.
+            'Holzfundorte',                   // Menütext: Bezeichnung des Untermenüpunkts in der WordPress-Administration.
+            'manage_options',                 // Erforderliche Berechtigung: Nur Benutzer mit dieser Fähigkeit dürfen die Seite aufrufen (standardmäßig Administratoren).
+            'hk_settings_fundorte',           // Eindeutiger Slug der Untermenüseite, über den WordPress sie intern identifiziert.
+            [self::class, 'render_fundorte']  // Callback: Statische Methode render_fundorte() dieser Klasse, die den Seiteninhalt ausgibt.
         );
 
         // Einstellungen Holzarten
@@ -54,7 +54,7 @@ class HOLZKATALOG_Settings
 
             $css_file = HOLZKATALOG_PLUGIN_DIR
                 . HOLZKATALOG_CSS::FRONTEND_KATALOG;
-            
+
             $js_file = HOLZKATALOG_JS::ADMIN_HOLZARTEN_KATALOG;
             $js_path = HOLZKATALOG_PLUGIN_DIR . $js_file;
             $js_url = HOLZKATALOG_PLUGIN_URL . $js_file;
@@ -803,6 +803,7 @@ class HOLZKATALOG_Settings
             'Esri.WorldTopoMap'    => 'Esri – Topografisch',
             'Esri.WorldImagery'    => 'Esri – Satellit',
             'Esri.WorldStreetMap'  => 'Esri – Straßenkarte',
+            'Stadia.AlidadeSatellite'=>'Stadia Alidade Satellite',
             'Stadia.AlidadeSmooth' => 'Stadia Alidade Smooth',
             'Stadia.AlidadeSmoothDark' => 'Stadia Alidade SmoothDark',
             'Stadia.StamenTonerDark' => 'Stadia Stamen TonerDark',
