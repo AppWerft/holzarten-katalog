@@ -103,7 +103,7 @@ final class HOLZKATALOG_JS
     public const D3V5 = 'assets/vendor/d3/d3v5.js';
     // noch nicht genutzt:
     public const FRONTEND_KATALOG_JS = 'assets/js/frontend-katalog.js';
-
+}
 final class HOLZKATALOG_CSS
 {
     public const FRONTEND_HOLZARTEN = 'assets/css/frontend-holzarten.css';
