@@ -13,12 +13,14 @@ final class HOLZKATALOG_CONSTANTS
 final class HOLZKATALOG_HOOKS
 {
     public const HOLZARTENKATALOG_PAGE_HK_SETTINGS_HOLZARTEN = 'holzartenkatalog_page_hk_settings_holzarten';
-    public const WC_PRODUCT_DATA = 'woocommerce_product_options_general_product_data';
-    public const WC_PRODUCT_OBJECT  = 'woocommerce_admin_process_product_object';
+    public const WC_PRODUCT_OPTIONS_GENERAL_PRODUCT_DATA = 'woocommerce_product_options_general_product_data';
+    public const WC_ADMIN_PROCESS_PRODUCT_OBJECT  = 'woocommerce_admin_process_product_object';
+    public const WC_AJAX_SAVE_ONLYACTIVE = 'wp_ajax_hk_save_only_active';
+    public const WC_SINGLE_PRODUCT_SUMMARY = 'woocommerce_single_product_summary';
     public const WP_ADMIN_MENU  = 'admin_menu';
     public const HOLZARTENKATALOG_PAGE_HK_SETTINGS_FUNDORTE = 'holzartenkatalog_page_hk_settings_fundorte';
     public const WP_ADMIN_ENQUEUE_SCRIPTS = 'admin_enqueue_scripts';
-    public const WC_AJAX_SAVE_ONLYACTIVE = 'wp_ajax_hk_save_only_active';
+
     public const LEAFLET = 'leaflet';
 
     public const HOLZARTENKATALOG_PAGE_HK_SETTING_KATALOG = 'holzartenkatalog_page_hk_settings_katalog';
@@ -61,6 +63,7 @@ final class HOLZKATALOG_SCRIPT_HANDLES
     public const HOLZARTEN_SETTINGS = 'holzkat-holzarten-settings';
     public const GEOPOSITION_MAP = 'holzkat-geopositions-map';
     public const HOLZCAT_ORIGIN_PICKER = 'holzkat-origin-picker';
+    public const WC_ENHANCED_SELECT = 'wc-enhanced-select';
 }
 
 final class HOLZKATALOG_OPTIONS
@@ -87,14 +90,17 @@ final class HOLZKATALOG_OPTIONS
     public const GER = 'ger';
     public const NAME = 'name';
     public const TILE_PROVIDER = 'tile_provider';
+    public const APIKEY_KEY = 'apikey_key';
+    public const APIKEY = 'apikey';
+    public const PRIORITY = 'priority';
 }
 
 final class HOLZKATALOG_JS
 {
     public const ADMIN_HOLZARTEN_SETTINGS = 'assets/js/admin-holzarten-settings.js';
     public const ADMIN_HOLZARTEN_KATALOG = 'assets/js/admin-holzarten-katalog.js';
-    public const ADMIN_HOLZARTEN_GEOSETTINGS = 'assets/js/admin-holzarten-geosettings.js'; 
-    
+    public const ADMIN_HOLZARTEN_GEOSETTINGS = 'assets/js/admin-holzarten-geosettings.js';
+
     public const HK_ADMIN_JS = 'assets/css/hk-admin.js';
     public const HOLZKATLOG_ADMIN_JS = 'assets/js/holzkatalog-admin.js';
     public const LEAFLET_JS = 'assets/vendor/leaflet/leaflet.js';
@@ -102,6 +108,7 @@ final class HOLZKATALOG_JS
     public const LEAFLET_PROVIDERS = 'assets/vendor/leaflet/leaflet-providers.js';
     public const HK_ORIGIN_PICKER_JS = 'assets/js/hk-origin-picker.js';
     public const D3V5 = 'assets/vendor/d3/d3v5.js';
+    public const GEOPOSITION_MAP = 'assets/js/geopositions-map.js';
     // noch nicht genutzt:
     public const FRONTEND_KATALOG_JS = 'assets/js/frontend-katalog.js';
 }
@@ -113,5 +120,5 @@ final class HOLZKATALOG_CSS
     public const ADMIN_HOLZARTEN_SETTINGS = 'assets/css/admin-holzarten-settings.css';
     public const LEAFLET = 'assets/vendor/leaflet/leaflet.css';
     public const FRONTEND_KATALOG = 'assets/css/frontend-katalog.css';
-    public const ADMIN ='assets/css/admin.css';
+    public const ADMIN = 'assets/css/admin.css';
 }

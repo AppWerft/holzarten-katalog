@@ -18,11 +18,11 @@
         private function __construct()
         {
             add_action(
-                HOLZKATALOG_HOOKS::WC_PRODUCT_DATA,
+                HOLZKATALOG_HOOKS::WC_PRODUCT_OPTIONS_GENERAL_PRODUCT_DATA,
                 [$this, 'render_fields']
             );
             add_action(
-                HOLZKATALOG_HOOKS::WC_PRODUCT_OBJECT,
+                HOLZKATALOG_HOOKS::WC_ADMIN_PROCESS_PRODUCT_OBJECT,
                 [$this, 'save_fields']
             );
 
@@ -32,13 +32,13 @@
             );
 
             add_action(
-                'woocommerce_single_product_summary',
+                HOLZKATALOG_HOOKS::WC_SINGLE_PRODUCT_SUMMARY,
                 [$this, 'render_map'], // tatsächlichen Methodennamen einsetzen
-                $settings['priority']
+                $settings[HOLZKATALOG_OPTIONS::PRIORITY]
             );
            
             add_action(
-                'woocommerce_admin_process_product_object', // Hook
+                HOLZKATALOG_HOOKS::WC_'woocommerce_admin_process_product_object', // Hook
                 [$this, 'limit_wood_attribute'],
                 20
             );
@@ -153,16 +153,16 @@
                 : 6;
             wp_enqueue_script(
                 HOLZKATALOG_SCRIPT_HANDLES::GEOPOSITION_MAP,
-                plugins_url('assets/js/geopositions-map.js', HOLZKATALOG_PLUGIN_FILE),
-                ['jquery'],
+                plugins_url(HOLZKATALOG_JS::GEOPOSITION_MAP, HOLZKATALOG_PLUGIN_FILE),
+                [HOLZKATALOG_SCRIPT_HANDLES::JQUERY],
                 '1.0.0',
                 true
             );
             $settings = wp_parse_args(
                 get_option(HOLZKATALOG_OPTIONS::MAP_SETTINGS, []),
                 [
-                    'height' => 200,
-                    'width' => 100,
+                    HOLZKATALOG_OPTIONS::HEIGHT => 200,
+                    HOLZKATALOG_OPTIONS::WIDTH => 100,
                     HOLZKATALOG_OPTIONS::POSITION => 'center',
                 ]
             );
@@ -179,8 +179,8 @@
                         style="height:%dpx;width:%d%%;margin:%s">
                     </div>',
                 esc_attr($lat . ',' . $lng),
-                absint($settings['height']),
-                absint($settings['width']),
+                absint($settings[HOLZKATALOG_OPTIONS::HEIGHT]),
+                absint($settings[HOLZKATALOG_OPTIONS::WIDTH]),
                 esc_attr($margin)
             );
         }
@@ -206,7 +206,7 @@
             wp_enqueue_script(
                 HOLZKATALOG_SCRIPT_HANDLES::ADMIN,
                 HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_JS::HK_ADMIN_JS,
-                ['jquery', 'wc-enhanced-select'],
+                [HOLZKATALOG_SCRIPT_HANDLES::JQUERY,HOLZKATALOG_SCRIPT_HANDLES::WC_ENHANCED_SELECT],
                 HOLZKATALOG_VERSION,
                 true
             );
@@ -216,7 +216,7 @@
         public function render_geosuche($zoom = 6)
         {
             $settings = wp_parse_args(
-                get_option('hk_map_settings', []),
+                get_option(HOLZKATALOG_OPTIONS::MAP_SETTINGS, []),
                 [
                     HOLZKATALOG_OPTIONS::PINGCOLOR    => '#4285F4',
                     HOLZKATALOG_OPTIONS::TILE_PROVIDER => 'OpenStreetMap.Mapnik',
