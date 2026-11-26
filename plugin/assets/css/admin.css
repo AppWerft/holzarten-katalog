@@ -224,17 +224,11 @@
         grid-template-columns: 1fr;
     }
 }
-/*
-fieldset._preview {
-    border: 2px dotted green;
-    border-radius: 6px;
-    padding: 15px;
-    margin: 15px 0;
-    min-width: 0;
-     width: 100% !important;
-    display: block !important;
-}
 
+fieldset.vorschau {
+    border:2px dotted green;background-color:#eee
+}
+/*
 fieldset._preview legend {
     padding: 3px 10px;
     margin-left: 10px;
