@@ -36,6 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
             'hk-image-zoom',
             lupeCheckbox.checked
         );
+        
     };
 
     // Bild- und Textvorschau

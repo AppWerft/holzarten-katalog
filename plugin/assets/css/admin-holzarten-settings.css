@@ -61,6 +61,7 @@
     margin-top: 0;
 }
 
+.hk-wood-preview {display:none}
 .hk-image-zoom:hover {
     z-index: 1000;
 }
