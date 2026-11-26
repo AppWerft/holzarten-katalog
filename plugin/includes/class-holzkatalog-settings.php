@@ -304,7 +304,7 @@ class HOLZKATALOG_Settings
                                 <td>
                                     <input
                                         type="checkbox"
-                                        id="hk-holzarten-description"
+                                        id="hk-holzarten-ger"
                                         name="hk_holzarten_settings[ger]"
                                         value="1"
                                         <?php checked(
