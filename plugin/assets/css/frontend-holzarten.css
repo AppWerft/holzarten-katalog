@@ -119,15 +119,14 @@
    --------------------------------------------------------- */
 
 @media (prefers-reduced-motion: reduce) {
+
     .hk-wood-grid-material .hk-wood-card,
     .hk-wood-grid-material .hk-wood-image {
         transition: none;
     }
-
     .hk-wood-grid-material .hk-wood-card:hover {
         transform: none;
     }
-
     .hk-wood-grid-material .hk-wood-card:hover .hk-wood-image {
         transform: none;
     }
@@ -135,29 +134,17 @@
 
 
 .vorschau {
-    border: 2px dotted green!important;
+    border: 2px dotted green !important;
     background-color: #eee
 }
 
 .vorschau legend {
-   display: table;
+    display: table;
     margin-left: auto;
     margin-right: auto;
-
     border-radius: 5px;
     background-color: #666;
     font-size: 0.7em;
     color: white;
     padding: 3px 10px;
-}
-
-.hk-image-zoom:hover {
-    z-index: 1000;
-}
-.hk-image-zoom:hover .hk-wood-image {
-    position: relative;
-    z-index: 1001;
-    transform: scale(5);
-    transform-origin: top left;
-    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.4);
 }
