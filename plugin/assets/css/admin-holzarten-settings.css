@@ -61,14 +61,12 @@
     margin-top: 0;
 }
 
-.hk-image-zoom:hover {
-    z-index: 1000;
-}
 
-.hk-image-zoom:hover .hk-wood-image {
+
+#hk-wood-preview.hk-wood-zoom:hover {
     position: relative;
     z-index: 1000;
-    transform: scale(5);
+    transform: scale(7);
     transform-origin: top left;
     box-shadow: 0 3px 12px rgba(0, 0, 0, 0.4);
 }
