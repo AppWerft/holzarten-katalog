@@ -66,8 +66,7 @@
 #hk-wood-preview.hk-wood-zoom:hover {
     position: relative;
     z-index: 1000;
-    transform: scale(3);
-    transform-origin: bottom left;
+    transform: scale(5);
+    transform-origin: top right;
     box-shadow: 0 3px 12px rgba(0, 0, 0, 0.4);
-    pointer-events: none;
 }
