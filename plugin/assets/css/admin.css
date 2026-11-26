@@ -225,13 +225,13 @@
     }
 }
 
-fieldset.vorschau {
+.vorschau {
     border: 2px dotted green;
     background-color: #eee
 }
 
 
-fieldset.vorschau legend {
+.vorschau legend {
     margin: 15px;
     border-radius: 5px;
     background-color: #666;
