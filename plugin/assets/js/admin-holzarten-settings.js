@@ -3,15 +3,15 @@ document.addEventListener('DOMContentLoaded', function () {
     const descriptionCheckbox = document.getElementById('hk-holzarten-description')
     const latCheckbox = document.getElementById('hk-holzarten-lat')
     const gerCheckbox = document.getElementById('hk-holzarten-ger')
-    
-    
+
+
     const sizeInput = document.getElementById('hk-wood-size');
     const roundInput = document.getElementById('hk-holzarten-round');
     const preview = document.getElementById('hk-wood-preview');
     if (!lupeCheckbox || !sizeInput || !roundInput || !preview) {
         return;
     }
-   
+
     // Lupenfunktion
     const updateZoomCursor = () => {
         preview.classList.toggle(
@@ -23,18 +23,18 @@ document.addEventListener('DOMContentLoaded', function () {
     // Bildvorschau
     const updatePreview = () => {
         const size = parseInt(sizeInput.value, 10) || 120;
-        const descriptionEnabled = descriptionCheckbox.checked?'block':'none'
-        const latEnabled = latCheckbox.checked?'block':'none'
-        const gerEnabled = gerCheckbox.checked?'block':'none'
-        
+        const descriptionEnabled = descriptionCheckbox.checked ? 'block' : 'none'
+        const latEnabled = latCheckbox.checked ? 'block' : 'none'
+        const gerEnabled = gerCheckbox.checked ? 'block' : 'none'
+
 
         preview.style.setProperty('width', size + 'px');
         preview.style.setProperty('height', size + 'px');
         preview.style.setProperty('aspect-ratio', '1 / 1');
-        document.getElementById('hk_beschreibung').style.setProperty('display',descriptionEnabled)
-        document.getElementById('hk_botname').style.setProperty('display',latEnabled)
-        document.getElementById('hk_holzname').style.setProperty('display',gerEnabled)
-        
+        document.getElementById('hk_beschreibung').style.setProperty('display', descriptionEnabled)
+        document.getElementById('hk_botname').style.setProperty('display', latEnabled)
+        document.getElementById('hk_holzname').style.setProperty('display', gerEnabled)
+
 
         preview.style.setProperty(
             'border-radius',
@@ -80,6 +80,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Klick auf Vorschaubild
     preview.addEventListener('click', openZoom);
+    descriptionCheckbox.addEventListener('change', updatePreview);
+    latCheckbox.addEventListener('change', updatePreview);
+    gerCheckbox.addEventListener('change', updatePreview);
+
     // Initiale Darstellung
     updatePreview();
     updateZoomCursor();
