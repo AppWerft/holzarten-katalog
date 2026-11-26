@@ -226,15 +226,16 @@
 }
 
 fieldset.vorschau {
-    border:2px dotted green;background-color:#eee
+    border: 2px dotted green;
+    background-color: #eee
 }
-/*
-fieldset._preview legend {
-    padding: 3px 10px;
-    margin-left: 10px;
+
+
+fieldset.vorschau legend {
+    margin: 15px;
     border-radius: 5px;
     background-color: #666;
+    font-size: 0.7em;
     color: white;
-    font-size: 0.8em;
-    font-weight: 600;
-}*/
+    padding: 3px
+}
