@@ -784,7 +784,7 @@ class HOLZKATALOG_Settings
             </form>
 
             <fieldset style="border:2px dotted green">
-<legend style="margin:15px;border-radius:5px;background-color:#000;color:white;padding:3px">Vorschau</legend>
+<legend style="margin:15px;border-radius:5px;background-color:#555;color:white;padding:3px">Vorschau</legend>
             <div id="settings-preview-wrapper">
                 <div id="settings-preview-map"></div>
             </div>
