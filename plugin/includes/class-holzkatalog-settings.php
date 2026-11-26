@@ -49,6 +49,8 @@ class HOLZKATALOG_Settings
 
     public static function enqueue_scripts($hook)
     {
+        error_log('Admin-Hook: ' . $hook);
+
         // Holzlistendarstellung
         if ($hook === HOLZKATALOG_HOOKS::HOLZARTENKATALOG_PAGE_HK_SETTING_KATALOG) {
 
@@ -87,13 +89,11 @@ class HOLZKATALOG_Settings
 
         // Holzarteneinstellungen
         if ($hook === HOLZKATALOG_HOOKS::HOLZARTENKATALOG_PAGE_HK_SETTINGS_HOLZARTEN) {
-
             $js_file = HOLZKATALOG_PLUGIN_DIR
                 . HOLZKATALOG_JS::ADMIN_HOLZARTEN_SETTINGS;
 
             $css_file = HOLZKATALOG_PLUGIN_DIR
                 . HOLZKATALOG_CSS::ADMIN_HOLZARTEN_SETTINGS;
-
             wp_enqueue_script(
                 HOLZKATALOG_SCRIPT_HANDLES::HOLZCAT_HOLZARTEN_SETTING,
                 HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_JS::ADMIN_HOLZARTEN_SETTINGS,
@@ -103,7 +103,6 @@ class HOLZKATALOG_Settings
                     : HOLZKATALOG_VERSION,
                 true
             );
-
             wp_enqueue_script(
                 HOLZKATALOG_SCRIPT_HANDLES::HOLZCAT_HOLZARTEN,
                 HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_JS::ADMIN_HOLZARTEN_KATALOG,
@@ -113,7 +112,6 @@ class HOLZKATALOG_Settings
                     : HOLZKATALOG_VERSION,
                 true
             );
-
             wp_enqueue_style(
                 HOLZKATALOG_STYLE_HANDLES::HOLZCAT_HOLZARTEN_SETTING,
                 HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_CSS::ADMIN_HOLZARTEN_SETTINGS,
