@@ -49,7 +49,14 @@ class HOLZKATALOG_Settings
 
     public static function enqueue_scripts($hook)
     {
-        error_log('Admin-Hook: ' . $hook);
+        printf(
+            '<script>console.log("Admin-Hook: %s");</script>',
+            esc_js($hook)
+        );
+        $screen = get_current_screen();
+
+        error_log('Screen ID: ' . $screen->id);
+        error_log('Base: ' . $screen->base);
 
         // Holzlistendarstellung
         if ($hook === HOLZKATALOG_HOOKS::HOLZARTENKATALOG_PAGE_HK_SETTING_KATALOG) {
@@ -343,7 +350,7 @@ class HOLZKATALOG_Settings
                             <div id="hk_beschreibung">Beschreibung</div>
                             <div id="hk_holzname">Name des Holzes</div>
                             <div id="hk_botname"> Botanischer Name</div>
-                         
+
                         </div>
                     </div>
                 </fieldset>
