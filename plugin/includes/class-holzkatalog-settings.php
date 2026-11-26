@@ -342,9 +342,9 @@ class HOLZKATALOG_Settings
                                 height: <?php echo esc_attr($size); ?>px;
                                 object-fit: cover;
                                 border-radius: <?php echo $round ? '50%' : '0'; ?>;
-    ">
-    <div>Name des Holzes</div>
-    <div>Botanischer Name</div>
+    "><br>
+    <div>Name des Holzes</div><br>
+    <div>Botanischer Name</div><br>
     <div>Beschreibung</div>
     
                         </div>
