@@ -225,8 +225,9 @@
     }
 }
 
+
 .vorschau {
-    border: 2px dotted green;
+    border: 2px dotted green!important;
     background-color: #eee
 }
 
