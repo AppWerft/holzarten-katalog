@@ -31,8 +31,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Lupenfunktion
     const updateZoomCursor = () => {
-        preview.classList.toggle(
-            'hk-wood-zoom',
+        preview.parentElement.classList.toggle(
+            'hk-image-zoom',
             lupeCheckbox.checked
         );
     };
