@@ -139,7 +139,7 @@
     background-color: #eee
 }
 
-legend {
+.vorschau legend {
    display: table;
     margin-left: auto;
     margin-right: auto;
