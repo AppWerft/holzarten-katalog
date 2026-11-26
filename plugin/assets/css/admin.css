@@ -225,7 +225,7 @@
     }
 }
 
-fieldset.preview {
+fieldset._preview {
     border: 2px dotted green;
     border-radius: 6px;
     padding: 15px;
@@ -235,7 +235,7 @@ fieldset.preview {
     display: block !important;
 }
 
-fieldset.preview legend {
+fieldset._preview legend {
     padding: 3px 10px;
     margin-left: 10px;
     border-radius: 5px;
