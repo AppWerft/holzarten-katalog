@@ -531,14 +531,16 @@ class HOLZKATALOG_Settings
                 </div>
             </form>
 
-            <h2>Vorschau der Holzartenübersicht:</h2>
-            <p>Wird erst nach Abspeichern aktualisiert.</p>
+            <fieldset class="vorschau">
+                <legend>Vorschau der Holzartenübersicht:</legend>
+           
             <div id="hk-katalog-preview">
                 <?php
                 // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- HTML is generated internally; dynamic values are escaped in render_catalog().
                 echo HOLZKATALOG_Frontend::render_catalog($settings);
                 ?>
             </div>
+            </fieldset>
         </div>
     <?php
     }
