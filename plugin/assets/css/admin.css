@@ -230,11 +230,14 @@
     background-color: #eee
 }
 
-.vorschau legend {
-    margin: 15px;
+legend {
+   display: table;
+    margin-left: auto;
+    margin-right: auto;
+
     border-radius: 5px;
     background-color: #666;
     font-size: 0.7em;
     color: white;
-    padding: 3px
+    padding: 3px 10px;
 }
