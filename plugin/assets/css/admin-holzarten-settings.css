@@ -6,6 +6,10 @@
     width: auto;
     min-height: 180px;
     overflow: visible;
+     display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
     
 }
 
