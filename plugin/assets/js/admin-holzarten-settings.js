@@ -8,6 +8,10 @@ document.addEventListener('DOMContentLoaded', function () {
     const sizeInput = document.getElementById('hk-wood-size');
     const roundInput = document.getElementById('hk-holzarten-round');
     const preview = document.getElementById('hk-wood-preview');
+    const description = document.getElementById('hk_beschreibung');
+    const botanicalName = document.getElementById('hk_botname');
+    const woodName = document.getElementById('hk_holzname');
+
     if (!lupeCheckbox || !sizeInput || !roundInput || !preview) {
         return;
     }
@@ -26,21 +30,20 @@ document.addEventListener('DOMContentLoaded', function () {
         const descriptionEnabled = descriptionCheckbox.checked ? 'block' : 'none'
         const latEnabled = latCheckbox.checked ? 'block' : 'none'
         const gerEnabled = gerCheckbox.checked ? 'block' : 'none'
-
-
         preview.style.setProperty('width', size + 'px');
         preview.style.setProperty('height', size + 'px');
         preview.style.setProperty('aspect-ratio', '1 / 1');
-        document.getElementById('hk_beschreibung').style.setProperty('display', descriptionEnabled)
-        document.getElementById('hk_botname').style.setProperty('display', latEnabled)
-        document.getElementById('hk_holzname').style.setProperty('display', gerEnabled)
-
-
-        preview.style.setProperty(
-            'border-radius',
-            roundInput.checked ? '50%' : '0'
-        );
+        description.style.display = descriptionCheckbox.checked ? 'block' : 'none';
+        botanicalName.style.display = latCheckbox.checked ? 'block' : 'none';
+        woodName.style.display = gerCheckbox.checked ? 'block' : 'none';
+        preview.style.borderRadius = roundInput.checked ? '50%' : '0';
     };
+
+    preview.style.setProperty(
+        'border-radius',
+        roundInput.checked ? '50%' : '0'
+    );
+
 
     // Live-Aktualisierung
     sizeInput.addEventListener('input', updatePreview);
