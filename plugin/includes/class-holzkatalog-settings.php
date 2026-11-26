@@ -783,12 +783,12 @@ class HOLZKATALOG_Settings
 
             </form>
 
-            <fieldset style="border:2px dotted green">
-<legend style="margin:15px;border-radius:5px;background-color:#666;font-size:0.7em;color:white;padding:3px">Vorschau</legend>
-            <div id="settings-preview-wrapper">
-                <div id="settings-preview-map"></div>
-            </div>
-            </fieldset>                      
+            <fieldset class="preview">
+                <legend>Vorschau</legend>
+                <div id="settings-preview-wrapper">
+                    <div id="settings-preview-map"></div>
+                </div>
+            </fieldset>
         </div>
 
 <?php
@@ -803,7 +803,7 @@ class HOLZKATALOG_Settings
             'Esri.WorldTopoMap'    => 'Esri – Topografisch',
             'Esri.WorldImagery'    => 'Esri – Satellit',
             'Esri.WorldStreetMap'  => 'Esri – Straßenkarte',
-            'Stadia.AlidadeSatellite'=>'Stadia Alidade Satellite',
+            'Stadia.AlidadeSatellite' => 'Stadia Alidade Satellite',
             'Stadia.AlidadeSmooth' => 'Stadia Alidade Smooth',
             'Stadia.AlidadeSmoothDark' => 'Stadia Alidade SmoothDark',
             'Stadia.StamenTonerDark' => 'Stadia Stamen TonerDark',
