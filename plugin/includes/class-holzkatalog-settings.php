@@ -94,7 +94,7 @@ class HOLZKATALOG_Settings
             );
         }
 
-        // Holzarteneinstellungen
+        // Holzarteneinstellungen (Menü: Holzarten)
         if ($hook === HOLZKATALOG_HOOKS::HOLZARTENKATALOG_PAGE_HK_SETTINGS_HOLZARTEN) {
             $js_file = HOLZKATALOG_PLUGIN_DIR
                 . HOLZKATALOG_JS::ADMIN_HOLZARTEN_SETTINGS;
