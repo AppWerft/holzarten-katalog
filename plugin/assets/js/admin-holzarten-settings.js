@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Lupenfunktion
     const updateZoomCursor = () => {
-        console.log('updateZoomCursor')
+        console.log('updateZoomCursor',lupeCheckbox.checked)
         preview.parentElement.classList.toggle(
             'hk-image-zoom',
             lupeCheckbox.checked
