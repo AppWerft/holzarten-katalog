@@ -337,7 +337,7 @@ class HOLZKATALOG_Settings
                                 class="<?php echo $lupe ? 'hk-wood-zoom' : ''; ?>"
                                 src="<?php echo esc_url(HOLZKATALOG_URL . 'assets/images/liveholz.webp'); ?>"
                                 alt="Vorschau Holzbild in Holzurnenanzeige"
-                                style="margin-topo:5px;width: <?php echo esc_attr($size); ?>px;
+                                style="margin-topo:10px;width: <?php echo esc_attr($size); ?>px;
                                 height: <?php echo esc_attr($size); ?>px;
                                 object-fit: cover;
                                 border-radius: <?php echo $round ? '50%' : '0'; ?>;
