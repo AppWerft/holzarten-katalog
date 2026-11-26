@@ -224,20 +224,3 @@
         grid-template-columns: 1fr;
     }
 }
-
-.vorschau {
-    border: 2px dotted green!important;
-    background-color: #eee
-}
-
-legend {
-   display: table;
-    margin-left: auto;
-    margin-right: auto;
-
-    border-radius: 5px;
-    background-color: #666;
-    font-size: 0.7em;
-    color: white;
-    padding: 3px 10px;
-}
