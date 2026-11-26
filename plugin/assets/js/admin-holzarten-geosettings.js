@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const STANDARDPOSITION = [51.3406751, 12.4256434];
 
     const previewMap = document.getElementById('settings-preview-map');
-    const previewWrapper = document.getElementById('settings-preview-fieldset');
+    const previewWrapper = document.getElementById('settings-preview-wrapper');
 
     const heightInput = document.getElementById('hk-map-height');
     const widthInput = document.getElementById('hk-map-width');
