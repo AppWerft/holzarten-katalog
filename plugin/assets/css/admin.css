@@ -225,12 +225,10 @@
     }
 }
 
-
 .vorschau {
     border: 2px dotted green!important;
     background-color: #eee
 }
-
 
 .vorschau legend {
     margin: 15px;
