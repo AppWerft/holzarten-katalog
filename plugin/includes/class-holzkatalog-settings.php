@@ -783,7 +783,7 @@ class HOLZKATALOG_Settings
 
             </form>
 
-            <fieldset class="_preview">
+            <fieldset class="preview">
                 <legend>Vorschau</legend>
                 <div id="settings-preview-wrapper">
                     <div id="settings-preview-map"></div>
