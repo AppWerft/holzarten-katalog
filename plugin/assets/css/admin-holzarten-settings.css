@@ -67,7 +67,7 @@
     position: relative;
     z-index: 1000;
     transform: scale(3);
-    transform-origin: bottom right;
+    transform-origin: bottom left;
     box-shadow: 0 3px 12px rgba(0, 0, 0, 0.4);
     pointer-events: none;
 }
