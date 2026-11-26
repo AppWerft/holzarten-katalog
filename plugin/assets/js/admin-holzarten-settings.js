@@ -1,5 +1,10 @@
 document.addEventListener('DOMContentLoaded', function () {
     const lupeCheckbox = document.getElementById('hk-holzarten-lupe');
+    const descriptionCheckbox = document.getElementById('hk-holzarten-description')
+    const latCheckbox = document.getElementById('hk-holzarten-lat')
+    const gerCheckbox = document.getElementById('hk-holzarten-ger')
+    
+    
     const sizeInput = document.getElementById('hk-wood-size');
     const roundInput = document.getElementById('hk-holzarten-round');
     const preview = document.getElementById('hk-wood-preview');
@@ -18,10 +23,19 @@ document.addEventListener('DOMContentLoaded', function () {
     // Bildvorschau
     const updatePreview = () => {
         const size = parseInt(sizeInput.value, 10) || 120;
+        const descriptionEnabled = descriptionCheckbox.checked?'block':'none'
+        const latEnabled = latCheckbox.checked?'block':'none'
+        const gerEnabled = gerCheckbox.checked?'block':'none'
+        
 
         preview.style.setProperty('width', size + 'px');
         preview.style.setProperty('height', size + 'px');
         preview.style.setProperty('aspect-ratio', '1 / 1');
+        document.getElementById('hk_beschreibung').style.setProperty('display',descriptionEnabled)
+        document.getElementById('hk_botname').style.setProperty('display',latEnabled)
+        document.getElementById('hk_holzname').style.setProperty('display',gerEnabled)
+        
+
         preview.style.setProperty(
             'border-radius',
             roundInput.checked ? '50%' : '0'
