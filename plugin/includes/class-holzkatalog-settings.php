@@ -327,22 +327,25 @@ class HOLZKATALOG_Settings
                 $lupe = !empty($settings[HOLZKATALOG_OPTIONS::LUPE]);
                 submit_button('Einstellungen speichern'); ?>
 
-                <div class="hk-preview-wrapper">
-                    <p><i>Vorschau der Holzart in der Detailanzeige:</i></p>
-                    <div class="hk-preview">
-                        <img
-                            id="hk-wood-preview"
-                            class="<?php echo $lupe ? 'hk-wood-zoom' : ''; ?>"
-                            src="<?php echo esc_url(HOLZKATALOG_URL . 'assets/images/liveholz.webp'); ?>"
-                            alt="Vorschau Holzbild in Holzurnenanzeige"
-                            style="
+                <fieldset class="vorschau">
+                    <legend>Vorschau der Holzansicht</legend>
+                    <div class="hk-preview-wrapper">
+
+                        <div class="hk-preview">
+                            <img
+                                id="hk-wood-preview"
+                                class="<?php echo $lupe ? 'hk-wood-zoom' : ''; ?>"
+                                src="<?php echo esc_url(HOLZKATALOG_URL . 'assets/images/liveholz.webp'); ?>"
+                                alt="Vorschau Holzbild in Holzurnenanzeige"
+                                style="
                                 width: <?php echo esc_attr($size); ?>px;
                                 height: <?php echo esc_attr($size); ?>px;
                                 object-fit: cover;
                                 border-radius: <?php echo $round ? '50%' : '0'; ?>;
     ">
+                        </div>
                     </div>
-                </div>
+                </fieldset>
 
 
             </form>
@@ -533,13 +536,13 @@ class HOLZKATALOG_Settings
 
             <fieldset class="vorschau">
                 <legend>Vorschau der Holzartenübersicht:</legend>
-           
-            <div id="hk-katalog-preview">
-                <?php
-                // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- HTML is generated internally; dynamic values are escaped in render_catalog().
-                echo HOLZKATALOG_Frontend::render_catalog($settings);
-                ?>
-            </div>
+
+                <div id="hk-katalog-preview">
+                    <?php
+                    // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- HTML is generated internally; dynamic values are escaped in render_catalog().
+                    echo HOLZKATALOG_Frontend::render_catalog($settings);
+                    ?>
+                </div>
             </fieldset>
         </div>
     <?php
