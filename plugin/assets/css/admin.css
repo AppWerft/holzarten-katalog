@@ -224,7 +224,7 @@
         grid-template-columns: 1fr;
     }
 }
-
+/*
 fieldset._preview {
     border: 2px dotted green;
     border-radius: 6px;
@@ -243,4 +243,4 @@ fieldset._preview legend {
     color: white;
     font-size: 0.8em;
     font-weight: 600;
-}
+}*/
