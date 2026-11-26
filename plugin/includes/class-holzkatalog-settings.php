@@ -783,12 +783,12 @@ class HOLZKATALOG_Settings
 
             </form>
 
-            <h2>Vorschau</h2>
-
+            <fieldset>
+<legend>Vorschau</legend>
             <div id="settings-preview-wrapper">
                 <div id="settings-preview-map"></div>
             </div>
-
+            </fieldset>                      
         </div>
 
 <?php
