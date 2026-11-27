@@ -102,22 +102,27 @@ HOLZKATALOG_Settings::init();
 
 define('HOLZKATALOG_URL', plugin_dir_url(__FILE__));
 
-/*add_action('woocommerce_loaded', function () {
-    HOLZKATALOG_WooCommerce::instance();
-    HOLZKATALOG_WC_Origin::instance();
-});*/
-//add_action('woocommerce_loaded', function () {
+
+add_action('woocommerce_loaded', function () {
     error_log('=== WOOCOMMERCE LOADED ===');
 
     HOLZKATALOG_WooCommerce::instance();
     HOLZKATALOG_WC_Origin::instance();
 
     error_log(
-        '=== SUMMARY CALLBACKS: '
+        '||||=== SUMMARY CALLBACKS: '
         . var_export(
             has_action('woocommerce_single_product_summary'),
             true
         )
         . ' ==='
     );
-//});
+    error_log(
+        '|||||||=== SUMMARY CALLBACKS: '
+        . var_export(
+            has_action(HOLZKATALOG_HOOKS::WC_SINGLE_PRODUCT_SUMMARY),
+            true
+        )
+        . ' ==='
+    );
+});
