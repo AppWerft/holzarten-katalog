@@ -1,21 +1,9 @@
 
 jQuery('.geopositions_map').each(function () {
-    console.log('DOMContentLoaded in geoposition-map')
     const getTileprovider = () => {
         const tileProvider = $mapContainer.data('tile-provider');
         console.log(tileProvider)
-        const tileProviders = {
-            'OpenStreetMap.Mapnik': {
-                url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-                options: {
-                    maxZoom: 19,
-                    attribution: '&copy; OpenStreetMap-Mitwirkende'
-                }
-            }
-        };
-       
-        return tileProviders[tileProvider] || tileProviders['OpenStreetMap.Mapnik'];
-
+        return L.tileLayer.provider(tileProvider)
     }
     const $mapContainer = jQuery(this);
 
