@@ -100,7 +100,7 @@ class HOLZKATALOG_Settings
             $css_file = HOLZKATALOG_PLUGIN_DIR
                 . HOLZKATALOG_CSS::ADMIN_HOLZARTEN_SETTINGS;
             wp_enqueue_script(
-                HOLZKATALOG_SCRIPT_HANDLES::HOLZCAT_HOLZARTEN_SETTING,
+                HOLZKATALOG_SCRIPT_HANDLES::SETTING,
                 HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_JS::ADMIN_HOLZARTEN_SETTINGS,
                 [HOLZKATALOG_SCRIPT_HANDLES::JQUERY],
                 file_exists($js_file)
@@ -118,7 +118,7 @@ class HOLZKATALOG_Settings
                 true
             );
             wp_enqueue_style(
-                HOLZKATALOG_STYLE_HANDLES::HOLZCAT_HOLZARTEN_SETTING,
+                HOLZKATALOG_STYLE_HANDLES::SETTING,
                 HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_CSS::ADMIN_HOLZARTEN_SETTINGS,
                 [],
                 file_exists($css_file)
@@ -190,7 +190,7 @@ class HOLZKATALOG_Settings
                 . HOLZKATALOG_CSS::ADMIN_HOLZARTEN_SETTINGS;
 
             wp_enqueue_style(
-                HOLZKATALOG_STYLE_HANDLES::GEOSETTINGS_CSS,
+                HOLZKATALOG_STYLE_HANDLES::GEOSETTINGS,
                 HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_CSS::ADMIN_HOLZARTEN_SETTINGS,
                 [],
                 file_exists($css_file)

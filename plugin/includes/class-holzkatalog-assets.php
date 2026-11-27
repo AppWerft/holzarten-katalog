@@ -63,7 +63,7 @@ class HOLZKATALOG_Assets
     public static function enqueue_admin($hook)
     { // Katalog-CSS für die Admin-Vorschau
         wp_enqueue_style(
-            HOLZKATALOG_STYLE_HANDLES::HOLZCAT_FRONTEND_HOLZARTEN,
+            HOLZKATALOG_STYLE_HANDLES::FRONTEND,
             HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_CSS::FRONTEND_HOLZARTEN,
             [],
             HOLZKATALOG_VERSION

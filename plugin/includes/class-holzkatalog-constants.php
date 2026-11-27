@@ -39,10 +39,10 @@ final class HOLZKATALOG_NONCES
 final class HOLZKATALOG_STYLE_HANDLES
 {
     public const LEAFLET = 'holzcat-leaflet_css';
-    public const HOLZCAT_HOLZARTEN_GEOSETTINGS_CSS = 'holzkat-holzarten-geosettings_css';
-    public const HOLZCAT_HOLZARTEN_SETTING = 'holzkat-holzarten-settings-css';
+    public const GEOSETTINGS = 'holzkat-holzarten-geosettings_css';
+    public const SETTING = 'holzkat-holzarten-settings-css';
     public const FRONTEND_KATALOG = 'holzkat-frontend-katalog-css';
-    public const HOLZCAT_FRONTEND_HOLZARTEN = 'holzkat-frontend-holzarten';
+    public const FRONTEND = 'holzkat-frontend-holzarten';
     public const ADMIN = 'holzkat-admin-css';
 }
 
