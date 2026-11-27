@@ -802,6 +802,7 @@ class HOLZKATALOG_Settings
                     <div id="settings-preview-map"></div>
                 </div>
             </fieldset>
+            <h2>Verwendung in öffentlicher Seite (Frontend)</h2>
         </div>
 
 <?php
