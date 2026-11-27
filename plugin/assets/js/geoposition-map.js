@@ -1,17 +1,7 @@
 
 jQuery('.geopositions_map').each(function () {
-    const $mapContainer = jQuery(this);
-
-    const [lat, lng] = $mapContainer.data('geo').split(',').map(Number);
-    const zoom = Number($mapContainer.data('zoom')) || 6;
-    const tileProvider = $mapContainer.data('tile-provider');
-
-    $mapContainer.css({
-        display: 'block'
-    });
-
-    const map = L.map($mapContainer[0]).setView([lat, lng], zoom);
-
+    const getTileprovider = () => {
+const tileProvider = $mapContainer.data('tile-provider');
     const tileProviders = {
         'OpenStreetMap.Mapnik': {
             url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
@@ -21,9 +11,22 @@ jQuery('.geopositions_map').each(function () {
             }
         }
     };
+    console.log(tileProvider)
+    return tileProviders[tileProvider] || tileProviders['OpenStreetMap.Mapnik'];
 
-    const provider = tileProviders[tileProvider] || tileProviders['OpenStreetMap.Mapnik'];
+    }
+    const $mapContainer = jQuery(this);
 
+    const [lat, lng] = $mapContainer.data('geo').split(',').map(Number);
+    const zoom = Number($mapContainer.data('zoom')) || 6;
+    
+    $mapContainer.css({
+        display: 'block'
+    });
+
+    const map = L.map($mapContainer[0]).setView([lat, lng], zoom);
+
+    
     L.tileLayer(provider.url, provider.options).addTo(map);
 
     L.pingLayer({
