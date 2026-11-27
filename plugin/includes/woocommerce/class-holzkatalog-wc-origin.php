@@ -263,7 +263,7 @@ class HOLZKATALOG_WC_Origin
                 HOLZKATALOG_OPTIONS::PINGCOLOR    => '#4285F4',
                 HOLZKATALOG_OPTIONS::TILE_PROVIDER => 'OpenStreetMap.Mapnik',
                 HOLZKATALOG_OPTIONS::HEIGHT  => 200,
-                HOLZKATALOG_OPTIONS::WIDTH  => '100%',
+                HOLZKATALOG_OPTIONS::WIDTH  => 100,
                 HOLZKATALOG_OPTIONS::RADIUS  => 0,
                 HOLZKATALOG_OPTIONS::POSITION => 'left'
             ]
@@ -271,7 +271,7 @@ class HOLZKATALOG_WC_Origin
         $options = [
             HOLZKATALOG_OPTIONS::PINGCOLOR    => $settings[HOLZKATALOG_OPTIONS::PINGCOLOR],
             HOLZKATALOG_OPTIONS::TILE_PROVIDER => $settings[HOLZKATALOG_OPTIONS::TILE_PROVIDER],
-          //  HOLZKATALOG_OPTIONS::ZOOM  => (int) HOLZKATALOG_OPTIONS::ZOOM,
+           HOLZKATALOG_OPTIONS::ZOOM  => $zoom,
             HOLZKATALOG_OPTIONS::HEIGHT  => (int) $settings[HOLZKATALOG_OPTIONS::HEIGHT],
             HOLZKATALOG_OPTIONS::WIDTH  => $settings[HOLZKATALOG_OPTIONS::WIDTH],
             HOLZKATALOG_OPTIONS::RADIUS => (int) $settings[HOLZKATALOG_OPTIONS::RADIUS],
