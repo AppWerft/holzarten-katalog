@@ -40,7 +40,8 @@ class HOLZKATALOG_WC_Origin
             1
         );
         add_action(
-            HOLZKATALOG_HOOKS::WC_SINGLE_PRODUCT_SUMMARY,
+             HOLZKATALOG_HOOKS::WC_PRODUCT_OPTIONS_GENERAL_PRODUCT_DATA  ,  
+//        HOLZKATALOG_HOOKS::WC_SINGLE_PRODUCT_SUMMARY,
             [$this, 'render_map'],
             absint($settings[HOLZKATALOG_OPTIONS::PRIORITY])
         );
