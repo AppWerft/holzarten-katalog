@@ -55,8 +55,6 @@ class HOLZKATALOG_Settings
         );
         $screen = get_current_screen();
 
-        error_log('Screen ID: ' . $screen->id);
-        error_log('Base: ' . $screen->base);
 
         // Holzlistendarstellung
         if ($hook === HOLZKATALOG_HOOKS::HOLZARTENKATALOG_PAGE_HK_SETTING_KATALOG) {
