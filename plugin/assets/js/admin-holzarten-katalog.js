@@ -1,6 +1,5 @@
 jQuery(document).ready(function ($) {
-    console.count('admin-holzarten-katalog.js geladen');
-console.trace('Script-Aufruf');
+
     $('.hk-status-toggle').on('change', function () {
 
         const checkbox = $(this);
@@ -174,7 +173,7 @@ jQuery(document).ready(function ($) {
 
             // Vorhandene change-Handler auslösen.
             // $fileInput.trigger('change');
-            console.log('Bild übernommen:', file);
+           
             break;
         }
     });
@@ -242,7 +241,7 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
         // Bild anzeigen?
-        console.log(bilder)
+       
         grid.querySelectorAll('.hk-wood-image').forEach(img => img.hidden= !bilder);
 
         // Spaltenzahl
