@@ -48,8 +48,8 @@ final class HOLZKATALOG_STYLE_HANDLES
 
 final class HOLZKATALOG_SCRIPT_HANDLES
 {
-    public const HOLZCAT_LEAFLET_PROVIDERS = 'holzkat-leaflet-providers';
-    public const HOLZCAT_HOLZARTEN_GEOSETTINGS_JS = 'holzkat-holzarten-geosettings_js';
+    public const LEAFLET_PROVIDERS = 'holzkat-leaflet-providers';
+    public const GEOSETTINGS = 'holzkat-holzarten-geosettings_js';
     public const HOLZCAT_PINGLAYER = 'holzkat-ping-layer';
     public const HOLZCAT_HOLZARTEN_SETTING = 'holzkat-holzarten-settings';
     public const LEAFLET = 'leaflet';

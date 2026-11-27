@@ -200,27 +200,18 @@ class HOLZKATALOG_WC_Origin
     public function render_map()
     {
         global $product;
-
-        error_log('Produktobjekt: ' . get_debug_type($product));
-
         if ($product instanceof WC_Product) {
             error_log('Produkt-ID: ' . $product->get_id());
             error_log('Produktname: ' . $product->get_name());
         } else {
             error_log('Globales $product ist nicht gesetzt!');
         }
-
         if (!$product instanceof WC_Product) {
             return;
         }
-
         $product_id = $product->get_id();
-
         $lat = get_post_meta($product_id, '_hk_origin_lat', true);
         $lng = get_post_meta($product_id, '_hk_origin_lng', true);
-
-
-
         $settings = wp_parse_args(
             get_option(HOLZKATALOG_OPTIONS::MAP_SETTINGS, []),
             [
@@ -245,8 +236,8 @@ class HOLZKATALOG_WC_Origin
         }
         // Providerliste laden:
         wp_enqueue_script(
-            HOLZKATALOG_JS::LEAFLET_PROVIDERS,
-            HOLZKATALOG_PLUGIN_URL . 'assets/js/leaflet-providers.js',
+            HOLZKATALOG_SCRIPT_HANDLES::LEAFLET_PROVIDERS,
+            HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_JS::LEAFLET_PROVIDERS,
             [HOLZKATALOG_SCRIPT_HANDLES::LEAFLET],
             HOLZKATALOG_VERSION,
             true
@@ -320,7 +311,7 @@ class HOLZKATALOG_WC_Origin
 
         // Leaflet Providers
         wp_enqueue_script(
-            HOLZKATALOG_SCRIPT_HANDLES::HOLZCAT_LEAFLET_PROVIDERS,
+            HOLZKATALOG_SCRIPT_HANDLES::LEAFLET_PROVIDERS,
             HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_JS::LEAFLET_PROVIDERS,
             [HOLZKATALOG_SCRIPT_HANDLES::LEAFLET],
             HOLZKATALOG_VERSION,
@@ -333,7 +324,7 @@ class HOLZKATALOG_WC_Origin
             HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_JS::HK_ORIGIN_PICKER_JS,
             [
                 HOLZKATALOG_SCRIPT_HANDLES::LEAFLET,
-                HOLZKATALOG_SCRIPT_HANDLES::HOLZCAT_LEAFLET_PROVIDERS,
+                HOLZKATALOG_SCRIPT_HANDLES::LEAFLET_PROVIDERS,
             ],
             HOLZKATALOG_VERSION,
             true
