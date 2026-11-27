@@ -116,7 +116,7 @@ class HOLZKATALOG_WC_Origin
      * Karte auf der Produktseite anzeigen.
      */
     public function render_map()
-    {   echo '<script>render_map()</schript';
+    {   echo '<script>render_map()</script>';
         global $product;
         if (!$product) {
             return;
