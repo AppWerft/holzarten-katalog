@@ -142,10 +142,8 @@ class HOLZKATALOG_WC_Origin
         // Prüfen, ob das Attribut Geoposition zugeordnet ist.
         $terms = wp_get_object_terms($product_id, 'pa_geoposition');
 
-        if (is_wp_error($terms) || empty($terms)) {
-            error_log('keine pa_geoposition');
-            return;
-        }
+       
+
         error_log($product_id);
         // Koordinaten auslesen.
         $lat = get_post_meta($product_id, '_hk_origin_lat', true);
