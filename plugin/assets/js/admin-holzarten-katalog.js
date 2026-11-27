@@ -287,7 +287,8 @@ document.addEventListener('DOMContentLoaded', function () {
     cardField?.addEventListener('change', updatePreview);
     nurprodukteField?.addEventListener('change', updatePreview);
     sortField?.addEventListener('change', updatePreview);
-
+    bilderField?.addEventListener('change', updatePreview);
+    
     // Initiale Darstellung
     updatePreview();
 });
