@@ -198,7 +198,7 @@ class HOLZKATALOG_WC_Origin
      * Read-only-Karte auf der Produktseite anzeigen.
      */
     public function render_map()
-    {
+    {   error_log('>>>>>>>>>>>>>>>>render_map()');
         global $product;
         echo '<script>' 
             .  wp_json_encode($product) 
