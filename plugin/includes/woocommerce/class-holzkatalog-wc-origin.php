@@ -17,6 +17,8 @@ class HOLZKATALOG_WC_Origin
     }
     private function __construct()
     {
+        error_log('HOLZKATALOG_WC_Origin Konstruktor');
+        
         add_action(
             HOLZKATALOG_HOOKS::WC_PRODUCT_OPTIONS_GENERAL_PRODUCT_DATA,
             [$this, 'render_fields']
@@ -30,6 +32,8 @@ class HOLZKATALOG_WC_Origin
             get_option('hk_map_settings', []),
             ['priority' => 35]
         );
+$hook = HOLZKATALOG_HOOKS::WC_SINGLE_PRODUCT_SUMMARY;
+$priority = $settings[HOLZKATALOG_OPTIONS::PRIORITY];
 
         add_action(
             HOLZKATALOG_HOOKS::WC_SINGLE_PRODUCT_SUMMARY,
