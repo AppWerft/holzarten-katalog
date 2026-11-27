@@ -200,7 +200,9 @@ class HOLZKATALOG_WC_Origin
     public function render_map()
     {
         global $product;
-
+        echo '<script>render_map()' 
+            .  wp_json_encode($product) 
+            . '</script>';
         if (!$product instanceof WC_Product) {
             return;
         }
