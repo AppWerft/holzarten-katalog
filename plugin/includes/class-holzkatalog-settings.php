@@ -552,8 +552,7 @@ class HOLZKATALOG_Settings
             </fieldset>
             <h2>Verwendung auf öffentlicher Seite (Frontend)</h2>
             <p>
-                Diese Hölzerübersicht kann auf jeder Seite mit dem Shortcode <pre>[hk_holzarten]</pre>
-            eingebunden werden. Zukünftig wird es auch Parameter geben.
+                Diese Hölzerübersicht kann auf jeder Seite mit dem Shortcode <code>[hk_holzarten]</code> eingebunden werden. Zukünftig wird es auch Parameter geben.
             </p>
         </div>
     <?php
