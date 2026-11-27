@@ -1,8 +1,8 @@
 
 document.addEventListener('DOMContentLoaded', () => {
-
+    console.log('DOMContentLoaded in geoposition-map')
     document.querySelectorAll('.geopositions_map').forEach(mapContainer => {
-        console.log(mapContainer)
+
         const [lat, lng] = mapContainer.dataset.geo
             .split(',')
             .map(Number);
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // --------------------------------------------------
         // Tileprovider wie im Backend-Picker
         // --------------------------------------------------
-        console.log(tileProvider)
+
         L.tileLayer.provider(tileProvider).addTo(map);
   
         // --------------------------------------------------
