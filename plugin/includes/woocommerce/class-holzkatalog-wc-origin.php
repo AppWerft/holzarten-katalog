@@ -129,7 +129,7 @@ class HOLZKATALOG_WC_Origin
      */
     public function render_map_picker()
     {
-        error_log('render_map_picker');
+        error_log('>>>>>> render_map_picker');
         global $post;
         if (!$post || $post->post_type !== 'product') {
             error_log('kein Produkt-Post');
