@@ -136,7 +136,7 @@ class HOLZKATALOG_WC_Origin
      */
     public function render_map()
     {
-        error_log('render_map()');
+        error_log('>>>>>>>>>>>>>>> render_map()');
 
         global $product;
         if (!$product) {
