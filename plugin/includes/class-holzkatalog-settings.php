@@ -560,7 +560,7 @@ class HOLZKATALOG_Settings
                                         src="<?php echo esc_url(
                                                     HOLZKATALOG_URL . 'assets/images/shortcode.png'
                                                 ); ?>"
-                                        alt="Shortcode">
+                                        alt="Shortcode"><br>
                 Zukünftig wird es auch Parameter geben.
             </p>
         </div>
