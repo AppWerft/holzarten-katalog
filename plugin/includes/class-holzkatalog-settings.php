@@ -556,7 +556,7 @@ class HOLZKATALOG_Settings
                 Falls Elementor eingesetzt wird, muss man im Widget-Suchfeld nach <b>Shortcode</b>, um dort <code>[hk_holzarten]</code>
                 einzutragen.<br>    
                 <img
-                                        style="width:164px;"
+                                        style="width:200px;"
                                         src="<?php echo esc_url(
                                                     HOLZKATALOG_URL . 'assets/images/shortcode.png'
                                                 ); ?>"
