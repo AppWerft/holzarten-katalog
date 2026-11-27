@@ -10,13 +10,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const options = JSON.parse(mapContainer.dataset.options)
     console.log(options)
     pingColor = options.pingcolor || '#4285F4',
-        tileProvider = options.tileprovider,
+        tileProvider = options.tile_provider,
         zoom = parseInt(options.zoom, 10),
         height = parseInt(options.height, 10),
         width = options.width,
         radius = parseInt(options.radius, 10),
         position = options.position;
-    console.log(tileProvider)    
+    console.log(tileProvider    )    
     let initialZoom = zoom,
         searchInput = null,
         searchResults = null;
