@@ -1,6 +1,6 @@
 
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('DOMContentLoaded in geoposition-map')
+   
     document.querySelectorAll('.geopositions_map').forEach(mapContainer => {
 
         const [lat, lng] = mapContainer.dataset.geo
