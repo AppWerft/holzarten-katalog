@@ -128,14 +128,16 @@ class HOLZKATALOG_WC_Origin
      * Karte auf der ProduktAdminseite anzeigen.
      */
     public function render_map_picker()
-    {   error_log('render_map_picker');
-        global $product;
-        if (!$product) {
-            error_log('kein produkt');
+    {
+        error_log('render_map_picker');
+        global $post;
+        if (!$post || $post->post_type !== 'product') {
+            error_log('kein Produkt-Post');
             return;
         }
-        
-        $product_id = $product->get_id();
+
+        $product_id = $post->ID;
+        $product = wc_get_product($product_id);
 
         // Prüfen, ob das Attribut Geoposition zugeordnet ist.
         if (!has_term('', 'pa_geoposition', $product_id)) {
@@ -256,7 +258,7 @@ class HOLZKATALOG_WC_Origin
             '1.0.0',
             true
         );
-        
+
         $html = sprintf(
             '<div
                 data-geo="%s"
