@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const zoom = parseInt(mapContainer.dataset.zoom, 10) || 6;
         const tileProvider = mapContainer.dataset.tileProvider;
-
+        console.log(tileProvider)
         if (
             !Number.isFinite(lat) ||
             !Number.isFinite(lng)
@@ -41,9 +41,9 @@ document.addEventListener('DOMContentLoaded', () => {
         // --------------------------------------------------
         // Tileprovider wie im Backend-Picker
         // --------------------------------------------------
-
+        console.log(tileProvider)
         L.tileLayer.provider(tileProvider).addTo(map);
-
+  
         // --------------------------------------------------
         // PingLayer initialisieren
         // --------------------------------------------------
