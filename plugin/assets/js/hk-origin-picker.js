@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelectorAll('.geopositions_map').forEach(mapContainer => {
-
+        console.log(mapContainer)
         const [lat, lng] = mapContainer.dataset.geo
             .split(',')
             .map(Number);
