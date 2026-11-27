@@ -28,6 +28,11 @@
     background: #fff;
     max-height: 280px;
     overflow-y: auto;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 1001;
 }
 
 #hk-origin-search-results:empty {
