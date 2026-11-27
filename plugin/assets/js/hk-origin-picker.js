@@ -1,6 +1,6 @@
 
 document.addEventListener('DOMContentLoaded', () => {
-   
+    console.log('hk-origin-picker');
     document.querySelectorAll('.geopositions_map').forEach(mapContainer => {
 
         const [lat, lng] = mapContainer.dataset.geo
@@ -38,9 +38,9 @@ document.addEventListener('DOMContentLoaded', () => {
             zoom
         );
 
-        console.log('BE-tileProvider=',tileProvider)
+        console.log('BE-tileProvider=', tileProvider)
         L.tileLayer.provider(tileProvider).addTo(map);
-  
+
         // --------------------------------------------------
         // PingLayer initialisieren
         // --------------------------------------------------
