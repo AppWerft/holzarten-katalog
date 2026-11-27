@@ -241,7 +241,7 @@ class HOLZKATALOG_WC_Origin
         $lat = get_post_meta($product_id, '_hk_origin_lat', true);
         $lng = get_post_meta($product_id, '_hk_origin_lng', true);
         $zoom = get_post_meta($product_id, '_hk_origin_zoom', true);
-    
+
         if ($lat === '' || $lng === '') {
             return;
         }
@@ -256,7 +256,7 @@ class HOLZKATALOG_WC_Origin
             '1.0.0',
             true
         );
-        printf(
+        $html = sprintf(
             '<div
                 data-geo="%s"
                 data-zoom="%d"
@@ -271,6 +271,8 @@ class HOLZKATALOG_WC_Origin
             absint($settings[HOLZKATALOG_OPTIONS::WIDTH]),
             esc_attr($margin)
         );
+        echo $html;
+        error_log($html);
     }
     public function enqueue_admin_scripts($hook)
     {
