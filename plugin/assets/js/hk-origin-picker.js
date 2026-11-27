@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
         width = options.width,
         radius = parseInt(options.radius, 10),
         position = options.position;
+    console.log(tileProvider)    
     let initialZoom = zoom,
         searchInput = null,
         searchResults = null;
