@@ -222,9 +222,7 @@ class HOLZKATALOG_WC_Origin
 
         error_log('HK lat: ' . var_export($lat, true));
         error_log('HK lng: ' . var_export($lng, true));
-        if (!has_term('', 'pa_geoposition', $product_id)) {
-            return;
-        }
+       
         $settings = wp_parse_args(
             get_option(HOLZKATALOG_OPTIONS::MAP_SETTINGS, []),
             [
