@@ -17,7 +17,6 @@ class HOLZKATALOG_WC_Origin
     }
     private function __construct()
     {
-        error_log('HOLZKATALOG_WC_Origin::constructor aufgerufen');
         add_action(
             HOLZKATALOG_HOOKS::WC_PRODUCT_OPTIONS_GENERAL_PRODUCT_DATA,
             [$this, 'render_fields']
@@ -32,13 +31,7 @@ class HOLZKATALOG_WC_Origin
             ['priority' => 35]
         );
 
-        add_action(
-            HOLZKATALOG_HOOKS::WC_SINGLE_PRODUCT_SUMMARY,
-            function () {
-                error_log('=----------------========= WOOCOMMERCE SUMMARY HOOK AUSGEFÜHRT ==========');
-            },
-            1
-        );
+        
         add_action(
             HOLZKATALOG_HOOKS::WC_PRODUCT_OPTIONS_GENERAL_PRODUCT_DATA,
             //        HOLZKATALOG_HOOKS::WC_SINGLE_PRODUCT_SUMMARY,
@@ -56,10 +49,7 @@ class HOLZKATALOG_WC_Origin
             [$this, 'enqueue_admin_scripts']
         );
 
-        error_log('LEAFLET: ' . HOLZKATALOG_SCRIPT_HANDLES::LEAFLET);
-        error_log('PROVIDERS: ' . HOLZKATALOG_SCRIPT_HANDLES::HOLZCAT_LEAFLET_PROVIDERS);
-        error_log('ORIGIN: ' . HOLZKATALOG_SCRIPT_HANDLES::HOLZCAT_ORIGIN_PICKER);
-    }
+      }
 
     public function limit_wood_attribute($product)
     {
@@ -136,8 +126,6 @@ class HOLZKATALOG_WC_Origin
      */
     public function render_map()
     {
-        error_log('>>>>>>>>>>>>>>> render_map()');
-
         global $product;
         if (!$product) {
             return;
@@ -157,10 +145,7 @@ class HOLZKATALOG_WC_Origin
             $product->update_meta_data('_hk_origin_zoom', 6);
             return;
         }
-        error_log('Product ID: ' . $product_id);
-        error_log('Geoposition: ' . (has_term('', 'pa_geoposition', $product_id) ? 'ja' : 'nein'));
-        error_log('Lat: ' . $lat);
-        error_log('Lng: ' . $lng);
+       
         $zoom_terms = wc_get_product_terms(
             $product_id,
             'pa_zoomlevel',

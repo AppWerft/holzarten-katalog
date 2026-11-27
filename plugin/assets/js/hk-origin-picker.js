@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let clearButton = null;
     if (!mapContainer || !latField || !lngField) return;
     const options = JSON.parse(mapContainer.dataset.options)
-    console.log(options)
+   
     pingColor = options.pingcolor || '#4285F4',
         tileProvider = options.tile_provider,
         zoom = parseInt(options.zoom, 10),
@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
         width = options.width,
         radius = parseInt(options.radius, 10),
         position = options.position;
-    console.log(tileProvider    )    
+     
     let initialZoom = zoom,
         searchInput = null,
         searchResults = null;
