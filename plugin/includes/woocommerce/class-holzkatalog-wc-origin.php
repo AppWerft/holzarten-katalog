@@ -131,6 +131,7 @@ class HOLZKATALOG_WC_Origin
     {   error_log('render_map_picker');
         global $product;
         if (!$product) {
+            error_log('kein produkt');
             return;
         }
         
