@@ -550,6 +550,12 @@ class HOLZKATALOG_Settings
                     ?>
                 </div>
             </fieldset>
+            <h2>Verwendung auf öffentlicher Seite (Frontend)</h2>
+            <p>
+                Diese Hölzerübersicht kann auf jeder Seite mit dem Shortcode
+            <pre>[hk_holzarten]</pre>
+            eingebunden werden. Zukünftig wird es auch Parameter geben.
+            </p>
         </div>
     <?php
     }
@@ -801,7 +807,7 @@ class HOLZKATALOG_Settings
                 </div>
             </fieldset>
             <h2>Verwendung auf öffentlicher Seite (Frontend)</h2>
-            Die Karte wird automatisch in den Beschreibungsblock des Produkte eingefügt, wobei die Position durch den Positionsparamter festgelegt ist. 
+            Die Karte wird automatisch in den Beschreibungsblock des Produkte eingefügt, wobei die Position durch den Positionsparamter festgelegt ist.
             Die Geo-Position des Produktes wird im Menüpunkt woocommerce/Produkte/Edit festgelegt. Ist keine Position angegeben, entfällt die Karte.
         </div>
 
