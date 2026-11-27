@@ -33,7 +33,7 @@ class HOLZKATALOG_Assets
         // D3
         wp_enqueue_script(
             HOLZKATALOG_SCRIPT_HANDLES::HOLZCAT_D3,
-            HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_SCRIPT_HANDLES::HOLZCAT_D3,
+            HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_JS::D3V5,
             [],
             HOLZKATALOG_VERSION,
             true
