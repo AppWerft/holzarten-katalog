@@ -30,13 +30,14 @@ class HOLZKATALOG_WC_Origin
             get_option('hk_map_settings', []),
             ['priority' => 35]
         );
-        $hook = HOLZKATALOG_HOOKS::WC_SINGLE_PRODUCT_SUMMARY;
-        $priority = $settings[HOLZKATALOG_OPTIONS::PRIORITY];
 
+        error_log(HOLZKATALOG_HOOKS::WC_SINGLE_PRODUCT_SUMMARY);
         add_action(
             HOLZKATALOG_HOOKS::WC_SINGLE_PRODUCT_SUMMARY,
-            [$this, 'render_map'],
-            $settings[HOLZKATALOG_OPTIONS::PRIORITY]
+            function () {
+                error_log('===========TEST: woocommerce_single_product_summary wurde ausgeführt');
+            },
+            1
         );
 
         add_action(
