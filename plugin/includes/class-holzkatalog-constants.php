@@ -20,9 +20,7 @@ final class HOLZKATALOG_HOOKS
     public const WP_ADMIN_MENU  = 'admin_menu';
     public const HOLZARTENKATALOG_PAGE_HK_SETTINGS_FUNDORTE = 'holzartenkatalog_page_hk_settings_fundorte';
     public const WP_ADMIN_ENQUEUE_SCRIPTS = 'admin_enqueue_scripts';
-
     public const LEAFLET = 'leaflet';
-
     public const HOLZARTENKATALOG_PAGE_HK_SETTING_KATALOG = 'holzartenkatalog_page_hk_settings_katalog';
 }
 
@@ -54,7 +52,7 @@ final class HOLZKATALOG_SCRIPT_HANDLES
     public const HOLZCAT_HOLZARTEN_GEOSETTINGS_JS = 'holzkat-holzarten-geosettings_js';
     public const HOLZCAT_PINGLAYER = 'holzkat-ping-layer';
     public const HOLZCAT_HOLZARTEN_SETTING = 'holzkat-holzarten-settings';
-    public const LEAFLET = 'holzcat-leaflet';
+    public const LEAFLET = 'leaflet';
     public const HOLZCAT_D3 = 'holzkat-d3';
     public const HOLZCAT_HOLZARTEN = 'holzkat-holzarten';
     public const JQUERY = 'jquery';
