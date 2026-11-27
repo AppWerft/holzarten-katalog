@@ -222,7 +222,7 @@ class HOLZKATALOG_WC_Origin
 
         error_log('HK lat: ' . var_export($lat, true));
         error_log('HK lng: ' . var_export($lng, true));
-       
+
         $settings = wp_parse_args(
             get_option(HOLZKATALOG_OPTIONS::MAP_SETTINGS, []),
             [
@@ -243,6 +243,17 @@ class HOLZKATALOG_WC_Origin
         if ($lat === '' || $lng === '') {
             return;
         }
+        // JavaScript für die Karte laden
+        wp_enqueue_script(
+            HOLZKATALOG_SCRIPT_HANDLES::GEOPOSITION_MAP,
+            plugins_url(
+                HOLZKATALOG_JS::GEOPOSITION_MAP,
+                HOLZKATALOG_PLUGIN_FILE
+            ),
+            [HOLZKATALOG_SCRIPT_HANDLES::JQUERY],
+            '1.0.0',
+            true
+        );
         printf(
             '<div data-geo="%s"
                         class="geopositions_map"
