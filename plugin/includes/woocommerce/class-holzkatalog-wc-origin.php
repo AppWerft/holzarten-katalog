@@ -243,6 +243,14 @@ class HOLZKATALOG_WC_Origin
         if ($lat === '' || $lng === '') {
             return;
         }
+        // Providerliste laden:
+        wp_enqueue_script(
+            HOLZKATALOG_JS::LEAFLET_PROVIDERS,
+            HOLZKATALOG_PLUGIN_URL . 'assets/js/leaflet-providers.js',
+            [HOLZKATALOG_SCRIPT_HANDLES::LEAFLET],
+            HOLZKATALOG_VERSION,
+            true
+        );
         // JavaScript für die Karte laden
         wp_enqueue_script(
             HOLZKATALOG_SCRIPT_HANDLES::GEOPOSITION_MAP,
@@ -254,13 +262,7 @@ class HOLZKATALOG_WC_Origin
             '1.0.0',
             true
         );
-        wp_enqueue_script(
-            HOLZKATALOG_JS::LEAFLET_PROVIDERS,
-            HOLZKATALOG_PLUGIN_URL . 'assets/js/leaflet-providers.js',
-            [HOLZKATALOG_SCRIPT_HANDLES::LEAFLET],
-            HOLZKATALOG_VERSION,
-            true
-        );
+        
         $html = sprintf(
             '<div
                 data-geo="%s"
