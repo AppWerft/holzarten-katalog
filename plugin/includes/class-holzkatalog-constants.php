@@ -106,7 +106,7 @@ final class HOLZKATALOG_JS
     public const LEAFLET_PROVIDERS = 'assets/vendor/leaflet/leaflet-providers.js';
     public const HK_ORIGIN_PICKER_JS = 'assets/js/hk-origin-picker.js';
     public const D3V5 = 'assets/vendor/d3/d3v5.js';
-    public const GEOPOSITION_MAP = 'assets/js/geopositions-map.js';
+    public const GEOPOSITION_MAP = 'assets/js/geoposition-map.js';
     // noch nicht genutzt:
     public const FRONTEND_KATALOG = 'assets/js/frontend-katalog.js';
 }
