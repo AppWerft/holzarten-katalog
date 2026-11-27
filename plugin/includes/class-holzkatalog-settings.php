@@ -554,7 +554,13 @@ class HOLZKATALOG_Settings
             <p>
                 Diese Hölzerübersicht kann auf jeder Seite mit dem Shortcode <code>[hk_holzarten]</code> eingebunden werden. 
                 Falls Elementor eingesetzt wird, muss man im Widget-Suchfeld nach <b>Shortcode</b>, um dort <code>[hk_holzarten]</code>
-                einzutragen.<br>
+                einzutragen.<br>    
+                <img
+                                        style="width:64px;"
+                                        src="<?php echo esc_url(
+                                                    HOLZKATALOG_URL . 'assets/images/shortcode.png'
+                                                ); ?>"
+                                        alt="Shortcode">
                 Zukünftig wird es auch Parameter geben.
             </p>
         </div>
