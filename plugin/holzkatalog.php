@@ -3,7 +3,7 @@
 /**
  * Plugin Name: Tree Species Catalog
  * Description: Extends woocommerce with a catalog of woods and harvesting location.
- * Version: 0.1.35
+ * Version: 0.1.36
  * Author: Appwerft
  * Requires Plugins: woocommerce
  * Text Domain: holzarten-katalog
@@ -15,7 +15,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-define('HOLZKATALOG_VERSION', '0.1.35');
+define('HOLZKATALOG_VERSION', '0.1.36');
 define('HOLZKATALOG_PLUGIN_FILE', __FILE__);
 define('HOLZKATALOG_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('HOLZKATALOG_PLUGIN_URL', plugin_dir_url(__FILE__));
