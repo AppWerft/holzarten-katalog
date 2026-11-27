@@ -4,7 +4,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-//http://holzurne.local/Users/fuerst/Local%20Sites/holzurne/app/public/wp-content/plugins/holzarten-katalog/assets/js/admin-holzarten-katalog.js
+
 /*
 final class HOLZKATALOG_CONSTANTS
 {
@@ -54,11 +54,11 @@ final class HOLZKATALOG_SCRIPT_HANDLES
     public const HOLZCAT_HOLZARTEN_GEOSETTINGS_JS = 'holzkat-holzarten-geosettings_js';
     public const HOLZCAT_PINGLAYER = 'holzkat-ping-layer';
     public const HOLZCAT_HOLZARTEN_SETTING = 'holzkat-holzarten-settings';
-    public const LEAFLET = 'holzcat-leaflet_js';
+    public const LEAFLET = 'holzcat-leaflet';
     public const HOLZCAT_D3 = 'holzkat-d3';
     public const HOLZCAT_HOLZARTEN = 'holzkat-holzarten';
     public const JQUERY = 'jquery';
-    public const ADMIN = 'holzkat-admin-js';
+    public const ADMIN = 'holzkat-admin';
     public const HOLZARTEN = 'holzkat-holzarten';
     public const HOLZARTEN_SETTINGS = 'holzkat-holzarten-settings';
     public const GEOPOSITION_MAP = 'holzkat-geopositions-map';
