@@ -1,4 +1,6 @@
 jQuery(document).ready(function ($) {
+    console.count('admin-holzarten-katalog.js geladen');
+console.trace('Script-Aufruf');
     $('.hk-status-toggle').on('change', function () {
 
         const checkbox = $(this);
