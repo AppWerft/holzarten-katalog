@@ -34,10 +34,8 @@ class HOLZKATALOG_WC_Origin
         error_log(HOLZKATALOG_HOOKS::WC_SINGLE_PRODUCT_SUMMARY);
         add_action(
             HOLZKATALOG_HOOKS::WC_SINGLE_PRODUCT_SUMMARY,
-            function () {
-                error_log('===========TEST: woocommerce_single_product_summary wurde ausgeführt');
-            },
-            1
+            [$this, 'render_map'],
+            absint($settings[HOLZKATALOG_OPTIONS::PRIORITY])
         );
 
         add_action(
@@ -53,7 +51,6 @@ class HOLZKATALOG_WC_Origin
         error_log('LEAFLET: ' . HOLZKATALOG_SCRIPT_HANDLES::LEAFLET);
         error_log('PROVIDERS: ' . HOLZKATALOG_SCRIPT_HANDLES::HOLZCAT_LEAFLET_PROVIDERS);
         error_log('ORIGIN: ' . HOLZKATALOG_SCRIPT_HANDLES::HOLZCAT_ORIGIN_PICKER);
-        
     }
 
     public function limit_wood_attribute($product)
@@ -198,77 +195,77 @@ class HOLZKATALOG_WC_Origin
             esc_attr($margin)
         );
     }
-    
-public function enqueue_admin_scripts($hook)
-{
-    if (!in_array($hook, ['post.php', 'post-new.php'], true)) {
-        return;
-    }
 
-    $screen = get_current_screen();
+    public function enqueue_admin_scripts($hook)
+    {
+        if (!in_array($hook, ['post.php', 'post-new.php'], true)) {
+            return;
+        }
 
-    if (!$screen || $screen->post_type !== 'product') {
-        return;
-    }
+        $screen = get_current_screen();
 
-    // Allgemeines Admin-CSS
-    wp_enqueue_style(
-        HOLZKATALOG_STYLE_HANDLES::ADMIN,
-        HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_CSS::HK_ADMIN,
-        [],
-        HOLZKATALOG_VERSION
-    );
+        if (!$screen || $screen->post_type !== 'product') {
+            return;
+        }
 
-    // Leaflet CSS
-    wp_enqueue_style(
-        HOLZKATALOG_STYLE_HANDLES::LEAFLET,
-        HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_CSS::LEAFLET,
-        [],
-        '1.9.4'
-    );
+        // Allgemeines Admin-CSS
+        wp_enqueue_style(
+            HOLZKATALOG_STYLE_HANDLES::ADMIN,
+            HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_CSS::HK_ADMIN,
+            [],
+            HOLZKATALOG_VERSION
+        );
 
-    // Leaflet JavaScript
-    wp_enqueue_script(
-        HOLZKATALOG_SCRIPT_HANDLES::LEAFLET,
-        HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_JS::LEAFLET,
-        [],
-        '1.9.4',
-        true
-    );
+        // Leaflet CSS
+        wp_enqueue_style(
+            HOLZKATALOG_STYLE_HANDLES::LEAFLET,
+            HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_CSS::LEAFLET,
+            [],
+            '1.9.4'
+        );
 
-    // Leaflet Providers
-    wp_enqueue_script(
-        HOLZKATALOG_SCRIPT_HANDLES::HOLZCAT_LEAFLET_PROVIDERS,
-        HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_JS::LEAFLET_PROVIDERS,
-        [HOLZKATALOG_SCRIPT_HANDLES::LEAFLET],
-        HOLZKATALOG_VERSION,
-        true
-    );
-
-    // Origin Picker für die Produktherkunft
-    wp_enqueue_script(
-        HOLZKATALOG_SCRIPT_HANDLES::HOLZCAT_ORIGIN_PICKER,
-        HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_JS::HK_ORIGIN_PICKER_JS,
-        [
+        // Leaflet JavaScript
+        wp_enqueue_script(
             HOLZKATALOG_SCRIPT_HANDLES::LEAFLET,
-            HOLZKATALOG_SCRIPT_HANDLES::HOLZCAT_LEAFLET_PROVIDERS,
-        ],
-        HOLZKATALOG_VERSION,
-        true
-    );
+            HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_JS::LEAFLET,
+            [],
+            '1.9.4',
+            true
+        );
 
-    // Allgemeines Admin-JavaScript
-    wp_enqueue_script(
-        HOLZKATALOG_SCRIPT_HANDLES::ADMIN,
-        HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_JS::HK_ADMIN,
-        [
-            HOLZKATALOG_SCRIPT_HANDLES::JQUERY,
-            HOLZKATALOG_SCRIPT_HANDLES::WC_ENHANCED_SELECT,
-        ],
-        HOLZKATALOG_VERSION,
-        true
-    );
-}
+        // Leaflet Providers
+        wp_enqueue_script(
+            HOLZKATALOG_SCRIPT_HANDLES::HOLZCAT_LEAFLET_PROVIDERS,
+            HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_JS::LEAFLET_PROVIDERS,
+            [HOLZKATALOG_SCRIPT_HANDLES::LEAFLET],
+            HOLZKATALOG_VERSION,
+            true
+        );
+
+        // Origin Picker für die Produktherkunft
+        wp_enqueue_script(
+            HOLZKATALOG_SCRIPT_HANDLES::HOLZCAT_ORIGIN_PICKER,
+            HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_JS::HK_ORIGIN_PICKER_JS,
+            [
+                HOLZKATALOG_SCRIPT_HANDLES::LEAFLET,
+                HOLZKATALOG_SCRIPT_HANDLES::HOLZCAT_LEAFLET_PROVIDERS,
+            ],
+            HOLZKATALOG_VERSION,
+            true
+        );
+
+        // Allgemeines Admin-JavaScript
+        wp_enqueue_script(
+            HOLZKATALOG_SCRIPT_HANDLES::ADMIN,
+            HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_JS::HK_ADMIN,
+            [
+                HOLZKATALOG_SCRIPT_HANDLES::JQUERY,
+                HOLZKATALOG_SCRIPT_HANDLES::WC_ENHANCED_SELECT,
+            ],
+            HOLZKATALOG_VERSION,
+            true
+        );
+    }
 
 
 
