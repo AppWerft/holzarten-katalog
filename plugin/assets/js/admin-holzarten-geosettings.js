@@ -54,7 +54,13 @@ document.addEventListener('DOMContentLoaded', function () {
     // --------------------------------------------------
 
     const map = L.map(previewMap, {
-        zoomControl: false
+        zoomControl: false,
+        dragging: false,
+        scrollWheelZoom: false,
+        doubleClickZoom: false,
+        touchZoom: false,
+        boxZoom: false,
+        keyboard: false 
     }).setView(STANDARDPOSITION, 12);
 
     // --------------------------------------------------
