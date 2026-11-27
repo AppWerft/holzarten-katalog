@@ -17,11 +17,11 @@ class HOLZKATALOG_WC_Origin
     }
     private function __construct()
     {
-        error_log(
+       /* error_log(
         'HK Konstruktor: ' . get_class($this)
         . ' | ' . wp_debug_backtrace_summary()
     );
-        
+        */
         add_action(
             HOLZKATALOG_HOOKS::WC_PRODUCT_OPTIONS_GENERAL_PRODUCT_DATA,
             [$this, 'render_fields']
