@@ -106,7 +106,7 @@ define('HOLZKATALOG_URL', plugin_dir_url(__FILE__));
     HOLZKATALOG_WooCommerce::instance();
     HOLZKATALOG_WC_Origin::instance();
 });*/
-add_action('woocommerce_loaded', function () {
+//add_action('woocommerce_loaded', function () {
     error_log('=== WOOCOMMERCE LOADED ===');
 
     HOLZKATALOG_WooCommerce::instance();
@@ -120,4 +120,4 @@ add_action('woocommerce_loaded', function () {
         )
         . ' ==='
     );
-});
+//});
