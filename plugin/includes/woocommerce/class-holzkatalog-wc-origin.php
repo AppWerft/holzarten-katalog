@@ -7,7 +7,6 @@ if (!defined('ABSPATH')) {
 class HOLZKATALOG_WC_Origin
 {
     private static $instance = null;
-
     public static function instance()
     {
         if (self::$instance === null) {
@@ -30,15 +29,12 @@ class HOLZKATALOG_WC_Origin
             get_option('hk_map_settings', []),
             ['priority' => 35]
         );
-
-        
         add_action(
             HOLZKATALOG_HOOKS::WC_PRODUCT_OPTIONS_GENERAL_PRODUCT_DATA,
             //        HOLZKATALOG_HOOKS::WC_SINGLE_PRODUCT_SUMMARY,
             [$this, 'render_map'],
             absint($settings[HOLZKATALOG_OPTIONS::PRIORITY])
         );
-
         add_action(
             HOLZKATALOG_HOOKS::WC_ADMIN_PROCESS_PRODUCT_OBJECT, // Hook
             [$this, 'limit_wood_attribute'],
@@ -48,8 +44,7 @@ class HOLZKATALOG_WC_Origin
             HOLZKATALOG_HOOKS::WP_ADMIN_ENQUEUE_SCRIPTS,
             [$this, 'enqueue_admin_scripts']
         );
-
-      }
+    }
 
     public function limit_wood_attribute($product)
     {
@@ -65,18 +60,15 @@ class HOLZKATALOG_WC_Origin
         if (count($options) > 1) {
             $attribute->set_options(array_slice($options, 0, 1));
             $attributes['pa_holzart'] = $attribute;
-
             $product->set_attributes($attributes);
         }
     }
-
 
     public static function register_zoomlevel_attribute()
     {
         if (!function_exists('wc_create_attribute')) {
             return;
         }
-
         if (!wc_attribute_taxonomy_id_by_name('zoomlevel')) {
             $result = wc_create_attribute([
                 'name'         => 'Zoomlevel',
@@ -85,7 +77,6 @@ class HOLZKATALOG_WC_Origin
                 'order_by'     => 'menu_order',
                 'has_archives' => false,
             ]);
-
             if (is_wp_error($result)) {
                 return;
             }
@@ -140,12 +131,14 @@ class HOLZKATALOG_WC_Origin
         // Koordinaten auslesen.
         $lat = get_post_meta($product_id, '_hk_origin_lat', true);
         $lng = get_post_meta($product_id, '_hk_origin_lng', true);
+        $zoom= get_post_meta($product_id, '_hk_origin_zoom', true);
+        $zoom = $zoom !== '' ? (int) $zoom : 6;
 
         if ($lat === '' || $lng === '') {
             $product->update_meta_data('_hk_origin_zoom', 6);
             return;
         }
-       
+
         $zoom_terms = wc_get_product_terms(
             $product_id,
             'pa_zoomlevel',
@@ -278,7 +271,7 @@ class HOLZKATALOG_WC_Origin
         $options = [
             HOLZKATALOG_OPTIONS::PINGCOLOR    => $settings[HOLZKATALOG_OPTIONS::PINGCOLOR],
             HOLZKATALOG_OPTIONS::TILE_PROVIDER => $settings[HOLZKATALOG_OPTIONS::TILE_PROVIDER],
-            HOLZKATALOG_OPTIONS::ZOOM  => (int) HOLZKATALOG_OPTIONS::ZOOM,
+          //  HOLZKATALOG_OPTIONS::ZOOM  => (int) HOLZKATALOG_OPTIONS::ZOOM,
             HOLZKATALOG_OPTIONS::HEIGHT  => (int) $settings[HOLZKATALOG_OPTIONS::HEIGHT],
             HOLZKATALOG_OPTIONS::WIDTH  => $settings[HOLZKATALOG_OPTIONS::WIDTH],
             HOLZKATALOG_OPTIONS::RADIUS => (int) $settings[HOLZKATALOG_OPTIONS::RADIUS],
@@ -358,7 +351,10 @@ class HOLZKATALOG_WC_Origin
         $coordinates = [
             '_hk_origin_lat' => ['min' => -90, 'max' => 90],
             '_hk_origin_lng' => ['min' => -180, 'max' => 180],
+            '_hk_origin_zoom' => ['min' => 3, 'max' => 16],
+            
         ];
+
         // Nonce-Prüfung.
         if (
             !isset($_POST['woocommerce_meta_nonce']) ||
