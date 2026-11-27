@@ -138,30 +138,23 @@ class HOLZKATALOG_WC_Origin
 
         $product_id = $post->ID;
         $product = wc_get_product($product_id);
-
-        // Prüfen, ob das Attribut Geoposition zugeordnet ist.
-        $terms = wp_get_object_terms($product_id, 'pa_geoposition');
-
        
-
-        error_log($product_id);
         // Koordinaten auslesen.
         $lat = get_post_meta($product_id, '_hk_origin_lat', true);
         $lng = get_post_meta($product_id, '_hk_origin_lng', true);
         $zoom = get_post_meta($product_id, '_hk_origin_zoom', true);
         $zoom = $zoom !== '' ? (int) $zoom : 6;
-
+        error_log($lat . ' ' . $lng . ' ' . $zoom);
         if ($lat === '' || $lng === '') {
             $product->update_meta_data('_hk_origin_zoom', 6);
             return;
         }
-
         $zoom_terms = wc_get_product_terms(
             $product_id,
             'pa_zoomlevel',
             ['fields' => 'names']
         );
-
+        var_dump($zoom_terms);
         $zoom = !empty($zoom_terms)
             ? absint($zoom_terms[0])
             : 6;
@@ -197,7 +190,9 @@ class HOLZKATALOG_WC_Origin
             absint($settings[HOLZKATALOG_OPTIONS::WIDTH]),
             esc_attr($margin)
         );
-        echo $html;
+        error_log($html);
+        print($html);
+
     }
     /**
      * Read-only-Karte auf der Produktseite anzeigen.
