@@ -1,6 +1,6 @@
 
 jQuery('.geopositions_map').each(function () {
-     console.log('DOMContentLoaded in geoposition-map')
+    console.log('DOMContentLoaded in geoposition-map')
     const getTileprovider = () => {
         const tileProvider = $mapContainer.data('tile-provider');
         console.log(tileProvider)
@@ -13,7 +13,7 @@ jQuery('.geopositions_map').each(function () {
                 }
             }
         };
-        console.log(tileProvider)
+       
         return tileProviders[tileProvider] || tileProviders['OpenStreetMap.Mapnik'];
 
     }
@@ -21,15 +21,15 @@ jQuery('.geopositions_map').each(function () {
 
     const [lat, lng] = $mapContainer.data('geo').split(',').map(Number);
     const zoom = Number($mapContainer.data('zoom')) || 6;
-
+    const tileprovider = $mapContainer.data('tile-provider');
     $mapContainer.css({
         display: 'block'
     });
 
     const map = L.map($mapContainer[0]).setView([lat, lng], zoom);
 
-
-    L.tileLayer(provider.url, provider.options).addTo(map);
+    let tileProvider = getTileprovider(tileprovider);
+    L.tileLayer(tileProvider.url, tileProvider.options).addTo(map);
 
     L.pingLayer({
         duration: 2500,
