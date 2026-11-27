@@ -35,30 +35,6 @@
     z-index: 1001;
 }
 
-
-.leaflet-control-container,
-.leaflet-top,
-.leaflet-control {
-    overflow: visible !important;
-}
-
-.hk-origin-search-control {
-    position: relative;
-    z-index: 10000;
-}
-
-#hk-origin-search-results {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    z-index: 10001;
-}
-
-
-
-
-
 #hk-origin-search-results:empty {
     display: none;
 }
