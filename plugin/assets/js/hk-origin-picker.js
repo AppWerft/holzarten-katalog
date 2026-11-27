@@ -38,10 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
             zoom
         );
 
-        // --------------------------------------------------
-        // Tileprovider wie im Backend-Picker
-        // --------------------------------------------------
-
+        console.log('BE-tileProvider=',tileProvider)
         L.tileLayer.provider(tileProvider).addTo(map);
   
         // --------------------------------------------------

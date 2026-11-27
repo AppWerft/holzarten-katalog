@@ -1,7 +1,7 @@
 
 jQuery('.geopositions_map').each(function () {
     const getTileprovider = () => {
-        const tileProvider = $mapContainer.data('tile-provider').replace('.','');
+        const tileProvider = $mapContainer.data('tile-provider');
         console.log('tileProvider='+tileProvider)
         return L.tileLayer.provider(tileProvider)
     }
