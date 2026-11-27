@@ -200,12 +200,15 @@ class HOLZKATALOG_WC_Origin
     public function render_map()
     {
         global $product;
-        error_log('>>>>>>>>>>>>>>>>render_map()');
-        error_log(wp_json_encode($product));
 
-        echo '<script>'
-            .  wp_json_encode($product)
-            . '</script>';
+        error_log('Produktobjekt: ' . get_debug_type($product));
+
+        if ($product instanceof WC_Product) {
+            error_log('Produkt-ID: ' . $product->get_id());
+            error_log('Produktname: ' . $product->get_name());
+        } else {
+            error_log('Globales $product ist nicht gesetzt!');
+        }
 
         if (!$product instanceof WC_Product) {
             return;
