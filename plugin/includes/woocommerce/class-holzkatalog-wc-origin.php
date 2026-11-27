@@ -215,13 +215,11 @@ class HOLZKATALOG_WC_Origin
         }
 
         $product_id = $product->get_id();
-        error_log('HK has_term: ' . (has_term('', 'pa_geoposition', $product_id) ? 'TRUE' : 'FALSE'));
 
         $lat = get_post_meta($product_id, '_hk_origin_lat', true);
         $lng = get_post_meta($product_id, '_hk_origin_lng', true);
 
-        error_log('HK lat: ' . var_export($lat, true));
-        error_log('HK lng: ' . var_export($lng, true));
+
 
         $settings = wp_parse_args(
             get_option(HOLZKATALOG_OPTIONS::MAP_SETTINGS, []),
@@ -254,6 +252,13 @@ class HOLZKATALOG_WC_Origin
             ),
             [HOLZKATALOG_SCRIPT_HANDLES::JQUERY],
             '1.0.0',
+            true
+        );
+        wp_enqueue_script(
+            HOLZKATALOG_JS::LEAFLET_PROVIDERS,
+            HOLZKATALOG_PLUGIN_URL . 'assets/js/leaflet-providers.js',
+            [HOLZKATALOG_SCRIPT_HANDLES::LEAFLET],
+            HOLZKATALOG_VERSION,
             true
         );
         $html = sprintf(
