@@ -35,7 +35,7 @@ class HOLZKATALOG_WC_Origin
         add_action(
             HOLZKATALOG_HOOKS::WC_SINGLE_PRODUCT_SUMMARY,
             function () {
-                error_log('========== WOOCOMMERCE SUMMARY HOOK AUSGEFÜHRT ==========');
+                error_log('=----------------========= WOOCOMMERCE SUMMARY HOOK AUSGEFÜHRT ==========');
             },
             1
         );
