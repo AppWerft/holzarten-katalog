@@ -97,14 +97,14 @@ final class HOLZKATALOG_JS
 {
     public const ADMIN_HOLZARTEN_SETTINGS = 'assets/js/admin-holzarten-settings.js';
     public const ADMIN_HOLZARTEN_KATALOG = 'assets/js/admin-holzarten-katalog.js';
-    public const ADMIN_HOLZARTEN_GEOSETTINGS = 'assets/js/admin-holzarten-geosettings.js';
+    public const ADMIN_GEOSETTINGS = 'assets/js/admin-geosettings.js';
 
     public const HK_ADMIN = 'assets/js/hk-admin.js';
     public const HOLZKATLOG_ADMIN_JS = 'assets/js/holzkatalog-admin.js';
     public const LEAFLET = 'assets/vendor/leaflet/leaflet.js';
     public const PINGLAYER = 'assets/vendor/leaflet/leaflet-d3.js';
     public const LEAFLET_PROVIDERS = 'assets/vendor/leaflet/leaflet-providers.js';
-    public const HK_ORIGIN_PICKER_JS = 'assets/js/hk-origin-picker.js';
+    public const PRODUKT_GEOSETTINGS = 'assets/js/produkt-geosettings.js';
     public const D3V5 = 'assets/vendor/d3/d3v5.js';
     public const GEOPOSITION_MAP = 'assets/js/geoposition-map.js';
     // noch nicht genutzt:

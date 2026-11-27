@@ -174,11 +174,11 @@ class HOLZKATALOG_Settings
             );
 
             $js_file = HOLZKATALOG_PLUGIN_DIR
-                . HOLZKATALOG_JS::ADMIN_HOLZARTEN_GEOSETTINGS;
+                . HOLZKATALOG_JS::ADMIN_GEOSETTINGS;
 
             wp_enqueue_script(
                 HOLZKATALOG_SCRIPT_HANDLES::GEOSETTINGS,
-                HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_JS::ADMIN_HOLZARTEN_GEOSETTINGS,
+                HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_JS::ADMIN_GEOSETTINGS,
                 [HOLZKATALOG_SCRIPT_HANDLES::LEAFLET, HOLZKATALOG_SCRIPT_HANDLES::LEAFLET_PROVIDERS],
                 file_exists($js_file)
                     ? filemtime($js_file)
