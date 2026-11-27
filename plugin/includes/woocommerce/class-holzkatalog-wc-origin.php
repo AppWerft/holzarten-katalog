@@ -215,7 +215,13 @@ class HOLZKATALOG_WC_Origin
         }
 
         $product_id = $product->get_id();
+        error_log('HK has_term: ' . (has_term('', 'pa_geoposition', $product_id) ? 'TRUE' : 'FALSE'));
 
+        $lat = get_post_meta($product_id, '_hk_origin_lat', true);
+        $lng = get_post_meta($product_id, '_hk_origin_lng', true);
+
+        error_log('HK lat: ' . var_export($lat, true));
+        error_log('HK lng: ' . var_export($lng, true));
         if (!has_term('', 'pa_geoposition', $product_id)) {
             return;
         }
