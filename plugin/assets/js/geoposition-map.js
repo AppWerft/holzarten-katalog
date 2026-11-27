@@ -2,7 +2,7 @@
 jQuery('.geopositions_map').each(function () {
     const getTileprovider = () => {
         const tileProvider = $mapContainer.data('tile-provider');
-
+        console.log(tileprovider)
         return L.tileLayer.provider(tileProvider)
     }
     const $mapContainer = jQuery(this);
@@ -20,7 +20,7 @@ jQuery('.geopositions_map').each(function () {
         doubleClickZoom: false,
         touchZoom: false,
         boxZoom: false,
-        keyboard: false
+        keyboard: false 
 
     }).setView([lat, lng], zoom);
 
