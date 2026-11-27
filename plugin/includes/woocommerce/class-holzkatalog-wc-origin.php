@@ -53,13 +53,7 @@ class HOLZKATALOG_WC_Origin
         error_log('LEAFLET: ' . HOLZKATALOG_SCRIPT_HANDLES::LEAFLET);
         error_log('PROVIDERS: ' . HOLZKATALOG_SCRIPT_HANDLES::HOLZCAT_LEAFLET_PROVIDERS);
         error_log('ORIGIN: ' . HOLZKATALOG_SCRIPT_HANDLES::HOLZCAT_ORIGIN_PICKER);
-        error_log(
-            'Providers registered: '
-                . (wp_script_is(
-                    HOLZKATALOG_SCRIPT_HANDLES::HOLZCAT_LEAFLET_PROVIDERS,
-                    'registered'
-                ) ? 'yes' : 'no')
-        );
+        
     }
 
     public function limit_wood_attribute($product)
