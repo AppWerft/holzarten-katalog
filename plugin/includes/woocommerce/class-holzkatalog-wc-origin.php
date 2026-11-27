@@ -17,6 +17,7 @@ class HOLZKATALOG_WC_Origin
     }
     private function __construct()
     {
+        error_log('HOLZKATALOG_WC_Origin::constructor aufgerufen');
         add_action(
             HOLZKATALOG_HOOKS::WC_PRODUCT_OPTIONS_GENERAL_PRODUCT_DATA,
             [$this, 'render_fields']
@@ -31,7 +32,6 @@ class HOLZKATALOG_WC_Origin
             ['priority' => 35]
         );
 
-        error_log(HOLZKATALOG_HOOKS::WC_SINGLE_PRODUCT_SUMMARY);
         add_action(
             HOLZKATALOG_HOOKS::WC_SINGLE_PRODUCT_SUMMARY,
             function () {
@@ -40,8 +40,8 @@ class HOLZKATALOG_WC_Origin
             1
         );
         add_action(
-             HOLZKATALOG_HOOKS::WC_PRODUCT_OPTIONS_GENERAL_PRODUCT_DATA  ,  
-//        HOLZKATALOG_HOOKS::WC_SINGLE_PRODUCT_SUMMARY,
+            HOLZKATALOG_HOOKS::WC_PRODUCT_OPTIONS_GENERAL_PRODUCT_DATA,
+            //        HOLZKATALOG_HOOKS::WC_SINGLE_PRODUCT_SUMMARY,
             [$this, 'render_map'],
             absint($settings[HOLZKATALOG_OPTIONS::PRIORITY])
         );
