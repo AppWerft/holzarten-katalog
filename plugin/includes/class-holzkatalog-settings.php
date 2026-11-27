@@ -129,7 +129,6 @@ class HOLZKATALOG_Settings
 
         // Holzfundorteinstellungen
         if ($hook === HOLZKATALOG_HOOKS::HOLZARTENKATALOG_PAGE_HK_SETTINGS_FUNDORTE) {
-
             // Leaflet CSS
             wp_enqueue_style(
                 HOLZKATALOG_STYLE_HANDLES::LEAFLET,
@@ -141,7 +140,7 @@ class HOLZKATALOG_Settings
             // Leaflet JavaScript
             wp_enqueue_script(
                 HOLZKATALOG_SCRIPT_HANDLES::LEAFLET,
-                HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_JS::LEAFLET_JS,
+                HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_JS::LEAFLET,
                 [],
                 '1.9.4',
                 true
@@ -149,7 +148,7 @@ class HOLZKATALOG_Settings
 
             // D3 v5
             wp_enqueue_script(
-                HOLZKATALOG_SCRIPT_HANDLES::HOLZCAT_D3,
+                HOLZKATALOG_SCRIPT_HANDLES::D3,
                 HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_JS::D3V5,
                 [],
                 HOLZKATALOG_VERSION,
@@ -160,7 +159,7 @@ class HOLZKATALOG_Settings
             wp_enqueue_script(
                 HOLZKATALOG_SCRIPT_HANDLES::HOLZCAT_PINGLAYER,
                 HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_JS::PINGLAYER,
-                [HOLZKATALOG_SCRIPT_HANDLES::LEAFLET, HOLZKATALOG_SCRIPT_HANDLES::HOLZCAT_D3],
+                [HOLZKATALOG_SCRIPT_HANDLES::LEAFLET, HOLZKATALOG_SCRIPT_HANDLES::D3],
                 HOLZKATALOG_VERSION,
                 true
             );

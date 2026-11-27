@@ -53,7 +53,7 @@ final class HOLZKATALOG_SCRIPT_HANDLES
     public const HOLZCAT_PINGLAYER = 'holzkat-ping-layer';
     public const HOLZCAT_HOLZARTEN_SETTING = 'holzkat-holzarten-settings';
     public const LEAFLET = 'leaflet';
-    public const HOLZCAT_D3 = 'holzkat-d3';
+    public const D3 = 'holzkat-d3';
     public const HOLZCAT_HOLZARTEN = 'holzkat-holzarten';
     public const JQUERY = 'jquery';
     public const ADMIN = 'holzkat-admin';
@@ -99,23 +99,23 @@ final class HOLZKATALOG_JS
     public const ADMIN_HOLZARTEN_KATALOG = 'assets/js/admin-holzarten-katalog.js';
     public const ADMIN_HOLZARTEN_GEOSETTINGS = 'assets/js/admin-holzarten-geosettings.js';
 
-    public const HK_ADMIN_JS = 'assets/css/hk-admin.js';
+    public const HK_ADMIN = 'assets/js/hk-admin.js';
     public const HOLZKATLOG_ADMIN_JS = 'assets/js/holzkatalog-admin.js';
-    public const LEAFLET_JS = 'assets/vendor/leaflet/leaflet.js';
+    public const LEAFLET = 'assets/vendor/leaflet/leaflet.js';
     public const PINGLAYER = 'assets/vendor/leaflet/leaflet-d3.js';
     public const LEAFLET_PROVIDERS = 'assets/vendor/leaflet/leaflet-providers.js';
     public const HK_ORIGIN_PICKER_JS = 'assets/js/hk-origin-picker.js';
     public const D3V5 = 'assets/vendor/d3/d3v5.js';
     public const GEOPOSITION_MAP = 'assets/js/geopositions-map.js';
     // noch nicht genutzt:
-    public const FRONTEND_KATALOG_JS = 'assets/js/frontend-katalog.js';
+    public const FRONTEND_KATALOG = 'assets/js/frontend-katalog.js';
 }
 
 final class HOLZKATALOG_CSS
 {
     public const FRONTEND_HOLZARTEN = 'assets/css/frontend-holzarten.css';
     public const HK_ADMIN = 'assets/css/hk-admin.css';
-    public const ADMIN_HOLZARTEN_GEOSETTINGS = 'assets/js/admin-holzarten-geosettings.css';
+    public const ADMIN_HOLZARTEN_GEOSETTINGS = 'assets/css/admin-holzarten-geosettings.css';
     public const ADMIN_HOLZARTEN_SETTINGS = 'assets/css/admin-holzarten-settings.css';
     public const LEAFLET = 'assets/vendor/leaflet/leaflet.css';
     public const FRONTEND_KATALOG = 'assets/css/frontend-katalog.css';

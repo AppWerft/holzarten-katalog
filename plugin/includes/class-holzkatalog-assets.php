@@ -22,7 +22,6 @@ class HOLZKATALOG_Assets
      */
     private static function enqueue_leaflet()
     {
-        // Leaflet CSS
         wp_enqueue_style(
             HOLZKATALOG_SCRIPT_HANDLES::LEAFLET,
             HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_CSS::LEAFLET,
@@ -32,7 +31,7 @@ class HOLZKATALOG_Assets
 
         // D3
         wp_enqueue_script(
-            HOLZKATALOG_SCRIPT_HANDLES::HOLZCAT_D3,
+            HOLZKATALOG_SCRIPT_HANDLES::D3,
             HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_JS::D3V5,
             [],
             HOLZKATALOG_VERSION,
@@ -42,7 +41,7 @@ class HOLZKATALOG_Assets
         // Leaflet
         wp_enqueue_script(
             HOLZKATALOG_SCRIPT_HANDLES::LEAFLET,
-            HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_JS::LEAFLET_JS,
+            HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_JS::LEAFLET,
             [],
             '1.9.4',
             true
@@ -52,7 +51,7 @@ class HOLZKATALOG_Assets
         wp_enqueue_script(
             HOLZKATALOG_SCRIPT_HANDLES::HOLZCAT_PINGLAYER,
             HOLZKATALOG_PLUGIN_URL . HOLZKATALOG_JS::PINGLAYER,
-            [HOLZKATALOG_SCRIPT_HANDLES::LEAFLET, HOLZKATALOG_SCRIPT_HANDLES::HOLZCAT_D3],
+            [HOLZKATALOG_SCRIPT_HANDLES::LEAFLET, HOLZKATALOG_SCRIPT_HANDLES::D3],
             HOLZKATALOG_VERSION,
             true
         );
