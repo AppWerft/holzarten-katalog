@@ -2,7 +2,7 @@
 jQuery('.geopositions_map').each(function () {
     const getTileprovider = () => {
         const tileProvider = $mapContainer.data('tile-provider');
-        
+
         return L.tileLayer.provider(tileProvider)
     }
     const $mapContainer = jQuery(this);
@@ -13,7 +13,16 @@ jQuery('.geopositions_map').each(function () {
         display: 'block'
     });
 
-    const map = L.map($mapContainer[0]).setView([lat, lng], zoom);
+    const map = L.map($mapContainer[0], {
+        zoomControl: false,
+        dragging: false,
+        scrollWheelZoom: false,
+        doubleClickZoom: false,
+        touchZoom: false,
+        boxZoom: false,
+        keyboard: false
+
+    }).setView([lat, lng], zoom);
 
     let tileProvider = getTileprovider(tileprovider);
     L.tileLayer(tileProvider.url, tileProvider.options).addTo(map);
