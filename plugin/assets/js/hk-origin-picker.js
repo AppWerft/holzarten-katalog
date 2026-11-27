@@ -1,6 +1,6 @@
 
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('hk-origin-picker');
+    console.log('hkoriginpicker');
     document.querySelectorAll('.geopositions_map').forEach(mapContainer => {
 
         const [lat, lng] = mapContainer.dataset.geo
