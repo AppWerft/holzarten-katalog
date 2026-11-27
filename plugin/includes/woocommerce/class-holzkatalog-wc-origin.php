@@ -32,6 +32,18 @@ class HOLZKATALOG_WC_Origin
         add_action(
             HOLZKATALOG_HOOKS::WC_PRODUCT_OPTIONS_GENERAL_PRODUCT_DATA,
             //        HOLZKATALOG_HOOKS::WC_SINGLE_PRODUCT_SUMMARY,
+            [$this, 'render_map_picker'],
+            absint($settings[HOLZKATALOG_OPTIONS::PRIORITY])
+        );
+        // Backend: Positionsauswahl
+        add_action(
+            HOLZKATALOG_HOOKS::WC_PRODUCT_OPTIONS_GENERAL_PRODUCT_DATA,
+            [$this, 'render_map_picker']
+        );
+
+        // Frontend: Read-only-Karte
+        add_action(
+            HOLZKATALOG_HOOKS::WC_SINGLE_PRODUCT_SUMMARY,
             [$this, 'render_map'],
             absint($settings[HOLZKATALOG_OPTIONS::PRIORITY])
         );
@@ -113,10 +125,11 @@ class HOLZKATALOG_WC_Origin
         }
     }
     /**
-     * Karte auf der Produktseite anzeigen.
+     * Karte auf der ProduktAdminseite anzeigen.
      */
-    public function render_map()
-    {   echo '<script>render_map()</script>';
+    public function render_map_picker()
+    {
+
         global $product;
         if (!$product) {
             return;
@@ -131,7 +144,7 @@ class HOLZKATALOG_WC_Origin
         // Koordinaten auslesen.
         $lat = get_post_meta($product_id, '_hk_origin_lat', true);
         $lng = get_post_meta($product_id, '_hk_origin_lng', true);
-        $zoom= get_post_meta($product_id, '_hk_origin_zoom', true);
+        $zoom = get_post_meta($product_id, '_hk_origin_zoom', true);
         $zoom = $zoom !== '' ? (int) $zoom : 6;
 
         if ($lat === '' || $lng === '') {
@@ -181,7 +194,53 @@ class HOLZKATALOG_WC_Origin
             esc_attr($margin)
         );
     }
+    /**
+     * Read-only-Karte auf der Produktseite anzeigen.
+     */
+    public function render_map()
+    {
+        global $product;
 
+        if (!$product instanceof WC_Product) {
+            return;
+        }
+
+        $product_id = $product->get_id();
+
+        if (!has_term('', 'pa_geoposition', $product_id)) {
+            return;
+        }
+        $settings = wp_parse_args(
+            get_option(HOLZKATALOG_OPTIONS::MAP_SETTINGS, []),
+            [
+                HOLZKATALOG_OPTIONS::HEIGHT => 200,
+                HOLZKATALOG_OPTIONS::WIDTH => 100,
+                HOLZKATALOG_OPTIONS::POSITION => 'center',
+            ]
+        );
+
+        $margin = match ($settings[HOLZKATALOG_OPTIONS::POSITION]) {
+            'left'  => '0 auto 0 0',
+            'right' => '0 0 0 auto',
+            default => '0 auto',
+        };
+        $lat = get_post_meta($product_id, '_hk_origin_lat', true);
+        $lng = get_post_meta($product_id, '_hk_origin_lng', true);
+
+        if ($lat === '' || $lng === '') {
+            return;
+        }
+        printf(
+            '<div data-geo="%s"
+                        class="geopositions_map"
+                        style="height:%dpx;width:%d%%;margin:%s">
+                    </div>',
+            esc_attr($lat . ',' . $lng),
+            absint($settings[HOLZKATALOG_OPTIONS::HEIGHT]),
+            absint($settings[HOLZKATALOG_OPTIONS::WIDTH]),
+            esc_attr($margin)
+        );
+    }
     public function enqueue_admin_scripts($hook)
     {
         if (!in_array($hook, ['post.php', 'post-new.php'], true)) {
@@ -271,7 +330,7 @@ class HOLZKATALOG_WC_Origin
         $options = [
             HOLZKATALOG_OPTIONS::PINGCOLOR    => $settings[HOLZKATALOG_OPTIONS::PINGCOLOR],
             HOLZKATALOG_OPTIONS::TILE_PROVIDER => $settings[HOLZKATALOG_OPTIONS::TILE_PROVIDER],
-           HOLZKATALOG_OPTIONS::ZOOM  => $zoom,
+            HOLZKATALOG_OPTIONS::ZOOM  => $zoom,
             HOLZKATALOG_OPTIONS::HEIGHT  => (int) $settings[HOLZKATALOG_OPTIONS::HEIGHT],
             HOLZKATALOG_OPTIONS::WIDTH  => $settings[HOLZKATALOG_OPTIONS::WIDTH],
             HOLZKATALOG_OPTIONS::RADIUS => (int) $settings[HOLZKATALOG_OPTIONS::RADIUS],
@@ -352,7 +411,7 @@ class HOLZKATALOG_WC_Origin
             '_hk_origin_lat' => ['min' => -90, 'max' => 90],
             '_hk_origin_lng' => ['min' => -180, 'max' => 180],
             '_hk_origin_zoom' => ['min' => 3, 'max' => 16],
-            
+
         ];
 
         // Nonce-Prüfung.
