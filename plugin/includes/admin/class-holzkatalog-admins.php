@@ -761,7 +761,7 @@ class HOLZKATALOG_Admins
                                     onclick="return confirm('Diese Holzart wirklich löschen?');">
 
                                     <img
-                                        style="width:24px;"
+                                        style="width:28px;"
                                         src="<?php echo esc_url(
                                                     HOLZKATALOG_URL . 'assets/images/delete.svg'
                                                 ); ?>"
