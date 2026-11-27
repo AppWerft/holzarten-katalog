@@ -803,6 +803,8 @@ class HOLZKATALOG_Settings
                 </div>
             </fieldset>
             <h2>Verwendung in öffentlicher Seite (Frontend)</h2>
+            Die Karte wird automatisch in den Beschreibungsblock des Produkte eingefügt, wobei die Position durch den Positionsparamter festgelegt ist. 
+            Die Geo-Position des Produktes wird im Menüpunkt woocommerce/Produkte/Edit festgelegt. Ist keine Position angegeben, entfällt die Karte.
         </div>
 
 <?php
