@@ -2,11 +2,10 @@
 jQuery('.geopositions_map').each(function () {
     const getTileprovider = () => {
         const tileProvider = $mapContainer.data('tile-provider');
-        console.log(tileProvider)
+        console.log(L.tileLayer)
         return L.tileLayer.provider(tileProvider)
     }
     const $mapContainer = jQuery(this);
-
     const [lat, lng] = $mapContainer.data('geo').split(',').map(Number);
     const zoom = Number($mapContainer.data('zoom')) || 6;
     const tileprovider = $mapContainer.data('tile-provider');
