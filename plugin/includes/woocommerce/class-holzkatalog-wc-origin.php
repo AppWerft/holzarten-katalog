@@ -133,10 +133,12 @@ class HOLZKATALOG_WC_Origin
         if (!$product) {
             return;
         }
+        
         $product_id = $product->get_id();
 
         // Prüfen, ob das Attribut Geoposition zugeordnet ist.
         if (!has_term('', 'pa_geoposition', $product_id)) {
+            error_log('keine pa_geoposition');
             return;
         }
         error_log($product_id);
