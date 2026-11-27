@@ -182,7 +182,7 @@ class HOLZKATALOG_WC_Origin
             default => '0 auto',
         };
 
-        printf(
+        $html = sprintf(
             '<div data-geo="%s"
                         class="geopositions_map"
                         style="height:%dpx;width:%d%%;margin:%s">
@@ -192,6 +192,7 @@ class HOLZKATALOG_WC_Origin
             absint($settings[HOLZKATALOG_OPTIONS::WIDTH]),
             esc_attr($margin)
         );
+        echo $html;
     }
     /**
      * Read-only-Karte auf der Produktseite anzeigen.
