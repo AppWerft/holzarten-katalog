@@ -5,7 +5,9 @@ jQuery('.geopositions_map').each(function () {
         console.log('Provider aus HTML:', tileProvider);
         console.log('L.tileLayer:', L.tileLayer);
         console.log('L.tileLayer.provider:', L.tileLayer.provider);
-
+        console.log(
+            L.TileLayer.Provider.providers['Stadia.StamenWatercolor']
+        );
         return L.tileLayer.provider(tileProvider)
     }
     const $mapContainer = jQuery(this);
