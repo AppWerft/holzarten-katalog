@@ -129,7 +129,6 @@ class HOLZKATALOG_WC_Origin
      */
     public function render_map_picker()
     {
-
         global $product;
         if (!$product) {
             return;
@@ -140,7 +139,7 @@ class HOLZKATALOG_WC_Origin
         if (!has_term('', 'pa_geoposition', $product_id)) {
             return;
         }
-
+        error_log($product_id);
         // Koordinaten auslesen.
         $lat = get_post_meta($product_id, '_hk_origin_lat', true);
         $lng = get_post_meta($product_id, '_hk_origin_lng', true);
