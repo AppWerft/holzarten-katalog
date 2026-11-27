@@ -33,7 +33,7 @@
 
             add_action(
                 HOLZKATALOG_HOOKS::WC_SINGLE_PRODUCT_SUMMARY,
-                [$this, 'render_map'], // tatsächlichen Methodennamen einsetzen
+                [$this, 'render_map'], 
                 $settings[HOLZKATALOG_OPTIONS::PRIORITY]
             );
            
@@ -122,7 +122,7 @@
          * Karte auf der Produktseite anzeigen.
          */
         public function render_map()
-        {
+        {   error_log('render_map()');
             global $product;
             if (!$product) {
                 return;

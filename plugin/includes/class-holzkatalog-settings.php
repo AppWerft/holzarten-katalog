@@ -567,8 +567,6 @@ class HOLZKATALOG_Settings
     <?php
     }
 
-
-
     public static function render_fundorte()
     {
         $settings = wp_parse_args(
@@ -583,27 +581,19 @@ class HOLZKATALOG_Settings
                 'pingcolor'     => '#4285F4',
             ]
         );
-
         $providers = self::get_map_providers();
         $selected  = $settings[HOLZKATALOG_OPTIONS::TILE_PROVIDER];
     ?>
-
         <div class="wrap">
-
             <h1>Holzfundortkarten – Darstellungseinstellungen</h1>
-
             <p>
                 Den Produkten kann eine Geoposition zugeordnet werden.
                 In diesem Formular kann die Darstellung für alle Produkte
                 konfiguriert werden.
             </p>
-
             <form method="post" action="options.php">
-
                 <?php settings_fields('hk_settings_group'); ?>
-
                 <table class="form-table">
-
                     <tr>
                         <th scope="row">
                             <label for="hk-tile-provider">
@@ -622,14 +612,12 @@ class HOLZKATALOG_Settings
                                     </option>
                                 <?php endforeach; ?>
                             </select>
-
                             <p class="description">
                                 Beachte die jeweiligen Lizenz- und Nutzungsbedingungen
                                 des Kartenanbieters.
                             </p>
                         </td>
                     </tr>
-
                     <tr id="hk-map-apikey-wrapper" style="display:none">
                         <th scope="row">Eingabe Schlüssel</th>
                         <td>
@@ -653,8 +641,6 @@ class HOLZKATALOG_Settings
                                 value="<?php echo esc_attr($settings[HOLZKATALOG_OPTIONS::APIKEY] ?? ''); ?>">
                         </td>
                     </tr>
-
-
                     <tr>
                         <th scope="row">
                             <label for="hk-map-height">
