@@ -2,7 +2,7 @@
 jQuery('.geopositions_map').each(function () {
     const getTileprovider = () => {
         const tileProvider = $mapContainer.data('tile-provider').replace('.','');
-        console.log('tileProvider='+tileprovider)
+        console.log('tileProvider='+tileProvider)
         return L.tileLayer.provider(tileProvider)
     }
     const $mapContainer = jQuery(this);
