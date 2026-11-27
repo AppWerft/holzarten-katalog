@@ -740,7 +740,7 @@ class HOLZKATALOG_Admins
                                                 )
                                             ); ?>">
                                     <img
-                                        style="width:28px;"
+                                        style="width:30px;"
                                         src="<?php echo esc_url(
                                                     HOLZKATALOG_URL . 'assets/images/edit.svg'
                                                 ); ?>"
