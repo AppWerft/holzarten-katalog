@@ -210,7 +210,9 @@ document.addEventListener('DOMContentLoaded', function () {
     const columnsField = document.querySelector(
         '[name="hk_katalog_settings[spalten]"]'
     );
-
+    const bilderField = document.querySelector(
+        '[name="hk_katalog_settings[bilder]"]'
+    );
     const cardField = document.querySelector(
         '[name="hk_katalog_settings[card]"]'
     );
@@ -230,13 +232,16 @@ document.addEventListener('DOMContentLoaded', function () {
         const columns = columnsField?.value;
         const card = cardField?.checked ?? false;
         const onlyProducts = nurprodukteField?.checked ?? false;
-
+        const bilder = bilderField?.checked ?? false;
         const grid = preview.querySelector('.hk-wood-grid');
 
         if (!grid) {
             console.log('no grid');
             return;
         }
+        // Bild anzeigen?
+        console.log(bilder)
+        grid.querySelectorAll('.hk-wood-image').forEach(img => img.hidden= !bilder);
 
         // Spaltenzahl
         if (columns) {
