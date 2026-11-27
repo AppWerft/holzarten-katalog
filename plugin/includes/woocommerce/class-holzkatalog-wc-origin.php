@@ -229,6 +229,7 @@ class HOLZKATALOG_WC_Origin
                 HOLZKATALOG_OPTIONS::HEIGHT => 200,
                 HOLZKATALOG_OPTIONS::WIDTH => 100,
                 HOLZKATALOG_OPTIONS::POSITION => 'center',
+                HOLZKATALOG_OPTIONS::TILE_PROVIDER => 'OpenStreetMap.Mapnik'
             ]
         );
 
@@ -239,7 +240,8 @@ class HOLZKATALOG_WC_Origin
         };
         $lat = get_post_meta($product_id, '_hk_origin_lat', true);
         $lng = get_post_meta($product_id, '_hk_origin_lng', true);
-
+        $zoom = get_post_meta($product_id, '_hk_origin_zoom', true);
+    
         if ($lat === '' || $lng === '') {
             return;
         }
@@ -255,11 +257,16 @@ class HOLZKATALOG_WC_Origin
             true
         );
         printf(
-            '<div data-geo="%s"
-                        class="geopositions_map"
-                        style="height:%dpx;width:%d%%;margin:%s">
-                    </div>',
+            '<div
+                data-geo="%s"
+                data-zoom="%d"
+                data-tile-provider="%s"
+                class="geopositions_map"
+                style="height:%dpx;width:%d%%;margin:%s">
+            </div>',
             esc_attr($lat . ',' . $lng),
+            absint($zoom),
+            esc_attr($settings[HOLZKATALOG_OPTIONS::TILE_PROVIDER]),
             absint($settings[HOLZKATALOG_OPTIONS::HEIGHT]),
             absint($settings[HOLZKATALOG_OPTIONS::WIDTH]),
             esc_attr($margin)
