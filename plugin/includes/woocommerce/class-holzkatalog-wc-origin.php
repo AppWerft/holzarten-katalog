@@ -371,7 +371,7 @@ class HOLZKATALOG_WC_Origin
             HOLZKATALOG_OPTIONS::RADIUS => (int) $settings[HOLZKATALOG_OPTIONS::RADIUS],
             HOLZKATALOG_OPTIONS::POSITION  => $settings[HOLZKATALOG_OPTIONS::POSITION]
         ];
-
+        error_log('hk-origin-map-wrapper');
         return '
         <div id="hk-origin-map-wrapper">
             <div
