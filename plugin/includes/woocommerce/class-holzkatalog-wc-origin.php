@@ -12,7 +12,16 @@ class HOLZKATALOG_WC_Origin
         if (self::$instance === null) {
             self::$instance = new self();
         }
-        error_log('HOLZKATALOG_WC_Origin wird initialisiert');
+        error_log(
+        'HOLZKATALOG_WC_Origin::instance() aufgerufen' .
+        "\n" .
+        wp_debug_backtrace_summary()
+    );
+
+    if (self::$instance === null) {
+        self::$instance = new self();
+    }
+
         return self::$instance;
     }
     private function __construct()
