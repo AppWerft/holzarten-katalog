@@ -20,7 +20,6 @@ final class HOLZKATALOG_HOOKS
     public const WP_ADMIN_MENU  = 'admin_menu';
     public const HOLZARTENKATALOG_PAGE_HK_SETTINGS_FUNDORTE = 'holzartenkatalog_page_hk_settings_fundorte';
     public const WP_ADMIN_ENQUEUE_SCRIPTS = 'admin_enqueue_scripts';
-    public const LEAFLET = 'leaflet';
     public const HOLZARTENKATALOG_PAGE_HK_SETTING_KATALOG = 'holzartenkatalog_page_hk_settings_katalog';
 }
 
@@ -51,14 +50,14 @@ final class HOLZKATALOG_SCRIPT_HANDLES
     public const LEAFLET_PROVIDERS = 'holzkat-leaflet-providers';
     public const GEOSETTINGS = 'holzkat-holzarten-geosettings_js';
     public const HOLZCAT_PINGLAYER = 'holzkat-ping-layer';
-    public const HOLZCAT_HOLZARTEN_SETTING = 'holzkat-holzarten-settings';
+   // public const HOLZCAT_HOLZARTEN_SETTING = 'holzkat-holzarten-settings';
+    public const HOLZARTEN_SETTINGS = 'holzkat-holzarten-settings';
     public const LEAFLET = 'leaflet';
     public const D3 = 'holzkat-d3';
-    public const HOLZCAT_HOLZARTEN = 'holzkat-holzarten';
+  //  public const HOLZCAT_HOLZARTEN = 'holzkat-holzarten';
     public const JQUERY = 'jquery';
     public const ADMIN = 'holzkat-admin';
     public const HOLZARTEN = 'holzkat-holzarten';
-    public const HOLZARTEN_SETTINGS = 'holzkat-holzarten-settings';
     public const GEOPOSITION_MAP = 'holzkat-geopositions-map';
     public const HOLZCAT_ORIGIN_PICKER = 'holzkat-origin-picker';
     public const WC_ENHANCED_SELECT = 'wc-enhanced-select';
