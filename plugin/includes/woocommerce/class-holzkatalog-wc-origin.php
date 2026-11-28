@@ -29,12 +29,12 @@ class HOLZKATALOG_WC_Origin
             get_option('hk_map_settings', []),
             ['priority' => 35]
         );
+        /*
         add_action(
             HOLZKATALOG_HOOKS::WC_PRODUCT_OPTIONS_GENERAL_PRODUCT_DATA,
-            //        HOLZKATALOG_HOOKS::WC_SINGLE_PRODUCT_SUMMARY,
             [$this, 'render_map_picker'],
             absint($settings[HOLZKATALOG_OPTIONS::PRIORITY])
-        );
+        );*/
         // Backend: Positionsauswahl
         add_action(
             HOLZKATALOG_HOOKS::WC_PRODUCT_OPTIONS_GENERAL_PRODUCT_DATA,
@@ -144,7 +144,6 @@ class HOLZKATALOG_WC_Origin
         $lng = get_post_meta($product_id, '_hk_origin_lng', true);
         $zoom = get_post_meta($product_id, '_hk_origin_zoom', true);
         $zoom = $zoom !== '' ? (int) $zoom : 6;
-        error_log($lat . ' ' . $lng . ' ' . $zoom);
         if ($lat === '' || $lng === '') {
             $product->update_meta_data('_hk_origin_zoom', 6);
             return;
