@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
         lngField = document.getElementById('_hk_origin_lng'),
         zoomField = document.getElementById('_hk_origin_zoom');
     let clearButton = null;
+    alert('GEOPICKER')
     if (!mapContainer || !latField || !lngField) return;
     const options = JSON.parse(mapContainer.dataset.options)
     pingColor = options.pingcolor || '#4285F4',
