@@ -181,11 +181,15 @@ class HOLZKATALOG_WC_Origin
         };
 
         $html = sprintf(
-            '<div data-geo="%s"
-                        class="geopositions_map"
-                        style="height:%dpx;width:%d%%;margin:%s">
-                    </div>',
+            '<div 
+                data-geo="%s"
+                data-tile-provider="%s"
+                class="geopositions_map"
+                style="height:%dpx;width:%d%%;margin:%s">
+            </div>',
             esc_attr($lat . ',' . $lng),
+            $settings[HOLZKATALOG_OPTIONS::TILE_PROVIDER],
+            
             absint($settings[HOLZKATALOG_OPTIONS::HEIGHT]),
             absint($settings[HOLZKATALOG_OPTIONS::WIDTH]),
             esc_attr($margin)
