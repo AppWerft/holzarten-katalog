@@ -31,10 +31,10 @@ class HOLZKATALOG_WC_Origin
         );
        
         // Backend: Positionsauswahl
-       /* add_action(
+        add_action(
             HOLZKATALOG_HOOKS::WC_PRODUCT_OPTIONS_GENERAL_PRODUCT_DATA,
             [$this, 'render_map_picker']
-        );*/
+        );
 
         // Frontend: Read-only-Karte
         add_action(
@@ -411,7 +411,7 @@ class HOLZKATALOG_WC_Origin
 
         echo '</div>';
 
-        echo wp_kses_post($this->render_geosuche($zoom));
+       // echo wp_kses_post($this->render_geosuche($zoom));
 
         echo '<div style="margin-bottom:20px; display:flex; align-items:center; gap:10px;">';
 
