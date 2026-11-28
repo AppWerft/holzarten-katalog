@@ -12,16 +12,6 @@ class HOLZKATALOG_WC_Origin
         if (self::$instance === null) {
             self::$instance = new self();
         }
-        error_log(
-        'HOLZKATALOG_WC_Origin::instance() aufgerufen' .
-        "\n" .
-        wp_debug_backtrace_summary()
-    );
-
-    if (self::$instance === null) {
-        self::$instance = new self();
-    }
-
         return self::$instance;
     }
     private function __construct()
@@ -146,7 +136,7 @@ class HOLZKATALOG_WC_Origin
 
         $product_id = $post->ID;
         $product = wc_get_product($product_id);
-       
+
         // Koordinaten auslesen.
         $lat = get_post_meta($product_id, '_hk_origin_lat', true);
         $lng = get_post_meta($product_id, '_hk_origin_lng', true);
@@ -196,14 +186,13 @@ class HOLZKATALOG_WC_Origin
             </div>',
             esc_attr($lat . ',' . $lng),
             $settings[HOLZKATALOG_OPTIONS::TILE_PROVIDER],
-            
+
             absint($settings[HOLZKATALOG_OPTIONS::HEIGHT]),
             absint($settings[HOLZKATALOG_OPTIONS::WIDTH]),
             esc_attr($margin)
         );
         error_log($html);
         print($html);
-
     }
     /**
      * Read-only-Karte auf der Produktseite anzeigen.
@@ -284,7 +273,7 @@ class HOLZKATALOG_WC_Origin
         error_log($html);
     }
     public function enqueue_admin_scripts($hook)
-    {   error_log('enqueue_admin_scripts');
+    {
         if (!in_array($hook, ['post.php', 'post-new.php'], true)) {
             return;
         }
@@ -352,7 +341,13 @@ class HOLZKATALOG_WC_Origin
             HOLZKATALOG_VERSION,
             true
         );
-         error_log('enqueue_admin_scripts //ENDE');
+        error_log(
+            'POSITION_PICKER: ' .
+                (wp_script_is(
+                    HOLZKATALOG_SCRIPT_HANDLES::HOLZCAT_ORIGIN_PICKER,
+                    'enqueued'
+                ) ? 'enqueued' : 'NOT enqueued')
+        );
     }
 
 
