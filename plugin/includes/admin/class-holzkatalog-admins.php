@@ -65,7 +65,7 @@ class HOLZKATALOG_Admins
         $jsfile = $plugin_dir . HOLZKATALOG_JS::ADMIN_HOLZARTEN_KATALOG;
         $jsurl = $plugin_url .HOLZKATALOG_JS::ADMIN_HOLZARTEN_KATALOG;
         wp_enqueue_script(
-            HOLZKATALOG_SCRIPT_HANDLES::HOLZCAT_HOLZARTEN,
+            HOLZKATALOG_SCRIPT_HANDLES::HOLZARTEN,
             $jsurl,
             [HOLZKATALOG_SCRIPT_HANDLES::JQUERY],
             file_exists($jsfile) ? filemtime($jsfile) : HOLZKATALOG_VERSION,
