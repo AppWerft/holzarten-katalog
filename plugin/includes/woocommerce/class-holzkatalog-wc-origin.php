@@ -107,8 +107,6 @@ class HOLZKATALOG_WC_Origin
             }
         }
     }
-
-
     public static function register_zoomlevel_terms()
     {
         if (!taxonomy_exists('pa_zoomlevel')) {
@@ -276,7 +274,7 @@ class HOLZKATALOG_WC_Origin
         error_log($html);
     }
     public function enqueue_admin_scripts($hook)
-    {
+    {   error_log('enqueue_admin_scripts');
         if (!in_array($hook, ['post.php', 'post-new.php'], true)) {
             return;
         }
@@ -344,6 +342,7 @@ class HOLZKATALOG_WC_Origin
             HOLZKATALOG_VERSION,
             true
         );
+         error_log('enqueue_admin_scripts //ENDE');
     }
 
 
