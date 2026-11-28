@@ -1,5 +1,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
+    console.log(L)
+    
     const STANDARDPOSITION = [51.33, 12.42],
         mapContainer = document.getElementById('hk-origin-map'),
         latField = document.getElementById('_hk_origin_lat'),
