@@ -106,6 +106,7 @@ final class HOLZKATALOG_JS
     public const PRODUKT_GEOSETTINGS = 'assets/js/produkt-geosettings.js';
     public const D3V5 = 'assets/vendor/d3/d3v5.js';
     public const GEOPOSITION_MAP = 'assets/js/geoposition-map.js';
+    public const POSITION_PICKER = 'assets/js/position-picker.js';
     // noch nicht genutzt:
     public const FRONTEND_KATALOG = 'assets/js/frontend-katalog.js';
 }

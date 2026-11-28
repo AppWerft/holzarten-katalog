@@ -1,6 +1,5 @@
 
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('hkoriginpicker');
     document.querySelectorAll('.geopositions_map').forEach(mapContainer => {
         console.log('querySelectorAll')
         const [lat, lng] = mapContainer.dataset.geo
