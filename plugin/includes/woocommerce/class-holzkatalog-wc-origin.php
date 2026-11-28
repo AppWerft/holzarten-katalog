@@ -29,17 +29,12 @@ class HOLZKATALOG_WC_Origin
             get_option('hk_map_settings', []),
             ['priority' => 35]
         );
-        /*
-        add_action(
-            HOLZKATALOG_HOOKS::WC_PRODUCT_OPTIONS_GENERAL_PRODUCT_DATA,
-            [$this, 'render_map_picker'],
-            absint($settings[HOLZKATALOG_OPTIONS::PRIORITY])
-        );*/
+       
         // Backend: Positionsauswahl
-        add_action(
+       /* add_action(
             HOLZKATALOG_HOOKS::WC_PRODUCT_OPTIONS_GENERAL_PRODUCT_DATA,
             [$this, 'render_map_picker']
-        );
+        );*/
 
         // Frontend: Read-only-Karte
         add_action(
@@ -151,7 +146,6 @@ class HOLZKATALOG_WC_Origin
             'pa_zoomlevel',
             ['fields' => 'names']
         );
-        var_dump($zoom_terms);
         $zoom = !empty($zoom_terms)
             ? absint($zoom_terms[0])
             : 6;
